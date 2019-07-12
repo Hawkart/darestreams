@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Account extends Model
 {
+    public $timestamps = false;
+
     /**
      * The table associated with the model.
      *
@@ -31,17 +33,27 @@ class Account extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function streams()
-    {
-        return $this->hasMany(Stream::class);
+    public function transactionsSent() {
+        return $this->hasMany(Transaction::class, 'account_sender_id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function transactions()
+    public function transactionsReceived() {
+        return $this->hasMany(Transaction::class, 'account_sender_id');
+    }
+
+    public function relatedUserRelations() {
+        return $this->hasMany(Transaction::class, 'account_receiver_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function getTransactions()
     {
         return Transaction::where('account_sender_id', $this->id)
-                        ->orWhere('account_receiver_id', $this->id);
+            ->orWhere('account_receiver_id', $this->id);
     }
 }

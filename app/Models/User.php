@@ -9,10 +9,11 @@ use Cmgmyr\Messenger\Traits\Messagable;
 use App\Notifications\VerifyEmail;
 use App\Notifications\ResetPassword;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEmail
 {
-    use Notifiable, Messagable;
+    use Notifiable, Messagable, Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -39,6 +40,25 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEma
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    /**
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'nickname' => [
+                'source' => $this->nickname ? 'nickname' : 'name'
+            ],
+        ];
+    }
+
+    /**
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => \App\Events\UserCreatedEvent::class,
     ];
 
 
@@ -115,11 +135,23 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEma
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @param bool $type
+     * @return mixed
      */
-    public function transactions()
+    public function getTransactions($type = false)
     {
-        return Transaction::where('account_sender_id', $this->account->id)
-            ->orWhere('account_receiver_id', $this->account->id);
+        switch($type)
+        {
+            case 'sent':
+                return Transaction::where('account_sender_id', $this->account->id);
+            break;
+            case 'received':
+                return Transaction::where('account_receiver_id', $this->account->id);
+            break;
+            default:
+                return Transaction::where('account_sender_id', $this->account->id)
+                    ->orWhere('account_receiver_id', $this->account->id);
+            break;
+        }
     }
 }

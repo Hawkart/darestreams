@@ -82,6 +82,13 @@ return [
 
     'locale' => 'en',
 
+    'locales' => [
+        'en' => 'EN',
+        'ru' => 'RU',
+        'zh-CN' => '中文',
+        'es' => 'ES',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -171,10 +178,10 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        App\Providers\JsonApiPaginateServiceProvider::class,
     ],
 
     /*

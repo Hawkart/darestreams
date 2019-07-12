@@ -17,7 +17,7 @@ class CreateAccountsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->decimal('amount')->unsigned()->default(0);
-            $table->string('currency');
+            $table->string('currency')->default('USD');
 
             $table->foreign('user_id')
                 ->references('id')
