@@ -21,6 +21,13 @@ class Task extends Model
     protected $guarded = ['id'];
 
     /**
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => \App\Events\TaskCreatedEvent::class,
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
@@ -41,7 +48,7 @@ class Task extends Model
      */
     public function votes()
     {
-        return $this->hasMany(Vote::class);
+        return $this->hasMany(Vote::class, 'task_id');
     }
 
     /**

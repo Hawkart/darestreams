@@ -14,6 +14,13 @@ class Transaction extends Model
     protected $guarded = ['id'];
 
     /**
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => \App\Events\TransactionCreatedEvent::class,
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function task()

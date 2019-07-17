@@ -88,13 +88,20 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEma
         return $this->hasMany(Stream::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function votes()
     {
-        return $this->hasMany(Vote::class);
+        return $this->hasMany(Vote::class, 'user_id');
     }
 
     /**

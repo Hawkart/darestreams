@@ -21,6 +21,13 @@ class Stream extends Model
     protected $guarded = ['id'];
 
     /**
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => \App\Events\StreamCreatedEvent::class,
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
@@ -49,6 +56,6 @@ class Stream extends Model
      */
     public function threads()
     {
-        return $this->morphToMany('Cmgmyr\Messenger\Models\Thread', 'threadable');
+        return $this->morphTomany(Thread::class, 'threadable');
     }
 }

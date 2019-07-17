@@ -17,8 +17,9 @@ class CreateThreadablesTable extends Migration
         Schema::create('threadables', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('thread_id')->unsigned();
-            $table->bigInteger('threadable_id')->unsigned();
-            $table->string('threadable_type');
+            //$table->bigInteger('threadable_id')->unsigned();
+            //$table->string('threadable_type');
+            $table->morphs('threads');
 
             $table->foreign('thread_id')
                 ->references('id')
