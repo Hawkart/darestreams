@@ -27,8 +27,8 @@ class TransactionResource extends JsonResource
             'updated_at' => $this->updated_at,
 
             'task' => new TaskResource($this->whenLoaded('task')),
-            'accountSender' => new AccountResource($this->whenLoaded('accountSender')),
-            'accountReceiver' => new AccountResource($this->whenLoaded('accountReceiver'))
+            'account_sender' => new AccountResource($this->whenLoaded('accountSender')),
+            'account_receiver' => new AccountResource($this->whenLoaded('accountReceiver'))
         ];
     }
 }

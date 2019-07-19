@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\TransactionResource;
-use App\Models\Game;
+use App\Models\Transaction;
 
 class TransactionController extends Controller
 {
@@ -17,11 +17,11 @@ class TransactionController extends Controller
      */
     public function index(Request $request)
     {
-        $games = QueryBuilder::for(Game::class)
-            ->allowedIncludes(['streams'])
+        $items = QueryBuilder::for(Transaction::class)
+            ->allowedIncludes(['account_sender', 'account_receiver', 'account_sender.user', 'account_receiver.user', 'task'])
             ->jsonPaginate();
 
-        return GameResource::collection($games);
+        return TransactionResource::collection($items);
     }
 
     /**
@@ -32,10 +32,10 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        $game = QueryBuilder::for(Game::class)
-            ->allowedIncludes(['streams'])
+        $item = QueryBuilder::for(Transaction::class)
+            ->allowedIncludes(['account_sender', 'account_receiver', 'account_sender.user', 'account_receiver.user', 'task'])
             ->findOrFail($id);
 
-        return new GameResource($game);
+        return new TransactionResource($item);
     }
 }

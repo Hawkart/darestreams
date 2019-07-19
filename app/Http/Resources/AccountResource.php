@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Auth;
 
 class AccountResource extends JsonResource
 {
@@ -18,7 +19,7 @@ class AccountResource extends JsonResource
             'id' => $this->id,
             'user_id' => $this->user_id,
             'currency' => $this->currency,
-            'amount' => $this->amount,
+            'amount' => $this->when(Auth::user() && Auth::user()->id==$this->id, $this->amount),
 
             'user' => new UserResource($this->whenLoaded('user')),
             'transactions' => TransactionResource::collection($this->whenLoaded('transactions')), //Todo: Make connecctions in Model

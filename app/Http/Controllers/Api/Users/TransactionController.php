@@ -22,7 +22,7 @@ class TransactionController extends Controller
         $transactions = $user->getTransactions();
 
         $items = QueryBuilder::for($transactions)
-            ->allowedIncludes(['accountSender', 'accountReceiver', 'task'])
+            ->allowedIncludes(['account_sender', 'account_receiver', 'account_sender.user', 'account_receiver.user', 'task'])
             ->jsonPaginate();
 
         return TransactionResource::collection($items);
@@ -40,7 +40,7 @@ class TransactionController extends Controller
         //Todo: check transaction belogs to user
 
         $transaction = QueryBuilder::for(Transaction::whereId($transaction->id))
-            ->allowedIncludes(['accountSender', 'accountReceiver', 'task'])
+            ->allowedIncludes(['account_sender', 'account_receiver', 'account_sender.user', 'account_receiver.user', 'task'])
             ->first();
 
         return new TransactionResource($transaction);
