@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api\Users;
 
 use App\Http\Controllers\Api\Controller;
-use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
@@ -14,9 +13,9 @@ use App\Models\Notification;
 class NotificationController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param User $user
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index(Request $request, User $user)
     {
@@ -50,13 +49,6 @@ class NotificationController extends Controller
 
         return new NotificationResource($transaction);
     }
-}
 
-
-
-
-$user = App\User::find(1);
-
-foreach ($user->unreadNotifications as $notification) {
-echo $notification->type;
+    //Todo: setRead one or all records
 }

@@ -4,16 +4,17 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-//use Illuminate\Foundation\Auth\User as Authenticatable;
 use Cmgmyr\Messenger\Traits\Messagable;
 use App\Notifications\VerifyEmail;
 use App\Notifications\ResetPassword;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use TCG\Voyager\Traits\VoyagerUser;
 
-class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEmail
+class User extends Authenticatable implements JWTSubject, MustVerifyEmail
 {
-    use Notifiable, Messagable, Sluggable;
+    use Notifiable, Messagable, Sluggable, VoyagerUser;
 
     /**
      * The attributes that are mass assignable.

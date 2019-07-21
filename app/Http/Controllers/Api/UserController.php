@@ -11,6 +11,11 @@ use App\Http\Resources\UserResource;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api')->only(['me']);
+    }
+
     /**
      * Display a listing of the resource.
      *
