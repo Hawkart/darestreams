@@ -3,11 +3,12 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use JWTAuth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 
-class TaskRequest extends FormRequest {
+class MessageRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -36,14 +37,15 @@ class TaskRequest extends FormRequest {
             case 'POST':
                 {
                     return [
-
+                        'title'  => 'required|string|max:255',
+                        'description' => 'required|string|min:10'
                     ];
                 }
             case 'PUT':
             case 'PATCH':
                 {
                     return [
-
+                        'description' => 'required|string|min:10'
                     ];
                 }
             default:break;

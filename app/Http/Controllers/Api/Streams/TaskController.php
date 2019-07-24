@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Streams;
 
 use App\Http\Controllers\Api\Controller;
+use App\Http\Requests\TaskRequest;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
@@ -36,7 +37,8 @@ class TaskController extends Controller
      */
     public function show(Stream $stream, Task $task)
     {
-        //Todo: check task belogs to stream
+        if(!$stream->tasks()->where('id', $task->id)->exists())
+            return response()->json(['error' => trans('api/streams/tasks/transaction.task_not_belong_to_stream')], 403);
 
         $item = QueryBuilder::for(Task::whereId($task->id))
             ->allowedIncludes(['user', 'stream', 'transactions'])
@@ -46,21 +48,22 @@ class TaskController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param TaskRequest $request
      * @param Stream $stream
      */
-    public function store(Request $request, Stream $stream)
+    public function store(TaskRequest $request, Stream $stream)
     {
 
     }
 
     /**
-     * @param Request $request
+     * @param TaskRequest $request
      * @param Stream $stream
      * @param Task $task
      */
-    public function update(Request $request, Stream $stream, Task $task)
+    public function update(TaskRequest $request, Stream $stream, Task $task)
     {
-
+        if(!$stream->tasks()->where('id', $task->id)->exists())
+            return response()->json(['error' => trans('api/streams/tasks/transaction.task_not_belong_to_stream')], 403);
     }
 }

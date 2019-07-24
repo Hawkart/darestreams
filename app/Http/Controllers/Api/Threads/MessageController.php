@@ -1,24 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Api\Streams;
+namespace App\Http\Controllers\Api\Threads;
 
 use App\Http\Controllers\Api\Controller;
+use App\Http\Requests\MessageRequest;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
+use App\Models\Thread;
+use App\Models\Message;
 use App\Http\Resources\MessageResource;
-use App\Models\Stream;
 
 class MessageController extends Controller
 {
     /**
      * @param Request $request
-     * @param Stream $stream
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @param Thread $thread
      */
-    public function index(Request $request, Stream $stream)
+    public function index(Request $request, Thread $thread)
     {
-        $query = $stream->threads[0]->messages()->getQuery();
+        $query = $thread->messages()->getQuery();
 
         $items = QueryBuilder::for($query)
             ->allowedIncludes(['user', 'thread'])
@@ -28,13 +29,13 @@ class MessageController extends Controller
     }
 
     /**
-     * @param Stream $stream
+     * @param Thread $thread
      * @param Message $message
      */
-    public function show(Stream $stream, Message $message)
+    public function show(Thread $thread, Message $message)
     {
         //Todo: Create lang file and change trans
-        if(!$stream->threads[0]->messages()->where('id', $message->id)->exists())
+        if(!$thread->messages()->where('id', $message->id)->exists())
             return response()->json(['error' => trans('api/streams/tasks/transaction.task_not_belong_to_stream')], 403);
 
         $item = QueryBuilder::for(Message::whereId($message->id))
@@ -42,5 +43,24 @@ class MessageController extends Controller
             ->first();
 
         return new MessageResource($item);
+    }
+
+    /**
+     * @param Request $request
+     * @param Thread $thread
+     */
+    public function store(MessageRequest $request, Thread $thread)
+    {
+        //Todo: Check can user send the message in this chat
+    }
+
+    /**
+     * @param Request $request
+     * @param Thread $thread
+     * @param Message $message
+     */
+    public function update(MessageRequest $request, Thread $thread, Message $message)
+    {
+
     }
 }

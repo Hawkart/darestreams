@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
-use App\Http\Resources\STaskResource;
-use App\Models\Task;
+use App\Http\Resources\ThreadResource;
+use App\Models\Thread;
 
-class TaskController extends Controller
+class ThreadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +17,11 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        $items = QueryBuilder::for(Task::class)
-            ->allowedIncludes(['user', 'stream', 'transactions'])
+        $items = QueryBuilder::for(Thread::class)
+            ->allowedIncludes(['messages', 'participants'])
             ->jsonPaginate();
 
-        return TaskResource::collection($items);
+        return ThreadResource::collection($items);
     }
 
     /**
@@ -32,10 +32,10 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        $item = QueryBuilder::for(Task::class)
-            ->allowedIncludes(['user', 'stream', 'transactions'])
+        $item = QueryBuilder::for(Thread::class)
+            ->allowedIncludes(['messages', 'participants'])
             ->findOrFail($id);
 
-        return new TaskResource($item);
+        return new ThreadResource($item);
     }
 }
