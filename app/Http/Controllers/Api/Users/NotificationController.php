@@ -19,9 +19,10 @@ class NotificationController extends Controller
      */
     public function index(Request $request, User $user)
     {
-        //Todo: check user is auth user
-        //Todo: filter by all|unread
+        if(auth()->user()->id!=$user->id)
+            return response()->json(['error' => trans('api/users/notification.you_cannot_read_notification_of_this_user')], 403);
 
+        //Todo: filter by all|unread
         $query = $user->notifications()->getQuery();
         //unreadNotifications
 
@@ -40,8 +41,11 @@ class NotificationController extends Controller
      */
     public function show(User $user, Notification $notification)
     {
-        //->getQuery();
-        //Todo: check transaction belogs to user
+        if(auth()->user()->id!=$user->id)
+            return response()->json(['error' => trans('api/users/notification.you_cannot_read_notification_of_this_user')], 403);
+
+        if(!$user->notifications()->whereId($notification->id)->exist())
+            return response()->json(['error' => trans('api/users/notification.not_belong_to_user')], 403);
 
         $transaction = QueryBuilder::for(Notification::whereId($notification->id))
             ->allowedIncludes([])
@@ -50,5 +54,13 @@ class NotificationController extends Controller
         return new NotificationResource($transaction);
     }
 
-    //Todo: setRead one or all records
+    public function setRead($id)
+    {
+
+    }
+
+    public function setReadAll($id)
+    {
+
+    }
 }

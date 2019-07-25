@@ -8,6 +8,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\MessageResource;
 use App\Models\Stream;
+use App\Models\Message;
 
 class MessageController extends Controller
 {
@@ -42,5 +43,10 @@ class MessageController extends Controller
             ->first();
 
         return new MessageResource($item);
+    }
+
+    public function store()
+    {
+
     }
 }

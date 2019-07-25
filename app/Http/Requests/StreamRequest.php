@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use JWTAuth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
@@ -25,8 +24,6 @@ class StreamRequest extends FormRequest {
      */
     public function rules(Request $request)
     {
-        $user = Auth::user();
-
         switch($this->method())
         {
             case 'GET':
@@ -37,15 +34,15 @@ class StreamRequest extends FormRequest {
             case 'POST':
                 {
                     return [
-                        'title'  => 'required|string|max:255',
-                        'description' => 'required|string|min:10'
+                        'game_id'  => 'required|exists:games,id',
+                        'link'     => 'required|url',
+                        'start_at' => 'required|date|after:now'
                     ];
                 }
             case 'PUT':
             case 'PATCH':
                 {
                     return [
-                        'description' => 'required|string|min:10'
                     ];
                 }
             default:break;

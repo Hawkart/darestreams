@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "15c1b3146f9ba499415aa16d506a5a49",
+    "content-hash": "962abe0d1b8b171113ed56f86ab2035a",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -1528,6 +1528,53 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
+        },
+        {
+            "name": "iignatov/lightopenid",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WillSkates/LightOpenID.git",
+                "reference": "15264c31aef8bbe7ea18f12b6da4ccdb9927f9fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WillSkates/LightOpenID/zipball/15264c31aef8bbe7ea18f12b6da4ccdb9927f9fa",
+                "reference": "15264c31aef8bbe7ea18f12b6da4ccdb9927f9fa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "openid.php",
+                    "provider/provider.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ignat Ignatov",
+                    "homepage": "https://github.com/iignatov/LightOpenID"
+                },
+                {
+                    "name": "Mewp",
+                    "homepage": "https://code.google.com/p/lightopenid/"
+                }
+            ],
+            "description": "Lightweight PHP5 library for easy OpenID authentication.",
+            "homepage": "https://github.com/iignatov/LightOpenID",
+            "keywords": [
+                "Authentication",
+                "OpenId",
+                "security"
+            ],
+            "time": "2014-01-27T06:01:05+00:00"
         },
         {
             "name": "intervention/image",
@@ -3497,6 +3544,208 @@
                 "phra"
             ],
             "time": "2015-10-13T18:44:15+00:00"
+        },
+        {
+            "name": "socialiteproviders/discord",
+            "version": "v2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Discord.git",
+                "reference": "e0cd8895f321943b36f533e7bf21ad29bcdece9a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Discord/zipball/e0cd8895f321943b36f533e7bf21ad29bcdece9a",
+                "reference": "e0cd8895f321943b36f533e7bf21ad29bcdece9a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "socialiteproviders/manager": "~2.0 || ~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Discord\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christopher Eklund",
+                    "email": "eklundchristopher@gmail.com"
+                }
+            ],
+            "description": "Discord OAuth2 Provider for Laravel Socialite",
+            "time": "2018-05-26T03:40:07+00:00"
+        },
+        {
+            "name": "socialiteproviders/manager",
+            "version": "v3.3.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Manager.git",
+                "reference": "f9fc2d8b454f7b44b5f1d70d1769a76bebfea972"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/f9fc2d8b454f7b44b5f1d70d1769a76bebfea972",
+                "reference": "f9fc2d8b454f7b44b5f1d70d1769a76bebfea972",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.4|~5.7.0|~5.8.0",
+                "laravel/socialite": "~3.0|~4.0",
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "SocialiteProviders\\Manager\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Manager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andy Wendt",
+                    "email": "andy@awendt.com"
+                },
+                {
+                    "name": "Anton Komarev",
+                    "email": "a.komarev@cybercog.su"
+                }
+            ],
+            "description": "Easily add new or override built-in providers in Laravel Socialite.",
+            "time": "2019-04-25T09:55:31+00:00"
+        },
+        {
+            "name": "socialiteproviders/steam",
+            "version": "v1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Steam.git",
+                "reference": "c6f372646c01e96258ebf603644e95e0e82eeeb7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Steam/zipball/c6f372646c01e96258ebf603644e95e0e82eeeb7",
+                "reference": "c6f372646c01e96258ebf603644e95e0e82eeeb7",
+                "shasum": ""
+            },
+            "require": {
+                "iignatov/lightopenid": "~1.0",
+                "php": "^5.6 || ^7.0",
+                "socialiteproviders/manager": "~2.0 || ~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Steam\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christopher Eklund",
+                    "email": "eklundchristopher@gmail.com"
+                }
+            ],
+            "description": "Steam OpenID Provider for Laravel Socialite",
+            "time": "2019-01-11T19:48:14+00:00"
+        },
+        {
+            "name": "socialiteproviders/twitch",
+            "version": "v5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Twitch.git",
+                "reference": "8c19b26ff24c40cc019413042a5492c5ed21a658"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Twitch/zipball/8c19b26ff24c40cc019413042a5492c5ed21a658",
+                "reference": "8c19b26ff24c40cc019413042a5492c5ed21a658",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "socialiteproviders/manager": "~2.0 || ~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Twitch\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian Faust",
+                    "email": "hello@brianfaust.de"
+                }
+            ],
+            "description": "Twitch OAuth2 Provider for Laravel Socialite",
+            "time": "2018-06-20T10:59:51+00:00"
+        },
+        {
+            "name": "socialiteproviders/youtube",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/YouTube.git",
+                "reference": "b3082e9a699a78a8d14d50d0651bd5d2dd292972"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/YouTube/zipball/b3082e9a699a78a8d14d50d0651bd5d2dd292972",
+                "reference": "b3082e9a699a78a8d14d50d0651bd5d2dd292972",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "socialiteproviders/manager": "~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\YouTube\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian Faust",
+                    "email": "hello@brianfaust.de"
+                }
+            ],
+            "description": "YouTube OAuth2 Provider for Laravel Socialite",
+            "time": "2017-01-25T09:48:29+00:00"
         },
         {
             "name": "spatie/db-dumper",

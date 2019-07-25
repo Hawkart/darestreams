@@ -24,8 +24,6 @@ class TaskRequest extends FormRequest {
      */
     public function rules(Request $request)
     {
-        $user = Auth::user();
-
         switch($this->method())
         {
             case 'GET':
@@ -36,14 +34,24 @@ class TaskRequest extends FormRequest {
             case 'POST':
                 {
                     return [
-
+                        'description' => 'required|string|min:1',
+                        'interval_time' => [
+                            Rule::requiredIf($request->get('interval_until_end')),
+                            'numeric|min:1'
+                        ],
+                        'min_amount' => "required|regex:/^\d+(\.\d{1,2})?$/",
+                        'min_amount_superbowl' => [
+                            Rule::requiredIf($request->get('is_superbowl')),
+                            "regex:/^\d+(\.\d{1,2})?$/"
+                        ],
                     ];
                 }
             case 'PUT':
             case 'PATCH':
                 {
                     return [
-
+                        'check_vote' => 'boolean',
+                        'status' => ""
                     ];
                 }
             default:break;

@@ -36,8 +36,8 @@ class TransactionController extends Controller
      */
     public function show(User $user, Transaction $transaction)
     {
-        //->getQuery();
-        //Todo: check transaction belogs to user
+        if(!$user->getTransactions()->whereId($transaction->id)->exist())
+            return response()->json(['error' => trans('api/users/transaction.not_belong_to_user')], 403);
 
         $transaction = QueryBuilder::for(Transaction::whereId($transaction->id))
             ->allowedIncludes(['account_sender', 'account_receiver', 'account_sender.user', 'account_receiver.user', 'task'])
@@ -46,24 +46,3 @@ class TransactionController extends Controller
         return new TransactionResource($transaction);
     }
 }
-
-/*
-
-<?php namespace App\Place;
-
-use App\Place;
-use App\Review;
-use App\Http\Requests\AddReviewRequest;
-
-class ReviewController {
-    // place.review.store
-    public function store(AddReviewRequest $request, Place $place, Review $review) {
-        // fill any review-related data
-        $review->fill($request->all());
-
-        $review->person()->associate(\Auth::user());
-        $review->place()->associate($place);
-
-        $review->save();
-    }
-*/

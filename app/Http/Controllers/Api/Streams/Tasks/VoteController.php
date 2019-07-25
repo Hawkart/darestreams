@@ -11,5 +11,8 @@ use App\Models\Game;
 
 class VoteController extends Controller
 {
+    public function store()
+    {
 
+    }
 }

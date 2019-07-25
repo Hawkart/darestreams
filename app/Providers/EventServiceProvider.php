@@ -29,7 +29,13 @@ class EventServiceProvider extends ServiceProvider
         ],
         \App\Events\TaskCreatedEvent::class => [
             \App\Listeners\TaskCreatedListener::class
-        ]
+        ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            'SocialiteProviders\\Twitch\\TwitchExtendSocialite@handle',
+            'SocialiteProviders\\YouTube\\YouTubeExtendSocialite@handle',
+            'SocialiteProviders\\Steam\\SteamExtendSocialite@handle',
+            'SocialiteProviders\\Discord\\DiscordExtendSocialite@handle',
+        ],
     ];
 
     /**

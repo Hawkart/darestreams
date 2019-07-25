@@ -36,7 +36,7 @@ class UserController extends Controller
      */
     public function me(Request $request)
     {
-        $user = $request->user();
+        $user = auth()->user();//$request->user();
         return new UserResource($user);
     }
 

@@ -43,10 +43,12 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('streams.tasks.votes', 'Streams\Tasks\VoteController');
     Route::apiResource('streams.tasks.transactions', 'Streams\Tasks\TransactionController');
 
-    Route::apiResource('streams.messages', 'Streams\MessageController');
+    Route::apiResource('streams.messages', 'Streams\MessageController')->only(['index', 'show', 'store']);
     //Route::apiResource('streams.participant', 'Streams\ParticipantController');   //(?)
 
     Route::apiResource('threads', 'ThreadController')->only(['index', 'show']);     //(?)
     Route::apiResource('threads.participants', 'Threads\ParticipantController');    //(?)
     Route::apiResource('threads.messages', 'Threads\MessageController');
+
+    Route::apiResource('votes', 'VoteController')->only(['index', 'show', 'update']);
 });

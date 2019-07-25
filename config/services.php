@@ -71,4 +71,9 @@ return [
         'redirect'    => env('TWITCH_REDIRECT_URI'),
     ],
 
+    'youtube' => [
+        'client_id' => env('YOUTUBE_KEY'),
+        'client_secret' => env('YOUTUBE_SECRET'),
+        'redirect' => env('YOUTUBE_REDIRECT_URI')
+    ],
 ];
