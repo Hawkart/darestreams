@@ -10,6 +10,8 @@ use Spatie\QueryBuilder\Filter;
 use App\Models\Thread;
 use App\Models\Message;
 use App\Http\Resources\MessageResource;
+use App\Events\MessageSent;
+use Carbon\Carbon;
 
 class MessageController extends Controller
 {
@@ -52,6 +54,32 @@ class MessageController extends Controller
     public function store(MessageRequest $request, Thread $thread)
     {
         //Todo: Check can user send the message in this chat
+        $input = $request->all();
+        $user = auth()->user();
+
+        // $thread->activateAllParticipants();
+
+        // Message
+        $message = Message::create([
+            'thread_id' => $thread->id,
+            'user_id' => $user->id,
+            'body' => $input['body'],
+        ]);
+
+        $participant = Participant::firstOrCreate([
+            'thread_id' => $thread->id,
+            'user_id' => $user->id,
+        ]);
+        $participant->last_read = new Carbon;
+        $participant->save();
+
+        //Mark all messages of chat read
+        $thread->markAsRead($user->id);
+
+        // Dispatch an event. Will be broadcasted over Redis.
+        event(new MessageSent($thread->id, $message));
+
+        return response()->json([], 200);
     }
 
     /**

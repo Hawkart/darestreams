@@ -20,7 +20,6 @@ class Authenticate extends Middleware
         }
     }
 
-    /*
     // Override handle method
     public function handle($request, Closure $next, ...$guards)
     {
@@ -43,5 +42,4 @@ class Authenticate extends Middleware
         }
         return 'authentication_failed';
     }
-    */
 }

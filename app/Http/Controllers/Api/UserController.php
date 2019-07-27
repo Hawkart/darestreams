@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UserRequest;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Resources\UserResource;
+use App\Exceptions\VerifyEmailException;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Storage;
+use Image;
 
 class UserController extends Controller
 {
@@ -59,28 +63,25 @@ class UserController extends Controller
      * @param $id
      * @param Request $request
      */
-    public function update($id, Request $request)
+    public function update($id, UserRequest $request)
     {
-        /*$user = $request->user();
+        $user = auth()->user();
 
         if ($user->id != $id)
-            return response()->json(['error' => 'Only current user can change the data.'], 403);
+            return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
 
-        $validator = [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'gender' => 'required',
-            'nickname' => 'required|unique:users,nickname,'.$user->id,
-            'date_birth' => 'required|date_format:Y-m-d|before:today'
-        ];
+        $allowedFields = ['first_name', 'last_name', 'middle_name', 'nickname'];
+        if ($user instanceof MustVerifyEmail && !$user->hasVerifiedEmail())
+            $allowedFields[] = 'email';
 
-        $request->validate($validator);
-        $user->update($request->only(['first_name', 'last_name', 'gender', 'date_birth', 'nickname', 'description']));
+        $user->update($request->only($allowedFields));
+
+        UserResource::withoutWrapping();
 
         return response()->json([
             'data' => new UserResource($user),
-            'message' => "Your profile has been successfully updated."
-        ]);*/
+            'message' => trans('api/user.successfully_updated')
+        ]);
     }
 
     /**
@@ -91,7 +92,7 @@ class UserController extends Controller
      */
     public function updateAvatar(Request $request)
     {
-        $user = Auth::user();
+        $user = auth()->user();
         $params = $request->all();
 
         if($user->avatar)
@@ -138,9 +139,11 @@ class UserController extends Controller
         $user->avatar = $path;
         $user->update();
 
+        UserResource::withoutWrapping();
+
         return response()->json([
-            'data' => $user,
-            'message' => "Avatar successfully updated."
+            'data' => new UserResource($user),
+            'message' => trans('api/user.avatar_updated')
         ]);
     }
 
@@ -153,14 +156,12 @@ class UserController extends Controller
      */
     public function updateOverlay(Request $request)
     {
-        $user = Auth::user();
+        $user = auth()->user();
         if($user->overlay)
         {
             $path = public_path() . '/storage/' . $user->overlay;
             if(file_exists($path) && !in_array($user->overlay, ['default/overlay_game.jpg', 'default/overlay_team.jpg', 'default/overlay_user.jpg']))
-            {
                 unlink($path);
-            }
         }
 
         $path = Storage::disk('public')->putFile(
@@ -169,32 +170,35 @@ class UserController extends Controller
         $user->overlay = $path;
         $user->update();
 
+        UserResource::withoutWrapping();
+
         return response()->json([
-            'data' => $user,
-            'message' => "Overlay successfully updated."
+            'data' => new UserResource($user),
+            'message' => trans('api/user.overlay_updated')
         ]);
     }
 
     /**
-     * Update user's password.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
+     * @param $id
+     * @param UserPasswordUpdateRequest $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function updatePassword($id, UserPasswordUpdateRequest $request)
     {
-        $user = $request->user();
+        $user = auth()->user();
 
         if ($user->id != $id)
-            return response()->json(['error' => 'Only current user can change the data.'], 403);
+            return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
 
         if($result = $user->update([
             'password' => \Hash::make($request->get('password'))
         ]))
         {
+            UserResource::withoutWrapping();
+
             return response()->json([
                 'data' => new UserResource($user),
-                'message' => "Password has been successfully updated."
+                'message' => trans('api/user.password_updated')
             ]);
         }
 
