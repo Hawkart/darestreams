@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserRequest;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
@@ -15,9 +16,12 @@ use Image;
 
 class UserController extends Controller
 {
+    /**
+     * UserController constructor.
+     */
     public function __construct()
     {
-        $this->middleware('auth:api')->only(['me']);
+        $this->middleware('auth:api')->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword']);
     }
 
     /**
@@ -47,27 +51,26 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($user)
     {
         $item = QueryBuilder::for(User::class)
             ->allowedIncludes(['tasks','streams'])
-            ->findOrFail($id);
+            ->findOrFail($user);
 
         return new UserResource($item);
     }
 
     /**
-     * @param $id
-     * @param Request $request
+     * @param User $user
+     * @param UserRequest $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update($id, UserRequest $request)
+    public function update(UserRequest $request, User $user)
     {
-        $user = auth()->user();
-
-        if ($user->id != $id)
+        if ($user->id != auth()->user()->id)
             return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
 
         $allowedFields = ['first_name', 'last_name', 'middle_name', 'nickname'];
@@ -85,14 +88,15 @@ class UserController extends Controller
     }
 
     /**
-     * Update user's avatar.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
+     * @param User $user
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function updateAvatar(Request $request)
+    public function updateAvatar(User $user, Request $request)
     {
-        $user = auth()->user();
+        if ($user->id != auth()->user()->id)
+            return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
+
         $params = $request->all();
 
         if($user->avatar)
@@ -148,15 +152,15 @@ class UserController extends Controller
     }
 
     /**
-     * Update overlay.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return Response
+     * @param User $user
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function updateOverlay(Request $request)
+    public function updateOverlay(User $user, Request $request)
     {
-        $user = auth()->user();
+        if ($user->id != auth()->user()->id)
+            return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
+
         if($user->overlay)
         {
             $path = public_path() . '/storage/' . $user->overlay;
@@ -179,15 +183,13 @@ class UserController extends Controller
     }
 
     /**
-     * @param $id
+     * @param User $user
      * @param UserPasswordUpdateRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function updatePassword($id, UserPasswordUpdateRequest $request)
+    public function updatePassword(User $user, UserPasswordUpdateRequest $request)
     {
-        $user = auth()->user();
-
-        if ($user->id != $id)
+        if ($user->id != auth()->user()->id)
             return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
 
         if($result = $user->update([

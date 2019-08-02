@@ -28,23 +28,23 @@ class VoteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $vote
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($vote)
     {
         $item = QueryBuilder::for(Vote::class)
             ->allowedIncludes(['user', 'task'])
-            ->findOrFail($id);
+            ->findOrFail($vote);
 
         return new VoteResource($item);
     }
 
     /**
      * @param Request $request
-     * @param $id
+     * @param $vote
      */
-    public function update(VoteRequest $request, $id)
+    public function update(VoteRequest $request, Vote $vote)
     {
 
     }

@@ -16,8 +16,17 @@ use Carbon\Carbon;
 class MessageController extends Controller
 {
     /**
+     * MessageController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api')->only(['store']);
+    }
+
+    /**
      * @param Request $request
      * @param Thread $thread
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index(Request $request, Thread $thread)
     {
@@ -33,6 +42,7 @@ class MessageController extends Controller
     /**
      * @param Thread $thread
      * @param Message $message
+     * @return MessageResource|\Illuminate\Http\JsonResponse
      */
     public function show(Thread $thread, Message $message)
     {
@@ -48,8 +58,10 @@ class MessageController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param MessageRequest $request
      * @param Thread $thread
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function store(MessageRequest $request, Thread $thread)
     {

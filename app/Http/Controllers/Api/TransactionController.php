@@ -30,11 +30,11 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($transaction)
     {
         $item = QueryBuilder::for(Transaction::class)
             ->allowedIncludes(['account_sender', 'account_receiver', 'account_sender.user', 'account_receiver.user', 'task'])
-            ->findOrFail($id);
+            ->findOrFail($transaction);
 
         return new TransactionResource($item);
     }

@@ -22,21 +22,20 @@ Route::group(['namespace' => 'Auth'], function () {
     });
 });
 
-Route::group(['middleware' => 'auth:api'], function () {
-    //Route::patch('settings/profile', 'Settings\ProfileController@update');
-    //Route::patch('settings/email', 'Settings\ProfileController@updateEmail');
-    //Route::patch('settings/avatar', 'Settings\ProfileController@updateAvatar');
-    //Route::patch('settings/overlay', 'Settings\ProfileController@updateOverlay');
-    //Route::patch('settings/password', 'Settings\PasswordController@update');
-});
-
 Route::group(['namespace' => 'Api'], function () {
-    Route::apiResource('games', 'GameController')->only(['index', 'show']);
 
+    Route::apiResource('games', 'GameController')->only(['index', 'show']);
     Route::get('users/me', 'UserController@me');
-    Route::apiResource('users', 'UserController')->only(['index', 'show']);
+    Route::apiResource('users', 'UserController')->only(['index', 'show', 'update']);
+    Route::patch('users/{user}/avatar', 'UserController@updateAvatar');
+    Route::patch('users/{user}/overlay', 'UserController@updateOverlay');
+    Route::patch('users/{user}/password', 'UserController@updatePassword');
     Route::apiResource('users.transactions', 'Users\TransactionController');
+
+    Route::get('users/{user}/notifications/unread', 'Users\NotificationController@unread');
+    Route::patch('users/{user}/notifications/setReadAll', 'Users\NotificationController@setReadAll');
     Route::apiResource('users.notifications', 'Users\NotificationController');
+    Route::patch('users/{user}/notifications/{notification}/setRead', 'Users\NotificationController@setRead');
 
     Route::apiResource('streams', 'StreamController');
     Route::apiResource('streams.tasks', 'Streams\TaskController');

@@ -17,13 +17,11 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     use Notifiable, Messagable, Sluggable, VoyagerUser;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -62,6 +60,16 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         'created' => \App\Events\UserCreatedEvent::class,
     ];
 
+    /**
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        $name = "{$this->first_name} {$this->middle_name} {$this->last_name}";
+        return preg_match('/\S/', $name) ? $name : "{$this->nickname}";
+    }
 
     /**
      * Get the oauth providers.

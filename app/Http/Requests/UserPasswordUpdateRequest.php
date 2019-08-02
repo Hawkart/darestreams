@@ -5,8 +5,10 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
-class UserRequest extends FormRequest {
+class UserPasswordUpdateRequest extends FormRequest {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -16,6 +18,7 @@ class UserRequest extends FormRequest {
     {
         return true;
     }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -23,32 +26,19 @@ class UserRequest extends FormRequest {
      */
     public function rules(Request $request)
     {
-        $user = auth()->user();
-
         switch($this->method())
         {
-            case 'GET':
-            case 'DELETE':
-                {
-                    return [];
-                }
             case 'PUT':
             case 'PATCH':
                 {
-                    $data = [
-                        //'first_name' => 'required|string|max:255',
-                        //'last_name' => 'required|string|max:255',
-                        'nickname' => 'required|unique:users,nickname,'.$user->id
+                    return [
+                        'password' => 'required|min:6',
                     ];
-
-                    if(!$user->hasVerifiedEmail())
-                        $data['email'] = 'required|email|unique:users,email,'.$user->id;
-
-                    return $data;
                 }
             default:break;
         }
     }
+
 
     public function messages()
     {

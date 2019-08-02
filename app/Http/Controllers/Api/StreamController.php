@@ -29,14 +29,14 @@ class StreamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $stream
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($stream)
     {
         $item = QueryBuilder::for(Stream::class)
             ->allowedIncludes(['game', 'streams', 'user'])
-            ->findOrFail($id);
+            ->findOrFail($stream);
 
         return new StreamResource($item);
     }
@@ -53,7 +53,7 @@ class StreamController extends Controller
      * @param $id
      * @param StreamRequest $request
      */
-    public function update($id, StreamRequest $request)
+    public function update(Stream $stream, StreamRequest $request)
     {
 
     }

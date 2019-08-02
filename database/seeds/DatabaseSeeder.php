@@ -14,13 +14,14 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard(); // Disable mass assignment
 
-        $this->call(UsersTableSeeder::class);
+        /*$this->call(UsersTableSeeder::class);
         $this->call(OauthProvidersTableSeeder::class);
         $this->call(GamesTableSeeder::class);
         $this->call(StreamsTableSeeder::class);
         $this->call(TasksTableSeeder::class);
         $this->call(TransactionsTableSeeder::class);
-        $this->call(MessagesTableSeeder::class);
+        $this->call(MessagesTableSeeder::class);*/
+        $this->call(NotificationsTableSeeder::class);
 
         Model::reguard(); // Enable mass assignment
     }

@@ -13,6 +13,14 @@ use App\Models\Notification;
 class NotificationController extends Controller
 {
     /**
+     * NotificationController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
+    /**
      * @param Request $request
      * @param User $user
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
@@ -22,9 +30,26 @@ class NotificationController extends Controller
         if(auth()->user()->id!=$user->id)
             return response()->json(['error' => trans('api/users/notification.you_cannot_read_notification_of_this_user')], 403);
 
-        //Todo: filter by all|unread
         $query = $user->notifications()->getQuery();
-        //unreadNotifications
+
+        $items = QueryBuilder::for($query)
+            ->allowedIncludes([])
+            ->jsonPaginate();
+
+        return NotificationResource::collection($items);
+    }
+
+    /**
+     * @param Request $request
+     * @param User $user
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function unread(Request $request, User $user)
+    {
+        if(auth()->user()->id!=$user->id)
+            return response()->json(['error' => trans('api/users/notification.you_cannot_read_notification_of_this_user')], 403);
+
+        $query = $user->unreadNotifications()->getQuery();
 
         $items = QueryBuilder::for($query)
             ->allowedIncludes([])
@@ -47,20 +72,41 @@ class NotificationController extends Controller
         if(!$user->notifications()->whereId($notification->id)->exist())
             return response()->json(['error' => trans('api/users/notification.not_belong_to_user')], 403);
 
-        $transaction = QueryBuilder::for(Notification::whereId($notification->id))
+        $item = QueryBuilder::for(Notification::whereId($notification->id))
             ->allowedIncludes([])
             ->first();
 
-        return new NotificationResource($transaction);
+        return new NotificationResource($item);
     }
 
-    public function setRead($id)
+    /**
+     * @param User $user
+     * @param Notification $notification
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function setRead(User $user, Notification $notification)
     {
+        if(auth()->user()->id!=$user->id)
+            return response()->json(['error' => trans('api/users/notification.you_cannot_read_notification_of_this_user')], 403);
 
+        if(!$user->notifications()->where('id', $notification->id))
+            return response()->json(['error' => trans('api/users/notification.not_belong_to_user')], 403);
+
+        $notification->markAsRead();
+
+        return response()->json([], 200);
     }
 
-    public function setReadAll($id)
+    /**
+     * @param User $user
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function setReadAll(User $user)
     {
+        if(auth()->user()->id!=$user->id)
+            return response()->json(['error' => trans('api/users/notification.you_cannot_read_notification_of_this_user')], 403);
 
+        $user->unreadNotifications->markAsRead();
+        return response()->json([], 200);
     }
 }

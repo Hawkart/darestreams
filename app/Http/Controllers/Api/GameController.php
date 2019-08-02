@@ -27,15 +27,15 @@ class GameController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $game
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($game)
     {
-        $game = QueryBuilder::for(Game::class)
+        $item = QueryBuilder::for(Game::class)
             ->allowedIncludes(['streams'])
-            ->findOrFail($id);
+            ->findOrFail($game);
 
-        return new GameResource($game);
+        return new GameResource($item);
     }
 }

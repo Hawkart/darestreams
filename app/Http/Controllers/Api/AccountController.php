@@ -27,14 +27,14 @@ class AccountController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $account
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($account)
     {
         $item = QueryBuilder::for(Account::class)
             ->allowedIncludes(['user'])
-            ->findOrFail($id);
+            ->findOrFail($account);
 
         return new AccountResource($item);
     }

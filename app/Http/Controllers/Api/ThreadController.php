@@ -27,14 +27,14 @@ class ThreadController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $thread
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($thread)
     {
         $item = QueryBuilder::for(Thread::class)
             ->allowedIncludes(['messages', 'participants'])
-            ->findOrFail($id);
+            ->findOrFail($thread);
 
         return new ThreadResource($item);
     }
