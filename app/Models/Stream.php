@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Http\Requests\ChannelRequest;
 use Illuminate\Database\Eloquent\Model;
 use \Spatie\Tags\HasTags;
+use \Znck\Eloquent\Traits\BelongsToThrough;
 
 class Stream extends Model
 {
-    use HasTags;
+    use HasTags, BelongsToThrough;
 
     /**
      * The table associated with the model.
@@ -33,9 +35,17 @@ class Stream extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    public function channel()
+    {
+        return $this->belongsTo(Channel::class);
+    }
+
+    /**
+     * @return mixed
+     */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToThrough(User::class, Channel::class);
     }
 
     /**

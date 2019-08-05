@@ -13,10 +13,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use TCG\Voyager\Traits\VoyagerUser;
 use Overtrue\LaravelFollow\Traits\CanFollow;
 use Overtrue\LaravelFollow\Traits\CanBeFollowed;
+use \Znck\Eloquent\Traits\BelongsToThrough;
 
 class User extends Authenticatable implements JWTSubject, MustVerifyEmail
 {
-    use Notifiable, Messagable, Sluggable, VoyagerUser, CanFollow, CanBeFollowed;
+    use Notifiable, Messagable, Sluggable, VoyagerUser, CanFollow, CanBeFollowed, BelongsToThrough;
 
     /**
      * The attributes that aren't mass assignable.
@@ -92,11 +93,19 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function channel()
+    {
+        return $this->hasOne(Channel::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
     public function streams()
     {
-        return $this->hasMany(Stream::class);
+        return $this->hasManyThrough('App\Models\Stream', 'App\Channel');
     }
 
     /**

@@ -16,7 +16,7 @@ class StreamResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'user_id' => $this->user_id,
+            'channel_id' => $this->user_id,
             'game_id' => $this->game_id,
             'link' => $this->link,
             'start_at' => $this->start_at,
@@ -29,6 +29,7 @@ class StreamResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
 
+            'channel' => new ChannelResource($this->whenLoaded('channel')),
             'user' => new UserResource($this->whenLoaded('user')),
             'game' => new GameResource($this->whenLoaded('game')),
             'tasks' => TaskResource::collection($this->whenLoaded('tasks')),

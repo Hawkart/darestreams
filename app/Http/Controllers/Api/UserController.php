@@ -13,6 +13,7 @@ use App\Exceptions\VerifyEmailException;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Storage;
 use Image;
+use DB;
 
 class UserController extends Controller
 {
@@ -33,7 +34,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $items = QueryBuilder::for(User::class)
-            ->allowedIncludes(['tasks', 'streams']) //'oauthProviders', 'account',
+            ->allowedIncludes(['tasks', 'streams', 'channel']) //'oauthProviders', 'account',
             ->jsonPaginate();
 
         return UserResource::collection($items);
@@ -58,7 +59,7 @@ class UserController extends Controller
     public function show($user)
     {
         $item = QueryBuilder::for(User::class)
-            ->allowedIncludes(['tasks','streams'])
+            ->allowedIncludes(['tasks','streams', 'channel'])
             ->findOrFail($user);
 
         return new UserResource($item);

@@ -45,6 +45,8 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('users.notifications', 'Users\NotificationController');
     Route::patch('users/{user}/notifications/{notification}/setRead', 'Users\NotificationController@setRead');
 
+    Route::apiResource('channels', 'ChannelController')->only(['index', 'show', 'store', 'update']);
+
     Route::apiResource('streams', 'StreamController');
     Route::apiResource('streams.tasks', 'Streams\TaskController');
     Route::apiResource('streams.tasks.votes', 'Streams\Tasks\VoteController');

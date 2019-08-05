@@ -34,6 +34,7 @@ class UserResource extends JsonResource
             'oauthProviders' => $this->when(Auth::user() && Auth::user()->id==$this->id, function (){
                 return OAuthProviderResource::collection($this->whenLoaded('oauthProviders'));
             }),
+            'channel' => new ChannelResource($this->whenLoaded('channel')),
             'streams' => StreamResource::collection($this->whenLoaded('streams')),
             'tasks' => TaskResource::collection($this->whenLoaded('tasks')),
         ];
