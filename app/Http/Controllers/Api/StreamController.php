@@ -20,7 +20,7 @@ class StreamController extends Controller
     public function index(Request $request)
     {
         $items = QueryBuilder::for(Stream::class)
-            ->allowedIncludes(['game', 'streams', 'user'])
+            ->allowedIncludes(['game', 'streams', 'user', 'tags'])
             ->jsonPaginate();
 
         return StreamResource::collection($items);
@@ -35,7 +35,7 @@ class StreamController extends Controller
     public function show($stream)
     {
         $item = QueryBuilder::for(Stream::class)
-            ->allowedIncludes(['game', 'streams', 'user'])
+            ->allowedIncludes(['game', 'streams', 'user', 'tags'])
             ->findOrFail($stream);
 
         return new StreamResource($item);
@@ -46,7 +46,7 @@ class StreamController extends Controller
      */
     public function store(StreamRequest $request)
     {
-
+        //Todo: check if user has channel
     }
 
     /**

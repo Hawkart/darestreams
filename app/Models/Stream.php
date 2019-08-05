@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use \Spatie\Tags\HasTags;
 
 class Stream extends Model
 {
+    use HasTags;
+
     /**
      * The table associated with the model.
      *

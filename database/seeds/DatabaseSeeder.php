@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(StreamsTableSeeder::class);
         $this->call(TasksTableSeeder::class);
         $this->call(TransactionsTableSeeder::class);
-        $this->call(MessagesTableSeeder::class);*/
-        $this->call(NotificationsTableSeeder::class);
+        $this->call(MessagesTableSeeder::class);
+        $this->call(NotificationsTableSeeder::class);*/
 
         Model::reguard(); // Enable mass assignment
     }

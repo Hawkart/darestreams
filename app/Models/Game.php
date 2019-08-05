@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use \Spatie\Tags\HasTags;
 
 class Game extends Model
 {
+    use HasTags;
+
     public $timestamps = false;
 
     /**

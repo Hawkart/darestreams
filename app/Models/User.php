@@ -11,10 +11,12 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use TCG\Voyager\Traits\VoyagerUser;
+use Overtrue\LaravelFollow\Traits\CanFollow;
+use Overtrue\LaravelFollow\Traits\CanBeFollowed;
 
 class User extends Authenticatable implements JWTSubject, MustVerifyEmail
 {
-    use Notifiable, Messagable, Sluggable, VoyagerUser;
+    use Notifiable, Messagable, Sluggable, VoyagerUser, CanFollow, CanBeFollowed;
 
     /**
      * The attributes that aren't mass assignable.

@@ -18,7 +18,7 @@ class GameController extends Controller
     public function index(Request $request)
     {
         $games = QueryBuilder::for(Game::class)
-            ->allowedIncludes(['streams'])
+            ->allowedIncludes(['streams', 'tags'])
             ->jsonPaginate();
 
         return GameResource::collection($games);
@@ -33,7 +33,7 @@ class GameController extends Controller
     public function show($game)
     {
         $item = QueryBuilder::for(Game::class)
-            ->allowedIncludes(['streams'])
+            ->allowedIncludes(['streams', 'tags'])
             ->findOrFail($game);
 
         return new GameResource($item);

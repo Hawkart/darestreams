@@ -23,6 +23,7 @@ class GameResource extends JsonResource
             'logo_small' => $this->logo_small ? Storage::disk('public')->url($this->logo_small) : '/img/default_game_small.jpg',
 
             'streams' => StreamResource::collection($this->whenLoaded('streams')),
+            'tags' => TagResource::collection($this->whenLoaded('tags'))
         ];
     }
 }

@@ -21,7 +21,8 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api')->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword']);
+        $this->middleware('auth:api')
+            ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow']);
     }
 
     /**
@@ -207,5 +208,71 @@ class UserController extends Controller
         return response()->json([
             'error' => 'Something wrong'
         ], 422);
+    }
+
+    /**
+     * @param User $user
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function follow(User $user)
+    {
+        if ($user->id == auth()->user()->id)
+            return response()->json(['error' => trans('api/user.failed_user_cannot_follow_to_yourself')], 403);
+
+        if(auth()->user()->isFollowing($user))
+            return response()->json(['error' => trans('api/user.already_following')], 422);
+
+        $user->followers()->attach(auth()->user()->id);
+
+        return response()->json([
+            'success' => true,
+            'message'=> trans('api/user.success_new_following')
+        ], 200);
+    }
+
+    /**
+     * @param User $user
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function unfollow(User $user)
+    {
+        if ($user->id == auth()->user()->id)
+            return response()->json(['error' => trans('api/user.failed_user_cannot_unfollow_to_yourself')], 403);
+
+        if(!$user->isFollowedBy(auth()->user()))
+            return response()->json(['error' => trans('api/user.failed_follow_user')], 422);
+
+        $user->followers()->detach(auth()->user()->id);
+
+        return response()->json([
+            'success' => true,
+            'message'=> trans('api/user.success_unfollow')
+        ], 200);
+    }
+
+    /**
+     * @param User $user
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function followers(User $user)
+    {
+        $items = QueryBuilder::for($user->followers()->getQuery())
+            ->allowedIncludes(['tasks', 'streams'])
+            ->jsonPaginate();
+
+        return UserResource::collection($items);
+    }
+
+    /**
+     * @param User $user
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function followings(User $user)
+    {
+        $items = QueryBuilder::for($user->followings()->getQuery())
+            ->allowedIncludes(['tasks', 'streams'])
+            ->jsonPaginate();
+
+        return UserResource::collection($items);
     }
 }

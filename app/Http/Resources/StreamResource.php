@@ -31,7 +31,8 @@ class StreamResource extends JsonResource
 
             'user' => new UserResource($this->whenLoaded('user')),
             'game' => new GameResource($this->whenLoaded('game')),
-            'tasks' => TaskResource::collection($this->whenLoaded('tasks'))
+            'tasks' => TaskResource::collection($this->whenLoaded('tasks')),
+            'tags' => TagResource::collection($this->whenLoaded('tags'))
         ];
     }
 }
