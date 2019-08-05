@@ -46,9 +46,8 @@ class MessageController extends Controller
      */
     public function show(Thread $thread, Message $message)
     {
-        //Todo: Create lang file and change trans
         if(!$thread->messages()->where('id', $message->id)->exists())
-            return response()->json(['error' => trans('api/streams/tasks/transaction.task_not_belong_to_stream')], 403);
+            return response()->json(['error' => trans('api/threads/message.failed_not_belong_to_thread')], 403);
 
         $item = QueryBuilder::for(Message::whereId($message->id))
             ->allowedIncludes(['user', 'thread'])

@@ -34,7 +34,6 @@ class MessageController extends Controller
      */
     public function show(Stream $stream, Message $message)
     {
-        //Todo: Create lang file and change trans
         if(!$stream->threads[0]->messages()->where('id', $message->id)->exists())
             return response()->json(['error' => trans('api/streams/tasks/transaction.task_not_belong_to_stream')], 403);
 
@@ -45,6 +44,9 @@ class MessageController extends Controller
         return new MessageResource($item);
     }
 
+    /**
+     *
+     */
     public function store()
     {
 
