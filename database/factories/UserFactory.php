@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
 
-    $filepath = storage_path('avatars');
+    $filepath = public_path('storage/avatars');
 
     if(!File::exists($filepath))
         File::makeDirectory($filepath);
@@ -17,7 +17,7 @@ $factory->define(User::class, function (Faker $faker) {
         'nickname' => $faker->userName,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'avatar' => $faker->image($filepath,400, 300),
+        'avatar' => $faker->image('public/storage/avatars',400, 300),
         'password' => bcrypt('secret'),
         'remember_token' => Str::random(10),
     ];

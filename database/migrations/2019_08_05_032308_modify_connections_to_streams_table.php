@@ -15,9 +15,9 @@ class ModifyConnectionsToStreamsTable extends Migration
     {
         Schema::table('streams', function (Blueprint $table) {
 
-            if (!Schema::hasColumn('streams', 'user_id')) {
-                $table->dropForeign(['user_id']);
-                $table->dropColumn(['user_id']);
+            if (Schema::hasColumn('streams', 'user_id')) {
+                //$table->dropForeign(['user_id']);
+                //$table->dropColumn(['user_id']);
             }
 
             if (!Schema::hasColumn('streams', 'channel_id'))
@@ -42,8 +42,8 @@ class ModifyConnectionsToStreamsTable extends Migration
         Schema::table('streams', function (Blueprint $table) {
 
             if (Schema::hasColumn('streams', 'channel_id')) {
-                $table->dropForeign(['channel_id']);
-                $table->dropColumn(['channel_id']);
+                //$table->dropForeign(['channel_id']);
+                //$table->dropColumn(['channel_id']);
             }
 
             if (!Schema::hasColumn('streams', 'user_id')) {

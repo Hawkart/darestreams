@@ -19,7 +19,7 @@ class CreateThreadablesTable extends Migration
             $table->bigInteger('thread_id')->unsigned();
             //$table->bigInteger('threadable_id')->unsigned();
             //$table->string('threadable_type');
-            $table->morphs('threads');
+            $table->morphs('threadable');
 
             $table->foreign('thread_id')
                 ->references('id')
