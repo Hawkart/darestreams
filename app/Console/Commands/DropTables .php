@@ -40,23 +40,17 @@ class DropTables extends Command
             exit('Drop Tables command aborted');
         }
 
-        $colname = 'Tables_in_' . env('DB_DATABASE');
-
-        $tables = DB::select('SHOW TABLES');
-
-        foreach($tables as $table) {
-            $droplist[] = $table->$colname;
-        }
-
-        $droplist = implode(',', $droplist);
-
         DB::beginTransaction();
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        DB::statement("DROP TABLE $droplist");
+
+        foreach(\DB::select('SHOW TABLES') as $table) {
+            $table_array = get_object_vars($table);
+            \Schema::drop($table_array[key($table_array)]);
+        }
+
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         DB::commit();
 
         $this->comment(PHP_EOL."If no errors showed up, all tables were dropped".PHP_EOL);
-
     }
 }
