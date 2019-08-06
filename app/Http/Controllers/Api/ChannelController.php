@@ -27,7 +27,7 @@ class ChannelController extends Controller
     public function index(Request $request)
     {
         $items = QueryBuilder::for(Channel::class)
-            ->allowedIncludes(['user', 'streams'])
+            ->allowedIncludes(['user', 'streams', 'tags'])
             ->jsonPaginate();
 
         return ChannelResource::collection($items);
@@ -42,7 +42,7 @@ class ChannelController extends Controller
     public function show($channel)
     {
         $item = QueryBuilder::for(Channel::class)
-            ->allowedIncludes(['user', 'streams'])
+            ->allowedIncludes(['user', 'streams', 'tags'])
             ->findOrFail($channel);
 
         return new ChannelResource($item);

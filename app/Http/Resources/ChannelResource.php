@@ -22,11 +22,11 @@ class ChannelResource extends JsonResource
             'slug' => $this->slug,
             'description' => $this->description,
             'logo' => $this->logo,
-            'verified' => $this->verified,
             'created_at' => $this->created_at,
 
             'user' => new UserResource($this->whenLoaded('user')),
-            'streams' => StreamResource::collection($this->whenLoaded('streams'))
+            'streams' => StreamResource::collection($this->whenLoaded('streams')),
+            'tags' => TagResource::collection($this->whenLoaded('tags'))
         ];
     }
 }

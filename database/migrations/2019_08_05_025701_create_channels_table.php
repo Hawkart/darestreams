@@ -19,8 +19,6 @@ class CreateChannelsTable extends Migration
             $table->string('slug')->unique();
             $table->text('description');
             $table->string('logo')->default('channels/default.png');
-            $table->tinyInteger('verified')->default(0);
-            $table->string('confirmation_code')->nullable();
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
 

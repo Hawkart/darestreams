@@ -25,15 +25,6 @@ class Channel extends Model
     protected $guarded = ['id'];
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'confirmation_code',
-    ];
-
-    /**
      * @return array
      */
     public function sluggable()
