@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\ClearSeederData::class,
+        Commands\DropTables::class
     ];
 
     /**
