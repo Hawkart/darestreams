@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Api;
+
 use Illuminate\Http\Request;
 use Symfony\Component\Process\Process;
 
@@ -15,7 +17,7 @@ class DeployController extends Controller
         if (hash_equals($githubHash, $localHash))
         {
             $root_path = base_path();
-            $process = new Process('cd ' . $root_path . '; ./deploy.sh');
+            $process = new Process('cd ' . $root_path . '; ../deploy.sh');
             $process->run(function ($type, $buffer) {
                 echo $buffer;
             });
