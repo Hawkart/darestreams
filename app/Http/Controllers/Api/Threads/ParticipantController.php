@@ -9,6 +9,9 @@ use Spatie\QueryBuilder\Filter;
 use App\Models\Thread;
 use App\Models\Message;
 
+/**
+ * @group Threads participants
+ */
 class ParticipantController extends Controller
 {
     /**

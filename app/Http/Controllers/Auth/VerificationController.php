@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Validation\ValidationException;
 
+/**
+ * @group Auth
+ */
 class VerificationController extends Controller
 {
     /**

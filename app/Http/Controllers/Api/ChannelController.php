@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
 
+/**
+ * @group Channels
+ */
 class ChannelController extends Controller
 {
     /**

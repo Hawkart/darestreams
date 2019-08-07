@@ -29,17 +29,21 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('games', 'GameController')->only(['index', 'show']);
     Route::get('users/me', 'UserController@me');
     Route::apiResource('users', 'UserController')->only(['index', 'show', 'update']);
+    Route::get('users/{user}/account', 'UserController@account');
+    Route::get('users/{user}/channel', 'UserController@channel');
     Route::patch('users/{user}/avatar', 'UserController@updateAvatar');
     Route::patch('users/{user}/overlay', 'UserController@updateOverlay');
     Route::patch('users/{user}/password', 'UserController@updatePassword');
-    Route::apiResource('users.transactions', 'Users\TransactionController');
+    Route::apiResource('users.transactions', 'Users\TransactionController')->only(['index', 'show']);
+    Route::apiResource('users.oauthproviders', 'Users\OAuthProviderController')->only(['index', 'show']);
 
+    //Followers
     Route::post('users/{user}/follow', 'UserController@follow');
     Route::patch('users/{user}/unfollow', 'UserController@unfollow');
     Route::get('users/{user}/followers', 'UserController@followers');
     Route::get('users/{user}/followings', 'UserController@followings');
 
-
+    //Notifications
     Route::get('users/{user}/notifications/unread', 'Users\NotificationController@unread');
     Route::patch('users/{user}/notifications/setReadAll', 'Users\NotificationController@setReadAll');
     Route::apiResource('users.notifications', 'Users\NotificationController');
@@ -53,7 +57,6 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('streams.tasks.transactions', 'Streams\Tasks\TransactionController');
 
     Route::apiResource('streams.messages', 'Streams\MessageController')->only(['index', 'show', 'store']);
-    //Route::apiResource('streams.participant', 'Streams\ParticipantController');   //(?)
 
     Route::apiResource('threads', 'ThreadController')->only(['index', 'show']);     //(?)
     Route::apiResource('threads.participants', 'Threads\ParticipantController');    //(?)

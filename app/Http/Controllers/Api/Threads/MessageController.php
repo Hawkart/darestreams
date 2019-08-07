@@ -13,6 +13,9 @@ use App\Http\Resources\MessageResource;
 use App\Events\MessageSent;
 use Carbon\Carbon;
 
+/**
+ * @group Threads messages
+ */
 class MessageController extends Controller
 {
     /**

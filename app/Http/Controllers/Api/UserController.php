@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserRequest;
+use App\Http\Resources\AccountResource;
+use App\Http\Resources\ChannelResource;
+use App\Models\Account;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
 use Illuminate\Http\Request;
@@ -15,6 +18,9 @@ use Storage;
 use Image;
 use DB;
 
+/**
+ * @group Users
+ */
 class UserController extends Controller
 {
     /**
@@ -23,35 +29,45 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api')
-            ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow']);
+            ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account', 'channel']);
     }
 
     /**
      * Display a listing of the resource.
+     *
+     * @queryParam include string String of connections: tasks, streams, channel. Example: tasks,channel
+     * @queryParam sort string Sort items by fields: nickname, id. For desc use '-' prefix. Example: -nickname
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         $items = QueryBuilder::for(User::class)
+            ->defaultSort('id')
             ->allowedIncludes(['tasks', 'streams', 'channel']) //'oauthProviders', 'account',
+            ->allowedSorts('nickname', 'id')
             ->jsonPaginate();
 
         return UserResource::collection($items);
     }
 
     /**
+     * Get authorized user.
+     * @authenticated
+     *
      * @param Request $request
      * @return UserResource
      */
     public function me(Request $request)
     {
-        $user = auth()->user();//$request->user();
+        $user = auth()->user();
         return new UserResource($user);
     }
 
     /**
      * Display the specified resource.
+     *
+     * @queryParam include string String of connections: tasks, streams, channel. Example: tasks,channel
      *
      * @param  int  $user
      * @return \Illuminate\Http\Response
@@ -66,6 +82,10 @@ class UserController extends Controller
     }
 
     /**
+     * Update user fields.
+     *
+     * @authenticated
+     *
      * @param User $user
      * @param UserRequest $request
      * @return \Illuminate\Http\JsonResponse
@@ -90,6 +110,8 @@ class UserController extends Controller
     }
 
     /**
+     * @authenticated
+     *
      * @param User $user
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -154,6 +176,8 @@ class UserController extends Controller
     }
 
     /**
+     * @authenticated
+     *
      * @param User $user
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -185,6 +209,8 @@ class UserController extends Controller
     }
 
     /**
+     * @authenticated
+     *
      * @param User $user
      * @param UserPasswordUpdateRequest $request
      * @return \Illuminate\Http\JsonResponse
@@ -212,6 +238,8 @@ class UserController extends Controller
     }
 
     /**
+     * @authenticated
+     *
      * @param User $user
      * @return \Illuminate\Http\JsonResponse
      */
@@ -232,6 +260,8 @@ class UserController extends Controller
     }
 
     /**
+     * @authenticated
+     *
      * @param User $user
      * @return \Illuminate\Http\JsonResponse
      */
@@ -275,5 +305,45 @@ class UserController extends Controller
             ->jsonPaginate();
 
         return UserResource::collection($items);
+    }
+
+    /**
+     * @authenticated
+     *
+     * @param User $user
+     * @return AccountResource
+     */
+    public function account(User $user)
+    {
+        if(auth()->user()->id!=$user->id)
+            return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
+
+        $query = $user->account()->getQuery();
+
+        $item = QueryBuilder::for($query)
+            ->allowedIncludes(['user', 'transactions'])
+            ->firstOrFail();
+
+        return new AccountResource($item);
+    }
+
+    /**
+     * @authenticated
+     *
+     * @param User $user
+     * @return ChannelResource|\Illuminate\Http\JsonResponse
+     */
+    public function channel(User $user)
+    {
+        if(auth()->user()->id!=$user->id)
+            return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
+
+        $query = $user->channel()->getQuery();
+
+        $item = QueryBuilder::for($query)
+            ->allowedIncludes(['user', 'streams', 'tags'])
+            ->firstOrFail();
+
+        return new ChannelResource($item);
     }
 }

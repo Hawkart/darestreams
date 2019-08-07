@@ -10,6 +10,9 @@ use App\Http\Resources\NotificationResource;
 use App\Models\User;
 use App\Models\Notification;
 
+/**
+ * @group Users notifications
+ */
 class NotificationController extends Controller
 {
     /**

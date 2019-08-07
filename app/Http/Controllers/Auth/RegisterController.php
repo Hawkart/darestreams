@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+/**
+ * @group Auth
+ */
 class RegisterController extends Controller
 {
     use RegistersUsers;

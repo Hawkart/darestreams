@@ -9,6 +9,9 @@ use App\Exceptions\EmailTakenException;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+/**
+ * @group Auth
+ */
 class OAuthController extends Controller
 {
     use AuthenticatesUsers;

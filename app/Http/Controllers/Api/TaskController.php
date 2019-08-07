@@ -8,6 +8,9 @@ use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\STaskResource;
 use App\Models\Task;
 
+/**
+ * @group Tasks
+ */
 class TaskController extends Controller
 {
     /**

@@ -9,6 +9,9 @@ use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\StreamResource;
 use App\Models\Game;
 
+/**
+ * @group Streams tasks votes
+ */
 class VoteController extends Controller
 {
     public function store()

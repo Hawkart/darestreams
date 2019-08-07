@@ -11,6 +11,9 @@ use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use App\Models\Stream;
 
+/**
+ * @group Streams tasks
+ */
 class TaskController extends Controller
 {
     /**

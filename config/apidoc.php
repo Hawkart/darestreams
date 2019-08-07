@@ -17,7 +17,7 @@ return [
      * The base URL to be used in examples and the Postman collection.
      * By default, this will be the value of config('app.url').
      */
-    'base_url' => config('app.url'),
+    'base_url' => 'https://api.darestreams.com',
 
     /*
      * Generate a Postman collection in addition to HTML docs.
@@ -92,7 +92,7 @@ return [
              * Note that the route must be referenced by name here (wildcards are supported).
              */
             'exclude' => [
-                 'admin*', '_debugbar*', 'arrilot*', 'deploy*', 'docs*', '/'
+                 'admin*', '_debugbar*', 'arrilot*', 'deploy*', 'docs*', '/', 'broadcasting*'
             ],
 
             /*

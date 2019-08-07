@@ -10,8 +10,19 @@ use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\TransactionResource;
 use App\Models\User;
 
+/**
+ * @group Users transactions
+ */
 class TransactionController extends Controller
 {
+    /**
+     * TransactionController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,6 +30,9 @@ class TransactionController extends Controller
      */
     public function index(Request $request, User $user)
     {
+        if(auth()->user()->id!=$user->id)
+            return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
+
         $transactions = $user->getTransactions();
 
         $items = QueryBuilder::for($transactions)
@@ -36,6 +50,9 @@ class TransactionController extends Controller
      */
     public function show(User $user, Transaction $transaction)
     {
+        if(auth()->user()->id!=$user->id)
+            return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
+
         if(!$user->getTransactions()->whereId($transaction->id)->exist())
             return response()->json(['error' => trans('api/users/transaction.not_belong_to_user')], 403);
 

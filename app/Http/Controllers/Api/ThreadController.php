@@ -8,6 +8,9 @@ use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\ThreadResource;
 use App\Models\Thread;
 
+/**
+ * @group Threads
+ */
 class ThreadController extends Controller
 {
     /**

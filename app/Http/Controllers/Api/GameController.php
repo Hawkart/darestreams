@@ -8,6 +8,9 @@ use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\GameResource;
 use App\Models\Game;
 
+/**
+ * @group Games
+ */
 class GameController extends Controller
 {
     /**

@@ -9,6 +9,9 @@ use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\VoteResource;
 use App\Models\Vote;
 
+/**
+ * @group Votes
+ */
 class VoteController extends Controller
 {
     /**

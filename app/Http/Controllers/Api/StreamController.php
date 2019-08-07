@@ -10,8 +10,19 @@ use App\Models\Stream;
 use App\Http\Resources\StreamResource;
 use App\Http\Requests\StreamRequest;
 
+/**
+ * @group Streams
+ */
 class StreamController extends Controller
 {
+    /**
+     * StreamController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api')->only(['store', 'update']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,19 +53,52 @@ class StreamController extends Controller
     }
 
     /**
+     * Create new stream.
+     *
      * @param StreamRequest $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(StreamRequest $request)
     {
-        //Todo: check channel exist
+        $user = auth()->user();
+
+        if(!$user->channel)
+            return response()->json(['error' => trans('api/streams.failed_no_channel')], 422);
+
+        $input = $request->all();
+        $input['channel_id'] = $user->channel->id;
+
+        $obj = new Stream();
+        $obj->fill($input);
+        $obj->save();
+
+        return response()->json([
+            'success' => true,
+            'message'=> trans('api/streams.success_created')
+        ], 200);
     }
 
     /**
-     * @param $id
+     * Update stream.
+     *
+     * @param Stream $stream
      * @param StreamRequest $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Stream $stream, StreamRequest $request)
     {
+        $user = auth()->user();
 
+        if(!$user->channel || ($user->channel->id != $stream->channel_id))
+            return response()->json(['error' => trans('api/streams.failed_channel')], 422);
+
+        //Todo: Update if not active or finished
+
+        $stream->update($request->only(['start_at', 'tags']));
+
+        return response()->json([
+            'success' => true,
+            'message'=> trans('api/streams.success_updated')
+        ], 200);
     }
 }

@@ -11,6 +11,9 @@ use App\Models\Task;
 use App\Models\Transaction;
 use App\Models\Stream;
 
+/**
+ * @group Streams tasks transactions
+ */
 class TransactionController extends Controller
 {
     /**

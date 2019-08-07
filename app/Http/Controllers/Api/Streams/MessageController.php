@@ -10,6 +10,9 @@ use App\Http\Resources\MessageResource;
 use App\Models\Stream;
 use App\Models\Message;
 
+/**
+ * @group Streams messages
+ */
 class MessageController extends Controller
 {
     /**
