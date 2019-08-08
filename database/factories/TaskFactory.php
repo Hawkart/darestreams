@@ -9,14 +9,13 @@ use Faker\Generator as Faker;
 
 $factory->define(Task::class, function (Faker $faker) {
 
-    $interval_until_end = $faker->boolean;
     $is_superbowl = $faker->boolean;
 
     return [
-        'description'           => $faker->paragraph(3, true),
+        'small_desc'            => $faker->paragraph(1, true),
+        'full_desc'             => $faker->paragraph(3, true),
         'is_superbowl'          => $is_superbowl,
-        'interval_until_end'    => $interval_until_end,
-        'interval_time'         => $interval_until_end ? 0 : $faker->numberBetween(10, 50),
+        'interval_time'         => $faker->numberBetween(0, 50),
         'min_amount'            => $faker->numberBetween(10, 500),
         'min_amount_superbowl'  => $is_superbowl ? 0 : $faker->numberBetween(200, 1000),
         'status'                => 0,

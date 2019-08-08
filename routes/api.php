@@ -52,13 +52,12 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('channels', 'ChannelController')->only(['index', 'show', 'store', 'update']);
 
     Route::apiResource('streams', 'StreamController');
+    Route::get('streams/{stream}/thread', 'StreamController@thread');
     Route::apiResource('streams.tasks', 'Streams\TaskController');
     Route::apiResource('streams.tasks.votes', 'Streams\Tasks\VoteController');
     Route::apiResource('streams.tasks.transactions', 'Streams\Tasks\TransactionController');
 
-    Route::apiResource('streams.messages', 'Streams\MessageController')->only(['index', 'show', 'store']);
-
-    Route::apiResource('threads', 'ThreadController')->only(['index', 'show']);     //(?)
+    Route::apiResource('threads', 'ThreadController')->only(['index', 'show']);
     Route::apiResource('threads.participants', 'Threads\ParticipantController');    //(?)
     Route::apiResource('threads.messages', 'Threads\MessageController');
 

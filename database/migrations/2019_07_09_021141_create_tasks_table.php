@@ -17,10 +17,10 @@ class CreateTasksTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('stream_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
-            $table->text('description');
+            $table->text('small_desc');
+            $table->text('full_desc');
             $table->tinyInteger('is_superbowl')->default(0);
-            $table->tinyInteger('interval_until_end')->default(0);
-            $table->integer('interval_time')->unsigned()->nullable();
+            $table->integer('interval_time')->unsigned()->default(0);
             $table->decimal('min_amount')->nullable();
             $table->decimal('min_amount_superbowl')->nullable();
             $table->tinyInteger('status')->default(0);

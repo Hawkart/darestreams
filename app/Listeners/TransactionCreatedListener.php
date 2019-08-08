@@ -45,6 +45,12 @@ class TransactionCreatedListener
 
                 $task->votes()->save($vote);
             }
+        }else{
+            //Обновляем сумму аккаунта отправителя
+            $account = $transaction->accountSender;
+            $account->update([
+                "amount" => $account->amount + $transaction->amount
+            ]);
         }
     }
 }

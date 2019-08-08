@@ -25,11 +25,17 @@ class ChannelController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @queryParam include string String of connections: user, streams, tags. Example: user,streams
+     * @queryParam sort string Sort items by fields: title, id. For desc use '-' prefix. Example: -id
+     * @queryParam page array Use as page[number]=1&page[size]=2.
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         $items = QueryBuilder::for(Channel::class)
+            ->defaultSort('id')
+            ->allowedSorts('title', 'id')
             ->allowedIncludes(['user', 'streams', 'tags'])
             ->jsonPaginate();
 
@@ -37,7 +43,9 @@ class ChannelController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Detail channel's info.
+     *
+     * @queryParam include string String of connections: user, streams, tags. Example: user,streams
      *
      * @param  int  $channel
      * @return \Illuminate\Http\Response
@@ -52,6 +60,13 @@ class ChannelController extends Controller
     }
 
     /**
+     * Create new channel for user.
+     * @authenticated
+     *
+     * @bodyParam title string required Title of channel. Example: My new channel.
+     * @bodyParam description string required Description of channel. Example: Long description.
+     * @bodyParam logo file Logo for your channel. Possible formats: png, jpg.
+     *
      * @param ChannelRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
@@ -65,6 +80,8 @@ class ChannelController extends Controller
 
         $input['user_id'] = $user->id;
 
+        //Todo: Check logo exist and store it.
+
         $obj = new Channel();
         $obj->fill($input);
         $obj->save();
@@ -76,6 +93,13 @@ class ChannelController extends Controller
     }
 
     /**
+     * Update info about channel.
+     * @authenticated
+     *
+     * @bodyParam title string Title of channel. Example: My new channel.
+     * @bodyParam description string Description of channel. Example: Long description.
+     * @bodyParam logo file Logo for your channel. Possible formats: png, jpg.
+     *
      * @param ChannelRequest $request
      * @return \Illuminate\Http\JsonResponse
      */

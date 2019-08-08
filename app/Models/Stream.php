@@ -69,6 +69,6 @@ class Stream extends Model
      */
     public function threads()
     {
-        return $this->morphTomany(Thread::class, 'threadable');
+        return $this->morphToMany(Thread::class, 'threadable');
     }
 }

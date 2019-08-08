@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 
-class TaskRequest extends FormRequest {
+class TaskTransactionRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -34,22 +34,14 @@ class TaskRequest extends FormRequest {
             case 'POST':
                 {
                     return [
-                        'small_desc' => 'required|string|min:1',
-                        'full_desc' => 'required|string|min:1',
-                        'interval_time' => 'numeric|min:0',
-                        'min_amount' => "required|regex:/^\d+(\.\d{1,2})?$/",
-                        'min_amount_superbowl' => [
-                            Rule::requiredIf($request->get('is_superbowl')),
-                            "regex:/^\d+(\.\d{1,2})?$/"
-                        ],
+                        'amount' => "required|regex:/^\d+(\.\d{1,2})?$/"
                     ];
                 }
             case 'PUT':
             case 'PATCH':
                 {
                     return [
-                        'check_vote' => 'boolean',
-                        'status' => ""
+
                     ];
                 }
             default:break;

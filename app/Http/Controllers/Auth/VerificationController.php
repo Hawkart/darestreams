@@ -27,6 +27,10 @@ class VerificationController extends Controller
     /**
      * Mark the user's email address as verified.
      *
+     * {user} - integer id of user in database.
+     *
+     * @queryParam signature required The signature for verifying. Example: ce3f1f0f9f8ad3196f6157dd6f4e732c5d48ac46260cfcb7c24fe2615fb66567
+     * @queryParam expires required The time verify link will expired. Example: 1565160796
      * @param  \Illuminate\Http\Request $request
      * @param  \App\Models\User $user
      * @return \Illuminate\Http\JsonResponse
@@ -56,6 +60,8 @@ class VerificationController extends Controller
 
     /**
      * Resend the email verification notification.
+     *
+     * @bodyParam email string required User's email. Example: example@example.ru
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse

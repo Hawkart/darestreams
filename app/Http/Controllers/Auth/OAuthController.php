@@ -31,6 +31,8 @@ class OAuthController extends Controller
     /**
      * Redirect the user to the provider authentication page.
      *
+     * {driver} - social provider: facebook, twitch, youtube, steam, discord
+     *
      * @param  string $provider
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -43,6 +45,8 @@ class OAuthController extends Controller
 
     /**
      * Obtain the user information from the provider.
+     *
+     * {driver} - social provider: facebook, twitch, youtube, steam, discord
      *
      * @param  string $driver
      * @return \Illuminate\Http\Response
@@ -100,8 +104,8 @@ class OAuthController extends Controller
         $data = [
             'name' => $sUser->getName(),
             'email' => $sUser->getEmail(),
-            'nickname' => $sUser->getNickname(),
-            'email_verified_at' => now()
+            'nickname' => $sUser->getNickname() ? $sUser->getNickname() : $sUser->getName(),
+            'email_verified_at' => $sUser->getEmail() ? now() : null
         ];
 
         if(!empty($sUser->avatar))

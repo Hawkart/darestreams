@@ -16,11 +16,17 @@ class GameController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @queryParam include string String of connections: streams,tags. Example: tags,streams
+     * @queryParam sort string Sort items by fields: title, id. For desc use '-' prefix. Example: -id
+     * @queryParam page array Use as page[number]=1&page[size]=2.
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         $games = QueryBuilder::for(Game::class)
+            ->defaultSort('id')
+            ->allowedSorts('title', 'id')
             ->allowedIncludes(['streams', 'tags'])
             ->jsonPaginate();
 
@@ -29,6 +35,8 @@ class GameController extends Controller
 
     /**
      * Display the specified resource.
+     *
+     * @queryParam include string String of connections: streams,tags. Example: tags,streams
      *
      * @param  int  $game
      * @return \Illuminate\Http\Response
