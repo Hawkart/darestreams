@@ -32,4 +32,12 @@ class Game extends Model
     {
         return $this->hasMany(Stream::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function channels()
+    {
+        return $this->hasMany(Channel::class);
+    }
 }

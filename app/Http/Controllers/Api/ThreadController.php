@@ -16,11 +16,16 @@ class ThreadController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @queryParam include string String of connections: messages, participants. Example: messages
+     * @queryParam sort string Sort items by fields: title, id. For desc use '-' prefix. Example: -id
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         $items = QueryBuilder::for(Thread::class)
+            ->defaultSort('-id')
+            ->allowedSorts(['id', 'tile'])
             ->allowedIncludes(['messages', 'participants'])
             ->jsonPaginate();
 
@@ -29,6 +34,8 @@ class ThreadController extends Controller
 
     /**
      * Display the specified resource.
+     *
+     * @queryParam include string String of connections: messages, participants. Example: messages
      *
      * @param  int  $thread
      * @return \Illuminate\Http\Response

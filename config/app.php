@@ -131,6 +131,7 @@ return [
     'cipher' => 'AES-256-CBC',
 
     'deploy_secret' => env('APP_DEPLOY_SECRET'),
+    'twitch_api_cid' => env('TWITCH_API_CLIENT_ID'),
 
     /*
     |--------------------------------------------------------------------------

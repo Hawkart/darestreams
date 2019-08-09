@@ -68,9 +68,9 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
      *
      * @return string
      */
-    public function getNameAttribute()
+    public function getFullNameAttribute()
     {
-        $name = "{$this->first_name} {$this->middle_name} {$this->last_name}";
+        $name = "{$this->name} {$this->middle_name} {$this->last_name}";
         return preg_match('/\S/', $name) ? $name : "{$this->nickname}";
     }
 

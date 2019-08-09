@@ -27,6 +27,10 @@ class MessageController extends Controller
     }
 
     /**
+     * Get messages of thread.
+     *
+     * @queryParam include string String of connections: user, thread. Example: user
+     *
      * @param Request $request
      * @param Thread $thread
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
@@ -43,6 +47,11 @@ class MessageController extends Controller
     }
 
     /**
+     * Detail message of thread.
+     * {thread} - thread integer id.
+     *
+     * @queryParam include string String of connections: user, thread. Example: user
+     *
      * @param Thread $thread
      * @param Message $message
      * @return MessageResource|\Illuminate\Http\JsonResponse
@@ -60,6 +69,10 @@ class MessageController extends Controller
     }
 
     /**
+     * Create new message for thread.
+     *
+     * @bodyParam body text Message text.
+     *
      * @param MessageRequest $request
      * @param Thread $thread
      * @return \Illuminate\Http\JsonResponse
@@ -97,12 +110,15 @@ class MessageController extends Controller
     }
 
     /**
+     * Update message.
+     *
      * @param Request $request
      * @param Thread $thread
      * @param Message $message
      */
     public function update(MessageRequest $request, Thread $thread, Message $message)
     {
-
+        //Todo: Check message belongs to thread.
+        //Todo: Check user can chanege it.
     }
 }

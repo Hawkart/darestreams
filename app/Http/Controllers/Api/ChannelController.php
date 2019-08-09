@@ -25,7 +25,7 @@ class ChannelController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @queryParam include string String of connections: user, streams, tags. Example: user,streams
+     * @queryParam include string String of connections: user, streams, tags, game. Example: user,streams
      * @queryParam sort string Sort items by fields: title, id. For desc use '-' prefix. Example: -id
      * @queryParam page array Use as page[number]=1&page[size]=2.
      *
@@ -36,7 +36,7 @@ class ChannelController extends Controller
         $items = QueryBuilder::for(Channel::class)
             ->defaultSort('id')
             ->allowedSorts('title', 'id')
-            ->allowedIncludes(['user', 'streams', 'tags'])
+            ->allowedIncludes(['user', 'streams', 'tags', 'game'])
             ->jsonPaginate();
 
         return ChannelResource::collection($items);
@@ -45,7 +45,7 @@ class ChannelController extends Controller
     /**
      * Detail channel's info.
      *
-     * @queryParam include string String of connections: user, streams, tags. Example: user,streams
+     * @queryParam include string String of connections: user, streams, tags, game. Example: user,streams
      *
      * @param  int  $channel
      * @return \Illuminate\Http\Response
@@ -53,7 +53,7 @@ class ChannelController extends Controller
     public function show($channel)
     {
         $item = QueryBuilder::for(Channel::class)
-            ->allowedIncludes(['user', 'streams', 'tags'])
+            ->allowedIncludes(['user', 'streams', 'tags', 'game'])
             ->findOrFail($channel);
 
         return new ChannelResource($item);
@@ -66,6 +66,8 @@ class ChannelController extends Controller
      * @bodyParam title string required Title of channel. Example: My new channel.
      * @bodyParam description string required Description of channel. Example: Long description.
      * @bodyParam logo file Logo for your channel. Possible formats: png, jpg.
+     * @bodyParam game_id int Select category from games list.
+     * @bodyParam link string Link on the stream.
      *
      * @param ChannelRequest $request
      * @return \Illuminate\Http\JsonResponse
@@ -99,6 +101,8 @@ class ChannelController extends Controller
      * @bodyParam title string Title of channel. Example: My new channel.
      * @bodyParam description string Description of channel. Example: Long description.
      * @bodyParam logo file Logo for your channel. Possible formats: png, jpg.
+     * @bodyParam game_id int Select category from games list.
+     * @bodyParam link string Link on the stream.
      *
      * @param ChannelRequest $request
      * @return \Illuminate\Http\JsonResponse

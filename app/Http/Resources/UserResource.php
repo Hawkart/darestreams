@@ -19,9 +19,9 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'middle_name' => $this->middle_name,
+            'full_name' => $this->name,
             'nickname' => $this->nickname,
             'email' => $this->when(Auth::user() && Auth::user()->id==$this->id, $this->email),
             'role_id' => $this->role_id,

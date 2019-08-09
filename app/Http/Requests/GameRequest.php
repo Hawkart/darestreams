@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 
-class ChannelRequest extends FormRequest {
-
+class GameRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -27,24 +26,10 @@ class ChannelRequest extends FormRequest {
     {
         switch($this->method())
         {
-            case 'GET':
-            case 'DELETE':
-                {
-                    return [];
-                }
             case 'POST':
                 {
                     return [
-                        'title' => 'required|string|max:255',
-                        'game_id'  => 'required|exists:games,id',
-                        'link'     => 'required|url',
-                        'description' => 'required|string|max:255',
-                    ];
-                }
-            case 'PUT':
-            case 'PATCH':
-                {
-                    return [
+                        'title' => 'required|string|min:1',
                     ];
                 }
             default:break;

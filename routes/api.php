@@ -27,6 +27,8 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('deploy', 'DeployController@deploy');
 
     Route::apiResource('games', 'GameController')->only(['index', 'show']);
+    Route::post('games/offer', 'GameController@offer');
+
     Route::get('users/me', 'UserController@me');
     Route::apiResource('users', 'UserController')->only(['index', 'show', 'update']);
     Route::get('users/{user}/account', 'UserController@account');

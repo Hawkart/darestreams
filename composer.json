@@ -13,6 +13,7 @@
         "barryvdh/laravel-debugbar": "^3.2",
         "cmgmyr/messenger": "^2.18",
         "cviebrock/eloquent-sluggable": "^4.8",
+        "cyrildewit/eloquent-viewable": "^4.0",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/socialite": "^4.1",

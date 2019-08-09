@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\ClearSeederData::class,
-        Commands\DropTables::class
+        Commands\DropTables::class,
+        Commands\ImportGames::class
     ];
 
     /**
@@ -25,8 +26,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('games:import')->weeklyOn(1);
     }
 
     /**

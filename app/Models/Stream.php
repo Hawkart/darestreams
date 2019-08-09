@@ -6,10 +6,12 @@ use App\Http\Requests\ChannelRequest;
 use Illuminate\Database\Eloquent\Model;
 use \Spatie\Tags\HasTags;
 use \Znck\Eloquent\Traits\BelongsToThrough;
+use CyrildeWit\EloquentViewable\Viewable;
+use CyrildeWit\EloquentViewable\Contracts\Viewable as ViewableContract;
 
-class Stream extends Model
+class Stream extends Model implements ViewableContract
 {
-    use HasTags, BelongsToThrough;
+    use HasTags, BelongsToThrough, Viewable;
 
     /**
      * The table associated with the model.

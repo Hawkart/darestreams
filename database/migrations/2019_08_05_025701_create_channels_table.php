@@ -16,11 +16,18 @@ class CreateChannelsTable extends Migration
         Schema::create('channels', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+            $table->bigInteger('game_id')->unsigned();
             $table->string('slug')->unique();
+            $table->string('link');
             $table->text('description');
             $table->string('logo')->default('channels/default.png');
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('game_id')
+                ->references('id')
+                ->on('games')
+                ->onDelete('cascade');
 
             $table->foreign('user_id')
                 ->references('id')

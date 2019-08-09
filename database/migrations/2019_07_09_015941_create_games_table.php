@@ -17,6 +17,8 @@ class CreateGamesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title')->unique();
             $table->string('title_short')->unique();
+            $table->integer('twitch_id')->nullable();
+            $table->integer('popularity')->default(0);
             $table->string('logo')->nullable();
             $table->string('logo_small')->nullable();
         });
