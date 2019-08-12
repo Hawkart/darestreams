@@ -14,18 +14,17 @@ class DeployJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable;
 
-    /**
-     * @var
-     */
-    protected $request;
+    protected $content;
+    protected $signature;
 
     /**
      * DeployJob constructor.
      * @param $request
      */
-    public function __construct(Request $request)
+    public function __construct($content, $signature)
     {
-        $this->request = $request;
+        $this->content = $content;
+        $this->signature = $signature;
     }
 
     /**
@@ -35,12 +34,10 @@ class DeployJob implements ShouldQueue
      */
     public function handle()
     {
-        $githubPayload = $this->request->getContent();
-        $githubHash = $this->request->header('X-Hub-Signature');
         $localToken = config('app.deploy_secret');
-        $localHash = 'sha1=' . hash_hmac('sha1', $githubPayload, $localToken, false);
+        $localHash = 'sha1=' . hash_hmac('sha1', $this->content, $localToken, false);
 
-        if (hash_equals($githubHash, $localHash))
+        if (hash_equals($this->signature, $localHash))
         {
             $root_path = base_path();
             $process = new Process('cd ' . $root_path . '; ../deploy.sh');
