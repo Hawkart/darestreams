@@ -159,4 +159,6 @@ return [
             ],
         ],
     ],
+
+    'admin_email' => env('HORIZON_ADMIN_EMAIL')
 ];
