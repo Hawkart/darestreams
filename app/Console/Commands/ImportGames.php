@@ -51,6 +51,9 @@ class ImportGames extends Command
 
         do{
             $responseTwitch = $twitchClient->getTopGames((int)$limit, (int)$offset);
+
+            if(!isset($responseTwitch['_total'])) break;
+
             $total = intval($responseTwitch['_total']);
             $games = $responseTwitch["top"];
 

@@ -55,13 +55,18 @@ class UserController extends Controller
      * Get authorized user.
      * @authenticated
      *
+     * @queryParam include string String of connections: tasks, streams, channel. Example: tasks,channel
+     *
      * @param Request $request
      * @return UserResource
      */
     public function me(Request $request)
     {
-        $user = auth()->user();
-        return new UserResource($user);
+        $item = QueryBuilder::for(User::class)
+            ->allowedIncludes(['tasks','streams', 'channel'])
+            ->findOrFail(auth()->user()->id);
+
+        return new UserResource($item);
     }
 
     /**
@@ -86,6 +91,12 @@ class UserController extends Controller
      *
      * @authenticated
      *
+     * @bodyParam name string required User's first name. Example: Archibald
+     * @bodyParam last_name string User's last name.
+     * @bodyParam middle_name string User's middle name.
+     * @bodyParam nickname string required User's nickname. Example: Archi89
+     * @bodyParam email string required User's email. Example: example@example.ru
+     *
      * @param User $user
      * @param UserRequest $request
      * @return \Illuminate\Http\JsonResponse
@@ -95,7 +106,7 @@ class UserController extends Controller
         if ($user->id != auth()->user()->id)
             return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
 
-        $allowedFields = ['first_name', 'last_name', 'middle_name', 'nickname'];
+        $allowedFields = ['name', 'last_name', 'middle_name', 'nickname'];
         if ($user instanceof MustVerifyEmail && !$user->hasVerifiedEmail())
             $allowedFields[] = 'email';
 
@@ -110,6 +121,8 @@ class UserController extends Controller
     }
 
     /**
+     * Update user's avatar
+     *
      * @authenticated
      *
      * @param User $user
@@ -176,6 +189,8 @@ class UserController extends Controller
     }
 
     /**
+     * Update user's overlay.
+     *
      * @authenticated
      *
      * @param User $user
@@ -209,7 +224,11 @@ class UserController extends Controller
     }
 
     /**
+     * Update user's password.
+     *
      * @authenticated
+     *
+     * @bodyParam password string required User's password. Example: jadfohasd092
      *
      * @param User $user
      * @param UserPasswordUpdateRequest $request
@@ -238,6 +257,9 @@ class UserController extends Controller
     }
 
     /**
+     * Follow the user.
+     * {user} - user id you want follow for.
+     *
      * @authenticated
      *
      * @param User $user
@@ -260,6 +282,9 @@ class UserController extends Controller
     }
 
     /**
+     * Unfollow the user.
+     * {user} - user id you want unfollow.
+     *
      * @authenticated
      *
      * @param User $user
@@ -282,6 +307,10 @@ class UserController extends Controller
     }
 
     /**
+     * User's followers
+     *
+     * {user} - user id you want follow for.
+     *
      * @param User $user
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
@@ -295,6 +324,9 @@ class UserController extends Controller
     }
 
     /**
+     * Users followings
+     * {user} - user id integer.
+     *
      * @param User $user
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
@@ -308,6 +340,9 @@ class UserController extends Controller
     }
 
     /**
+     * User's account
+     * {user} - user id integer.
+     *
      * @authenticated
      *
      * @param User $user
@@ -328,6 +363,8 @@ class UserController extends Controller
     }
 
     /**
+     * User's channel
+     * {user} - user id integer.
      * @authenticated
      *
      * @param User $user

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\GameRequest;
+use App\Models\Notification;
+use App\Notifications\NewGameOffer;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
@@ -73,7 +75,8 @@ class GameController extends Controller
         if(Game::where('title', $request->get('title'))->exists())
             return response()->json(['error' => trans('api/game.failed_already_exists')], 422);
 
-        //Todo: Send notification about offering to support email.
+        Notification::route('mail', config('mail.game_offer_email'))
+            ->notify(new NewGameOffer($request->get('title')));
 
         return response()->json([
             'success' => true,

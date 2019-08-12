@@ -329,7 +329,7 @@ $response = $client->get("https://api.darestreams.com/channels", [
     'query' => [
             "include" => "user,streams",
             "sort" => "-id",
-            "page" => "20",
+            "page" => "12",
         ],
 ]);
 $body = $response->getBody();
@@ -355,10 +355,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -380,10 +380,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -405,10 +405,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 9,
-                "name": "jzboncak",
-                "first_name": null,
+                "name": "Emelie Homenick",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emelie Homenick",
                 "nickname": "jzboncak",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\4bd248684281448f3f63227266eb10ee.jpg",
@@ -430,10 +430,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -455,10 +455,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 9,
-                "name": "jzboncak",
-                "first_name": null,
+                "name": "Emelie Homenick",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emelie Homenick",
                 "nickname": "jzboncak",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\4bd248684281448f3f63227266eb10ee.jpg",
@@ -480,10 +480,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 20,
-                "name": "morton.watsica",
-                "first_name": null,
+                "name": "Brittany Kihn",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Brittany Kihn",
                 "nickname": "morton.watsica",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\c141f4213e7ece823e622a9778a08d28.jpg",
@@ -505,10 +505,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -530,10 +530,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -555,10 +555,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -580,10 +580,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -605,10 +605,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -630,10 +630,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 20,
-                "name": "morton.watsica",
-                "first_name": null,
+                "name": "Brittany Kihn",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Brittany Kihn",
                 "nickname": "morton.watsica",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\c141f4213e7ece823e622a9778a08d28.jpg",
@@ -655,10 +655,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 4,
-                "name": "dayna38",
-                "first_name": null,
+                "name": "Mrs. Maggie Waelchi III",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mrs. Maggie Waelchi III",
                 "nickname": "dayna38",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\21801c83af801b3a92618ad9ac8eb2a7.jpg",
@@ -680,10 +680,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 20,
-                "name": "morton.watsica",
-                "first_name": null,
+                "name": "Brittany Kihn",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Brittany Kihn",
                 "nickname": "morton.watsica",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\c141f4213e7ece823e622a9778a08d28.jpg",
@@ -705,10 +705,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -730,10 +730,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -755,10 +755,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -780,10 +780,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -805,10 +805,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 9,
-                "name": "jzboncak",
-                "first_name": null,
+                "name": "Emelie Homenick",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emelie Homenick",
                 "nickname": "jzboncak",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\4bd248684281448f3f63227266eb10ee.jpg",
@@ -830,10 +830,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -871,10 +871,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -896,10 +896,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -921,10 +921,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -946,10 +946,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -971,10 +971,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -996,10 +996,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -1021,10 +1021,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 5,
-                "name": "sporer.bernard",
-                "first_name": null,
+                "name": "Prof. Julius O'Connell I",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Julius O'Connell I",
                 "nickname": "sporer.bernard",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b2807a16fe9f748937f1a5a6c11e44c.jpg",
@@ -1046,10 +1046,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -1071,10 +1071,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 9,
-                "name": "jzboncak",
-                "first_name": null,
+                "name": "Emelie Homenick",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emelie Homenick",
                 "nickname": "jzboncak",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\4bd248684281448f3f63227266eb10ee.jpg",
@@ -1096,10 +1096,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 20,
-                "name": "morton.watsica",
-                "first_name": null,
+                "name": "Brittany Kihn",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Brittany Kihn",
                 "nickname": "morton.watsica",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\c141f4213e7ece823e622a9778a08d28.jpg",
@@ -1121,10 +1121,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -1162,10 +1162,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -1187,10 +1187,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -1212,10 +1212,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 16,
-                "name": "ari69",
-                "first_name": null,
+                "name": "Felipa Kerluke",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Felipa Kerluke",
                 "nickname": "ari69",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\78cd3127c6d04abbae339fcd42453e34.jpg",
@@ -1237,10 +1237,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 16,
-                "name": "ari69",
-                "first_name": null,
+                "name": "Felipa Kerluke",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Felipa Kerluke",
                 "nickname": "ari69",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\78cd3127c6d04abbae339fcd42453e34.jpg",
@@ -1262,10 +1262,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -1287,10 +1287,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -1312,10 +1312,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -1337,10 +1337,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -1362,10 +1362,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -1387,10 +1387,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -1412,10 +1412,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -1437,10 +1437,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -1462,10 +1462,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 4,
-                "name": "dayna38",
-                "first_name": null,
+                "name": "Mrs. Maggie Waelchi III",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mrs. Maggie Waelchi III",
                 "nickname": "dayna38",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\21801c83af801b3a92618ad9ac8eb2a7.jpg",
@@ -1487,10 +1487,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -1512,10 +1512,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 5,
-                "name": "sporer.bernard",
-                "first_name": null,
+                "name": "Prof. Julius O'Connell I",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Julius O'Connell I",
                 "nickname": "sporer.bernard",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b2807a16fe9f748937f1a5a6c11e44c.jpg",
@@ -1537,10 +1537,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -1562,10 +1562,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -1587,10 +1587,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -1612,10 +1612,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -1637,10 +1637,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -1662,10 +1662,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -1687,10 +1687,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -1712,10 +1712,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -1737,10 +1737,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -1762,10 +1762,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -1787,10 +1787,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -1812,10 +1812,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -1837,10 +1837,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -1862,10 +1862,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 18,
-                "name": "favian.hauck",
-                "first_name": null,
+                "name": "Wilfredo Bruen",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Wilfredo Bruen",
                 "nickname": "favian.hauck",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\b5bdd0239e000ce34084b4baba7eaa46.jpg",
@@ -1887,10 +1887,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -1912,10 +1912,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -1937,10 +1937,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -1962,10 +1962,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 18,
-                "name": "favian.hauck",
-                "first_name": null,
+                "name": "Wilfredo Bruen",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Wilfredo Bruen",
                 "nickname": "favian.hauck",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\b5bdd0239e000ce34084b4baba7eaa46.jpg",
@@ -1987,10 +1987,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -2012,10 +2012,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -2037,10 +2037,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -2062,10 +2062,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -2087,10 +2087,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -2112,10 +2112,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -2137,10 +2137,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -2162,10 +2162,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 18,
-                "name": "favian.hauck",
-                "first_name": null,
+                "name": "Wilfredo Bruen",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Wilfredo Bruen",
                 "nickname": "favian.hauck",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\b5bdd0239e000ce34084b4baba7eaa46.jpg",
@@ -2187,10 +2187,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -2212,10 +2212,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -2237,10 +2237,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -2262,10 +2262,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -2287,10 +2287,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -2312,10 +2312,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 4,
-                "name": "dayna38",
-                "first_name": null,
+                "name": "Mrs. Maggie Waelchi III",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mrs. Maggie Waelchi III",
                 "nickname": "dayna38",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\21801c83af801b3a92618ad9ac8eb2a7.jpg",
@@ -2337,10 +2337,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -2362,10 +2362,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 9,
-                "name": "jzboncak",
-                "first_name": null,
+                "name": "Emelie Homenick",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emelie Homenick",
                 "nickname": "jzboncak",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\4bd248684281448f3f63227266eb10ee.jpg",
@@ -2387,10 +2387,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 4,
-                "name": "dayna38",
-                "first_name": null,
+                "name": "Mrs. Maggie Waelchi III",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mrs. Maggie Waelchi III",
                 "nickname": "dayna38",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\21801c83af801b3a92618ad9ac8eb2a7.jpg",
@@ -2412,10 +2412,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -2437,10 +2437,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 4,
-                "name": "dayna38",
-                "first_name": null,
+                "name": "Mrs. Maggie Waelchi III",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mrs. Maggie Waelchi III",
                 "nickname": "dayna38",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\21801c83af801b3a92618ad9ac8eb2a7.jpg",
@@ -2462,10 +2462,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -2487,10 +2487,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -2512,10 +2512,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -2537,10 +2537,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 4,
-                "name": "dayna38",
-                "first_name": null,
+                "name": "Mrs. Maggie Waelchi III",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mrs. Maggie Waelchi III",
                 "nickname": "dayna38",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\21801c83af801b3a92618ad9ac8eb2a7.jpg",
@@ -2562,10 +2562,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -2587,10 +2587,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -2612,10 +2612,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -2653,10 +2653,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -2678,10 +2678,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -2703,10 +2703,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -2728,10 +2728,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -2753,10 +2753,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -2778,10 +2778,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -2803,10 +2803,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 4,
-                "name": "dayna38",
-                "first_name": null,
+                "name": "Mrs. Maggie Waelchi III",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mrs. Maggie Waelchi III",
                 "nickname": "dayna38",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\21801c83af801b3a92618ad9ac8eb2a7.jpg",
@@ -2828,10 +2828,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -2853,10 +2853,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -2878,10 +2878,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 4,
-                "name": "dayna38",
-                "first_name": null,
+                "name": "Mrs. Maggie Waelchi III",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mrs. Maggie Waelchi III",
                 "nickname": "dayna38",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\21801c83af801b3a92618ad9ac8eb2a7.jpg",
@@ -2903,10 +2903,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -2928,10 +2928,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -2969,10 +2969,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -2994,10 +2994,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -3019,10 +3019,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -3044,10 +3044,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 18,
-                "name": "favian.hauck",
-                "first_name": null,
+                "name": "Wilfredo Bruen",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Wilfredo Bruen",
                 "nickname": "favian.hauck",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\b5bdd0239e000ce34084b4baba7eaa46.jpg",
@@ -3069,10 +3069,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 20,
-                "name": "morton.watsica",
-                "first_name": null,
+                "name": "Brittany Kihn",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Brittany Kihn",
                 "nickname": "morton.watsica",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\c141f4213e7ece823e622a9778a08d28.jpg",
@@ -3094,10 +3094,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -3119,10 +3119,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -3144,10 +3144,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -3169,10 +3169,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -3194,10 +3194,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -3219,10 +3219,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 16,
-                "name": "ari69",
-                "first_name": null,
+                "name": "Felipa Kerluke",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Felipa Kerluke",
                 "nickname": "ari69",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\78cd3127c6d04abbae339fcd42453e34.jpg",
@@ -3244,10 +3244,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -3269,10 +3269,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -3294,10 +3294,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 5,
-                "name": "sporer.bernard",
-                "first_name": null,
+                "name": "Prof. Julius O'Connell I",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Julius O'Connell I",
                 "nickname": "sporer.bernard",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b2807a16fe9f748937f1a5a6c11e44c.jpg",
@@ -3319,10 +3319,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 5,
-                "name": "sporer.bernard",
-                "first_name": null,
+                "name": "Prof. Julius O'Connell I",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Julius O'Connell I",
                 "nickname": "sporer.bernard",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b2807a16fe9f748937f1a5a6c11e44c.jpg",
@@ -3344,10 +3344,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -3369,10 +3369,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -3394,10 +3394,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 5,
-                "name": "sporer.bernard",
-                "first_name": null,
+                "name": "Prof. Julius O'Connell I",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Julius O'Connell I",
                 "nickname": "sporer.bernard",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b2807a16fe9f748937f1a5a6c11e44c.jpg",
@@ -3435,10 +3435,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -3460,10 +3460,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -3485,10 +3485,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -3510,10 +3510,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -3551,10 +3551,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -3592,10 +3592,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 18,
-                "name": "favian.hauck",
-                "first_name": null,
+                "name": "Wilfredo Bruen",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Wilfredo Bruen",
                 "nickname": "favian.hauck",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\b5bdd0239e000ce34084b4baba7eaa46.jpg",
@@ -3617,10 +3617,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -3642,10 +3642,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 4,
-                "name": "dayna38",
-                "first_name": null,
+                "name": "Mrs. Maggie Waelchi III",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mrs. Maggie Waelchi III",
                 "nickname": "dayna38",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\21801c83af801b3a92618ad9ac8eb2a7.jpg",
@@ -3667,10 +3667,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 16,
-                "name": "ari69",
-                "first_name": null,
+                "name": "Felipa Kerluke",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Felipa Kerluke",
                 "nickname": "ari69",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\78cd3127c6d04abbae339fcd42453e34.jpg",
@@ -3692,10 +3692,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 18,
-                "name": "favian.hauck",
-                "first_name": null,
+                "name": "Wilfredo Bruen",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Wilfredo Bruen",
                 "nickname": "favian.hauck",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\b5bdd0239e000ce34084b4baba7eaa46.jpg",
@@ -3717,10 +3717,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 4,
-                "name": "dayna38",
-                "first_name": null,
+                "name": "Mrs. Maggie Waelchi III",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mrs. Maggie Waelchi III",
                 "nickname": "dayna38",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\21801c83af801b3a92618ad9ac8eb2a7.jpg",
@@ -3742,10 +3742,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -3767,10 +3767,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -3792,10 +3792,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -3817,10 +3817,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -3842,10 +3842,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -3867,10 +3867,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -3908,10 +3908,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -3933,10 +3933,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 20,
-                "name": "morton.watsica",
-                "first_name": null,
+                "name": "Brittany Kihn",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Brittany Kihn",
                 "nickname": "morton.watsica",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\c141f4213e7ece823e622a9778a08d28.jpg",
@@ -3958,10 +3958,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:30:00.000000Z",
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -3983,10 +3983,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -4008,10 +4008,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -4033,10 +4033,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -4058,10 +4058,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -4083,10 +4083,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -4108,10 +4108,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 5,
-                "name": "sporer.bernard",
-                "first_name": null,
+                "name": "Prof. Julius O'Connell I",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Julius O'Connell I",
                 "nickname": "sporer.bernard",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b2807a16fe9f748937f1a5a6c11e44c.jpg",
@@ -4133,10 +4133,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -4158,10 +4158,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -4183,10 +4183,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 5,
-                "name": "sporer.bernard",
-                "first_name": null,
+                "name": "Prof. Julius O'Connell I",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Julius O'Connell I",
                 "nickname": "sporer.bernard",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b2807a16fe9f748937f1a5a6c11e44c.jpg",
@@ -4208,10 +4208,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 20,
-                "name": "morton.watsica",
-                "first_name": null,
+                "name": "Brittany Kihn",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Brittany Kihn",
                 "nickname": "morton.watsica",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\c141f4213e7ece823e622a9778a08d28.jpg",
@@ -4233,10 +4233,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -4258,10 +4258,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -4283,10 +4283,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 9,
-                "name": "jzboncak",
-                "first_name": null,
+                "name": "Emelie Homenick",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emelie Homenick",
                 "nickname": "jzboncak",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\4bd248684281448f3f63227266eb10ee.jpg",
@@ -4308,10 +4308,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -4333,10 +4333,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 4,
-                "name": "dayna38",
-                "first_name": null,
+                "name": "Mrs. Maggie Waelchi III",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mrs. Maggie Waelchi III",
                 "nickname": "dayna38",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\21801c83af801b3a92618ad9ac8eb2a7.jpg",
@@ -4358,10 +4358,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -4383,10 +4383,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -4408,10 +4408,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -4433,10 +4433,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -4458,10 +4458,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -4483,10 +4483,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -4508,10 +4508,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -4533,10 +4533,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -4558,10 +4558,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -4583,10 +4583,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 4,
-                "name": "dayna38",
-                "first_name": null,
+                "name": "Mrs. Maggie Waelchi III",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mrs. Maggie Waelchi III",
                 "nickname": "dayna38",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\21801c83af801b3a92618ad9ac8eb2a7.jpg",
@@ -4608,10 +4608,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -4633,10 +4633,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 18,
-                "name": "favian.hauck",
-                "first_name": null,
+                "name": "Wilfredo Bruen",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Wilfredo Bruen",
                 "nickname": "favian.hauck",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\b5bdd0239e000ce34084b4baba7eaa46.jpg",
@@ -4658,10 +4658,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 9,
-                "name": "jzboncak",
-                "first_name": null,
+                "name": "Emelie Homenick",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emelie Homenick",
                 "nickname": "jzboncak",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\4bd248684281448f3f63227266eb10ee.jpg",
@@ -4683,10 +4683,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -4708,10 +4708,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -4733,10 +4733,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -4758,10 +4758,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -4783,10 +4783,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -4808,10 +4808,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -4833,10 +4833,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -4858,10 +4858,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 16,
-                "name": "ari69",
-                "first_name": null,
+                "name": "Felipa Kerluke",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Felipa Kerluke",
                 "nickname": "ari69",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\78cd3127c6d04abbae339fcd42453e34.jpg",
@@ -4883,10 +4883,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 20,
-                "name": "morton.watsica",
-                "first_name": null,
+                "name": "Brittany Kihn",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Brittany Kihn",
                 "nickname": "morton.watsica",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\c141f4213e7ece823e622a9778a08d28.jpg",
@@ -4924,10 +4924,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -4949,10 +4949,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 18,
-                "name": "favian.hauck",
-                "first_name": null,
+                "name": "Wilfredo Bruen",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Wilfredo Bruen",
                 "nickname": "favian.hauck",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\b5bdd0239e000ce34084b4baba7eaa46.jpg",
@@ -4974,10 +4974,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -4999,10 +4999,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -5024,10 +5024,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -5049,10 +5049,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -5074,10 +5074,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -5099,10 +5099,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -5124,10 +5124,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -5149,10 +5149,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 16,
-                "name": "ari69",
-                "first_name": null,
+                "name": "Felipa Kerluke",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Felipa Kerluke",
                 "nickname": "ari69",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\78cd3127c6d04abbae339fcd42453e34.jpg",
@@ -5174,10 +5174,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 18,
-                "name": "favian.hauck",
-                "first_name": null,
+                "name": "Wilfredo Bruen",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Wilfredo Bruen",
                 "nickname": "favian.hauck",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\b5bdd0239e000ce34084b4baba7eaa46.jpg",
@@ -5215,10 +5215,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -5240,10 +5240,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -5265,10 +5265,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -5290,10 +5290,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -5315,10 +5315,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -5340,10 +5340,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 16,
-                "name": "ari69",
-                "first_name": null,
+                "name": "Felipa Kerluke",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Felipa Kerluke",
                 "nickname": "ari69",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\78cd3127c6d04abbae339fcd42453e34.jpg",
@@ -5365,10 +5365,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -5390,10 +5390,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -5415,10 +5415,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -5440,10 +5440,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 5,
-                "name": "sporer.bernard",
-                "first_name": null,
+                "name": "Prof. Julius O'Connell I",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Julius O'Connell I",
                 "nickname": "sporer.bernard",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b2807a16fe9f748937f1a5a6c11e44c.jpg",
@@ -5465,10 +5465,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -5490,10 +5490,10 @@ print_r(json_decode((string) $body));
             "created_at": "2019-08-09T03:29:59.000000Z",
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -5536,9 +5536,9 @@ $response = $client->post("https://api.darestreams.com/channels", [
     'json' => [
             "title" => "My new channel.",
             "description" => "Long description.",
-            "logo" => "rerum",
-            "game_id" => "11",
-            "link" => "cupiditate",
+            "logo" => "commodi",
+            "game_id" => "7",
+            "link" => "voluptate",
         ],
 ]);
 $body = $response->getBody();
@@ -5598,10 +5598,10 @@ print_r(json_decode((string) $body));
         "created_at": "2019-08-09T03:29:59.000000Z",
         "user": {
             "id": 2,
-            "name": "dbrakus",
-            "first_name": null,
+            "name": "Emmett Huels",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Emmett Huels",
             "nickname": "dbrakus",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -5641,9 +5641,9 @@ $response = $client->put("https://api.darestreams.com/channels/1", [
     'json' => [
             "title" => "My new channel.",
             "description" => "Long description.",
-            "logo" => "dolorum",
+            "logo" => "similique",
             "game_id" => "16",
-            "link" => "aut",
+            "link" => "fugit",
         ],
 ]);
 $body = $response->getBody();
@@ -5671,48 +5671,6 @@ Parameter | Type | Status | Description
 <!-- END_2b969ff25feac1c03921afdbf3acb70d -->
 
 #Games
-<!-- START_9491249bc63ba08fb420109d46feafc4 -->
-## Offer new category.
-
-<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
-> Example request:
-
-```php
-
-$client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/games/offer", [
-    'headers' => [
-            "Content-Type" => "application/json",
-        ],
-    'json' => [
-            "title" => "New category.",
-        ],
-]);
-$body = $response->getBody();
-print_r(json_decode((string) $body));
-```
-
-
-
-> Example response (400):
-
-```json
-{
-    "error": "Unauthorized"
-}
-```
-
-### HTTP Request
-`GET games/offer`
-
-#### Body Parameters
-
-Parameter | Type | Status | Description
---------- | ------- | ------- | ------- | -----------
-    title | string |  required  | Title of new category.
-
-<!-- END_9491249bc63ba08fb420109d46feafc4 -->
-
 <!-- START_af3cb2deabe4f6e96b412e19f04ade03 -->
 ## Display a listing of the resource.
 
@@ -5724,8 +5682,8 @@ $client = new \GuzzleHttp\Client();
 $response = $client->get("https://api.darestreams.com/games", [
     'query' => [
             "include" => "tags,streams",
-            "sort" => "-id",
-            "page" => "2",
+            "sort" => "-popularity",
+            "page" => "4",
         ],
 ]);
 $body = $response->getBody();
@@ -5740,94 +5698,10 @@ print_r(json_decode((string) $body));
 {
     "data": [
         {
-            "id": 2,
-            "title": "Overwatch",
-            "title_short": "Overwatch",
-            "logo": "http:\/\/darestreams.local\/storage\/games\/Overwatch-272x380.jpg",
-            "logo_small": "http:\/\/darestreams.local\/storage\/games\/Overwatch-52x72.jpg",
-            "streams": [
-                {
-                    "id": 3,
-                    "channel_id": null,
-                    "game_id": 2,
-                    "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?20346",
-                    "start_at": "1997-04-19 13:28:10",
-                    "ended_at": null,
-                    "status": 0,
-                    "is_payed": 0,
-                    "quantity_donators": 0,
-                    "quantity_donations": 0,
-                    "amount_donations": "0.00",
-                    "created_at": "2019-08-09T03:30:00.000000Z",
-                    "updated_at": "2019-08-09T03:30:00.000000Z"
-                },
-                {
-                    "id": 4,
-                    "channel_id": null,
-                    "game_id": 2,
-                    "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?90558",
-                    "start_at": "1993-08-30 09:02:42",
-                    "ended_at": null,
-                    "status": 0,
-                    "is_payed": 0,
-                    "quantity_donators": 0,
-                    "quantity_donations": 0,
-                    "amount_donations": "0.00",
-                    "created_at": "2019-08-09T03:30:00.000000Z",
-                    "updated_at": "2019-08-09T03:30:00.000000Z"
-                },
-                {
-                    "id": 5,
-                    "channel_id": null,
-                    "game_id": 2,
-                    "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?63957",
-                    "start_at": "2016-03-28 21:55:13",
-                    "ended_at": null,
-                    "status": 0,
-                    "is_payed": 0,
-                    "quantity_donators": 0,
-                    "quantity_donations": 0,
-                    "amount_donations": "0.00",
-                    "created_at": "2019-08-09T03:30:00.000000Z",
-                    "updated_at": "2019-08-09T03:30:00.000000Z"
-                },
-                {
-                    "id": 6,
-                    "channel_id": null,
-                    "game_id": 2,
-                    "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?62980",
-                    "start_at": "1996-11-09 13:22:00",
-                    "ended_at": null,
-                    "status": 0,
-                    "is_payed": 0,
-                    "quantity_donators": 0,
-                    "quantity_donations": 0,
-                    "amount_donations": "0.00",
-                    "created_at": "2019-08-09T03:30:00.000000Z",
-                    "updated_at": "2019-08-09T03:30:00.000000Z"
-                },
-                {
-                    "id": 8,
-                    "channel_id": null,
-                    "game_id": 2,
-                    "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?37375",
-                    "start_at": "1975-07-20 19:42:37",
-                    "ended_at": null,
-                    "status": 0,
-                    "is_payed": 0,
-                    "quantity_donators": 0,
-                    "quantity_donations": 0,
-                    "amount_donations": "0.00",
-                    "created_at": "2019-08-09T03:30:00.000000Z",
-                    "updated_at": "2019-08-09T03:30:00.000000Z"
-                }
-            ],
-            "tags": []
-        },
-        {
             "id": 1,
             "title": "Fortnite",
             "title_short": "Fortnite",
+            "popularity": 178344,
             "logo": "http:\/\/darestreams.local\/storage\/games\/Fortnite-272x380.jpg",
             "logo_small": "http:\/\/darestreams.local\/storage\/games\/Fortnite-52x72.jpg",
             "streams": [
@@ -5908,6 +5782,92 @@ print_r(json_decode((string) $body));
                 }
             ],
             "tags": []
+        },
+        {
+            "id": 2,
+            "title": "Overwatch",
+            "title_short": "Overwatch",
+            "popularity": 44524,
+            "logo": "http:\/\/darestreams.local\/storage\/games\/Overwatch-272x380.jpg",
+            "logo_small": "http:\/\/darestreams.local\/storage\/games\/Overwatch-52x72.jpg",
+            "streams": [
+                {
+                    "id": 3,
+                    "channel_id": null,
+                    "game_id": 2,
+                    "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?20346",
+                    "start_at": "1997-04-19 13:28:10",
+                    "ended_at": null,
+                    "status": 0,
+                    "is_payed": 0,
+                    "quantity_donators": 0,
+                    "quantity_donations": 0,
+                    "amount_donations": "0.00",
+                    "created_at": "2019-08-09T03:30:00.000000Z",
+                    "updated_at": "2019-08-09T03:30:00.000000Z"
+                },
+                {
+                    "id": 4,
+                    "channel_id": null,
+                    "game_id": 2,
+                    "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?90558",
+                    "start_at": "1993-08-30 09:02:42",
+                    "ended_at": null,
+                    "status": 0,
+                    "is_payed": 0,
+                    "quantity_donators": 0,
+                    "quantity_donations": 0,
+                    "amount_donations": "0.00",
+                    "created_at": "2019-08-09T03:30:00.000000Z",
+                    "updated_at": "2019-08-09T03:30:00.000000Z"
+                },
+                {
+                    "id": 5,
+                    "channel_id": null,
+                    "game_id": 2,
+                    "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?63957",
+                    "start_at": "2016-03-28 21:55:13",
+                    "ended_at": null,
+                    "status": 0,
+                    "is_payed": 0,
+                    "quantity_donators": 0,
+                    "quantity_donations": 0,
+                    "amount_donations": "0.00",
+                    "created_at": "2019-08-09T03:30:00.000000Z",
+                    "updated_at": "2019-08-09T03:30:00.000000Z"
+                },
+                {
+                    "id": 6,
+                    "channel_id": null,
+                    "game_id": 2,
+                    "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?62980",
+                    "start_at": "1996-11-09 13:22:00",
+                    "ended_at": null,
+                    "status": 0,
+                    "is_payed": 0,
+                    "quantity_donators": 0,
+                    "quantity_donations": 0,
+                    "amount_donations": "0.00",
+                    "created_at": "2019-08-09T03:30:00.000000Z",
+                    "updated_at": "2019-08-09T03:30:00.000000Z"
+                },
+                {
+                    "id": 8,
+                    "channel_id": null,
+                    "game_id": 2,
+                    "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?37375",
+                    "start_at": "1975-07-20 19:42:37",
+                    "ended_at": null,
+                    "status": 0,
+                    "is_payed": 0,
+                    "quantity_donators": 0,
+                    "quantity_donations": 0,
+                    "amount_donations": "0.00",
+                    "created_at": "2019-08-09T03:30:00.000000Z",
+                    "updated_at": "2019-08-09T03:30:00.000000Z"
+                }
+            ],
+            "tags": []
         }
     ]
 }
@@ -5921,7 +5881,7 @@ print_r(json_decode((string) $body));
 Parameter | Status | Description
 --------- | ------- | ------- | -----------
     include |  optional  | string String of connections: streams,tags, channels.
-    sort |  optional  | string Sort items by fields: title, id. For desc use '-' prefix.
+    sort |  optional  | string Sort items by fields: title, popularity. For desc use '-' prefix.
     page |  optional  | array Use as page[number]=1&page[size]=2.
 
 <!-- END_af3cb2deabe4f6e96b412e19f04ade03 -->
@@ -5953,6 +5913,7 @@ print_r(json_decode((string) $body));
         "id": 1,
         "title": "Fortnite",
         "title_short": "Fortnite",
+        "popularity": 178344,
         "logo": "http:\/\/darestreams.local\/storage\/games\/Fortnite-272x380.jpg",
         "logo_small": "http:\/\/darestreams.local\/storage\/games\/Fortnite-52x72.jpg",
         "streams": [
@@ -6048,6 +6009,41 @@ Parameter | Status | Description
 
 <!-- END_e424ca64247beff60bfc99293d4a674b -->
 
+<!-- START_7e8f7da0ff91ff4bacb18a5cac03a1da -->
+## Offer new category.
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+> Example request:
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->post("https://api.darestreams.com/games/offer", [
+    'headers' => [
+            "Content-Type" => "application/json",
+        ],
+    'json' => [
+            "title" => "New category.",
+        ],
+]);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+
+
+### HTTP Request
+`POST games/offer`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    title | string |  required  | Title of new category.
+
+<!-- END_7e8f7da0ff91ff4bacb18a5cac03a1da -->
+
 #Streams
 <!-- START_3d1bd0245cf4ecb9cb9fd2ead213c1b2 -->
 ## Display a listing of the resource.
@@ -6061,7 +6057,7 @@ $response = $client->get("https://api.darestreams.com/streams", [
     'query' => [
             "include" => "game,streams",
             "sort" => "-quantity_donators",
-            "page" => "2",
+            "page" => "12",
         ],
 ]);
 $body = $response->getBody();
@@ -6105,10 +6101,10 @@ $response = $client->post("https://api.darestreams.com/streams", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "game_id" => "2",
-            "link" => "incidunt",
-            "start_at" => "et",
-            "tags" => "itaque",
+            "game_id" => "15",
+            "link" => "minima",
+            "start_at" => "accusamus",
+            "tags" => "provident",
         ],
 ]);
 $body = $response->getBody();
@@ -6186,10 +6182,10 @@ $response = $client->put("https://api.darestreams.com/streams/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "game_id" => "12",
-            "link" => "expedita",
-            "start_at" => "ullam",
-            "tags" => "voluptates",
+            "game_id" => "13",
+            "link" => "iste",
+            "start_at" => "est",
+            "tags" => "tenetur",
         ],
 ]);
 $body = $response->getBody();
@@ -7455,7 +7451,7 @@ $response = $client->get("https://api.darestreams.com/streams/1/tasks", [
     'query' => [
             "include" => "user,stream",
             "sort" => "-amount_donations",
-            "page" => "16",
+            "page" => "13",
         ],
 ]);
 $body = $response->getBody();
@@ -7487,10 +7483,10 @@ print_r(json_decode((string) $body));
             "updated_at": "2019-08-09T03:30:46.000000Z",
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -7532,10 +7528,10 @@ print_r(json_decode((string) $body));
             "updated_at": "2019-08-09T03:30:46.000000Z",
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -7577,10 +7573,10 @@ print_r(json_decode((string) $body));
             "updated_at": "2019-08-09T03:30:43.000000Z",
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -7622,10 +7618,10 @@ print_r(json_decode((string) $body));
             "updated_at": "2019-08-09T03:30:44.000000Z",
             "user": {
                 "id": 5,
-                "name": "sporer.bernard",
-                "first_name": null,
+                "name": "Prof. Julius O'Connell I",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Julius O'Connell I",
                 "nickname": "sporer.bernard",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b2807a16fe9f748937f1a5a6c11e44c.jpg",
@@ -7667,10 +7663,10 @@ print_r(json_decode((string) $body));
             "updated_at": "2019-08-09T03:30:47.000000Z",
             "user": {
                 "id": 4,
-                "name": "dayna38",
-                "first_name": null,
+                "name": "Mrs. Maggie Waelchi III",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mrs. Maggie Waelchi III",
                 "nickname": "dayna38",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\21801c83af801b3a92618ad9ac8eb2a7.jpg",
@@ -7712,10 +7708,10 @@ print_r(json_decode((string) $body));
             "updated_at": "2019-08-09T03:30:46.000000Z",
             "user": {
                 "id": 5,
-                "name": "sporer.bernard",
-                "first_name": null,
+                "name": "Prof. Julius O'Connell I",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Julius O'Connell I",
                 "nickname": "sporer.bernard",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b2807a16fe9f748937f1a5a6c11e44c.jpg",
@@ -7757,10 +7753,10 @@ print_r(json_decode((string) $body));
             "updated_at": "2019-08-09T03:30:44.000000Z",
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -7802,10 +7798,10 @@ print_r(json_decode((string) $body));
             "updated_at": "2019-08-09T03:30:45.000000Z",
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -7847,10 +7843,10 @@ print_r(json_decode((string) $body));
             "updated_at": "2019-08-09T03:30:45.000000Z",
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -7892,10 +7888,10 @@ print_r(json_decode((string) $body));
             "updated_at": "2019-08-09T03:30:46.000000Z",
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -7937,10 +7933,10 @@ print_r(json_decode((string) $body));
             "updated_at": "2019-08-09T03:30:41.000000Z",
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -7982,10 +7978,10 @@ print_r(json_decode((string) $body));
             "updated_at": "2019-08-09T03:30:46.000000Z",
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -8027,10 +8023,10 @@ print_r(json_decode((string) $body));
             "updated_at": "2019-08-09T03:30:45.000000Z",
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -8087,13 +8083,13 @@ $response = $client->post("https://api.darestreams.com/streams/1/tasks", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_text" => "nostrum",
-            "full_text" => "possimus",
-            "interval_time" => "11",
-            "min_amount" => "18",
+            "small_text" => "sunt",
+            "full_text" => "quam",
+            "interval_time" => "19",
+            "min_amount" => "6",
             "is_superbowl" => "1",
-            "min_amount_superbowl" => "2",
-            "tags" => "necessitatibus",
+            "min_amount_superbowl" => "11",
+            "tags" => "voluptatibus",
         ],
 ]);
 $body = $response->getBody();
@@ -8178,13 +8174,13 @@ $response = $client->put("https://api.darestreams.com/streams/1/tasks/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_text" => "et",
-            "full_text" => "vel",
-            "interval_time" => "9",
-            "min_amount" => "19",
-            "is_superbowl" => "",
-            "min_amount_superbowl" => "19",
-            "tags" => "rerum",
+            "small_text" => "accusantium",
+            "full_text" => "fugiat",
+            "interval_time" => "18",
+            "min_amount" => "8",
+            "is_superbowl" => "1",
+            "min_amount_superbowl" => "11",
+            "tags" => "quaerat",
         ],
 ]);
 $body = $response->getBody();
@@ -8229,7 +8225,7 @@ $response = $client->get("https://api.darestreams.com/streams/1/tasks/1/transact
     'query' => [
             "include" => "task",
             "sort" => "-created_at",
-            "page" => "15",
+            "page" => "1",
         ],
 ]);
 $body = $response->getBody();
@@ -8275,7 +8271,7 @@ $response = $client->post("https://api.darestreams.com/streams/1/tasks/1/transac
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "amount" => "2",
+            "amount" => "14",
         ],
 ]);
 $body = $response->getBody();
@@ -20553,10 +20549,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 5,
-                "name": "sporer.bernard",
-                "first_name": null,
+                "name": "Prof. Julius O'Connell I",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Julius O'Connell I",
                 "nickname": "sporer.bernard",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b2807a16fe9f748937f1a5a6c11e44c.jpg",
@@ -20575,10 +20571,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 20,
-                "name": "morton.watsica",
-                "first_name": null,
+                "name": "Brittany Kihn",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Brittany Kihn",
                 "nickname": "morton.watsica",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\c141f4213e7ece823e622a9778a08d28.jpg",
@@ -20597,10 +20593,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -20619,10 +20615,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -20641,10 +20637,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -20663,10 +20659,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -20685,10 +20681,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 18,
-                "name": "favian.hauck",
-                "first_name": null,
+                "name": "Wilfredo Bruen",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Wilfredo Bruen",
                 "nickname": "favian.hauck",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\b5bdd0239e000ce34084b4baba7eaa46.jpg",
@@ -20707,10 +20703,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -20729,10 +20725,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -20751,10 +20747,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 20,
-                "name": "morton.watsica",
-                "first_name": null,
+                "name": "Brittany Kihn",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Brittany Kihn",
                 "nickname": "morton.watsica",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\c141f4213e7ece823e622a9778a08d28.jpg",
@@ -20773,10 +20769,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -20795,10 +20791,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -20817,10 +20813,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -20839,10 +20835,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -20861,10 +20857,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 18,
-                "name": "favian.hauck",
-                "first_name": null,
+                "name": "Wilfredo Bruen",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Wilfredo Bruen",
                 "nickname": "favian.hauck",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\b5bdd0239e000ce34084b4baba7eaa46.jpg",
@@ -20883,10 +20879,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 16,
-                "name": "ari69",
-                "first_name": null,
+                "name": "Felipa Kerluke",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Felipa Kerluke",
                 "nickname": "ari69",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\78cd3127c6d04abbae339fcd42453e34.jpg",
@@ -20905,10 +20901,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -20927,10 +20923,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -20949,10 +20945,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -20971,10 +20967,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -20993,10 +20989,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -21015,10 +21011,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 16,
-                "name": "ari69",
-                "first_name": null,
+                "name": "Felipa Kerluke",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Felipa Kerluke",
                 "nickname": "ari69",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\78cd3127c6d04abbae339fcd42453e34.jpg",
@@ -21037,10 +21033,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 20,
-                "name": "morton.watsica",
-                "first_name": null,
+                "name": "Brittany Kihn",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Brittany Kihn",
                 "nickname": "morton.watsica",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\c141f4213e7ece823e622a9778a08d28.jpg",
@@ -21059,10 +21055,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -21081,10 +21077,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -21103,10 +21099,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -21125,10 +21121,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -21147,10 +21143,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -21169,10 +21165,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -21191,10 +21187,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -21213,10 +21209,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -21235,10 +21231,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -21257,10 +21253,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -21279,10 +21275,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -21301,10 +21297,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -21323,10 +21319,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 20,
-                "name": "morton.watsica",
-                "first_name": null,
+                "name": "Brittany Kihn",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Brittany Kihn",
                 "nickname": "morton.watsica",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\c141f4213e7ece823e622a9778a08d28.jpg",
@@ -21345,10 +21341,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -21367,10 +21363,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -21389,10 +21385,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 16,
-                "name": "ari69",
-                "first_name": null,
+                "name": "Felipa Kerluke",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Felipa Kerluke",
                 "nickname": "ari69",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\78cd3127c6d04abbae339fcd42453e34.jpg",
@@ -21411,10 +21407,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -21433,10 +21429,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -21455,10 +21451,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -21477,10 +21473,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -21499,10 +21495,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 9,
-                "name": "jzboncak",
-                "first_name": null,
+                "name": "Emelie Homenick",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emelie Homenick",
                 "nickname": "jzboncak",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\4bd248684281448f3f63227266eb10ee.jpg",
@@ -21521,10 +21517,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -21543,10 +21539,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -21565,10 +21561,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -21587,10 +21583,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 5,
-                "name": "sporer.bernard",
-                "first_name": null,
+                "name": "Prof. Julius O'Connell I",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Julius O'Connell I",
                 "nickname": "sporer.bernard",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b2807a16fe9f748937f1a5a6c11e44c.jpg",
@@ -21609,10 +21605,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -21631,10 +21627,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -21653,10 +21649,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -21675,10 +21671,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 18,
-                "name": "favian.hauck",
-                "first_name": null,
+                "name": "Wilfredo Bruen",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Wilfredo Bruen",
                 "nickname": "favian.hauck",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\b5bdd0239e000ce34084b4baba7eaa46.jpg",
@@ -21697,10 +21693,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -21719,10 +21715,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -21741,10 +21737,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 5,
-                "name": "sporer.bernard",
-                "first_name": null,
+                "name": "Prof. Julius O'Connell I",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Julius O'Connell I",
                 "nickname": "sporer.bernard",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b2807a16fe9f748937f1a5a6c11e44c.jpg",
@@ -21763,10 +21759,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -21785,10 +21781,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -21807,10 +21803,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -21829,10 +21825,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 20,
-                "name": "morton.watsica",
-                "first_name": null,
+                "name": "Brittany Kihn",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Brittany Kihn",
                 "nickname": "morton.watsica",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\c141f4213e7ece823e622a9778a08d28.jpg",
@@ -21851,10 +21847,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -21873,10 +21869,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 5,
-                "name": "sporer.bernard",
-                "first_name": null,
+                "name": "Prof. Julius O'Connell I",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Julius O'Connell I",
                 "nickname": "sporer.bernard",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b2807a16fe9f748937f1a5a6c11e44c.jpg",
@@ -21895,10 +21891,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -21917,10 +21913,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -21939,10 +21935,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -21961,10 +21957,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -21983,10 +21979,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -22005,10 +22001,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -22027,10 +22023,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -22049,10 +22045,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -22071,10 +22067,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -22093,10 +22089,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -22115,10 +22111,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -22137,10 +22133,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -22159,10 +22155,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -22181,10 +22177,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -22203,10 +22199,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -22225,10 +22221,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -22247,10 +22243,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 9,
-                "name": "jzboncak",
-                "first_name": null,
+                "name": "Emelie Homenick",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emelie Homenick",
                 "nickname": "jzboncak",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\4bd248684281448f3f63227266eb10ee.jpg",
@@ -22269,10 +22265,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -22291,10 +22287,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 9,
-                "name": "jzboncak",
-                "first_name": null,
+                "name": "Emelie Homenick",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emelie Homenick",
                 "nickname": "jzboncak",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\4bd248684281448f3f63227266eb10ee.jpg",
@@ -22313,10 +22309,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -22335,10 +22331,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -22357,10 +22353,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -22379,10 +22375,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 9,
-                "name": "jzboncak",
-                "first_name": null,
+                "name": "Emelie Homenick",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emelie Homenick",
                 "nickname": "jzboncak",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\4bd248684281448f3f63227266eb10ee.jpg",
@@ -22401,10 +22397,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -22423,10 +22419,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -22445,10 +22441,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -22467,10 +22463,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -22489,10 +22485,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -22511,10 +22507,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -22533,10 +22529,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -22555,10 +22551,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -22577,10 +22573,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -22599,10 +22595,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -22621,10 +22617,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -22643,10 +22639,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -22665,10 +22661,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 18,
-                "name": "favian.hauck",
-                "first_name": null,
+                "name": "Wilfredo Bruen",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Wilfredo Bruen",
                 "nickname": "favian.hauck",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\b5bdd0239e000ce34084b4baba7eaa46.jpg",
@@ -22687,10 +22683,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -22709,10 +22705,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 11,
-                "name": "madaline.luettgen",
-                "first_name": null,
+                "name": "Reyna Larkin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Reyna Larkin",
                 "nickname": "madaline.luettgen",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -22731,10 +22727,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 13,
-                "name": "bins.peyton",
-                "first_name": null,
+                "name": "Cristal Emard PhD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Cristal Emard PhD",
                 "nickname": "bins.peyton",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -22753,10 +22749,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 16,
-                "name": "ari69",
-                "first_name": null,
+                "name": "Felipa Kerluke",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Felipa Kerluke",
                 "nickname": "ari69",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\78cd3127c6d04abbae339fcd42453e34.jpg",
@@ -22775,10 +22771,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 9,
-                "name": "jzboncak",
-                "first_name": null,
+                "name": "Emelie Homenick",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emelie Homenick",
                 "nickname": "jzboncak",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\4bd248684281448f3f63227266eb10ee.jpg",
@@ -22797,10 +22793,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -22819,10 +22815,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 4,
-                "name": "dayna38",
-                "first_name": null,
+                "name": "Mrs. Maggie Waelchi III",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mrs. Maggie Waelchi III",
                 "nickname": "dayna38",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\21801c83af801b3a92618ad9ac8eb2a7.jpg",
@@ -22841,10 +22837,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -22863,10 +22859,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 16,
-                "name": "ari69",
-                "first_name": null,
+                "name": "Felipa Kerluke",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Felipa Kerluke",
                 "nickname": "ari69",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\78cd3127c6d04abbae339fcd42453e34.jpg",
@@ -22885,10 +22881,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -22907,10 +22903,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 12,
-                "name": "bobby31",
-                "first_name": null,
+                "name": "Prof. Elbert Mueller",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Prof. Elbert Mueller",
                 "nickname": "bobby31",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -22929,10 +22925,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -22951,10 +22947,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -22973,10 +22969,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -22995,10 +22991,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -23017,10 +23013,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -23039,10 +23035,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 14,
-                "name": "raquel.kuhn",
-                "first_name": null,
+                "name": "Jacey Klocko",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Jacey Klocko",
                 "nickname": "raquel.kuhn",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -23061,10 +23057,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 1,
-                "name": "einar47",
-                "first_name": null,
+                "name": "Triston Cronin",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Triston Cronin",
                 "nickname": "einar47",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -23083,10 +23079,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 19,
-                "name": "lilian.senger",
-                "first_name": null,
+                "name": "Myron Bernhard",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Myron Bernhard",
                 "nickname": "lilian.senger",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -23105,10 +23101,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 2,
-                "name": "dbrakus",
-                "first_name": null,
+                "name": "Emmett Huels",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emmett Huels",
                 "nickname": "dbrakus",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -23127,10 +23123,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -23149,10 +23145,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 3,
-                "name": "dward",
-                "first_name": null,
+                "name": "Carmen Toy",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Carmen Toy",
                 "nickname": "dward",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -23171,10 +23167,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -23193,10 +23189,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 9,
-                "name": "jzboncak",
-                "first_name": null,
+                "name": "Emelie Homenick",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Emelie Homenick",
                 "nickname": "jzboncak",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\4bd248684281448f3f63227266eb10ee.jpg",
@@ -23215,10 +23211,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -23237,10 +23233,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 8,
-                "name": "ally36",
-                "first_name": null,
+                "name": "Ms. Brenna Auer V",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Ms. Brenna Auer V",
                 "nickname": "ally36",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -23259,10 +23255,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -23281,10 +23277,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 20,
-                "name": "morton.watsica",
-                "first_name": null,
+                "name": "Brittany Kihn",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Brittany Kihn",
                 "nickname": "morton.watsica",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\c141f4213e7ece823e622a9778a08d28.jpg",
@@ -23303,10 +23299,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 17,
-                "name": "carmelo64",
-                "first_name": null,
+                "name": "Mr. Daron Corkery",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Mr. Daron Corkery",
                 "nickname": "carmelo64",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -23325,10 +23321,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 6,
-                "name": "white.johnnie",
-                "first_name": null,
+                "name": "Willis Strosin DVM",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Willis Strosin DVM",
                 "nickname": "white.johnnie",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -23347,10 +23343,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 10,
-                "name": "alaina.cassin",
-                "first_name": null,
+                "name": "Esmeralda Herman",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Esmeralda Herman",
                 "nickname": "alaina.cassin",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -23369,10 +23365,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 15,
-                "name": "abdullah78",
-                "first_name": null,
+                "name": "Allen Bartell MD",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Allen Bartell MD",
                 "nickname": "abdullah78",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -23391,10 +23387,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -23413,10 +23409,10 @@ print_r(json_decode((string) $body));
             "deleted_at": null,
             "user": {
                 "id": 7,
-                "name": "melisa.connelly",
-                "first_name": null,
+                "name": "Kassandra Littel",
                 "last_name": null,
                 "middle_name": null,
+                "full_name": "Kassandra Littel",
                 "nickname": "melisa.connelly",
                 "role_id": null,
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -23453,7 +23449,7 @@ $response = $client->post("https://api.darestreams.com/threads/1/messages", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "body" => "consectetur",
+            "body" => "veritatis",
         ],
 ]);
 $body = $response->getBody();
@@ -23651,6 +23647,9 @@ print_r(json_decode((string) $body));
 
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://api.darestreams.com/users/me", [
+    'query' => [
+            "include" => "tasks,channel",
+        ],
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -23669,6 +23668,11 @@ print_r(json_decode((string) $body));
 ### HTTP Request
 `GET users/me`
 
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    include |  optional  | string String of connections: tasks, streams, channel.
 
 <!-- END_42962fed5bc9f2908380612aadf4f09e -->
 
@@ -23699,10 +23703,10 @@ print_r(json_decode((string) $body));
     "data": [
         {
             "id": 6,
-            "name": "white.johnnie",
-            "first_name": null,
+            "name": "Willis Strosin DVM",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Willis Strosin DVM",
             "nickname": "white.johnnie",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbe48b1f9a61a8999c5ecd87c6a1274f.jpg",
@@ -23946,10 +23950,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 5,
-            "name": "sporer.bernard",
-            "first_name": null,
+            "name": "Prof. Julius O'Connell I",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Prof. Julius O'Connell I",
             "nickname": "sporer.bernard",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b2807a16fe9f748937f1a5a6c11e44c.jpg",
@@ -24074,10 +24078,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 14,
-            "name": "raquel.kuhn",
-            "first_name": null,
+            "name": "Jacey Klocko",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Jacey Klocko",
             "nickname": "raquel.kuhn",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\2bd2ab0970451f4944b5e72f352753de.jpg",
@@ -24236,10 +24240,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 20,
-            "name": "morton.watsica",
-            "first_name": null,
+            "name": "Brittany Kihn",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Brittany Kihn",
             "nickname": "morton.watsica",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\c141f4213e7ece823e622a9778a08d28.jpg",
@@ -24381,10 +24385,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 7,
-            "name": "melisa.connelly",
-            "first_name": null,
+            "name": "Kassandra Littel",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Kassandra Littel",
             "nickname": "melisa.connelly",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\599c0fa59f5b44bfd64a80ba667b849a.jpg",
@@ -24594,10 +24598,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 11,
-            "name": "madaline.luettgen",
-            "first_name": null,
+            "name": "Reyna Larkin",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Reyna Larkin",
             "nickname": "madaline.luettgen",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dbc6eac85b2a8b8cf49f745504707f06.jpg",
@@ -24807,10 +24811,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 19,
-            "name": "lilian.senger",
-            "first_name": null,
+            "name": "Myron Bernhard",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Myron Bernhard",
             "nickname": "lilian.senger",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\d49c948c1b569e9012b923928f4fe06a.jpg",
@@ -24986,10 +24990,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 9,
-            "name": "jzboncak",
-            "first_name": null,
+            "name": "Emelie Homenick",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Emelie Homenick",
             "nickname": "jzboncak",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\4bd248684281448f3f63227266eb10ee.jpg",
@@ -25097,10 +25101,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 18,
-            "name": "favian.hauck",
-            "first_name": null,
+            "name": "Wilfredo Bruen",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Wilfredo Bruen",
             "nickname": "favian.hauck",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\b5bdd0239e000ce34084b4baba7eaa46.jpg",
@@ -25157,10 +25161,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 1,
-            "name": "einar47",
-            "first_name": null,
+            "name": "Triston Cronin",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Triston Cronin",
             "nickname": "einar47",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -25319,10 +25323,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 3,
-            "name": "dward",
-            "first_name": null,
+            "name": "Carmen Toy",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Carmen Toy",
             "nickname": "dward",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\44f27ffeaa0b5ff940f8635c2c73fb5c.jpg",
@@ -25464,10 +25468,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 2,
-            "name": "dbrakus",
-            "first_name": null,
+            "name": "Emmett Huels",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Emmett Huels",
             "nickname": "dbrakus",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7ddca8d03cf425af149c51bd32f54fdb.jpg",
@@ -25575,10 +25579,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 4,
-            "name": "dayna38",
-            "first_name": null,
+            "name": "Mrs. Maggie Waelchi III",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Mrs. Maggie Waelchi III",
             "nickname": "dayna38",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\21801c83af801b3a92618ad9ac8eb2a7.jpg",
@@ -25754,10 +25758,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 17,
-            "name": "carmelo64",
-            "first_name": null,
+            "name": "Mr. Daron Corkery",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Mr. Daron Corkery",
             "nickname": "carmelo64",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\944abd6c1168548d3edf38bc47bdde99.jpg",
@@ -25865,10 +25869,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 12,
-            "name": "bobby31",
-            "first_name": null,
+            "name": "Prof. Elbert Mueller",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Prof. Elbert Mueller",
             "nickname": "bobby31",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ff03a659f782f43a77896259a911e4f6.jpg",
@@ -26010,10 +26014,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 13,
-            "name": "bins.peyton",
-            "first_name": null,
+            "name": "Cristal Emard PhD",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Cristal Emard PhD",
             "nickname": "bins.peyton",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bce13346af7f0fa08b8e6d2bd5371e1f.jpg",
@@ -26206,10 +26210,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 16,
-            "name": "ari69",
-            "first_name": null,
+            "name": "Felipa Kerluke",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Felipa Kerluke",
             "nickname": "ari69",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\78cd3127c6d04abbae339fcd42453e34.jpg",
@@ -26317,10 +26321,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 8,
-            "name": "ally36",
-            "first_name": null,
+            "name": "Ms. Brenna Auer V",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Ms. Brenna Auer V",
             "nickname": "ally36",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a8f94ff524857bb21723da04747e6ac5.jpg",
@@ -26445,10 +26449,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 10,
-            "name": "alaina.cassin",
-            "first_name": null,
+            "name": "Esmeralda Herman",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Esmeralda Herman",
             "nickname": "alaina.cassin",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\6b30b2b1608a0975ba3aa10ee3f5bf7a.jpg",
@@ -26573,10 +26577,10 @@ print_r(json_decode((string) $body));
         },
         {
             "id": 15,
-            "name": "abdullah78",
-            "first_name": null,
+            "name": "Allen Bartell MD",
             "last_name": null,
             "middle_name": null,
+            "full_name": "Allen Bartell MD",
             "nickname": "abdullah78",
             "role_id": null,
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\375cd0a11c48ec9eb1f9371ddd3de49d.jpg",
@@ -26808,10 +26812,10 @@ print_r(json_decode((string) $body));
 {
     "data": {
         "id": 1,
-        "name": "einar47",
-        "first_name": null,
+        "name": "Triston Cronin",
         "last_name": null,
         "middle_name": null,
+        "full_name": "Triston Cronin",
         "nickname": "einar47",
         "role_id": null,
         "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7f95a5733f5e829369ee868a5803adca.jpg",
@@ -26992,6 +26996,16 @@ Parameter | Status | Description
 
 $client = new \GuzzleHttp\Client();
 $response = $client->put("https://api.darestreams.com/users/1", [
+    'headers' => [
+            "Content-Type" => "application/json",
+        ],
+    'json' => [
+            "name" => "Archibald",
+            "last_name" => "qui",
+            "middle_name" => "exercitationem",
+            "nickname" => "Archi89",
+            "email" => "example@example.ru",
+        ],
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -27005,11 +27019,22 @@ print_r(json_decode((string) $body));
 
 `PATCH users/{user}`
 
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    name | string |  required  | User's first name.
+    last_name | string |  optional  | User's last name.
+    middle_name | string |  optional  | User's middle name.
+    nickname | string |  required  | User's nickname.
+    email | string |  required  | User's email.
 
 <!-- END_7fe085c671e1b3d51e86136538b1d63f -->
 
 <!-- START_139fe72f815632772695c50e011d50f6 -->
-## users/{user}/account
+## User&#039;s account
+{user} - user id integer.
+
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
@@ -27039,7 +27064,9 @@ print_r(json_decode((string) $body));
 <!-- END_139fe72f815632772695c50e011d50f6 -->
 
 <!-- START_a5f649ddf62415a5676cf0c941c576c3 -->
-## users/{user}/channel
+## User&#039;s channel
+{user} - user id integer.
+
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
@@ -27069,7 +27096,8 @@ print_r(json_decode((string) $body));
 <!-- END_a5f649ddf62415a5676cf0c941c576c3 -->
 
 <!-- START_0683d066ac271332bee5e91317dae54b -->
-## users/{user}/avatar
+## Update user&#039;s avatar
+
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
@@ -27092,7 +27120,8 @@ print_r(json_decode((string) $body));
 <!-- END_0683d066ac271332bee5e91317dae54b -->
 
 <!-- START_de5d9c3bc9b04b5ce9a4f3dc1f07cc36 -->
-## users/{user}/overlay
+## Update user&#039;s overlay.
+
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
@@ -27115,7 +27144,8 @@ print_r(json_decode((string) $body));
 <!-- END_de5d9c3bc9b04b5ce9a4f3dc1f07cc36 -->
 
 <!-- START_2e0c2f1898bfc1d1a1135bea4bd77caa -->
-## users/{user}/password
+## Update user&#039;s password.
+
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
@@ -27123,6 +27153,12 @@ print_r(json_decode((string) $body));
 
 $client = new \GuzzleHttp\Client();
 $response = $client->patch("https://api.darestreams.com/users/1/password", [
+    'headers' => [
+            "Content-Type" => "application/json",
+        ],
+    'json' => [
+            "password" => "jadfohasd092",
+        ],
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -27134,12 +27170,20 @@ print_r(json_decode((string) $body));
 ### HTTP Request
 `PATCH users/{user}/password`
 
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    password | string |  required  | User's password.
 
 <!-- END_2e0c2f1898bfc1d1a1135bea4bd77caa -->
 
 <!-- START_e609ae5c21ee3e306171269cefcf89f7 -->
-## users/{user}/follow
+## Follow the user.
+
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+{user} - user id you want follow for.
+
 > Example request:
 
 ```php
@@ -27161,8 +27205,11 @@ print_r(json_decode((string) $body));
 <!-- END_e609ae5c21ee3e306171269cefcf89f7 -->
 
 <!-- START_52f1e2b1cbb27d0f15d754f0fce009fc -->
-## users/{user}/unfollow
+## Unfollow the user.
+
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+{user} - user id you want unfollow.
+
 > Example request:
 
 ```php
@@ -27184,7 +27231,10 @@ print_r(json_decode((string) $body));
 <!-- END_52f1e2b1cbb27d0f15d754f0fce009fc -->
 
 <!-- START_e0b93da6a9ed6c8f885aa49fe1fcde8a -->
-## users/{user}/followers
+## User&#039;s followers
+
+{user} - user id you want follow for.
+
 > Example request:
 
 ```php
@@ -27213,7 +27263,9 @@ print_r(json_decode((string) $body));
 <!-- END_e0b93da6a9ed6c8f885aa49fe1fcde8a -->
 
 <!-- START_c86688026c3bf661c6deb9d9fd787b05 -->
-## users/{user}/followings
+## Users followings
+{user} - user id integer.
+
 > Example request:
 
 ```php

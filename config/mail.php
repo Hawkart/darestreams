@@ -133,4 +133,9 @@ return [
 
     'log_channel' => env('MAIL_LOG_CHANNEL'),
 
+    /**
+     * Admin email for sending new game offers.
+     */
+    'game_offer_email' => env('GAME_OFFER_EMAIL')
+
 ];
