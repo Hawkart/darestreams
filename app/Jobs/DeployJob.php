@@ -2,8 +2,8 @@
 
 namespace App\Jobs;
 
+use Illuminate\Http\Request;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -12,16 +12,18 @@ use Illuminate\Support\Facades\Log;
 
 class DeployJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
-    public $request;
+    use Dispatchable, InteractsWithQueue, Queueable;
 
     /**
-     * Create a new job instance.
-     *
-     * @return void
+     * @var
      */
-    public function __construct($request)
+    protected $request;
+
+    /**
+     * DeployJob constructor.
+     * @param $request
+     */
+    public function __construct(Request $request)
     {
         $this->request = $request;
     }
