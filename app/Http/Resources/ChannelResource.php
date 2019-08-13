@@ -27,8 +27,10 @@ class ChannelResource extends JsonResource
             'logo' => $this->logo ? Storage::disk('public')->url(str_replace('public/storage', '', $this->logo)) : '/img/default_channel.jpg',
             'created_at' => $this->created_at,
 
+            'donates' => $this->donates,
+
             'user' => new UserResource($this->whenLoaded('user')),
-            'game' => new UserResource($this->whenLoaded('game')),
+            'game' => new GameResource($this->whenLoaded('game')),
             'streams' => StreamResource::collection($this->whenLoaded('streams')),
             'tags' => TagResource::collection($this->whenLoaded('tags'))
         ];

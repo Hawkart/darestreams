@@ -317,6 +317,46 @@ print_r(json_decode((string) $body));
 <!-- END_e65925f23b9bc6b93d9356895f29f80c -->
 
 #Channels
+<!-- START_b6cc973b55b7bb22ca0c1c79e337106d -->
+## Get top channels
+
+> Example request:
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->get("https://api.darestreams.com/channels/top", [
+    'query' => [
+            "hours" => "nostrum",
+            "limit" => "sit",
+        ],
+]);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+
+> Example response (500):
+
+```json
+{
+    "message": "Server Error"
+}
+```
+
+### HTTP Request
+`GET channels/top`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    hours |  optional  | integer Check amount donations sum for last N hours. Default: 240.
+    limit |  optional  | integer. Limit of top channels. Default: 10.
+
+<!-- END_b6cc973b55b7bb22ca0c1c79e337106d -->
+
 <!-- START_810e42410c294440a2f4edc230d3c14b -->
 ## Display a listing of the resource.
 
@@ -329,7 +369,7 @@ $response = $client->get("https://api.darestreams.com/channels", [
     'query' => [
             "include" => "user,streams",
             "sort" => "-id",
-            "page" => "12",
+            "page" => "1",
         ],
 ]);
 $body = $response->getBody();
@@ -353,6 +393,7 @@ print_r(json_decode((string) $body));
             "description": "Non vel enim dolores assumenda sit. Perferendis velit soluta id suscipit expedita rerum qui. Assumenda rerum a libero ut dolor minima a aut.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\0f3a12714ffd0c6e4af7227ced502dd0.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 15,
                 "name": "Allen Bartell MD",
@@ -378,6 +419,7 @@ print_r(json_decode((string) $body));
             "description": "Magni sint eveniet cum possimus qui voluptatem et. Culpa qui cumque porro amet omnis omnis corrupti. Dolorum est enim deserunt eveniet sunt enim accusamus.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\63f8ce219eb57d2289bef2166fb8af1a.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 19,
                 "name": "Myron Bernhard",
@@ -403,6 +445,7 @@ print_r(json_decode((string) $body));
             "description": "Molestiae dolorem dolorem cum numquam et repellendus quas veritatis. Qui est quia dignissimos consectetur. Aut rem labore non eum.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\f8d2d4ef1e5bc3a90c89300858354cd0.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 9,
                 "name": "Emelie Homenick",
@@ -428,6 +471,7 @@ print_r(json_decode((string) $body));
             "description": "Suscipit nostrum temporibus et id magnam. Non aut vero sed voluptatem provident. Ut accusamus rerum aperiam id at eligendi assumenda. Aut hic et repellendus qui iure magni architecto tempora.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\0d27cdec822481bc6dae0ed892c22185.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 8,
                 "name": "Ms. Brenna Auer V",
@@ -453,6 +497,7 @@ print_r(json_decode((string) $body));
             "description": "Perspiciatis sit sed excepturi rem non eos natus. Sed perspiciatis omnis facere similique enim rerum. Et explicabo architecto in animi est iste.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\58d24e5064b4e3ec0a7256692440db79.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 9,
                 "name": "Emelie Homenick",
@@ -478,6 +523,7 @@ print_r(json_decode((string) $body));
             "description": "Aut rerum excepturi ipsa est id. Nesciunt velit earum nisi dolorem harum. Aut voluptatibus doloribus doloremque odio voluptatem repudiandae. Ipsam qui rem incidunt sed explicabo iusto.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\f068bfaef1079ba1731043ed657bb6ad.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 20,
                 "name": "Brittany Kihn",
@@ -503,6 +549,7 @@ print_r(json_decode((string) $body));
             "description": "Odit veniam provident nemo. Et eos eum autem et repellendus. Beatae incidunt natus et consectetur vel ut. Non eaque magnam earum nisi est quasi et dolores.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\44f2454cd741e79db400068c5112436a.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 19,
                 "name": "Myron Bernhard",
@@ -528,6 +575,7 @@ print_r(json_decode((string) $body));
             "description": "Ipsam dicta eligendi est ducimus praesentium dignissimos. Dolorum sunt quam repellendus voluptatem quia dolor. Velit aliquam adipisci eum magni.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\0016579ab22865d86d3f7fe3680dc371.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 14,
                 "name": "Jacey Klocko",
@@ -553,6 +601,7 @@ print_r(json_decode((string) $body));
             "description": "Illum vel totam cumque velit voluptatum. Numquam suscipit in voluptatem veritatis voluptas sunt aspernatur neque. Et voluptatem ullam voluptatem ut.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\4e54e341c09a8b0f6858833c8ef5905d.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 11,
                 "name": "Reyna Larkin",
@@ -578,6 +627,7 @@ print_r(json_decode((string) $body));
             "description": "Repellat est consequatur qui illo modi ut neque molestiae. Non quod eum sapiente ratione in repellat velit qui. Quia et et excepturi quibusdam hic eos veniam qui.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\c14ee153f8385e2f5e18cd20b1bd8706.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 7,
                 "name": "Kassandra Littel",
@@ -603,6 +653,7 @@ print_r(json_decode((string) $body));
             "description": "Voluptatibus omnis eius similique. Labore nisi sapiente itaque in et praesentium. Tempora distinctio nulla excepturi quidem dolorum.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\2e581b9d29fa8a6f3cceca14edc2436e.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 10,
                 "name": "Esmeralda Herman",
@@ -628,6 +679,7 @@ print_r(json_decode((string) $body));
             "description": "Qui quam qui nesciunt velit molestias ea eligendi. Est nulla autem facere iste aut esse est. Quod cum qui quaerat deleniti maiores dolores et. Nisi quo qui sit consequatur repudiandae. Numquam cupiditate ducimus consectetur.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\75367705c1063f32400d6f63e02850da.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 20,
                 "name": "Brittany Kihn",
@@ -653,6 +705,7 @@ print_r(json_decode((string) $body));
             "description": "Dicta est voluptatem ut odio omnis possimus vitae. Est velit et cumque dolorem nesciunt consequatur. Aut ut rerum ipsam provident.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\4b7ebffc847bbfba12cc25098bdf177c.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 4,
                 "name": "Mrs. Maggie Waelchi III",
@@ -678,6 +731,7 @@ print_r(json_decode((string) $body));
             "description": "Qui ut quasi rem repellat itaque magnam. Aperiam qui facere fugiat modi eos. Voluptas praesentium repellat quam. Eius nemo veniam illum asperiores in.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\d498e962c3087de58ad97dd8c00a63c7.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 20,
                 "name": "Brittany Kihn",
@@ -703,6 +757,7 @@ print_r(json_decode((string) $body));
             "description": "Sit odit expedita illum minus et odio. Quis perferendis autem et illo consectetur. Possimus sunt odit expedita ex ut a nulla. Error odit labore consequatur neque iure ratione dolorem id. Facilis culpa ut omnis nesciunt.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\e9648b819d115a36a08c83d4e9655645.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 12,
                 "name": "Prof. Elbert Mueller",
@@ -728,6 +783,7 @@ print_r(json_decode((string) $body));
             "description": "Sit cumque odit rerum. Ut sed ratione et enim in consequatur. Est corrupti sunt natus. Id libero velit veniam mollitia.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\639b26351341081d7c66a1c9a0604624.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 7,
                 "name": "Kassandra Littel",
@@ -753,6 +809,7 @@ print_r(json_decode((string) $body));
             "description": "Soluta sit maiores et nihil debitis. Perspiciatis temporibus occaecati dicta et ducimus eveniet quibusdam. Qui fugiat dolores numquam saepe minus.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\343577a7366846604bcf6dbd5967feae.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 2,
                 "name": "Emmett Huels",
@@ -778,6 +835,7 @@ print_r(json_decode((string) $body));
             "description": "Totam sed quas atque dolor ut. In at accusamus sapiente voluptatem ea voluptate earum. Consectetur labore magnam enim voluptatem. Aut iste quasi amet quo id culpa.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\d2d34c2e5f8c462d58caa6bfd9f3250c.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 8,
                 "name": "Ms. Brenna Auer V",
@@ -803,6 +861,7 @@ print_r(json_decode((string) $body));
             "description": "Tempora sunt corrupti sunt dolorum ea quia recusandae sit. Autem laudantium eum corporis eum dolores libero fuga.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\a2c1078bff723e1db4b9c1d924d7090d.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 9,
                 "name": "Emelie Homenick",
@@ -828,6 +887,7 @@ print_r(json_decode((string) $body));
             "description": "Magnam alias quod vitae fuga deserunt odio vel. Ex non officiis dicta velit sed aut ea.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\7ff604abf949bd6866789c3102ad520c.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 7,
                 "name": "Kassandra Littel",
@@ -869,6 +929,7 @@ print_r(json_decode((string) $body));
             "description": "Accusantium est voluptatem exercitationem sit necessitatibus. Aspernatur expedita nisi tempore sint dolores blanditiis eum. Soluta dolorum aliquid minus unde. Corporis eos placeat distinctio explicabo explicabo.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\ab0657aeb86996b2574ac2dd21b5d1d8.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 11,
                 "name": "Reyna Larkin",
@@ -894,6 +955,7 @@ print_r(json_decode((string) $body));
             "description": "Doloremque saepe quidem voluptas est. Nihil porro itaque quae architecto dolores delectus nostrum. Sapiente non tempore et quis deserunt voluptas natus. Voluptatem veritatis nam ad et molestiae doloribus.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\64831f3d25d6c5a7e5e0350ba78cd184.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 2,
                 "name": "Emmett Huels",
@@ -919,6 +981,7 @@ print_r(json_decode((string) $body));
             "description": "Sit tempora ipsum excepturi consequatur sunt voluptas. Quia omnis tempora maxime quia qui magnam maxime voluptates. Repellendus sed qui dolore labore et rerum. Cum tempora harum nesciunt consequatur.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\51bebcbfedc172f7ad317f4e77f6794e.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 7,
                 "name": "Kassandra Littel",
@@ -944,6 +1007,7 @@ print_r(json_decode((string) $body));
             "description": "Aut et repellendus velit consequatur. Veritatis debitis officiis nemo dolorem porro nihil quia. Consectetur provident eveniet incidunt deserunt.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\91324db9d7e5b5a0182af01b7375e2d0.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 11,
                 "name": "Reyna Larkin",
@@ -969,6 +1033,7 @@ print_r(json_decode((string) $body));
             "description": "Aspernatur aperiam quisquam labore et ab sed. Quasi laborum quo quo porro facere magnam similique. Repellendus nulla eum nulla optio dolorem est porro occaecati. Aspernatur eum ut omnis quam ut quis. Sit ipsum magni et velit velit sit quisquam.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\6bbb86af84dd10efb30de899159038a9.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 15,
                 "name": "Allen Bartell MD",
@@ -994,6 +1059,7 @@ print_r(json_decode((string) $body));
             "description": "Est velit et consequatur maxime voluptates et ullam. Quibusdam sunt qui reprehenderit doloribus cum.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\529844caefc6fd8c783b9a63f1ae9344.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 11,
                 "name": "Reyna Larkin",
@@ -1019,6 +1085,7 @@ print_r(json_decode((string) $body));
             "description": "Porro saepe beatae nulla. Optio minima blanditiis debitis animi et. Et quae qui enim molestias maiores rerum dolores.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\77650f106f7741ecc7a011737c804614.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 5,
                 "name": "Prof. Julius O'Connell I",
@@ -1044,6 +1111,7 @@ print_r(json_decode((string) $body));
             "description": "Eos consequatur culpa distinctio quia neque ea. Ex culpa et provident minus enim cupiditate vitae id. Consequatur dicta et impedit omnis quibusdam error in.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\f463f3740093e3822347fa43f2dc89a3.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 3,
                 "name": "Carmen Toy",
@@ -1069,6 +1137,7 @@ print_r(json_decode((string) $body));
             "description": "Sed veniam architecto repellendus nulla hic qui sit. Minus doloribus ut dolorum non. Eaque est cumque quasi deleniti. Saepe ut voluptas id distinctio.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\ac1976cd72af229f4bc4122b4913aca2.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 9,
                 "name": "Emelie Homenick",
@@ -1094,6 +1163,7 @@ print_r(json_decode((string) $body));
             "description": "Maxime quis eum quo sed dolorum voluptatem perferendis. Non natus pariatur praesentium in repudiandae ut. In consequatur debitis aperiam alias voluptate.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\439e98578329fce26f8ea9b7477e53e0.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 20,
                 "name": "Brittany Kihn",
@@ -1119,6 +1189,7 @@ print_r(json_decode((string) $body));
             "description": "Omnis minus soluta et et aliquid. Atque qui sed sed. Consequatur consectetur ipsam aut aut cumque facere.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\f7137fb5a1a001a9202387f292f5fb9f.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 13,
                 "name": "Cristal Emard PhD",
@@ -1160,6 +1231,7 @@ print_r(json_decode((string) $body));
             "description": "Reprehenderit saepe quia et quia numquam. Distinctio dolor cupiditate harum blanditiis et est ea. Id adipisci quas voluptas quia debitis ut modi. Ducimus in eos velit ut ratione magni ullam. Magni non in quae quos.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\cc448b401610dfa3f18f965bc533bd32.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 19,
                 "name": "Myron Bernhard",
@@ -1185,6 +1257,7 @@ print_r(json_decode((string) $body));
             "description": "Quos molestias ut sint rerum illo sequi hic. Aut nisi aperiam qui.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\5ae77cbbfc8e116fb1628a148ba0de58.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 10,
                 "name": "Esmeralda Herman",
@@ -1210,6 +1283,7 @@ print_r(json_decode((string) $body));
             "description": "Dolores quis rerum aliquid molestiae accusamus. Quo vel ullam qui dolore adipisci repellendus quasi eum. Minima veritatis fugiat aut quia nobis quo debitis.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\007feddd6ddfc90a970c115111743aa3.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 16,
                 "name": "Felipa Kerluke",
@@ -1235,6 +1309,7 @@ print_r(json_decode((string) $body));
             "description": "Consequatur aut inventore eligendi ut. Debitis facilis quod aut sint voluptatem esse. Aut nobis enim porro laudantium modi deserunt blanditiis. Fugit quos in magnam neque rem aut. Ut accusantium ut voluptas error eaque et.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\0700c52504d51669b1ed92175fe8bd99.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 16,
                 "name": "Felipa Kerluke",
@@ -1260,6 +1335,7 @@ print_r(json_decode((string) $body));
             "description": "Aperiam delectus recusandae neque est iure. Distinctio debitis officia voluptas at pariatur illum facilis. Praesentium veritatis rerum mollitia libero molestias.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\5f3d0e879ed5835df7dba8ea9327ccab.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 8,
                 "name": "Ms. Brenna Auer V",
@@ -1285,6 +1361,7 @@ print_r(json_decode((string) $body));
             "description": "Aut voluptatem est eos qui sunt sapiente commodi. Omnis incidunt ipsum iste recusandae. Facilis dolores praesentium omnis tempore molestias. Nisi laboriosam ut ipsum cumque eos nisi perferendis.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\c423ed18c0fe48a5c0ec1a159f71115d.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 1,
                 "name": "Triston Cronin",
@@ -1310,6 +1387,7 @@ print_r(json_decode((string) $body));
             "description": "Magnam nisi deleniti saepe illo incidunt qui asperiores. Eum consequuntur architecto nisi. Nemo ab occaecati repellat accusantium ut necessitatibus repellat. Illo voluptatem quis praesentium laborum corrupti.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\8c101987818a7c928d17a7df9f893ee0.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 19,
                 "name": "Myron Bernhard",
@@ -1335,6 +1413,7 @@ print_r(json_decode((string) $body));
             "description": "Voluptatibus enim eos facilis omnis velit explicabo. Aut explicabo nostrum aut sit ut laboriosam. Voluptas in ut iste est. Facere ipsa temporibus hic ipsam perferendis asperiores modi sit.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\870468bdcce07e329672cadab1d3b767.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 13,
                 "name": "Cristal Emard PhD",
@@ -1360,6 +1439,7 @@ print_r(json_decode((string) $body));
             "description": "Magni et eaque commodi provident. Ea dolore esse earum est. Facilis accusamus deserunt placeat et cumque.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\d2a06ab47b8854935cb07ce94b17a81f.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 3,
                 "name": "Carmen Toy",
@@ -1385,6 +1465,7 @@ print_r(json_decode((string) $body));
             "description": "Dolorem temporibus cupiditate quas rerum dignissimos. Repellendus nostrum et officiis et architecto et. Eos fugit ut dolorem sunt.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\2d383dba02a89949fd8ec891bf3c9a93.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 1,
                 "name": "Triston Cronin",
@@ -1410,6 +1491,7 @@ print_r(json_decode((string) $body));
             "description": "Sapiente error sint voluptatem perspiciatis. Qui consequatur tempora sint sunt nam. Error facilis voluptatem dignissimos. Rerum iure suscipit officiis perferendis quae.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\aef05ced44211d3ce8ddea20cdfd8114.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 12,
                 "name": "Prof. Elbert Mueller",
@@ -1435,6 +1517,7 @@ print_r(json_decode((string) $body));
             "description": "Tenetur aut et repudiandae accusantium explicabo pariatur. Eius dignissimos inventore ex. Corrupti quaerat nulla veniam provident quas quisquam aut.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\dca09ac1b2dcaef1db02bf799a39ee1a.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 15,
                 "name": "Allen Bartell MD",
@@ -1460,6 +1543,7 @@ print_r(json_decode((string) $body));
             "description": "Qui libero dolores eius totam tempore. Et est animi consequuntur est voluptas. Animi qui non laborum sint illum. Vitae amet et et in molestiae.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\5dcc995adb883f532568e2ca87d16124.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 4,
                 "name": "Mrs. Maggie Waelchi III",
@@ -1485,6 +1569,7 @@ print_r(json_decode((string) $body));
             "description": "Iure non totam modi nesciunt sunt illo consequatur. In cumque nemo voluptatem sit repudiandae consequatur. Aliquam aperiam earum est consequatur corporis ut. Modi harum voluptate omnis ab.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\f5f404ee93f48b128ad804c4f812b19e.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 10,
                 "name": "Esmeralda Herman",
@@ -1510,6 +1595,7 @@ print_r(json_decode((string) $body));
             "description": "Ipsam ipsam similique tempore recusandae enim quam ab. Nulla ut molestiae ipsum quae vitae consequuntur rerum.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\898455d9ecc451048de5a397a8d8f31b.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 5,
                 "name": "Prof. Julius O'Connell I",
@@ -1535,6 +1621,7 @@ print_r(json_decode((string) $body));
             "description": "Voluptatem dolores nemo corporis sit id odio voluptates. Vero quia ut laborum voluptates. Ut expedita et ullam ea quibusdam.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\2c0f189f9203ef3528fe5dc2a72094c5.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 3,
                 "name": "Carmen Toy",
@@ -1560,6 +1647,7 @@ print_r(json_decode((string) $body));
             "description": "Qui voluptatum ex architecto tempora quaerat. Illum recusandae debitis impedit deleniti laboriosam ipsum temporibus iusto. Ex sed a aperiam mollitia voluptatem et exercitationem.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\6af7a79b189203bb5805059193781117.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 15,
                 "name": "Allen Bartell MD",
@@ -1585,6 +1673,7 @@ print_r(json_decode((string) $body));
             "description": "Architecto qui perspiciatis eos a. Nihil et possimus tempora. Ea minima quis nihil reiciendis. Magni id sunt est quis qui molestias sit.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\26d666929ce641de4e14ab74bddd397c.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 3,
                 "name": "Carmen Toy",
@@ -1610,6 +1699,7 @@ print_r(json_decode((string) $body));
             "description": "Rerum neque necessitatibus cumque. At aut hic eum. Omnis omnis iure enim tempore rerum. Et et inventore debitis eveniet et sit optio.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\f367313d68a68f98030ecad4321c0ee4.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 3,
                 "name": "Carmen Toy",
@@ -1635,6 +1725,7 @@ print_r(json_decode((string) $body));
             "description": "Rerum at voluptas aliquid omnis molestiae eligendi. Quibusdam aut dolorum labore quibusdam facere autem qui. Ut praesentium voluptatem amet neque harum exercitationem. Illo recusandae quia qui blanditiis. Qui sunt optio illo eos dolores.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\1375644436d9534d55e6b3f0105724b5.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 2,
                 "name": "Emmett Huels",
@@ -1660,6 +1751,7 @@ print_r(json_decode((string) $body));
             "description": "Quis ab repellendus molestias voluptas molestiae cum similique et. Doloremque error est voluptas fugit molestiae. Omnis sint voluptatibus aut dignissimos.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\4e3330ef0aa06aa122aca417afa09c52.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 8,
                 "name": "Ms. Brenna Auer V",
@@ -1685,6 +1777,7 @@ print_r(json_decode((string) $body));
             "description": "Saepe natus adipisci rem quibusdam. Asperiores et veniam tempore ex illo. Recusandae non magnam error.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\25dfd7189554667a1b4e43ebff528eee.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 2,
                 "name": "Emmett Huels",
@@ -1710,6 +1803,7 @@ print_r(json_decode((string) $body));
             "description": "Id praesentium est quo eum. Minus odit qui ut aut aut vel. Doloribus beatae assumenda quo beatae. Architecto non velit voluptatibus odio.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\3fe011a545273b1e32bc357e6dab6979.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 10,
                 "name": "Esmeralda Herman",
@@ -1735,6 +1829,7 @@ print_r(json_decode((string) $body));
             "description": "Aut eum animi ad quam minima. Consequatur explicabo perferendis architecto aperiam quo alias architecto. Et labore suscipit adipisci quod quasi doloribus id. Nobis praesentium quos voluptas et molestiae.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\aa1ba5a2f28b4a20436f48add07d6641.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 17,
                 "name": "Mr. Daron Corkery",
@@ -1760,6 +1855,7 @@ print_r(json_decode((string) $body));
             "description": "Porro id doloribus asperiores eos officia. Delectus quasi esse facere iure aperiam. Numquam dolor perspiciatis dolor rem quia autem est.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\c4f46f8cdcc39c4dd991662a8243c7fd.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 14,
                 "name": "Jacey Klocko",
@@ -1785,6 +1881,7 @@ print_r(json_decode((string) $body));
             "description": "Aut ad deleniti cumque veritatis. Debitis velit voluptas nisi consectetur soluta vel aut quas. Voluptatum quidem et magnam non et cum.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\c431bd49c2d67fae5ba2dda979344a9b.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 12,
                 "name": "Prof. Elbert Mueller",
@@ -1810,6 +1907,7 @@ print_r(json_decode((string) $body));
             "description": "Debitis sint laudantium nostrum. Et facere sed delectus fuga eveniet. Qui est ea recusandae ratione. Non minima deleniti rerum vel saepe necessitatibus ea.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\33034fe3ee6cb400762d34af3f30ca1e.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 3,
                 "name": "Carmen Toy",
@@ -1835,6 +1933,7 @@ print_r(json_decode((string) $body));
             "description": "Nam qui eum nemo vel. Nemo iure cum deleniti molestiae inventore ipsum. Aut voluptatem enim molestiae fuga qui non. Vel reprehenderit explicabo non nobis qui vel vero.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\b6a774b13603fc4c2c2154cf96f98e07.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 15,
                 "name": "Allen Bartell MD",
@@ -1860,6 +1959,7 @@ print_r(json_decode((string) $body));
             "description": "Amet possimus natus sed debitis. Deleniti eos voluptatem fugiat. Ab amet omnis quia nostrum ipsum. Quam saepe rerum est odio.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\bf52110da9b83c8e23d704e8c4084364.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 18,
                 "name": "Wilfredo Bruen",
@@ -1885,6 +1985,7 @@ print_r(json_decode((string) $body));
             "description": "Laborum quisquam perferendis occaecati voluptatem sapiente. Sunt iste ut distinctio. Quod aut quo porro est quia.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\5d19b5b203edd241a9f7f0199be1e288.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 7,
                 "name": "Kassandra Littel",
@@ -1910,6 +2011,7 @@ print_r(json_decode((string) $body));
             "description": "Repellendus unde cum ut. Exercitationem distinctio eaque doloremque accusantium alias consequatur. Vitae earum vel labore.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\9447a8a270150a445decf9c5b2443648.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 1,
                 "name": "Triston Cronin",
@@ -1935,6 +2037,7 @@ print_r(json_decode((string) $body));
             "description": "Et ducimus non inventore qui. Vitae non delectus neque odit. Numquam voluptas qui tenetur quae quia dolores illum.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\23611fd9606df09d67e1a48f9a838a07.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 17,
                 "name": "Mr. Daron Corkery",
@@ -1960,6 +2063,7 @@ print_r(json_decode((string) $body));
             "description": "Beatae enim at sequi modi labore adipisci officiis rerum. Id exercitationem in reiciendis. Veniam quia adipisci sint vero assumenda magni qui eligendi. Nihil praesentium sit sit consectetur.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\1fa3168eb37b0051902f2add4c66d6bf.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 18,
                 "name": "Wilfredo Bruen",
@@ -1985,6 +2089,7 @@ print_r(json_decode((string) $body));
             "description": "Itaque dolores qui velit quia et deleniti dolorem aperiam. Et sapiente perferendis ea vel quod. Rerum explicabo minus sequi ea facere.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\a3616e11c2864b46851a18f3557a29eb.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 13,
                 "name": "Cristal Emard PhD",
@@ -2010,6 +2115,7 @@ print_r(json_decode((string) $body));
             "description": "Molestiae voluptatum vel iusto. Sapiente est eos impedit eos illum optio. Sed consequatur ut qui non ad et modi.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\4c76cdb7bb9000b81f33425156f6cc52.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 10,
                 "name": "Esmeralda Herman",
@@ -2035,6 +2141,7 @@ print_r(json_decode((string) $body));
             "description": "Molestiae modi delectus in dignissimos quibusdam optio. Voluptatibus sed non veniam hic facilis. Cupiditate veritatis ea qui doloremque commodi et.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\6a2bee262b424b03dbc48b1fa4c3c939.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 19,
                 "name": "Myron Bernhard",
@@ -2060,6 +2167,7 @@ print_r(json_decode((string) $body));
             "description": "Ut rem excepturi ut deserunt illum. Autem et magni et omnis. Qui quasi nisi aut. Corporis enim ducimus vero quia ipsa sit sed voluptate.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\b15f198e598a86af91f245b59d33a407.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 6,
                 "name": "Willis Strosin DVM",
@@ -2085,6 +2193,7 @@ print_r(json_decode((string) $body));
             "description": "Reiciendis qui quasi et et minus. Aut voluptates neque eveniet dolores voluptates excepturi soluta. Dolorem iste aut illo repellendus dicta et.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\b0acd55919867c4e729e815f6e2a5047.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 1,
                 "name": "Triston Cronin",
@@ -2110,6 +2219,7 @@ print_r(json_decode((string) $body));
             "description": "Impedit aut dolor voluptas numquam aliquam optio sit. Quasi iusto ea et corporis sit dolor. Consequatur quis blanditiis aut accusamus. Dignissimos reiciendis cum et tempora nesciunt temporibus.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\df5f99a430bf02ef52b7f1d1c34dba22.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 19,
                 "name": "Myron Bernhard",
@@ -2135,6 +2245,7 @@ print_r(json_decode((string) $body));
             "description": "Molestias cupiditate et modi iusto rerum illo placeat. Explicabo error odio ea facere vel dolorem nostrum. Voluptatem possimus et facilis suscipit eaque sint voluptatem. Rerum alias officia velit aspernatur assumenda minima.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\70ad9ce9594637710481a597b6d5120d.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 10,
                 "name": "Esmeralda Herman",
@@ -2160,6 +2271,7 @@ print_r(json_decode((string) $body));
             "description": "Et at non voluptas porro adipisci esse qui. Voluptatem non sequi ad fugiat. Exercitationem reiciendis consequuntur esse non molestiae est officia. Veritatis soluta tenetur odio accusamus velit et doloribus reprehenderit.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\faf73d0330757762db211f537047aa4b.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 18,
                 "name": "Wilfredo Bruen",
@@ -2185,6 +2297,7 @@ print_r(json_decode((string) $body));
             "description": "Architecto consequatur sint nisi repellendus deleniti eveniet nulla. Fugiat rem qui aliquam officia. Earum repellendus in eaque accusamus consequatur velit aperiam. Dolorem alias tempore quasi ratione dolorem aut.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\a981ba251498b9773e4090b671ae4838.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 15,
                 "name": "Allen Bartell MD",
@@ -2210,6 +2323,7 @@ print_r(json_decode((string) $body));
             "description": "Repellendus voluptatem sint quod repellat in consequatur itaque. Dolore non aspernatur eos ut similique velit veritatis. Omnis fugiat dicta velit. Rerum qui ut est ea facere.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\5b9eb6b7ffdcce4db7f69be469fd2428.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 15,
                 "name": "Allen Bartell MD",
@@ -2235,6 +2349,7 @@ print_r(json_decode((string) $body));
             "description": "Id voluptatum earum itaque occaecati tempore. Aliquam quasi ratione explicabo ipsa. Nihil autem sit autem.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\4bf03e57513102b6609957844a9b5885.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 17,
                 "name": "Mr. Daron Corkery",
@@ -2260,6 +2375,7 @@ print_r(json_decode((string) $body));
             "description": "Repudiandae perspiciatis totam perspiciatis earum ut. Asperiores a sed repudiandae repellat corrupti repellendus.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\315f423e5d2c3bf3496c216b0adfedc1.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 1,
                 "name": "Triston Cronin",
@@ -2285,6 +2401,7 @@ print_r(json_decode((string) $body));
             "description": "Aliquam quos rerum est et cupiditate omnis vel. Voluptatum aliquam ea velit laudantium ut itaque. Placeat iure occaecati dolores perspiciatis. Praesentium id pariatur praesentium earum qui qui.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\ca57d3f60c2729ceee4e899ea9c642bb.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 3,
                 "name": "Carmen Toy",
@@ -2310,6 +2427,7 @@ print_r(json_decode((string) $body));
             "description": "Aut sed molestias sunt aliquid consequuntur et. Et soluta cupiditate quis voluptate ad. Tempora qui expedita velit at temporibus nam culpa quia. Hic unde incidunt aut hic a quod aliquid.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\d789faf93b0a209c20d268bdc1f56fcd.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 4,
                 "name": "Mrs. Maggie Waelchi III",
@@ -2335,6 +2453,7 @@ print_r(json_decode((string) $body));
             "description": "Beatae alias adipisci esse et odit. Qui quisquam autem consequuntur et sint laboriosam expedita. Aut ut et velit nulla quaerat. Quibusdam deserunt ipsum recusandae.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\a7856d3190ec95bcd4ff2ba7823ddccc.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 13,
                 "name": "Cristal Emard PhD",
@@ -2360,6 +2479,7 @@ print_r(json_decode((string) $body));
             "description": "Et quae earum asperiores dolor vel explicabo. Nihil sed placeat praesentium voluptatem enim tempora ipsum. Molestias porro accusantium saepe et omnis ut doloremque ratione.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\578e9104d0018448db68ce8543c73f49.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 9,
                 "name": "Emelie Homenick",
@@ -2385,6 +2505,7 @@ print_r(json_decode((string) $body));
             "description": "Quibusdam sit dolorum est. Ex quia deserunt quo aut velit eveniet voluptatem. Aut rerum recusandae sit magni in.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\8c19b35153d147e13ec90562cd56da11.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 4,
                 "name": "Mrs. Maggie Waelchi III",
@@ -2410,6 +2531,7 @@ print_r(json_decode((string) $body));
             "description": "Laboriosam commodi repellendus maiores quaerat repellat itaque perspiciatis. Dolor molestiae qui porro voluptas. Et aut occaecati perferendis quos culpa.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\cbe498ef8bf4873fcfc417b53b61f5c1.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 10,
                 "name": "Esmeralda Herman",
@@ -2435,6 +2557,7 @@ print_r(json_decode((string) $body));
             "description": "Nesciunt enim odit veniam enim. Soluta qui consequatur molestiae non. Voluptas sapiente hic fuga expedita consequatur est. Qui ratione vitae et ratione hic sed impedit. Sapiente explicabo qui doloribus ipsum.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\b8056d855a90990f96ab2eb6bf11c576.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 4,
                 "name": "Mrs. Maggie Waelchi III",
@@ -2460,6 +2583,7 @@ print_r(json_decode((string) $body));
             "description": "Est temporibus dolorum explicabo minima molestias rerum. Et quam voluptas est et et.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\26abcb7fc853475a5c84efbacd1ef22c.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 11,
                 "name": "Reyna Larkin",
@@ -2485,6 +2609,7 @@ print_r(json_decode((string) $body));
             "description": "Sed illum accusantium suscipit autem. Nihil illo vitae fugiat suscipit et perferendis quia. Et reiciendis culpa quo ut itaque.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\dc4a38e01766515948625c0d5926392f.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 2,
                 "name": "Emmett Huels",
@@ -2510,6 +2635,7 @@ print_r(json_decode((string) $body));
             "description": "Neque iste aut at totam et. Sequi ut eius et voluptas.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\ec3fc744d10c8b45ddbd2e7f1b51ec23.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 3,
                 "name": "Carmen Toy",
@@ -2535,6 +2661,7 @@ print_r(json_decode((string) $body));
             "description": "Qui nemo eum qui suscipit voluptatem. Rerum aliquid veritatis illum neque. Natus perferendis omnis dolore ut similique illum. Quidem beatae et voluptas repudiandae saepe dicta. Rerum ratione minus aliquam labore.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\3a5a5a0f1783401b8f9637cab3fed8e1.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 4,
                 "name": "Mrs. Maggie Waelchi III",
@@ -2560,6 +2687,7 @@ print_r(json_decode((string) $body));
             "description": "Qui laborum ut perferendis ab ut qui. Maiores aspernatur saepe molestiae et hic. Iure totam nulla placeat possimus occaecati ut. Ipsa unde voluptas perferendis.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\dda483b9444122063f3cddb29f5418bb.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 3,
                 "name": "Carmen Toy",
@@ -2585,6 +2713,7 @@ print_r(json_decode((string) $body));
             "description": "Cupiditate reprehenderit et culpa maiores rerum nesciunt mollitia est. Est omnis quibusdam mollitia aut aut est.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\6f8ad97765c37605dab148e9a8e8b6f3.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 17,
                 "name": "Mr. Daron Corkery",
@@ -2610,6 +2739,7 @@ print_r(json_decode((string) $body));
             "description": "Corporis ducimus suscipit incidunt quasi. Eos labore est et culpa deleniti nemo soluta.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\ea626491164b268d0ce51f237f3741f6.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 12,
                 "name": "Prof. Elbert Mueller",
@@ -2651,6 +2781,7 @@ print_r(json_decode((string) $body));
             "description": "Minus quibusdam quidem error illum sapiente qui. Rem omnis et quia itaque aspernatur placeat at nihil. Tempore suscipit aut nulla nihil.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\bbb484776f20cabfc0f7e42308e96966.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 13,
                 "name": "Cristal Emard PhD",
@@ -2676,6 +2807,7 @@ print_r(json_decode((string) $body));
             "description": "Perspiciatis tempora officiis nihil beatae asperiores doloribus hic. Quidem eaque doloremque saepe voluptates assumenda voluptatem. Qui consequatur quidem sunt aliquid. Nihil ea ratione esse maiores quae est quis iste.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\2ffcdb9bfbbcf8546df215b0cdb631fe.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 8,
                 "name": "Ms. Brenna Auer V",
@@ -2701,6 +2833,7 @@ print_r(json_decode((string) $body));
             "description": "Iusto harum magni voluptas in quia ipsa sed. Quisquam velit nulla quaerat est optio quod. Qui qui et amet quis consequatur at.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\00bdaf4d345770159cb6a79b5cd7c7fa.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 10,
                 "name": "Esmeralda Herman",
@@ -2726,6 +2859,7 @@ print_r(json_decode((string) $body));
             "description": "Reiciendis quo sunt qui laboriosam quos dolorum. Veritatis saepe ut et ut excepturi. Veniam quis ut quisquam dolorem.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\6f1ecd0616084f90f2de0288fe7ee0e5.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 14,
                 "name": "Jacey Klocko",
@@ -2751,6 +2885,7 @@ print_r(json_decode((string) $body));
             "description": "Aspernatur omnis officiis omnis nisi. Reiciendis fuga tenetur enim optio ut praesentium ut. Tenetur dolores rerum id voluptates.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\8e68c4891b75f26890a34b7c0a1b44ed.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 8,
                 "name": "Ms. Brenna Auer V",
@@ -2776,6 +2911,7 @@ print_r(json_decode((string) $body));
             "description": "Minima et deleniti dicta nesciunt eligendi temporibus. Sit totam perferendis voluptas amet ut voluptas. Laudantium numquam sit sapiente perspiciatis. Animi officiis quidem excepturi qui. Aut numquam vero dolore inventore.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\7ac9335c038a22d9a1e6c618ed50966a.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 7,
                 "name": "Kassandra Littel",
@@ -2801,6 +2937,7 @@ print_r(json_decode((string) $body));
             "description": "Est natus numquam inventore quia voluptas. Est et consequuntur qui. Consequatur est placeat optio saepe sapiente et ipsa recusandae. Quidem fuga molestias sit commodi asperiores ut iure.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\5cb7db141eaad0ab5de8c3dc486fbd7f.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 4,
                 "name": "Mrs. Maggie Waelchi III",
@@ -2826,6 +2963,7 @@ print_r(json_decode((string) $body));
             "description": "Nulla reiciendis sapiente cum nemo odio voluptas facere placeat. Porro reprehenderit explicabo dolor. Quas vel delectus architecto aspernatur. Nihil voluptate et accusantium aspernatur fugiat id.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\8402a3c6cb7628dd00ded1fa51cf81de.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 15,
                 "name": "Allen Bartell MD",
@@ -2851,6 +2989,7 @@ print_r(json_decode((string) $body));
             "description": "Aperiam libero ut dolor. Nihil doloribus distinctio quia. Cum quia modi aut fugit. Asperiores consequatur amet omnis pariatur ut.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\8a264ec05401f1574357def0c6cd8b28.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 12,
                 "name": "Prof. Elbert Mueller",
@@ -2876,6 +3015,7 @@ print_r(json_decode((string) $body));
             "description": "Illum iste sequi natus voluptatem assumenda ex. Inventore aut debitis praesentium nesciunt. Aut sequi nihil unde ea soluta quas. Delectus accusamus fuga id nesciunt.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\6e53731a071e76ef7db01a9eb9fcb1e0.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 4,
                 "name": "Mrs. Maggie Waelchi III",
@@ -2901,6 +3041,7 @@ print_r(json_decode((string) $body));
             "description": "Reiciendis et optio et dolorem. Sunt repudiandae exercitationem temporibus sit aut quos. Enim possimus et ullam ut enim. Minus quae saepe est aut.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\1c01b35756842a159c9d042caba6bd2e.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 17,
                 "name": "Mr. Daron Corkery",
@@ -2926,6 +3067,7 @@ print_r(json_decode((string) $body));
             "description": "Aperiam provident aliquam in qui nemo et. Modi tempore iste dolor. Praesentium facere soluta nihil enim earum corrupti autem sed.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\8e1d4a2acc3d83109a1815edc19e5907.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 11,
                 "name": "Reyna Larkin",
@@ -2967,6 +3109,7 @@ print_r(json_decode((string) $body));
             "description": "Qui nihil sit sapiente ipsa et ut atque. Esse enim voluptate et et esse atque. Suscipit beatae enim sed quia sunt dolore quia. Modi eveniet veniam et est.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\78a760627facc898f2b8b941c22fdbc4.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 11,
                 "name": "Reyna Larkin",
@@ -2992,6 +3135,7 @@ print_r(json_decode((string) $body));
             "description": "Amet perferendis consequuntur debitis soluta. Tempora a perferendis possimus magni unde similique ut. Nihil fugit quis inventore ullam necessitatibus ut ut. Explicabo sed quisquam dignissimos iste veritatis architecto.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\941871fd7dc066867c820ead1d0b4448.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 19,
                 "name": "Myron Bernhard",
@@ -3017,6 +3161,7 @@ print_r(json_decode((string) $body));
             "description": "Et aut repellendus qui distinctio. Quia necessitatibus in tempora aut. Repellendus exercitationem consequatur inventore debitis repudiandae.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\322cba51fc3cf12f230762bf3a615ea3.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 6,
                 "name": "Willis Strosin DVM",
@@ -3042,6 +3187,7 @@ print_r(json_decode((string) $body));
             "description": "Tempora aut id eos est itaque. Ut in officiis et. Laudantium nam corrupti impedit omnis aut nam. Culpa aut rem blanditiis repellat laudantium dolores enim.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\b23f7c84c022fc52399c2f8d3bbc7a07.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 18,
                 "name": "Wilfredo Bruen",
@@ -3067,6 +3213,7 @@ print_r(json_decode((string) $body));
             "description": "Esse vel facilis eum. Vero fuga officia veritatis omnis. Dignissimos voluptas nisi corrupti numquam aut nam ducimus iste. Ullam qui fugiat sequi.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\2de0076a27f58a181a223149cc7bd9aa.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 20,
                 "name": "Brittany Kihn",
@@ -3092,6 +3239,7 @@ print_r(json_decode((string) $body));
             "description": "Provident quasi ipsa qui cum ut. Deleniti quia aut eveniet est dolor. Dicta eos atque aliquam eveniet molestiae.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\10423241debbee71ddf08d4e8d2e4d17.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 7,
                 "name": "Kassandra Littel",
@@ -3117,6 +3265,7 @@ print_r(json_decode((string) $body));
             "description": "Animi aut ipsam eum commodi consequuntur delectus quos. Voluptatem aut vitae eum. Itaque iure quia consectetur et harum. Nemo pariatur atque consectetur in rerum est.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\efa9bf6e9c5752e0f05ce3ea421a51da.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 10,
                 "name": "Esmeralda Herman",
@@ -3142,6 +3291,7 @@ print_r(json_decode((string) $body));
             "description": "At beatae est suscipit minus est temporibus consectetur. Repellendus perspiciatis aut cum aut aut voluptatibus. Aut qui rerum dolores est. Perspiciatis reprehenderit nesciunt in doloribus quo enim amet. Blanditiis dolorum omnis magni sit excepturi enim.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\6f65700e1021d6b6fb48e17735b2ce8b.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 12,
                 "name": "Prof. Elbert Mueller",
@@ -3167,6 +3317,7 @@ print_r(json_decode((string) $body));
             "description": "Odio temporibus fugiat cupiditate voluptatibus et velit corporis. Adipisci quo optio excepturi occaecati recusandae.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\faeab1b831ee0688fa2a031bc4c4bfd0.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 8,
                 "name": "Ms. Brenna Auer V",
@@ -3192,6 +3343,7 @@ print_r(json_decode((string) $body));
             "description": "Ut sed animi quo. Consectetur et ut totam iure unde qui. Ratione accusantium architecto in ipsam unde.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\c6358a57bdc611777b61d9614d9103d2.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 1,
                 "name": "Triston Cronin",
@@ -3217,6 +3369,7 @@ print_r(json_decode((string) $body));
             "description": "Id quia magnam impedit enim fuga iste. Sed occaecati consequatur corporis eos ad dolor eos. Maiores facere quibusdam aut exercitationem eos eos. Tempora est dolor quo ut. Repellendus ut voluptatem et explicabo corrupti.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\b8b2e18a8ff713d6fb7b5e883a00b4b1.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 16,
                 "name": "Felipa Kerluke",
@@ -3242,6 +3395,7 @@ print_r(json_decode((string) $body));
             "description": "Ut cum quas minima nostrum quibusdam. Suscipit temporibus magni maxime soluta voluptas ut reprehenderit. Aperiam qui id id assumenda. Ipsam dignissimos voluptatem dolorem.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\33f13ac9449fb51d63a15cfa1f924367.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 10,
                 "name": "Esmeralda Herman",
@@ -3267,6 +3421,7 @@ print_r(json_decode((string) $body));
             "description": "Doloremque nobis consequatur dolor dolorem. Fuga et qui aperiam unde. Adipisci sunt maxime a molestias eveniet.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\3379eaa5d1ce36c8f63b9d5cb3ae60d9.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 10,
                 "name": "Esmeralda Herman",
@@ -3292,6 +3447,7 @@ print_r(json_decode((string) $body));
             "description": "Voluptatem doloremque aut natus. Totam ut delectus rerum magni quia quasi recusandae. Incidunt animi itaque fugiat. Et quos et dolorem quam distinctio maiores quam.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\28502425ec25ebc5d636469ecc83b28f.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 5,
                 "name": "Prof. Julius O'Connell I",
@@ -3317,6 +3473,7 @@ print_r(json_decode((string) $body));
             "description": "Non omnis rerum illo labore. Aliquid neque pariatur odio molestiae fugit corporis. Cumque sed ipsam incidunt. Deserunt minus quia culpa fugit aut soluta quas.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\c0472461f0d140657fe6345a69ba3fa9.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 5,
                 "name": "Prof. Julius O'Connell I",
@@ -3342,6 +3499,7 @@ print_r(json_decode((string) $body));
             "description": "Sit at nobis vero suscipit ducimus et et accusamus. Impedit nobis nobis perspiciatis inventore veniam eum omnis ut. Libero odit et et pariatur. Neque numquam reprehenderit sed. Vel sit non quasi est quia eveniet.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\cfdc4322fbdf90d153ddc6d2e6f6d14e.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 14,
                 "name": "Jacey Klocko",
@@ -3367,6 +3525,7 @@ print_r(json_decode((string) $body));
             "description": "Laborum quae dicta eos rerum. Iusto libero quod rerum id ut voluptatum. Qui earum iure amet reprehenderit.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\daeb54c9a40a24db0346738f4f8cfeab.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 19,
                 "name": "Myron Bernhard",
@@ -3392,6 +3551,7 @@ print_r(json_decode((string) $body));
             "description": "Est corrupti repellat voluptates dignissimos aut incidunt. Et est aut dolor ratione nihil maiores. Consequuntur fuga qui repellat sunt minima mollitia possimus iusto. Quia et illum a consequatur.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\3d5d5422ffbad07ef217b8af67f54a29.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 5,
                 "name": "Prof. Julius O'Connell I",
@@ -3433,6 +3593,7 @@ print_r(json_decode((string) $body));
             "description": "Vel eos vel rerum quia et deleniti ea. Unde et hic temporibus in iusto quia nulla. Iusto cumque culpa similique velit.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\08a6bd926fdcd49dea5f29a0cf846b1a.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 13,
                 "name": "Cristal Emard PhD",
@@ -3458,6 +3619,7 @@ print_r(json_decode((string) $body));
             "description": "Soluta itaque quae minus reiciendis totam. Molestias ut quos corrupti nulla amet. Eius maiores qui amet ut quam cum dolor. Voluptatem molestiae laboriosam et quibusdam.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\d44954cd52a659aa2a3bd9a891ab4a93.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 12,
                 "name": "Prof. Elbert Mueller",
@@ -3483,6 +3645,7 @@ print_r(json_decode((string) $body));
             "description": "Quisquam fugit ipsam aliquam earum laborum necessitatibus nulla. Accusantium rerum exercitationem fugiat ratione molestiae laboriosam. Sunt qui necessitatibus voluptate quia.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\3f5b1f596d88c952c56958ec7793dbe5.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 3,
                 "name": "Carmen Toy",
@@ -3508,6 +3671,7 @@ print_r(json_decode((string) $body));
             "description": "Earum eius nam voluptatem ut cumque tempore atque possimus. Qui veritatis sunt ipsa quo dolorum maxime. Ipsum eos id tenetur aut aut. Vel magni quas ex cumque porro vel. Nisi consequuntur dolor odit veritatis reiciendis.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\c3012a942eaf7261a0a0e5168e81def7.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 2,
                 "name": "Emmett Huels",
@@ -3549,6 +3713,7 @@ print_r(json_decode((string) $body));
             "description": "Non eius quis voluptate nam repudiandae fugiat provident possimus. Aut sed vel vel. Molestias culpa laboriosam ea ut.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\3054ba3fbf2c1579bf9228b2250dd8ad.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 6,
                 "name": "Willis Strosin DVM",
@@ -3568,13 +3733,13 @@ print_r(json_decode((string) $body));
                     "channel_id": null,
                     "game_id": 1,
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                    "start_at": "1971-05-16 02:20:51",
+                    "start_at": "2019-08-13 07:29:20",
                     "ended_at": null,
                     "status": 0,
                     "is_payed": 0,
                     "quantity_donators": 0,
                     "quantity_donations": 0,
-                    "amount_donations": "0.00",
+                    "amount_donations": "600.00",
                     "created_at": "2019-08-09T03:30:00.000000Z",
                     "updated_at": "2019-08-09T03:30:00.000000Z"
                 }
@@ -3590,6 +3755,7 @@ print_r(json_decode((string) $body));
             "description": "Rerum ex aperiam explicabo aut. Et nulla inventore perferendis possimus ipsa.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\0c0e4fd7c12a89562a33996be830eef1.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 18,
                 "name": "Wilfredo Bruen",
@@ -3615,6 +3781,7 @@ print_r(json_decode((string) $body));
             "description": "Porro eveniet saepe blanditiis pariatur officiis cumque voluptates. Error sapiente et sapiente natus voluptatem sit repellat. Tempora incidunt voluptatem eum iure inventore placeat voluptatibus dolor. Commodi aut mollitia praesentium impedit voluptatem harum quos. Voluptatum quae iure et vero soluta.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\a2a8455adb5b2be9245c9ed9e6e73790.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 10,
                 "name": "Esmeralda Herman",
@@ -3640,6 +3807,7 @@ print_r(json_decode((string) $body));
             "description": "Placeat qui voluptate suscipit aut minus dolorem officia delectus. Sint eos delectus vel at vel reiciendis perferendis. Deserunt totam ipsum est consectetur nisi aut. Nobis id autem amet.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\4d6b570e8ce8caa0dc40128149c8b2dd.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 4,
                 "name": "Mrs. Maggie Waelchi III",
@@ -3665,6 +3833,7 @@ print_r(json_decode((string) $body));
             "description": "Id numquam ipsum voluptate consequatur. Fugit provident quis labore aut dolores atque. Maiores qui reprehenderit pariatur facilis dolores ut minima. Sequi minima accusantium consectetur provident.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\2cca3ddfbdf7b4554e9445bb4ce39f1a.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 16,
                 "name": "Felipa Kerluke",
@@ -3690,6 +3859,7 @@ print_r(json_decode((string) $body));
             "description": "Rerum ab rerum facilis. Quis voluptatem a eligendi consequatur.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\c67e4369d091600ae3cd1375abb70ee8.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 18,
                 "name": "Wilfredo Bruen",
@@ -3715,6 +3885,7 @@ print_r(json_decode((string) $body));
             "description": "Perferendis excepturi et aspernatur in odit numquam. Cupiditate occaecati nobis voluptas et exercitationem id. Consequuntur ut dolor atque et ducimus aliquam libero. Eum officia soluta non similique nihil enim quibusdam.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\bf705f46e671d61e393be68139efc30a.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 4,
                 "name": "Mrs. Maggie Waelchi III",
@@ -3740,6 +3911,7 @@ print_r(json_decode((string) $body));
             "description": "Odit ab est quis itaque quia et odit. Voluptatum cupiditate et ullam sit ut. Ullam tempore aut in sint eveniet.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\8092fb17bb71865335fd1cedde5141cb.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 6,
                 "name": "Willis Strosin DVM",
@@ -3765,6 +3937,7 @@ print_r(json_decode((string) $body));
             "description": "Autem iure id ipsam recusandae. Exercitationem provident vero sit architecto maxime aut voluptatem.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\fdaf4f8cced605dd109e7ae379530b72.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 17,
                 "name": "Mr. Daron Corkery",
@@ -3790,6 +3963,7 @@ print_r(json_decode((string) $body));
             "description": "Consectetur ipsum aut laboriosam. Sapiente atque amet fuga. Nostrum aut vel exercitationem dolor cum. Consectetur veritatis exercitationem animi consequuntur quis quia iure.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\ee6e38da68196915f482e612cd2510b3.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 17,
                 "name": "Mr. Daron Corkery",
@@ -3815,6 +3989,7 @@ print_r(json_decode((string) $body));
             "description": "Dolorem et velit ratione ipsam odit doloremque distinctio. Eos odit quas et reiciendis corrupti voluptas tempora. Ipsa nesciunt ut assumenda aut odit hic.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\c8ee68a707bde1d6b6de3e6bcf53e844.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 6,
                 "name": "Willis Strosin DVM",
@@ -3840,6 +4015,7 @@ print_r(json_decode((string) $body));
             "description": "Beatae quia quaerat ipsum sequi quia. Molestiae neque exercitationem esse cum maiores. Labore vitae tenetur sit. Sit qui maiores dolores cum eum qui. In dolore voluptas aut ipsum consequuntur et.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\d3e162961380d1d9d6c98ecd9d5526a6.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 17,
                 "name": "Mr. Daron Corkery",
@@ -3865,6 +4041,7 @@ print_r(json_decode((string) $body));
             "description": "Perferendis nostrum consectetur magni. Ipsam deserunt laudantium cupiditate sapiente. Nemo aut aut est.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\94c5a5cecc771b334ac2624954d2b632.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 14,
                 "name": "Jacey Klocko",
@@ -3884,8 +4061,8 @@ print_r(json_decode((string) $body));
                     "channel_id": null,
                     "game_id": 1,
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?12018",
-                    "start_at": "1987-01-15 22:44:02",
-                    "ended_at": null,
+                    "start_at": "2019-08-13 08:09:10",
+                    "ended_at": "2019-08-06 00:00:00",
                     "status": 0,
                     "is_payed": 0,
                     "quantity_donators": 0,
@@ -3906,6 +4083,7 @@ print_r(json_decode((string) $body));
             "description": "Laborum explicabo quae perferendis officia. Aut dolores earum sunt.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\83e66c9e0d12e147d7550c78c6556263.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 17,
                 "name": "Mr. Daron Corkery",
@@ -3931,6 +4109,7 @@ print_r(json_decode((string) $body));
             "description": "Fugiat et quia aliquid enim. Molestias corporis aut accusamus iure. Unde sit ipsa hic culpa molestiae sunt dolorem. Tempore quas aut dolores repellendus quidem aut.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\13c885048b1b09e328a6b1d9b80de31c.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 20,
                 "name": "Brittany Kihn",
@@ -3956,6 +4135,7 @@ print_r(json_decode((string) $body));
             "description": "Excepturi dolorem adipisci voluptatem consectetur dolorem quaerat mollitia. Doloremque et est hic magni tempore. Nisi aliquam dolorem aliquid impedit debitis laboriosam. Quod quo molestias quia consequatur ratione aut placeat et.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\9088b2c16c63d7f4b1d6d001ff5ed971.jpg",
             "created_at": "2019-08-09T03:30:00.000000Z",
+            "donates": null,
             "user": {
                 "id": 3,
                 "name": "Carmen Toy",
@@ -3981,6 +4161,7 @@ print_r(json_decode((string) $body));
             "description": "Minima aut assumenda dicta voluptas animi repellat et. Officiis minima consectetur id iure consequuntur animi. Dicta magnam sequi nisi laudantium. Maiores et est numquam quibusdam.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\83e44089cc03f49cadcd87578b04f477.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 11,
                 "name": "Reyna Larkin",
@@ -4006,6 +4187,7 @@ print_r(json_decode((string) $body));
             "description": "Velit sit suscipit labore adipisci. Dolorem corporis quo reprehenderit ut distinctio inventore ea.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\c60042486d7074e9ba499dc3741b029a.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 13,
                 "name": "Cristal Emard PhD",
@@ -4031,6 +4213,7 @@ print_r(json_decode((string) $body));
             "description": "Et nulla facilis magnam consectetur officia adipisci beatae. Cumque molestiae ut eos et in illo. Consequuntur ducimus molestiae in mollitia.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\77300d43aa5ec4bc7714f2e832fe55e1.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 8,
                 "name": "Ms. Brenna Auer V",
@@ -4056,6 +4239,7 @@ print_r(json_decode((string) $body));
             "description": "Dicta est ab minima ipsam iste quaerat. Corrupti eum corporis et. Eveniet sit libero sit et hic.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\1483c0f47f1c848c7a73c05a8439d36d.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 1,
                 "name": "Triston Cronin",
@@ -4081,6 +4265,7 @@ print_r(json_decode((string) $body));
             "description": "Officiis vel blanditiis sint odit perspiciatis non deleniti ad. Ea occaecati inventore rem repellat totam est ad. Tempora rerum officiis architecto officia alias cumque. Aut dolorem ut labore sit et.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\a19cf8f83cf244843e420a206c12771a.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 6,
                 "name": "Willis Strosin DVM",
@@ -4106,6 +4291,7 @@ print_r(json_decode((string) $body));
             "description": "Eum expedita a est est. Est totam doloribus aut blanditiis voluptatem. Qui rem eveniet minus rerum dicta non quia. Alias et iure eos quae sed aut rerum saepe.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\1c6844269121ef830f33ea0d51196bd7.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 5,
                 "name": "Prof. Julius O'Connell I",
@@ -4131,6 +4317,7 @@ print_r(json_decode((string) $body));
             "description": "Nisi et dolores velit ut excepturi alias aut. Perferendis veniam non qui consectetur placeat est velit. Temporibus accusantium corporis placeat accusamus expedita eum omnis. Nam est totam dolores in.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\ed8fc21f22e9e1adca52236e82c72a77.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 19,
                 "name": "Myron Bernhard",
@@ -4156,6 +4343,7 @@ print_r(json_decode((string) $body));
             "description": "Dolor provident accusamus nihil animi. Sapiente saepe debitis beatae aspernatur quia. Ducimus nihil id molestiae repellendus. Impedit ea explicabo dolorum ipsa est.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\8ded8870833d37a2abe2b69384e47876.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 8,
                 "name": "Ms. Brenna Auer V",
@@ -4181,6 +4369,7 @@ print_r(json_decode((string) $body));
             "description": "Iste aspernatur praesentium eaque sit est perspiciatis inventore. Aut iste eos placeat illo nemo fugiat aperiam aut. Eaque ducimus in quo accusamus aut et nam.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\74ed7d6d40c778eb8019d039aae0f811.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 5,
                 "name": "Prof. Julius O'Connell I",
@@ -4206,6 +4395,7 @@ print_r(json_decode((string) $body));
             "description": "Mollitia in ad rerum magni. Necessitatibus neque atque hic unde explicabo qui.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\8bc74292a4b991f023965615fadfa2ac.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 20,
                 "name": "Brittany Kihn",
@@ -4231,6 +4421,7 @@ print_r(json_decode((string) $body));
             "description": "Id illum ut officiis in. Fugiat repellendus delectus odit at. Ullam deserunt veritatis laborum blanditiis autem perferendis.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\ad8549dbf9b2a6021c98b8f46ffed271.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 8,
                 "name": "Ms. Brenna Auer V",
@@ -4256,6 +4447,7 @@ print_r(json_decode((string) $body));
             "description": "Omnis non adipisci ea laboriosam molestias eligendi sunt. Repudiandae et molestias molestiae aut placeat nam accusamus.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\5e19006ca7c651dbbdbbcd1f925aa37a.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 11,
                 "name": "Reyna Larkin",
@@ -4281,6 +4473,7 @@ print_r(json_decode((string) $body));
             "description": "Tempore odit quasi nam et ut. Voluptatibus minima tempore dolorum architecto dolorum ut.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\aab15d1f0c73010b06ab27c6521237e0.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 9,
                 "name": "Emelie Homenick",
@@ -4306,6 +4499,7 @@ print_r(json_decode((string) $body));
             "description": "In quisquam nam ipsam. Nihil consequatur illum aut delectus labore.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\c209ab313d4fb5da831e5e361236f201.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 8,
                 "name": "Ms. Brenna Auer V",
@@ -4331,6 +4525,7 @@ print_r(json_decode((string) $body));
             "description": "Doloremque eos eligendi molestias quisquam. Perspiciatis tenetur aspernatur error illum quod voluptatibus. Aut doloribus voluptatem totam soluta totam ut. Pariatur dolore magni eos fuga. Aut odio omnis officia iusto delectus laudantium.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\7c5a5ac0aea8d0c42c7a5c8d92060545.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 4,
                 "name": "Mrs. Maggie Waelchi III",
@@ -4356,6 +4551,7 @@ print_r(json_decode((string) $body));
             "description": "Quia modi accusamus deserunt expedita commodi quas amet quod. Accusamus architecto ad rerum consequatur iste omnis neque et. Est alias dolorem itaque enim laboriosam et illum.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\de5e29ae2925ec3256779591fe02dd7b.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 7,
                 "name": "Kassandra Littel",
@@ -4381,6 +4577,7 @@ print_r(json_decode((string) $body));
             "description": "Omnis voluptatem quaerat consequatur officiis dicta temporibus. Id temporibus est consequatur laudantium. Sit qui reprehenderit omnis a neque aliquid aliquam. Doloribus ea modi dolorem ipsa.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\732925e2453f4a58c1ea693b736e07ac.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 1,
                 "name": "Triston Cronin",
@@ -4406,6 +4603,7 @@ print_r(json_decode((string) $body));
             "description": "Molestias officiis et non commodi. Nostrum qui voluptatem molestiae non. Eum corporis at vel.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\88f8677503fa3064a86e639d9552387b.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 15,
                 "name": "Allen Bartell MD",
@@ -4431,6 +4629,7 @@ print_r(json_decode((string) $body));
             "description": "Adipisci debitis sapiente quas aut qui est aliquid. Aliquam dolorum illum temporibus. Accusantium sint velit qui corporis. Ab repudiandae ea veritatis delectus minima enim.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\29b98ead85b1aa1382cd5a4ca1f6ef01.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 3,
                 "name": "Carmen Toy",
@@ -4456,6 +4655,7 @@ print_r(json_decode((string) $body));
             "description": "Vel delectus quia eum deserunt. Qui ut suscipit nihil corporis. Earum ea est non. Iure iste ipsum velit molestiae.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\96e6083cabf4fff2bc6185683fe8509d.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 15,
                 "name": "Allen Bartell MD",
@@ -4481,6 +4681,7 @@ print_r(json_decode((string) $body));
             "description": "Aut rerum quod alias eveniet voluptas quam est fuga. Est est et fuga autem fugiat ut fugit. Voluptatibus sapiente consequatur id amet accusamus odio. Cum qui laboriosam nihil enim.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\981ef5b1defb866d345fe780f8eb6c2c.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 2,
                 "name": "Emmett Huels",
@@ -4506,6 +4707,7 @@ print_r(json_decode((string) $body));
             "description": "Est harum quam qui magni. Neque enim ea vel omnis quos id iure. Suscipit exercitationem libero dicta. Expedita eum rem cumque dignissimos numquam accusantium quaerat.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\357c98ba67f54c5129e166633be9acdc.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 15,
                 "name": "Allen Bartell MD",
@@ -4531,6 +4733,7 @@ print_r(json_decode((string) $body));
             "description": "Ut odio fuga voluptatem aut. Eos officiis a voluptas culpa. Et est sit commodi.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\c018836183ae4268efc65afcb8cc1e3c.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 17,
                 "name": "Mr. Daron Corkery",
@@ -4556,6 +4759,7 @@ print_r(json_decode((string) $body));
             "description": "Omnis sed aut repudiandae. Non cum provident doloribus quasi sapiente quia reprehenderit dolor. Ut quisquam id unde doloribus.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\02e8b8d169fa20279946cfedfeb167ea.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 11,
                 "name": "Reyna Larkin",
@@ -4581,6 +4785,7 @@ print_r(json_decode((string) $body));
             "description": "Commodi ullam unde ab voluptas. Harum quo placeat voluptatem. Nam officiis qui voluptates aliquid vitae quia animi numquam. Voluptatem voluptas qui sed autem esse iure et.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\b4acc18d29dabb8c908d9fd7a61fb5d3.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 4,
                 "name": "Mrs. Maggie Waelchi III",
@@ -4606,6 +4811,7 @@ print_r(json_decode((string) $body));
             "description": "Cumque ut omnis illo minus distinctio voluptas. Soluta enim ea voluptatem hic saepe in. Libero et nobis qui quibusdam. Corrupti autem omnis aperiam quo.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\bbf02740cf453422cc0d6bdbcf6fe625.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 7,
                 "name": "Kassandra Littel",
@@ -4631,6 +4837,7 @@ print_r(json_decode((string) $body));
             "description": "Optio quisquam error voluptatem quo sit autem doloremque. Aut aperiam vitae excepturi doloremque magnam qui qui. Repellat libero debitis libero aut voluptas id et.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\b8a2340ddeba4d7cb654ebcdd570f193.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 18,
                 "name": "Wilfredo Bruen",
@@ -4656,6 +4863,7 @@ print_r(json_decode((string) $body));
             "description": "Ipsa fuga iure quis voluptate et qui. Fuga alias aliquam ut molestias expedita laudantium id. Distinctio et molestiae facilis rerum et vitae cumque temporibus. Et ad distinctio fuga.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\6a005ba13a403f6723df7c8cde590532.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 9,
                 "name": "Emelie Homenick",
@@ -4681,6 +4889,7 @@ print_r(json_decode((string) $body));
             "description": "Corporis architecto odio est officia molestiae aut sed. Et quo magnam temporibus debitis corporis commodi laudantium. Placeat neque est cumque. Id nihil fugit earum nostrum aut quis.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\93167b8c72ecc9b2b18ca9db059a3ebf.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 1,
                 "name": "Triston Cronin",
@@ -4706,6 +4915,7 @@ print_r(json_decode((string) $body));
             "description": "Ex voluptas est dolor explicabo. Iusto et enim in rerum praesentium alias. Voluptates nobis voluptatem qui aspernatur.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\450f5c9cd6778861b2327ce7dbb3d7dc.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 17,
                 "name": "Mr. Daron Corkery",
@@ -4731,6 +4941,7 @@ print_r(json_decode((string) $body));
             "description": "Dolores reprehenderit vero id quisquam autem dolores. Eligendi deserunt rerum voluptas cumque excepturi. Doloribus omnis libero nostrum sequi vero.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\78bb3e8ce037bda9548b2c0baa94f577.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 7,
                 "name": "Kassandra Littel",
@@ -4756,6 +4967,7 @@ print_r(json_decode((string) $body));
             "description": "Eligendi sit dolorem doloremque hic animi a. Et consequatur et labore temporibus in. Porro est ut dolorum vel.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\7655d64d49ecccaf96eebe6b8ee31ed2.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 17,
                 "name": "Mr. Daron Corkery",
@@ -4781,6 +4993,7 @@ print_r(json_decode((string) $body));
             "description": "Neque sit omnis minima qui dolore ullam dolores. Quam eum quia qui. Ut libero excepturi nesciunt temporibus aut. Ut dolorem provident eos nostrum.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\eebee13ec172bdbde892e2d5308803e0.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 8,
                 "name": "Ms. Brenna Auer V",
@@ -4806,6 +5019,7 @@ print_r(json_decode((string) $body));
             "description": "Ut illo molestiae labore praesentium. Reprehenderit officiis qui reprehenderit enim omnis nihil inventore. Blanditiis praesentium dolor quo. Sunt architecto rerum facere consequatur omnis aut vel quo.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\2407376c577a5936aa7e313ba9c2737f.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 12,
                 "name": "Prof. Elbert Mueller",
@@ -4831,6 +5045,7 @@ print_r(json_decode((string) $body));
             "description": "Aliquid et libero sint eum magnam. Ipsa et possimus illum. Sed voluptatum minima molestiae commodi temporibus eaque.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\d2d6a024f91517e1a2ff343e3949e833.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 1,
                 "name": "Triston Cronin",
@@ -4856,6 +5071,7 @@ print_r(json_decode((string) $body));
             "description": "Aperiam dolorum atque accusantium praesentium. Voluptatibus neque cum et. Earum accusantium voluptatum repudiandae unde vel.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\d9d62b32137790203990ed9322f822fd.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 16,
                 "name": "Felipa Kerluke",
@@ -4881,6 +5097,7 @@ print_r(json_decode((string) $body));
             "description": "Aut voluptatem mollitia sunt. Molestiae ratione nemo qui nobis distinctio rerum molestias dolor.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\742767fa70ab6dc03378fb33ae10f558.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 20,
                 "name": "Brittany Kihn",
@@ -4922,6 +5139,7 @@ print_r(json_decode((string) $body));
             "description": "Voluptatem tempora ut commodi ut. Enim sapiente ea harum qui qui. Et iste omnis culpa ex velit eius dolor. Qui error quia quibusdam.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\772ed5e6422eaadc88b60911bb412fb2.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 17,
                 "name": "Mr. Daron Corkery",
@@ -4947,6 +5165,7 @@ print_r(json_decode((string) $body));
             "description": "Enim natus hic natus eum autem. Ratione sed voluptate qui ducimus. Autem sunt et est cupiditate quisquam.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\f8d3dd5e44adc4c460969c32f11442b0.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 18,
                 "name": "Wilfredo Bruen",
@@ -4972,6 +5191,7 @@ print_r(json_decode((string) $body));
             "description": "Eos aliquid ullam sapiente dolorem et autem sunt tenetur. Itaque officia quidem vitae alias nihil. Perferendis est accusantium laborum earum. Impedit consectetur qui magnam quam vel rem quidem.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\31a06905355287487d36d3aa1ba5d2f4.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 3,
                 "name": "Carmen Toy",
@@ -4997,6 +5217,7 @@ print_r(json_decode((string) $body));
             "description": "Labore modi non perferendis quod vel minima qui eius. Cupiditate eveniet aut debitis veniam est ipsam magni. Quos aut laudantium dolor porro.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\45588f69f2d64b235592f4752bebce18.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 14,
                 "name": "Jacey Klocko",
@@ -5022,6 +5243,7 @@ print_r(json_decode((string) $body));
             "description": "Vitae maxime eos enim et consectetur iste. Quae laudantium fugiat nulla aut ea. Neque est tenetur dicta inventore. Nesciunt non et laudantium sunt voluptatibus quis fugit.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\55937afa89ac25720b5b1ca10f8bab40.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 3,
                 "name": "Carmen Toy",
@@ -5047,6 +5269,7 @@ print_r(json_decode((string) $body));
             "description": "Ratione cum repudiandae porro velit quia eveniet quas. Sequi aut temporibus similique aut nobis. Aut nisi dolorem quam libero non nostrum. Ut consequuntur eaque iure id deleniti.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\7baf65c5f092e5cc7dc74930877bd9c1.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 14,
                 "name": "Jacey Klocko",
@@ -5072,6 +5295,7 @@ print_r(json_decode((string) $body));
             "description": "Quam culpa at et quis. Facere veniam commodi similique sit provident repellendus ratione facilis. Sunt occaecati labore in dolorem qui.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\7efa6b483d9740c9e77d4dcc05549baf.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 8,
                 "name": "Ms. Brenna Auer V",
@@ -5097,6 +5321,7 @@ print_r(json_decode((string) $body));
             "description": "At sunt iste doloremque et hic. Commodi voluptas fuga nostrum harum sit rerum fuga. Consectetur deleniti aut fuga quis est sint. Maxime at quae dolorum ullam voluptatibus exercitationem.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\301425f0d40f91aef7e14cea80f722a7.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 17,
                 "name": "Mr. Daron Corkery",
@@ -5122,6 +5347,7 @@ print_r(json_decode((string) $body));
             "description": "Est et et qui eum. Porro omnis libero aperiam soluta accusantium natus. Quis qui qui explicabo ullam nesciunt soluta. Voluptatem velit eos consequuntur accusantium accusamus deleniti.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\bb4d8d9555ba747112af27e9e394d282.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 10,
                 "name": "Esmeralda Herman",
@@ -5147,6 +5373,7 @@ print_r(json_decode((string) $body));
             "description": "Laboriosam numquam laboriosam possimus nam necessitatibus. Reprehenderit reiciendis qui unde enim voluptates. Occaecati dicta quis perferendis quos temporibus voluptatem. Assumenda reiciendis sit maxime ratione esse dolorem aut. Est rerum minima veniam dolores.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\53c7412308fb0c1b8bf6805abd59249d.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 16,
                 "name": "Felipa Kerluke",
@@ -5172,6 +5399,7 @@ print_r(json_decode((string) $body));
             "description": "Deleniti hic maiores quaerat autem enim. Aut non nemo laboriosam quam dignissimos omnis maxime. Qui amet ut occaecati et.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\65653ab8ca6a96e9044fb8b5ad407e9c.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 18,
                 "name": "Wilfredo Bruen",
@@ -5213,6 +5441,7 @@ print_r(json_decode((string) $body));
             "description": "Esse ducimus doloribus sint eum magnam consequuntur. Nobis soluta itaque laudantium ut perferendis sequi quisquam. Sed tenetur aliquid odio.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\3787ca42910a8cb11d13c97f96657d4e.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 8,
                 "name": "Ms. Brenna Auer V",
@@ -5238,6 +5467,7 @@ print_r(json_decode((string) $body));
             "description": "Fugiat ex aut ea qui illo et alias. Possimus incidunt aut suscipit tenetur cumque. Ullam cupiditate tempore officia excepturi. Velit perspiciatis quia debitis esse eum ut.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\71ec06176de890ea0e2c355d3ab1c30d.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 19,
                 "name": "Myron Bernhard",
@@ -5263,6 +5493,7 @@ print_r(json_decode((string) $body));
             "description": "Occaecati facere ut et. Ea tempora beatae inventore.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\1262512825c2495c9d4fc2e3b9f1e9b9.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 13,
                 "name": "Cristal Emard PhD",
@@ -5288,6 +5519,7 @@ print_r(json_decode((string) $body));
             "description": "Excepturi sed occaecati architecto id vero et. Consectetur qui et nobis enim.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\19e5a49739542a02690b76eb8d7e9df2.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 13,
                 "name": "Cristal Emard PhD",
@@ -5313,6 +5545,7 @@ print_r(json_decode((string) $body));
             "description": "Et sequi blanditiis non quo. Id quia qui illum sapiente omnis quis.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\c94bc115e8d606d6588f31c7e2d5b14f.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 7,
                 "name": "Kassandra Littel",
@@ -5338,6 +5571,7 @@ print_r(json_decode((string) $body));
             "description": "Unde inventore fugit commodi expedita suscipit sit velit consequatur. In non eum officia iure voluptatibus. Expedita amet rerum molestias sit quis id consequatur. Quod totam numquam voluptatem quia officia.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\46396e51ec5cfd11189804a06d4c7485.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 16,
                 "name": "Felipa Kerluke",
@@ -5363,6 +5597,7 @@ print_r(json_decode((string) $body));
             "description": "Magni ea dolorem adipisci voluptas blanditiis perspiciatis. Voluptas ullam officia neque quaerat. Vel non debitis aspernatur quasi consequatur culpa excepturi. Facere tempore veritatis voluptas quia ut.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\8f7bb1088d17d0df102495035f70fc26.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 14,
                 "name": "Jacey Klocko",
@@ -5388,6 +5623,7 @@ print_r(json_decode((string) $body));
             "description": "Et ab ipsa temporibus minima illo atque. Natus eveniet totam consectetur minus repudiandae est quod. Similique quia doloribus consequatur enim eum praesentium.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\1a211dc95d2bac0949f73ff11e127bab.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 19,
                 "name": "Myron Bernhard",
@@ -5413,6 +5649,7 @@ print_r(json_decode((string) $body));
             "description": "Est maxime quia quaerat eius. Dignissimos qui minima ea voluptatem. Itaque accusantium doloribus doloremque sequi. Aut dolores placeat deleniti enim et sequi vitae voluptates. Deleniti quaerat ex sunt eligendi placeat.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\204209d358135ccaebfd4a725310c052.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 17,
                 "name": "Mr. Daron Corkery",
@@ -5438,6 +5675,7 @@ print_r(json_decode((string) $body));
             "description": "Modi unde consequatur quam distinctio corporis dolor. A sed quia ea corrupti debitis voluptatum reprehenderit. Quaerat adipisci voluptate ut autem ut laborum sit delectus. Consequuntur voluptatem temporibus officiis et animi molestiae.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\1570e87c336a7bad497ec7075ed7780a.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 5,
                 "name": "Prof. Julius O'Connell I",
@@ -5463,6 +5701,7 @@ print_r(json_decode((string) $body));
             "description": "Eveniet quam repudiandae esse. Vitae quidem tempore maxime. Ut tenetur voluptatem soluta qui recusandae asperiores cum vel.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\778432e8daef28cf473a9c58ac579905.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 6,
                 "name": "Willis Strosin DVM",
@@ -5488,6 +5727,7 @@ print_r(json_decode((string) $body));
             "description": "Minima eligendi id ab non. In omnis qui autem possimus odio fugit. Molestias ab sapiente dignissimos. Fuga distinctio esse rerum saepe est ut.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\2186a1e733a4638040e6dcc420beb213.jpg",
             "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null,
             "user": {
                 "id": 2,
                 "name": "Emmett Huels",
@@ -5536,9 +5776,9 @@ $response = $client->post("https://api.darestreams.com/channels", [
     'json' => [
             "title" => "My new channel.",
             "description" => "Long description.",
-            "logo" => "commodi",
-            "game_id" => "7",
-            "link" => "voluptate",
+            "logo" => "tempora",
+            "game_id" => "15",
+            "link" => "sunt",
         ],
 ]);
 $body = $response->getBody();
@@ -5596,6 +5836,7 @@ print_r(json_decode((string) $body));
         "description": "Minima eligendi id ab non. In omnis qui autem possimus odio fugit. Molestias ab sapiente dignissimos. Fuga distinctio esse rerum saepe est ut.",
         "logo": "http:\/\/darestreams.local\/storage\/channels\\2186a1e733a4638040e6dcc420beb213.jpg",
         "created_at": "2019-08-09T03:29:59.000000Z",
+        "donates": null,
         "user": {
             "id": 2,
             "name": "Emmett Huels",
@@ -5641,9 +5882,9 @@ $response = $client->put("https://api.darestreams.com/channels/1", [
     'json' => [
             "title" => "My new channel.",
             "description" => "Long description.",
-            "logo" => "similique",
-            "game_id" => "16",
-            "link" => "fugit",
+            "logo" => "eum",
+            "game_id" => "18",
+            "link" => "assumenda",
         ],
 ]);
 $body = $response->getBody();
@@ -5671,6 +5912,46 @@ Parameter | Type | Status | Description
 <!-- END_2b969ff25feac1c03921afdbf3acb70d -->
 
 #Games
+<!-- START_c8d03de77f2b355bda22bcdc5ac5e78c -->
+## Top categories
+
+> Example request:
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->get("https://api.darestreams.com/games/top", [
+    'query' => [
+            "hours" => "libero",
+            "limit" => "praesentium",
+        ],
+]);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+
+> Example response (500):
+
+```json
+{
+    "message": "Server Error"
+}
+```
+
+### HTTP Request
+`GET games/top`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    hours |  optional  | integer Check amount donations sum for last N hours. Default: 240.
+    limit |  optional  | integer. Limit of top categories. Default: 10.
+
+<!-- END_c8d03de77f2b355bda22bcdc5ac5e78c -->
+
 <!-- START_af3cb2deabe4f6e96b412e19f04ade03 -->
 ## Display a listing of the resource.
 
@@ -5683,7 +5964,7 @@ $response = $client->get("https://api.darestreams.com/games", [
     'query' => [
             "include" => "tags,streams",
             "sort" => "-popularity",
-            "page" => "4",
+            "page" => "5",
         ],
 ]);
 $body = $response->getBody();
@@ -5710,13 +5991,13 @@ print_r(json_decode((string) $body));
                     "channel_id": null,
                     "game_id": 1,
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                    "start_at": "1971-05-16 02:20:51",
+                    "start_at": "2019-08-13 07:29:20",
                     "ended_at": null,
                     "status": 0,
                     "is_payed": 0,
                     "quantity_donators": 0,
                     "quantity_donations": 0,
-                    "amount_donations": "0.00",
+                    "amount_donations": "600.00",
                     "created_at": "2019-08-09T03:30:00.000000Z",
                     "updated_at": "2019-08-09T03:30:00.000000Z"
                 },
@@ -5725,8 +6006,8 @@ print_r(json_decode((string) $body));
                     "channel_id": null,
                     "game_id": 1,
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?12018",
-                    "start_at": "1987-01-15 22:44:02",
-                    "ended_at": null,
+                    "start_at": "2019-08-13 08:09:10",
+                    "ended_at": "2019-08-06 00:00:00",
                     "status": 0,
                     "is_payed": 0,
                     "quantity_donators": 0,
@@ -5922,13 +6203,13 @@ print_r(json_decode((string) $body));
                 "channel_id": null,
                 "game_id": 1,
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                "start_at": "1971-05-16 02:20:51",
+                "start_at": "2019-08-13 07:29:20",
                 "ended_at": null,
                 "status": 0,
                 "is_payed": 0,
                 "quantity_donators": 0,
                 "quantity_donations": 0,
-                "amount_donations": "0.00",
+                "amount_donations": "600.00",
                 "created_at": "2019-08-09T03:30:00.000000Z",
                 "updated_at": "2019-08-09T03:30:00.000000Z"
             },
@@ -5937,8 +6218,8 @@ print_r(json_decode((string) $body));
                 "channel_id": null,
                 "game_id": 1,
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?12018",
-                "start_at": "1987-01-15 22:44:02",
-                "ended_at": null,
+                "start_at": "2019-08-13 08:09:10",
+                "ended_at": "2019-08-06 00:00:00",
                 "status": 0,
                 "is_payed": 0,
                 "quantity_donators": 0,
@@ -6057,7 +6338,7 @@ $response = $client->get("https://api.darestreams.com/streams", [
     'query' => [
             "include" => "game,streams",
             "sort" => "-quantity_donators",
-            "page" => "12",
+            "page" => "8",
         ],
 ]);
 $body = $response->getBody();
@@ -6101,10 +6382,10 @@ $response = $client->post("https://api.darestreams.com/streams", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "game_id" => "15",
-            "link" => "minima",
-            "start_at" => "accusamus",
-            "tags" => "provident",
+            "game_id" => "8",
+            "link" => "blanditiis",
+            "start_at" => "sint",
+            "tags" => "sapiente",
         ],
 ]);
 $body = $response->getBody();
@@ -6182,10 +6463,10 @@ $response = $client->put("https://api.darestreams.com/streams/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "game_id" => "13",
-            "link" => "iste",
-            "start_at" => "est",
-            "tags" => "tenetur",
+            "game_id" => "10",
+            "link" => "omnis",
+            "start_at" => "ut",
+            "tags" => "in",
         ],
 ]);
 $body = $response->getBody();
@@ -7451,7 +7732,7 @@ $response = $client->get("https://api.darestreams.com/streams/1/tasks", [
     'query' => [
             "include" => "user,stream",
             "sort" => "-amount_donations",
-            "page" => "13",
+            "page" => "10",
         ],
 ]);
 $body = $response->getBody();
@@ -7499,13 +7780,13 @@ print_r(json_decode((string) $body));
                 "channel_id": null,
                 "game_id": 1,
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                "start_at": "1971-05-16 02:20:51",
+                "start_at": "2019-08-13 07:29:20",
                 "ended_at": null,
                 "status": 0,
                 "is_payed": 0,
                 "quantity_donators": 0,
                 "quantity_donations": 0,
-                "amount_donations": "0.00",
+                "amount_donations": "600.00",
                 "created_at": "2019-08-09T03:30:00.000000Z",
                 "updated_at": "2019-08-09T03:30:00.000000Z"
             }
@@ -7544,13 +7825,13 @@ print_r(json_decode((string) $body));
                 "channel_id": null,
                 "game_id": 1,
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                "start_at": "1971-05-16 02:20:51",
+                "start_at": "2019-08-13 07:29:20",
                 "ended_at": null,
                 "status": 0,
                 "is_payed": 0,
                 "quantity_donators": 0,
                 "quantity_donations": 0,
-                "amount_donations": "0.00",
+                "amount_donations": "600.00",
                 "created_at": "2019-08-09T03:30:00.000000Z",
                 "updated_at": "2019-08-09T03:30:00.000000Z"
             }
@@ -7589,13 +7870,13 @@ print_r(json_decode((string) $body));
                 "channel_id": null,
                 "game_id": 1,
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                "start_at": "1971-05-16 02:20:51",
+                "start_at": "2019-08-13 07:29:20",
                 "ended_at": null,
                 "status": 0,
                 "is_payed": 0,
                 "quantity_donators": 0,
                 "quantity_donations": 0,
-                "amount_donations": "0.00",
+                "amount_donations": "600.00",
                 "created_at": "2019-08-09T03:30:00.000000Z",
                 "updated_at": "2019-08-09T03:30:00.000000Z"
             }
@@ -7634,13 +7915,13 @@ print_r(json_decode((string) $body));
                 "channel_id": null,
                 "game_id": 1,
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                "start_at": "1971-05-16 02:20:51",
+                "start_at": "2019-08-13 07:29:20",
                 "ended_at": null,
                 "status": 0,
                 "is_payed": 0,
                 "quantity_donators": 0,
                 "quantity_donations": 0,
-                "amount_donations": "0.00",
+                "amount_donations": "600.00",
                 "created_at": "2019-08-09T03:30:00.000000Z",
                 "updated_at": "2019-08-09T03:30:00.000000Z"
             }
@@ -7679,13 +7960,13 @@ print_r(json_decode((string) $body));
                 "channel_id": null,
                 "game_id": 1,
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                "start_at": "1971-05-16 02:20:51",
+                "start_at": "2019-08-13 07:29:20",
                 "ended_at": null,
                 "status": 0,
                 "is_payed": 0,
                 "quantity_donators": 0,
                 "quantity_donations": 0,
-                "amount_donations": "0.00",
+                "amount_donations": "600.00",
                 "created_at": "2019-08-09T03:30:00.000000Z",
                 "updated_at": "2019-08-09T03:30:00.000000Z"
             }
@@ -7724,13 +8005,13 @@ print_r(json_decode((string) $body));
                 "channel_id": null,
                 "game_id": 1,
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                "start_at": "1971-05-16 02:20:51",
+                "start_at": "2019-08-13 07:29:20",
                 "ended_at": null,
                 "status": 0,
                 "is_payed": 0,
                 "quantity_donators": 0,
                 "quantity_donations": 0,
-                "amount_donations": "0.00",
+                "amount_donations": "600.00",
                 "created_at": "2019-08-09T03:30:00.000000Z",
                 "updated_at": "2019-08-09T03:30:00.000000Z"
             }
@@ -7769,13 +8050,13 @@ print_r(json_decode((string) $body));
                 "channel_id": null,
                 "game_id": 1,
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                "start_at": "1971-05-16 02:20:51",
+                "start_at": "2019-08-13 07:29:20",
                 "ended_at": null,
                 "status": 0,
                 "is_payed": 0,
                 "quantity_donators": 0,
                 "quantity_donations": 0,
-                "amount_donations": "0.00",
+                "amount_donations": "600.00",
                 "created_at": "2019-08-09T03:30:00.000000Z",
                 "updated_at": "2019-08-09T03:30:00.000000Z"
             }
@@ -7814,13 +8095,13 @@ print_r(json_decode((string) $body));
                 "channel_id": null,
                 "game_id": 1,
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                "start_at": "1971-05-16 02:20:51",
+                "start_at": "2019-08-13 07:29:20",
                 "ended_at": null,
                 "status": 0,
                 "is_payed": 0,
                 "quantity_donators": 0,
                 "quantity_donations": 0,
-                "amount_donations": "0.00",
+                "amount_donations": "600.00",
                 "created_at": "2019-08-09T03:30:00.000000Z",
                 "updated_at": "2019-08-09T03:30:00.000000Z"
             }
@@ -7859,13 +8140,13 @@ print_r(json_decode((string) $body));
                 "channel_id": null,
                 "game_id": 1,
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                "start_at": "1971-05-16 02:20:51",
+                "start_at": "2019-08-13 07:29:20",
                 "ended_at": null,
                 "status": 0,
                 "is_payed": 0,
                 "quantity_donators": 0,
                 "quantity_donations": 0,
-                "amount_donations": "0.00",
+                "amount_donations": "600.00",
                 "created_at": "2019-08-09T03:30:00.000000Z",
                 "updated_at": "2019-08-09T03:30:00.000000Z"
             }
@@ -7904,13 +8185,13 @@ print_r(json_decode((string) $body));
                 "channel_id": null,
                 "game_id": 1,
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                "start_at": "1971-05-16 02:20:51",
+                "start_at": "2019-08-13 07:29:20",
                 "ended_at": null,
                 "status": 0,
                 "is_payed": 0,
                 "quantity_donators": 0,
                 "quantity_donations": 0,
-                "amount_donations": "0.00",
+                "amount_donations": "600.00",
                 "created_at": "2019-08-09T03:30:00.000000Z",
                 "updated_at": "2019-08-09T03:30:00.000000Z"
             }
@@ -7949,13 +8230,13 @@ print_r(json_decode((string) $body));
                 "channel_id": null,
                 "game_id": 1,
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                "start_at": "1971-05-16 02:20:51",
+                "start_at": "2019-08-13 07:29:20",
                 "ended_at": null,
                 "status": 0,
                 "is_payed": 0,
                 "quantity_donators": 0,
                 "quantity_donations": 0,
-                "amount_donations": "0.00",
+                "amount_donations": "600.00",
                 "created_at": "2019-08-09T03:30:00.000000Z",
                 "updated_at": "2019-08-09T03:30:00.000000Z"
             }
@@ -7994,13 +8275,13 @@ print_r(json_decode((string) $body));
                 "channel_id": null,
                 "game_id": 1,
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                "start_at": "1971-05-16 02:20:51",
+                "start_at": "2019-08-13 07:29:20",
                 "ended_at": null,
                 "status": 0,
                 "is_payed": 0,
                 "quantity_donators": 0,
                 "quantity_donations": 0,
-                "amount_donations": "0.00",
+                "amount_donations": "600.00",
                 "created_at": "2019-08-09T03:30:00.000000Z",
                 "updated_at": "2019-08-09T03:30:00.000000Z"
             }
@@ -8039,13 +8320,13 @@ print_r(json_decode((string) $body));
                 "channel_id": null,
                 "game_id": 1,
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?52700",
-                "start_at": "1971-05-16 02:20:51",
+                "start_at": "2019-08-13 07:29:20",
                 "ended_at": null,
                 "status": 0,
                 "is_payed": 0,
                 "quantity_donators": 0,
                 "quantity_donations": 0,
-                "amount_donations": "0.00",
+                "amount_donations": "600.00",
                 "created_at": "2019-08-09T03:30:00.000000Z",
                 "updated_at": "2019-08-09T03:30:00.000000Z"
             }
@@ -8083,13 +8364,13 @@ $response = $client->post("https://api.darestreams.com/streams/1/tasks", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_text" => "sunt",
-            "full_text" => "quam",
-            "interval_time" => "19",
-            "min_amount" => "6",
-            "is_superbowl" => "1",
-            "min_amount_superbowl" => "11",
-            "tags" => "voluptatibus",
+            "small_text" => "animi",
+            "full_text" => "in",
+            "interval_time" => "16",
+            "min_amount" => "9",
+            "is_superbowl" => "",
+            "min_amount_superbowl" => "17",
+            "tags" => "distinctio",
         ],
 ]);
 $body = $response->getBody();
@@ -8174,13 +8455,13 @@ $response = $client->put("https://api.darestreams.com/streams/1/tasks/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_text" => "accusantium",
-            "full_text" => "fugiat",
-            "interval_time" => "18",
-            "min_amount" => "8",
+            "small_text" => "velit",
+            "full_text" => "reiciendis",
+            "interval_time" => "15",
+            "min_amount" => "19",
             "is_superbowl" => "1",
-            "min_amount_superbowl" => "11",
-            "tags" => "quaerat",
+            "min_amount_superbowl" => "8",
+            "tags" => "sit",
         ],
 ]);
 $body = $response->getBody();
@@ -8225,7 +8506,7 @@ $response = $client->get("https://api.darestreams.com/streams/1/tasks/1/transact
     'query' => [
             "include" => "task",
             "sort" => "-created_at",
-            "page" => "1",
+            "page" => "5",
         ],
 ]);
 $body = $response->getBody();
@@ -8271,7 +8552,7 @@ $response = $client->post("https://api.darestreams.com/streams/1/tasks/1/transac
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "amount" => "14",
+            "amount" => "11",
         ],
 ]);
 $body = $response->getBody();
@@ -23449,7 +23730,7 @@ $response = $client->post("https://api.darestreams.com/threads/1/messages", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "body" => "veritatis",
+            "body" => "occaecati",
         ],
 ]);
 $body = $response->getBody();
@@ -23722,7 +24003,8 @@ print_r(json_decode((string) $body));
                 "slug": "prof-janie-schuppe-sr",
                 "description": "Eveniet quam repudiandae esse. Vitae quidem tempore maxime. Ut tenetur voluptatem soluta qui recusandae asperiores cum vel.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\778432e8daef28cf473a9c58ac579905.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -23969,7 +24251,8 @@ print_r(json_decode((string) $body));
                 "slug": "idella-kuhic-dvm",
                 "description": "Modi unde consequatur quam distinctio corporis dolor. A sed quia ea corrupti debitis voluptatum reprehenderit. Quaerat adipisci voluptate ut autem ut laborum sit delectus. Consequuntur voluptatem temporibus officiis et animi molestiae.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\1570e87c336a7bad497ec7075ed7780a.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -24097,7 +24380,8 @@ print_r(json_decode((string) $body));
                 "slug": "hallie-ryan-iv",
                 "description": "Magni ea dolorem adipisci voluptas blanditiis perspiciatis. Voluptas ullam officia neque quaerat. Vel non debitis aspernatur quasi consequatur culpa excepturi. Facere tempore veritatis voluptas quia ut.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\8f7bb1088d17d0df102495035f70fc26.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -24259,7 +24543,8 @@ print_r(json_decode((string) $body));
                 "slug": "monroe-roberts",
                 "description": "Aut voluptatem mollitia sunt. Molestiae ratione nemo qui nobis distinctio rerum molestias dolor.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\742767fa70ab6dc03378fb33ae10f558.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -24404,7 +24689,8 @@ print_r(json_decode((string) $body));
                 "slug": "mckenna-okuneva",
                 "description": "Et sequi blanditiis non quo. Id quia qui illum sapiente omnis quis.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\c94bc115e8d606d6588f31c7e2d5b14f.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -24617,7 +24903,8 @@ print_r(json_decode((string) $body));
                 "slug": "miss-brianne-emmerich",
                 "description": "Omnis sed aut repudiandae. Non cum provident doloribus quasi sapiente quia reprehenderit dolor. Ut quisquam id unde doloribus.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\02e8b8d169fa20279946cfedfeb167ea.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -24830,7 +25117,8 @@ print_r(json_decode((string) $body));
                 "slug": "dr-eugene-kris",
                 "description": "Et ab ipsa temporibus minima illo atque. Natus eveniet totam consectetur minus repudiandae est quod. Similique quia doloribus consequatur enim eum praesentium.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\1a211dc95d2bac0949f73ff11e127bab.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -25009,7 +25297,8 @@ print_r(json_decode((string) $body));
                 "slug": "mrs-willie-rohan",
                 "description": "Ipsa fuga iure quis voluptate et qui. Fuga alias aliquam ut molestias expedita laudantium id. Distinctio et molestiae facilis rerum et vitae cumque temporibus. Et ad distinctio fuga.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\6a005ba13a403f6723df7c8cde590532.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -25120,7 +25409,8 @@ print_r(json_decode((string) $body));
                 "slug": "elza-glover",
                 "description": "Deleniti hic maiores quaerat autem enim. Aut non nemo laboriosam quam dignissimos omnis maxime. Qui amet ut occaecati et.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\65653ab8ca6a96e9044fb8b5ad407e9c.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -25180,7 +25470,8 @@ print_r(json_decode((string) $body));
                 "slug": "arvilla-green-md",
                 "description": "Aliquid et libero sint eum magnam. Ipsa et possimus illum. Sed voluptatum minima molestiae commodi temporibus eaque.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\d2d6a024f91517e1a2ff343e3949e833.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -25342,7 +25633,8 @@ print_r(json_decode((string) $body));
                 "slug": "prof-pete-gutmann-v",
                 "description": "Vitae maxime eos enim et consectetur iste. Quae laudantium fugiat nulla aut ea. Neque est tenetur dicta inventore. Nesciunt non et laudantium sunt voluptatibus quis fugit.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\55937afa89ac25720b5b1ca10f8bab40.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -25487,7 +25779,8 @@ print_r(json_decode((string) $body));
                 "slug": "kaylah-rosenbaum",
                 "description": "Minima eligendi id ab non. In omnis qui autem possimus odio fugit. Molestias ab sapiente dignissimos. Fuga distinctio esse rerum saepe est ut.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\2186a1e733a4638040e6dcc420beb213.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -25598,7 +25891,8 @@ print_r(json_decode((string) $body));
                 "slug": "rocio-kuvalis",
                 "description": "Commodi ullam unde ab voluptas. Harum quo placeat voluptatem. Nam officiis qui voluptates aliquid vitae quia animi numquam. Voluptatem voluptas qui sed autem esse iure et.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\b4acc18d29dabb8c908d9fd7a61fb5d3.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -25777,7 +26071,8 @@ print_r(json_decode((string) $body));
                 "slug": "miss-telly-gottlieb-dds",
                 "description": "Est maxime quia quaerat eius. Dignissimos qui minima ea voluptatem. Itaque accusantium doloribus doloremque sequi. Aut dolores placeat deleniti enim et sequi vitae voluptates. Deleniti quaerat ex sunt eligendi placeat.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\204209d358135ccaebfd4a725310c052.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -25888,7 +26183,8 @@ print_r(json_decode((string) $body));
                 "slug": "mrs-mabel-klocko-iii",
                 "description": "Ut illo molestiae labore praesentium. Reprehenderit officiis qui reprehenderit enim omnis nihil inventore. Blanditiis praesentium dolor quo. Sunt architecto rerum facere consequatur omnis aut vel quo.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\2407376c577a5936aa7e313ba9c2737f.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -26033,7 +26329,8 @@ print_r(json_decode((string) $body));
                 "slug": "samson-kreiger",
                 "description": "Excepturi sed occaecati architecto id vero et. Consectetur qui et nobis enim.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\19e5a49739542a02690b76eb8d7e9df2.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -26229,7 +26526,8 @@ print_r(json_decode((string) $body));
                 "slug": "dr-coy-rutherford-dvm",
                 "description": "Unde inventore fugit commodi expedita suscipit sit velit consequatur. In non eum officia iure voluptatibus. Expedita amet rerum molestias sit quis id consequatur. Quod totam numquam voluptatem quia officia.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\46396e51ec5cfd11189804a06d4c7485.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -26340,7 +26638,8 @@ print_r(json_decode((string) $body));
                 "slug": "demond-torphy-v",
                 "description": "Esse ducimus doloribus sint eum magnam consequuntur. Nobis soluta itaque laudantium ut perferendis sequi quisquam. Sed tenetur aliquid odio.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\3787ca42910a8cb11d13c97f96657d4e.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -26468,7 +26767,8 @@ print_r(json_decode((string) $body));
                 "slug": "abraham-baumbach",
                 "description": "Est et et qui eum. Porro omnis libero aperiam soluta accusantium natus. Quis qui qui explicabo ullam nesciunt soluta. Voluptatem velit eos consequuntur accusantium accusamus deleniti.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\bb4d8d9555ba747112af27e9e394d282.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -26596,7 +26896,8 @@ print_r(json_decode((string) $body));
                 "slug": "prof-joany-shields-iv",
                 "description": "Est harum quam qui magni. Neque enim ea vel omnis quos id iure. Suscipit exercitationem libero dicta. Expedita eum rem cumque dignissimos numquam accusantium quaerat.",
                 "logo": "http:\/\/darestreams.local\/storage\/channels\\357c98ba67f54c5129e166633be9acdc.jpg",
-                "created_at": "2019-08-09T03:29:59.000000Z"
+                "created_at": "2019-08-09T03:29:59.000000Z",
+                "donates": null
             },
             "tasks": [
                 {
@@ -26831,7 +27132,8 @@ print_r(json_decode((string) $body));
             "slug": "arvilla-green-md",
             "description": "Aliquid et libero sint eum magnam. Ipsa et possimus illum. Sed voluptatum minima molestiae commodi temporibus eaque.",
             "logo": "http:\/\/darestreams.local\/storage\/channels\\d2d6a024f91517e1a2ff343e3949e833.jpg",
-            "created_at": "2019-08-09T03:29:59.000000Z"
+            "created_at": "2019-08-09T03:29:59.000000Z",
+            "donates": null
         },
         "tasks": [
             {
@@ -27001,8 +27303,8 @@ $response = $client->put("https://api.darestreams.com/users/1", [
         ],
     'json' => [
             "name" => "Archibald",
-            "last_name" => "qui",
-            "middle_name" => "exercitationem",
+            "last_name" => "omnis",
+            "middle_name" => "dolorum",
             "nickname" => "Archi89",
             "email" => "example@example.ru",
         ],

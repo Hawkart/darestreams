@@ -26,6 +26,7 @@ Route::group(['namespace' => 'Api'], function () {
 
     Route::post('deploy', 'DeployController@deploy');
 
+    Route::get('games/top', 'GameController@top');
     Route::apiResource('games', 'GameController')->only(['index', 'show']);
     Route::post('games/offer', 'GameController@offer');
 
@@ -51,6 +52,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('users.notifications', 'Users\NotificationController');
     Route::patch('users/{user}/notifications/{notification}/setRead', 'Users\NotificationController@setRead');
 
+    Route::get('channels/top', 'ChannelController@top');
     Route::apiResource('channels', 'ChannelController')->only(['index', 'show', 'store', 'update']);
 
     Route::apiResource('streams', 'StreamController');

@@ -13,6 +13,9 @@ class Stream extends Model implements ViewableContract
 {
     use HasTags, BelongsToThrough, Viewable;
 
+    const STATUS_CREATED = 0;
+    const STATUS_FINISHED = 3;
+
     /**
      * The table associated with the model.
      *

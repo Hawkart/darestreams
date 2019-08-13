@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use \Spatie\Tags\HasTags;
+use Carbon\Carbon;
 
 class Channel extends Model
 {
@@ -37,6 +38,13 @@ class Channel extends Model
     }
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['donates'];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
@@ -58,5 +66,16 @@ class Channel extends Model
     public function streams()
     {
         return $this->hasMany(Stream::class);
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeOnline($query)
+    {
+        return $query->whereHas('streams', function($query) {
+            $query->where('start_at', '>', Carbon::now())->whereNull('ended_at');
+        });
     }
 }

@@ -10,6 +10,8 @@ use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\GameResource;
 use App\Models\Game;
+use Carbon\Carbon;
+use DB;
 
 /**
  * @group Games
@@ -82,5 +84,47 @@ class GameController extends Controller
             'success' => true,
             'message'=> trans('api/game.offer_success_created')
         ], 200);
+    }
+
+    /**
+     * Top categories
+     *
+     * @queryParam hours integer Check amount donations sum for last N hours. Default: 240.
+     * @queryParam limit integer. Limit of top categories. Default: 10.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function top(Request $request)
+    {
+        $hours = $request->has('hours') ? $request->get('hours') : 240;
+        $limit = $request->has('limit') ? $request->get('limit') : 8;
+        $lastDays = Carbon::now()->subHours($hours);
+
+        //get streams finished amount donations for last 10 days
+        $sub = DB::table('streams')->select('ch.*', DB::raw("sum(amount_donations) as donates"))
+            ->leftJoin('channels as ch', 'ch.id', '=', 'streams.channel_id')
+            ->whereDate('start_at', '>=', DB::raw($lastDays->toDateString()))
+            //->where('status', DB::raw(Stream::STATUS_FINISHED))
+            ->groupBy('ch.id', 'ch.title', 'ch.game_id', 'ch.slug', 'ch.link', 'ch.user_id', 'ch.description', 'ch.created_at', 'ch.logo', 'ch.updated_at')
+            ->orderByDesc('donates');
+
+        $list = DB::table( DB::raw("({$sub->toSql()}) as t") )
+            ->mergeBindings($sub)
+            ->select('t.*')
+            ->whereNotNull('t.id')
+            //->where('donates', '>', 0)
+            ->pluck('game_id')
+            ->toArray();
+
+        $ids_ordered = implode(',', $list);
+        $games = QueryBuilder::for(Game::class)
+            ->whereIn('id', $list)
+            ->orderByRaw(DB::raw("FIELD(id, $ids_ordered)"))
+            ->allowedIncludes(['streams', 'tags', 'channels'])
+            ->limit($limit)
+            ->jsonPaginate();
+
+        return GameResource::collection($games);
     }
 }
