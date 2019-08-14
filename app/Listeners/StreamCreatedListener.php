@@ -4,6 +4,8 @@ namespace App\Listeners;
 
 use App\Events\StreamCreatedEvent;
 use App\Models\Thread;
+use Carbon\Carbon;
+use App\Models\Participant;
 
 class StreamCreatedListener
 {
@@ -24,7 +26,7 @@ class StreamCreatedListener
         if($thread->id>0)
         {
             $stream->threads()->attach($thread->id);
-            //Todo: Add repliers as a participants
+            $thread->setParticipant();
         }
     }
 }

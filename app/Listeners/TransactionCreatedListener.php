@@ -45,6 +45,10 @@ class TransactionCreatedListener
 
                 $task->votes()->save($vote);
             }
+
+            $thread = $task->stream->threads[0];
+            $thread->setParticipant();
+
         }else{
             //Обновляем сумму аккаунта отправителя
             $account = $transaction->accountSender;

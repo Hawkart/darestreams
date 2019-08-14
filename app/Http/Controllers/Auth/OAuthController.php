@@ -38,8 +38,13 @@ class OAuthController extends Controller
      */
     public function redirectToProvider($provider)
     {
+        $scopes = [];
+
+        if($provider=='twitch')
+            $scopes[] = 'channel_read';
+
         return [
-            'url' => Socialite::driver($provider)->stateless()->redirect()->getTargetUrl(),
+            'url' => Socialite::driver($provider)->scopes($scopes)->stateless()->redirect()->getTargetUrl(),
         ];
     }
 
@@ -56,11 +61,15 @@ class OAuthController extends Controller
         $user = Socialite::driver($provider)->stateless()->user();
         $user = $this->findOrCreateUser($provider, $user);
 
+        //Todo: create channel
+        if($provider=='twitch')
+            $this->setChannel();
+
         $this->guard()->setToken(
             $token = $this->guard()->login($user)
         );
 
-        return view('oauth/callback', [
+        return response()->json([
             'token' => $token,
             'token_type' => 'bearer',
             'expires_in' => $this->guard()->getPayload()->get('exp') - time(),
@@ -122,5 +131,11 @@ class OAuthController extends Controller
         ]);
 
         return $user;
+    }
+
+
+    protected function setChannel()
+    {
+
     }
 }

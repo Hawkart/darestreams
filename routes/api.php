@@ -53,7 +53,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::patch('users/{user}/notifications/{notification}/setRead', 'Users\NotificationController@setRead');
 
     Route::get('channels/top', 'ChannelController@top');
-    Route::apiResource('channels', 'ChannelController')->only(['index', 'show', 'store', 'update']);
+    Route::apiResource('channels', 'ChannelController')->only(['index', 'show', 'update']);
 
     Route::apiResource('streams', 'StreamController');
     Route::get('streams/{stream}/thread', 'StreamController@thread');
@@ -62,7 +62,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('streams.tasks.transactions', 'Streams\Tasks\TransactionController');
 
     Route::apiResource('threads', 'ThreadController')->only(['index', 'show']);
-    Route::apiResource('threads.participants', 'Threads\ParticipantController');    //(?)
+    Route::apiResource('threads.participants', 'Threads\ParticipantController')->only(['index']);
     Route::apiResource('threads.messages', 'Threads\MessageController');
 
     Route::apiResource('votes', 'VoteController')->only(['index', 'show', 'update']);

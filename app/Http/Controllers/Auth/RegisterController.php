@@ -34,6 +34,7 @@ class RegisterController extends Controller
      * @bodyParam nickname string required User's nickname. Example: Archi89
      * @bodyParam email string required User's email. Example: example@example.ru
      * @bodyParam password string required User's password. Example: jadfohasd092
+     * @bodyParam lang string required User's lang. Example: ru
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -97,6 +98,9 @@ class RegisterController extends Controller
             'nickname' => $data['nickname'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'settings' => [
+                'lang' => isset($data['lang']) ? $data['lang'] : 'en'
+            ]
         ]);
     }
 }

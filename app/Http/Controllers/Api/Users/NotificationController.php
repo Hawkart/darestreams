@@ -24,6 +24,7 @@ class NotificationController extends Controller
     }
 
     /**
+     *
      * @param Request $request
      * @param User $user
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection

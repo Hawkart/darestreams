@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Api\Threads;
 
 use App\Http\Controllers\Api\Controller;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
 use App\Models\Thread;
 use App\Models\Message;
+use App\Models\User;
 
 /**
  * @group Threads participants
@@ -15,39 +17,18 @@ use App\Models\Message;
 class ParticipantController extends Controller
 {
     /**
+     * Get participant users of the chat.
+     *
      * @param Request $request
      * @param Thread $thread
      */
     public function index(Request $request, Thread $thread)
     {
+        $ids = $thread->participantsUserIds();
+        $items = QueryBuilder::for(User::class)
+            ->whereIn('id', $ids)
+            ->jsonPaginate();
 
-    }
-
-    /**
-     * @param Thread $thread
-     * @param Message $message
-     */
-    public function show(Thread $thread, Message $message)
-    {
-
-    }
-
-    /**
-     * @param Request $request
-     * @param Thread $thread
-     */
-    public function store(Request $request, Thread $thread)
-    {
-
-    }
-
-    /**
-     * @param Request $request
-     * @param Thread $thread
-     * @param Message $message
-     */
-    public function update(Request $request, Thread $thread, Message $message)
-    {
-
+        return UserResource::collection($items);
     }
 }

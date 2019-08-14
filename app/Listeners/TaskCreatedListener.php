@@ -28,6 +28,9 @@ class TaskCreatedListener
             ]);
 
             $task->votes()->save($vote);
+
+            $thread = $task->stream->threads[0];
+            $thread->setParticipant();
         }
     }
 }

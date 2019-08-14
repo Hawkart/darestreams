@@ -12,6 +12,7 @@ use App\Models\Message;
 use App\Http\Resources\MessageResource;
 use App\Events\MessageSent;
 use Carbon\Carbon;
+use App\Models\Participant;
 
 /**
  * @group Threads messages
@@ -80,11 +81,11 @@ class MessageController extends Controller
      */
     public function store(MessageRequest $request, Thread $thread)
     {
-        //Todo: Check can user send the message in this chat
         $input = $request->all();
         $user = auth()->user();
 
-        // $thread->activateAllParticipants();
+        if(!in_array($user->id, $thread->participantsUserIds()))
+            return response()->json(['error' => trans('api/threads/message.failed_cannot_write_to_thread')], 422);
 
         // Message
         $message = Message::create([

@@ -11,7 +11,9 @@ use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\GameResource;
 use App\Models\Game;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use DB;
+use Cache;
 
 /**
  * @group Games
@@ -91,6 +93,7 @@ class GameController extends Controller
      *
      * @queryParam hours integer Check amount donations sum for last N hours. Default: 240.
      * @queryParam limit integer. Limit of top categories. Default: 10.
+     * @queryParam include string String of connections: streams,tags, channels. Example: tags,streams
      *
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
@@ -101,30 +104,45 @@ class GameController extends Controller
         $limit = $request->has('limit') ? $request->get('limit') : 8;
         $lastDays = Carbon::now()->subHours($hours);
 
-        //get streams finished amount donations for last 10 days
-        $sub = DB::table('streams')->select('ch.*', DB::raw("sum(amount_donations) as donates"))
-            ->leftJoin('channels as ch', 'ch.id', '=', 'streams.channel_id')
-            ->whereDate('start_at', '>=', DB::raw($lastDays->toDateString()))
-            //->where('status', DB::raw(Stream::STATUS_FINISHED))
-            ->groupBy('ch.id', 'ch.title', 'ch.game_id', 'ch.slug', 'ch.link', 'ch.user_id', 'ch.description', 'ch.created_at', 'ch.logo', 'ch.updated_at')
-            ->orderByDesc('donates');
+        //Calculate cache key
+        $queryParams = request()->query();
+        ksort($queryParams);
+        $queryString = http_build_query($queryParams);
 
-        $list = DB::table( DB::raw("({$sub->toSql()}) as t") )
-            ->mergeBindings($sub)
-            ->select('t.*')
-            ->whereNotNull('t.id')
-            //->where('donates', '>', 0)
-            ->pluck('game_id')
-            ->toArray();
+        $cache_key = Str::slug('topCategories'.$queryString);
+        $cacheTags = Cache::tags(['index', 'topCategories']);
 
-        $ids_ordered = implode(',', $list);
-        $games = QueryBuilder::for(Game::class)
-            ->whereIn('id', $list)
-            ->orderByRaw(DB::raw("FIELD(id, $ids_ordered)"))
-            ->allowedIncludes(['streams', 'tags', 'channels'])
-            ->limit($limit)
-            ->jsonPaginate();
+        if ($cacheTags->get($cache_key)){
+            $items = $cacheTags->get($cache_key);
+        } else {
 
-        return GameResource::collection($games);
+            //get streams finished amount donations for last 10 days
+            $sub = DB::table('streams')->select('ch.id', DB::raw("sum(amount_donations) as donates"))
+                ->leftJoin('channels as ch', 'ch.id', '=', 'streams.channel_id')
+                ->whereDate('start_at', '>=', DB::raw($lastDays->toDateString()))
+                //->where('status', DB::raw(Stream::STATUS_FINISHED))
+                ->groupBy('ch.id')
+                ->orderByDesc('donates');
+
+            $list = DB::table( DB::raw("({$sub->toSql()}) as t") )
+                ->mergeBindings($sub)
+                ->select('t.*')
+                ->whereNotNull('t.id')
+                //->where('donates', '>', 0)
+                ->pluck('game_id')
+                ->toArray();
+
+            $ids_ordered = implode(',', $list);
+                $items = QueryBuilder::for(Game::class)
+                ->whereIn('id', $list)
+                ->orderByRaw(DB::raw("FIELD(id, $ids_ordered)"))
+                ->allowedIncludes(['streams', 'tags', 'channels'])
+                ->limit($limit)
+                ->jsonPaginate();
+
+            $cacheTags->put($cache_key, $items, 30);
+        }
+
+        return GameResource::collection($items);
     }
 }
