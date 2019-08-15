@@ -40,9 +40,11 @@ class ImportChannelsViews extends Command
         $twitchClient = new \TwitchApi\TwitchApi([
             'client_id' => config('app.twitch_api_cid')
         ]);
+
         $twitchClient->setApiVersion(3);
 
         $channels = Channel::where('provider', 'twitch')->get();
+
         foreach($channels as $channel)
         {
             try{

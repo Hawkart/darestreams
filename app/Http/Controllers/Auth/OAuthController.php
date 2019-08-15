@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Jobs\GetUserChannel;
 use App\Models\User;
 use App\Models\OAuthProvider;
 use App\Http\Controllers\Controller;
 use App\Exceptions\EmailTakenException;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Str;
 
 /**
  * @group Auth
@@ -15,18 +17,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 class OAuthController extends Controller
 {
     use AuthenticatesUsers;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        config([
-            'services.github.redirect' => route('oauth.callback', 'github'),
-        ]);
-    }
 
     /**
      * Redirect the user to the provider authentication page.
@@ -58,12 +48,10 @@ class OAuthController extends Controller
      */
     public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver($provider)->stateless()->user();
-        $user = $this->findOrCreateUser($provider, $user);
+        $userProvider = Socialite::driver($provider)->stateless()->user();
+        $user = $this->findOrCreateUser($provider, $userProvider);
 
-        //Todo: create channel
-        if($provider=='twitch')
-            $this->setChannel();
+        dispatch(new GetUserChannel($user, $userProvider->getId(), $provider));
 
         $this->guard()->setToken(
             $token = $this->guard()->login($user)
@@ -77,30 +65,37 @@ class OAuthController extends Controller
     }
 
     /**
-     * @param  string $provider
-     * @param  \Laravel\Socialite\Contracts\User $sUser
-     * @return \App\Models\User|false
+     * @param $provider
+     * @param $userProvider
+     * @return User
      */
-    protected function findOrCreateUser($provider, $user)
+    protected function findOrCreateUser($provider, $userProvider)
     {
         $oauthProvider = OAuthProvider::where('provider', $provider)
-            ->where('provider_user_id', $user->getId())
+            ->where('provider_user_id', $userProvider->getId())
             ->first();
 
         if ($oauthProvider) {
             $oauthProvider->update([
-                'access_token' => $user->token,
-                'refresh_token' => $user->refreshToken,
+                'access_token' => $userProvider->token,
+                'refresh_token' => $userProvider->refreshToken,
             ]);
 
             return $oauthProvider->user;
         }
 
-        if (User::where('email', $user->getEmail())->exists()) {
-            throw new EmailTakenException;
+        if (User::where('email', $userProvider->getEmail())->exists())
+        {
+            //throw new EmailTakenException;
+            $user = User::where('email', $userProvider->getEmail())->first();
+
+            //connect social account
+            $this->connect($user, $provider, $userProvider);
+
+            return $user;
         }
 
-        return $this->createUser($provider, $user);
+        return $this->createUser($provider, $userProvider);
     }
 
     /**
@@ -112,9 +107,10 @@ class OAuthController extends Controller
     {
         $data = [
             'name' => $sUser->getName(),
-            'email' => $sUser->getEmail(),
+            'email' => $sUser->getEmail() ? $sUser->getEmail() : $this::generateEmail($sUser),
             'nickname' => $sUser->getNickname() ? $sUser->getNickname() : $sUser->getName(),
-            'email_verified_at' => $sUser->getEmail() ? now() : null
+            'email_verified_at' => $sUser->getEmail() ? now() : null,
+            'password' => bcrypt(Str::random(10))
         ];
 
         if(!empty($sUser->avatar))
@@ -122,20 +118,37 @@ class OAuthController extends Controller
 
         $user = User::create($data);
 
-        $user->oauthProviders()->create([
-            'provider' => $provider,
-            'provider_user_id' => $sUser->getId(),
-            'access_token' => $sUser->token,
-            'refresh_token' => $sUser->refreshToken,
-            'json' => $sUser->toArray()
-        ]);
+        //connect social account
+        $this->connect($user, $provider, $sUser);
 
         return $user;
     }
 
-
-    protected function setChannel()
+    /**
+     * @param $user
+     * @param $provider
+     * @param $sUser
+     */
+    protected function connect($user, $provider, $sUser)
     {
+        $user->oauthProviders()->create([
+            'provider' => $provider,
+            'provider_user_id' => $sUser->getId(),
+            'access_token' => $sUser->token,
+            'refresh_token' => $sUser->refreshToken
+        ]);
+    }
 
+    /**
+     * @param $providerUser
+     * @return string
+     */
+    protected function generateEmail($providerUser)
+    {
+        $site = env('APP_URL', "api.darestreams.com");
+        $site = str_replace(["http://", "https://"], "", $site);
+        $name = $providerUser->getNickname() ? $providerUser->getNickname() : $providerUser->getName();
+        $email = Str::slug($name)."@".$site;
+        return $email;
     }
 }

@@ -70,6 +70,7 @@ $response = $client->post("https://api.darestreams.com/register", [
             "nickname" => "Archi89",
             "email" => "example@example.ru",
             "password" => "jadfohasd092",
+            "lang" => "ru",
         ],
 ]);
 $body = $response->getBody();
@@ -90,6 +91,7 @@ Parameter | Type | Status | Description
     nickname | string |  required  | User's nickname.
     email | string |  required  | User's email.
     password | string |  required  | User's password.
+    lang | string |  required  | User's lang.
 
 <!-- END_d7aad7b5ac127700500280d511a3db01 -->
 
@@ -167,7 +169,7 @@ Parameter | Type | Status | Description
 
 <!-- END_cafb407b7a846b31491f97719bb15aef -->
 
-<!-- START_cd927ae47681396f0e7752d0a01c3c1b -->
+<!-- START_850c93628de5bf65202e8795bcfbba2e -->
 ## Redirect the user to the provider authentication page.
 
 {driver} - social provider: facebook, twitch, youtube, steam, discord
@@ -177,7 +179,7 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/oauth/1", [
+$response = $client->get("https://api.darestreams.com/oauth/1", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -185,12 +187,19 @@ print_r(json_decode((string) $body));
 
 
 
+> Example response (500):
+
+```json
+{
+    "message": "Server Error"
+}
+```
 
 ### HTTP Request
-`POST oauth/{driver}`
+`GET oauth/{driver}`
 
 
-<!-- END_cd927ae47681396f0e7752d0a01c3c1b -->
+<!-- END_850c93628de5bf65202e8795bcfbba2e -->
 
 <!-- START_23d437009cae5f8da02265956315673e -->
 ## Obtain the user information from the provider.
@@ -327,9 +336,9 @@ print_r(json_decode((string) $body));
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://api.darestreams.com/channels/top", [
     'query' => [
-            "hours" => "quidem",
-            "limit" => "natus",
-            "game_id" => "nam",
+            "hours" => "esse",
+            "limit" => "eos",
+            "game_id" => "beatae",
             "include" => "user,streams",
         ],
 ]);
@@ -6244,8 +6253,8 @@ $response = $client->put("https://api.darestreams.com/channels/1", [
         ],
     'json' => [
             "description" => "Long description.",
-            "logo" => "tempore",
-            "game_id" => "5",
+            "logo" => "labore",
+            "game_id" => "7",
         ],
 ]);
 $body = $response->getBody();
@@ -6281,8 +6290,8 @@ Parameter | Type | Status | Description
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://api.darestreams.com/games/top", [
     'query' => [
-            "hours" => "ut",
-            "limit" => "culpa",
+            "hours" => "animi",
+            "limit" => "qui",
             "include" => "tags,streams",
         ],
 ]);
@@ -6325,7 +6334,7 @@ $response = $client->get("https://api.darestreams.com/games", [
     'query' => [
             "include" => "tags,streams",
             "sort" => "-popularity",
-            "page" => "19",
+            "page" => "20",
         ],
 ]);
 $body = $response->getBody();
@@ -6699,7 +6708,7 @@ $response = $client->get("https://api.darestreams.com/streams", [
     'query' => [
             "include" => "game,streams",
             "sort" => "-quantity_donators",
-            "page" => "15",
+            "page" => "14",
         ],
 ]);
 $body = $response->getBody();
@@ -6743,10 +6752,10 @@ $response = $client->post("https://api.darestreams.com/streams", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "game_id" => "18",
-            "link" => "ex",
-            "start_at" => "et",
-            "tags" => "quia",
+            "game_id" => "7",
+            "link" => "inventore",
+            "start_at" => "quidem",
+            "tags" => "velit",
         ],
 ]);
 $body = $response->getBody();
@@ -6824,10 +6833,10 @@ $response = $client->put("https://api.darestreams.com/streams/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "game_id" => "8",
-            "link" => "et",
-            "start_at" => "minima",
-            "tags" => "et",
+            "game_id" => "4",
+            "link" => "nostrum",
+            "start_at" => "amet",
+            "tags" => "accusamus",
         ],
 ]);
 $body = $response->getBody();
@@ -8093,7 +8102,7 @@ $response = $client->get("https://api.darestreams.com/streams/1/tasks", [
     'query' => [
             "include" => "user,stream",
             "sort" => "-amount_donations",
-            "page" => "8",
+            "page" => "9",
         ],
 ]);
 $body = $response->getBody();
@@ -8725,13 +8734,13 @@ $response = $client->post("https://api.darestreams.com/streams/1/tasks", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_text" => "doloremque",
-            "full_text" => "atque",
-            "interval_time" => "7",
-            "min_amount" => "9",
-            "is_superbowl" => "",
-            "min_amount_superbowl" => "11",
-            "tags" => "itaque",
+            "small_text" => "aut",
+            "full_text" => "praesentium",
+            "interval_time" => "2",
+            "min_amount" => "18",
+            "is_superbowl" => "1",
+            "min_amount_superbowl" => "1",
+            "tags" => "hic",
         ],
 ]);
 $body = $response->getBody();
@@ -8816,13 +8825,13 @@ $response = $client->put("https://api.darestreams.com/streams/1/tasks/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_text" => "qui",
-            "full_text" => "fuga",
-            "interval_time" => "19",
-            "min_amount" => "14",
-            "is_superbowl" => "1",
-            "min_amount_superbowl" => "2",
-            "tags" => "eum",
+            "small_text" => "voluptas",
+            "full_text" => "excepturi",
+            "interval_time" => "4",
+            "min_amount" => "10",
+            "is_superbowl" => "",
+            "min_amount_superbowl" => "7",
+            "tags" => "quisquam",
         ],
 ]);
 $body = $response->getBody();
@@ -8867,7 +8876,7 @@ $response = $client->get("https://api.darestreams.com/streams/1/tasks/1/transact
     'query' => [
             "include" => "task",
             "sort" => "-created_at",
-            "page" => "18",
+            "page" => "6",
         ],
 ]);
 $body = $response->getBody();
@@ -8913,7 +8922,7 @@ $response = $client->post("https://api.darestreams.com/streams/1/tasks/1/transac
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "amount" => "14",
+            "amount" => "13",
         ],
 ]);
 $body = $response->getBody();
@@ -24091,7 +24100,7 @@ $response = $client->post("https://api.darestreams.com/threads/1/messages", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "body" => "aperiam",
+            "body" => "voluptas",
         ],
 ]);
 $body = $response->getBody();
@@ -24179,7 +24188,8 @@ print_r(json_decode((string) $body));
 
 #Threads participants
 <!-- START_13ae3d6de96d1e43ada0939bb9db795b -->
-## threads/{thread}/participants
+## Get participant users of the chat.
+
 > Example request:
 
 ```php
@@ -24196,7 +24206,9 @@ print_r(json_decode((string) $body));
 > Example response (200):
 
 ```json
-null
+{
+    "data": []
+}
 ```
 
 ### HTTP Request
@@ -24204,79 +24216,6 @@ null
 
 
 <!-- END_13ae3d6de96d1e43ada0939bb9db795b -->
-
-<!-- START_14f1c9834a7ca1862af99d78f295ffec -->
-## threads/{thread}/participants
-> Example request:
-
-```php
-
-$client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/threads/1/participants", [
-]);
-$body = $response->getBody();
-print_r(json_decode((string) $body));
-```
-
-
-
-
-### HTTP Request
-`POST threads/{thread}/participants`
-
-
-<!-- END_14f1c9834a7ca1862af99d78f295ffec -->
-
-<!-- START_e2987766f01f6e25243a7b4ae64c7c1e -->
-## threads/{thread}/participants/{participant}
-> Example request:
-
-```php
-
-$client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/threads/1/participants/1", [
-]);
-$body = $response->getBody();
-print_r(json_decode((string) $body));
-```
-
-
-
-> Example response (200):
-
-```json
-null
-```
-
-### HTTP Request
-`GET threads/{thread}/participants/{participant}`
-
-
-<!-- END_e2987766f01f6e25243a7b4ae64c7c1e -->
-
-<!-- START_d22fd6ca0252e4162380196cc6a02c18 -->
-## threads/{thread}/participants/{participant}
-> Example request:
-
-```php
-
-$client = new \GuzzleHttp\Client();
-$response = $client->put("https://api.darestreams.com/threads/1/participants/1", [
-]);
-$body = $response->getBody();
-print_r(json_decode((string) $body));
-```
-
-
-
-
-### HTTP Request
-`PUT threads/{thread}/participants/{participant}`
-
-`PATCH threads/{thread}/participants/{participant}`
-
-
-<!-- END_d22fd6ca0252e4162380196cc6a02c18 -->
 
 #Users
 <!-- START_42962fed5bc9f2908380612aadf4f09e -->
@@ -26438,6 +26377,21 @@ print_r(json_decode((string) $body));
             ]
         },
         {
+            "id": 21,
+            "name": "darestreams_",
+            "last_name": null,
+            "middle_name": null,
+            "full_name": "darestreams_",
+            "nickname": "darestreams_",
+            "role_id": null,
+            "avatar": "http:\/\/darestreams.local\/storage\/https:\/\/static-cdn.jtvnw.net\/user-default-pictures\/49988c7b-57bc-4dee-bd4f-6df4ad215d3a-profile_image-300x300.jpg",
+            "overlay": "\/img\/default_overlay.jpg",
+            "created_at": "2019-08-15T02:09:40.000000Z",
+            "updated_at": "2019-08-15T02:09:40.000000Z",
+            "channel": null,
+            "tasks": []
+        },
+        {
             "id": 17,
             "name": "Mr. Daron Corkery",
             "last_name": null,
@@ -27706,8 +27660,8 @@ $response = $client->put("https://api.darestreams.com/users/1", [
         ],
     'json' => [
             "name" => "Archibald",
-            "last_name" => "laboriosam",
-            "middle_name" => "doloremque",
+            "last_name" => "maiores",
+            "middle_name" => "error",
             "nickname" => "Archi89",
             "email" => "example@example.ru",
         ],
