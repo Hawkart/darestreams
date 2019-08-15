@@ -117,11 +117,11 @@ class GameController extends Controller
         } else {
 
             //get streams finished amount donations for last 10 days
-            $sub = DB::table('streams')->select('ch.id', DB::raw("sum(amount_donations) as donates"))
+            $sub = DB::table('streams')->select('ch.id', 'ch.game_id', DB::raw("sum(amount_donations) as donates"))
                 ->leftJoin('channels as ch', 'ch.id', '=', 'streams.channel_id')
                 ->whereDate('start_at', '>=', DB::raw($lastDays->toDateString()))
                 //->where('status', DB::raw(Stream::STATUS_FINISHED))
-                ->groupBy('ch.id')
+                ->groupBy('ch.id', 'ch.game_id')
                 ->orderByDesc('donates');
 
             $list = DB::table( DB::raw("({$sub->toSql()}) as t") )

@@ -71,6 +71,12 @@ return [
         'redirect'    => env('TWITCH_REDIRECT_URI'),
     ],
 
+    'streamlabs' => [
+        'client_id'   => env('STREAMLABS_KEY'),
+        'client_secret' => env('STREAMLABS_SECRET'),
+        'redirect'    => env('STREAMLABS_REDIRECT_URI'),
+    ],
+
     'youtube' => [
         'client_id' => env('YOUTUBE_KEY'),
         'client_secret' => env('YOUTUBE_SECRET'),

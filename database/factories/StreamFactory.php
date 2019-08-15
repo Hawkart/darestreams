@@ -17,6 +17,9 @@ $factory->define(Stream::class, function (Faker $faker) {
         },
         'game_id'   =>  function () {
             return Game::inRandomOrder()->first()->id;
-        }
+        },
+        'quantity_donators'    => $faker->numberBetween(1, 10),
+        'quantity_donations'    => $faker->randomFloat(2, 10, 1000),
+        'amount_donations'    => $faker->randomFloat(2, 100, 1000),
     ];
 });

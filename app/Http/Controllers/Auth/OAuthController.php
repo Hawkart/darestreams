@@ -79,9 +79,17 @@ class OAuthController extends Controller
             $oauthProvider->update([
                 'access_token' => $userProvider->token,
                 'refresh_token' => $userProvider->refreshToken,
+                'json' => isset($userProvider->json) ? $userProvider->json : []
             ]);
 
             return $oauthProvider->user;
+        }
+
+        if(!empty($user = auth()->user()))
+        {
+            $this->connect($user, $provider, $userProvider);
+
+            return $user;
         }
 
         if (User::where('email', $userProvider->getEmail())->exists())
@@ -135,7 +143,8 @@ class OAuthController extends Controller
             'provider' => $provider,
             'provider_user_id' => $sUser->getId(),
             'access_token' => $sUser->token,
-            'refresh_token' => $sUser->refreshToken
+            'refresh_token' => $sUser->refreshToken,
+            'json' => isset($sUser->json) ? $sUser->json : []
         ]);
     }
 

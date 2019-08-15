@@ -20,5 +20,8 @@ $factory->define(User::class, function (Faker $faker) {
         'avatar' => $faker->image('public/storage/avatars',400, 300),
         'password' => bcrypt('secret'),
         'remember_token' => Str::random(10),
+        'settings' => [
+            'lang' => $faker->randomElement(['ru', 'en'])
+        ]
     ];
 });

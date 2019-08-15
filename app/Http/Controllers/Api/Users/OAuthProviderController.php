@@ -24,7 +24,10 @@ class OAuthProviderController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Get user's all social accounts.
+     * @authenticated
+     *
+     * {user} - user id integer
      *
      * @return \Illuminate\Http\Response
      */
@@ -43,6 +46,12 @@ class OAuthProviderController extends Controller
     }
 
     /**
+     * Get user's one social accounts.
+     * @authenticated
+     *
+     * {user} - user id integer
+     * {oauthProvider} - social account id integer
+     *
      * @param User $user
      * @param OAuthProvider $oauthProvider
      * @return OAuthProviderResource|\Illuminate\Http\JsonResponse

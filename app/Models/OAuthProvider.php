@@ -26,14 +26,14 @@ class OAuthProvider extends Model
      * @var array
      */
     protected $hidden = [
-        'access_token', 'refresh_token', 'json'
+        'access_token', 'refresh_token'
     ];
 
     /**
      * @var array
      */
     protected $casts = [
-        'json'
+        'json' => 'array'
     ];
 
     /**

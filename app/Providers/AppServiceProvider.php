@@ -25,5 +25,21 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        $this->bootStreamLabsSocialite();
+    }
+
+    /**
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    private function bootStreamLabsSocialite()
+    {
+        $socialite = $this->app->make('Laravel\Socialite\Contracts\Factory');
+        $socialite->extend(
+            'streamlabs',
+            function ($app) use ($socialite) {
+                $config = $app['config']['services.streamlabs'];
+                return $socialite->buildProvider(SreamlabsProvider::class, $config);
+            }
+        );
     }
 }

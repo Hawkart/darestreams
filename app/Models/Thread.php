@@ -17,12 +17,15 @@ class Thread extends MThread
 
     public function setParticipant()
     {
-        //Add new $participant
-        $participant = Participant::firstOrCreate([
-            'thread_id' => $this->id,
-            'user_id' => auth()->user()->id,
-        ]);
-        $participant->last_read = new Carbon;
-        $participant->save();
+        if(!empty(auth()->user()))
+        {
+            //Add new $participant
+            $participant = Participant::firstOrCreate([
+                'thread_id' => $this->id,
+                'user_id' => auth()->user()->id,
+            ]);
+            $participant->last_read = new Carbon;
+            $participant->save();
+        }
     }
 }

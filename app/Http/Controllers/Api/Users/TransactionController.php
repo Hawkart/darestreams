@@ -24,7 +24,12 @@ class TransactionController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Get user's all transactions.
+     * @authenticated
+     *
+     * {user} - user id integer
+     * @queryParam include string String of connections: ['account_sender', 'account_receiver', 'account_sender.user', 'account_receiver.user', 'task']. Example: task.
+     * @queryParam page array Use as page[number]=1&page[size]=2.
      *
      * @return \Illuminate\Http\Response
      */
@@ -43,7 +48,12 @@ class TransactionController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Get user's one transaction.
+     * @authenticated
+     *
+     * {user} - user id integer
+     * {transaction} - transaction id integer
+     * @queryParam include string String of connections: ['account_sender', 'account_receiver', 'account_sender.user', 'account_receiver.user', 'task']. Example: task.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

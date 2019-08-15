@@ -24,6 +24,10 @@ class NotificationController extends Controller
     }
 
     /**
+     * Get user's all notifications.
+     * @authenticated
+     *
+     * {user} - user id integer
      *
      * @param Request $request
      * @param User $user
@@ -44,6 +48,11 @@ class NotificationController extends Controller
     }
 
     /**
+     * Get user's unread notifications.
+     * @authenticated
+     *
+     * {user} - user id integer
+     *
      * @param Request $request
      * @param User $user
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
@@ -63,7 +72,11 @@ class NotificationController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display user's notification.
+     * @authenticated
+     *
+     * {user} - user id integer
+     * {notification} - notification id integer
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -84,6 +97,12 @@ class NotificationController extends Controller
     }
 
     /**
+     * Set read one user's notification.
+     * @authenticated
+     *
+     * {user} - user id integer
+     * {notification} - notification id integer
+     *
      * @param User $user
      * @param Notification $notification
      * @return \Illuminate\Http\JsonResponse
@@ -102,6 +121,12 @@ class NotificationController extends Controller
     }
 
     /**
+     * Set read all user's notifications.
+     * @authenticated
+     *
+     * {user} - user id integer
+     * {notification} - notification id integer
+     *
      * @param User $user
      * @return \Illuminate\Http\JsonResponse
      */

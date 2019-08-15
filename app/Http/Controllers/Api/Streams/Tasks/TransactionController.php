@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Streams\Tasks;
 
+use App\Acme\Helpers\Streamlabs\StreamlabsApi;
 use App\Http\Controllers\Api\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\TaskTransactionRequest;
@@ -100,7 +101,20 @@ class TransactionController extends Controller
         if(!$stream->tasks()->where('id', $task->id)->exists())
             return response()->json(['error' => trans('api/streams/tasks/transaction.task_not_belong_to_stream')], 422);
 
-        if($request->get('amount') > $user->account->amount)
+        //Make donate through Streamlabs
+
+        if(!$user->oauthProviders()->where('provider', 'streamlabs')->exists())
+            return response()->json(['error' => trans('api/streams/tasks/transaction.you_dont_have_account_in_streamlabs')], 422);
+
+        /*$streamlabs = new StreamlabsApi([
+            'client_id' => config('services.streamlabs.client_id')
+        ]);
+
+        $streamlabs->donate([
+            'access_token' => ''
+        ]);*/
+
+        /*if($request->get('amount') > $user->account->amount)
             return response()->json(['error' => trans('api/streams/tasks/transaction.not_enough_money')], 422);
 
         Transaction::create([
@@ -108,7 +122,7 @@ class TransactionController extends Controller
             'amount' => $request->get('amount'),
             'account_sender_id' => $user->account->id,
             'account_receiver_id' => $stream->user->account->id
-        ]);
+        ]);*/
 
         return response()->json([
             'success' => true,

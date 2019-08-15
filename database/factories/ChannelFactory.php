@@ -22,8 +22,11 @@ $factory->define(Channel::class, function (Faker $faker) {
             return User::inRandomOrder()->first()->id;
         },
         'link'      => $faker->imageUrl(800, 600, 'cats', true),
-            'game_id'   =>  function () {
+        'game_id'   =>  function () {
             return Game::inRandomOrder()->first()->id;
-        }
+        },
+        'provider' => $faker->randomElement(['twitch', 'youtube']),
+        'exid'  =>  $faker->numberBetween(1, 1000000),
+        'views' => $faker->numberBetween(1, 1000),
     ];
 });

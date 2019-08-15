@@ -122,11 +122,11 @@ class ChannelController extends Controller
         } else {
 
             //get streams finished amount donations for last 10 days
-            $sub = DB::table('streams')->select('ch.*', DB::raw("sum(amount_donations) as donates"))
+            $sub = DB::table('streams')->select('ch.id', 'ch.title', 'ch.game_id', 'ch.views', 'ch.slug', 'ch.link', 'ch.user_id', 'ch.description', 'ch.created_at', 'ch.logo', 'ch.updated_at', DB::raw("sum(amount_donations) as donates"))
                 ->leftJoin('channels as ch', 'ch.id', '=', 'streams.channel_id')
                 ->whereDate('start_at', '>=', DB::raw($lastDays->toDateString()))
                 //->where('status', DB::raw(Stream::STATUS_FINISHED))
-                ->groupBy('ch.id', 'ch.title', 'ch.game_id', 'ch.slug', 'ch.link', 'ch.user_id', 'ch.description', 'ch.created_at', 'ch.logo', 'ch.updated_at')
+                ->groupBy('ch.id', 'ch.title', 'ch.game_id', 'ch.views', 'ch.slug', 'ch.link', 'ch.user_id', 'ch.description', 'ch.created_at', 'ch.logo', 'ch.updated_at')
                 ->orderByDesc('donates')
                 ->limit($limit);
 

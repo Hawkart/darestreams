@@ -36,9 +36,9 @@ class GetUserChannel implements ShouldQueue
      */
     public function handle()
     {
-        if($this->provider == 'twitch')
+        if(empty($this->user->channel))
         {
-            if(empty($this->user->channel))
+            if($this->provider == 'twitch')
             {
                 $twitchClient = new \TwitchApi\TwitchApi([
                     'client_id' => config('app.twitch_api_cid')
@@ -85,6 +85,6 @@ class GetUserChannel implements ShouldQueue
         if($games->count()>0)
             return $games->first()->id;
 
-        return 0;
+        return 1;
     }
 }

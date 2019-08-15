@@ -77,6 +77,8 @@ class ImportGames extends Command
             $count+= count($games);
             $offset+= $limit;
 
+            break;
+
         } while ($count<$total);
 
         $bar->finish();
