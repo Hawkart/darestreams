@@ -9,6 +9,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\Log;
 
 class GetUserChannel implements ShouldQueue
 {
@@ -38,6 +39,12 @@ class GetUserChannel implements ShouldQueue
     {
         if(empty($this->user->channel))
         {
+            Log::info('GetUserChannel', [
+                'user' => $this->user,
+                'file' => __FILE__,
+                'line' => __LINE__
+            ]);
+
             if($this->provider == 'twitch')
             {
                 $twitchClient = new \TwitchApi\TwitchApi([
@@ -46,6 +53,12 @@ class GetUserChannel implements ShouldQueue
 
                 try {
                     $data = $twitchClient->getChannel($this->id);
+
+                    Log::info('GetUserChannel', [
+                        'data' => $data,
+                        'file' => __FILE__,
+                        'line' => __LINE__
+                    ]);
 
                     $channel = Channel::firstOrCreate([
                         'exid' => $data['_id'],
