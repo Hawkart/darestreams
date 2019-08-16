@@ -25,8 +25,8 @@ class UserResource extends JsonResource
             'nickname' => $this->nickname,
             'email' => $this->when(Auth::user() && Auth::user()->id==$this->id, $this->email),
             'role_id' => $this->role_id,
-            'avatar' => $this->avatar ? Storage::disk('public')->url(str_replace('public/storage', '', $this->avatar)) : '/img/default_avatar.jpg',
-            'overlay' => $this->overlay ? Storage::disk('public')->url(str_replace('public/storage', '', $this->overlay)) : '/img/default_overlay.jpg',
+            'avatar' => getImageLink($this->avatar, '/img/default_avatar.jpg'),
+            'overlay' => getImageLink($this->overlay, '/img/default_overlay.jpg'),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
 

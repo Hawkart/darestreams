@@ -20,8 +20,8 @@ class GameResource extends JsonResource
             'title' => $this->title,
             'title_short' => $this->title_short,
             'popularity' => $this->popularity,
-            'logo' => $this->logo ? Storage::disk('public')->url(str_replace('public/storage', '', $this->logo)) : '/img/default_game.jpg',
-            'logo_small' => $this->logo_small ? Storage::disk('public')->url(str_replace('public/storage', '', $this->logo_small)) : '/img/default_game_small.jpg',
+            'logo' => getImageLink($this->logo, '/img/default_game.jpg'),
+            'logo_small' => getImageLink($this->logo_small, '/img/default_game_small.jpg'),
 
             'streams' => StreamResource::collection($this->whenLoaded('streams')),
             'channels' => ChannelResource::collection($this->whenLoaded('channels')),

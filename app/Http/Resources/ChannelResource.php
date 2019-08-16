@@ -26,8 +26,8 @@ class ChannelResource extends JsonResource
             'description' => $this->description,
             'provider' => $this->provider,
             'views' => $this->views,
-            'donates' => $this->donates,
-            'logo' => $this->logo ? Storage::disk('public')->url(str_replace('public/storage', '', $this->logo)) : '/img/default_channel.jpg',
+            'donates' => $this->when(isset($this->donates), $this->donates),
+            'logo' => getImageLink($this->logo, '/img/default_channel.jpg'),
             'created_at' => $this->created_at,
 
             'user' => new UserResource($this->whenLoaded('user')),

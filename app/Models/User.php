@@ -14,6 +14,7 @@ use TCG\Voyager\Traits\VoyagerUser;
 use Overtrue\LaravelFollow\Traits\CanFollow;
 use Overtrue\LaravelFollow\Traits\CanBeFollowed;
 use \Znck\Eloquent\Traits\BelongsToThrough;
+use Storage;
 
 class User extends Authenticatable implements JWTSubject, MustVerifyEmail
 {

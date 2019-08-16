@@ -39,12 +39,6 @@ class GetUserChannel implements ShouldQueue
     {
         if(empty($this->user->channel))
         {
-            Log::info('GetUserChannel', [
-                'user' => $this->user,
-                'file' => __FILE__,
-                'line' => __LINE__
-            ]);
-
             if($this->provider == 'twitch')
             {
                 $twitchClient = new \TwitchApi\TwitchApi([
@@ -54,25 +48,19 @@ class GetUserChannel implements ShouldQueue
                 try {
                     $data = $twitchClient->getChannel($this->id);
 
-                    Log::info('GetUserChannel', [
-                        'data' => $data,
-                        'file' => __FILE__,
-                        'line' => __LINE__
-                    ]);
-
-                    $channel = Channel::firstOrCreate([
+                    $ch = [
                         'exid' => $data['_id'],
                         'user_id' => $this->user->id,
-                    ]);
-                    $channel->provider = $this->provider;
-                    $channel->exid = $data['_id'];
-                    $channel->title = $data['display_name'];
-                    $channel->link = $data['url'];
-                    $channel->game_id = (!empty($data['game'])) ? $this->getGameIdByTitle($data['game']) : 0;
-                    $channel->description = $data['description'];
-                    $channel->views = $data['views'];
-                    $channel->logo = $data['logo'];
-                    $channel->save();
+                        "provider" => $this->provider,
+                        "title" => $data['display_name'],
+                        "link" => $data['url'],
+                        "game_id" => (!empty($data['game'])) ? $this->getGameIdByTitle($data['game']) : 0,
+                        "description" => $data['status'],
+                        'views' => $data['views'],
+                        'logo' => $data['logo'],
+                    ];
+
+                    Channel::create($ch);
 
                     //user lang update
                     $settings = $this->user->settings;
@@ -82,7 +70,12 @@ class GetUserChannel implements ShouldQueue
                         'settings' => $settings
                     ]);
                 } catch (\Exception $e) {
-                    //return $e->getMessage();
+
+                    Log::info('GetUserChannel', [
+                        'error' => $e->getMessage(),
+                        'file' => __FILE__,
+                        'line' => __LINE__
+                    ]);
                 }
             }
         }
