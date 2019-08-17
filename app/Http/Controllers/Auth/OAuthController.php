@@ -41,7 +41,7 @@ class OAuthController extends Controller
     /**
      * Obtain the user information from the provider.
      *
-     * {driver} - social provider: facebook, twitch, youtube, steam, discord
+     * {driver} - social provider: facebook, twitch, youtube, steam, discord, streamlabs
      *
      * @param  string $driver
      * @return \Illuminate\Http\Response
@@ -85,33 +85,27 @@ class OAuthController extends Controller
             return $oauthProvider->user;
         }
 
-        if(!empty($user = auth()->user()))
+        if(!empty(auth()->user()))
         {
-            $this->connect($user, $provider, $userProvider);
-
-            return $user;
-        }
-
-        if (User::where('email', $userProvider->getEmail())->exists())
-        {
+            $user = auth()->user();
+        } else if (User::where('email', $userProvider->getEmail())->exists()) {
             //throw new EmailTakenException;
             $user = User::where('email', $userProvider->getEmail())->first();
-
-            //connect social account
-            $this->connect($user, $provider, $userProvider);
-
-            return $user;
+        }else{
+            $user = $this->createUser($userProvider);
         }
 
-        return $this->createUser($provider, $userProvider);
+        //connect social account
+        $this->connect($user, $provider, $userProvider);
+
+        return $user;
     }
 
     /**
-     * @param  string $provider
      * @param  \Laravel\Socialite\Contracts\User $sUser
      * @return \App\Models\User
      */
-    protected function createUser($provider, $sUser)
+    protected function createUser($sUser)
     {
         $data = [
             'name' => $sUser->getName(),
@@ -121,13 +115,10 @@ class OAuthController extends Controller
             'password' => bcrypt(Str::random(10))
         ];
 
-        if(!empty($sUser->avatar))
-            $data['avatar'] = $sUser->avatar;
+        if(!empty($sUser->getAvatar()))
+            $data['avatar'] = $sUser->getAvatar();
 
         $user = User::create($data);
-
-        //connect social account
-        $this->connect($user, $provider, $sUser);
 
         return $user;
     }
