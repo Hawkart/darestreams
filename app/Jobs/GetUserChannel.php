@@ -55,7 +55,7 @@ class GetUserChannel implements ShouldQueue
                         "title" => $data['display_name'],
                         "link" => $data['url'],
                         "game_id" => (!empty($data['game'])) ? $this->getGameIdByTitle($data['game']) : 0,
-                        "description" => $data['status'],
+                        "description" => $data['description'] ? $data['description'] : "",
                         'views' => $data['views'],
                         'logo' => $data['logo'],
                     ];
