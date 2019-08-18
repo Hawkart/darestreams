@@ -33,9 +33,11 @@ class OAuthController extends Controller
         if($provider=='twitch')
             $scopes[] = 'channel_read';
 
-        return [
+        return Socialite::driver($provider)->scopes($scopes)->stateless()->redirect();
+
+        /*return [
             'url' => Socialite::driver($provider)->scopes($scopes)->stateless()->redirect()->getTargetUrl(),
-        ];
+        ];*/
     }
 
     /**
@@ -57,10 +59,10 @@ class OAuthController extends Controller
             $token = $this->guard()->login($user)
         );
 
-        return response()->json([
+        return view('oauth.callback')->with([
             'token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => $this->guard()->getPayload()->get('exp') - time(),
+            'expires_in' => $this->guard()->getPayload()->get('exp') - time()
         ]);
     }
 
