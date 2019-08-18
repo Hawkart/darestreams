@@ -3,10 +3,15 @@
   <meta charset="utf-8">
   <title>{{ config('app.name') }}</title>
   <script>
-    //document.domain="darestreams.com";
-    //window.opener.postMessage({ token: "{{ $token }}", expires: "{{$expires_in}}" }, "{{  url('*',[],true)  }}");
-    window.parent.postMessage({ token: "{{ $token }}", expires: "{{$expires_in}}" }, "https://darestreams.com");
-    //window.close();
+    document.domain="darestreams.com";
+
+    window.addEventListener("message", function(event) {
+      if(event.origin !== 'darestreams.com') {
+        return false;
+      }
+      event.source.postMessage({ token: "{{ $token }}", expires: "{{$expires_in}}" }, event.origin);
+      window.close();
+    });
   </script>
 </head>
 <body>
