@@ -59,11 +59,11 @@ class OAuthController extends Controller
             $token = $this->guard()->login($user)
         );
 
-        return view('oauth.callback')->with([
+        return response()->view('oauth.callback', [
             'token' => $token,
             'token_type' => 'bearer',
             'expires_in' => $this->guard()->getPayload()->get('exp') - time()
-        ]);
+        ], 200)->header('X-Frame-Options', "ALLOW-FROM https://darestreams.com");
     }
 
     /**
