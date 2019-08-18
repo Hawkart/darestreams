@@ -5,8 +5,8 @@
   <script>
     //document.domain="darestreams.com";
     //window.opener.postMessage({ token: "{{ $token }}", expires: "{{$expires_in}}" }, "{{  url('*',[],true)  }}");
-    window.contentWindow.postMessage({ token: "{{ $token }}", expires: "{{$expires_in}}" }, "{{  url('*',[],true)  }}");
-    window.close();
+    window.postMessage({ token: "{{ $token }}", expires: "{{$expires_in}}" }, "{{  url('*',[],true)  }}");
+    //window.close();
   </script>
 </head>
 <body>
