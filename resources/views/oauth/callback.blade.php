@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <title>{{ config('app.name') }}</title>
   <script>
-    //document.domain="darestreams.com";
+    document.domain="darestreams.com";
 
     /*window.addEventListener("message", function(event) {
       if(event.origin !== 'darestreams.com') {
