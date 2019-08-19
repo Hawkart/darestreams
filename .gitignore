@@ -17,3 +17,5 @@ todo.txt
 
 /public/*
 !/public/docs/
+
+/resources/views/index.blade.php
