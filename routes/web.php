@@ -6,4 +6,6 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::post('deploy', 'DeployController@deploy');
 
-
+Route::get('/', function () {
+    return view('index');
+});
