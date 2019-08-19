@@ -5,7 +5,3 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::redirect('/', '/docs', 301);
-
-/*Route::get('{path}', function () {
-    return view('index');
-})->where('path', '(.*)');*/

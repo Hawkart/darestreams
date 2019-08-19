@@ -156,7 +156,7 @@ class OAuthController extends Controller
      */
     protected function generateEmail($providerUser)
     {
-        $site = env('APP_URL', "api.darestreams.com");
+        $site = env('APP_URL', "darestreams.com");
         $site = str_replace(["http://", "https://"], "", $site);
         $name = $providerUser->getNickname() ? $providerUser->getNickname() : $providerUser->getName();
         $email = Str::slug($name)."@".$site;
