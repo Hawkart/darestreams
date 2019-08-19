@@ -64,8 +64,7 @@ class OAuthController extends Controller
             'token_type' => 'bearer',
             'expires_in' => $this->guard()->getPayload()->get('exp') - time()
         ], 200)->header('Access-Control-Allow-Origin', 'https://darestreams.com');
-
-            ;//->header('X-Frame-Options', "ALLOW-FROM https://darestreams.com");
+        //->header('X-Frame-Options', "ALLOW-FROM https://darestreams.com");
     }
 
     /**
