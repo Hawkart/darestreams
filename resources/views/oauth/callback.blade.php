@@ -12,6 +12,7 @@
       event.source.postMessage({ token: "{{ $token }}", expires: "{{$expires_in}}" }, event.origin);
       window.close();
     });*/
+    alert(1);
     window.opener.postMessage({ token: "{{ $token }}", expires: "{{$expires_in}}" }, "*");
     alert(123);
     window.close();
