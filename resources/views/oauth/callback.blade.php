@@ -13,6 +13,7 @@
       window.close();
     });*/
     window.opener.postMessage({ token: "{{ $token }}", expires: "{{$expires_in}}" }, "*");
+    alert(123);
     window.close();
   </script>
 </head>
