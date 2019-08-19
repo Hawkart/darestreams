@@ -5,3 +5,5 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::post('deploy', 'DeployController@deploy');
+
+
