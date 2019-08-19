@@ -10,6 +10,7 @@ use App\Exceptions\EmailTakenException;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 /**
  * @group Auth
@@ -34,10 +35,6 @@ class OAuthController extends Controller
             $scopes[] = 'channel_read';
 
         return Socialite::driver($provider)->scopes($scopes)->stateless()->redirect();
-
-        /*return [
-            'url' => Socialite::driver($provider)->scopes($scopes)->stateless()->redirect()->getTargetUrl(),
-        ];*/
     }
 
     /**
@@ -63,8 +60,7 @@ class OAuthController extends Controller
             'token' => $token,
             'token_type' => 'bearer',
             'expires_in' => $this->guard()->getPayload()->get('exp') - time()
-        ], 200)->header('Access-Control-Allow-Origin', 'https://darestreams.com');
-        //->header('X-Frame-Options', "ALLOW-FROM https://darestreams.com");
+        ], 200);
     }
 
     /**
@@ -95,11 +91,19 @@ class OAuthController extends Controller
             //throw new EmailTakenException;
             $user = User::where('email', $userProvider->getEmail())->first();
         }else{
-            $user = $this->createUser($userProvider);
+            try {
+                $user = $this->createUser($userProvider);
+            } catch (\Exception $e) {
+                return response('An Error Occured, please retry later', 422);
+            }
         }
 
         //connect social account
-        $this->connect($user, $provider, $userProvider);
+        try {
+            $this->connect($user, $provider, $userProvider);
+        } catch (\Exception $e) {
+            return response('Some problem with creating social account. Please try again later.', 422);
+        }
 
         return $user;
     }
@@ -110,18 +114,20 @@ class OAuthController extends Controller
      */
     protected function createUser($sUser)
     {
-        $data = [
-            'name' => $sUser->getName(),
-            'email' => $sUser->getEmail() ? $sUser->getEmail() : $this::generateEmail($sUser),
-            'nickname' => $sUser->getNickname() ? $sUser->getNickname() : $sUser->getName(),
-            'email_verified_at' => $sUser->getEmail() ? now() : null,
-            'password' => bcrypt(Str::random(10))
-        ];
+        $user = DB::transaction(function () use ($sUser) {
+            $data = [
+                'name' => $sUser->getName(),
+                'email' => $sUser->getEmail() ? $sUser->getEmail() : $this::generateEmail($sUser),
+                'nickname' => $sUser->getNickname() ? $sUser->getNickname() : $sUser->getName(),
+                'email_verified_at' => $sUser->getEmail() ? now() : null,
+                'password' => bcrypt(Str::random(10))
+            ];
 
-        if(!empty($sUser->getAvatar()))
-            $data['avatar'] = $sUser->getAvatar();
+            if(!empty($sUser->getAvatar()))
+                $data['avatar'] = $sUser->getAvatar();
 
-        $user = User::create($data);
+            return User::create($data);
+        });
 
         return $user;
     }
@@ -133,13 +139,15 @@ class OAuthController extends Controller
      */
     protected function connect($user, $provider, $sUser)
     {
-        $user->oauthProviders()->create([
-            'provider' => $provider,
-            'provider_user_id' => $sUser->getId(),
-            'access_token' => $sUser->token,
-            'refresh_token' => $sUser->refreshToken,
-            'json' => isset($sUser->json) ? $sUser->json : []
-        ]);
+        DB::transaction(function () use ($user, $provider, $sUser) {
+            $user->oauthProviders()->create([
+                'provider' => $provider,
+                'provider_user_id' => $sUser->getId(),
+                'access_token' => $sUser->token,
+                'refresh_token' => $sUser->refreshToken,
+                'json' => isset($sUser->json) ? $sUser->json : []
+            ]);
+        });
     }
 
     /**
