@@ -338,9 +338,6 @@ class UserController extends Controller
      */
     public function channel(User $user)
     {
-        if(auth()->user()->id!=$user->id)
-            return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
-
         $query = $user->channel()->getQuery();
 
         $item = QueryBuilder::for($query)
