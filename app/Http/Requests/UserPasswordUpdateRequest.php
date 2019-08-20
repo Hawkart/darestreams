@@ -32,7 +32,7 @@ class UserPasswordUpdateRequest extends FormRequest {
             case 'PATCH':
                 {
                     return [
-                        'password' => 'required|min:6',
+                        'password' => 'required|confirmed|min:6',
                     ];
                 }
             default:break;

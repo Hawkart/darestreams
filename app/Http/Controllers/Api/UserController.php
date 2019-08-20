@@ -137,10 +137,15 @@ class UserController extends Controller
         if ($user->id != auth()->user()->id)
             return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
 
+        if($user->avatar)
+        {
+            $path = public_path() . '/storage/' . $user->avatar;
+            if(file_exists($path))
+                unlink($path);
+        }
+
         $avatarName = $user->id.'_avatar'.time().'.'.request()->avatar->getClientOriginalExtension();
-
-        $request->avatar->storeAs('avatars', $avatarName);
-
+        $request->avatar->storeAs('public/avatars', $avatarName);
         $user->avatar = "avatars/".$avatarName;
         $user->save();
 
@@ -173,12 +178,12 @@ class UserController extends Controller
         if($user->overlay)
         {
             $path = public_path() . '/storage/' . $user->overlay;
-            if(file_exists($path) && !in_array($user->overlay, ['default/overlay_game.jpg', 'default/overlay_team.jpg', 'default/overlay_user.jpg']))
+            if(file_exists($path))
                 unlink($path);
         }
 
         $avatarName = $user->id.'_overlay'.time().'.'.request()->overlay->getClientOriginalExtension();
-        $request->overlay->storeAs('avatars', $avatarName);
+        $request->overlay->storeAs('public/avatars', $avatarName);
         $user->avatar = "avatars/".$avatarName;
         $user->save();
 
@@ -207,7 +212,7 @@ class UserController extends Controller
             return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
 
         if($result = $user->update([
-            'password' => \Hash::make($request->get('password'))
+            'password' => bcrypt($request->get('password'))
         ]))
         {
             UserResource::withoutWrapping();
