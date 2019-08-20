@@ -97,7 +97,7 @@ class LoginController extends Controller
         return response()->json([
             'token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => $expiration - time(),
+            'expires_in' => $expiration,
         ]);
     }
 

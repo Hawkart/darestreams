@@ -17,7 +17,7 @@ Darestreams API v1.
 <!-- END_INFO -->
 
 #Auth
-<!-- START_ba35aa39474cb98cfb31829e70eb8b74 -->
+<!-- START_c3fa189a6c95ca36ad6ac4791a873d23 -->
 ## Handle a login request to the application.
 
 > Example request:
@@ -25,7 +25,7 @@ Darestreams API v1.
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/login", [
+$response = $client->post("https://api.darestreams.com/api/login", [
     'headers' => [
             "Content-Type" => "application/json",
         ],
@@ -42,7 +42,7 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`POST login`
+`POST api/login`
 
 #### Body Parameters
 
@@ -51,9 +51,9 @@ Parameter | Type | Status | Description
     email | string |  required  | User's email.
     password | string |  required  | User's password.
 
-<!-- END_ba35aa39474cb98cfb31829e70eb8b74 -->
+<!-- END_c3fa189a6c95ca36ad6ac4791a873d23 -->
 
-<!-- START_d7aad7b5ac127700500280d511a3db01 -->
+<!-- START_d7b7952e7fdddc07c978c9bdaf757acf -->
 ## Handle a registration request for the application.
 
 > Example request:
@@ -61,7 +61,7 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/register", [
+$response = $client->post("https://api.darestreams.com/api/register", [
     'headers' => [
             "Content-Type" => "application/json",
         ],
@@ -81,7 +81,7 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`POST register`
+`POST api/register`
 
 #### Body Parameters
 
@@ -93,9 +93,9 @@ Parameter | Type | Status | Description
     password | string |  required  | User's password.
     lang | string |  required  | User's lang.
 
-<!-- END_d7aad7b5ac127700500280d511a3db01 -->
+<!-- END_d7b7952e7fdddc07c978c9bdaf757acf -->
 
-<!-- START_feb40f06a93c80d742181b6ffb6b734e -->
+<!-- START_b7802a3a2092f162a21dc668479801f4 -->
 ## Send a reset link to the given user.
 
 > Example request:
@@ -103,7 +103,7 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/password/email", [
+$response = $client->post("https://api.darestreams.com/api/password/email", [
     'headers' => [
             "Content-Type" => "application/json",
         ],
@@ -119,7 +119,7 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`POST password/email`
+`POST api/password/email`
 
 #### Body Parameters
 
@@ -127,9 +127,9 @@ Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
     email | string |  required  | User's email.
 
-<!-- END_feb40f06a93c80d742181b6ffb6b734e -->
+<!-- END_b7802a3a2092f162a21dc668479801f4 -->
 
-<!-- START_cafb407b7a846b31491f97719bb15aef -->
+<!-- START_8ad860d24dc1cc6dac772d99135ad13e -->
 ## Reset the given user&#039;s password.
 
 > Example request:
@@ -137,7 +137,7 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/password/reset", [
+$response = $client->post("https://api.darestreams.com/api/password/reset", [
     'headers' => [
             "Content-Type" => "application/json",
         ],
@@ -156,7 +156,7 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`POST password/reset`
+`POST api/password/reset`
 
 #### Body Parameters
 
@@ -167,9 +167,9 @@ Parameter | Type | Status | Description
     password | string |  required  | User's password.
     password_confirmation | string |  required  | User's password confirmation.
 
-<!-- END_cafb407b7a846b31491f97719bb15aef -->
+<!-- END_8ad860d24dc1cc6dac772d99135ad13e -->
 
-<!-- START_850c93628de5bf65202e8795bcfbba2e -->
+<!-- START_4462ebc3daf169e23a09dc2b53459f02 -->
 ## Redirect the user to the provider authentication page.
 
 {driver} - social provider: facebook, twitch, youtube, steam, discord
@@ -179,7 +179,7 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/oauth/1", [
+$response = $client->get("https://api.darestreams.com/api/oauth/1", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -196,12 +196,12 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET oauth/{driver}`
+`GET api/oauth/{driver}`
 
 
-<!-- END_850c93628de5bf65202e8795bcfbba2e -->
+<!-- END_4462ebc3daf169e23a09dc2b53459f02 -->
 
-<!-- START_23d437009cae5f8da02265956315673e -->
+<!-- START_a327c0048fdbf1b4b697176ccfb4772d -->
 ## Obtain the user information from the provider.
 
 {driver} - social provider: facebook, twitch, youtube, steam, discord, streamlabs
@@ -211,7 +211,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/oauth/1/callback", [
+$response = $client->get("https://api.darestreams.com/api/oauth/1/callback", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -228,12 +228,12 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET oauth/{driver}/callback`
+`GET api/oauth/{driver}/callback`
 
 
-<!-- END_23d437009cae5f8da02265956315673e -->
+<!-- END_a327c0048fdbf1b4b697176ccfb4772d -->
 
-<!-- START_e7face0d62c9d0dfb9b017041e8e3d66 -->
+<!-- START_4ac1f2974a517f5ccedee031d014865f -->
 ## Mark the user&#039;s email address as verified.
 
 {user} - integer id of user in database.
@@ -243,7 +243,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/email/verify/1", [
+$response = $client->post("https://api.darestreams.com/api/email/verify/1", [
     'query' => [
             "signature" => "ce3f1f0f9f8ad3196f6157dd6f4e732c5d48ac46260cfcb7c24fe2615fb66567",
             "expires" => "1565160796",
@@ -257,7 +257,7 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`POST email/verify/{user}`
+`POST api/email/verify/{user}`
 
 #### Query Parameters
 
@@ -266,9 +266,9 @@ Parameter | Status | Description
     signature |  required  | The signature for verifying.
     expires |  required  | The time verify link will expired.
 
-<!-- END_e7face0d62c9d0dfb9b017041e8e3d66 -->
+<!-- END_4ac1f2974a517f5ccedee031d014865f -->
 
-<!-- START_38334d357e7e155bf70b9ab94619ca3d -->
+<!-- START_007d2c80092c02b58e6bfecd510a3282 -->
 ## Resend the email verification notification.
 
 > Example request:
@@ -276,7 +276,7 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/email/resend", [
+$response = $client->post("https://api.darestreams.com/api/email/resend", [
     'headers' => [
             "Content-Type" => "application/json",
         ],
@@ -292,7 +292,7 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`POST email/resend`
+`POST api/email/resend`
 
 #### Body Parameters
 
@@ -300,9 +300,9 @@ Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
     email | string |  required  | User's email.
 
-<!-- END_38334d357e7e155bf70b9ab94619ca3d -->
+<!-- END_007d2c80092c02b58e6bfecd510a3282 -->
 
-<!-- START_e65925f23b9bc6b93d9356895f29f80c -->
+<!-- START_61739f3220a224b34228600649230ad1 -->
 ## Log the user out of the application.
 
 > Example request:
@@ -310,7 +310,7 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/logout", [
+$response = $client->post("https://api.darestreams.com/api/logout", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -320,13 +320,13 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`POST logout`
+`POST api/logout`
 
 
-<!-- END_e65925f23b9bc6b93d9356895f29f80c -->
+<!-- END_61739f3220a224b34228600649230ad1 -->
 
 #Channels
-<!-- START_b6cc973b55b7bb22ca0c1c79e337106d -->
+<!-- START_22b9daea8f2cab0035f861dfe7469fdc -->
 ## Get top channels
 
 > Example request:
@@ -334,11 +334,11 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/channels/top", [
+$response = $client->get("https://api.darestreams.com/api/channels/top", [
     'query' => [
-            "hours" => "quidem",
-            "limit" => "sed",
-            "game_id" => "rem",
+            "hours" => "tenetur",
+            "limit" => "ut",
+            "game_id" => "reiciendis",
             "include" => "user,streams",
         ],
 ]);
@@ -357,7 +357,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET channels/top`
+`GET api/channels/top`
 
 #### Query Parameters
 
@@ -368,9 +368,9 @@ Parameter | Status | Description
     game_id |  optional  | Integer. Filter channels by category.
     include |  optional  | string String of connections: user, streams, tags, game.
 
-<!-- END_b6cc973b55b7bb22ca0c1c79e337106d -->
+<!-- END_22b9daea8f2cab0035f861dfe7469fdc -->
 
-<!-- START_810e42410c294440a2f4edc230d3c14b -->
+<!-- START_49dde38880772c46db114f63233b9c8d -->
 ## Display a listing of the resource.
 
 > Example request:
@@ -378,11 +378,11 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/channels", [
+$response = $client->get("https://api.darestreams.com/api/channels", [
     'query' => [
             "include" => "user,streams",
             "sort" => "-id",
-            "page" => "17",
+            "page" => "6",
         ],
 ]);
 $body = $response->getBody();
@@ -5960,7 +5960,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET channels`
+`GET api/channels`
 
 #### Query Parameters
 
@@ -5970,9 +5970,9 @@ Parameter | Status | Description
     sort |  optional  | string Sort items by fields: title, id. For desc use '-' prefix.
     page |  optional  | array Use as page[number]=1&page[size]=2.
 
-<!-- END_810e42410c294440a2f4edc230d3c14b -->
+<!-- END_49dde38880772c46db114f63233b9c8d -->
 
-<!-- START_416190d15e65072bfc0174a4d781685e -->
+<!-- START_0779c6dd057d85b1ecc8600867607a5a -->
 ## Detail channel&#039;s info.
 
 > Example request:
@@ -5980,7 +5980,7 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/channels/1", [
+$response = $client->get("https://api.darestreams.com/api/channels/1", [
     'query' => [
             "include" => "user,streams",
         ],
@@ -6026,7 +6026,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET channels/{channel}`
+`GET api/channels/{channel}`
 
 #### Query Parameters
 
@@ -6034,9 +6034,9 @@ Parameter | Status | Description
 --------- | ------- | ------- | -----------
     include |  optional  | string String of connections: user, streams, tags, game.
 
-<!-- END_416190d15e65072bfc0174a4d781685e -->
+<!-- END_0779c6dd057d85b1ecc8600867607a5a -->
 
-<!-- START_2b969ff25feac1c03921afdbf3acb70d -->
+<!-- START_dee125be05d89dc3192127382ff45319 -->
 ## Update info about channel.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -6045,14 +6045,14 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->put("https://api.darestreams.com/channels/1", [
+$response = $client->put("https://api.darestreams.com/api/channels/1", [
     'headers' => [
             "Content-Type" => "application/json",
         ],
     'json' => [
             "description" => "Long description.",
-            "logo" => "saepe",
-            "game_id" => "4",
+            "logo" => "porro",
+            "game_id" => "2",
         ],
 ]);
 $body = $response->getBody();
@@ -6063,9 +6063,9 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`PUT channels/{channel}`
+`PUT api/channels/{channel}`
 
-`PATCH channels/{channel}`
+`PATCH api/channels/{channel}`
 
 #### Body Parameters
 
@@ -6075,10 +6075,10 @@ Parameter | Type | Status | Description
     logo | file |  optional  | Logo for your channel. Possible formats: png, jpg.
     game_id | integer |  optional  | Select category from games list.
 
-<!-- END_2b969ff25feac1c03921afdbf3acb70d -->
+<!-- END_dee125be05d89dc3192127382ff45319 -->
 
 #Games
-<!-- START_c8d03de77f2b355bda22bcdc5ac5e78c -->
+<!-- START_e13bc0a4ebf6ae5facd90bc628401ae8 -->
 ## Top categories
 
 > Example request:
@@ -6086,10 +6086,10 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/games/top", [
+$response = $client->get("https://api.darestreams.com/api/games/top", [
     'query' => [
-            "hours" => "hic",
-            "limit" => "ratione",
+            "hours" => "fugiat",
+            "limit" => "et",
             "include" => "tags,streams",
         ],
 ]);
@@ -6108,7 +6108,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET games/top`
+`GET api/games/top`
 
 #### Query Parameters
 
@@ -6118,9 +6118,9 @@ Parameter | Status | Description
     limit |  optional  | integer. Limit of top categories. Default: 10.
     include |  optional  | string String of connections: streams,tags, channels.
 
-<!-- END_c8d03de77f2b355bda22bcdc5ac5e78c -->
+<!-- END_e13bc0a4ebf6ae5facd90bc628401ae8 -->
 
-<!-- START_af3cb2deabe4f6e96b412e19f04ade03 -->
+<!-- START_a213ebd3dc2db295be3e4893926eb6d9 -->
 ## Display a listing of the resource.
 
 > Example request:
@@ -6128,11 +6128,11 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/games", [
+$response = $client->get("https://api.darestreams.com/api/games", [
     'query' => [
             "include" => "tags,streams",
             "sort" => "-popularity",
-            "page" => "8",
+            "page" => "2",
         ],
 ]);
 $body = $response->getBody();
@@ -6700,7 +6700,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET games`
+`GET api/games`
 
 #### Query Parameters
 
@@ -6710,9 +6710,9 @@ Parameter | Status | Description
     sort |  optional  | string Sort items by fields: title, popularity. For desc use '-' prefix.
     page |  optional  | array Use as page[number]=1&page[size]=2.
 
-<!-- END_af3cb2deabe4f6e96b412e19f04ade03 -->
+<!-- END_a213ebd3dc2db295be3e4893926eb6d9 -->
 
-<!-- START_e424ca64247beff60bfc99293d4a674b -->
+<!-- START_0ef38b88d2764ec45536939737c2cd9e -->
 ## Display the specified resource.
 
 > Example request:
@@ -6720,7 +6720,7 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/games/1", [
+$response = $client->get("https://api.darestreams.com/api/games/1", [
     'query' => [
             "include" => "tags,streams",
         ],
@@ -6749,7 +6749,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET games/{game}`
+`GET api/games/{game}`
 
 #### Query Parameters
 
@@ -6757,9 +6757,9 @@ Parameter | Status | Description
 --------- | ------- | ------- | -----------
     include |  optional  | string String of connections: streams,tags,channels.
 
-<!-- END_e424ca64247beff60bfc99293d4a674b -->
+<!-- END_0ef38b88d2764ec45536939737c2cd9e -->
 
-<!-- START_7e8f7da0ff91ff4bacb18a5cac03a1da -->
+<!-- START_1c911aeac664c589d28f801d250390eb -->
 ## Offer new category.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -6768,7 +6768,7 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/games/offer", [
+$response = $client->post("https://api.darestreams.com/api/games/offer", [
     'headers' => [
             "Content-Type" => "application/json",
         ],
@@ -6784,7 +6784,7 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`POST games/offer`
+`POST api/games/offer`
 
 #### Body Parameters
 
@@ -6792,10 +6792,10 @@ Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
     title | string |  required  | Title of new category.
 
-<!-- END_7e8f7da0ff91ff4bacb18a5cac03a1da -->
+<!-- END_1c911aeac664c589d28f801d250390eb -->
 
 #Streams
-<!-- START_3d1bd0245cf4ecb9cb9fd2ead213c1b2 -->
+<!-- START_abb451296e8a2ba5637d0ec36abb578d -->
 ## Display a listing of the resource.
 
 > Example request:
@@ -6803,11 +6803,11 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/streams", [
+$response = $client->get("https://api.darestreams.com/api/streams", [
     'query' => [
             "include" => "game,streams",
             "sort" => "-quantity_donators",
-            "page" => "18",
+            "page" => "20",
         ],
 ]);
 $body = $response->getBody();
@@ -6825,7 +6825,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET streams`
+`GET api/streams`
 
 #### Query Parameters
 
@@ -6835,9 +6835,9 @@ Parameter | Status | Description
     sort |  optional  | string Sort items by fields: amount_donations, quantity_donators, quantity_donations, id. For desc use '-' prefix.
     page |  optional  | array Use as page[number]=1&page[size]=2.
 
-<!-- END_3d1bd0245cf4ecb9cb9fd2ead213c1b2 -->
+<!-- END_abb451296e8a2ba5637d0ec36abb578d -->
 
-<!-- START_428f1c1dcacde3c1f8743fa0d3d3dcfa -->
+<!-- START_bf44ada173010e2c208afd434eaa671b -->
 ## Create new stream.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -6846,15 +6846,15 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/streams", [
+$response = $client->post("https://api.darestreams.com/api/streams", [
     'headers' => [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "game_id" => "13",
-            "link" => "iste",
-            "start_at" => "ut",
-            "tags" => "enim",
+            "game_id" => "19",
+            "link" => "ut",
+            "start_at" => "eum",
+            "tags" => "consequatur",
         ],
 ]);
 $body = $response->getBody();
@@ -6865,7 +6865,7 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`POST streams`
+`POST api/streams`
 
 #### Body Parameters
 
@@ -6876,9 +6876,9 @@ Parameter | Type | Status | Description
     start_at | datetime |  required  | Datetime of starting stream.
     tags | Additional |  optional  | tags to stream.
 
-<!-- END_428f1c1dcacde3c1f8743fa0d3d3dcfa -->
+<!-- END_bf44ada173010e2c208afd434eaa671b -->
 
-<!-- START_f2675ec42aa925cc5652431ea42519fb -->
+<!-- START_74a8d9fa827a7a3d2dd911edb687c7cf -->
 ## Display the specified resource.
 
 > Example request:
@@ -6886,7 +6886,7 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/streams/1", [
+$response = $client->get("https://api.darestreams.com/api/streams/1", [
     'query' => [
             "include" => "game,streams",
         ],
@@ -6906,7 +6906,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET streams/{stream}`
+`GET api/streams/{stream}`
 
 #### Query Parameters
 
@@ -6914,9 +6914,9 @@ Parameter | Status | Description
 --------- | ------- | ------- | -----------
     include |  optional  | string String of connections: game, streams, tags, channel.
 
-<!-- END_f2675ec42aa925cc5652431ea42519fb -->
+<!-- END_74a8d9fa827a7a3d2dd911edb687c7cf -->
 
-<!-- START_633c367f419daa968232191480a554a8 -->
+<!-- START_d0d9ff34c11558c8c22b9e8eb9692e1c -->
 ## Update stream.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -6927,15 +6927,15 @@ Update before starting of the stream.
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->put("https://api.darestreams.com/streams/1", [
+$response = $client->put("https://api.darestreams.com/api/streams/1", [
     'headers' => [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "game_id" => "19",
-            "link" => "delectus",
-            "start_at" => "sint",
-            "tags" => "omnis",
+            "game_id" => "2",
+            "link" => "quasi",
+            "start_at" => "ut",
+            "tags" => "porro",
         ],
 ]);
 $body = $response->getBody();
@@ -6946,9 +6946,9 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`PUT streams/{stream}`
+`PUT api/streams/{stream}`
 
-`PATCH streams/{stream}`
+`PATCH api/streams/{stream}`
 
 #### Body Parameters
 
@@ -6959,9 +6959,9 @@ Parameter | Type | Status | Description
     start_at | datetime |  required  | Datetime of starting stream.
     tags | Additional |  optional  | tags to stream.
 
-<!-- END_633c367f419daa968232191480a554a8 -->
+<!-- END_d0d9ff34c11558c8c22b9e8eb9692e1c -->
 
-<!-- START_f70a70c246494542a8e74f1a17145d4c -->
+<!-- START_0d2ac8fb0867d4e8e430d2616f94179d -->
 ## Get stream&#039;s chat info.
 
 > Example request:
@@ -6969,7 +6969,7 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/streams/1/thread", [
+$response = $client->get("https://api.darestreams.com/api/streams/1/thread", [
     'query' => [
             "include" => "messages",
         ],
@@ -8176,7 +8176,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET streams/{stream}/thread`
+`GET api/streams/{stream}/thread`
 
 #### Query Parameters
 
@@ -8184,10 +8184,10 @@ Parameter | Status | Description
 --------- | ------- | ------- | -----------
     include |  optional  | string String of connections: messages, participants.
 
-<!-- END_f70a70c246494542a8e74f1a17145d4c -->
+<!-- END_0d2ac8fb0867d4e8e430d2616f94179d -->
 
 #Streams tasks
-<!-- START_342b0cc4ed6c5ff7ac255d7b5c299215 -->
+<!-- START_952eb29033bb97a34bff613fd4ea1f00 -->
 ## Display a listing of the resource.
 
 {stream} - stream integer id.
@@ -8197,11 +8197,11 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/streams/1/tasks", [
+$response = $client->get("https://api.darestreams.com/api/streams/1/tasks", [
     'query' => [
             "include" => "user,stream",
             "sort" => "-amount_donations",
-            "page" => "4",
+            "page" => "7",
         ],
 ]);
 $body = $response->getBody();
@@ -8850,7 +8850,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET streams/{stream}/tasks`
+`GET api/streams/{stream}/tasks`
 
 #### Query Parameters
 
@@ -8860,9 +8860,9 @@ Parameter | Status | Description
     sort |  optional  | string Sort items by fields: amount_donations, id. For desc use '-' prefix.
     page |  optional  | array Use as page[number]=1&page[size]=2.
 
-<!-- END_342b0cc4ed6c5ff7ac255d7b5c299215 -->
+<!-- END_952eb29033bb97a34bff613fd4ea1f00 -->
 
-<!-- START_acfa4689ca22ff7376582fd1bb20692e -->
+<!-- START_0113caa050341493c353e3589719a212 -->
 ## Create new task for stream.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -8873,18 +8873,18 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/streams/1/tasks", [
+$response = $client->post("https://api.darestreams.com/api/streams/1/tasks", [
     'headers' => [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_text" => "debitis",
-            "full_text" => "tempore",
-            "interval_time" => "15",
-            "min_amount" => "4",
+            "small_text" => "quam",
+            "full_text" => "et",
+            "interval_time" => "3",
+            "min_amount" => "17",
             "is_superbowl" => "",
-            "min_amount_superbowl" => "9",
-            "tags" => "aliquid",
+            "min_amount_superbowl" => "20",
+            "tags" => "maxime",
         ],
 ]);
 $body = $response->getBody();
@@ -8895,7 +8895,7 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`POST streams/{stream}/tasks`
+`POST api/streams/{stream}/tasks`
 
 #### Body Parameters
 
@@ -8909,9 +8909,9 @@ Parameter | Type | Status | Description
     min_amount_superbowl | integer |  optional  | If is_superbowl is true required min amount for donation.
     tags | Additional |  optional  | tags to task.
 
-<!-- END_acfa4689ca22ff7376582fd1bb20692e -->
+<!-- END_0113caa050341493c353e3589719a212 -->
 
-<!-- START_34efd41199d8b1eab493dec2da748c34 -->
+<!-- START_4bba3341fb428ec89a2d6f8353ee5ecd -->
 ## Display the specified resource.
 
 {stream} - stream integer id.
@@ -8922,7 +8922,7 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/streams/1/tasks/1", [
+$response = $client->get("https://api.darestreams.com/api/streams/1/tasks/1", [
     'query' => [
             "include" => "user,stream",
         ],
@@ -8942,7 +8942,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET streams/{stream}/tasks/{task}`
+`GET api/streams/{stream}/tasks/{task}`
 
 #### Query Parameters
 
@@ -8950,9 +8950,9 @@ Parameter | Status | Description
 --------- | ------- | ------- | -----------
     include |  optional  | string String of connections: user, stream, transactions.
 
-<!-- END_34efd41199d8b1eab493dec2da748c34 -->
+<!-- END_4bba3341fb428ec89a2d6f8353ee5ecd -->
 
-<!-- START_66357439ac2a14eb53f8da1b1889a149 -->
+<!-- START_7cfdb53f2a19ba600f15d6020ed3fbe8 -->
 ## Update task for stream.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -8964,18 +8964,18 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->put("https://api.darestreams.com/streams/1/tasks/1", [
+$response = $client->put("https://api.darestreams.com/api/streams/1/tasks/1", [
     'headers' => [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_text" => "quidem",
-            "full_text" => "deleniti",
-            "interval_time" => "19",
+            "small_text" => "aut",
+            "full_text" => "voluptates",
+            "interval_time" => "17",
             "min_amount" => "7",
             "is_superbowl" => "",
-            "min_amount_superbowl" => "6",
-            "tags" => "eum",
+            "min_amount_superbowl" => "19",
+            "tags" => "ut",
         ],
 ]);
 $body = $response->getBody();
@@ -8986,9 +8986,9 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`PUT streams/{stream}/tasks/{task}`
+`PUT api/streams/{stream}/tasks/{task}`
 
-`PATCH streams/{stream}/tasks/{task}`
+`PATCH api/streams/{stream}/tasks/{task}`
 
 #### Body Parameters
 
@@ -9002,10 +9002,10 @@ Parameter | Type | Status | Description
     min_amount_superbowl | integer |  optional  | If is_superbowl is true required min amount for donation.
     tags | Additional |  optional  | tags to task.
 
-<!-- END_66357439ac2a14eb53f8da1b1889a149 -->
+<!-- END_7cfdb53f2a19ba600f15d6020ed3fbe8 -->
 
 #Streams tasks donations
-<!-- START_07bb6347f2ecf4a57ee8e1063dfd7a1f -->
+<!-- START_19f253dcbafef68aeb1e6946585cf8df -->
 ## List of task&#039;s donations.
 
 {stream} - stream integer id.
@@ -9016,11 +9016,11 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/streams/1/tasks/1/transactions", [
+$response = $client->get("https://api.darestreams.com/api/streams/1/tasks/1/transactions", [
     'query' => [
             "include" => "task",
             "sort" => "-created_at",
-            "page" => "18",
+            "page" => "10",
         ],
 ]);
 $body = $response->getBody();
@@ -9038,7 +9038,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET streams/{stream}/tasks/{task}/transactions`
+`GET api/streams/{stream}/tasks/{task}/transactions`
 
 #### Query Parameters
 
@@ -9048,9 +9048,9 @@ Parameter | Status | Description
     sort |  optional  | string Sort items by fields: created_at, created_at. For desc use '-' prefix.
     page |  optional  | array Use as page[number]=1&page[size]=2.
 
-<!-- END_07bb6347f2ecf4a57ee8e1063dfd7a1f -->
+<!-- END_19f253dcbafef68aeb1e6946585cf8df -->
 
-<!-- START_351a346643a8b21d5875d9f8200878d4 -->
+<!-- START_5e42be48d6a884e38dd7fe64f901a9e9 -->
 ## Create new task for stream.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -9061,12 +9061,12 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/streams/1/tasks/1/transactions", [
+$response = $client->post("https://api.darestreams.com/api/streams/1/tasks/1/transactions", [
     'headers' => [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "amount" => "9",
+            "amount" => "17",
         ],
 ]);
 $body = $response->getBody();
@@ -9077,7 +9077,7 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`POST streams/{stream}/tasks/{task}/transactions`
+`POST api/streams/{stream}/tasks/{task}/transactions`
 
 #### Body Parameters
 
@@ -9085,9 +9085,9 @@ Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
     amount | integer |  required  | Amount for donation.
 
-<!-- END_351a346643a8b21d5875d9f8200878d4 -->
+<!-- END_5e42be48d6a884e38dd7fe64f901a9e9 -->
 
-<!-- START_6b5f35851d1b1b30174a8245f1dc49c8 -->
+<!-- START_20628eb60d6b21c80fa2870ddeaca2dc -->
 ## Detail donations of task.
 
 {stream} - stream integer id.
@@ -9099,7 +9099,7 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/streams/1/tasks/1/transactions/1", [
+$response = $client->get("https://api.darestreams.com/api/streams/1/tasks/1/transactions/1", [
     'query' => [
             "include" => "task",
         ],
@@ -9119,7 +9119,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET streams/{stream}/tasks/{task}/transactions/{transaction}`
+`GET api/streams/{stream}/tasks/{task}/transactions/{transaction}`
 
 #### Query Parameters
 
@@ -9127,17 +9127,17 @@ Parameter | Status | Description
 --------- | ------- | ------- | -----------
     include |  optional  | string String of connections: account_sender, account_receiver, account_sender.user, account_receiver.user, task.
 
-<!-- END_6b5f35851d1b1b30174a8245f1dc49c8 -->
+<!-- END_20628eb60d6b21c80fa2870ddeaca2dc -->
 
 #Streams tasks votes
-<!-- START_6c170a051ade023cd2a440c51b13d2f3 -->
-## streams/{stream}/tasks/{task}/votes
+<!-- START_b143db56a70affe20cf532d158779de4 -->
+## api/streams/{stream}/tasks/{task}/votes
 > Example request:
 
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/streams/1/tasks/1/votes", [
+$response = $client->post("https://api.darestreams.com/api/streams/1/tasks/1/votes", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -9147,13 +9147,13 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`POST streams/{stream}/tasks/{task}/votes`
+`POST api/streams/{stream}/tasks/{task}/votes`
 
 
-<!-- END_6c170a051ade023cd2a440c51b13d2f3 -->
+<!-- END_b143db56a70affe20cf532d158779de4 -->
 
 #Threads
-<!-- START_5cfeeb9554aa7e5d2007f1345a1475e8 -->
+<!-- START_0243e324e32b67b8af814736702d84a1 -->
 ## Display a listing of the resource.
 
 > Example request:
@@ -9161,7 +9161,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/threads", [
+$response = $client->get("https://api.darestreams.com/api/threads", [
     'query' => [
             "include" => "messages",
             "sort" => "-id",
@@ -20073,7 +20073,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET threads`
+`GET api/threads`
 
 #### Query Parameters
 
@@ -20082,9 +20082,9 @@ Parameter | Status | Description
     include |  optional  | string String of connections: messages, participants.
     sort |  optional  | string Sort items by fields: title, id. For desc use '-' prefix.
 
-<!-- END_5cfeeb9554aa7e5d2007f1345a1475e8 -->
+<!-- END_0243e324e32b67b8af814736702d84a1 -->
 
-<!-- START_98b0d41ddfe962a11ce14377860c8838 -->
+<!-- START_d25ac79489d881e2cd9b57627616c7bb -->
 ## Display the specified resource.
 
 > Example request:
@@ -20092,7 +20092,7 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/threads/1", [
+$response = $client->get("https://api.darestreams.com/api/threads/1", [
     'query' => [
             "include" => "messages",
         ],
@@ -21299,7 +21299,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET threads/{thread}`
+`GET api/threads/{thread}`
 
 #### Query Parameters
 
@@ -21307,10 +21307,10 @@ Parameter | Status | Description
 --------- | ------- | ------- | -----------
     include |  optional  | string String of connections: messages, participants.
 
-<!-- END_98b0d41ddfe962a11ce14377860c8838 -->
+<!-- END_d25ac79489d881e2cd9b57627616c7bb -->
 
 #Threads messages
-<!-- START_8e977e54b06b68f3793162e541f8abeb -->
+<!-- START_8a4daf2ee9600eb1493ed06b5ec68a12 -->
 ## Get messages of thread.
 
 > Example request:
@@ -21318,7 +21318,7 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/threads/1/messages", [
+$response = $client->get("https://api.darestreams.com/api/threads/1/messages", [
     'query' => [
             "include" => "user",
         ],
@@ -24221,7 +24221,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET threads/{thread}/messages`
+`GET api/threads/{thread}/messages`
 
 #### Query Parameters
 
@@ -24229,9 +24229,9 @@ Parameter | Status | Description
 --------- | ------- | ------- | -----------
     include |  optional  | string String of connections: user, thread.
 
-<!-- END_8e977e54b06b68f3793162e541f8abeb -->
+<!-- END_8a4daf2ee9600eb1493ed06b5ec68a12 -->
 
-<!-- START_85ef3463ef256686e5f6eebeb66a9dc1 -->
+<!-- START_9f621653bddb65eadb812b5229c8515e -->
 ## Create new message for thread.
 
 > Example request:
@@ -24239,12 +24239,12 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/threads/1/messages", [
+$response = $client->post("https://api.darestreams.com/api/threads/1/messages", [
     'headers' => [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "body" => "laboriosam",
+            "body" => "culpa",
         ],
 ]);
 $body = $response->getBody();
@@ -24255,7 +24255,7 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`POST threads/{thread}/messages`
+`POST api/threads/{thread}/messages`
 
 #### Body Parameters
 
@@ -24263,9 +24263,9 @@ Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
     body | text |  optional  | Message text.
 
-<!-- END_85ef3463ef256686e5f6eebeb66a9dc1 -->
+<!-- END_9f621653bddb65eadb812b5229c8515e -->
 
-<!-- START_f93a5bd710b3f986e9cb2f89cdd5c283 -->
+<!-- START_5eac3967faea0453327dfea0b27e4d12 -->
 ## Detail message of thread.
 
 {thread} - thread integer id.
@@ -24275,7 +24275,7 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/threads/1/messages/1", [
+$response = $client->get("https://api.darestreams.com/api/threads/1/messages/1", [
     'query' => [
             "include" => "user",
         ],
@@ -24295,7 +24295,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET threads/{thread}/messages/{message}`
+`GET api/threads/{thread}/messages/{message}`
 
 #### Query Parameters
 
@@ -24303,9 +24303,9 @@ Parameter | Status | Description
 --------- | ------- | ------- | -----------
     include |  optional  | string String of connections: user, thread.
 
-<!-- END_f93a5bd710b3f986e9cb2f89cdd5c283 -->
+<!-- END_5eac3967faea0453327dfea0b27e4d12 -->
 
-<!-- START_42aa95fabe330e9a2c9a691f2a3aa578 -->
+<!-- START_09f8c7bf705f2c45de734c7b765cee54 -->
 ## Update message.
 
 > Example request:
@@ -24313,7 +24313,7 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->put("https://api.darestreams.com/threads/1/messages/1", [
+$response = $client->put("https://api.darestreams.com/api/threads/1/messages/1", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -24323,15 +24323,15 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`PUT threads/{thread}/messages/{message}`
+`PUT api/threads/{thread}/messages/{message}`
 
-`PATCH threads/{thread}/messages/{message}`
+`PATCH api/threads/{thread}/messages/{message}`
 
 
-<!-- END_42aa95fabe330e9a2c9a691f2a3aa578 -->
+<!-- END_09f8c7bf705f2c45de734c7b765cee54 -->
 
 #Threads participants
-<!-- START_13ae3d6de96d1e43ada0939bb9db795b -->
+<!-- START_6c536b81f96eb7e5f621850a695ea2bb -->
 ## Get participant users of the chat.
 
 > Example request:
@@ -24339,7 +24339,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/threads/1/participants", [
+$response = $client->get("https://api.darestreams.com/api/threads/1/participants", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -24356,13 +24356,13 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET threads/{thread}/participants`
+`GET api/threads/{thread}/participants`
 
 
-<!-- END_13ae3d6de96d1e43ada0939bb9db795b -->
+<!-- END_6c536b81f96eb7e5f621850a695ea2bb -->
 
 #Users
-<!-- START_42962fed5bc9f2908380612aadf4f09e -->
+<!-- START_8d1e53fcf4d2d02a6144ed392de856bf -->
 ## Get authorized user.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -24371,7 +24371,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/users/me", [
+$response = $client->get("https://api.darestreams.com/api/users/me", [
     'query' => [
             "include" => "tasks,channel",
         ],
@@ -24391,7 +24391,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET users/me`
+`GET api/users/me`
 
 #### Query Parameters
 
@@ -24399,9 +24399,9 @@ Parameter | Status | Description
 --------- | ------- | ------- | -----------
     include |  optional  | string String of connections: tasks, streams, channel.
 
-<!-- END_42962fed5bc9f2908380612aadf4f09e -->
+<!-- END_8d1e53fcf4d2d02a6144ed392de856bf -->
 
-<!-- START_89966bfb9ab533cc3249b91a9090d3dc -->
+<!-- START_fc1e4f6a697e3c48257de845299b71d5 -->
 ## Display a listing of the resource.
 
 > Example request:
@@ -24409,7 +24409,7 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/users", [
+$response = $client->get("https://api.darestreams.com/api/users", [
     'query' => [
             "include" => "tasks,channel",
             "sort" => "-nickname",
@@ -27541,7 +27541,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET users`
+`GET api/users`
 
 #### Query Parameters
 
@@ -27550,9 +27550,9 @@ Parameter | Status | Description
     include |  optional  | string String of connections: tasks, streams, channel.
     sort |  optional  | string Sort items by fields: nickname, id. For desc use '-' prefix.
 
-<!-- END_89966bfb9ab533cc3249b91a9090d3dc -->
+<!-- END_fc1e4f6a697e3c48257de845299b71d5 -->
 
-<!-- START_5693ac2f2e21af3ebc471cd5a6244460 -->
+<!-- START_8653614346cb0e3d444d164579a0a0a2 -->
 ## Display the specified resource.
 
 > Example request:
@@ -27560,7 +27560,7 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/users/1", [
+$response = $client->get("https://api.darestreams.com/api/users/1", [
     'query' => [
             "include" => "tasks,channel",
         ],
@@ -27726,7 +27726,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET users/{user}`
+`GET api/users/{user}`
 
 #### Query Parameters
 
@@ -27734,9 +27734,9 @@ Parameter | Status | Description
 --------- | ------- | ------- | -----------
     include |  optional  | string String of connections: tasks, streams, channel.
 
-<!-- END_5693ac2f2e21af3ebc471cd5a6244460 -->
+<!-- END_8653614346cb0e3d444d164579a0a0a2 -->
 
-<!-- START_7fe085c671e1b3d51e86136538b1d63f -->
+<!-- START_48a3115be98493a3c866eb0e23347262 -->
 ## Update user fields.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -27745,15 +27745,14 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->put("https://api.darestreams.com/users/1", [
+$response = $client->put("https://api.darestreams.com/api/users/1", [
     'headers' => [
             "Content-Type" => "application/json",
         ],
     'json' => [
             "name" => "Archibald",
-            "last_name" => "quo",
-            "middle_name" => "nesciunt",
-            "nickname" => "Archi89",
+            "last_name" => "cum",
+            "middle_name" => "libero",
             "email" => "example@example.ru",
         ],
 ]);
@@ -27765,9 +27764,9 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`PUT users/{user}`
+`PUT api/users/{user}`
 
-`PATCH users/{user}`
+`PATCH api/users/{user}`
 
 #### Body Parameters
 
@@ -27776,12 +27775,11 @@ Parameter | Type | Status | Description
     name | string |  required  | User's first name.
     last_name | string |  optional  | User's last name.
     middle_name | string |  optional  | User's middle name.
-    nickname | string |  required  | User's nickname.
     email | string |  required  | User's email.
 
-<!-- END_7fe085c671e1b3d51e86136538b1d63f -->
+<!-- END_48a3115be98493a3c866eb0e23347262 -->
 
-<!-- START_139fe72f815632772695c50e011d50f6 -->
+<!-- START_7cc3051f0f8fb1bb7bb6bb2378539c7d -->
 ## User&#039;s account
 {user} - user id integer.
 
@@ -27791,7 +27789,7 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/users/1/account", [
+$response = $client->get("https://api.darestreams.com/api/users/1/account", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -27808,22 +27806,21 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET users/{user}/account`
+`GET api/users/{user}/account`
 
 
-<!-- END_139fe72f815632772695c50e011d50f6 -->
+<!-- END_7cc3051f0f8fb1bb7bb6bb2378539c7d -->
 
-<!-- START_a5f649ddf62415a5676cf0c941c576c3 -->
+<!-- START_fbb6055cfa923488b2aecfd64b5169f2 -->
 ## User&#039;s channel
 {user} - user id integer.
 
-<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/users/1/channel", [
+$response = $client->get("https://api.darestreams.com/api/users/1/channel", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -27831,21 +27828,21 @@ print_r(json_decode((string) $body));
 
 
 
-> Example response (400):
+> Example response (500):
 
 ```json
 {
-    "error": "Unauthorized"
+    "message": "Server Error"
 }
 ```
 
 ### HTTP Request
-`GET users/{user}/channel`
+`GET api/users/{user}/channel`
 
 
-<!-- END_a5f649ddf62415a5676cf0c941c576c3 -->
+<!-- END_fbb6055cfa923488b2aecfd64b5169f2 -->
 
-<!-- START_0683d066ac271332bee5e91317dae54b -->
+<!-- START_08cadcb524b8da799a45d96a3dc5280b -->
 ## Update user&#039;s avatar
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -27854,7 +27851,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->patch("https://api.darestreams.com/users/1/avatar", [
+$response = $client->patch("https://api.darestreams.com/api/users/1/avatar", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -27864,12 +27861,12 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`PATCH users/{user}/avatar`
+`PATCH api/users/{user}/avatar`
 
 
-<!-- END_0683d066ac271332bee5e91317dae54b -->
+<!-- END_08cadcb524b8da799a45d96a3dc5280b -->
 
-<!-- START_de5d9c3bc9b04b5ce9a4f3dc1f07cc36 -->
+<!-- START_ba109f197842d45056329323c7c165e2 -->
 ## Update user&#039;s overlay.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -27878,7 +27875,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->patch("https://api.darestreams.com/users/1/overlay", [
+$response = $client->patch("https://api.darestreams.com/api/users/1/overlay", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -27888,12 +27885,12 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`PATCH users/{user}/overlay`
+`PATCH api/users/{user}/overlay`
 
 
-<!-- END_de5d9c3bc9b04b5ce9a4f3dc1f07cc36 -->
+<!-- END_ba109f197842d45056329323c7c165e2 -->
 
-<!-- START_2e0c2f1898bfc1d1a1135bea4bd77caa -->
+<!-- START_214b46866907f8337b7d82d3091c5f2a -->
 ## Update user&#039;s password.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -27902,7 +27899,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->patch("https://api.darestreams.com/users/1/password", [
+$response = $client->patch("https://api.darestreams.com/api/users/1/password", [
     'headers' => [
             "Content-Type" => "application/json",
         ],
@@ -27918,7 +27915,7 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`PATCH users/{user}/password`
+`PATCH api/users/{user}/password`
 
 #### Body Parameters
 
@@ -27926,9 +27923,9 @@ Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
     password | string |  required  | User's password.
 
-<!-- END_2e0c2f1898bfc1d1a1135bea4bd77caa -->
+<!-- END_214b46866907f8337b7d82d3091c5f2a -->
 
-<!-- START_e609ae5c21ee3e306171269cefcf89f7 -->
+<!-- START_ab4903de81d5140154df1f3010ee83c8 -->
 ## Follow the user.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -27939,7 +27936,7 @@ Parameter | Type | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->post("https://api.darestreams.com/users/1/follow", [
+$response = $client->post("https://api.darestreams.com/api/users/1/follow", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -27949,12 +27946,12 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`POST users/{user}/follow`
+`POST api/users/{user}/follow`
 
 
-<!-- END_e609ae5c21ee3e306171269cefcf89f7 -->
+<!-- END_ab4903de81d5140154df1f3010ee83c8 -->
 
-<!-- START_52f1e2b1cbb27d0f15d754f0fce009fc -->
+<!-- START_fb812a13da98d2159bf60eb1c6055808 -->
 ## Unfollow the user.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -27965,7 +27962,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->patch("https://api.darestreams.com/users/1/unfollow", [
+$response = $client->patch("https://api.darestreams.com/api/users/1/unfollow", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -27975,12 +27972,12 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`PATCH users/{user}/unfollow`
+`PATCH api/users/{user}/unfollow`
 
 
-<!-- END_52f1e2b1cbb27d0f15d754f0fce009fc -->
+<!-- END_fb812a13da98d2159bf60eb1c6055808 -->
 
-<!-- START_e0b93da6a9ed6c8f885aa49fe1fcde8a -->
+<!-- START_6404b83da363c00b12b9fc1e15ec86ba -->
 ## User&#039;s followers
 
 {user} - user id you want follow for.
@@ -27990,7 +27987,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/users/1/followers", [
+$response = $client->get("https://api.darestreams.com/api/users/1/followers", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -28007,12 +28004,12 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET users/{user}/followers`
+`GET api/users/{user}/followers`
 
 
-<!-- END_e0b93da6a9ed6c8f885aa49fe1fcde8a -->
+<!-- END_6404b83da363c00b12b9fc1e15ec86ba -->
 
-<!-- START_c86688026c3bf661c6deb9d9fd787b05 -->
+<!-- START_b1af205299bf898aa2915c41a4e6bc1a -->
 ## Users followings
 {user} - user id integer.
 
@@ -28021,7 +28018,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/users/1/followings", [
+$response = $client->get("https://api.darestreams.com/api/users/1/followings", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -28038,13 +28035,13 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET users/{user}/followings`
+`GET api/users/{user}/followings`
 
 
-<!-- END_c86688026c3bf661c6deb9d9fd787b05 -->
+<!-- END_b1af205299bf898aa2915c41a4e6bc1a -->
 
 #Users notifications
-<!-- START_0ba4788a635c7095a0a54062ecb3f7f2 -->
+<!-- START_b40c1602e5d2b520e2f5e920cd782013 -->
 ## Get user&#039;s unread notifications.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -28053,7 +28050,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/users/1/notifications/unread", [
+$response = $client->get("https://api.darestreams.com/api/users/1/notifications/unread", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -28070,12 +28067,12 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET users/{user}/notifications/unread`
+`GET api/users/{user}/notifications/unread`
 
 
-<!-- END_0ba4788a635c7095a0a54062ecb3f7f2 -->
+<!-- END_b40c1602e5d2b520e2f5e920cd782013 -->
 
-<!-- START_b97207c9e8fe0de9b10a7d4c9f481b5e -->
+<!-- START_33f358c2729e6c1f28e316d32d0e4f38 -->
 ## Set read all user&#039;s notifications.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -28084,7 +28081,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->patch("https://api.darestreams.com/users/1/notifications/setReadAll", [
+$response = $client->patch("https://api.darestreams.com/api/users/1/notifications/setReadAll", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -28094,12 +28091,12 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`PATCH users/{user}/notifications/setReadAll`
+`PATCH api/users/{user}/notifications/setReadAll`
 
 
-<!-- END_b97207c9e8fe0de9b10a7d4c9f481b5e -->
+<!-- END_33f358c2729e6c1f28e316d32d0e4f38 -->
 
-<!-- START_340189399f7d4ed4f6ffc7c726d904f7 -->
+<!-- START_f8d506e1d8bcfae538144e1a6f7d65b2 -->
 ## Get user&#039;s all notifications.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -28108,7 +28105,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/users/1/notifications", [
+$response = $client->get("https://api.darestreams.com/api/users/1/notifications", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -28125,12 +28122,12 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET users/{user}/notifications`
+`GET api/users/{user}/notifications`
 
 
-<!-- END_340189399f7d4ed4f6ffc7c726d904f7 -->
+<!-- END_f8d506e1d8bcfae538144e1a6f7d65b2 -->
 
-<!-- START_ccde0c17918b82e19dd759ddfea5f48c -->
+<!-- START_d46e764d0ef10a432f07c58f9db434a7 -->
 ## Display user&#039;s notification.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -28139,7 +28136,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/users/1/notifications/1", [
+$response = $client->get("https://api.darestreams.com/api/users/1/notifications/1", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -28156,12 +28153,12 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET users/{user}/notifications/{notification}`
+`GET api/users/{user}/notifications/{notification}`
 
 
-<!-- END_ccde0c17918b82e19dd759ddfea5f48c -->
+<!-- END_d46e764d0ef10a432f07c58f9db434a7 -->
 
-<!-- START_a7ab123bc8f502dcff8487722f83b9f6 -->
+<!-- START_53f3d5e5bec75e23efe1f3968f82be15 -->
 ## Set read one user&#039;s notification.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -28170,7 +28167,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->patch("https://api.darestreams.com/users/1/notifications/1/setRead", [
+$response = $client->patch("https://api.darestreams.com/api/users/1/notifications/1/setRead", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -28180,13 +28177,13 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`PATCH users/{user}/notifications/{notification}/setRead`
+`PATCH api/users/{user}/notifications/{notification}/setRead`
 
 
-<!-- END_a7ab123bc8f502dcff8487722f83b9f6 -->
+<!-- END_53f3d5e5bec75e23efe1f3968f82be15 -->
 
 #Users oauth accounts
-<!-- START_05064ba97ab39a4b8b6d930f5dfa4c0e -->
+<!-- START_5d466822499977de34e9b7f781a67125 -->
 ## Get user&#039;s all social accounts.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -28195,7 +28192,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/users/1/oauthproviders", [
+$response = $client->get("https://api.darestreams.com/api/users/1/oauthproviders", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -28212,12 +28209,12 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET users/{user}/oauthproviders`
+`GET api/users/{user}/oauthproviders`
 
 
-<!-- END_05064ba97ab39a4b8b6d930f5dfa4c0e -->
+<!-- END_5d466822499977de34e9b7f781a67125 -->
 
-<!-- START_0c78ccec68d3acac9a61b7c7caa723e9 -->
+<!-- START_b54231aa40ef8f2bd13f2e93a346a406 -->
 ## Get user&#039;s one social accounts.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -28226,7 +28223,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/users/1/oauthproviders/1", [
+$response = $client->get("https://api.darestreams.com/api/users/1/oauthproviders/1", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -28243,13 +28240,13 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET users/{user}/oauthproviders/{oauthprovider}`
+`GET api/users/{user}/oauthproviders/{oauthprovider}`
 
 
-<!-- END_0c78ccec68d3acac9a61b7c7caa723e9 -->
+<!-- END_b54231aa40ef8f2bd13f2e93a346a406 -->
 
 #Users transactions
-<!-- START_3d8c2ce3314eeeebd5da8c3e3ce79694 -->
+<!-- START_b9b7a838afe2673a31f59bf05378cd16 -->
 ## Get user&#039;s all transactions.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -28258,10 +28255,10 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/users/1/transactions", [
+$response = $client->get("https://api.darestreams.com/api/users/1/transactions", [
     'query' => [
             "include" => "task.",
-            "page" => "2",
+            "page" => "3",
         ],
 ]);
 $body = $response->getBody();
@@ -28279,7 +28276,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET users/{user}/transactions`
+`GET api/users/{user}/transactions`
 
 #### Query Parameters
 
@@ -28288,9 +28285,9 @@ Parameter | Status | Description
     include |  optional  | string String of connections: ['account_sender', 'account_receiver', 'account_sender.user', 'account_receiver.user', 'task'].
     page |  optional  | array Use as page[number]=1&page[size]=2.
 
-<!-- END_3d8c2ce3314eeeebd5da8c3e3ce79694 -->
+<!-- END_b9b7a838afe2673a31f59bf05378cd16 -->
 
-<!-- START_85522e03e8134ea12f35724d9a920eac -->
+<!-- START_67193fc3626d5523fe09e1f407109526 -->
 ## Get user&#039;s one transaction.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -28299,7 +28296,7 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/users/1/transactions/1", [
+$response = $client->get("https://api.darestreams.com/api/users/1/transactions/1", [
     'query' => [
             "include" => "task.",
         ],
@@ -28319,7 +28316,7 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET users/{user}/transactions/{transaction}`
+`GET api/users/{user}/transactions/{transaction}`
 
 #### Query Parameters
 
@@ -28327,10 +28324,10 @@ Parameter | Status | Description
 --------- | ------- | ------- | -----------
     include |  optional  | string String of connections: ['account_sender', 'account_receiver', 'account_sender.user', 'account_receiver.user', 'task'].
 
-<!-- END_85522e03e8134ea12f35724d9a920eac -->
+<!-- END_67193fc3626d5523fe09e1f407109526 -->
 
 #Votes
-<!-- START_8cdc734aefde366fdeaa9cf9b6073ac4 -->
+<!-- START_d34571d4b3fb5ca4789570205f487271 -->
 ## Display a listing of the resource.
 
 > Example request:
@@ -28338,7 +28335,7 @@ Parameter | Status | Description
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/votes", [
+$response = $client->get("https://api.darestreams.com/api/votes", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -35958,12 +35955,12 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET votes`
+`GET api/votes`
 
 
-<!-- END_8cdc734aefde366fdeaa9cf9b6073ac4 -->
+<!-- END_d34571d4b3fb5ca4789570205f487271 -->
 
-<!-- START_010025e3163645417fca6293cc53bd7c -->
+<!-- START_776ad2521c7bfc48fab5b2b7e8bc101b -->
 ## Display the specified resource.
 
 > Example request:
@@ -35971,7 +35968,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/votes/1", [
+$response = $client->get("https://api.darestreams.com/api/votes/1", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -35993,19 +35990,19 @@ print_r(json_decode((string) $body));
 ```
 
 ### HTTP Request
-`GET votes/{vote}`
+`GET api/votes/{vote}`
 
 
-<!-- END_010025e3163645417fca6293cc53bd7c -->
+<!-- END_776ad2521c7bfc48fab5b2b7e8bc101b -->
 
-<!-- START_736e2de7dc5087977b850f901581164c -->
-## votes/{vote}
+<!-- START_46d615f5dd5b3aa29d2a6e77dbebc99d -->
+## api/votes/{vote}
 > Example request:
 
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->put("https://api.darestreams.com/votes/1", [
+$response = $client->put("https://api.darestreams.com/api/votes/1", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -36015,11 +36012,34 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`PUT votes/{vote}`
+`PUT api/votes/{vote}`
 
-`PATCH votes/{vote}`
+`PATCH api/votes/{vote}`
 
 
-<!-- END_736e2de7dc5087977b850f901581164c -->
+<!-- END_46d615f5dd5b3aa29d2a6e77dbebc99d -->
+
+#general
+<!-- START_f6f016ca51296d53976ffad9339127d6 -->
+## api/deploy
+> Example request:
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->post("https://api.darestreams.com/api/deploy", [
+]);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+
+
+### HTTP Request
+`POST api/deploy`
+
+
+<!-- END_f6f016ca51296d53976ffad9339127d6 -->
 
 

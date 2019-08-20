@@ -29,7 +29,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api')
-            ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account', 'channel']);
+            ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account']);
     }
 
     /**
@@ -94,7 +94,6 @@ class UserController extends Controller
      * @bodyParam name string required User's first name. Example: Archibald
      * @bodyParam last_name string User's last name.
      * @bodyParam middle_name string User's middle name.
-     * @bodyParam nickname string required User's nickname. Example: Archi89
      * @bodyParam email string required User's email. Example: example@example.ru
      *
      * @param User $user
@@ -106,7 +105,7 @@ class UserController extends Controller
         if ($user->id != auth()->user()->id)
             return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
 
-        $allowedFields = ['name', 'last_name', 'middle_name', 'nickname'];
+        $allowedFields = ['name', 'last_name', 'middle_name'];
         if ($user instanceof MustVerifyEmail && !$user->hasVerifiedEmail())
             $allowedFields[] = 'email';
 
@@ -131,54 +130,19 @@ class UserController extends Controller
      */
     public function updateAvatar(User $user, Request $request)
     {
+        $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         if ($user->id != auth()->user()->id)
             return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
 
-        $params = $request->all();
+        $avatarName = $user->id.'_avatar'.time().'.'.request()->avatar->getClientOriginalExtension();
 
-        if($user->avatar)
-        {
-            $path = public_path() . '/storage/' . $user->avatar;
+        $request->avatar->storeAs('avatars', $avatarName);
 
-            if(file_exists($path) && !in_array($user->avatar, ['default/avatar_team.jpg', 'default/avatar_user.jpg', 'users/default.png']))
-            {
-                unlink($path);
-            }
-        }
-
-        $path = Storage::disk('public')->putFile(
-            'avatars', $request->file('files')
-        );
-
-        /**
-         * Crop & resize using client crop data
-         */
-
-        if($request->has('toCropImgH'))
-        {
-            $crop = [
-                'h' => (int)$params["toCropImgH"],
-                'w' => (int)$params["toCropImgW"],
-                'x' => (int)$params["toCropImgX"],
-                'y' => (int)$params["toCropImgY"]
-            ];
-        }else{
-            $crop = [
-                'h' => (int)$params["h"],
-                'w' => (int)$params["w"],
-                'x' => (int)$params["x"],
-                'y' => (int)$params["y"]
-            ];
-        }
-
-        $img = Image::make('storage/'.$path);
-        $img->crop($crop['h'], $crop['w'], $crop['x'], $crop['y']);
-        $img->resize(120, 120);
-        $img->save('storage/'.$path);
-        $img->destroy();
-
-        $user->avatar = $path;
-        $user->update();
+        $user->avatar = "avatars/".$avatarName;
+        $user->save();
 
         UserResource::withoutWrapping();
 
@@ -202,6 +166,10 @@ class UserController extends Controller
         if ($user->id != auth()->user()->id)
             return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
 
+        $request->validate([
+            'overlay' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         if($user->overlay)
         {
             $path = public_path() . '/storage/' . $user->overlay;
@@ -209,11 +177,10 @@ class UserController extends Controller
                 unlink($path);
         }
 
-        $path = Storage::disk('public')->putFile(
-            'avatars', $request->file('files')
-        );
-        $user->overlay = $path;
-        $user->update();
+        $avatarName = $user->id.'_overlay'.time().'.'.request()->overlay->getClientOriginalExtension();
+        $request->overlay->storeAs('avatars', $avatarName);
+        $user->avatar = "avatars/".$avatarName;
+        $user->save();
 
         UserResource::withoutWrapping();
 
@@ -365,7 +332,6 @@ class UserController extends Controller
     /**
      * User's channel
      * {user} - user id integer.
-     * @authenticated
      *
      * @param User $user
      * @return ChannelResource|\Illuminate\Http\JsonResponse
