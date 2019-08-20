@@ -4,6 +4,6 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('/', function () {
+Route::get('{path}', function () {
     return view('index');
-});
+})->where('path', '(.*)');

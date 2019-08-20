@@ -92,7 +92,7 @@ return [
              * Note that the route must be referenced by name here (wildcards are supported).
              */
             'exclude' => [
-                 'admin*', '_debugbar*', 'arrilot*', 'deploy*', 'docs*', '/', 'broadcasting*', 'horizon*'
+                 'admin*', '_debugbar*', 'arrilot*', 'api/deploy*', 'docs*', '/', 'broadcasting*', 'horizon*'
             ],
 
             /*
