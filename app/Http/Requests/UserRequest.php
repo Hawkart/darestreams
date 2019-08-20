@@ -36,9 +36,10 @@ class UserRequest extends FormRequest {
             case 'PATCH':
                 {
                     $data = [
-                        //'first_name' => 'required|string|max:255',
-                        //'last_name' => 'required|string|max:255',
-                        'nickname' => 'required|unique:users,nickname,'.$user->id
+                        'name' => 'sometimes|required|string|max:255',
+                        'first_name' => 'sometimes|required|string|max:255',
+                        'last_name' => 'sometimes|required|string|max:255',
+                        //'nickname' => 'required|unique:users,nickname,'.$user->id
                     ];
 
                     if(!$user->hasVerifiedEmail())
