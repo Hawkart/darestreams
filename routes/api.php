@@ -34,8 +34,8 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('users', 'UserController')->only(['index', 'show', 'update']);
     Route::get('users/{user}/account', 'UserController@account');
     Route::get('users/{user}/channel', 'UserController@channel');
-    Route::patch('users/{user}/avatar', 'UserController@updateAvatar');
-    Route::patch('users/{user}/overlay', 'UserController@updateOverlay');
+    Route::post('users/{user}/avatar', 'UserController@updateAvatar');
+    Route::post('users/{user}/overlay', 'UserController@updateOverlay');
     Route::patch('users/{user}/password', 'UserController@updatePassword');
     Route::apiResource('users.transactions', 'Users\TransactionController')->only(['index', 'show']);
     Route::apiResource('users.oauthproviders', 'Users\OAuthProviderController')->only(['index', 'show']);
