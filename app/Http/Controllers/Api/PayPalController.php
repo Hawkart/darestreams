@@ -117,7 +117,7 @@ class PayPalController extends Controller
                 $currency = $transaction['amount']['currency'];
 
                 if ($t->currency != $currency)
-                    return response()->json(['error' => trans('Currency is not match.')], 422);
+                    return response()->json(['error' => trans('api/paypal.currency_not_match')], 422);
 
                 if ($t->status != Transaction::PAYMENT_COMPLETED)
                 {
@@ -141,10 +141,10 @@ class PayPalController extends Controller
 
                 return new TransactionResource($t);
             }else{
-                return response()->json(['error' => trans('Payment is not approved.')], 422);
+                return response()->json(['error' => trans('api/paypal.not_approved')], 422);
             }
         }else{
-            return response()->json(['error' => trans('Complete Purchase request mistake.')], 422);
+            return response()->json(['error' => trans('api/paypal.purchase_mistake')], 422);
         }
     }
 
@@ -155,6 +155,6 @@ class PayPalController extends Controller
      */
     public function cancelled(Request $request)
     {
-        return response()->json(['error' => trans('You have cancelled your recent PayPal payment!')], 422);
+        return response()->json(['error' => trans('api/paypal.purchase_canceled')], 422);
     }
 }
