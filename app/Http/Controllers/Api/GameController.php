@@ -93,6 +93,7 @@ class GameController extends Controller
      *
      * @queryParam hours integer Check amount donations sum for last N hours. Default: 240.
      * @queryParam limit integer. Limit of top categories. Default: 10.
+     * @queryParam skip Integer. Offset of top categories. Default: 0.
      * @queryParam include string String of connections: streams,tags, channels. Example: tags,streams
      *
      * @param Request $request
@@ -102,6 +103,7 @@ class GameController extends Controller
     {
         $hours = $request->has('hours') ? $request->get('hours') : 240;
         $limit = $request->has('limit') ? $request->get('limit') : 8;
+        $skip = $request->has('skip') ? $request->get('skip') : 0;
         $lastDays = Carbon::now()->subHours($hours);
 
         //Calculate cache key
@@ -137,6 +139,7 @@ class GameController extends Controller
                 ->whereIn('id', $list)
                 ->orderByRaw(DB::raw("FIELD(id, $ids_ordered)"))
                 ->allowedIncludes(['streams', 'tags', 'channels'])
+                ->offset($skip)
                 ->limit($limit)
                 ->jsonPaginate();
 

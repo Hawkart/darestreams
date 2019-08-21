@@ -336,9 +336,10 @@ print_r(json_decode((string) $body));
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://api.darestreams.com/api/channels/top", [
     'query' => [
-            "hours" => "blanditiis",
-            "limit" => "maiores",
-            "game_id" => "quia",
+            "hours" => "quos",
+            "limit" => "suscipit",
+            "skip" => "qui",
+            "game_id" => "praesentium",
             "include" => "user,streams",
         ],
 ]);
@@ -365,6 +366,7 @@ Parameter | Status | Description
 --------- | ------- | ------- | -----------
     hours |  optional  | Integer Check amount donations sum for last N hours. Default: 240.
     limit |  optional  | Integer. Limit of top channels. Default: 10.
+    skip |  optional  | Integer. Offset of top channels. Default: 0.
     game_id |  optional  | Integer. Filter channels by category.
     include |  optional  | string String of connections: user, streams, tags, game.
 
@@ -382,7 +384,7 @@ $response = $client->get("https://api.darestreams.com/api/channels", [
     'query' => [
             "include" => "user,streams",
             "sort" => "-id",
-            "page" => "19",
+            "page" => "4",
         ],
 ]);
 $body = $response->getBody();
@@ -6051,8 +6053,8 @@ $response = $client->put("https://api.darestreams.com/api/channels/1", [
         ],
     'json' => [
             "description" => "Long description.",
-            "logo" => "non",
-            "game_id" => "13",
+            "logo" => "et",
+            "game_id" => "7",
         ],
 ]);
 $body = $response->getBody();
@@ -6088,8 +6090,9 @@ Parameter | Type | Status | Description
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://api.darestreams.com/api/games/top", [
     'query' => [
-            "hours" => "quaerat",
-            "limit" => "inventore",
+            "hours" => "odit",
+            "limit" => "asperiores",
+            "skip" => "fugiat",
             "include" => "tags,streams",
         ],
 ]);
@@ -6116,6 +6119,7 @@ Parameter | Status | Description
 --------- | ------- | ------- | -----------
     hours |  optional  | integer Check amount donations sum for last N hours. Default: 240.
     limit |  optional  | integer. Limit of top categories. Default: 10.
+    skip |  optional  | Integer. Offset of top categories. Default: 0.
     include |  optional  | string String of connections: streams,tags, channels.
 
 <!-- END_e13bc0a4ebf6ae5facd90bc628401ae8 -->
@@ -6132,7 +6136,7 @@ $response = $client->get("https://api.darestreams.com/api/games", [
     'query' => [
             "include" => "tags,streams",
             "sort" => "-popularity",
-            "page" => "9",
+            "page" => "20",
         ],
 ]);
 $body = $response->getBody();
@@ -6794,6 +6798,120 @@ Parameter | Type | Status | Description
 
 <!-- END_1c911aeac664c589d28f801d250390eb -->
 
+#Payments
+<!-- START_e000f228ecb1c6d64dbdbefefbc82ee2 -->
+## Create a payment.
+
+> Example request:
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->get("https://api.darestreams.com/api/paypal/checkout", [
+    'headers' => [
+            "Content-Type" => "application/json",
+        ],
+    'json' => [
+            "user_id" => "6",
+            "amount" => "28.7064251",
+            "task_id" => "9",
+        ],
+]);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+
+> Example response (422):
+
+```json
+{
+    "message": "The given data was invalid.",
+    "errors": {
+        "user_id": [
+            "The user id field is required."
+        ],
+        "amount": [
+            "The amount field is required."
+        ]
+    }
+}
+```
+
+### HTTP Request
+`GET api/paypal/checkout`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    user_id | integer |  required  | User's id.
+    amount | float |  required  | Amount for payment.
+    task_id | integer |  optional  | The task the donation going to.
+
+<!-- END_e000f228ecb1c6d64dbdbefefbc82ee2 -->
+
+<!-- START_80e5b472ecf06a3e6781f480c3b829a3 -->
+## Complete purchase.
+
+> Example request:
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->get("https://api.darestreams.com/api/paypal/completed", [
+]);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+
+> Example response (500):
+
+```json
+{
+    "message": "Server Error"
+}
+```
+
+### HTTP Request
+`GET api/paypal/completed`
+
+
+<!-- END_80e5b472ecf06a3e6781f480c3b829a3 -->
+
+<!-- START_ae1f388f4ccaf1f6452f13dec88672d0 -->
+## Payment cancel
+
+> Example request:
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->get("https://api.darestreams.com/api/paypal/cancelled", [
+]);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+
+> Example response (422):
+
+```json
+{
+    "error": "You have cancelled your recent PayPal payment!"
+}
+```
+
+### HTTP Request
+`GET api/paypal/cancelled`
+
+
+<!-- END_ae1f388f4ccaf1f6452f13dec88672d0 -->
+
 #Streams
 <!-- START_abb451296e8a2ba5637d0ec36abb578d -->
 ## Display a listing of the resource.
@@ -6807,7 +6925,7 @@ $response = $client->get("https://api.darestreams.com/api/streams", [
     'query' => [
             "include" => "game,streams",
             "sort" => "-quantity_donators",
-            "page" => "2",
+            "page" => "9",
         ],
 ]);
 $body = $response->getBody();
@@ -6851,10 +6969,10 @@ $response = $client->post("https://api.darestreams.com/api/streams", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "game_id" => "9",
-            "link" => "laudantium",
-            "start_at" => "et",
-            "tags" => "temporibus",
+            "game_id" => "20",
+            "link" => "culpa",
+            "start_at" => "vitae",
+            "tags" => "unde",
         ],
 ]);
 $body = $response->getBody();
@@ -6932,10 +7050,10 @@ $response = $client->put("https://api.darestreams.com/api/streams/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "game_id" => "16",
-            "link" => "nesciunt",
-            "start_at" => "corporis",
-            "tags" => "est",
+            "game_id" => "6",
+            "link" => "officia",
+            "start_at" => "velit",
+            "tags" => "qui",
         ],
 ]);
 $body = $response->getBody();
@@ -8201,7 +8319,7 @@ $response = $client->get("https://api.darestreams.com/api/streams/1/tasks", [
     'query' => [
             "include" => "user,stream",
             "sort" => "-amount_donations",
-            "page" => "4",
+            "page" => "16",
         ],
 ]);
 $body = $response->getBody();
@@ -8878,13 +8996,13 @@ $response = $client->post("https://api.darestreams.com/api/streams/1/tasks", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_text" => "id",
-            "full_text" => "consequatur",
+            "small_text" => "itaque",
+            "full_text" => "est",
             "interval_time" => "20",
-            "min_amount" => "13",
+            "min_amount" => "4",
             "is_superbowl" => "1",
-            "min_amount_superbowl" => "15",
-            "tags" => "dignissimos",
+            "min_amount_superbowl" => "9",
+            "tags" => "assumenda",
         ],
 ]);
 $body = $response->getBody();
@@ -8969,13 +9087,13 @@ $response = $client->put("https://api.darestreams.com/api/streams/1/tasks/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_text" => "optio",
-            "full_text" => "tenetur",
-            "interval_time" => "20",
-            "min_amount" => "3",
+            "small_text" => "eveniet",
+            "full_text" => "et",
+            "interval_time" => "11",
+            "min_amount" => "17",
             "is_superbowl" => "",
-            "min_amount_superbowl" => "2",
-            "tags" => "cupiditate",
+            "min_amount_superbowl" => "3",
+            "tags" => "voluptate",
         ],
 ]);
 $body = $response->getBody();
@@ -9020,7 +9138,7 @@ $response = $client->get("https://api.darestreams.com/api/streams/1/tasks/1/tran
     'query' => [
             "include" => "task",
             "sort" => "-created_at",
-            "page" => "12",
+            "page" => "6",
         ],
 ]);
 $body = $response->getBody();
@@ -9066,7 +9184,7 @@ $response = $client->post("https://api.darestreams.com/api/streams/1/tasks/1/tra
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "amount" => "20",
+            "amount" => "12",
         ],
 ]);
 $body = $response->getBody();
@@ -24244,7 +24362,7 @@ $response = $client->post("https://api.darestreams.com/api/threads/1/messages", 
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "body" => "provident",
+            "body" => "quia",
         ],
 ]);
 $body = $response->getBody();
@@ -27751,8 +27869,8 @@ $response = $client->put("https://api.darestreams.com/api/users/1", [
         ],
     'json' => [
             "name" => "Archibald",
-            "last_name" => "et",
-            "middle_name" => "provident",
+            "last_name" => "totam",
+            "middle_name" => "culpa",
             "email" => "example@example.ru",
         ],
 ]);
@@ -28270,7 +28388,7 @@ $client = new \GuzzleHttp\Client();
 $response = $client->get("https://api.darestreams.com/api/users/1/transactions", [
     'query' => [
             "include" => "task.",
-            "page" => "6",
+            "page" => "11",
         ],
 ]);
 $body = $response->getBody();
@@ -36030,117 +36148,5 @@ print_r(json_decode((string) $body));
 
 
 <!-- END_46d615f5dd5b3aa29d2a6e77dbebc99d -->
-
-#general
-<!-- START_e000f228ecb1c6d64dbdbefefbc82ee2 -->
-## Create a payment.
-
-> Example request:
-
-```php
-
-$client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/api/paypal/checkout", [
-    'headers' => [
-            "Content-Type" => "application/json",
-        ],
-    'json' => [
-            "user_id" => "10",
-            "amount" => "1935945.1871725",
-            "task_id" => "1",
-        ],
-]);
-$body = $response->getBody();
-print_r(json_decode((string) $body));
-```
-
-
-
-> Example response (422):
-
-```json
-{
-    "message": "The given data was invalid.",
-    "errors": {
-        "user_id": [
-            "The user id field is required."
-        ],
-        "amount": [
-            "The amount field is required."
-        ]
-    }
-}
-```
-
-### HTTP Request
-`GET api/paypal/checkout`
-
-#### Body Parameters
-
-Parameter | Type | Status | Description
---------- | ------- | ------- | ------- | -----------
-    user_id | integer |  required  | User's id.
-    amount | float |  required  | Amount for payment.
-    task_id | integer |  optional  | The task the donation going to.
-
-<!-- END_e000f228ecb1c6d64dbdbefefbc82ee2 -->
-
-<!-- START_80e5b472ecf06a3e6781f480c3b829a3 -->
-## api/paypal/completed
-> Example request:
-
-```php
-
-$client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/api/paypal/completed", [
-]);
-$body = $response->getBody();
-print_r(json_decode((string) $body));
-```
-
-
-
-> Example response (500):
-
-```json
-{
-    "message": "Server Error"
-}
-```
-
-### HTTP Request
-`GET api/paypal/completed`
-
-
-<!-- END_80e5b472ecf06a3e6781f480c3b829a3 -->
-
-<!-- START_ae1f388f4ccaf1f6452f13dec88672d0 -->
-## api/paypal/cancelled
-> Example request:
-
-```php
-
-$client = new \GuzzleHttp\Client();
-$response = $client->get("https://api.darestreams.com/api/paypal/cancelled", [
-]);
-$body = $response->getBody();
-print_r(json_decode((string) $body));
-```
-
-
-
-> Example response (422):
-
-```json
-{
-    "error": "You have cancelled your recent PayPal payment!"
-}
-```
-
-### HTTP Request
-`GET api/paypal/cancelled`
-
-
-<!-- END_ae1f388f4ccaf1f6452f13dec88672d0 -->
 
 

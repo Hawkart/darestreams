@@ -10,8 +10,7 @@ use Omnipay\Omnipay;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Class PayPalController
- * @package App\Http\Controllers
+ * @group Payments
  */
 class PayPalController extends Controller
 {
@@ -92,6 +91,8 @@ class PayPalController extends Controller
     }
 
     /**
+     * Complete purchase.
+     *
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
@@ -148,6 +149,7 @@ class PayPalController extends Controller
     }
 
     /**
+     * Payment cancel
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */

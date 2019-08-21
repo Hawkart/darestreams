@@ -95,6 +95,7 @@ class ChannelController extends Controller
      * Get top channels
      * @queryParam hours Integer Check amount donations sum for last N hours. Default: 240.
      * @queryParam limit Integer. Limit of top channels. Default: 10.
+     * @queryParam skip Integer. Offset of top channels. Default: 0.
      * @queryParam game_id Integer. Filter channels by category.
      *
      * @queryParam include string String of connections: user, streams, tags, game. Example: user,streams
@@ -103,6 +104,7 @@ class ChannelController extends Controller
     {
         $hours = $request->has('hours') ? $request->get('hours') : 240;
         $limit = $request->has('limit') ? $request->get('limit') : 10;
+        $skip = $request->has('skip') ? $request->get('skip') : 0;
         $lastDays = Carbon::now()->subHours($hours);
 
         //Calculate cache key
@@ -128,6 +130,7 @@ class ChannelController extends Controller
                 //->where('status', DB::raw(Stream::STATUS_FINISHED))
                 ->groupBy('ch.id', 'ch.title', 'ch.game_id', 'ch.views', 'ch.slug', 'ch.link', 'ch.user_id', 'ch.description', 'ch.created_at', 'ch.logo', 'ch.updated_at')
                 ->orderByDesc('donates')
+                ->offset($skip)
                 ->limit($limit);
 
             $list = DB::table(DB::raw("({$sub->toSql()}) as t"))
