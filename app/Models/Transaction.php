@@ -6,12 +6,35 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
+    const PAYMENT_CANCELED = 3;     // Money got back and transaction canceled.
+    const PAYMENT_HOLDING = 2;      //Money get from account but not transfered
+    const PAYMENT_COMPLETED = 1;    //Money got from account and transfered
+    const PAYMENT_PENDING = 0;      //Transaction created but no actions with money. Needs for PayPal payment.
+
     /**
      * The attributes that aren't mass assignable.
      *
      * @var array
      */
     protected $guarded = ['id'];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'json',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'json' => 'array'
+    ];
 
     /**
      * @var array

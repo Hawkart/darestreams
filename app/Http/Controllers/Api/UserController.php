@@ -184,7 +184,7 @@ class UserController extends Controller
 
         $avatarName = $user->id.'_overlay'.time().'.'.request()->overlay->getClientOriginalExtension();
         $request->overlay->storeAs('public/avatars', $avatarName);
-        $user->avatar = "avatars/".$avatarName;
+        $user->overlay = "avatars/".$avatarName;
         $user->save();
 
         UserResource::withoutWrapping();

@@ -82,4 +82,10 @@ return [
         'client_secret' => env('YOUTUBE_SECRET'),
         'redirect' => env('YOUTUBE_REDIRECT_URI')
     ],
+
+    'paypal' => [
+        'client_id' => env('PAYPAL_CLIENT_ID'),
+        'client_secret' => env('PAYPAL_SECRET'),
+        'sandbox' => env('PAYPAL_MODE'),
+    ],
 ];

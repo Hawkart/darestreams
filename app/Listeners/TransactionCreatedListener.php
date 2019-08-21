@@ -17,7 +17,7 @@ class TransactionCreatedListener
     {
         $transaction = $event->transaction;
 
-        if($transaction->task_id>0)
+        /*if($transaction->task_id>0)
         {
             //Обновляем сумма данатов таск
             $task = $transaction->task;
@@ -55,6 +55,6 @@ class TransactionCreatedListener
             $account->update([
                 "amount" => $account->amount + $transaction->amount
             ]);
-        }
+        }*/
     }
 }

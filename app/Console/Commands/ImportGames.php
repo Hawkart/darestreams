@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Game;
 use Illuminate\Console\Command;
 use Image;
+use File;
 
 class ImportGames extends Command
 {
@@ -88,9 +89,9 @@ class ImportGames extends Command
      */
     public function getImagePath($path)
     {
-        $filename = basename($path);
+        $filename = md5(strtolower( basename($path) ));
+        $filename.=".".strtolower(File::extension(basename($path)));
         Image::make($path)->save(public_path('storage/games/' . $filename));
-
         return 'games/' . $filename;
     }
 }
