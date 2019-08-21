@@ -71,7 +71,7 @@ Route::group(['namespace' => 'Api'], function () {
     /**
      * Paypal
      */
-    Route::get('/paypal/checkout', array('uses' => 'PayPalController@checkout'));
+    Route::post('/paypal/checkout', array('uses' => 'PayPalController@checkout'));
     Route::get('/paypal/completed', array('uses' => 'PayPalController@completed'));
     Route::get('/paypal/cancelled', array('uses' => 'PayPalController@cancelled'));
 });
