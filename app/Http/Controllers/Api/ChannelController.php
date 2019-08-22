@@ -129,9 +129,12 @@ class ChannelController extends Controller
                 ->whereDate('start_at', '>=', DB::raw($lastDays->toDateString()))
                 //->where('status', DB::raw(Stream::STATUS_FINISHED))
                 ->groupBy('ch.id', 'ch.title', 'ch.game_id', 'ch.views', 'ch.slug', 'ch.link', 'ch.user_id', 'ch.description', 'ch.created_at', 'ch.logo', 'ch.updated_at')
-                ->orderByDesc('donates')
-                ->offset($skip)
-                ->limit($limit);
+                ->orderByDesc('donates');
+
+            if($request->has('game_id'))
+                $sub = $sub->where('game_id', $request->get('game_id'));
+
+            $sub = $sub->offset($skip)->limit($limit);
 
             $list = DB::table(DB::raw("({$sub->toSql()}) as t"))
                 ->mergeBindings($sub)

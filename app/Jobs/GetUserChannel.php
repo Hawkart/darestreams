@@ -52,7 +52,7 @@ class GetUserChannel implements ShouldQueue
                         'exid' => $data['_id'],
                         'user_id' => $this->user->id,
                         "provider" => $this->provider,
-                        "title" => $data['display_name'],
+                        "title" => $data['name'],
                         "link" => $data['url'],
                         "game_id" => (!empty($data['game'])) ? $this->getGameIdByTitle($data['game']) : 0,
                         "description" => $data['description'] ? $data['description'] : "",
