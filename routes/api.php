@@ -55,6 +55,8 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('channels/top', 'ChannelController@top');
     Route::apiResource('channels', 'ChannelController')->only(['index', 'show', 'update']);
 
+    Route::apiResource('transactions', 'TransactionController')->only(['store']);
+
     Route::apiResource('streams', 'StreamController');
     Route::get('streams/{stream}/thread', 'StreamController@thread');
     Route::apiResource('streams.tasks', 'Streams\TaskController');
@@ -66,7 +68,6 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('threads.messages', 'Threads\MessageController');
 
     Route::apiResource('votes', 'VoteController')->only(['index', 'show', 'update']);
-
 
     /**
      * Paypal

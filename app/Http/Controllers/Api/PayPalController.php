@@ -39,17 +39,16 @@ class PayPalController extends Controller
     }
 
     /**
-     * @authenticated
-     *
      * Create a payment.
      * Add money to authorized user account. Donation to user or task.
      *
+     * @authenticated
+     *
      * {user} - user integer id. Default: 0
      * {task} - task integer id. Default: 0
+     * {user} and {task} both cannot be >0 or =0 at the same time.
      *
      * @bodyParam amount float required Amount for payment.
-     *
-     * {user} and {task} cannot be >0 at the same time.
      *
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response

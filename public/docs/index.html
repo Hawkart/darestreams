@@ -51,7 +51,7 @@
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;post("https://api.darestreams.com/api/login", [
+$response = $client-&gt;post("https://darestreams.com/api/login", [
     'headers' =&gt; [
             "Content-Type" =&gt; "application/json",
         ],
@@ -97,7 +97,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;post("https://api.darestreams.com/api/register", [
+$response = $client-&gt;post("https://darestreams.com/api/register", [
     'headers' =&gt; [
             "Content-Type" =&gt; "application/json",
         ],
@@ -164,7 +164,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;post("https://api.darestreams.com/api/password/email", [
+$response = $client-&gt;post("https://darestreams.com/api/password/email", [
     'headers' =&gt; [
             "Content-Type" =&gt; "application/json",
         ],
@@ -203,7 +203,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;post("https://api.darestreams.com/api/password/reset", [
+$response = $client-&gt;post("https://darestreams.com/api/password/reset", [
     'headers' =&gt; [
             "Content-Type" =&gt; "application/json",
         ],
@@ -264,7 +264,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/oauth/1", [
+$response = $client-&gt;get("https://darestreams.com/api/oauth/1", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -285,7 +285,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/oauth/1/callback", [
+$response = $client-&gt;get("https://darestreams.com/api/oauth/1/callback", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -306,7 +306,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;post("https://api.darestreams.com/api/email/verify/1", [
+$response = $client-&gt;post("https://darestreams.com/api/email/verify/1", [
     'query' =&gt; [
             "signature" =&gt; "ce3f1f0f9f8ad3196f6157dd6f4e732c5d48ac46260cfcb7c24fe2615fb66567",
             "expires" =&gt; "1565160796",
@@ -346,7 +346,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;post("https://api.darestreams.com/api/email/resend", [
+$response = $client-&gt;post("https://darestreams.com/api/email/resend", [
     'headers' =&gt; [
             "Content-Type" =&gt; "application/json",
         ],
@@ -385,7 +385,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;post("https://api.darestreams.com/api/logout", [
+$response = $client-&gt;post("https://darestreams.com/api/logout", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -400,12 +400,12 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/channels/top", [
+$response = $client-&gt;get("https://darestreams.com/api/channels/top", [
     'query' =&gt; [
-            "hours" =&gt; "quia",
-            "limit" =&gt; "omnis",
-            "skip" =&gt; "dolorem",
-            "game_id" =&gt; "molestias",
+            "hours" =&gt; "perspiciatis",
+            "limit" =&gt; "odit",
+            "skip" =&gt; "omnis",
+            "game_id" =&gt; "quisquam",
             "include" =&gt; "user,streams",
         ],
 ]);
@@ -464,11 +464,11 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/channels", [
+$response = $client-&gt;get("https://darestreams.com/api/channels", [
     'query' =&gt; [
             "include" =&gt; "user,streams",
             "sort" =&gt; "-id",
-            "page" =&gt; "17",
+            "page" =&gt; "7",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -6076,7 +6076,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/channels/1", [
+$response = $client-&gt;get("https://darestreams.com/api/channels/1", [
     'query' =&gt; [
             "include" =&gt; "user,streams",
         ],
@@ -6143,14 +6143,14 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;put("https://api.darestreams.com/api/channels/1", [
+$response = $client-&gt;put("https://darestreams.com/api/channels/1", [
     'headers' =&gt; [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
             "description" =&gt; "Long description.",
-            "logo" =&gt; "molestias",
-            "game_id" =&gt; "5",
+            "logo" =&gt; "consequatur",
+            "game_id" =&gt; "1",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -6198,11 +6198,11 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/games/top", [
+$response = $client-&gt;get("https://darestreams.com/api/games/top", [
     'query' =&gt; [
-            "hours" =&gt; "nesciunt",
-            "limit" =&gt; "ipsum",
-            "skip" =&gt; "consectetur",
+            "hours" =&gt; "corporis",
+            "limit" =&gt; "ipsam",
+            "skip" =&gt; "omnis",
             "include" =&gt; "tags,streams",
         ],
 ]);
@@ -6256,11 +6256,11 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/games", [
+$response = $client-&gt;get("https://darestreams.com/api/games", [
     'query' =&gt; [
             "include" =&gt; "tags,streams",
             "sort" =&gt; "-popularity",
-            "page" =&gt; "1",
+            "page" =&gt; "18",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -6858,7 +6858,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/games/1", [
+$response = $client-&gt;get("https://darestreams.com/api/games/1", [
     'query' =&gt; [
             "include" =&gt; "tags,streams",
         ],
@@ -6908,7 +6908,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;post("https://api.darestreams.com/api/games/offer", [
+$response = $client-&gt;post("https://darestreams.com/api/games/offer", [
     'headers' =&gt; [
             "Content-Type" =&gt; "application/json",
         ],
@@ -6942,19 +6942,20 @@ print_r(json_decode((string) $body));</code></pre>
 <!-- END_1c911aeac664c589d28f801d250390eb -->
 <h1>Payments</h1>
 <!-- START_677bfd5f2c34ef647c6f1331b5812758 -->
-<h2>api/paypal/{user}/{task}/checkout</h2>
-<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<h2>Create a payment.</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+Add money to authorized user account. Donation to user or task.</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/paypal/1/1/checkout", [
+$response = $client-&gt;get("https://darestreams.com/api/paypal/1/1/checkout", [
     'headers' =&gt; [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "amount" =&gt; "238445765.697",
+            "amount" =&gt; "20030790.51",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -6994,7 +6995,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/paypal/1/1/completed", [
+$response = $client-&gt;get("https://darestreams.com/api/paypal/1/1/completed", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -7014,7 +7015,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/paypal/1/1/cancelled", [
+$response = $client-&gt;get("https://darestreams.com/api/paypal/1/1/cancelled", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -7035,11 +7036,11 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/streams", [
+$response = $client-&gt;get("https://darestreams.com/api/streams", [
     'query' =&gt; [
             "include" =&gt; "game,streams",
             "sort" =&gt; "-quantity_donators",
-            "page" =&gt; "6",
+            "page" =&gt; "19",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -7088,15 +7089,15 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;post("https://api.darestreams.com/api/streams", [
+$response = $client-&gt;post("https://darestreams.com/api/streams", [
     'headers' =&gt; [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "game_id" =&gt; "17",
-            "link" =&gt; "numquam",
-            "start_at" =&gt; "quasi",
-            "tags" =&gt; "harum",
+            "game_id" =&gt; "7",
+            "link" =&gt; "at",
+            "start_at" =&gt; "quod",
+            "tags" =&gt; "soluta",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -7148,7 +7149,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/streams/1", [
+$response = $client-&gt;get("https://darestreams.com/api/streams/1", [
     'query' =&gt; [
             "include" =&gt; "game,streams",
         ],
@@ -7190,15 +7191,15 @@ Update before starting of the stream.</p>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;put("https://api.darestreams.com/api/streams/1", [
+$response = $client-&gt;put("https://darestreams.com/api/streams/1", [
     'headers' =&gt; [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "game_id" =&gt; "11",
-            "link" =&gt; "cum",
-            "start_at" =&gt; "doloremque",
-            "tags" =&gt; "et",
+            "game_id" =&gt; "3",
+            "link" =&gt; "tenetur",
+            "start_at" =&gt; "voluptatum",
+            "tags" =&gt; "ut",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -7251,7 +7252,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/streams/1/thread", [
+$response = $client-&gt;get("https://darestreams.com/api/streams/1/thread", [
     'query' =&gt; [
             "include" =&gt; "messages",
         ],
@@ -8480,11 +8481,11 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/streams/1/tasks", [
+$response = $client-&gt;get("https://darestreams.com/api/streams/1/tasks", [
     'query' =&gt; [
             "include" =&gt; "user,stream",
             "sort" =&gt; "-amount_donations",
-            "page" =&gt; "3",
+            "page" =&gt; "15",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -9165,18 +9166,18 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;post("https://api.darestreams.com/api/streams/1/tasks", [
+$response = $client-&gt;post("https://darestreams.com/api/streams/1/tasks", [
     'headers' =&gt; [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "small_text" =&gt; "in",
-            "full_text" =&gt; "modi",
-            "interval_time" =&gt; "19",
-            "min_amount" =&gt; "17",
+            "small_text" =&gt; "nesciunt",
+            "full_text" =&gt; "quia",
+            "interval_time" =&gt; "3",
+            "min_amount" =&gt; "12",
             "is_superbowl" =&gt; "",
-            "min_amount_superbowl" =&gt; "5",
-            "tags" =&gt; "deserunt",
+            "min_amount_superbowl" =&gt; "6",
+            "tags" =&gt; "aut",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -9248,7 +9249,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/streams/1/tasks/1", [
+$response = $client-&gt;get("https://darestreams.com/api/streams/1/tasks/1", [
     'query' =&gt; [
             "include" =&gt; "user,stream",
         ],
@@ -9291,18 +9292,18 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;put("https://api.darestreams.com/api/streams/1/tasks/1", [
+$response = $client-&gt;put("https://darestreams.com/api/streams/1/tasks/1", [
     'headers' =&gt; [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "small_text" =&gt; "sequi",
-            "full_text" =&gt; "ut",
-            "interval_time" =&gt; "2",
-            "min_amount" =&gt; "14",
-            "is_superbowl" =&gt; "1",
-            "min_amount_superbowl" =&gt; "6",
-            "tags" =&gt; "rerum",
+            "small_text" =&gt; "molestiae",
+            "full_text" =&gt; "blanditiis",
+            "interval_time" =&gt; "8",
+            "min_amount" =&gt; "2",
+            "is_superbowl" =&gt; "",
+            "min_amount_superbowl" =&gt; "18",
+            "tags" =&gt; "minus",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -9376,11 +9377,11 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/streams/1/tasks/1/transactions", [
+$response = $client-&gt;get("https://darestreams.com/api/streams/1/tasks/1/transactions", [
     'query' =&gt; [
             "include" =&gt; "task",
             "sort" =&gt; "-created_at",
-            "page" =&gt; "4",
+            "page" =&gt; "2",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -9431,7 +9432,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/streams/1/tasks/1/transactions/1", [
+$response = $client-&gt;get("https://darestreams.com/api/streams/1/tasks/1/transactions/1", [
     'query' =&gt; [
             "include" =&gt; "task",
         ],
@@ -9472,7 +9473,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;post("https://api.darestreams.com/api/streams/1/tasks/1/votes", [
+$response = $client-&gt;post("https://darestreams.com/api/streams/1/tasks/1/votes", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -9487,7 +9488,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/threads", [
+$response = $client-&gt;get("https://darestreams.com/api/threads", [
     'query' =&gt; [
             "include" =&gt; "messages",
             "sort" =&gt; "-id",
@@ -20424,7 +20425,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/threads/1", [
+$response = $client-&gt;get("https://darestreams.com/api/threads/1", [
     'query' =&gt; [
             "include" =&gt; "messages",
         ],
@@ -21652,7 +21653,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/threads/1/messages", [
+$response = $client-&gt;get("https://darestreams.com/api/threads/1/messages", [
     'query' =&gt; [
             "include" =&gt; "user",
         ],
@@ -24575,12 +24576,12 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;post("https://api.darestreams.com/api/threads/1/messages", [
+$response = $client-&gt;post("https://darestreams.com/api/threads/1/messages", [
     'headers' =&gt; [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "body" =&gt; "sit",
+            "body" =&gt; "magni",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -24615,7 +24616,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/threads/1/messages/1", [
+$response = $client-&gt;get("https://darestreams.com/api/threads/1/messages/1", [
     'query' =&gt; [
             "include" =&gt; "user",
         ],
@@ -24655,7 +24656,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;put("https://api.darestreams.com/api/threads/1/messages/1", [
+$response = $client-&gt;put("https://darestreams.com/api/threads/1/messages/1", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -24671,7 +24672,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/threads/1/participants", [
+$response = $client-&gt;get("https://darestreams.com/api/threads/1/participants", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -24684,6 +24685,61 @@ print_r(json_decode((string) $body));</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/threads/{thread}/participants</code></p>
 <!-- END_6c536b81f96eb7e5f621850a695ea2bb -->
+<h1>Transactions</h1>
+<!-- START_a524d236dd691776be3315d40786a1db -->
+<h2>Create new transaction.</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post("https://darestreams.com/api/transactions", [
+    'headers' =&gt; [
+            "Content-Type" =&gt; "application/json",
+        ],
+    'json' =&gt; [
+            "task_id" =&gt; "17",
+            "user_id" =&gt; "12",
+            "amount" =&gt; "14379875.125575",
+        ],
+]);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/transactions</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>task_id</td>
+<td>integer</td>
+<td>optional</td>
+<td>Task's id.</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>integer</td>
+<td>optional</td>
+<td>User's id.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>required</td>
+<td>Amount for payment.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_a524d236dd691776be3315d40786a1db -->
 <h1>Users</h1>
 <!-- START_8d1e53fcf4d2d02a6144ed392de856bf -->
 <h2>Get authorized user.</h2>
@@ -24693,7 +24749,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/users/me", [
+$response = $client-&gt;get("https://darestreams.com/api/users/me", [
     'query' =&gt; [
             "include" =&gt; "tasks,channel",
         ],
@@ -24733,7 +24789,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/users", [
+$response = $client-&gt;get("https://darestreams.com/api/users", [
     'query' =&gt; [
             "include" =&gt; "tasks,channel",
             "sort" =&gt; "-nickname",
@@ -27890,7 +27946,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/users/1", [
+$response = $client-&gt;get("https://darestreams.com/api/users/1", [
     'query' =&gt; [
             "include" =&gt; "tasks,channel",
         ],
@@ -28077,14 +28133,14 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;put("https://api.darestreams.com/api/users/1", [
+$response = $client-&gt;put("https://darestreams.com/api/users/1", [
     'headers' =&gt; [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
             "name" =&gt; "Archibald",
-            "last_name" =&gt; "eveniet",
-            "middle_name" =&gt; "consequatur",
+            "last_name" =&gt; "maxime",
+            "middle_name" =&gt; "nulla",
             "email" =&gt; "example@example.ru",
         ],
 ]);
@@ -28140,7 +28196,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/users/1/account", [
+$response = $client-&gt;get("https://darestreams.com/api/users/1/account", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -28161,7 +28217,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/users/1/channel", [
+$response = $client-&gt;get("https://darestreams.com/api/users/1/channel", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -28194,7 +28250,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;post("https://api.darestreams.com/api/users/1/avatar", [
+$response = $client-&gt;post("https://darestreams.com/api/users/1/avatar", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -28209,7 +28265,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;post("https://api.darestreams.com/api/users/1/overlay", [
+$response = $client-&gt;post("https://darestreams.com/api/users/1/overlay", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -28224,7 +28280,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;patch("https://api.darestreams.com/api/users/1/password", [
+$response = $client-&gt;patch("https://darestreams.com/api/users/1/password", [
     'headers' =&gt; [
             "Content-Type" =&gt; "application/json",
         ],
@@ -28265,7 +28321,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;post("https://api.darestreams.com/api/users/1/follow", [
+$response = $client-&gt;post("https://darestreams.com/api/users/1/follow", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -28281,7 +28337,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;patch("https://api.darestreams.com/api/users/1/unfollow", [
+$response = $client-&gt;patch("https://darestreams.com/api/users/1/unfollow", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -28296,7 +28352,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/users/1/followers", [
+$response = $client-&gt;get("https://darestreams.com/api/users/1/followers", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -28317,7 +28373,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/users/1/followings", [
+$response = $client-&gt;get("https://darestreams.com/api/users/1/followings", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -28339,7 +28395,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/users/1/notifications/unread", [
+$response = $client-&gt;get("https://darestreams.com/api/users/1/notifications/unread", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -28360,7 +28416,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;patch("https://api.darestreams.com/api/users/1/notifications/setReadAll", [
+$response = $client-&gt;patch("https://darestreams.com/api/users/1/notifications/setReadAll", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -28375,7 +28431,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/users/1/notifications", [
+$response = $client-&gt;get("https://darestreams.com/api/users/1/notifications", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -28396,7 +28452,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/users/1/notifications/1", [
+$response = $client-&gt;get("https://darestreams.com/api/users/1/notifications/1", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -28417,7 +28473,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;patch("https://api.darestreams.com/api/users/1/notifications/1/setRead", [
+$response = $client-&gt;patch("https://darestreams.com/api/users/1/notifications/1/setRead", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -28433,7 +28489,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/users/1/oauthproviders", [
+$response = $client-&gt;get("https://darestreams.com/api/users/1/oauthproviders", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -28454,7 +28510,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/users/1/oauthproviders/1", [
+$response = $client-&gt;get("https://darestreams.com/api/users/1/oauthproviders/1", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -28476,10 +28532,10 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/users/1/transactions", [
+$response = $client-&gt;get("https://darestreams.com/api/users/1/transactions", [
     'query' =&gt; [
             "include" =&gt; "task.",
-            "page" =&gt; "20",
+            "page" =&gt; "2",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -28523,7 +28579,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/users/1/transactions/1", [
+$response = $client-&gt;get("https://darestreams.com/api/users/1/transactions/1", [
     'query' =&gt; [
             "include" =&gt; "task.",
         ],
@@ -28564,7 +28620,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/votes", [
+$response = $client-&gt;get("https://darestreams.com/api/votes", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -36187,7 +36243,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;get("https://api.darestreams.com/api/votes/1", [
+$response = $client-&gt;get("https://darestreams.com/api/votes/1", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
@@ -36212,7 +36268,7 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
-$response = $client-&gt;put("https://api.darestreams.com/api/votes/1", [
+$response = $client-&gt;put("https://darestreams.com/api/votes/1", [
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
