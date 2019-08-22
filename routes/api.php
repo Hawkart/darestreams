@@ -59,7 +59,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('streams/{stream}/thread', 'StreamController@thread');
     Route::apiResource('streams.tasks', 'Streams\TaskController');
     Route::apiResource('streams.tasks.votes', 'Streams\Tasks\VoteController');
-    Route::apiResource('streams.tasks.transactions', 'Streams\Tasks\TransactionController');
+    Route::apiResource('streams.tasks.transactions', 'Streams\Tasks\TransactionController')->only(['index', 'show']);
 
     Route::apiResource('threads', 'ThreadController')->only(['index', 'show']);
     Route::apiResource('threads.participants', 'Threads\ParticipantController')->only(['index']);
@@ -71,7 +71,7 @@ Route::group(['namespace' => 'Api'], function () {
     /**
      * Paypal
      */
-    Route::post('/paypal/checkout', array('uses' => 'PayPalController@checkout'));
-    Route::get('/paypal/completed', array('uses' => 'PayPalController@completed'));
-    Route::get('/paypal/cancelled', array('uses' => 'PayPalController@cancelled'));
+    Route::get('/paypal/{user}/{task}/checkout', array('as' => 'paypal.checkout.create', 'uses' => 'PayPalController@checkout'));
+    Route::get('/paypal/{user}/{task}/completed', array('as' => 'paypal.checkout.completed','uses' => 'PayPalController@completed'));
+    Route::get('/paypal/{user}/{task}/cancelled', array('as' => 'paypal.checkout.cancelled','uses' => 'PayPalController@cancelled'));
 });

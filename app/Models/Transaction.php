@@ -41,6 +41,7 @@ class Transaction extends Model
      */
     protected $dispatchesEvents = [
         'created' => \App\Events\TransactionCreatedEvent::class,
+        'updated' => \App\Events\TransactionUpdatedEvent::class,
     ];
 
     /**

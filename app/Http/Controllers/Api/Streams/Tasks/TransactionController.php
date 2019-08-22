@@ -85,48 +85,4 @@ class TransactionController extends Controller
 
         return new TransactionResource($item);
     }
-
-    /**
-     * Create new task for stream.
-     * {stream} - stream integer id.
-     * @authenticated
-     *
-     * @bodyParam amount integer required Amount for donation.
-     *
-     */
-    public function store(TaskTransactionRequest $request, Stream $stream, Task $task)
-    {
-        $user = auth()->user();
-
-        if(!$stream->tasks()->where('id', $task->id)->exists())
-            return response()->json(['error' => trans('api/streams/tasks/transaction.task_not_belong_to_stream')], 422);
-
-        //Make donate through Streamlabs
-
-        if(!$user->oauthProviders()->where('provider', 'streamlabs')->exists())
-            return response()->json(['error' => trans('api/streams/tasks/transaction.you_dont_have_account_in_streamlabs')], 422);
-
-        /*$streamlabs = new StreamlabsApi([
-            'client_id' => config('services.streamlabs.client_id')
-        ]);
-
-        $streamlabs->donate([
-            'access_token' => ''
-        ]);*/
-
-        /*if($request->get('amount') > $user->account->amount)
-            return response()->json(['error' => trans('api/streams/tasks/transaction.not_enough_money')], 422);
-
-        Transaction::create([
-            'task_id' => $task->id,
-            'amount' => $request->get('amount'),
-            'account_sender_id' => $user->account->id,
-            'account_receiver_id' => $stream->user->account->id
-        ]);*/
-
-        return response()->json([
-            'success' => true,
-            'message'=> trans('api/streams/tasks/transaction.success_created')
-        ], 200);
-    }
 }

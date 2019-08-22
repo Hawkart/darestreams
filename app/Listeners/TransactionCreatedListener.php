@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\TransactionCreatedEvent;
+use App\Models\Transaction;
 use App\Models\Vote;
 
 class TransactionCreatedListener
@@ -17,27 +18,50 @@ class TransactionCreatedListener
     {
         $transaction = $event->transaction;
 
-        /*if($transaction->task_id>0)
+        if($transaction->status==Transaction::PAYMENT_COMPLETED)
         {
-            //Обновляем сумма данатов таск
-            $task = $transaction->task;
-            $task->update([
-                "amount_donations" => $task->amount_donations + $transaction->amount
-            ]);
-
-            //Обновляем сумму аккаунта отправителя
-            $account = $transaction->accountSender;
+            //Update receiver's account amount
+            $account = $transaction->accountReceiver;
             $account->update([
-                "amount" => $account->amount + $transaction->amount
+                "amount" => sumAmounts($account->amount, $transaction->amount, 2)
             ]);
 
-            // Добавить запись в Votes
-            $stream = $task->stream;
-            $user = $account->user;
-            $uids = $task->votes()->pluck('user_id')->toArray();
-
-            if(!in_array($user->id, $uids) && $user->id != $stream->user_id)
+            //Update sender's account amount
+            if(intval($transaction->account_sender_id)>0)
             {
+                $account = $transaction->accountSender;
+                $account->update([
+                    "amount" => sumAmounts($account->amount, (-1)*$transaction->amount, 2)
+                ]);
+            }
+        }else if($transaction->status==Transaction::PAYMENT_HOLDING){
+
+            //Update sender's account amount
+            if(intval($transaction->account_sender_id)>0)
+            {
+                $account = $transaction->accountSender;
+                $account->update([
+                    "amount" => sumAmounts($account->amount, (-1)*$transaction->amount, 2)
+                ]);
+            }
+
+            if(intval($transaction->task_id)>0)
+            {
+                $task = $transaction->task;
+                $task->update([
+                    "amount_donations" => sumAmounts($task->amount_donations, $transaction->amount, 2)
+                ]);
+            }
+        }
+
+        //Add to votes and to chat
+        if(intval($transaction->task_id)>0)
+        {
+            $stream = $task->stream;
+            $user = $transaction->accountSender->user;
+
+            $uids = $task->votes()->pluck('user_id')->toArray();
+            if (!in_array($user->id, $uids) && $user->id != $stream->user_id) {
                 $vote = new Vote([
                     'user_id' => $user->id,
                     'task_id' => $task->id
@@ -46,15 +70,9 @@ class TransactionCreatedListener
                 $task->votes()->save($vote);
             }
 
-            $thread = $task->stream->threads[0];
-            $thread->setParticipant();
-
-        }else{
-            //Обновляем сумму аккаунта отправителя
-            $account = $transaction->accountSender;
-            $account->update([
-                "amount" => $account->amount + $transaction->amount
-            ]);
-        }*/
+            //$thread = $stream->threads[0];
+            //
+            //$thread->setParticipant();
+        }
     }
 }

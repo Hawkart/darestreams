@@ -27,6 +27,9 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\TransactionCreatedEvent::class => [
             \App\Listeners\TransactionCreatedListener::class,
         ],
+        \App\Events\TransactionUpdatedEvent::class => [
+            \App\Listeners\TransactionUpdatedListener::class,
+        ],
         \App\Events\TaskCreatedEvent::class => [
             \App\Listeners\TaskCreatedListener::class
         ],

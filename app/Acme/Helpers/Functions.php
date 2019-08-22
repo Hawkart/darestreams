@@ -12,3 +12,8 @@ function getImageLink($image, $default)
 
     return $image;
 }
+
+function sumAmounts($a, $b, $scale=0)
+{
+    return bcadd($a, $b, $scale);
+}
