@@ -21,7 +21,7 @@ class CreateChannelsTable extends Migration
             $table->string('link');
             $table->text('description');
             $table->string('logo')->default('channels/default.png');
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('user_id')->unique()->unsigned();
             $table->timestamps();
 
             $table->foreign('user_id')
