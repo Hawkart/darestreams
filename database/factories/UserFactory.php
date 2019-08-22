@@ -13,11 +13,12 @@ $factory->define(User::class, function (Faker $faker) {
         File::makeDirectory($filepath);
 
     $nicknames = ['Kitboga', 'TimTheTatman', 'dota2ti_ru', 'UCCleague', 'GohaMedia', 'archangel_hs',
-        'TpaBoMaH', 'aravay46', 'Rubius', 'ighDistortion', 'mrfreshasian'];
+        'TpaBoMaH', 'aravay46', 'Rubius', 'ighDistortion', 'mrfreshasian', 'Nixjke', 'unforgettabletv', 'NBA', 'TFBlade',
+        'dakotaz', 'SimCopter1', 'koil', 'itsHafu', 'JoblessGarrett', 'EsfandTV', 'IWillDominate', 'h3x_TV', 'Mikasa_th'];
 
     return [
         'name' => $faker->name,
-        'nickname' => $faker->randomElement($nicknames),
+        'nickname' => strtolower($faker->randomElement($nicknames)),
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'avatar' => $faker->image('public/storage/avatars',100, 100),

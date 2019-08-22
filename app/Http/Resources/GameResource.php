@@ -22,6 +22,7 @@ class GameResource extends JsonResource
             'popularity' => $this->popularity,
             'logo' => getImageLink($this->logo, '/img/default_game.jpg'),
             'logo_small' => getImageLink($this->logo_small, '/img/default_game_small.jpg'),
+            'views' => $this->views,
 
             'streams' => StreamResource::collection($this->whenLoaded('streams')),
             'channels' => ChannelResource::collection($this->whenLoaded('channels')),
