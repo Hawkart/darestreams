@@ -69,10 +69,8 @@ Route::group(['namespace' => 'Api'], function () {
 
     Route::apiResource('votes', 'VoteController')->only(['index', 'show', 'update']);
 
-    /**
-     * Paypal
-     */
-    Route::get('/paypal/{user}/{task}/checkout', array('as' => 'paypal.checkout.create', 'uses' => 'PayPalController@checkout'));
-    Route::get('/paypal/{user}/{task}/completed', array('as' => 'paypal.checkout.completed','uses' => 'PayPalController@completed'));
-    Route::get('/paypal/{user}/{task}/cancelled', array('as' => 'paypal.checkout.cancelled','uses' => 'PayPalController@cancelled'));
+    //'PayPal_Rest'
+    Route::get('/payments/{gateway}/{user}/{task}/checkout', array('as' => 'payment.checkout.create', 'uses' => 'PaymentController@checkout'));
+    Route::get('/payments/{gateway}/{user}/{task}/completed', array('as' => 'payment.checkout.completed','uses' => 'PaymentController@completed'));
+    Route::get('/payments/{gateway}/{user}/{task}/cancelled', array('as' => 'payment.checkout.cancelled','uses' => 'PaymentController@cancelled'));
 });

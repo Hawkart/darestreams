@@ -13,22 +13,25 @@ use Illuminate\Support\Facades\DB;
 /**
  * @group Payments
  */
-class PayPalController extends Controller
+class PaymentController extends Controller
 {
     private $gateway;
+    private $gate;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
         $this->middleware('auth:api')->only(['checkout']);
 
-        $gateway = Omnipay::create('PayPal_Rest');
+        $this->gate = $request->route()->parameter('gateway');
+        $gateway = Omnipay::create($this->gate);
 
-        // Initialise the gateway
+        //Todo: Change initialize params
+        //Initialise the gateway
         $gateway->initialize(array(
             'clientId' => config('services.paypal.client_id'),
             'secret'   => config('services.paypal.secret'),
@@ -43,7 +46,7 @@ class PayPalController extends Controller
      * Add money to authorized user account. Donation to user or task.
      *
      * @authenticated
-     *
+     * {gate} - gateway required from Omipay. Only 'PayPal_Rest' right now.
      * {user} - user integer id. Default: 0
      * {task} - task integer id. Default: 0
      * {user} and {task} both cannot be >0 or =0 at the same time.
@@ -53,7 +56,7 @@ class PayPalController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    public function checkout($user_id, $task_id, Request $request)
+    public function checkout($gate, $user_id, $task_id, Request $request)
     {
         $request->validate([
             'amount' => 'required|regex:/^\d+(\.\d{1,2})?$/'
@@ -74,7 +77,8 @@ class PayPalController extends Controller
             'account_receiver_id' => auth()->user()->account->id,
             'amount' => $request->get('amount'),
             'comment' => "Money transfer from PayPal.",
-            'currency' => $currency
+            'currency' => $currency,
+            'payment' => $this->gate,
         ];
 
         try {
@@ -98,14 +102,17 @@ class PayPalController extends Controller
             'currency'      => $currency,
             'transactionId' => $result->id,
             'description'   => $description,
-            'returnUrl'=> route('paypal.checkout.completed', ['user' => $user_id, 'task' => $task_id]),
-            'cancelUrl' => route('paypal.checkout.cancelled', ['user' => $user_id, 'task' => $task_id]),
+            'returnUrl'=> route('payment.checkout.completed', ['gateway' => $this->gate, 'user' => $user_id, 'task' => $task_id]),
+            'cancelUrl' => route('payment.checkout.cancelled', ['gateway' => $this->gate, 'user' => $user_id, 'task' => $task_id]),
         ));
 
         $response = $transaction->send();
 
         if ($response->isRedirect())
         {
+            $data = $response->getData();
+            $result->update(['exid' => $data['id']]);
+
             $redirectUrl = $response->getRedirectUrl();
             return redirect()->to($redirectUrl);
         }
@@ -117,7 +124,7 @@ class PayPalController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
-    public function completed($user_id, $task_id, Request $request)
+    public function completed($gate, $user_id, $task_id, Request $request)
     {
         $transaction = $this->gateway->completePurchase(array(
             'payerId'             => $request->get('PayerID'),
@@ -163,7 +170,7 @@ class PayPalController extends Controller
                             else
                                 $user = 0;
 
-                            if($user || $task)
+                            if(($user || $task) && ($t->accountReceiver->amount>=$t->amount))
                             {
                                 Transaction::create([
                                     'task_id' => $task ? $task->id : 0,
@@ -195,7 +202,7 @@ class PayPalController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function cancelled($user, $task, Request $request)
+    public function cancelled($gate, $user, $task, Request $request)
     {
         return response()->json(['error' => trans('api/paypal.purchase_canceled')], 422);
     }

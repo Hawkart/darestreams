@@ -12,6 +12,16 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 20)->create();
+        $items = factory(User::class, 10)->make();
+
+        foreach ($items as $item) {
+            repeat:
+            try {
+                $item->save();
+            } catch (\Illuminate\Database\QueryException $e) {
+                $item = factory(User::class)->make();
+                goto repeat;
+            }
+        }
     }
 }

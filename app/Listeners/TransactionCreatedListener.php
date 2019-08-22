@@ -18,6 +18,7 @@ class TransactionCreatedListener
     {
         $transaction = $event->transaction;
 
+        //donate to user
         if($transaction->status==Transaction::PAYMENT_COMPLETED)
         {
             //Update receiver's account amount
@@ -34,7 +35,7 @@ class TransactionCreatedListener
                     "amount" => sumAmounts($account->amount, (-1)*$transaction->amount, 2)
                 ]);
             }
-        }else if($transaction->status==Transaction::PAYMENT_HOLDING){
+        }else if($transaction->status==Transaction::PAYMENT_HOLDING){  //to task
 
             //Update sender's account amount
             if(intval($transaction->account_sender_id)>0)
@@ -44,21 +45,29 @@ class TransactionCreatedListener
                     "amount" => sumAmounts($account->amount, (-1)*$transaction->amount, 2)
                 ]);
             }
-
-            if(intval($transaction->task_id)>0)
-            {
-                $task = $transaction->task;
-                $task->update([
-                    "amount_donations" => sumAmounts($task->amount_donations, $transaction->amount, 2)
-                ]);
-            }
+        }else{
+            //to himself by paypal
         }
 
         //Add to votes and to chat
         if(intval($transaction->task_id)>0)
         {
+            $task = $transaction->task;
             $stream = $task->stream;
             $user = $transaction->accountSender->user;
+
+            if($transaction->status==Transaction::PAYMENT_COMPLETED)
+            {
+                $task->update([
+                    "amount_donations" => sumAmounts($task->amount_donations, $transaction->amount, 2)
+                ]);
+
+                $stream = $task->steam;
+                $stream->update([
+                    'quantity_donations' => intval($stream->quantity_donations) + 1,
+                    "amount_donations" => sumAmounts($task->amount_donations, $transaction->amount, 2)
+                ]);
+            }
 
             $uids = $task->votes()->pluck('user_id')->toArray();
             if (!in_array($user->id, $uids) && $user->id != $stream->user_id) {
@@ -71,7 +80,6 @@ class TransactionCreatedListener
             }
 
             //$thread = $stream->threads[0];
-            //
             //$thread->setParticipant();
         }
     }

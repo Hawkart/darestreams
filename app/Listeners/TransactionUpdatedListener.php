@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\TransactionUpdatedEvent;
+use App\Models\Transaction;
 use App\Models\Vote;
 
 class TransactionUpdatedListener
@@ -19,10 +20,80 @@ class TransactionUpdatedListener
 
         if($transaction->isDirty('status'))
         {
-            //  Money through PayPal. How to detect? -> Reciever change amount.
-            //  Was hold
+            if($transaction->status==Transaction::PAYMENT_COMPLETED)
+            {
+                //pending,canceled->completed
+                if($transaction->getOriginal('status')!=Transaction::PAYMENT_HOLDING)
+                {
+                    //Update sender's account amount
+                    if(intval($transaction->account_sender_id)>0)
+                    {
+                        $account = $transaction->accountSender;
+                        $account->update([
+                            "amount" => sumAmounts($account->amount, (-1)*$transaction->amount, 2)
+                        ]);
+                    }
+                }
 
-            //$transaction->getOriginal('status');
+                //Update receiver's account amount
+                $account = $transaction->accountReceiver;
+                $account->update([
+                    "amount" => sumAmounts($account->amount, $transaction->amount, 2)
+                ]);
+
+                if(intval($transaction->task_id)>0)
+                {
+                    $task = $transaction->task;
+                    $task->update([
+                        "amount_donations" => sumAmounts($task->amount_donations, $transaction->amount, 2)
+                    ]);
+
+                    $stream = $task->steam;
+                    $stream->update([
+                        'quantity_donations' => intval($stream->quantity_donations) + 1,
+                        "amount_donations" => sumAmounts($task->amount_donations, $transaction->amount, 2)
+                    ]);
+                }
+
+            }else if($transaction->status==Transaction::PAYMENT_CANCELED)
+            {
+                //holding -> canceled
+                if($transaction->getOriginal('status')==Transaction::PAYMENT_HOLDING)
+                {
+                    //Update sender's account amount
+                    if(intval($transaction->account_sender_id)>0)
+                    {
+                        $account = $transaction->accountSender;
+                        $account->update([
+                            "amount" => sumAmounts($account->amount, $transaction->amount, 2)
+                        ]);
+                    }
+                }
+
+                //completed -> canceled
+                if($transaction->getOriginal('status')!=Transaction::PAYMENT_COMPLETED)
+                {
+                    //Update receiver's account amount
+                    $account = $transaction->accountReceiver;
+                    $account->update([
+                        "amount" => sumAmounts($account->amount, (-1)*$transaction->amount, 2)
+                    ]);
+                }
+
+                if(intval($transaction->task_id)>0)
+                {
+                    $task = $transaction->task;
+                    $task->update([
+                        "amount_donations" => sumAmounts($task->amount_donations, (-1)*$transaction->amount, 2)
+                    ]);
+
+                    $stream = $task->steam;
+                    $stream->update([
+                        'quantity_donations' => intval($stream->quantity_donations) - 1,
+                        "amount_donations" => sumAmounts($task->amount_donations, (-1)*$transaction->amount, 2)
+                    ]);
+                }
+            }
         }
     }
 }

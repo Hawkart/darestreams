@@ -14,18 +14,17 @@ $factory->define(Channel::class, function (Faker $faker) {
     if(!File::exists($filepath))
         File::makeDirectory($filepath);
 
+    $game = Game::inRandomOrder()->first();
+    $user = User::doesntHave('channel')->first();
+
     return [
-        'title' => $faker->name,
-        'logo' => $faker->image('public/storage/channels',400, 300),
+        'title' => $user->nickname,
+        'logo' => $game->logo,
         'description' => $faker->paragraph(3, true),
-        'user_id'   =>  function () {
-            return User::inRandomOrder()->first()->id;
-        },
-        'link'      => $faker->imageUrl(800, 600, 'cats', true),
-        'game_id'   =>  function () {
-            return Game::inRandomOrder()->first()->id;
-        },
-        'provider' => $faker->randomElement(['twitch', 'youtube']),
+        'user_id'   => $user->id,
+        'link'      => 'https://www.twitch.tv/'.$user->nickname,
+        'game_id'   => $game->id,
+        'provider' => 'twitch',
         'exid'  =>  $faker->numberBetween(1, 1000000),
         'views' => $faker->numberBetween(1, 1000),
     ];

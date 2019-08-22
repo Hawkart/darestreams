@@ -47,7 +47,7 @@ class ImportGames extends Command
         ]);
 
         $count = 0;
-        $limit = 40;
+        $limit = 20;
         $offset = 0;
 
         do{
@@ -71,9 +71,12 @@ class ImportGames extends Command
                     $item->logo_small =  $this->getImagePath($arGame['game']['box']['small']);
                 }
 
+                $item->views = $arGame["viewers"];
                 $item->popularity =  $arGame["game"]["popularity"];
                 $item->save();
             }
+
+            break;
 
             $count+= count($games);
             $offset+= $limit;
