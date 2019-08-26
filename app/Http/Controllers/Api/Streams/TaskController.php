@@ -93,7 +93,7 @@ class TaskController extends Controller
         $input['user_id'] = $user->id;
 
         try {
-            DB::transaction(function () use ($input, $user, $stream, $amount) {
+            $task = DB::transaction(function () use ($input, $user, $stream, $amount) {
 
                 $task = new Task();
                 $task->fill($input);
@@ -109,13 +109,18 @@ class TaskController extends Controller
                         'status' => Transaction::PAYMENT_HOLDING
                     ]);
                 }
+
+                return $task;
             });
         } catch (\Exception $e) {
             return response($e->getMessage(), 422);
         }
 
+        TaskResource::withoutWrapping();
+
         return response()->json([
             'success' => true,
+            'data' => new TaskResource($task),
             'message'=> trans('api/streams/task.success_created')
         ], 200);
     }
@@ -155,8 +160,11 @@ class TaskController extends Controller
         $task->fill($request->all());
         $task->save();
 
+        TaskResource::withoutWrapping();
+
         return response()->json([
             'success' => true,
+            'data' => new TaskResource($task),
             'message'=> trans('api/streams/task.success_updated')
         ], 200);
     }

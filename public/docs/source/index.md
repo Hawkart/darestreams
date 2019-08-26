@@ -336,10 +336,10 @@ print_r(json_decode((string) $body));
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/channels/top", [
     'query' => [
-            "hours" => "iusto",
-            "limit" => "non",
-            "skip" => "fuga",
-            "game_id" => "omnis",
+            "hours" => "enim",
+            "limit" => "autem",
+            "skip" => "voluptas",
+            "game_id" => "qui",
             "include" => "user,streams",
         ],
 ]);
@@ -384,7 +384,7 @@ $response = $client->get("https://darestreams.com/api/channels", [
     'query' => [
             "include" => "user,streams",
             "sort" => "-id",
-            "page" => "6",
+            "page" => "11",
         ],
 ]);
 $body = $response->getBody();
@@ -1036,8 +1036,8 @@ $response = $client->put("https://darestreams.com/api/channels/1", [
         ],
     'json' => [
             "description" => "Long description.",
-            "logo" => "est",
-            "game_id" => "1",
+            "logo" => "tenetur",
+            "game_id" => "14",
         ],
 ]);
 $body = $response->getBody();
@@ -1073,9 +1073,9 @@ Parameter | Type | Status | Description
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/games/top", [
     'query' => [
-            "hours" => "eum",
-            "limit" => "molestias",
-            "skip" => "vel",
+            "hours" => "asperiores",
+            "limit" => "sint",
+            "skip" => "et",
             "include" => "tags,streams",
         ],
 ]);
@@ -1119,7 +1119,7 @@ $response = $client->get("https://darestreams.com/api/games", [
     'query' => [
             "include" => "tags,streams",
             "sort" => "-popularity",
-            "page" => "12",
+            "page" => "9",
         ],
 ]);
 $body = $response->getBody();
@@ -1686,7 +1686,7 @@ $response = $client->get("https://darestreams.com/api/payments/1/1/1/checkout", 
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "amount" => "6.8052403",
+            "amount" => "2531690.505",
         ],
 ]);
 $body = $response->getBody();
@@ -1785,8 +1785,8 @@ print_r(json_decode((string) $body));
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/streams/top", [
     'query' => [
-            "limit" => "repellat",
-            "skip" => "asperiores",
+            "limit" => "sit",
+            "skip" => "adipisci",
             "include" => "user,tasks",
         ],
 ]);
@@ -1796,11 +1796,11 @@ print_r(json_decode((string) $body));
 
 
 
-> Example response (400):
+> Example response (200):
 
 ```json
 {
-    "message": "Given include(s) `user` are not allowed. Allowed include(s) are `game, tasks, tags, channel`."
+    "data": []
 }
 ```
 
@@ -1829,7 +1829,7 @@ $response = $client->get("https://darestreams.com/api/streams", [
     'query' => [
             "include" => "game,tasks",
             "sort" => "-quantity_donators",
-            "page" => "15",
+            "page" => "4",
         ],
 ]);
 $body = $response->getBody();
@@ -4734,7 +4734,7 @@ print_r(json_decode((string) $body));
 
 Parameter | Status | Description
 --------- | ------- | ------- | -----------
-    include |  optional  | string String of connections: game, tasks, tags, channel.
+    include |  optional  | string String of connections: game, tasks, tags, channel, user.
     sort |  optional  | string Sort items by fields: amount_donations, quantity_donators, quantity_donations, id. For desc use '-' prefix.
     page |  optional  | array Use as page[number]=1&page[size]=2.
 
@@ -4754,17 +4754,17 @@ $response = $client->post("https://darestreams.com/api/streams", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "channel_id" => "18",
-            "title" => "et",
-            "link" => "omnis",
-            "start_at" => "voluptatum",
-            "allow_task_before_stream" => "1",
-            "allow_task_when_stream" => "",
-            "min_amount_task_before_stream" => "sapiente",
-            "min_amount_task_when_stream" => "assumenda",
-            "min_amount_donate_task_before_stream" => "dolor",
-            "min_amount_donate_task_when_stream" => "tenetur",
-            "tags" => "aliquid",
+            "channel_id" => "14",
+            "title" => "similique",
+            "link" => "corrupti",
+            "start_at" => "facere",
+            "allow_task_before_stream" => "",
+            "allow_task_when_stream" => "1",
+            "min_amount_task_before_stream" => "iusto",
+            "min_amount_task_when_stream" => "repudiandae",
+            "min_amount_donate_task_before_stream" => "et",
+            "min_amount_donate_task_when_stream" => "similique",
+            "tags" => "delectus",
         ],
 ]);
 $body = $response->getBody();
@@ -4818,7 +4818,7 @@ print_r(json_decode((string) $body));
 
 ```json
 {
-    "message": "Given include(s) `tasks` are not allowed. Allowed include(s) are `game, streams, channel, tags`."
+    "message": "Given include(s) `tasks` are not allowed. Allowed include(s) are `game, streams, channel, tags, user`."
 }
 ```
 
@@ -4829,7 +4829,7 @@ print_r(json_decode((string) $body));
 
 Parameter | Status | Description
 --------- | ------- | ------- | -----------
-    include |  optional  | string String of connections: game, tasks, tags, channel.
+    include |  optional  | string String of connections: game, tasks, tags, channel, user.
 
 <!-- END_74a8d9fa827a7a3d2dd911edb687c7cf -->
 
@@ -4849,9 +4849,9 @@ $response = $client->put("https://darestreams.com/api/streams/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "link" => "odio",
-            "start_at" => "quod",
-            "tags" => "commodi",
+            "link" => "sequi",
+            "start_at" => "enim",
+            "tags" => "labore",
         ],
 ]);
 $body = $response->getBody();
@@ -6008,7 +6008,7 @@ $response = $client->get("https://darestreams.com/api/streams/1/tasks", [
     'query' => [
             "include" => "user,stream",
             "sort" => "-amount_donations",
-            "page" => "9",
+            "page" => "2",
         ],
 ]);
 $body = $response->getBody();
@@ -6991,11 +6991,11 @@ $response = $client->post("https://darestreams.com/api/streams/1/tasks", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_text" => "dicta",
-            "full_text" => "quia",
-            "interval_time" => "2",
-            "is_superbowl" => "",
-            "tags" => "alias",
+            "small_text" => "voluptatibus",
+            "full_text" => "voluptate",
+            "interval_time" => "6",
+            "is_superbowl" => "1",
+            "tags" => "magnam",
         ],
 ]);
 $body = $response->getBody();
@@ -7078,13 +7078,13 @@ $response = $client->put("https://darestreams.com/api/streams/1/tasks/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_text" => "occaecati",
-            "full_text" => "in",
-            "interval_time" => "5",
-            "min_amount" => "1",
+            "small_text" => "ea",
+            "full_text" => "eum",
+            "interval_time" => "6",
+            "min_amount" => "17",
             "is_superbowl" => "",
-            "min_amount_superbowl" => "9",
-            "tags" => "iusto",
+            "min_amount_superbowl" => "6",
+            "tags" => "eius",
         ],
 ]);
 $body = $response->getBody();
@@ -7129,7 +7129,7 @@ $response = $client->get("https://darestreams.com/api/streams/1/tasks/1/transact
     'query' => [
             "include" => "task",
             "sort" => "-created_at",
-            "page" => "16",
+            "page" => "13",
         ],
 ]);
 $body = $response->getBody();
@@ -21921,7 +21921,7 @@ $response = $client->post("https://darestreams.com/api/threads/1/messages", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "body" => "dolores",
+            "body" => "rerum",
         ],
 ]);
 $body = $response->getBody();
@@ -22053,9 +22053,9 @@ $response = $client->post("https://darestreams.com/api/transactions", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "task_id" => "10",
-            "user_id" => "5",
-            "amount" => "0",
+            "task_id" => "11",
+            "user_id" => "3",
+            "amount" => "148.45",
         ],
 ]);
 $body = $response->getBody();
@@ -22089,8 +22089,8 @@ Parameter | Type | Status | Description
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/users/top", [
     'query' => [
-            "limit" => "mollitia",
-            "skip" => "veritatis",
+            "limit" => "delectus",
+            "skip" => "nam",
             "include" => "tasks,channel",
         ],
 ]);
@@ -25326,8 +25326,8 @@ $response = $client->put("https://darestreams.com/api/users/1", [
         ],
     'json' => [
             "name" => "Archibald",
-            "last_name" => "qui",
-            "middle_name" => "officia",
+            "last_name" => "voluptas",
+            "middle_name" => "error",
             "email" => "example@example.ru",
         ],
 ]);
@@ -25845,7 +25845,7 @@ $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/users/1/transactions", [
     'query' => [
             "include" => "task.",
-            "page" => "1",
+            "page" => "5",
         ],
 ]);
 $body = $response->getBody();

@@ -30,7 +30,7 @@ class StreamController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @queryParam include string String of connections: game, tasks, tags, channel. Example: game,tasks
+     * @queryParam include string String of connections: game, tasks, tags, channel, user. Example: game,tasks
      * @queryParam sort string Sort items by fields: amount_donations, quantity_donators, quantity_donations, id. For desc use '-' prefix. Example: -quantity_donators
      * @queryParam page array Use as page[number]=1&page[size]=2.
      *
@@ -41,7 +41,7 @@ class StreamController extends Controller
         $items = QueryBuilder::for(Stream::class)
             ->defaultSort('-quantity_donators')
             ->allowedSorts('quantity_donators', 'quantity_donations', 'amount_donations' ,'id')
-            ->allowedIncludes(['game', 'tasks', 'tags', 'channel'])
+            ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
             ->jsonPaginate();
 
         return StreamResource::collection($items);
@@ -50,7 +50,7 @@ class StreamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @queryParam include string String of connections: game, tasks, tags, channel. Example: game,tasks
+     * @queryParam include string String of connections: game, tasks, tags, channel, user. Example: game,tasks
      *
      * @param  int  $stream
      * @return \Illuminate\Http\Response
@@ -58,7 +58,7 @@ class StreamController extends Controller
     public function show($stream)
     {
         $item = QueryBuilder::for(Stream::class)
-            ->allowedIncludes(['game', 'streams', 'channel', 'tags'])
+            ->allowedIncludes(['game', 'streams', 'channel', 'tags', 'user'])
             ->findOrFail($stream);
 
         return new StreamResource($item);
@@ -89,18 +89,24 @@ class StreamController extends Controller
         if(!$user->channel || $user->channel->id!=$request->get('channel_id'))
             return response()->json(['error' => trans('api/streams.failed_no_channel')], 422);
 
+        if($user->streams()->where('status', '<>', Stream::STATUS_FINISHED)->count()>0)
+            return response()->json(['error' => trans('api/streams.you_still_have_active_streams')], 422);
+
         $input = $request->all();
         $channel = Channel::findOrFail($request->get('channel_id'));
         $input['game_id'] = $channel->game_id;
 
-        $obj = new Stream();
-        $obj->fill($input);
-        $obj->save();
+        $stream = new Stream();
+        $stream->fill($input);
+        $stream->save();
 
         //Todo: Add tags code.
 
+        StreamResource::withoutWrapping();
+
         return response()->json([
             'success' => true,
+            'data' => new StreamResource($stream),
             'message'=> trans('api/streams.success_created')
         ], 200);
     }
@@ -140,9 +146,11 @@ class StreamController extends Controller
         $stream->update($inputs);
 
         //Todo: Add tags code.
+        StreamResource::withoutWrapping();
 
         return response()->json([
             'success' => true,
+            'data' => new StreamResource($stream),
             'message'=> trans('api/streams.success_updated')
         ], 200);
     }
@@ -190,7 +198,7 @@ class StreamController extends Controller
             $items = QueryBuilder::for(Stream::class)
                 ->join('channels', 'channels.id', '=', 'streams.channel_id')
                 ->defaultSort('-channels.views')
-                ->allowedIncludes(['game', 'tasks', 'tags', 'channel'])
+                ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
                 //->where('status', Stream::STATUS_ACTIVE)  //Todo: uncomment in production
                 ->offset($skip)
                 ->limit($limit)
