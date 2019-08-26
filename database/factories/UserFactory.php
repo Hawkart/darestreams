@@ -13,7 +13,7 @@ $factory->define(User::class, function (Faker $faker) {
         File::makeDirectory($filepath);
 
     $nicknames = ['Kitboga', 'TimTheTatman', 'dota2ti_ru', 'UCCleague', 'GohaMedia', 'archangel_hs',
-        'TpaBoMaH', 'aravay46', 'Rubius', 'ighDistortion', 'mrfreshasian', 'Nixjke', 'unforgettabletv', 'NBA', 'TFBlade',
+        'TpaBoMaH', 'aravay46', 'Rubius', 'mrfreshasian', 'Nixjke', 'unforgettabletv', 'NBA', 'TFBlade',
         'dakotaz', 'SimCopter1', 'koil', 'itsHafu', 'JoblessGarrett', 'EsfandTV', 'IWillDominate', 'h3x_TV', 'Mikasa_th'];
 
     return [

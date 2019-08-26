@@ -9,6 +9,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Stream::class, function (Faker $faker) {
     return [
+        'title' => $faker->paragraph(1, true),
         'link'      => $faker->imageUrl(800, 600, 'cats', true),
         'start_at'  => $faker->dateTime(),
         'status'    => 0,

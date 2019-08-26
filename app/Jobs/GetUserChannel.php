@@ -58,6 +58,7 @@ class GetUserChannel implements ShouldQueue
                         "description" => $data['description'] ? $data['description'] : "",
                         'views' => $data['views'],
                         'logo' => $data['logo'],
+                        'overlay' => isset($data['video_banner']) ? $data['video_banner'] : ''
                     ];
 
                     Channel::create($ch);

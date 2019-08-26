@@ -17,10 +17,22 @@ $factory->define(Channel::class, function (Faker $faker) {
     $game = Game::inRandomOrder()->first();
     $user = User::doesntHave('channel')->first();
 
+    try{
+        $twitchClient = new \TwitchApi\TwitchApi([
+            'client_id' => config('app.twitch_api_cid')
+        ]);
+
+        $twitchClient->setApiVersion(3);
+        $data = $twitchClient->getChannel($user->nickname);
+    } catch (\Exception $e) {
+        $data = [];
+    }
+
     return [
         'title' => $user->nickname,
-        'logo' => $game->logo,
-        'description' => $faker->paragraph(3, true),
+        'logo' => !isset($data['logo']) ? $game->logo : $data['logo'],
+        'overlay' => !isset($data['video_banner']) ? $game->logo : $data['video_banner'],
+        'description' => !isset($data['status']) ?  $faker->paragraph(3, true) : $data['status'],
         'user_id'   => $user->id,
         'link'      => 'https://www.twitch.tv/'.$user->nickname,
         'game_id'   => $game->id,

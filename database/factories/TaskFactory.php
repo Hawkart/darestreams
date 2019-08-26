@@ -16,8 +16,6 @@ $factory->define(Task::class, function (Faker $faker) {
         'full_desc'             => $faker->paragraph(3, true),
         'is_superbowl'          => $is_superbowl,
         'interval_time'         => $faker->numberBetween(0, 50),
-        'min_amount'            => $faker->numberBetween(10, 500),
-        'min_amount_superbowl'  => $is_superbowl ? 0 : $faker->numberBetween(200, 1000),
         'status'                => 0,
         'check_vote'            => $faker->boolean,
         'interval_finished'     => $faker->boolean,
