@@ -195,13 +195,24 @@ class StreamController extends Controller
         if ($cacheTags->get($cache_key)){
             $items = $cacheTags->get($cache_key);
         } else {
-            $items = QueryBuilder::for(Stream::class)
-                ->join('channels', 'channels.id', '=', 'streams.channel_id')
-                ->defaultSort('-channels.views')
-                ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-                //->where('status', Stream::STATUS_ACTIVE)  //Todo: uncomment in production
+
+            $list = DB::table('channels as ch')
+                ->select('st.id', 'ch.views')
+                ->leftJoin('streams as st', 'ch.id', '=', 'st.channel_id')
+                ->groupBy('st.id', 'ch.views')
+                ->orderByDesc('views')
                 ->offset($skip)
                 ->limit($limit)
+                ->whereNotNull('st.id')
+                ->get();
+
+            $ids = $list->pluck('id')->toArray();
+            $oids = implode(',', $ids);
+
+            $items = QueryBuilder::for(Stream::class)
+                ->orderByRaw(DB::raw("FIELD(id, $oids)"))
+                ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
+                //->where('status', Stream::STATUS_ACTIVE)  //Todo: uncomment in production
                 ->jsonPaginate();
 
             $cacheTags->put($cache_key, $items, 30);
