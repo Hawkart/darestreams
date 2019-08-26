@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Api\Streams;
 
 use App\Http\Controllers\Api\Controller;
 use App\Http\Requests\TaskRequest;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use App\Models\Stream;
+use Illuminate\Support\Facades\DB;
 
 /**
  * @group Streams tasks
@@ -76,9 +78,7 @@ class TaskController extends Controller
      * @bodyParam small_text text required Short description.
      * @bodyParam full_text text required Full description.
      * @bodyParam interval_time integer required Time for finishing the task. 0 means until the end of the stream.
-     * @bodyParam min_amount integer required Min amount for donation.
      * @bodyParam is_superbowl boolean Select superbowl or not.
-     * @bodyParam min_amount_superbowl integer If is_superbowl is true required min amount for donation.
      * @bodyParam tags Additional tags to task.
      *
      */
@@ -86,21 +86,33 @@ class TaskController extends Controller
     {
         $user = auth()->user();
 
-        if(!$user->channel)
-            return response()->json(['error' => trans('api/streams.failed_no_channel')], 422);
-
-        if($user->channel->id != $stream->channel_id)
-            return response()->json(['error' => trans('api/streams/task.failed_not_belong_to_channel')], 422);
-
-        //Todo: Add transaction and validation of account and min amount donation.
-        //Todo: Add tags code.
+        $stream->canTaskCreate();
+        $amount = $stream->getTaskCreateAmount();
 
         $input = $request->all();
         $input['user_id'] = $user->id;
 
-        $obj = new Task();
-        $obj->fill($input);
-        $obj->save();
+        try {
+            DB::transaction(function () use ($input, $user, $stream, $amount) {
+
+                $task = new Task();
+                $task->fill($input);
+                $task->save();
+
+                if($user->channel->id != $stream->channel_id)
+                {
+                    Transaction::create($data = [
+                        'task_id' => $task->id,
+                        'amount' => $amount,
+                        'account_sender_id' => $user->account->id,
+                        'account_receiver_id' => $task->stream->user->account->id,
+                        'status' => Transaction::PAYMENT_HOLDING
+                    ]);
+                }
+            });
+        } catch (\Exception $e) {
+            return response($e->getMessage(), 422);
+        }
 
         return response()->json([
             'success' => true,
@@ -131,16 +143,17 @@ class TaskController extends Controller
         if(!$user->channel)
             return response()->json(['error' => trans('api/streams.failed_no_channel')], 422);
 
-        if($user->channel->id != $stream->channel_id)
-            return response()->json(['error' => trans('api/streams/task.failed_not_belong_to_channel')], 422);
+        if($user->id != $task->user_id)
+            return response()->json(['error' => trans('api/streams/task.failed_not_belong_to_user')], 422);
 
         if(!$stream->tasks()->where('id', $task->id)->exists())
             return response()->json(['error' => trans('api/streams/tasks.failed_not_belong_to_stream')], 422);
 
+        //$stream->canTaskCreate();
+        //$amount = $stream->getTaskCreateAmount();
+
         $task->fill($request->all());
         $task->save();
-
-        //Todo: Add tags code.
 
         return response()->json([
             'success' => true,

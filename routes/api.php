@@ -30,6 +30,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('games', 'GameController')->only(['index', 'show']);
     Route::post('games/offer', 'GameController@offer');
 
+    Route::get('users/top', 'UserController@top');
     Route::get('users/me', 'UserController@me');
     Route::apiResource('users', 'UserController')->only(['index', 'show', 'update']);
     Route::get('users/{user}/account', 'UserController@account');
@@ -57,6 +58,7 @@ Route::group(['namespace' => 'Api'], function () {
 
     Route::apiResource('transactions', 'TransactionController')->only(['store']);
 
+    Route::get('streams/top', 'StreamController@top');
     Route::apiResource('streams', 'StreamController');
     Route::get('streams/{stream}/thread', 'StreamController@thread');
     Route::apiResource('streams.tasks', 'Streams\TaskController');

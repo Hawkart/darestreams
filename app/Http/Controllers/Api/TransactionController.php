@@ -43,6 +43,8 @@ class TransactionController extends Controller
             'amount' => 'required|regex:/^\d+(\.\d{1,2})?$/'
         ]);
 
+        //Todo: Check on minimum donation if task
+
         $user = auth()->user();
 
         $task_id = (!$request->has('task_id') || empty($request->get('task_id'))) ? 0 : $request->get('task_id');

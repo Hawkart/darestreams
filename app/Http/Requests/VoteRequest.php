@@ -24,28 +24,9 @@ class VoteRequest extends FormRequest {
      */
     public function rules(Request $request)
     {
-        switch($this->method())
-        {
-            case 'GET':
-            case 'DELETE':
-                {
-                    return [];
-                }
-            case 'POST':
-                {
-                    return [
-
-                    ];
-                }
-            case 'PUT':
-            case 'PATCH':
-                {
-                    return [
-
-                    ];
-                }
-            default:break;
-        }
+        return [
+            'vote' => 'required|in:1,2'
+        ];
     }
 
 

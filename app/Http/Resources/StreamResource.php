@@ -16,7 +16,7 @@ class StreamResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'channel_id' => $this->user_id,
+            'channel_id' => $this->channel_id,
             'game_id' => $this->game_id,
             'link' => $this->link,
             'start_at' => $this->start_at,

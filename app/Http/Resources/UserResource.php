@@ -27,6 +27,7 @@ class UserResource extends JsonResource
             'role_id' => $this->role_id,
             'avatar' => getImageLink($this->avatar, '/img/default_avatar.jpg'),
             'overlay' => getImageLink($this->overlay, '/img/default_overlay.jpg'),
+            'donates' => $this->when(isset($this->donates), $this->donates),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
 

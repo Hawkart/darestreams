@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
+    const STATUS_CREATED = 0;
+    const STATUS_IN_WORK = 1;
+    const STATUS_CANCELED = 2;
+    const STATUS_FINISHED = 3;
+
+    const VOTE_NOT_YET = 1;
+    const VOTE_FINISHED = 2;
+
     /**
      * The table associated with the model.
      *

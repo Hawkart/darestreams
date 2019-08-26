@@ -16,7 +16,8 @@ class Kernel extends ConsoleKernel
         Commands\ClearSeederData::class,
         Commands\DropTables::class,
         Commands\ImportGames::class,
-        Commands\ImportChannelsViews::class
+        Commands\ImportChannelsViews::class,
+        Commands\CountTaskResults::class
     ];
 
     /**

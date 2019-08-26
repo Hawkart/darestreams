@@ -36,20 +36,16 @@ class TaskRequest extends FormRequest {
                     return [
                         'small_desc' => 'required|string|min:1',
                         'full_desc' => 'required|string|min:1',
-                        'interval_time' => 'numeric|min:0',
-                        'min_amount' => "required|regex:/^\d+(\.\d{1,2})?$/",
-                        'min_amount_superbowl' => [
-                            Rule::requiredIf($request->get('is_superbowl')),
-                            "regex:/^\d+(\.\d{1,2})?$/"
-                        ],
+                        'interval_time' => 'sometimes|required|numeric|min:0'
                     ];
                 }
             case 'PUT':
             case 'PATCH':
                 {
                     return [
-                        'check_vote' => 'boolean',
-                        'status' => ""
+                        'check_vote' => 'sometimes|required|boolean',
+                        'small_desc' => 'sometimes|required|string|min:1',
+                        'full_desc' => 'sometimes|required|string|min:1',
                     ];
                 }
             default:break;

@@ -17,6 +17,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Storage;
 use Image;
 use DB;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
+use Cache;
 
 /**
  * @group Users
@@ -350,5 +353,61 @@ class UserController extends Controller
             ->firstOrFail();
 
         return new ChannelResource($item);
+    }
+
+
+    /**
+     * Get top donators
+     *
+     * @queryParam limit Integer. Limit of top channels. Default: 10.
+     * @queryParam skip Integer. Offset of top channels. Default: 0.
+     *
+     * @queryParam include string String of connections: tasks, streams, channel. Example: tasks,channel
+     */
+    public function top(Request $request)
+    {
+        $limit = $request->has('limit') ? $request->get('limit') : 10;
+        $skip = $request->has('skip') ? $request->get('skip') : 0;
+
+        $queryParams = request()->query();
+        ksort($queryParams);
+        $queryString = http_build_query($queryParams);
+        $cache_key = Str::slug('topDonators'.$queryString);
+
+        $tags = ['index', 'topDonators'];
+        $cacheTags = Cache::tags($tags);
+
+        if ($cacheTags->get($cache_key)){
+            $items = $cacheTags->get($cache_key);
+        } else {
+
+            //get streams finished amount donations for last 10 days
+            $list = DB::table('transactions as tr')
+                ->select('us.id as user_id', DB::raw("sum(tr.amount) as donates"))
+                ->leftJoin('accounts as ac', 'ac.id', '=', 'tr.account_sender_id')
+                ->rightJoin('users as us', 'us.id', '=', 'ac.user_id')
+                ->groupBy('us.id')
+                ->orderByDesc('donates')
+                ->offset($skip)
+                ->limit($limit)
+                ->get();
+
+            $data = $list->pluck('donates', 'user_id')->toArray();
+            $ids = $list->pluck('user_id')->toArray();
+            $oids = implode(',', $ids);
+
+            $items = QueryBuilder::for(User::class)
+                ->whereIn('id', $ids)
+                ->orderByRaw(DB::raw("FIELD(id, $oids)"))
+                ->allowedIncludes(['tasks', 'streams', 'channel'])
+                ->jsonPaginate();
+
+            foreach ($items as &$item)
+                $item->donates = $data[$item->id];
+
+            $cacheTags->put($cache_key, $items, 30);
+        }
+
+        return UserResource::collection($items);
     }
 }
