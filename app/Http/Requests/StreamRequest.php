@@ -34,6 +34,7 @@ class StreamRequest extends FormRequest {
             case 'POST':
                 {
                     return [
+                        'channel_id'  => 'required|exists:channels,id',
                         'title'  => 'required',
                         'link'     => 'required|url',
                         'start_at' => 'required|date|after:now',
@@ -41,11 +42,11 @@ class StreamRequest extends FormRequest {
                         'allow_task_before_stream' => 'required_without_all:allow_task_when_stream|boolean',
                         'allow_task_when_stream' => 'required_without_all:allow_task_before_stream|boolean',
 
-                        'min_amount_task_before_stream' => 'required_if:allow_task_before_stream|regex:/^\d+(\.\d{1,2})?$/',
-                        'min_amount_donate_task_before_stream' => 'required_if:allow_task_before_stream|regex:/^\d+(\.\d{1,2})?$/',
+                        'min_amount_task_before_stream' => 'required_if:allow_task_before_stream,1|regex:/^\d+(\.\d{1,2})?$/',
+                        'min_amount_donate_task_before_stream' => 'required_if:allow_task_before_stream,1|regex:/^\d+(\.\d{1,2})?$/',
 
-                        'min_amount_task_when_stream' => 'required_if:allow_task_when_stream|regex:/^\d+(\.\d{1,2})?$/',
-                        'min_amount_donate_task_when_stream' => 'required_if:allow_task_when_stream|regex:/^\d+(\.\d{1,2})?$/',
+                        'min_amount_task_when_stream' => 'required_if:allow_task_when_stream,1|regex:/^\d+(\.\d{1,2})?$/',
+                        'min_amount_donate_task_when_stream' => 'required_if:allow_task_when_stream,1|regex:/^\d+(\.\d{1,2})?$/',
 
                         //Todo: Add validation of superbowl
                     ];

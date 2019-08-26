@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\ThreadResource;
+use App\Models\Channel;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
 use Illuminate\Http\Request;
 use App\Models\Stream;
 use App\Http\Resources\StreamResource;
 use App\Http\Requests\StreamRequest;
-use App\Models\Thread;
-use Carbon\Carbon;
 use Illuminate\Support\Str;
 use DB;
 use Cache;
@@ -68,7 +67,7 @@ class StreamController extends Controller
     /**
      * Create new stream.
      * @authenticated
-     *
+     * @bodyParam channel_id integer required Select channel.
      * @bodyParam title string required Title of stream.
      * @bodyParam link string required Link on the stream.
      * @bodyParam start_at datetime required Datetime of starting stream.
@@ -87,12 +86,12 @@ class StreamController extends Controller
     {
         $user = auth()->user();
 
-        if(!$user->channel)
+        if(!$user->channel || $user->channel->id!=$request->get('channel_id'))
             return response()->json(['error' => trans('api/streams.failed_no_channel')], 422);
 
         $input = $request->all();
-        $input['channel_id'] = $user->channel->id;
-        $input['game_id'] = $user->channel->game_id;
+        $channel = Channel::findOrFail($request->get('channel_id'));
+        $input['game_id'] = $channel->game_id;
 
         $obj = new Stream();
         $obj->fill($input);
