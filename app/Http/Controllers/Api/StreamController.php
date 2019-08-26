@@ -112,7 +112,6 @@ class StreamController extends Controller
      *
      * @authenticated
      *
-     * @bodyParam game_id int Select category from games list.
      * @bodyParam link string Link on the stream.
      * @bodyParam start_at datetime required Datetime of starting stream.
      * @bodyParam tags Additional tags to stream.
@@ -124,6 +123,7 @@ class StreamController extends Controller
     public function update(Stream $stream, StreamRequest $request)
     {
         $user = auth()->user();
+        $inputs = [];
 
         if(!$user->channel || ($user->channel->id != $stream->channel_id))
             return response()->json(['error' => trans('api/streams.failed_channel')], 422);
@@ -168,7 +168,6 @@ class StreamController extends Controller
      * Get top streams
      * @queryParam limit Integer. Limit of top channels. Default: 10.
      * @queryParam skip Integer. Offset of top channels. Default: 0.
-     * @queryParam game_id Integer. Filter channels by category.
      *
      * @queryParam include string String of connections: user, tasks, tags, game. Example: user,tasks
      */
@@ -183,8 +182,6 @@ class StreamController extends Controller
         $cache_key = Str::slug('topStreams'.$queryString);
 
         $tags = ['index', 'topStreams'];
-        if($request->has('game_id'))
-            $tags[] = 'byGame';
 
         $cacheTags = Cache::tags($tags);
         if ($cacheTags->get($cache_key)){
