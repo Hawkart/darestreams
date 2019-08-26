@@ -69,7 +69,7 @@ class StreamController extends Controller
      * Create new stream.
      * @authenticated
      *
-     * @bodyParam game_id int required Select category from games list.
+     * @bodyParam title string required Title of stream.
      * @bodyParam link string required Link on the stream.
      * @bodyParam start_at datetime required Datetime of starting stream.
      * @bodyParam allow_task_before_stream boolean Allow to create task before stream starts.
@@ -92,6 +92,7 @@ class StreamController extends Controller
 
         $input = $request->all();
         $input['channel_id'] = $user->channel->id;
+        $input['game_id'] = $user->channel->game_id;
 
         $obj = new Stream();
         $obj->fill($input);

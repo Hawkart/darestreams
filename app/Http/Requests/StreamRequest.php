@@ -34,7 +34,7 @@ class StreamRequest extends FormRequest {
             case 'POST':
                 {
                     return [
-                        'game_id'  => 'required|exists:games,id',
+                        'title'  => 'required',
                         'link'     => 'required|url',
                         'start_at' => 'required|date|after:now',
 
