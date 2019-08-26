@@ -62,7 +62,6 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('streams', 'StreamController');
     Route::get('streams/{stream}/thread', 'StreamController@thread');
     Route::apiResource('streams.tasks', 'Streams\TaskController');
-    Route::apiResource('streams.tasks.votes', 'Streams\Tasks\VoteController');
     Route::apiResource('streams.tasks.transactions', 'Streams\Tasks\TransactionController')->only(['index', 'show']);
 
     Route::apiResource('threads', 'ThreadController')->only(['index', 'show']);
