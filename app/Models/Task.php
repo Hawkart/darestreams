@@ -11,8 +11,11 @@ class Task extends Model
     const STATUS_CANCELED = 2;
     const STATUS_FINISHED = 3;
 
-    const VOTE_NOT_YET = 1;
+    const VOTE_NOT_ALLOWED = 0;
+    const VOTE_ALLOWED = 1;
     const VOTE_FINISHED = 2;
+
+    const INTERVAL_FINISHED = 1;
 
     /**
      * The table associated with the model.

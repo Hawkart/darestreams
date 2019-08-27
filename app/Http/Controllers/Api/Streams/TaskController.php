@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Controller;
 use App\Http\Requests\TaskRequest;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Psy\Util\Str;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\TaskResource;
@@ -136,29 +137,36 @@ class TaskController extends Controller
      * @bodyParam small_text text Short description.
      * @bodyParam full_text text Full description.
      * @bodyParam interval_time integer Time for finishing the task. 0 means until the end of the stream.
-     * @bodyParam min_amount integer Min amount for donation.
      * @bodyParam is_superbowl boolean Select superbowl or not.
-     * @bodyParam min_amount_superbowl integer If is_superbowl is true required min amount for donation.
      * @bodyParam tags Additional tags to task.
      */
     public function update(TaskRequest $request, Stream $stream, Task $task)
     {
         $user = auth()->user();
 
-        if(!$user->channel)
-            return response()->json(['error' => trans('api/streams.failed_no_channel')], 422);
-
-        if($user->id != $task->user_id)
-            return response()->json(['error' => trans('api/streams/task.failed_not_belong_to_user')], 422);
-
         if(!$stream->tasks()->where('id', $task->id)->exists())
             return response()->json(['error' => trans('api/streams/tasks.failed_not_belong_to_stream')], 422);
 
-        //$stream->canTaskCreate();
-        //$amount = $stream->getTaskCreateAmount();
+        //Todo: Finish logic of changing according of role,statuses to task and stream.
 
-        $task->fill($request->all());
-        $task->save();
+        //If owner of stream
+        if($user->id==$stream->user->id)
+        {
+            $task->fill($request->only(['check_vote', 'interval_time']));
+            $task->save();
+        }else{
+            if($user->id != $task->user_id)
+                return response()->json(['error' => trans('api/streams/task.failed_not_belong_to_user')], 422);
+
+            if($task->status!=Task::STATUS_CREATED)
+                return response()->json(['error' => trans('api/streams/tasks.failed_task_in_the_work')], 422);
+
+            if($stream->status!=Stream::STATUS_CREATED)
+                return response()->json(['error' => trans('api/streams/tasks.failed_stream_in_the_work')], 422);
+
+            $task->fill($request->only(['small_text', 'interval_time', 'full_text']));
+            $task->save();
+        }
 
         TaskResource::withoutWrapping();
 

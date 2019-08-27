@@ -38,13 +38,10 @@ class StreamRequest extends FormRequest {
                         'title'  => 'required',
                         'link'     => 'required|url',
                         'start_at' => 'required|date|after:now',
-
-                        'allow_task_before_stream' => 'required_without:allow_task_when_stream|boolean',    //accepted
-                        'allow_task_when_stream' => 'required_without:allow_task_before_stream|boolean',    //accepted
-
+                        'allow_task_before_stream' => 'required_without:allow_task_when_stream|boolean',
+                        'allow_task_when_stream' => 'required_without:allow_task_before_stream|boolean',
                         'min_amount_task_before_stream' => 'required_if:allow_task_before_stream,1|regex:/^\d+(\.\d{1,2})?$/',
                         'min_amount_donate_task_before_stream' => 'required_if:allow_task_before_stream,1|regex:/^\d+(\.\d{1,2})?$/',
-
                         'min_amount_task_when_stream' => 'required_if:allow_task_when_stream,1|regex:/^\d+(\.\d{1,2})?$/',
                         'min_amount_donate_task_when_stream' => 'required_if:allow_task_when_stream,1|regex:/^\d+(\.\d{1,2})?$/',
 
@@ -55,6 +52,15 @@ class StreamRequest extends FormRequest {
             case 'PATCH':
                 {
                     return [
+                        'title'  => 'sometimes|required',
+                        'link'     => 'sometimes|required|url',
+                        'start_at' => 'sometimes|required|date|after:now',
+                        'allow_task_before_stream' => 'sometimes|required_without:allow_task_when_stream|boolean',
+                        'allow_task_when_stream' => 'sometimes|required_without:allow_task_before_stream|boolean',
+                        'min_amount_task_before_stream' => 'sometimes|required_if:allow_task_before_stream,1|regex:/^\d+(\.\d{1,2})?$/',
+                        'min_amount_donate_task_before_stream' => 'sometimes|required_if:allow_task_before_stream,1|regex:/^\d+(\.\d{1,2})?$/',
+                        'min_amount_task_when_stream' => 'sometimes|required_if:allow_task_when_stream,1|regex:/^\d+(\.\d{1,2})?$/',
+                        'min_amount_donate_task_when_stream' => 'sometimes|required_if:allow_task_when_stream,1|regex:/^\d+(\.\d{1,2})?$/',
                     ];
                 }
             default:break;

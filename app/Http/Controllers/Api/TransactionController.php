@@ -43,21 +43,28 @@ class TransactionController extends Controller
             'amount' => 'required|regex:/^\d+(\.\d{1,2})?$/'
         ]);
 
-        //Todo: Check on minimum donation if task
-
         $user = auth()->user();
+        $amount = $request->get('amount');
 
         $task_id = (!$request->has('task_id') || empty($request->get('task_id'))) ? 0 : $request->get('task_id');
         $user_id = (!$request->has('user_id') || empty($request->get('user_id'))) ? 0 : $request->get('user_id');
 
+        if($task_id>0)
+        {
+            $task = Task::findOrFail($task_id);
+            $stream = $task->stream;
+
+            //check all rules by stream
+            $stream->canMakeDonate($amount);
+
+            //if($task->status>Task::STATUS_IN_WORK || $task->check_vote>Task::VOTE_NOT_ALLOWED)
+        }
+
         //enough money
-        if($request->get('amount') <= $user->account->amount)
+        if($amount <= $user->account->amount)
         {
             if($user_id>0)
-                $userReceiver = Task::findOrFail($user_id);
-
-            if($task_id>0)
-                $task = Task::findOrFail($task_id);
+                $userReceiver = User::findOrFail($user_id);
 
             $data = [
                 'task_id' => $task_id,

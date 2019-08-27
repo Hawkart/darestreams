@@ -87,10 +87,10 @@ class StreamController extends Controller
         $user = auth()->user();
 
         if(!$user->channel || $user->channel->id!=$request->get('channel_id'))
-            return response()->json(['error' => trans('api/streams.failed_no_channel')], 422);
+            return response()->json(['error' => trans('api/stream.failed_no_channel')], 422);
 
         if($user->streams()->where('status', '<>', Stream::STATUS_FINISHED)->count()>0)
-            return response()->json(['error' => trans('api/streams.you_still_have_active_streams')], 422);
+            return response()->json(['error' => trans('api/stream.you_still_have_active_streams')], 422);
 
         $input = $request->all();
         $channel = Channel::findOrFail($request->get('channel_id'));
@@ -107,7 +107,7 @@ class StreamController extends Controller
         return response()->json([
             'success' => true,
             'data' => new StreamResource($stream),
-            'message'=> trans('api/streams.success_created')
+            'message'=> trans('api/stream.success_created')
         ], 200);
     }
 
@@ -118,8 +118,15 @@ class StreamController extends Controller
      *
      * @authenticated
      *
+     * @bodyParam title string Title of stream.
      * @bodyParam link string Link on the stream.
-     * @bodyParam start_at datetime required Datetime of starting stream.
+     * @bodyParam start_at datetime Datetime of starting stream.
+     * @bodyParam allow_task_before_stream boolean Allow to create task before stream starts.
+     * @bodyParam allow_task_when_stream boolean Allow to create task while stream is active.
+     * @bodyParam min_amount_task_before_stream decimal Min amount to create task before stream starts.
+     * @bodyParam min_amount_task_when_stream decimal Min amount to create task while stream is active.
+     * @bodyParam min_amount_donate_task_before_stream decimal Min donate for task before stream starts.
+     * @bodyParam min_amount_donate_task_when_stream decimal Min donate for task while stream is active.
      * @bodyParam tags Additional tags to stream.
      *
      * @param Stream $stream
@@ -131,17 +138,19 @@ class StreamController extends Controller
         $user = auth()->user();
         $inputs = [];
 
+        //Todo: Check all rules and fields allowed to change
+
         if(!$user->channel || ($user->channel->id != $stream->channel_id))
-            return response()->json(['error' => trans('api/streams.failed_channel')], 422);
+            return response()->json(['error' => trans('api/stream.failed_channel')], 422);
 
         if($stream->status==Stream::STATUS_FINISHED)
-            return response()->json(['error' => trans('api/streams.cannot_update_stream_already_finished')], 422);
+            return response()->json(['error' => trans('api/stream.cannot_update_stream_already_finished')], 422);
 
         if($stream->status==Stream::STATUS_ACTIVE)
             $inputs = $request->only(['status']);
 
         if($stream->status==Stream::STATUS_CREATED)
-            $inputs = $request->except('game_id', 'channel_id', 'created_at', 'updated_at', 'is_payed');
+            $inputs = $request->except('game_id', 'channel_id', 'created_at', 'updated_at');
 
         $stream->update($inputs);
 
@@ -151,7 +160,7 @@ class StreamController extends Controller
         return response()->json([
             'success' => true,
             'data' => new StreamResource($stream),
-            'message'=> trans('api/streams.success_updated')
+            'message'=> trans('api/stream.success_updated')
         ], 200);
     }
 
@@ -210,6 +219,7 @@ class StreamController extends Controller
             $oids = implode(',', $ids);
 
             $items = QueryBuilder::for(Stream::class)
+                ->whereIn('id', $ids)
                 ->orderByRaw(DB::raw("FIELD(id, $oids)"))
                 ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
                 //->where('status', Stream::STATUS_ACTIVE)  //Todo: uncomment in production

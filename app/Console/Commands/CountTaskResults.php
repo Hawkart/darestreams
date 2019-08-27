@@ -2,9 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Stream;
 use App\Models\Task;
 use App\Models\Transaction;
 use App\Models\Vote;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Image;
@@ -40,42 +42,64 @@ class CountTaskResults extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
-        $tasks = Task::where('status', Task::STATUS_FINISHED)
-                        ->where('check_vote', Task::VOTE_NOT_YET)->get();
+        $minus10 = Carbon::now('UTC')->subMinutes(10);
+        $streams = Stream::where('ended_at', '<', $minus10)
+                    ->whereNotNull('ended_at')
+                    ->where('status', Stream::STATUS_FINISHED)
+                    ->get();
 
-        foreach($tasks as $task)
+        if(count($streams)>0)
         {
-            $result = 0;
-            $votes = Vote::where('task_id', $task->id)->get();
-
-            foreach($votes as $vote)
+            foreach($streams as $stream)
             {
-                if($vote->vote==Vote::VOTE_YES)
-                    $result++;
+                $tasks = $stream->tasks()->where('check_vote', '<>', Task::VOTE_FINISHED)->with(['votes'])->get();
 
-                if($vote->vote==Vote::VOTE_NO)
-                    $result--;
-            }
-
-            try {
-                DB::transaction(function () use ($task, $result)
+                if(count($tasks)>0)
                 {
-                    if($result>0)
+                    foreach($tasks as $task)
                     {
-                        $transactions = $task->transactions;
-                        foreach($transactions as $transaction)
+                        $result = 0;
+                        //$votes = Vote::where('task_id', $task->id)->get();
+                        $votes = $task->votes;
+
+                        foreach($votes as $vote)
                         {
-                            if($transaction->status!=Transaction::PAYMENT_COMPLETED && $transaction->status!=Transaction::PAYMENT_CANCELED)
-                                $transaction->update(['status' => Transaction::PAYMENT_COMPLETED]);
+                            if($vote->vote==Vote::VOTE_YES)
+                                $result++;
+
+                            if($vote->vote==Vote::VOTE_NO)
+                                $result--;
+                        }
+
+                        //Transfer money according to votes
+                        try {
+                            DB::transaction(function () use ($task, $result)
+                            {
+                                if($result>0)
+                                    $tstatus = Transaction::PAYMENT_COMPLETED;
+                                else
+                                    $tstatus = Transaction::PAYMENT_CANCELED;
+
+                                $transactions = $task->transactions;
+                                foreach($transactions as $transaction)
+                                {
+                                    if($transaction->status!=Transaction::PAYMENT_COMPLETED && $transaction->status!=Transaction::PAYMENT_CANCELED)
+                                        $transaction->update(['status' => $tstatus]);
+                                }
+
+                                $task->update([
+                                    'check_vote' => Task::VOTE_FINISHED
+                                ]);
+                            });
+                        } catch (\Exception $e) {
+                            echo response($e->getMessage(), 422);
                         }
                     }
 
-                    $task->update([
-                        'check_vote' => Task::VOTE_FINISHED
-                    ]);
-                });
-            } catch (\Exception $e) {
-                return response($e->getMessage(), 422);
+                    //check all tasks voted then stream to payed
+                    if(Task::where('stream_id', $stream->id)->where('check_vote', '<>', Task::VOTE_FINISHED)->count()==0)
+                        $stream->update(['status' => Stream::STATUS_FINISHED_AND_PAYED]);
+                }
             }
         }
 

@@ -17,7 +17,8 @@ class Kernel extends ConsoleKernel
         Commands\DropTables::class,
         Commands\ImportGames::class,
         Commands\ImportChannelsViews::class,
-        Commands\CountTaskResults::class
+        Commands\CountTaskResults::class,
+        Commands\UpdateStreamsStatus::class
     ];
 
     /**

@@ -43,9 +43,10 @@ class TaskRequest extends FormRequest {
             case 'PATCH':
                 {
                     return [
-                        'check_vote' => 'sometimes|required|boolean',
+                        'check_vote' => 'sometimes|required|integer|between:0,2',
                         'small_desc' => 'sometimes|required|string|min:1',
                         'full_desc' => 'sometimes|required|string|min:1',
+                        'interval_time' => 'sometimes|required|numeric|min:0'
                     ];
                 }
             default:break;
