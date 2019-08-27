@@ -201,9 +201,9 @@ class StreamController extends Controller
                 ->leftJoin('streams as st', 'ch.id', '=', 'st.channel_id')
                 ->groupBy('st.id', 'ch.views')
                 ->orderByDesc('views')
+                ->whereNotNull('st.id')
                 ->offset($skip)
                 ->limit($limit)
-                ->whereNotNull('st.id')
                 ->get();
 
             $ids = $list->pluck('id')->toArray();

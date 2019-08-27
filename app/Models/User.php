@@ -107,7 +107,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
      */
     public function streams()
     {
-        return $this->hasManyThrough('App\Models\Stream', 'App\Channel');
+        return $this->hasManyThrough('App\Models\Stream', 'App\Models\Channel');
     }
 
     /**
