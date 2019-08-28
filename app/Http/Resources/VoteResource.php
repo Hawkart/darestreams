@@ -19,6 +19,8 @@ class VoteResource extends JsonResource
             'user_id' => $this->user_id,
             'task_id' => $this->task_id,
             'vote' => $this->vote,
+            'result' => $this->result,
+            'amount_donations' => $this->amount_donations,
 
             'user' => new UserResource($this->whenLoaded('user')),
             'task' => new TaskResource($this->whenLoaded('task'))

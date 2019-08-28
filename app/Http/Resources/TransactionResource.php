@@ -5,6 +5,8 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 use Storage;
+use App\Enums\TransactionStatus;
+use App\Enums\TransactionType;
 
 class TransactionResource extends JsonResource
 {
@@ -22,7 +24,8 @@ class TransactionResource extends JsonResource
             'account_sender_id' => $this->account_sender_id,
             'account_receiver_id' => $this->account_receiver_id,
             'amount' => $this->amount,
-            'status' => $this->status,
+            'status' => TransactionStatus::getInstance($this->status),
+            'type' => TransactionType::getInstance($this->type),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
 

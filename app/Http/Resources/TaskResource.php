@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\TaskStatus;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class TaskResource extends JsonResource
@@ -24,9 +25,7 @@ class TaskResource extends JsonResource
             'interval_time' => $this->interval_time,
             'min_amount' => $this->min_amount,
             'min_amount_superbowl' => $this->min_amount_superbowl,
-            'status' => $this->status,
-            'interval_finished' => $this->interval_finished,
-            'check_vote' => $this->check_vote,
+            'status' => TaskStatus::getInstance($this->status),
             'amount_donations' => $this->amount_donations,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

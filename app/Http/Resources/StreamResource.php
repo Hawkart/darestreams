@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\StreamStatus;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class StreamResource extends JsonResource
@@ -22,8 +23,7 @@ class StreamResource extends JsonResource
             'link' => $this->link,
             'start_at' => $this->start_at,
             'ended_at' => $this->ended_at,
-            'status' => $this->status,
-            'is_payed' => $this->is_payed,
+            'status' => StreamStatus::getInstance($this->status),
             'allow_task_before_stream' => $this->allow_task_before_stream,
             'allow_task_when_stream' => $this->allow_task_when_stream,
             'min_amount_task_before_stream' => $this->min_amount_task_before_stream,
