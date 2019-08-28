@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api\Streams;
 
+use App\Enums\StreamStatus;
+use App\Enums\TaskStatus;
 use App\Enums\TransactionStatus;
 use App\Enums\TransactionType;
 use App\Http\Controllers\Api\Controller;
@@ -91,9 +93,15 @@ class TaskController extends Controller
 
         $stream->canTaskCreate();
         $amount = $stream->getTaskCreateAmount();
+        $minDonate = $stream->getDonateCreateAmount();
 
         $input = $request->all();
         $input['user_id'] = $user->id;
+        $input['min_amount'] = $minDonate;
+
+        //If not owner of stream check how much money you have
+        if($user->channel->id != $stream->channel_id && $user->account->amount<$amount)
+            return response()->json(['error' => trans('api/streams/task.not_enough_money')], 422);
 
         try {
             $task = DB::transaction(function () use ($input, $user, $stream, $amount) {
@@ -137,6 +145,7 @@ class TaskController extends Controller
      *
      * @authenticated
      *
+     * @bodyParam status integer Status of task.
      * @bodyParam small_text text Short description.
      * @bodyParam full_text text Full description.
      * @bodyParam interval_time integer Time for finishing the task. 0 means until the end of the stream.
@@ -146,29 +155,30 @@ class TaskController extends Controller
     public function update(TaskRequest $request, Stream $stream, Task $task)
     {
         $user = auth()->user();
+        $status = $request->has('status') ? $request->get('status') : -1;
 
         if(!$stream->tasks()->where('id', $task->id)->exists())
             return response()->json(['error' => trans('api/streams/tasks.failed_not_belong_to_stream')], 422);
 
-        //Todo: Finish logic of changing according of role,statuses to task and stream.
-
-        //If owner of stream
-        if($user->id==$stream->user->id)
+        //only streamer can make task to work or allow to vote (task done) if stream active
+        if($stream->status==StreamStatus::Active && $user->id==$stream->user->id && $status>-1)
         {
-            $task->fill($request->only(['check_vote', 'interval_time']));
-            $task->save();
+            if(
+                ($task->status==TaskStatus::Created && $status==TaskStatus::Active) ||
+                ($task->status==TaskStatus::Active && $status==TaskStatus::AllowVote)
+            )
+            {
+                $task->update(['status' => $status]);
+            }else{
+                return response()->json(['error' => trans('api/streams/tasks.failed_change_to_another_status')], 422);
+            }
+        }
+        //Owner of task can change if stream active or just created
+        else if($task->status==TaskStatus::Created && $task->user_id==$user->id && in_array($stream->status, [StreamStatus::Active, StreamStatus::Created]))
+        {
+            $task->update($request->only(['small_text', 'interval_time', 'full_text', 'is_superbowl']));
         }else{
-            if($user->id != $task->user_id)
-                return response()->json(['error' => trans('api/streams/task.failed_not_belong_to_user')], 422);
-
-            if($task->status!=Task::STATUS_CREATED)
-                return response()->json(['error' => trans('api/streams/tasks.failed_task_in_the_work')], 422);
-
-            if($stream->status!=Stream::STATUS_CREATED)
-                return response()->json(['error' => trans('api/streams/tasks.failed_stream_in_the_work')], 422);
-
-            $task->fill($request->only(['small_text', 'interval_time', 'full_text']));
-            $task->save();
+            return response()->json(['error' => trans('api/streams/tasks.failed_cannot_change_info')], 422);
         }
 
         TaskResource::withoutWrapping();

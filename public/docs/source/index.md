@@ -336,10 +336,10 @@ print_r(json_decode((string) $body));
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/channels/top", [
     'query' => [
-            "hours" => "consequatur",
-            "limit" => "enim",
-            "skip" => "optio",
-            "game_id" => "accusantium",
+            "hours" => "minima",
+            "limit" => "sunt",
+            "skip" => "labore",
+            "game_id" => "fugiat",
             "include" => "user,streams",
         ],
 ]);
@@ -489,17 +489,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?29331",
                     "start_at": "1996-04-25 04:33:16",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 3,
                     "quantity_donations": 441,
-                    "amount_donations": "639.54",
+                    "amount_donations": 640,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 },
@@ -511,17 +514,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?90209",
                     "start_at": "1994-05-03 19:20:53",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 4,
                     "quantity_donations": 340,
-                    "amount_donations": "832.02",
+                    "amount_donations": 832,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -562,17 +568,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?15023",
                     "start_at": "2004-09-07 05:31:47",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 7,
                     "quantity_donations": 344,
-                    "amount_donations": "487.72",
+                    "amount_donations": 488,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -641,17 +650,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?59969",
                     "start_at": "1997-02-13 07:52:29",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 5,
                     "quantity_donations": 875,
-                    "amount_donations": "869.97",
+                    "amount_donations": 870,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -720,17 +732,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?19988",
                     "start_at": "1990-04-19 04:22:47",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 3,
                     "quantity_donations": 679,
-                    "amount_donations": "678.73",
+                    "amount_donations": 679,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -771,17 +786,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?38809",
                     "start_at": "2013-05-12 04:47:13",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 5,
                     "quantity_donations": 490,
-                    "amount_donations": "733.96",
+                    "amount_donations": 734,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -878,17 +896,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                     "start_at": "2004-02-17 15:51:07",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 2,
                     "quantity_donations": 346,
-                    "amount_donations": "290.52",
+                    "amount_donations": 291,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 },
@@ -900,17 +921,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?68105",
                     "start_at": "1985-06-12 02:00:53",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 1,
                     "quantity_donations": 387,
-                    "amount_donations": "873.31",
+                    "amount_donations": 873,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -979,17 +1003,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?45895",
                     "start_at": "2017-03-19 09:23:39",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 1,
                     "quantity_donations": 339,
-                    "amount_donations": "383.91",
+                    "amount_donations": 384,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -1030,17 +1057,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?30277",
                     "start_at": "1992-03-25 08:24:29",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 5,
                     "quantity_donations": 969,
-                    "amount_donations": "381.09",
+                    "amount_donations": 381,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -1283,8 +1313,8 @@ $response = $client->put("https://darestreams.com/api/channels/1", [
         ],
     'json' => [
             "description" => "Long description.",
-            "logo" => "adipisci",
-            "game_id" => "10",
+            "logo" => "necessitatibus",
+            "game_id" => "2",
         ],
 ]);
 $body = $response->getBody();
@@ -1320,9 +1350,9 @@ Parameter | Type | Status | Description
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/games/top", [
     'query' => [
-            "hours" => "doloribus",
-            "limit" => "dolorem",
-            "skip" => "necessitatibus",
+            "hours" => "deserunt",
+            "limit" => "id",
+            "skip" => "consequatur",
             "include" => "tags,streams",
         ],
 ]);
@@ -1366,7 +1396,7 @@ $response = $client->get("https://darestreams.com/api/games", [
     'query' => [
             "include" => "tags,streams",
             "sort" => "-popularity",
-            "page" => "14",
+            "page" => "8",
         ],
 ]);
 $body = $response->getBody();
@@ -1408,17 +1438,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?68105",
                     "start_at": "1985-06-12 02:00:53",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 1,
                     "quantity_donations": 387,
-                    "amount_donations": "873.31",
+                    "amount_donations": 873,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -1442,17 +1475,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                     "start_at": "2004-02-17 15:51:07",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 2,
                     "quantity_donations": 346,
-                    "amount_donations": "290.52",
+                    "amount_donations": 291,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -1509,17 +1545,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?29331",
                     "start_at": "1996-04-25 04:33:16",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 3,
                     "quantity_donations": 441,
-                    "amount_donations": "639.54",
+                    "amount_donations": 640,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -1543,17 +1582,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?15023",
                     "start_at": "2004-09-07 05:31:47",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 7,
                     "quantity_donations": 344,
-                    "amount_donations": "487.72",
+                    "amount_donations": 488,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -1632,17 +1674,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?30277",
                     "start_at": "1992-03-25 08:24:29",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 5,
                     "quantity_donations": 969,
-                    "amount_donations": "381.09",
+                    "amount_donations": 381,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -1666,17 +1711,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?90209",
                     "start_at": "1994-05-03 19:20:53",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 4,
                     "quantity_donations": 340,
-                    "amount_donations": "832.02",
+                    "amount_donations": 832,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -1700,17 +1748,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?59969",
                     "start_at": "1997-02-13 07:52:29",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 5,
                     "quantity_donations": 875,
-                    "amount_donations": "869.97",
+                    "amount_donations": 870,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -1734,17 +1785,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?45895",
                     "start_at": "2017-03-19 09:23:39",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 1,
                     "quantity_donations": 339,
-                    "amount_donations": "383.91",
+                    "amount_donations": 384,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -1768,17 +1822,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?19988",
                     "start_at": "1990-04-19 04:22:47",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 3,
                     "quantity_donations": 679,
-                    "amount_donations": "678.73",
+                    "amount_donations": 679,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 },
@@ -1790,17 +1847,20 @@ print_r(json_decode((string) $body));
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?38809",
                     "start_at": "2013-05-12 04:47:13",
                     "ended_at": null,
-                    "status": 0,
-                    "is_payed": null,
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
                     "allow_task_before_stream": 0,
                     "allow_task_when_stream": 0,
-                    "min_amount_task_before_stream": "0.00",
-                    "min_amount_task_when_stream": "0.00",
-                    "min_amount_donate_task_before_stream": "0.00",
-                    "min_amount_donate_task_when_stream": "0.00",
+                    "min_amount_task_before_stream": 0,
+                    "min_amount_task_when_stream": 0,
+                    "min_amount_donate_task_before_stream": 0,
+                    "min_amount_donate_task_when_stream": 0,
                     "quantity_donators": 5,
                     "quantity_donations": 490,
-                    "amount_donations": "733.96",
+                    "amount_donations": 734,
                     "created_at": "2019-08-26T09:15:21.000000Z",
                     "updated_at": "2019-08-26T09:15:21.000000Z"
                 }
@@ -1886,17 +1946,20 @@ print_r(json_decode((string) $body));
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                 "start_at": "2004-02-17 15:51:07",
                 "ended_at": null,
-                "status": 0,
-                "is_payed": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
                 "allow_task_before_stream": 0,
                 "allow_task_when_stream": 0,
-                "min_amount_task_before_stream": "0.00",
-                "min_amount_task_when_stream": "0.00",
-                "min_amount_donate_task_before_stream": "0.00",
-                "min_amount_donate_task_when_stream": "0.00",
+                "min_amount_task_before_stream": 0,
+                "min_amount_task_when_stream": 0,
+                "min_amount_donate_task_before_stream": 0,
+                "min_amount_donate_task_when_stream": 0,
                 "quantity_donators": 2,
                 "quantity_donations": 346,
-                "amount_donations": "290.52",
+                "amount_donations": 291,
                 "created_at": "2019-08-26T09:15:21.000000Z",
                 "updated_at": "2019-08-26T09:15:21.000000Z"
             }
@@ -1969,7 +2032,7 @@ $response = $client->get("https://darestreams.com/api/payments/1/1/1/checkout", 
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "amount" => "3292477.5152955",
+            "amount" => "33.6451",
         ],
 ]);
 $body = $response->getBody();
@@ -2068,8 +2131,8 @@ print_r(json_decode((string) $body));
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/streams/top", [
     'query' => [
-            "limit" => "aut",
-            "skip" => "ut",
+            "limit" => "dignissimos",
+            "skip" => "rerum",
             "include" => "user,tasks",
         ],
 ]);
@@ -2112,7 +2175,7 @@ $response = $client->get("https://darestreams.com/api/streams", [
     'query' => [
             "include" => "game,tasks",
             "sort" => "-quantity_donators",
-            "page" => "14",
+            "page" => "9",
         ],
 ]);
 $body = $response->getBody();
@@ -2134,17 +2197,20 @@ print_r(json_decode((string) $body));
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?15023",
             "start_at": "2004-09-07 05:31:47",
             "ended_at": null,
-            "status": 0,
-            "is_payed": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
             "allow_task_before_stream": 0,
             "allow_task_when_stream": 0,
-            "min_amount_task_before_stream": "0.00",
-            "min_amount_task_when_stream": "0.00",
-            "min_amount_donate_task_before_stream": "0.00",
-            "min_amount_donate_task_when_stream": "0.00",
+            "min_amount_task_before_stream": 0,
+            "min_amount_task_when_stream": 0,
+            "min_amount_donate_task_before_stream": 0,
+            "min_amount_donate_task_when_stream": 0,
             "quantity_donators": 7,
             "quantity_donations": 344,
-            "amount_donations": "487.72",
+            "amount_donations": 488,
             "created_at": "2019-08-26T09:15:21.000000Z",
             "updated_at": "2019-08-26T09:15:21.000000Z",
             "game": {
@@ -2167,10 +2233,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 26,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -2184,10 +2252,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 16,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -2201,10 +2271,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 39,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2218,10 +2290,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 18,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2235,10 +2309,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 42,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2252,10 +2328,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 11,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2269,10 +2347,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 6,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2286,10 +2366,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 26,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2303,10 +2385,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 22,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2320,10 +2404,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 29,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2337,10 +2423,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 39,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2354,10 +2442,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 45,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2371,10 +2461,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 31,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2388,10 +2480,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 13,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2405,10 +2499,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 19,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2422,10 +2518,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 41,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -2439,10 +2537,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 18,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -2456,17 +2556,20 @@ print_r(json_decode((string) $body));
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?30277",
             "start_at": "1992-03-25 08:24:29",
             "ended_at": null,
-            "status": 0,
-            "is_payed": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
             "allow_task_before_stream": 0,
             "allow_task_when_stream": 0,
-            "min_amount_task_before_stream": "0.00",
-            "min_amount_task_when_stream": "0.00",
-            "min_amount_donate_task_before_stream": "0.00",
-            "min_amount_donate_task_when_stream": "0.00",
+            "min_amount_task_before_stream": 0,
+            "min_amount_task_when_stream": 0,
+            "min_amount_donate_task_before_stream": 0,
+            "min_amount_donate_task_when_stream": 0,
             "quantity_donators": 5,
             "quantity_donations": 969,
-            "amount_donations": "381.09",
+            "amount_donations": 381,
             "created_at": "2019-08-26T09:15:21.000000Z",
             "updated_at": "2019-08-26T09:15:21.000000Z",
             "game": {
@@ -2489,10 +2592,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 16,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -2506,10 +2611,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 9,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -2523,10 +2630,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 24,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2540,10 +2649,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 30,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2557,10 +2668,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 20,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2574,10 +2687,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 6,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2591,10 +2706,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 17,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2608,10 +2725,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 9,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2625,10 +2744,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 3,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2642,10 +2763,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 24,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2659,10 +2782,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 48,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2676,10 +2801,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 50,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -2693,10 +2820,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 43,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -2710,10 +2839,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 28,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -2727,10 +2858,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 9,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -2744,17 +2877,20 @@ print_r(json_decode((string) $body));
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?38809",
             "start_at": "2013-05-12 04:47:13",
             "ended_at": null,
-            "status": 0,
-            "is_payed": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
             "allow_task_before_stream": 0,
             "allow_task_when_stream": 0,
-            "min_amount_task_before_stream": "0.00",
-            "min_amount_task_when_stream": "0.00",
-            "min_amount_donate_task_before_stream": "0.00",
-            "min_amount_donate_task_when_stream": "0.00",
+            "min_amount_task_before_stream": 0,
+            "min_amount_task_when_stream": 0,
+            "min_amount_donate_task_before_stream": 0,
+            "min_amount_donate_task_when_stream": 0,
             "quantity_donators": 5,
             "quantity_donations": 490,
-            "amount_donations": "733.96",
+            "amount_donations": 734,
             "created_at": "2019-08-26T09:15:21.000000Z",
             "updated_at": "2019-08-26T09:15:21.000000Z",
             "game": {
@@ -2777,10 +2913,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 33,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -2794,10 +2932,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 0,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -2811,10 +2951,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 32,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -2828,10 +2970,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 40,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2845,10 +2989,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2862,10 +3008,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 31,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2879,10 +3027,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 21,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2896,10 +3046,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 35,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2913,10 +3065,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2930,10 +3084,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 37,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -2947,10 +3103,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 42,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -2964,10 +3122,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 27,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -2981,10 +3141,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -2998,17 +3160,20 @@ print_r(json_decode((string) $body));
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?59969",
             "start_at": "1997-02-13 07:52:29",
             "ended_at": null,
-            "status": 0,
-            "is_payed": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
             "allow_task_before_stream": 0,
             "allow_task_when_stream": 0,
-            "min_amount_task_before_stream": "0.00",
-            "min_amount_task_when_stream": "0.00",
-            "min_amount_donate_task_before_stream": "0.00",
-            "min_amount_donate_task_when_stream": "0.00",
+            "min_amount_task_before_stream": 0,
+            "min_amount_task_when_stream": 0,
+            "min_amount_donate_task_before_stream": 0,
+            "min_amount_donate_task_when_stream": 0,
             "quantity_donators": 5,
             "quantity_donations": 875,
-            "amount_donations": "869.97",
+            "amount_donations": 870,
             "created_at": "2019-08-26T09:15:21.000000Z",
             "updated_at": "2019-08-26T09:15:21.000000Z",
             "game": {
@@ -3031,10 +3196,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 18,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -3048,10 +3215,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 27,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -3065,10 +3234,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 38,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3082,10 +3253,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 14,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3099,10 +3272,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 45,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3116,10 +3291,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 38,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3133,10 +3310,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 23,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3150,10 +3329,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 48,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3167,10 +3348,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 42,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3184,10 +3367,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 28,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3201,10 +3386,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 38,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3218,10 +3405,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 1,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -3235,10 +3424,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 21,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -3252,17 +3443,20 @@ print_r(json_decode((string) $body));
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?90209",
             "start_at": "1994-05-03 19:20:53",
             "ended_at": null,
-            "status": 0,
-            "is_payed": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
             "allow_task_before_stream": 0,
             "allow_task_when_stream": 0,
-            "min_amount_task_before_stream": "0.00",
-            "min_amount_task_when_stream": "0.00",
-            "min_amount_donate_task_before_stream": "0.00",
-            "min_amount_donate_task_when_stream": "0.00",
+            "min_amount_task_before_stream": 0,
+            "min_amount_task_when_stream": 0,
+            "min_amount_donate_task_before_stream": 0,
+            "min_amount_donate_task_when_stream": 0,
             "quantity_donators": 4,
             "quantity_donations": 340,
-            "amount_donations": "832.02",
+            "amount_donations": 832,
             "created_at": "2019-08-26T09:15:21.000000Z",
             "updated_at": "2019-08-26T09:15:21.000000Z",
             "game": {
@@ -3285,10 +3479,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 3,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -3302,10 +3498,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 41,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -3319,10 +3517,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 14,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -3336,10 +3536,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 22,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -3353,10 +3555,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 30,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3370,10 +3574,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3387,10 +3593,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 40,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3404,10 +3612,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 46,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3421,10 +3631,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 5,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3438,10 +3650,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 43,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3455,10 +3669,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 14,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3472,10 +3688,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 45,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3489,10 +3707,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 45,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3506,10 +3726,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 2,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3523,10 +3745,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 16,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3540,10 +3764,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 33,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3557,10 +3783,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -3574,10 +3802,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 37,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -3591,10 +3821,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 20,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -3608,10 +3840,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 39,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -3625,17 +3859,20 @@ print_r(json_decode((string) $body));
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?29331",
             "start_at": "1996-04-25 04:33:16",
             "ended_at": null,
-            "status": 0,
-            "is_payed": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
             "allow_task_before_stream": 0,
             "allow_task_when_stream": 0,
-            "min_amount_task_before_stream": "0.00",
-            "min_amount_task_when_stream": "0.00",
-            "min_amount_donate_task_before_stream": "0.00",
-            "min_amount_donate_task_when_stream": "0.00",
+            "min_amount_task_before_stream": 0,
+            "min_amount_task_when_stream": 0,
+            "min_amount_donate_task_before_stream": 0,
+            "min_amount_donate_task_when_stream": 0,
             "quantity_donators": 3,
             "quantity_donations": 441,
-            "amount_donations": "639.54",
+            "amount_donations": 640,
             "created_at": "2019-08-26T09:15:21.000000Z",
             "updated_at": "2019-08-26T09:15:21.000000Z",
             "game": {
@@ -3658,10 +3895,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 29,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -3675,10 +3914,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 12,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -3692,10 +3933,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 25,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -3709,10 +3952,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3726,10 +3971,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 29,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3743,10 +3990,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 39,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3760,10 +4009,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 14,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3777,10 +4028,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 4,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3794,10 +4047,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 48,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3811,10 +4066,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 28,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3828,10 +4085,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 12,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3845,10 +4104,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 17,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3862,10 +4123,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 6,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3879,10 +4142,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 25,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3896,10 +4161,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 45,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3913,10 +4180,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 3,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3930,10 +4199,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 4,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3947,10 +4218,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3964,10 +4237,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 50,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3981,10 +4256,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 30,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -3998,10 +4275,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 12,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -4015,10 +4294,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 41,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -4032,17 +4313,20 @@ print_r(json_decode((string) $body));
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?19988",
             "start_at": "1990-04-19 04:22:47",
             "ended_at": null,
-            "status": 0,
-            "is_payed": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
             "allow_task_before_stream": 0,
             "allow_task_when_stream": 0,
-            "min_amount_task_before_stream": "0.00",
-            "min_amount_task_when_stream": "0.00",
-            "min_amount_donate_task_before_stream": "0.00",
-            "min_amount_donate_task_when_stream": "0.00",
+            "min_amount_task_before_stream": 0,
+            "min_amount_task_when_stream": 0,
+            "min_amount_donate_task_before_stream": 0,
+            "min_amount_donate_task_when_stream": 0,
             "quantity_donators": 3,
             "quantity_donations": 679,
-            "amount_donations": "678.73",
+            "amount_donations": 679,
             "created_at": "2019-08-26T09:15:21.000000Z",
             "updated_at": "2019-08-26T09:15:21.000000Z",
             "game": {
@@ -4065,10 +4349,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 2,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -4082,10 +4368,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 34,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4099,10 +4387,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 21,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4116,10 +4406,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 4,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4133,10 +4425,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 43,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4150,10 +4444,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 11,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4167,10 +4463,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 3,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4184,10 +4482,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 33,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4201,10 +4501,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 33,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4218,10 +4520,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 35,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4235,10 +4539,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 25,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -4252,10 +4558,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 49,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -4269,17 +4577,20 @@ print_r(json_decode((string) $body));
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
             "start_at": "2004-02-17 15:51:07",
             "ended_at": null,
-            "status": 0,
-            "is_payed": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
             "allow_task_before_stream": 0,
             "allow_task_when_stream": 0,
-            "min_amount_task_before_stream": "0.00",
-            "min_amount_task_when_stream": "0.00",
-            "min_amount_donate_task_before_stream": "0.00",
-            "min_amount_donate_task_when_stream": "0.00",
+            "min_amount_task_before_stream": 0,
+            "min_amount_task_when_stream": 0,
+            "min_amount_donate_task_before_stream": 0,
+            "min_amount_donate_task_when_stream": 0,
             "quantity_donators": 2,
             "quantity_donations": 346,
-            "amount_donations": "290.52",
+            "amount_donations": 291,
             "created_at": "2019-08-26T09:15:21.000000Z",
             "updated_at": "2019-08-26T09:15:21.000000Z",
             "game": {
@@ -4302,10 +4613,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 19,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -4319,10 +4632,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 50,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -4336,10 +4651,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 29,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4353,10 +4670,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 4,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4370,10 +4689,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 42,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4387,10 +4708,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 1,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4404,10 +4727,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 30,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4421,10 +4746,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 1,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4438,10 +4765,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 46,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4455,10 +4784,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 21,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4472,10 +4803,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 15,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4489,10 +4822,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4506,10 +4841,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 33,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -4523,17 +4860,20 @@ print_r(json_decode((string) $body));
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?45895",
             "start_at": "2017-03-19 09:23:39",
             "ended_at": null,
-            "status": 0,
-            "is_payed": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
             "allow_task_before_stream": 0,
             "allow_task_when_stream": 0,
-            "min_amount_task_before_stream": "0.00",
-            "min_amount_task_when_stream": "0.00",
-            "min_amount_donate_task_before_stream": "0.00",
-            "min_amount_donate_task_when_stream": "0.00",
+            "min_amount_task_before_stream": 0,
+            "min_amount_task_when_stream": 0,
+            "min_amount_donate_task_before_stream": 0,
+            "min_amount_donate_task_when_stream": 0,
             "quantity_donators": 1,
             "quantity_donations": 339,
-            "amount_donations": "383.91",
+            "amount_donations": 384,
             "created_at": "2019-08-26T09:15:21.000000Z",
             "updated_at": "2019-08-26T09:15:21.000000Z",
             "game": {
@@ -4556,10 +4896,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 47,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -4573,10 +4915,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 17,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -4590,10 +4934,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 22,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -4607,10 +4953,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 49,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -4624,10 +4972,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 8,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4641,10 +4991,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 40,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4658,10 +5010,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 42,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4675,10 +5029,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 40,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4692,10 +5048,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 21,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4709,10 +5067,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 20,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -4726,10 +5086,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 12,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -4743,10 +5105,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 22,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -4760,10 +5124,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 41,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -4777,17 +5143,20 @@ print_r(json_decode((string) $body));
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?68105",
             "start_at": "1985-06-12 02:00:53",
             "ended_at": null,
-            "status": 0,
-            "is_payed": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
             "allow_task_before_stream": 0,
             "allow_task_when_stream": 0,
-            "min_amount_task_before_stream": "0.00",
-            "min_amount_task_when_stream": "0.00",
-            "min_amount_donate_task_before_stream": "0.00",
-            "min_amount_donate_task_when_stream": "0.00",
+            "min_amount_task_before_stream": 0,
+            "min_amount_task_when_stream": 0,
+            "min_amount_donate_task_before_stream": 0,
+            "min_amount_donate_task_when_stream": 0,
             "quantity_donators": 1,
             "quantity_donations": 387,
-            "amount_donations": "873.31",
+            "amount_donations": 873,
             "created_at": "2019-08-26T09:15:21.000000Z",
             "updated_at": "2019-08-26T09:15:21.000000Z",
             "game": {
@@ -4810,10 +5179,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 30,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -4827,10 +5198,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4844,10 +5217,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 1,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4861,10 +5236,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 11,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4878,10 +5255,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 42,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4895,10 +5274,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 30,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4912,10 +5293,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 16,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4929,10 +5312,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 3,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4946,10 +5331,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 5,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -4963,10 +5350,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 17,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -4980,10 +5369,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 38,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -4997,10 +5388,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 43,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -5037,17 +5430,17 @@ $response = $client->post("https://darestreams.com/api/streams", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "channel_id" => "15",
-            "title" => "facere",
-            "link" => "velit",
-            "start_at" => "quos",
-            "allow_task_before_stream" => "",
+            "channel_id" => "3",
+            "title" => "temporibus",
+            "link" => "nihil",
+            "start_at" => "ea",
+            "allow_task_before_stream" => "1",
             "allow_task_when_stream" => "",
-            "min_amount_task_before_stream" => "ducimus",
-            "min_amount_task_when_stream" => "tempora",
-            "min_amount_donate_task_before_stream" => "quaerat",
-            "min_amount_donate_task_when_stream" => "consequuntur",
-            "tags" => "dignissimos",
+            "min_amount_task_before_stream" => "totam",
+            "min_amount_task_when_stream" => "sed",
+            "min_amount_donate_task_before_stream" => "sunt",
+            "min_amount_donate_task_when_stream" => "laboriosam",
+            "tags" => "enim",
         ],
 ]);
 $body = $response->getBody();
@@ -5132,16 +5525,17 @@ $response = $client->put("https://darestreams.com/api/streams/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "title" => "ullam",
-            "link" => "illo",
-            "start_at" => "et",
-            "allow_task_before_stream" => "1",
+            "title" => "aut",
+            "link" => "voluptatibus",
+            "start_at" => "alias",
+            "status" => "6",
+            "allow_task_before_stream" => "",
             "allow_task_when_stream" => "1",
-            "min_amount_task_before_stream" => "voluptatibus",
-            "min_amount_task_when_stream" => "ipsum",
-            "min_amount_donate_task_before_stream" => "illum",
-            "min_amount_donate_task_when_stream" => "tenetur",
-            "tags" => "quaerat",
+            "min_amount_task_before_stream" => "eos",
+            "min_amount_task_when_stream" => "nam",
+            "min_amount_donate_task_before_stream" => "quia",
+            "min_amount_donate_task_when_stream" => "qui",
+            "tags" => "cumque",
         ],
 ]);
 $body = $response->getBody();
@@ -5163,6 +5557,7 @@ Parameter | Type | Status | Description
     title | string |  optional  | Title of stream.
     link | string |  optional  | Link on the stream.
     start_at | datetime |  optional  | Datetime of starting stream.
+    status | integer |  optional  | Status of stream.
     allow_task_before_stream | boolean |  optional  | Allow to create task before stream starts.
     allow_task_when_stream | boolean |  optional  | Allow to create task while stream is active.
     min_amount_task_before_stream | decimal |  optional  | Min amount to create task before stream starts.
@@ -6332,7 +6727,7 @@ $response = $client->get("https://darestreams.com/api/streams/1/tasks", [
     'query' => [
             "include" => "user,stream",
             "sort" => "-amount_donations",
-            "page" => "8",
+            "page" => "10",
         ],
 ]);
 $body = $response->getBody();
@@ -6356,10 +6751,12 @@ print_r(json_decode((string) $body));
             "interval_time": 19,
             "min_amount": null,
             "min_amount_superbowl": null,
-            "status": 0,
-            "interval_finished": 1,
-            "check_vote": 0,
-            "amount_donations": "0.00",
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
             "created_at": "2019-08-26T09:15:22.000000Z",
             "updated_at": "2019-08-26T09:15:22.000000Z",
             "user": {
@@ -6383,17 +6780,20 @@ print_r(json_decode((string) $body));
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                 "start_at": "2004-02-17 15:51:07",
                 "ended_at": null,
-                "status": 0,
-                "is_payed": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
                 "allow_task_before_stream": 0,
                 "allow_task_when_stream": 0,
-                "min_amount_task_before_stream": "0.00",
-                "min_amount_task_when_stream": "0.00",
-                "min_amount_donate_task_before_stream": "0.00",
-                "min_amount_donate_task_when_stream": "0.00",
+                "min_amount_task_before_stream": 0,
+                "min_amount_task_when_stream": 0,
+                "min_amount_donate_task_before_stream": 0,
+                "min_amount_donate_task_when_stream": 0,
                 "quantity_donators": 2,
                 "quantity_donations": 346,
-                "amount_donations": "290.52",
+                "amount_donations": 291,
                 "created_at": "2019-08-26T09:15:21.000000Z",
                 "updated_at": "2019-08-26T09:15:21.000000Z"
             }
@@ -6408,10 +6808,12 @@ print_r(json_decode((string) $body));
             "interval_time": 50,
             "min_amount": null,
             "min_amount_superbowl": null,
-            "status": 0,
-            "interval_finished": 0,
-            "check_vote": 0,
-            "amount_donations": "0.00",
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
             "created_at": "2019-08-26T09:15:22.000000Z",
             "updated_at": "2019-08-26T09:15:22.000000Z",
             "user": {
@@ -6435,17 +6837,20 @@ print_r(json_decode((string) $body));
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                 "start_at": "2004-02-17 15:51:07",
                 "ended_at": null,
-                "status": 0,
-                "is_payed": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
                 "allow_task_before_stream": 0,
                 "allow_task_when_stream": 0,
-                "min_amount_task_before_stream": "0.00",
-                "min_amount_task_when_stream": "0.00",
-                "min_amount_donate_task_before_stream": "0.00",
-                "min_amount_donate_task_when_stream": "0.00",
+                "min_amount_task_before_stream": 0,
+                "min_amount_task_when_stream": 0,
+                "min_amount_donate_task_before_stream": 0,
+                "min_amount_donate_task_when_stream": 0,
                 "quantity_donators": 2,
                 "quantity_donations": 346,
-                "amount_donations": "290.52",
+                "amount_donations": 291,
                 "created_at": "2019-08-26T09:15:21.000000Z",
                 "updated_at": "2019-08-26T09:15:21.000000Z"
             }
@@ -6460,10 +6865,12 @@ print_r(json_decode((string) $body));
             "interval_time": 29,
             "min_amount": null,
             "min_amount_superbowl": null,
-            "status": 0,
-            "interval_finished": 0,
-            "check_vote": 0,
-            "amount_donations": "0.00",
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
             "created_at": "2019-08-26T09:15:23.000000Z",
             "updated_at": "2019-08-26T09:15:23.000000Z",
             "user": {
@@ -6487,17 +6894,20 @@ print_r(json_decode((string) $body));
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                 "start_at": "2004-02-17 15:51:07",
                 "ended_at": null,
-                "status": 0,
-                "is_payed": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
                 "allow_task_before_stream": 0,
                 "allow_task_when_stream": 0,
-                "min_amount_task_before_stream": "0.00",
-                "min_amount_task_when_stream": "0.00",
-                "min_amount_donate_task_before_stream": "0.00",
-                "min_amount_donate_task_when_stream": "0.00",
+                "min_amount_task_before_stream": 0,
+                "min_amount_task_when_stream": 0,
+                "min_amount_donate_task_before_stream": 0,
+                "min_amount_donate_task_when_stream": 0,
                 "quantity_donators": 2,
                 "quantity_donations": 346,
-                "amount_donations": "290.52",
+                "amount_donations": 291,
                 "created_at": "2019-08-26T09:15:21.000000Z",
                 "updated_at": "2019-08-26T09:15:21.000000Z"
             }
@@ -6512,10 +6922,12 @@ print_r(json_decode((string) $body));
             "interval_time": 4,
             "min_amount": null,
             "min_amount_superbowl": null,
-            "status": 0,
-            "interval_finished": 0,
-            "check_vote": 0,
-            "amount_donations": "0.00",
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
             "created_at": "2019-08-26T09:15:23.000000Z",
             "updated_at": "2019-08-26T09:15:23.000000Z",
             "user": {
@@ -6539,17 +6951,20 @@ print_r(json_decode((string) $body));
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                 "start_at": "2004-02-17 15:51:07",
                 "ended_at": null,
-                "status": 0,
-                "is_payed": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
                 "allow_task_before_stream": 0,
                 "allow_task_when_stream": 0,
-                "min_amount_task_before_stream": "0.00",
-                "min_amount_task_when_stream": "0.00",
-                "min_amount_donate_task_before_stream": "0.00",
-                "min_amount_donate_task_when_stream": "0.00",
+                "min_amount_task_before_stream": 0,
+                "min_amount_task_when_stream": 0,
+                "min_amount_donate_task_before_stream": 0,
+                "min_amount_donate_task_when_stream": 0,
                 "quantity_donators": 2,
                 "quantity_donations": 346,
-                "amount_donations": "290.52",
+                "amount_donations": 291,
                 "created_at": "2019-08-26T09:15:21.000000Z",
                 "updated_at": "2019-08-26T09:15:21.000000Z"
             }
@@ -6564,10 +6979,12 @@ print_r(json_decode((string) $body));
             "interval_time": 42,
             "min_amount": null,
             "min_amount_superbowl": null,
-            "status": 0,
-            "interval_finished": 1,
-            "check_vote": 1,
-            "amount_donations": "0.00",
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
             "created_at": "2019-08-26T09:15:23.000000Z",
             "updated_at": "2019-08-26T09:15:23.000000Z",
             "user": {
@@ -6591,17 +7008,20 @@ print_r(json_decode((string) $body));
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                 "start_at": "2004-02-17 15:51:07",
                 "ended_at": null,
-                "status": 0,
-                "is_payed": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
                 "allow_task_before_stream": 0,
                 "allow_task_when_stream": 0,
-                "min_amount_task_before_stream": "0.00",
-                "min_amount_task_when_stream": "0.00",
-                "min_amount_donate_task_before_stream": "0.00",
-                "min_amount_donate_task_when_stream": "0.00",
+                "min_amount_task_before_stream": 0,
+                "min_amount_task_when_stream": 0,
+                "min_amount_donate_task_before_stream": 0,
+                "min_amount_donate_task_when_stream": 0,
                 "quantity_donators": 2,
                 "quantity_donations": 346,
-                "amount_donations": "290.52",
+                "amount_donations": 291,
                 "created_at": "2019-08-26T09:15:21.000000Z",
                 "updated_at": "2019-08-26T09:15:21.000000Z"
             }
@@ -6616,10 +7036,12 @@ print_r(json_decode((string) $body));
             "interval_time": 1,
             "min_amount": null,
             "min_amount_superbowl": null,
-            "status": 0,
-            "interval_finished": 0,
-            "check_vote": 1,
-            "amount_donations": "0.00",
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
             "created_at": "2019-08-26T09:15:23.000000Z",
             "updated_at": "2019-08-26T09:15:23.000000Z",
             "user": {
@@ -6643,17 +7065,20 @@ print_r(json_decode((string) $body));
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                 "start_at": "2004-02-17 15:51:07",
                 "ended_at": null,
-                "status": 0,
-                "is_payed": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
                 "allow_task_before_stream": 0,
                 "allow_task_when_stream": 0,
-                "min_amount_task_before_stream": "0.00",
-                "min_amount_task_when_stream": "0.00",
-                "min_amount_donate_task_before_stream": "0.00",
-                "min_amount_donate_task_when_stream": "0.00",
+                "min_amount_task_before_stream": 0,
+                "min_amount_task_when_stream": 0,
+                "min_amount_donate_task_before_stream": 0,
+                "min_amount_donate_task_when_stream": 0,
                 "quantity_donators": 2,
                 "quantity_donations": 346,
-                "amount_donations": "290.52",
+                "amount_donations": 291,
                 "created_at": "2019-08-26T09:15:21.000000Z",
                 "updated_at": "2019-08-26T09:15:21.000000Z"
             }
@@ -6668,10 +7093,12 @@ print_r(json_decode((string) $body));
             "interval_time": 30,
             "min_amount": null,
             "min_amount_superbowl": null,
-            "status": 0,
-            "interval_finished": 0,
-            "check_vote": 0,
-            "amount_donations": "0.00",
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
             "created_at": "2019-08-26T09:15:23.000000Z",
             "updated_at": "2019-08-26T09:15:23.000000Z",
             "user": {
@@ -6695,17 +7122,20 @@ print_r(json_decode((string) $body));
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                 "start_at": "2004-02-17 15:51:07",
                 "ended_at": null,
-                "status": 0,
-                "is_payed": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
                 "allow_task_before_stream": 0,
                 "allow_task_when_stream": 0,
-                "min_amount_task_before_stream": "0.00",
-                "min_amount_task_when_stream": "0.00",
-                "min_amount_donate_task_before_stream": "0.00",
-                "min_amount_donate_task_when_stream": "0.00",
+                "min_amount_task_before_stream": 0,
+                "min_amount_task_when_stream": 0,
+                "min_amount_donate_task_before_stream": 0,
+                "min_amount_donate_task_when_stream": 0,
                 "quantity_donators": 2,
                 "quantity_donations": 346,
-                "amount_donations": "290.52",
+                "amount_donations": 291,
                 "created_at": "2019-08-26T09:15:21.000000Z",
                 "updated_at": "2019-08-26T09:15:21.000000Z"
             }
@@ -6720,10 +7150,12 @@ print_r(json_decode((string) $body));
             "interval_time": 1,
             "min_amount": null,
             "min_amount_superbowl": null,
-            "status": 0,
-            "interval_finished": 1,
-            "check_vote": 0,
-            "amount_donations": "0.00",
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
             "created_at": "2019-08-26T09:15:23.000000Z",
             "updated_at": "2019-08-26T09:15:23.000000Z",
             "user": {
@@ -6747,17 +7179,20 @@ print_r(json_decode((string) $body));
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                 "start_at": "2004-02-17 15:51:07",
                 "ended_at": null,
-                "status": 0,
-                "is_payed": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
                 "allow_task_before_stream": 0,
                 "allow_task_when_stream": 0,
-                "min_amount_task_before_stream": "0.00",
-                "min_amount_task_when_stream": "0.00",
-                "min_amount_donate_task_before_stream": "0.00",
-                "min_amount_donate_task_when_stream": "0.00",
+                "min_amount_task_before_stream": 0,
+                "min_amount_task_when_stream": 0,
+                "min_amount_donate_task_before_stream": 0,
+                "min_amount_donate_task_when_stream": 0,
                 "quantity_donators": 2,
                 "quantity_donations": 346,
-                "amount_donations": "290.52",
+                "amount_donations": 291,
                 "created_at": "2019-08-26T09:15:21.000000Z",
                 "updated_at": "2019-08-26T09:15:21.000000Z"
             }
@@ -6772,10 +7207,12 @@ print_r(json_decode((string) $body));
             "interval_time": 46,
             "min_amount": null,
             "min_amount_superbowl": null,
-            "status": 0,
-            "interval_finished": 0,
-            "check_vote": 1,
-            "amount_donations": "0.00",
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
             "created_at": "2019-08-26T09:15:23.000000Z",
             "updated_at": "2019-08-26T09:15:23.000000Z",
             "user": {
@@ -6799,17 +7236,20 @@ print_r(json_decode((string) $body));
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                 "start_at": "2004-02-17 15:51:07",
                 "ended_at": null,
-                "status": 0,
-                "is_payed": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
                 "allow_task_before_stream": 0,
                 "allow_task_when_stream": 0,
-                "min_amount_task_before_stream": "0.00",
-                "min_amount_task_when_stream": "0.00",
-                "min_amount_donate_task_before_stream": "0.00",
-                "min_amount_donate_task_when_stream": "0.00",
+                "min_amount_task_before_stream": 0,
+                "min_amount_task_when_stream": 0,
+                "min_amount_donate_task_before_stream": 0,
+                "min_amount_donate_task_when_stream": 0,
                 "quantity_donators": 2,
                 "quantity_donations": 346,
-                "amount_donations": "290.52",
+                "amount_donations": 291,
                 "created_at": "2019-08-26T09:15:21.000000Z",
                 "updated_at": "2019-08-26T09:15:21.000000Z"
             }
@@ -6824,10 +7264,12 @@ print_r(json_decode((string) $body));
             "interval_time": 21,
             "min_amount": null,
             "min_amount_superbowl": null,
-            "status": 0,
-            "interval_finished": 1,
-            "check_vote": 1,
-            "amount_donations": "0.00",
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
             "created_at": "2019-08-26T09:15:23.000000Z",
             "updated_at": "2019-08-26T09:15:23.000000Z",
             "user": {
@@ -6851,17 +7293,20 @@ print_r(json_decode((string) $body));
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                 "start_at": "2004-02-17 15:51:07",
                 "ended_at": null,
-                "status": 0,
-                "is_payed": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
                 "allow_task_before_stream": 0,
                 "allow_task_when_stream": 0,
-                "min_amount_task_before_stream": "0.00",
-                "min_amount_task_when_stream": "0.00",
-                "min_amount_donate_task_before_stream": "0.00",
-                "min_amount_donate_task_when_stream": "0.00",
+                "min_amount_task_before_stream": 0,
+                "min_amount_task_when_stream": 0,
+                "min_amount_donate_task_before_stream": 0,
+                "min_amount_donate_task_when_stream": 0,
                 "quantity_donators": 2,
                 "quantity_donations": 346,
-                "amount_donations": "290.52",
+                "amount_donations": 291,
                 "created_at": "2019-08-26T09:15:21.000000Z",
                 "updated_at": "2019-08-26T09:15:21.000000Z"
             }
@@ -6876,10 +7321,12 @@ print_r(json_decode((string) $body));
             "interval_time": 15,
             "min_amount": null,
             "min_amount_superbowl": null,
-            "status": 0,
-            "interval_finished": 1,
-            "check_vote": 0,
-            "amount_donations": "0.00",
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
             "created_at": "2019-08-26T09:15:23.000000Z",
             "updated_at": "2019-08-26T09:15:23.000000Z",
             "user": {
@@ -6903,17 +7350,20 @@ print_r(json_decode((string) $body));
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                 "start_at": "2004-02-17 15:51:07",
                 "ended_at": null,
-                "status": 0,
-                "is_payed": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
                 "allow_task_before_stream": 0,
                 "allow_task_when_stream": 0,
-                "min_amount_task_before_stream": "0.00",
-                "min_amount_task_when_stream": "0.00",
-                "min_amount_donate_task_before_stream": "0.00",
-                "min_amount_donate_task_when_stream": "0.00",
+                "min_amount_task_before_stream": 0,
+                "min_amount_task_when_stream": 0,
+                "min_amount_donate_task_before_stream": 0,
+                "min_amount_donate_task_when_stream": 0,
                 "quantity_donators": 2,
                 "quantity_donations": 346,
-                "amount_donations": "290.52",
+                "amount_donations": 291,
                 "created_at": "2019-08-26T09:15:21.000000Z",
                 "updated_at": "2019-08-26T09:15:21.000000Z"
             }
@@ -6928,10 +7378,12 @@ print_r(json_decode((string) $body));
             "interval_time": 44,
             "min_amount": null,
             "min_amount_superbowl": null,
-            "status": 0,
-            "interval_finished": 0,
-            "check_vote": 1,
-            "amount_donations": "0.00",
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
             "created_at": "2019-08-26T09:15:23.000000Z",
             "updated_at": "2019-08-26T09:15:23.000000Z",
             "user": {
@@ -6955,17 +7407,20 @@ print_r(json_decode((string) $body));
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                 "start_at": "2004-02-17 15:51:07",
                 "ended_at": null,
-                "status": 0,
-                "is_payed": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
                 "allow_task_before_stream": 0,
                 "allow_task_when_stream": 0,
-                "min_amount_task_before_stream": "0.00",
-                "min_amount_task_when_stream": "0.00",
-                "min_amount_donate_task_before_stream": "0.00",
-                "min_amount_donate_task_when_stream": "0.00",
+                "min_amount_task_before_stream": 0,
+                "min_amount_task_when_stream": 0,
+                "min_amount_donate_task_before_stream": 0,
+                "min_amount_donate_task_when_stream": 0,
                 "quantity_donators": 2,
                 "quantity_donations": 346,
-                "amount_donations": "290.52",
+                "amount_donations": 291,
                 "created_at": "2019-08-26T09:15:21.000000Z",
                 "updated_at": "2019-08-26T09:15:21.000000Z"
             }
@@ -6980,10 +7435,12 @@ print_r(json_decode((string) $body));
             "interval_time": 33,
             "min_amount": null,
             "min_amount_superbowl": null,
-            "status": 0,
-            "interval_finished": 0,
-            "check_vote": 0,
-            "amount_donations": "0.00",
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
             "created_at": "2019-08-26T09:15:24.000000Z",
             "updated_at": "2019-08-26T09:15:24.000000Z",
             "user": {
@@ -7007,17 +7464,20 @@ print_r(json_decode((string) $body));
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
                 "start_at": "2004-02-17 15:51:07",
                 "ended_at": null,
-                "status": 0,
-                "is_payed": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
                 "allow_task_before_stream": 0,
                 "allow_task_when_stream": 0,
-                "min_amount_task_before_stream": "0.00",
-                "min_amount_task_when_stream": "0.00",
-                "min_amount_donate_task_before_stream": "0.00",
-                "min_amount_donate_task_when_stream": "0.00",
+                "min_amount_task_before_stream": 0,
+                "min_amount_task_when_stream": 0,
+                "min_amount_donate_task_before_stream": 0,
+                "min_amount_donate_task_when_stream": 0,
                 "quantity_donators": 2,
                 "quantity_donations": 346,
-                "amount_donations": "290.52",
+                "amount_donations": 291,
                 "created_at": "2019-08-26T09:15:21.000000Z",
                 "updated_at": "2019-08-26T09:15:21.000000Z"
             }
@@ -7055,11 +7515,11 @@ $response = $client->post("https://darestreams.com/api/streams/1/tasks", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_text" => "quidem",
-            "full_text" => "laborum",
-            "interval_time" => "20",
+            "small_text" => "culpa",
+            "full_text" => "deleniti",
+            "interval_time" => "11",
             "is_superbowl" => "",
-            "tags" => "voluptatem",
+            "tags" => "vero",
         ],
 ]);
 $body = $response->getBody();
@@ -7142,11 +7602,12 @@ $response = $client->put("https://darestreams.com/api/streams/1/tasks/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_text" => "delectus",
-            "full_text" => "vero",
-            "interval_time" => "9",
+            "status" => "17",
+            "small_text" => "tenetur",
+            "full_text" => "occaecati",
+            "interval_time" => "18",
             "is_superbowl" => "",
-            "tags" => "atque",
+            "tags" => "ut",
         ],
 ]);
 $body = $response->getBody();
@@ -7165,6 +7626,7 @@ print_r(json_decode((string) $body));
 
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
+    status | integer |  optional  | Status of task.
     small_text | text |  optional  | Short description.
     full_text | text |  optional  | Full description.
     interval_time | integer |  optional  | Time for finishing the task. 0 means until the end of the stream.
@@ -7189,7 +7651,7 @@ $response = $client->get("https://darestreams.com/api/streams/1/tasks/1/transact
     'query' => [
             "include" => "task",
             "sort" => "-created_at",
-            "page" => "3",
+            "page" => "13",
         ],
 ]);
 $body = $response->getBody();
@@ -22074,7 +22536,7 @@ $response = $client->post("https://darestreams.com/api/threads/1/messages", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "body" => "saepe",
+            "body" => "et",
         ],
 ]);
 $body = $response->getBody();
@@ -22206,9 +22668,9 @@ $response = $client->post("https://darestreams.com/api/transactions", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "task_id" => "12",
-            "user_id" => "2",
-            "amount" => "11144111",
+            "task_id" => "10",
+            "user_id" => "19",
+            "amount" => "3",
         ],
 ]);
 $body = $response->getBody();
@@ -22227,7 +22689,7 @@ Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
     task_id | integer |  optional  | Task's id.
     user_id | integer |  optional  | User's id.
-    amount | float |  required  | Amount for payment.
+    amount | integer |  required  | Amount for payment.
 
 <!-- END_a524d236dd691776be3315d40786a1db -->
 
@@ -22242,8 +22704,8 @@ Parameter | Type | Status | Description
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/users/top", [
     'query' => [
-            "limit" => "et",
-            "skip" => "nisi",
+            "limit" => "illo",
+            "skip" => "et",
             "include" => "tasks,channel",
         ],
 ]);
@@ -22375,10 +22837,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 42,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -22392,10 +22856,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 6,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -22409,10 +22875,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 35,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -22426,10 +22894,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 3,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -22443,10 +22913,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 33,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -22460,10 +22932,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -22477,10 +22951,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 28,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -22494,10 +22970,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 41,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -22540,10 +23018,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 30,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -22557,10 +23037,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 14,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -22574,10 +23056,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 38,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -22620,10 +23104,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 2,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -22637,10 +23123,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 18,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -22654,10 +23142,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -22671,10 +23161,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 4,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -22688,10 +23180,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 20,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -22705,10 +23199,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 39,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -22722,10 +23218,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 33,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -22739,10 +23237,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 3,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -22756,10 +23256,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -22773,10 +23275,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 37,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 }
@@ -22819,10 +23323,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 14,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -22836,10 +23342,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 45,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -22853,10 +23361,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 48,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -22870,10 +23380,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 18,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -22887,10 +23399,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 22,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -22933,10 +23447,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 33,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -22950,10 +23466,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 12,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -22967,10 +23485,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 9,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -22984,10 +23504,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 49,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -23001,10 +23523,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 34,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23018,10 +23542,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 23,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23035,10 +23561,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 19,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23052,10 +23580,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 15,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23069,10 +23599,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 33,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 }
@@ -23115,10 +23647,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23132,10 +23666,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 1,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23149,10 +23685,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 22,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23166,10 +23704,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 46,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23183,10 +23723,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 12,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23200,10 +23742,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 46,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23217,10 +23761,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 28,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 }
@@ -23263,10 +23809,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 17,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -23280,10 +23828,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 22,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -23297,10 +23847,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 42,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23314,10 +23866,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23331,10 +23885,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 17,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23348,10 +23904,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 4,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23365,10 +23923,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 31,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23382,10 +23942,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 42,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -23399,10 +23961,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -23445,10 +24009,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 30,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -23462,10 +24028,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 26,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -23479,10 +24047,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 25,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -23496,10 +24066,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 6,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23513,10 +24085,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 21,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23530,10 +24104,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 41,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -23547,10 +24123,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 43,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -23564,10 +24142,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 20,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -23610,10 +24190,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 19,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -23627,10 +24209,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 47,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -23644,10 +24228,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 3,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -23661,10 +24247,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 22,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -23678,10 +24266,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23695,10 +24285,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 40,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23712,10 +24304,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 21,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23729,10 +24323,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 45,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23746,10 +24342,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 16,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23763,10 +24361,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 12,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -23809,10 +24409,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 29,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -23826,10 +24428,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 40,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23843,10 +24447,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 43,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23860,10 +24466,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 14,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23877,10 +24485,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 1,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23894,10 +24504,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23911,10 +24523,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 16,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 }
@@ -23957,10 +24571,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 24,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23974,10 +24590,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 1,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -23991,10 +24609,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 45,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24008,10 +24628,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 40,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24025,10 +24647,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 30,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24042,10 +24666,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 38,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24059,10 +24685,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 9,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -24105,10 +24733,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 41,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -24122,10 +24752,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 8,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24139,10 +24771,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 30,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24156,10 +24790,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 39,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24173,10 +24809,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 6,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24190,10 +24828,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 12,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -24207,10 +24847,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 27,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -24224,10 +24866,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 43,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -24270,10 +24914,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 50,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -24287,10 +24933,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 14,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24304,10 +24952,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 18,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24321,10 +24971,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 11,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24338,10 +24990,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 38,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24355,10 +25009,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 45,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 }
@@ -24401,10 +25057,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 27,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -24418,10 +25076,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 16,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -24435,10 +25095,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 40,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24452,10 +25114,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 43,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24469,10 +25133,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 5,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24486,10 +25152,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 35,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 }
@@ -24532,10 +25200,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 31,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24549,10 +25219,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 26,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24566,10 +25238,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 21,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24583,10 +25257,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 42,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24600,10 +25276,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 3,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24617,10 +25295,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 3,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24634,10 +25314,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 20,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -24651,10 +25333,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 39,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -24697,10 +25381,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 0,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -24714,10 +25400,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 5,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24731,10 +25419,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 25,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24748,10 +25438,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 33,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24765,10 +25457,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 49,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -24782,10 +25476,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 41,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -24799,10 +25495,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 1,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -24845,10 +25543,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 30,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24862,10 +25562,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 29,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24879,10 +25581,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 4,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24896,10 +25600,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 28,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24913,10 +25619,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 11,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24930,10 +25638,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 42,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24947,10 +25657,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 24,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -24964,10 +25676,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 37,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -25010,10 +25724,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 38,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25027,10 +25743,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 29,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25044,10 +25762,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 9,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25061,10 +25781,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 13,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25078,10 +25800,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 45,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25095,10 +25819,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 50,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -25141,10 +25867,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 48,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25158,10 +25886,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 17,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25175,10 +25905,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 4,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25192,10 +25924,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 50,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25209,10 +25943,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 2,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25226,10 +25962,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 30,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 }
@@ -25272,10 +26010,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 32,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -25289,10 +26029,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 16,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:22.000000Z",
                     "updated_at": "2019-08-26T09:15:22.000000Z"
                 },
@@ -25306,10 +26048,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 39,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25323,10 +26067,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 42,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25340,10 +26086,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 29,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25357,10 +26105,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 48,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25374,10 +26124,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 11,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25391,10 +26143,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 44,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25408,10 +26162,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 21,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:23.000000Z",
                     "updated_at": "2019-08-26T09:15:23.000000Z"
                 },
@@ -25425,10 +26181,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 25,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -25442,10 +26200,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 17,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 1,
-                    "check_vote": 1,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 },
@@ -25459,10 +26219,12 @@ print_r(json_decode((string) $body));
                     "interval_time": 21,
                     "min_amount": null,
                     "min_amount_superbowl": null,
-                    "status": 0,
-                    "interval_finished": 0,
-                    "check_vote": 0,
-                    "amount_donations": "0.00",
+                    "status": {
+                        "key": "Created",
+                        "value": 0,
+                        "description": "Created"
+                    },
+                    "amount_donations": 0,
                     "created_at": "2019-08-26T09:15:24.000000Z",
                     "updated_at": "2019-08-26T09:15:24.000000Z"
                 }
@@ -25544,10 +26306,12 @@ print_r(json_decode((string) $body));
                 "interval_time": 38,
                 "min_amount": null,
                 "min_amount_superbowl": null,
-                "status": 0,
-                "interval_finished": 1,
-                "check_vote": 1,
-                "amount_donations": "0.00",
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
                 "created_at": "2019-08-26T09:15:23.000000Z",
                 "updated_at": "2019-08-26T09:15:23.000000Z"
             },
@@ -25561,10 +26325,12 @@ print_r(json_decode((string) $body));
                 "interval_time": 29,
                 "min_amount": null,
                 "min_amount_superbowl": null,
-                "status": 0,
-                "interval_finished": 0,
-                "check_vote": 0,
-                "amount_donations": "0.00",
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
                 "created_at": "2019-08-26T09:15:23.000000Z",
                 "updated_at": "2019-08-26T09:15:23.000000Z"
             },
@@ -25578,10 +26344,12 @@ print_r(json_decode((string) $body));
                 "interval_time": 9,
                 "min_amount": null,
                 "min_amount_superbowl": null,
-                "status": 0,
-                "interval_finished": 0,
-                "check_vote": 0,
-                "amount_donations": "0.00",
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
                 "created_at": "2019-08-26T09:15:23.000000Z",
                 "updated_at": "2019-08-26T09:15:23.000000Z"
             },
@@ -25595,10 +26363,12 @@ print_r(json_decode((string) $body));
                 "interval_time": 13,
                 "min_amount": null,
                 "min_amount_superbowl": null,
-                "status": 0,
-                "interval_finished": 0,
-                "check_vote": 1,
-                "amount_donations": "0.00",
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
                 "created_at": "2019-08-26T09:15:23.000000Z",
                 "updated_at": "2019-08-26T09:15:23.000000Z"
             },
@@ -25612,10 +26382,12 @@ print_r(json_decode((string) $body));
                 "interval_time": 45,
                 "min_amount": null,
                 "min_amount_superbowl": null,
-                "status": 0,
-                "interval_finished": 1,
-                "check_vote": 1,
-                "amount_donations": "0.00",
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
                 "created_at": "2019-08-26T09:15:23.000000Z",
                 "updated_at": "2019-08-26T09:15:23.000000Z"
             },
@@ -25629,10 +26401,12 @@ print_r(json_decode((string) $body));
                 "interval_time": 50,
                 "min_amount": null,
                 "min_amount_superbowl": null,
-                "status": 0,
-                "interval_finished": 1,
-                "check_vote": 1,
-                "amount_donations": "0.00",
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
                 "created_at": "2019-08-26T09:15:24.000000Z",
                 "updated_at": "2019-08-26T09:15:24.000000Z"
             }
@@ -25667,8 +26441,8 @@ $response = $client->put("https://darestreams.com/api/users/1", [
         ],
     'json' => [
             "name" => "Archibald",
-            "last_name" => "consectetur",
-            "middle_name" => "aperiam",
+            "last_name" => "inventore",
+            "middle_name" => "aut",
             "email" => "example@example.ru",
         ],
 ]);
@@ -26187,7 +26961,7 @@ $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/users/1/transactions", [
     'query' => [
             "include" => "task.",
-            "page" => "16",
+            "page" => "15",
         ],
 ]);
 $body = $response->getBody();
@@ -26281,7519 +27055,10025 @@ print_r(json_decode((string) $body));
             "id": 1,
             "user_id": 30,
             "task_id": 1,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 2,
             "user_id": 4,
             "task_id": 2,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 3,
             "user_id": 37,
             "task_id": 3,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 4,
             "user_id": 44,
             "task_id": 4,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 5,
             "user_id": 6,
             "task_id": 5,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 6,
             "user_id": 37,
             "task_id": 6,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 7,
             "user_id": 6,
             "task_id": 7,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 8,
             "user_id": 5,
             "task_id": 8,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 9,
             "user_id": 7,
             "task_id": 9,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 10,
             "user_id": 37,
             "task_id": 10,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 11,
             "user_id": 38,
             "task_id": 11,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 12,
             "user_id": 38,
             "task_id": 12,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 13,
             "user_id": 3,
             "task_id": 13,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 14,
             "user_id": 16,
             "task_id": 14,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 15,
             "user_id": 30,
             "task_id": 15,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 16,
             "user_id": 12,
             "task_id": 16,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 17,
             "user_id": 23,
             "task_id": 17,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 18,
             "user_id": 23,
             "task_id": 18,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 19,
             "user_id": 37,
             "task_id": 19,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 20,
             "user_id": 30,
             "task_id": 20,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 21,
             "user_id": 4,
             "task_id": 21,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 22,
             "user_id": 30,
             "task_id": 22,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 23,
             "user_id": 5,
             "task_id": 23,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 24,
             "user_id": 4,
             "task_id": 24,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 25,
             "user_id": 1,
             "task_id": 25,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 26,
             "user_id": 3,
             "task_id": 26,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 27,
             "user_id": 3,
             "task_id": 27,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 28,
             "user_id": 37,
             "task_id": 28,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 29,
             "user_id": 1,
             "task_id": 29,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 30,
             "user_id": 12,
             "task_id": 30,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 31,
             "user_id": 5,
             "task_id": 31,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 32,
             "user_id": 6,
             "task_id": 32,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 33,
             "user_id": 15,
             "task_id": 33,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 34,
             "user_id": 6,
             "task_id": 34,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 35,
             "user_id": 7,
             "task_id": 35,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 36,
             "user_id": 23,
             "task_id": 36,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 37,
             "user_id": 12,
             "task_id": 37,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 38,
             "user_id": 29,
             "task_id": 38,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 39,
             "user_id": 12,
             "task_id": 39,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 40,
             "user_id": 37,
             "task_id": 40,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 41,
             "user_id": 29,
             "task_id": 41,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 42,
             "user_id": 38,
             "task_id": 42,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 43,
             "user_id": 35,
             "task_id": 43,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 44,
             "user_id": 30,
             "task_id": 44,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 45,
             "user_id": 23,
             "task_id": 45,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 46,
             "user_id": 5,
             "task_id": 46,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 47,
             "user_id": 17,
             "task_id": 47,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 48,
             "user_id": 17,
             "task_id": 48,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 49,
             "user_id": 35,
             "task_id": 49,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 50,
             "user_id": 9,
             "task_id": 50,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 51,
             "user_id": 16,
             "task_id": 51,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 52,
             "user_id": 3,
             "task_id": 52,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 53,
             "user_id": 6,
             "task_id": 53,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 54,
             "user_id": 4,
             "task_id": 54,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 55,
             "user_id": 9,
             "task_id": 55,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 56,
             "user_id": 12,
             "task_id": 56,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 57,
             "user_id": 2,
             "task_id": 57,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 58,
             "user_id": 2,
             "task_id": 58,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 59,
             "user_id": 23,
             "task_id": 59,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 60,
             "user_id": 17,
             "task_id": 60,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 61,
             "user_id": 23,
             "task_id": 61,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 62,
             "user_id": 17,
             "task_id": 62,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 63,
             "user_id": 37,
             "task_id": 63,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 64,
             "user_id": 5,
             "task_id": 64,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 65,
             "user_id": 35,
             "task_id": 65,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 66,
             "user_id": 15,
             "task_id": 66,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 67,
             "user_id": 27,
             "task_id": 67,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 68,
             "user_id": 35,
             "task_id": 68,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 69,
             "user_id": 6,
             "task_id": 69,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 70,
             "user_id": 44,
             "task_id": 70,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 71,
             "user_id": 7,
             "task_id": 71,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 72,
             "user_id": 7,
             "task_id": 72,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 73,
             "user_id": 7,
             "task_id": 73,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 74,
             "user_id": 30,
             "task_id": 74,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 75,
             "user_id": 2,
             "task_id": 75,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 76,
             "user_id": 17,
             "task_id": 76,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 77,
             "user_id": 17,
             "task_id": 77,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 78,
             "user_id": 1,
             "task_id": 78,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 79,
             "user_id": 29,
             "task_id": 79,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 80,
             "user_id": 15,
             "task_id": 80,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 81,
             "user_id": 35,
             "task_id": 81,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 82,
             "user_id": 35,
             "task_id": 82,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 83,
             "user_id": 23,
             "task_id": 83,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 84,
             "user_id": 15,
             "task_id": 84,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 85,
             "user_id": 5,
             "task_id": 85,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 86,
             "user_id": 15,
             "task_id": 86,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 87,
             "user_id": 37,
             "task_id": 87,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 88,
             "user_id": 27,
             "task_id": 88,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 89,
             "user_id": 38,
             "task_id": 89,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 90,
             "user_id": 5,
             "task_id": 90,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 91,
             "user_id": 37,
             "task_id": 91,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 92,
             "user_id": 2,
             "task_id": 92,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 93,
             "user_id": 1,
             "task_id": 93,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 94,
             "user_id": 2,
             "task_id": 94,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 95,
             "user_id": 3,
             "task_id": 95,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 96,
             "user_id": 1,
             "task_id": 96,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 97,
             "user_id": 17,
             "task_id": 97,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 98,
             "user_id": 4,
             "task_id": 98,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 99,
             "user_id": 30,
             "task_id": 99,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 100,
             "user_id": 5,
             "task_id": 100,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 101,
             "user_id": 30,
             "task_id": 101,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 102,
             "user_id": 29,
             "task_id": 102,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 103,
             "user_id": 30,
             "task_id": 103,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 104,
             "user_id": 44,
             "task_id": 104,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 105,
             "user_id": 6,
             "task_id": 105,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 106,
             "user_id": 5,
             "task_id": 106,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 107,
             "user_id": 12,
             "task_id": 107,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 108,
             "user_id": 38,
             "task_id": 108,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 109,
             "user_id": 2,
             "task_id": 109,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 110,
             "user_id": 6,
             "task_id": 110,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 111,
             "user_id": 27,
             "task_id": 111,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 112,
             "user_id": 6,
             "task_id": 112,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 113,
             "user_id": 27,
             "task_id": 113,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 114,
             "user_id": 27,
             "task_id": 114,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 115,
             "user_id": 6,
             "task_id": 115,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 116,
             "user_id": 35,
             "task_id": 116,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 117,
             "user_id": 38,
             "task_id": 117,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 118,
             "user_id": 7,
             "task_id": 118,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 119,
             "user_id": 7,
             "task_id": 119,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 120,
             "user_id": 16,
             "task_id": 120,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 121,
             "user_id": 44,
             "task_id": 121,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 122,
             "user_id": 15,
             "task_id": 122,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 123,
             "user_id": 27,
             "task_id": 123,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 124,
             "user_id": 1,
             "task_id": 124,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 125,
             "user_id": 37,
             "task_id": 125,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 126,
             "user_id": 5,
             "task_id": 126,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 127,
             "user_id": 5,
             "task_id": 127,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 128,
             "user_id": 2,
             "task_id": 128,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 129,
             "user_id": 3,
             "task_id": 129,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 130,
             "user_id": 9,
             "task_id": 130,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 131,
             "user_id": 23,
             "task_id": 131,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 132,
             "user_id": 4,
             "task_id": 132,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 133,
             "user_id": 4,
             "task_id": 133,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 134,
             "user_id": 29,
             "task_id": 134,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 135,
             "user_id": 29,
             "task_id": 135,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 136,
             "user_id": 29,
             "task_id": 136,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 137,
             "user_id": 44,
             "task_id": 137,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 138,
             "user_id": 44,
             "task_id": 138,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 139,
             "user_id": 35,
             "task_id": 139,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 140,
             "user_id": 16,
             "task_id": 140,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 141,
             "user_id": 16,
             "task_id": 141,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 142,
             "user_id": 3,
             "task_id": 142,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 143,
             "user_id": 15,
             "task_id": 143,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 144,
             "user_id": 29,
             "task_id": 144,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 145,
             "user_id": 4,
             "task_id": 145,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 146,
             "user_id": 44,
             "task_id": 146,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 147,
             "user_id": 3,
             "task_id": 147,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 148,
             "user_id": 23,
             "task_id": 148,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 149,
             "user_id": 2,
             "task_id": 149,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 150,
             "user_id": 5,
             "task_id": 150,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 151,
             "user_id": 16,
             "task_id": 91,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 152,
             "user_id": 38,
             "task_id": 109,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 153,
             "user_id": 23,
             "task_id": 70,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 154,
             "user_id": 35,
             "task_id": 110,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 155,
             "user_id": 35,
             "task_id": 71,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 156,
             "user_id": 15,
             "task_id": 36,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 157,
             "user_id": 4,
             "task_id": 68,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 158,
             "user_id": 16,
             "task_id": 119,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 159,
             "user_id": 44,
             "task_id": 140,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 160,
             "user_id": 5,
             "task_id": 144,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 161,
             "user_id": 7,
             "task_id": 148,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 162,
             "user_id": 2,
             "task_id": 51,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 163,
             "user_id": 37,
             "task_id": 58,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 164,
             "user_id": 12,
             "task_id": 105,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 165,
             "user_id": 9,
             "task_id": 33,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 166,
             "user_id": 2,
             "task_id": 116,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 167,
             "user_id": 6,
             "task_id": 138,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 168,
             "user_id": 7,
             "task_id": 24,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 169,
             "user_id": 44,
             "task_id": 21,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 170,
             "user_id": 1,
             "task_id": 143,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 171,
             "user_id": 27,
             "task_id": 23,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 172,
             "user_id": 30,
             "task_id": 88,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 173,
             "user_id": 17,
             "task_id": 136,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 174,
             "user_id": 37,
             "task_id": 43,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 175,
             "user_id": 27,
             "task_id": 70,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 176,
             "user_id": 37,
             "task_id": 110,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 177,
             "user_id": 6,
             "task_id": 106,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 178,
             "user_id": 30,
             "task_id": 33,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 179,
             "user_id": 6,
             "task_id": 58,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 180,
             "user_id": 9,
             "task_id": 25,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 181,
             "user_id": 6,
             "task_id": 65,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 182,
             "user_id": 29,
             "task_id": 77,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 183,
             "user_id": 30,
             "task_id": 10,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 184,
             "user_id": 2,
             "task_id": 106,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 185,
             "user_id": 1,
             "task_id": 31,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 186,
             "user_id": 2,
             "task_id": 66,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 187,
             "user_id": 4,
             "task_id": 84,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 188,
             "user_id": 17,
             "task_id": 80,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 189,
             "user_id": 44,
             "task_id": 145,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 190,
             "user_id": 4,
             "task_id": 35,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 191,
             "user_id": 7,
             "task_id": 50,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 192,
             "user_id": 6,
             "task_id": 137,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 193,
             "user_id": 6,
             "task_id": 45,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 194,
             "user_id": 37,
             "task_id": 31,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 195,
             "user_id": 15,
             "task_id": 130,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 196,
             "user_id": 1,
             "task_id": 146,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 197,
             "user_id": 16,
             "task_id": 78,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 198,
             "user_id": 35,
             "task_id": 78,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 199,
             "user_id": 44,
             "task_id": 44,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 200,
             "user_id": 16,
             "task_id": 145,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 201,
             "user_id": 17,
             "task_id": 127,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 202,
             "user_id": 1,
             "task_id": 30,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 203,
             "user_id": 12,
             "task_id": 133,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 204,
             "user_id": 15,
             "task_id": 57,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 205,
             "user_id": 38,
             "task_id": 55,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 206,
             "user_id": 44,
             "task_id": 133,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 207,
             "user_id": 6,
             "task_id": 63,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 208,
             "user_id": 9,
             "task_id": 10,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 209,
             "user_id": 17,
             "task_id": 70,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 210,
             "user_id": 2,
             "task_id": 19,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 211,
             "user_id": 30,
             "task_id": 70,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 212,
             "user_id": 17,
             "task_id": 119,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 213,
             "user_id": 35,
             "task_id": 3,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 214,
             "user_id": 12,
             "task_id": 95,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 215,
             "user_id": 17,
             "task_id": 16,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 216,
             "user_id": 17,
             "task_id": 33,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 217,
             "user_id": 35,
             "task_id": 14,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 218,
             "user_id": 1,
             "task_id": 51,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 219,
             "user_id": 5,
             "task_id": 59,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 220,
             "user_id": 17,
             "task_id": 72,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 221,
             "user_id": 27,
             "task_id": 132,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 222,
             "user_id": 2,
             "task_id": 77,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 223,
             "user_id": 23,
             "task_id": 80,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 224,
             "user_id": 17,
             "task_id": 137,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 225,
             "user_id": 9,
             "task_id": 12,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 226,
             "user_id": 30,
             "task_id": 87,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 227,
             "user_id": 6,
             "task_id": 129,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 228,
             "user_id": 35,
             "task_id": 107,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 229,
             "user_id": 29,
             "task_id": 112,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 230,
             "user_id": 6,
             "task_id": 80,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 231,
             "user_id": 1,
             "task_id": 24,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 232,
             "user_id": 30,
             "task_id": 18,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 233,
             "user_id": 12,
             "task_id": 150,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 234,
             "user_id": 44,
             "task_id": 91,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 235,
             "user_id": 35,
             "task_id": 84,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 236,
             "user_id": 4,
             "task_id": 149,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 237,
             "user_id": 29,
             "task_id": 120,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 238,
             "user_id": 23,
             "task_id": 76,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 239,
             "user_id": 7,
             "task_id": 127,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 240,
             "user_id": 5,
             "task_id": 15,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 241,
             "user_id": 3,
             "task_id": 98,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 242,
             "user_id": 6,
             "task_id": 30,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 243,
             "user_id": 4,
             "task_id": 77,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 244,
             "user_id": 4,
             "task_id": 93,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 245,
             "user_id": 15,
             "task_id": 62,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 246,
             "user_id": 37,
             "task_id": 64,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 247,
             "user_id": 4,
             "task_id": 89,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 248,
             "user_id": 9,
             "task_id": 58,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 249,
             "user_id": 27,
             "task_id": 61,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 250,
             "user_id": 44,
             "task_id": 80,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 251,
             "user_id": 27,
             "task_id": 142,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 252,
             "user_id": 3,
             "task_id": 35,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 253,
             "user_id": 27,
             "task_id": 104,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 254,
             "user_id": 38,
             "task_id": 31,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 255,
             "user_id": 30,
             "task_id": 17,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 256,
             "user_id": 1,
             "task_id": 125,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 257,
             "user_id": 15,
             "task_id": 111,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 258,
             "user_id": 17,
             "task_id": 36,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 259,
             "user_id": 38,
             "task_id": 97,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 260,
             "user_id": 12,
             "task_id": 53,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 261,
             "user_id": 37,
             "task_id": 48,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 262,
             "user_id": 27,
             "task_id": 130,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 263,
             "user_id": 23,
             "task_id": 87,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 264,
             "user_id": 16,
             "task_id": 116,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 265,
             "user_id": 27,
             "task_id": 63,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 266,
             "user_id": 27,
             "task_id": 24,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 267,
             "user_id": 16,
             "task_id": 147,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 268,
             "user_id": 35,
             "task_id": 109,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 269,
             "user_id": 5,
             "task_id": 87,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 270,
             "user_id": 44,
             "task_id": 72,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 271,
             "user_id": 15,
             "task_id": 8,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 272,
             "user_id": 16,
             "task_id": 90,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 273,
             "user_id": 3,
             "task_id": 117,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 274,
             "user_id": 3,
             "task_id": 62,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 275,
             "user_id": 1,
             "task_id": 147,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 276,
             "user_id": 3,
             "task_id": 2,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 277,
             "user_id": 23,
             "task_id": 11,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 278,
             "user_id": 7,
             "task_id": 42,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 279,
             "user_id": 35,
             "task_id": 127,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 280,
             "user_id": 4,
             "task_id": 57,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 281,
             "user_id": 29,
             "task_id": 16,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 282,
             "user_id": 15,
             "task_id": 97,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 283,
             "user_id": 2,
             "task_id": 110,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 284,
             "user_id": 4,
             "task_id": 100,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 285,
             "user_id": 30,
             "task_id": 26,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 286,
             "user_id": 6,
             "task_id": 4,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 287,
             "user_id": 27,
             "task_id": 66,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 288,
             "user_id": 7,
             "task_id": 103,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 289,
             "user_id": 30,
             "task_id": 38,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 290,
             "user_id": 27,
             "task_id": 87,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 291,
             "user_id": 15,
             "task_id": 79,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 292,
             "user_id": 29,
             "task_id": 89,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 293,
             "user_id": 15,
             "task_id": 108,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 294,
             "user_id": 9,
             "task_id": 73,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 295,
             "user_id": 16,
             "task_id": 29,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 296,
             "user_id": 5,
             "task_id": 132,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 297,
             "user_id": 23,
             "task_id": 98,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 298,
             "user_id": 3,
             "task_id": 19,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 299,
             "user_id": 15,
             "task_id": 98,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 300,
             "user_id": 38,
             "task_id": 120,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 301,
             "user_id": 27,
             "task_id": 105,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 302,
             "user_id": 38,
             "task_id": 124,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 303,
             "user_id": 5,
             "task_id": 101,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 304,
             "user_id": 5,
             "task_id": 129,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 305,
             "user_id": 7,
             "task_id": 91,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 306,
             "user_id": 16,
             "task_id": 84,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 307,
             "user_id": 15,
             "task_id": 24,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 308,
             "user_id": 4,
             "task_id": 14,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 309,
             "user_id": 2,
             "task_id": 99,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 310,
             "user_id": 44,
             "task_id": 54,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 311,
             "user_id": 16,
             "task_id": 134,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 312,
             "user_id": 3,
             "task_id": 65,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 313,
             "user_id": 44,
             "task_id": 33,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 314,
             "user_id": 17,
             "task_id": 82,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 315,
             "user_id": 9,
             "task_id": 97,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 316,
             "user_id": 35,
             "task_id": 20,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 317,
             "user_id": 1,
             "task_id": 66,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 318,
             "user_id": 30,
             "task_id": 77,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 319,
             "user_id": 7,
             "task_id": 68,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 320,
             "user_id": 4,
             "task_id": 32,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 321,
             "user_id": 30,
             "task_id": 149,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 322,
             "user_id": 4,
             "task_id": 114,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 323,
             "user_id": 15,
             "task_id": 133,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 324,
             "user_id": 4,
             "task_id": 127,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 325,
             "user_id": 44,
             "task_id": 17,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 326,
             "user_id": 3,
             "task_id": 42,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 327,
             "user_id": 15,
             "task_id": 128,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 328,
             "user_id": 23,
             "task_id": 22,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 329,
             "user_id": 1,
             "task_id": 126,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 330,
             "user_id": 9,
             "task_id": 141,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 331,
             "user_id": 29,
             "task_id": 131,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 332,
             "user_id": 38,
             "task_id": 90,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 333,
             "user_id": 9,
             "task_id": 116,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 334,
             "user_id": 17,
             "task_id": 20,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 335,
             "user_id": 15,
             "task_id": 15,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 336,
             "user_id": 30,
             "task_id": 84,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 337,
             "user_id": 27,
             "task_id": 6,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 338,
             "user_id": 27,
             "task_id": 71,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 339,
             "user_id": 5,
             "task_id": 116,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 340,
             "user_id": 9,
             "task_id": 77,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 341,
             "user_id": 15,
             "task_id": 22,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 342,
             "user_id": 5,
             "task_id": 146,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 343,
             "user_id": 17,
             "task_id": 2,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 344,
             "user_id": 1,
             "task_id": 48,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 345,
             "user_id": 29,
             "task_id": 123,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 346,
             "user_id": 2,
             "task_id": 65,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 347,
             "user_id": 15,
             "task_id": 64,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 348,
             "user_id": 9,
             "task_id": 149,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 349,
             "user_id": 5,
             "task_id": 70,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 350,
             "user_id": 15,
             "task_id": 72,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 351,
             "user_id": 4,
             "task_id": 52,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 352,
             "user_id": 38,
             "task_id": 43,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 353,
             "user_id": 4,
             "task_id": 66,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 354,
             "user_id": 29,
             "task_id": 109,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 355,
             "user_id": 4,
             "task_id": 124,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 356,
             "user_id": 16,
             "task_id": 82,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 357,
             "user_id": 6,
             "task_id": 122,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 358,
             "user_id": 35,
             "task_id": 115,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 359,
             "user_id": 1,
             "task_id": 18,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 360,
             "user_id": 23,
             "task_id": 115,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 361,
             "user_id": 4,
             "task_id": 120,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 362,
             "user_id": 44,
             "task_id": 105,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 363,
             "user_id": 37,
             "task_id": 23,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 364,
             "user_id": 23,
             "task_id": 69,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 365,
             "user_id": 17,
             "task_id": 107,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 366,
             "user_id": 37,
             "task_id": 85,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 367,
             "user_id": 15,
             "task_id": 17,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 368,
             "user_id": 23,
             "task_id": 25,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 369,
             "user_id": 5,
             "task_id": 125,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 370,
             "user_id": 38,
             "task_id": 53,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 371,
             "user_id": 17,
             "task_id": 101,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 372,
             "user_id": 1,
             "task_id": 134,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 373,
             "user_id": 4,
             "task_id": 11,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 374,
             "user_id": 1,
             "task_id": 98,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 375,
             "user_id": 38,
             "task_id": 94,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 376,
             "user_id": 29,
             "task_id": 44,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 377,
             "user_id": 7,
             "task_id": 79,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 378,
             "user_id": 35,
             "task_id": 90,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 379,
             "user_id": 38,
             "task_id": 113,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 380,
             "user_id": 12,
             "task_id": 141,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 381,
             "user_id": 23,
             "task_id": 3,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 382,
             "user_id": 4,
             "task_id": 119,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 383,
             "user_id": 29,
             "task_id": 90,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 384,
             "user_id": 2,
             "task_id": 133,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 385,
             "user_id": 15,
             "task_id": 78,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 386,
             "user_id": 5,
             "task_id": 145,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 387,
             "user_id": 44,
             "task_id": 90,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 388,
             "user_id": 9,
             "task_id": 60,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 389,
             "user_id": 6,
             "task_id": 93,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 390,
             "user_id": 37,
             "task_id": 80,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 391,
             "user_id": 1,
             "task_id": 84,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 392,
             "user_id": 5,
             "task_id": 9,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 393,
             "user_id": 6,
             "task_id": 126,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 394,
             "user_id": 17,
             "task_id": 140,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 395,
             "user_id": 37,
             "task_id": 86,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 396,
             "user_id": 9,
             "task_id": 127,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 397,
             "user_id": 5,
             "task_id": 49,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 398,
             "user_id": 2,
             "task_id": 63,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 399,
             "user_id": 9,
             "task_id": 132,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 400,
             "user_id": 38,
             "task_id": 147,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 401,
             "user_id": 2,
             "task_id": 93,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 402,
             "user_id": 23,
             "task_id": 66,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 403,
             "user_id": 3,
             "task_id": 64,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 404,
             "user_id": 17,
             "task_id": 3,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 405,
             "user_id": 27,
             "task_id": 133,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 406,
             "user_id": 44,
             "task_id": 32,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 407,
             "user_id": 12,
             "task_id": 143,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 408,
             "user_id": 29,
             "task_id": 29,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 409,
             "user_id": 44,
             "task_id": 51,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 410,
             "user_id": 23,
             "task_id": 114,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 411,
             "user_id": 16,
             "task_id": 149,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 412,
             "user_id": 9,
             "task_id": 136,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 413,
             "user_id": 30,
             "task_id": 97,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 414,
             "user_id": 7,
             "task_id": 99,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 415,
             "user_id": 27,
             "task_id": 56,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 416,
             "user_id": 15,
             "task_id": 101,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 417,
             "user_id": 5,
             "task_id": 48,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 418,
             "user_id": 38,
             "task_id": 88,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 419,
             "user_id": 27,
             "task_id": 120,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 420,
             "user_id": 7,
             "task_id": 40,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 421,
             "user_id": 37,
             "task_id": 137,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 422,
             "user_id": 38,
             "task_id": 83,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 423,
             "user_id": 7,
             "task_id": 85,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 424,
             "user_id": 5,
             "task_id": 149,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 425,
             "user_id": 1,
             "task_id": 14,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 426,
             "user_id": 17,
             "task_id": 43,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 427,
             "user_id": 23,
             "task_id": 133,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 428,
             "user_id": 30,
             "task_id": 150,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 429,
             "user_id": 35,
             "task_id": 113,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 430,
             "user_id": 23,
             "task_id": 30,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 431,
             "user_id": 15,
             "task_id": 91,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 432,
             "user_id": 16,
             "task_id": 58,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 433,
             "user_id": 27,
             "task_id": 108,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 434,
             "user_id": 6,
             "task_id": 114,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 435,
             "user_id": 6,
             "task_id": 70,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 436,
             "user_id": 27,
             "task_id": 1,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 437,
             "user_id": 9,
             "task_id": 34,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 438,
             "user_id": 35,
             "task_id": 114,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 439,
             "user_id": 30,
             "task_id": 21,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 440,
             "user_id": 37,
             "task_id": 140,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 441,
             "user_id": 3,
             "task_id": 83,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 442,
             "user_id": 16,
             "task_id": 112,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 443,
             "user_id": 27,
             "task_id": 136,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 444,
             "user_id": 27,
             "task_id": 145,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 445,
             "user_id": 2,
             "task_id": 34,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 446,
             "user_id": 38,
             "task_id": 20,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 447,
             "user_id": 44,
             "task_id": 100,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 448,
             "user_id": 4,
             "task_id": 134,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 449,
             "user_id": 27,
             "task_id": 48,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 450,
             "user_id": 3,
             "task_id": 80,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 451,
             "user_id": 38,
             "task_id": 21,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 452,
             "user_id": 17,
             "task_id": 71,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 453,
             "user_id": 6,
             "task_id": 123,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 454,
             "user_id": 7,
             "task_id": 146,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 455,
             "user_id": 5,
             "task_id": 94,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 456,
             "user_id": 3,
             "task_id": 50,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 457,
             "user_id": 7,
             "task_id": 136,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 458,
             "user_id": 35,
             "task_id": 146,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 459,
             "user_id": 3,
             "task_id": 72,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 460,
             "user_id": 16,
             "task_id": 102,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 461,
             "user_id": 29,
             "task_id": 43,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 462,
             "user_id": 6,
             "task_id": 81,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 463,
             "user_id": 30,
             "task_id": 56,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 464,
             "user_id": 23,
             "task_id": 111,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 465,
             "user_id": 12,
             "task_id": 41,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 466,
             "user_id": 5,
             "task_id": 120,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 467,
             "user_id": 27,
             "task_id": 16,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 468,
             "user_id": 15,
             "task_id": 31,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 469,
             "user_id": 16,
             "task_id": 10,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 470,
             "user_id": 23,
             "task_id": 109,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 471,
             "user_id": 1,
             "task_id": 89,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 472,
             "user_id": 44,
             "task_id": 102,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 473,
             "user_id": 5,
             "task_id": 34,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 474,
             "user_id": 16,
             "task_id": 15,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 475,
             "user_id": 16,
             "task_id": 101,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 476,
             "user_id": 30,
             "task_id": 119,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 477,
             "user_id": 27,
             "task_id": 18,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 478,
             "user_id": 27,
             "task_id": 126,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 479,
             "user_id": 29,
             "task_id": 32,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 480,
             "user_id": 29,
             "task_id": 24,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 481,
             "user_id": 35,
             "task_id": 50,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 482,
             "user_id": 9,
             "task_id": 120,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 483,
             "user_id": 38,
             "task_id": 63,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 484,
             "user_id": 1,
             "task_id": 83,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 485,
             "user_id": 5,
             "task_id": 97,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 486,
             "user_id": 12,
             "task_id": 126,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 487,
             "user_id": 30,
             "task_id": 123,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 488,
             "user_id": 35,
             "task_id": 67,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 489,
             "user_id": 12,
             "task_id": 65,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 490,
             "user_id": 2,
             "task_id": 20,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 491,
             "user_id": 7,
             "task_id": 98,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 492,
             "user_id": 17,
             "task_id": 42,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 493,
             "user_id": 38,
             "task_id": 149,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 494,
             "user_id": 5,
             "task_id": 57,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 495,
             "user_id": 17,
             "task_id": 132,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 496,
             "user_id": 3,
             "task_id": 10,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 497,
             "user_id": 30,
             "task_id": 111,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 498,
             "user_id": 17,
             "task_id": 106,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 499,
             "user_id": 12,
             "task_id": 138,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 500,
             "user_id": 29,
             "task_id": 49,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 501,
             "user_id": 6,
             "task_id": 145,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 502,
             "user_id": 44,
             "task_id": 22,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 503,
             "user_id": 7,
             "task_id": 143,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 504,
             "user_id": 17,
             "task_id": 102,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 505,
             "user_id": 3,
             "task_id": 5,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 506,
             "user_id": 27,
             "task_id": 36,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 507,
             "user_id": 37,
             "task_id": 54,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 508,
             "user_id": 38,
             "task_id": 5,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 509,
             "user_id": 3,
             "task_id": 14,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 510,
             "user_id": 44,
             "task_id": 20,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 511,
             "user_id": 12,
             "task_id": 148,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 512,
             "user_id": 30,
             "task_id": 122,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 513,
             "user_id": 35,
             "task_id": 136,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 514,
             "user_id": 12,
             "task_id": 51,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 515,
             "user_id": 2,
             "task_id": 38,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 516,
             "user_id": 16,
             "task_id": 54,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 517,
             "user_id": 5,
             "task_id": 43,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 518,
             "user_id": 23,
             "task_id": 107,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 519,
             "user_id": 7,
             "task_id": 37,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 520,
             "user_id": 37,
             "task_id": 12,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 521,
             "user_id": 2,
             "task_id": 81,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 522,
             "user_id": 12,
             "task_id": 43,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 523,
             "user_id": 2,
             "task_id": 104,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 524,
             "user_id": 5,
             "task_id": 140,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 525,
             "user_id": 23,
             "task_id": 93,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 526,
             "user_id": 17,
             "task_id": 110,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 527,
             "user_id": 15,
             "task_id": 125,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 528,
             "user_id": 7,
             "task_id": 77,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 529,
             "user_id": 2,
             "task_id": 68,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 530,
             "user_id": 1,
             "task_id": 2,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 531,
             "user_id": 23,
             "task_id": 1,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 532,
             "user_id": 2,
             "task_id": 64,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 533,
             "user_id": 5,
             "task_id": 27,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 534,
             "user_id": 7,
             "task_id": 43,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 535,
             "user_id": 5,
             "task_id": 2,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 536,
             "user_id": 15,
             "task_id": 48,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 537,
             "user_id": 1,
             "task_id": 88,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 538,
             "user_id": 35,
             "task_id": 122,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 539,
             "user_id": 35,
             "task_id": 101,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 540,
             "user_id": 38,
             "task_id": 58,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 541,
             "user_id": 9,
             "task_id": 22,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 542,
             "user_id": 12,
             "task_id": 23,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 543,
             "user_id": 27,
             "task_id": 110,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 544,
             "user_id": 2,
             "task_id": 61,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 545,
             "user_id": 27,
             "task_id": 35,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 546,
             "user_id": 9,
             "task_id": 67,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 547,
             "user_id": 12,
             "task_id": 22,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 548,
             "user_id": 9,
             "task_id": 13,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 549,
             "user_id": 23,
             "task_id": 43,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 550,
             "user_id": 30,
             "task_id": 68,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 551,
             "user_id": 23,
             "task_id": 64,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 552,
             "user_id": 6,
             "task_id": 130,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 553,
             "user_id": 9,
             "task_id": 105,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 554,
             "user_id": 44,
             "task_id": 11,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 555,
             "user_id": 12,
             "task_id": 125,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 556,
             "user_id": 44,
             "task_id": 56,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 557,
             "user_id": 29,
             "task_id": 133,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 558,
             "user_id": 37,
             "task_id": 134,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 559,
             "user_id": 27,
             "task_id": 131,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 560,
             "user_id": 17,
             "task_id": 146,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 561,
             "user_id": 35,
             "task_id": 124,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 562,
             "user_id": 35,
             "task_id": 89,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 563,
             "user_id": 3,
             "task_id": 8,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 564,
             "user_id": 1,
             "task_id": 21,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 565,
             "user_id": 38,
             "task_id": 37,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 566,
             "user_id": 9,
             "task_id": 131,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 567,
             "user_id": 30,
             "task_id": 126,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 568,
             "user_id": 17,
             "task_id": 39,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 569,
             "user_id": 35,
             "task_id": 87,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 570,
             "user_id": 15,
             "task_id": 69,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 571,
             "user_id": 27,
             "task_id": 50,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 572,
             "user_id": 15,
             "task_id": 19,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 573,
             "user_id": 2,
             "task_id": 60,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 574,
             "user_id": 38,
             "task_id": 19,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 575,
             "user_id": 3,
             "task_id": 51,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 576,
             "user_id": 37,
             "task_id": 17,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 577,
             "user_id": 17,
             "task_id": 104,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 578,
             "user_id": 17,
             "task_id": 130,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 579,
             "user_id": 23,
             "task_id": 142,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 580,
             "user_id": 6,
             "task_id": 94,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 581,
             "user_id": 15,
             "task_id": 82,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 582,
             "user_id": 9,
             "task_id": 87,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 583,
             "user_id": 6,
             "task_id": 14,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 584,
             "user_id": 4,
             "task_id": 118,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 585,
             "user_id": 30,
             "task_id": 145,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 586,
             "user_id": 1,
             "task_id": 71,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 587,
             "user_id": 7,
             "task_id": 92,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 588,
             "user_id": 44,
             "task_id": 71,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 589,
             "user_id": 30,
             "task_id": 124,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 590,
             "user_id": 6,
             "task_id": 98,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 591,
             "user_id": 15,
             "task_id": 115,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 592,
             "user_id": 37,
             "task_id": 102,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 593,
             "user_id": 37,
             "task_id": 21,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 594,
             "user_id": 35,
             "task_id": 148,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 595,
             "user_id": 2,
             "task_id": 142,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 596,
             "user_id": 38,
             "task_id": 104,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 597,
             "user_id": 1,
             "task_id": 34,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 598,
             "user_id": 3,
             "task_id": 108,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 599,
             "user_id": 9,
             "task_id": 139,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 600,
             "user_id": 7,
             "task_id": 30,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 601,
             "user_id": 17,
             "task_id": 121,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 602,
             "user_id": 1,
             "task_id": 37,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 603,
             "user_id": 16,
             "task_id": 4,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 604,
             "user_id": 23,
             "task_id": 51,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 605,
             "user_id": 17,
             "task_id": 31,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 606,
             "user_id": 16,
             "task_id": 121,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 607,
             "user_id": 44,
             "task_id": 2,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 608,
             "user_id": 37,
             "task_id": 51,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 609,
             "user_id": 23,
             "task_id": 35,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 610,
             "user_id": 12,
             "task_id": 26,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 611,
             "user_id": 35,
             "task_id": 24,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 612,
             "user_id": 7,
             "task_id": 54,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 613,
             "user_id": 38,
             "task_id": 28,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 614,
             "user_id": 27,
             "task_id": 11,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 615,
             "user_id": 6,
             "task_id": 83,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 616,
             "user_id": 38,
             "task_id": 80,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 617,
             "user_id": 16,
             "task_id": 79,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 618,
             "user_id": 35,
             "task_id": 138,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 619,
             "user_id": 29,
             "task_id": 65,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 620,
             "user_id": 6,
             "task_id": 135,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 621,
             "user_id": 5,
             "task_id": 24,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 622,
             "user_id": 44,
             "task_id": 112,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 623,
             "user_id": 30,
             "task_id": 137,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 624,
             "user_id": 27,
             "task_id": 124,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 625,
             "user_id": 16,
             "task_id": 49,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 626,
             "user_id": 12,
             "task_id": 115,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 627,
             "user_id": 44,
             "task_id": 148,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 628,
             "user_id": 16,
             "task_id": 24,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 629,
             "user_id": 9,
             "task_id": 126,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 630,
             "user_id": 29,
             "task_id": 115,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 631,
             "user_id": 9,
             "task_id": 79,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 632,
             "user_id": 4,
             "task_id": 146,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 633,
             "user_id": 35,
             "task_id": 102,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 634,
             "user_id": 15,
             "task_id": 30,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 635,
             "user_id": 12,
             "task_id": 121,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 636,
             "user_id": 17,
             "task_id": 74,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 637,
             "user_id": 5,
             "task_id": 67,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 638,
             "user_id": 4,
             "task_id": 10,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 639,
             "user_id": 7,
             "task_id": 3,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 640,
             "user_id": 37,
             "task_id": 117,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 641,
             "user_id": 16,
             "task_id": 18,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 642,
             "user_id": 6,
             "task_id": 40,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 643,
             "user_id": 16,
             "task_id": 43,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 644,
             "user_id": 30,
             "task_id": 36,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 645,
             "user_id": 1,
             "task_id": 49,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 646,
             "user_id": 12,
             "task_id": 74,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 647,
             "user_id": 3,
             "task_id": 92,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 648,
             "user_id": 3,
             "task_id": 49,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 649,
             "user_id": 3,
             "task_id": 46,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 650,
             "user_id": 2,
             "task_id": 125,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 651,
             "user_id": 4,
             "task_id": 130,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 652,
             "user_id": 12,
             "task_id": 63,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 653,
             "user_id": 44,
             "task_id": 120,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 654,
             "user_id": 4,
             "task_id": 121,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 655,
             "user_id": 7,
             "task_id": 96,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 656,
             "user_id": 23,
             "task_id": 77,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 657,
             "user_id": 7,
             "task_id": 83,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 658,
             "user_id": 30,
             "task_id": 42,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 659,
             "user_id": 12,
             "task_id": 87,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 660,
             "user_id": 5,
             "task_id": 21,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 661,
             "user_id": 2,
             "task_id": 47,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 662,
             "user_id": 15,
             "task_id": 42,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 663,
             "user_id": 30,
             "task_id": 29,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 664,
             "user_id": 17,
             "task_id": 9,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 665,
             "user_id": 5,
             "task_id": 82,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 666,
             "user_id": 1,
             "task_id": 90,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 667,
             "user_id": 3,
             "task_id": 101,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 668,
             "user_id": 6,
             "task_id": 48,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 669,
             "user_id": 15,
             "task_id": 148,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 670,
             "user_id": 12,
             "task_id": 124,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 671,
             "user_id": 44,
             "task_id": 48,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 672,
             "user_id": 44,
             "task_id": 19,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 673,
             "user_id": 15,
             "task_id": 14,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 674,
             "user_id": 23,
             "task_id": 79,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 675,
             "user_id": 15,
             "task_id": 27,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 676,
             "user_id": 17,
             "task_id": 150,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 677,
             "user_id": 5,
             "task_id": 30,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 678,
             "user_id": 30,
             "task_id": 110,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 679,
             "user_id": 17,
             "task_id": 109,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 680,
             "user_id": 3,
             "task_id": 79,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 681,
             "user_id": 23,
             "task_id": 8,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 682,
             "user_id": 12,
             "task_id": 54,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 683,
             "user_id": 15,
             "task_id": 118,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 684,
             "user_id": 3,
             "task_id": 89,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 685,
             "user_id": 9,
             "task_id": 21,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 686,
             "user_id": 12,
             "task_id": 47,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 687,
             "user_id": 2,
             "task_id": 80,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 688,
             "user_id": 9,
             "task_id": 75,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 689,
             "user_id": 44,
             "task_id": 86,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 690,
             "user_id": 9,
             "task_id": 90,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 691,
             "user_id": 9,
             "task_id": 143,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 692,
             "user_id": 30,
             "task_id": 71,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 693,
             "user_id": 38,
             "task_id": 123,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 694,
             "user_id": 17,
             "task_id": 139,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 695,
             "user_id": 35,
             "task_id": 57,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 696,
             "user_id": 1,
             "task_id": 39,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 697,
             "user_id": 12,
             "task_id": 113,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 698,
             "user_id": 23,
             "task_id": 19,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 699,
             "user_id": 30,
             "task_id": 4,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 700,
             "user_id": 6,
             "task_id": 100,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 701,
             "user_id": 3,
             "task_id": 114,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 702,
             "user_id": 7,
             "task_id": 109,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 703,
             "user_id": 7,
             "task_id": 29,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 704,
             "user_id": 4,
             "task_id": 53,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 705,
             "user_id": 12,
             "task_id": 135,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 706,
             "user_id": 35,
             "task_id": 8,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 707,
             "user_id": 29,
             "task_id": 119,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 708,
             "user_id": 5,
             "task_id": 108,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 709,
             "user_id": 17,
             "task_id": 149,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 710,
             "user_id": 2,
             "task_id": 143,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 711,
             "user_id": 5,
             "task_id": 58,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 712,
             "user_id": 2,
             "task_id": 32,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 713,
             "user_id": 2,
             "task_id": 15,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 714,
             "user_id": 38,
             "task_id": 9,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 715,
             "user_id": 6,
             "task_id": 118,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 716,
             "user_id": 44,
             "task_id": 93,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 717,
             "user_id": 6,
             "task_id": 77,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 718,
             "user_id": 9,
             "task_id": 80,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 719,
             "user_id": 2,
             "task_id": 144,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 720,
             "user_id": 3,
             "task_id": 47,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 721,
             "user_id": 16,
             "task_id": 117,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 722,
             "user_id": 23,
             "task_id": 136,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 723,
             "user_id": 12,
             "task_id": 15,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 724,
             "user_id": 30,
             "task_id": 148,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 725,
             "user_id": 12,
             "task_id": 14,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 726,
             "user_id": 1,
             "task_id": 80,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 727,
             "user_id": 17,
             "task_id": 5,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 728,
             "user_id": 27,
             "task_id": 92,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 729,
             "user_id": 44,
             "task_id": 55,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 730,
             "user_id": 5,
             "task_id": 50,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 731,
             "user_id": 3,
             "task_id": 119,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 732,
             "user_id": 29,
             "task_id": 83,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 733,
             "user_id": 17,
             "task_id": 135,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 734,
             "user_id": 16,
             "task_id": 21,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 735,
             "user_id": 4,
             "task_id": 20,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 736,
             "user_id": 44,
             "task_id": 10,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 737,
             "user_id": 29,
             "task_id": 141,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 738,
             "user_id": 2,
             "task_id": 121,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 739,
             "user_id": 5,
             "task_id": 17,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 740,
             "user_id": 44,
             "task_id": 122,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 741,
             "user_id": 9,
             "task_id": 26,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 742,
             "user_id": 38,
             "task_id": 60,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 743,
             "user_id": 35,
             "task_id": 117,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 744,
             "user_id": 4,
             "task_id": 136,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 745,
             "user_id": 35,
             "task_id": 7,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 746,
             "user_id": 1,
             "task_id": 36,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 747,
             "user_id": 6,
             "task_id": 9,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 748,
             "user_id": 12,
             "task_id": 68,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 749,
             "user_id": 38,
             "task_id": 110,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 750,
             "user_id": 6,
             "task_id": 8,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 751,
             "user_id": 23,
             "task_id": 73,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 752,
             "user_id": 17,
             "task_id": 54,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 753,
             "user_id": 29,
             "task_id": 75,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 754,
             "user_id": 3,
             "task_id": 105,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 755,
             "user_id": 9,
             "task_id": 65,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 756,
             "user_id": 4,
             "task_id": 101,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 757,
             "user_id": 16,
             "task_id": 53,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 758,
             "user_id": 1,
             "task_id": 145,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 759,
             "user_id": 27,
             "task_id": 72,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 760,
             "user_id": 35,
             "task_id": 70,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 761,
             "user_id": 5,
             "task_id": 19,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 762,
             "user_id": 38,
             "task_id": 29,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 763,
             "user_id": 6,
             "task_id": 149,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 764,
             "user_id": 15,
             "task_id": 74,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 765,
             "user_id": 7,
             "task_id": 34,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 766,
             "user_id": 15,
             "task_id": 52,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 767,
             "user_id": 6,
             "task_id": 41,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 768,
             "user_id": 1,
             "task_id": 42,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 769,
             "user_id": 2,
             "task_id": 132,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 770,
             "user_id": 4,
             "task_id": 8,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 771,
             "user_id": 35,
             "task_id": 123,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 772,
             "user_id": 17,
             "task_id": 147,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 773,
             "user_id": 4,
             "task_id": 115,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 774,
             "user_id": 29,
             "task_id": 48,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 775,
             "user_id": 15,
             "task_id": 55,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 776,
             "user_id": 4,
             "task_id": 111,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 777,
             "user_id": 37,
             "task_id": 50,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 778,
             "user_id": 17,
             "task_id": 98,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 779,
             "user_id": 4,
             "task_id": 82,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 780,
             "user_id": 6,
             "task_id": 91,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 781,
             "user_id": 16,
             "task_id": 135,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 782,
             "user_id": 38,
             "task_id": 92,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 783,
             "user_id": 27,
             "task_id": 82,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 784,
             "user_id": 29,
             "task_id": 64,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 785,
             "user_id": 6,
             "task_id": 139,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 786,
             "user_id": 29,
             "task_id": 62,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 787,
             "user_id": 17,
             "task_id": 27,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 788,
             "user_id": 16,
             "task_id": 23,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 789,
             "user_id": 2,
             "task_id": 48,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 790,
             "user_id": 3,
             "task_id": 66,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 791,
             "user_id": 35,
             "task_id": 30,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 792,
             "user_id": 9,
             "task_id": 88,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 793,
             "user_id": 3,
             "task_id": 48,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 794,
             "user_id": 44,
             "task_id": 40,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 795,
             "user_id": 12,
             "task_id": 97,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 796,
             "user_id": 15,
             "task_id": 41,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 797,
             "user_id": 37,
             "task_id": 20,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 798,
             "user_id": 38,
             "task_id": 86,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 799,
             "user_id": 12,
             "task_id": 79,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 800,
             "user_id": 35,
             "task_id": 48,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 801,
             "user_id": 15,
             "task_id": 16,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 802,
             "user_id": 15,
             "task_id": 63,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 803,
             "user_id": 2,
             "task_id": 30,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 804,
             "user_id": 30,
             "task_id": 63,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 805,
             "user_id": 3,
             "task_id": 30,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 806,
             "user_id": 29,
             "task_id": 91,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 807,
             "user_id": 12,
             "task_id": 1,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 808,
             "user_id": 5,
             "task_id": 25,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 809,
             "user_id": 1,
             "task_id": 118,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 810,
             "user_id": 6,
             "task_id": 104,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 811,
             "user_id": 27,
             "task_id": 54,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 812,
             "user_id": 6,
             "task_id": 13,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 813,
             "user_id": 9,
             "task_id": 68,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 814,
             "user_id": 4,
             "task_id": 110,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 815,
             "user_id": 16,
             "task_id": 85,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 816,
             "user_id": 1,
             "task_id": 43,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 817,
             "user_id": 1,
             "task_id": 101,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 818,
             "user_id": 6,
             "task_id": 25,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 819,
             "user_id": 5,
             "task_id": 6,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 820,
             "user_id": 3,
             "task_id": 37,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 821,
             "user_id": 29,
             "task_id": 72,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 822,
             "user_id": 38,
             "task_id": 75,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 823,
             "user_id": 37,
             "task_id": 38,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 824,
             "user_id": 30,
             "task_id": 107,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 825,
             "user_id": 6,
             "task_id": 66,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 826,
             "user_id": 23,
             "task_id": 72,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 827,
             "user_id": 17,
             "task_id": 46,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 828,
             "user_id": 15,
             "task_id": 5,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 829,
             "user_id": 27,
             "task_id": 139,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 830,
             "user_id": 4,
             "task_id": 97,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 831,
             "user_id": 12,
             "task_id": 123,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 832,
             "user_id": 16,
             "task_id": 65,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 833,
             "user_id": 5,
             "task_id": 1,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 834,
             "user_id": 7,
             "task_id": 80,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 835,
             "user_id": 2,
             "task_id": 85,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 836,
             "user_id": 3,
             "task_id": 63,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 837,
             "user_id": 12,
             "task_id": 40,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 838,
             "user_id": 30,
             "task_id": 80,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 839,
             "user_id": 5,
             "task_id": 66,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 840,
             "user_id": 29,
             "task_id": 142,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 841,
             "user_id": 16,
             "task_id": 118,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 842,
             "user_id": 38,
             "task_id": 59,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 843,
             "user_id": 29,
             "task_id": 96,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 844,
             "user_id": 1,
             "task_id": 72,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 845,
             "user_id": 4,
             "task_id": 99,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 846,
             "user_id": 38,
             "task_id": 91,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 847,
             "user_id": 1,
             "task_id": 149,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 848,
             "user_id": 5,
             "task_id": 35,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 849,
             "user_id": 9,
             "task_id": 117,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 850,
             "user_id": 30,
             "task_id": 147,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 851,
             "user_id": 2,
             "task_id": 23,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 852,
             "user_id": 9,
             "task_id": 135,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 853,
             "user_id": 44,
             "task_id": 46,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 854,
             "user_id": 27,
             "task_id": 15,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 855,
             "user_id": 30,
             "task_id": 115,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 856,
             "user_id": 9,
             "task_id": 42,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 857,
             "user_id": 37,
             "task_id": 18,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 858,
             "user_id": 27,
             "task_id": 109,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 859,
             "user_id": 27,
             "task_id": 103,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 860,
             "user_id": 2,
             "task_id": 98,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 861,
             "user_id": 17,
             "task_id": 29,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 862,
             "user_id": 15,
             "task_id": 107,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 863,
             "user_id": 12,
             "task_id": 27,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 864,
             "user_id": 35,
             "task_id": 143,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 865,
             "user_id": 30,
             "task_id": 52,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 866,
             "user_id": 37,
             "task_id": 89,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 867,
             "user_id": 27,
             "task_id": 91,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 868,
             "user_id": 15,
             "task_id": 58,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 869,
             "user_id": 9,
             "task_id": 27,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 870,
             "user_id": 16,
             "task_id": 103,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 871,
             "user_id": 30,
             "task_id": 104,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 872,
             "user_id": 3,
             "task_id": 59,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 873,
             "user_id": 9,
             "task_id": 66,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 874,
             "user_id": 23,
             "task_id": 50,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 875,
             "user_id": 23,
             "task_id": 33,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 876,
             "user_id": 17,
             "task_id": 134,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 877,
             "user_id": 37,
             "task_id": 73,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 878,
             "user_id": 3,
             "task_id": 146,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 879,
             "user_id": 35,
             "task_id": 42,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 880,
             "user_id": 9,
             "task_id": 85,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 881,
             "user_id": 12,
             "task_id": 9,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 882,
             "user_id": 17,
             "task_id": 52,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 883,
             "user_id": 30,
             "task_id": 79,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 884,
             "user_id": 3,
             "task_id": 120,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 885,
             "user_id": 38,
             "task_id": 56,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 886,
             "user_id": 6,
             "task_id": 147,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 887,
             "user_id": 35,
             "task_id": 2,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 888,
             "user_id": 16,
             "task_id": 47,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 889,
             "user_id": 38,
             "task_id": 6,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 890,
             "user_id": 35,
             "task_id": 95,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 891,
             "user_id": 9,
             "task_id": 137,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 892,
             "user_id": 30,
             "task_id": 121,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 893,
             "user_id": 17,
             "task_id": 51,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 894,
             "user_id": 4,
             "task_id": 65,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 895,
             "user_id": 3,
             "task_id": 11,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 896,
             "user_id": 44,
             "task_id": 99,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 897,
             "user_id": 29,
             "task_id": 15,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 898,
             "user_id": 30,
             "task_id": 45,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 899,
             "user_id": 38,
             "task_id": 135,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 900,
             "user_id": 17,
             "task_id": 81,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 901,
             "user_id": 9,
             "task_id": 145,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 902,
             "user_id": 4,
             "task_id": 25,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 903,
             "user_id": 38,
             "task_id": 13,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 904,
             "user_id": 30,
             "task_id": 75,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 905,
             "user_id": 2,
             "task_id": 9,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 906,
             "user_id": 23,
             "task_id": 55,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 907,
             "user_id": 23,
             "task_id": 29,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 908,
             "user_id": 1,
             "task_id": 47,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 909,
             "user_id": 30,
             "task_id": 61,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 910,
             "user_id": 17,
             "task_id": 93,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 911,
             "user_id": 23,
             "task_id": 37,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 912,
             "user_id": 29,
             "task_id": 114,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 913,
             "user_id": 1,
             "task_id": 22,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 914,
             "user_id": 17,
             "task_id": 138,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 915,
             "user_id": 4,
             "task_id": 79,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 916,
             "user_id": 4,
             "task_id": 143,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 917,
             "user_id": 15,
             "task_id": 109,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 918,
             "user_id": 7,
             "task_id": 145,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 919,
             "user_id": 30,
             "task_id": 48,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 920,
             "user_id": 16,
             "task_id": 68,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 921,
             "user_id": 12,
             "task_id": 103,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 922,
             "user_id": 3,
             "task_id": 25,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 923,
             "user_id": 23,
             "task_id": 26,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 924,
             "user_id": 35,
             "task_id": 133,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 925,
             "user_id": 29,
             "task_id": 148,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 926,
             "user_id": 7,
             "task_id": 124,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 927,
             "user_id": 5,
             "task_id": 55,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 928,
             "user_id": 12,
             "task_id": 84,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 929,
             "user_id": 6,
             "task_id": 95,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 930,
             "user_id": 6,
             "task_id": 119,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 931,
             "user_id": 15,
             "task_id": 110,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 932,
             "user_id": 6,
             "task_id": 125,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 933,
             "user_id": 15,
             "task_id": 35,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 934,
             "user_id": 2,
             "task_id": 139,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 935,
             "user_id": 4,
             "task_id": 7,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 936,
             "user_id": 27,
             "task_id": 25,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 937,
             "user_id": 16,
             "task_id": 31,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 938,
             "user_id": 1,
             "task_id": 38,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 939,
             "user_id": 35,
             "task_id": 34,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 940,
             "user_id": 29,
             "task_id": 6,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 941,
             "user_id": 4,
             "task_id": 138,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 942,
             "user_id": 7,
             "task_id": 5,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 943,
             "user_id": 35,
             "task_id": 77,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 944,
             "user_id": 5,
             "task_id": 113,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 945,
             "user_id": 3,
             "task_id": 133,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 946,
             "user_id": 38,
             "task_id": 125,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 947,
             "user_id": 30,
             "task_id": 108,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 948,
             "user_id": 38,
             "task_id": 67,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 949,
             "user_id": 2,
             "task_id": 105,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 950,
             "user_id": 3,
             "task_id": 22,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 951,
             "user_id": 2,
             "task_id": 118,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 952,
             "user_id": 16,
             "task_id": 99,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 953,
             "user_id": 38,
             "task_id": 50,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 954,
             "user_id": 38,
             "task_id": 87,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 955,
             "user_id": 27,
             "task_id": 98,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 956,
             "user_id": 16,
             "task_id": 41,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 957,
             "user_id": 27,
             "task_id": 101,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 958,
             "user_id": 15,
             "task_id": 70,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 959,
             "user_id": 29,
             "task_id": 113,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 960,
             "user_id": 16,
             "task_id": 7,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 961,
             "user_id": 15,
             "task_id": 47,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 962,
             "user_id": 9,
             "task_id": 61,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 963,
             "user_id": 15,
             "task_id": 38,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 964,
             "user_id": 38,
             "task_id": 38,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 965,
             "user_id": 2,
             "task_id": 91,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 966,
             "user_id": 35,
             "task_id": 149,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 967,
             "user_id": 1,
             "task_id": 104,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 968,
             "user_id": 4,
             "task_id": 30,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 969,
             "user_id": 29,
             "task_id": 18,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 970,
             "user_id": 44,
             "task_id": 67,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 971,
             "user_id": 15,
             "task_id": 95,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 972,
             "user_id": 35,
             "task_id": 141,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 973,
             "user_id": 1,
             "task_id": 115,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 974,
             "user_id": 5,
             "task_id": 104,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 975,
             "user_id": 5,
             "task_id": 71,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 976,
             "user_id": 29,
             "task_id": 9,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 977,
             "user_id": 1,
             "task_id": 54,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 978,
             "user_id": 6,
             "task_id": 82,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 979,
             "user_id": 2,
             "task_id": 72,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 980,
             "user_id": 5,
             "task_id": 4,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 981,
             "user_id": 9,
             "task_id": 20,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 982,
             "user_id": 15,
             "task_id": 50,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 983,
             "user_id": 4,
             "task_id": 137,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 984,
             "user_id": 9,
             "task_id": 129,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 985,
             "user_id": 29,
             "task_id": 12,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 986,
             "user_id": 30,
             "task_id": 49,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 987,
             "user_id": 44,
             "task_id": 125,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 988,
             "user_id": 2,
             "task_id": 70,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 989,
             "user_id": 3,
             "task_id": 4,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 990,
             "user_id": 44,
             "task_id": 1,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 991,
             "user_id": 44,
             "task_id": 83,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 992,
             "user_id": 29,
             "task_id": 54,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 993,
             "user_id": 5,
             "task_id": 16,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 994,
             "user_id": 17,
             "task_id": 144,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 995,
             "user_id": 37,
             "task_id": 144,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 996,
             "user_id": 17,
             "task_id": 22,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 997,
             "user_id": 3,
             "task_id": 31,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 998,
             "user_id": 29,
             "task_id": 73,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 999,
             "user_id": 35,
             "task_id": 145,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1000,
             "user_id": 12,
             "task_id": 55,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1001,
             "user_id": 1,
             "task_id": 75,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1002,
             "user_id": 27,
             "task_id": 30,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1003,
             "user_id": 17,
             "task_id": 10,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1004,
             "user_id": 23,
             "task_id": 53,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1005,
             "user_id": 23,
             "task_id": 46,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1006,
             "user_id": 9,
             "task_id": 86,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1007,
             "user_id": 16,
             "task_id": 27,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1008,
             "user_id": 1,
             "task_id": 74,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1009,
             "user_id": 44,
             "task_id": 92,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1010,
             "user_id": 35,
             "task_id": 100,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1011,
             "user_id": 2,
             "task_id": 78,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1012,
             "user_id": 3,
             "task_id": 61,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1013,
             "user_id": 6,
             "task_id": 148,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1014,
             "user_id": 15,
             "task_id": 142,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1015,
             "user_id": 17,
             "task_id": 26,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1016,
             "user_id": 44,
             "task_id": 36,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1017,
             "user_id": 7,
             "task_id": 112,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1018,
             "user_id": 4,
             "task_id": 23,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1019,
             "user_id": 15,
             "task_id": 134,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1020,
             "user_id": 9,
             "task_id": 96,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1021,
             "user_id": 27,
             "task_id": 9,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1022,
             "user_id": 3,
             "task_id": 104,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1023,
             "user_id": 4,
             "task_id": 88,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1024,
             "user_id": 35,
             "task_id": 74,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1025,
             "user_id": 12,
             "task_id": 99,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1026,
             "user_id": 17,
             "task_id": 69,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1027,
             "user_id": 37,
             "task_id": 37,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1028,
             "user_id": 44,
             "task_id": 149,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1029,
             "user_id": 37,
             "task_id": 56,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1030,
             "user_id": 7,
             "task_id": 89,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1031,
             "user_id": 7,
             "task_id": 8,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1032,
             "user_id": 6,
             "task_id": 76,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1033,
             "user_id": 7,
             "task_id": 104,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1034,
             "user_id": 35,
             "task_id": 104,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1035,
             "user_id": 4,
             "task_id": 42,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1036,
             "user_id": 23,
             "task_id": 58,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1037,
             "user_id": 9,
             "task_id": 8,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1038,
             "user_id": 29,
             "task_id": 116,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1039,
             "user_id": 5,
             "task_id": 124,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1040,
             "user_id": 15,
             "task_id": 145,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1041,
             "user_id": 6,
             "task_id": 2,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1042,
             "user_id": 7,
             "task_id": 117,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1043,
             "user_id": 35,
             "task_id": 10,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1044,
             "user_id": 1,
             "task_id": 121,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1045,
             "user_id": 3,
             "task_id": 116,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1046,
             "user_id": 29,
             "task_id": 33,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1047,
             "user_id": 44,
             "task_id": 59,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1048,
             "user_id": 7,
             "task_id": 31,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1049,
             "user_id": 1,
             "task_id": 77,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1050,
             "user_id": 4,
             "task_id": 44,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1051,
             "user_id": 17,
             "task_id": 28,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1052,
             "user_id": 44,
             "task_id": 49,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1053,
             "user_id": 1,
             "task_id": 32,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1054,
             "user_id": 16,
             "task_id": 64,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1055,
             "user_id": 30,
             "task_id": 50,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1056,
             "user_id": 35,
             "task_id": 53,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1057,
             "user_id": 23,
             "task_id": 39,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1058,
             "user_id": 2,
             "task_id": 5,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1059,
             "user_id": 16,
             "task_id": 34,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1060,
             "user_id": 6,
             "task_id": 85,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1061,
             "user_id": 3,
             "task_id": 44,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1062,
             "user_id": 37,
             "task_id": 33,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1063,
             "user_id": 1,
             "task_id": 111,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1064,
             "user_id": 5,
             "task_id": 107,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1065,
             "user_id": 1,
             "task_id": 114,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1066,
             "user_id": 6,
             "task_id": 140,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1067,
             "user_id": 16,
             "task_id": 48,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1068,
             "user_id": 27,
             "task_id": 112,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1069,
             "user_id": 37,
             "task_id": 46,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1070,
             "user_id": 38,
             "task_id": 133,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1071,
             "user_id": 12,
             "task_id": 5,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1072,
             "user_id": 9,
             "task_id": 6,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1073,
             "user_id": 17,
             "task_id": 19,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1074,
             "user_id": 15,
             "task_id": 136,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1075,
             "user_id": 3,
             "task_id": 127,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1076,
             "user_id": 12,
             "task_id": 112,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1077,
             "user_id": 7,
             "task_id": 108,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1078,
             "user_id": 23,
             "task_id": 78,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1079,
             "user_id": 5,
             "task_id": 141,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1080,
             "user_id": 7,
             "task_id": 69,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1081,
             "user_id": 3,
             "task_id": 121,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1082,
             "user_id": 9,
             "task_id": 134,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1083,
             "user_id": 17,
             "task_id": 7,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1084,
             "user_id": 4,
             "task_id": 125,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1085,
             "user_id": 29,
             "task_id": 80,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1086,
             "user_id": 12,
             "task_id": 114,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1087,
             "user_id": 23,
             "task_id": 122,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1088,
             "user_id": 44,
             "task_id": 130,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1089,
             "user_id": 16,
             "task_id": 109,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1090,
             "user_id": 35,
             "task_id": 72,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1091,
             "user_id": 1,
             "task_id": 60,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1092,
             "user_id": 44,
             "task_id": 6,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1093,
             "user_id": 23,
             "task_id": 85,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1094,
             "user_id": 37,
             "task_id": 122,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1095,
             "user_id": 30,
             "task_id": 30,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1096,
             "user_id": 7,
             "task_id": 116,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1097,
             "user_id": 30,
             "task_id": 28,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1098,
             "user_id": 27,
             "task_id": 85,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1099,
             "user_id": 27,
             "task_id": 4,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1100,
             "user_id": 6,
             "task_id": 96,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1101,
             "user_id": 5,
             "task_id": 133,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1102,
             "user_id": 12,
             "task_id": 104,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1103,
             "user_id": 30,
             "task_id": 146,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1104,
             "user_id": 12,
             "task_id": 102,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1105,
             "user_id": 37,
             "task_id": 41,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1106,
             "user_id": 15,
             "task_id": 129,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1107,
             "user_id": 23,
             "task_id": 32,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1108,
             "user_id": 27,
             "task_id": 53,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1109,
             "user_id": 7,
             "task_id": 113,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1110,
             "user_id": 29,
             "task_id": 47,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1111,
             "user_id": 30,
             "task_id": 3,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1112,
             "user_id": 37,
             "task_id": 126,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1113,
             "user_id": 3,
             "task_id": 124,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1114,
             "user_id": 29,
             "task_id": 84,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1115,
             "user_id": 17,
             "task_id": 58,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1116,
             "user_id": 27,
             "task_id": 77,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1117,
             "user_id": 17,
             "task_id": 87,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1118,
             "user_id": 27,
             "task_id": 55,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1119,
             "user_id": 9,
             "task_id": 112,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1120,
             "user_id": 15,
             "task_id": 90,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1121,
             "user_id": 23,
             "task_id": 110,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1122,
             "user_id": 30,
             "task_id": 128,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1123,
             "user_id": 38,
             "task_id": 26,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1124,
             "user_id": 4,
             "task_id": 16,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1125,
             "user_id": 44,
             "task_id": 58,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1126,
             "user_id": 2,
             "task_id": 21,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1127,
             "user_id": 15,
             "task_id": 32,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1128,
             "user_id": 7,
             "task_id": 135,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1129,
             "user_id": 2,
             "task_id": 54,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1130,
             "user_id": 7,
             "task_id": 102,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1131,
             "user_id": 17,
             "task_id": 95,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1132,
             "user_id": 12,
             "task_id": 145,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1133,
             "user_id": 17,
             "task_id": 111,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1134,
             "user_id": 3,
             "task_id": 9,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1135,
             "user_id": 15,
             "task_id": 123,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1136,
             "user_id": 27,
             "task_id": 135,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1137,
             "user_id": 30,
             "task_id": 83,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1138,
             "user_id": 15,
             "task_id": 119,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1139,
             "user_id": 4,
             "task_id": 41,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1140,
             "user_id": 12,
             "task_id": 6,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1141,
             "user_id": 2,
             "task_id": 11,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1142,
             "user_id": 30,
             "task_id": 90,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1143,
             "user_id": 23,
             "task_id": 49,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1144,
             "user_id": 2,
             "task_id": 112,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1145,
             "user_id": 12,
             "task_id": 119,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1146,
             "user_id": 27,
             "task_id": 144,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1147,
             "user_id": 15,
             "task_id": 18,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1148,
             "user_id": 29,
             "task_id": 36,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1149,
             "user_id": 7,
             "task_id": 125,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1150,
             "user_id": 6,
             "task_id": 108,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1151,
             "user_id": 2,
             "task_id": 62,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1152,
             "user_id": 44,
             "task_id": 68,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1153,
             "user_id": 17,
             "task_id": 94,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1154,
             "user_id": 35,
             "task_id": 137,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1155,
             "user_id": 23,
             "task_id": 24,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1156,
             "user_id": 12,
             "task_id": 139,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1157,
             "user_id": 3,
             "task_id": 68,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1158,
             "user_id": 38,
             "task_id": 35,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1159,
             "user_id": 15,
             "task_id": 81,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1160,
             "user_id": 44,
             "task_id": 53,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1161,
             "user_id": 16,
             "task_id": 89,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1162,
             "user_id": 30,
             "task_id": 142,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1163,
             "user_id": 16,
             "task_id": 70,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1164,
             "user_id": 5,
             "task_id": 26,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1165,
             "user_id": 4,
             "task_id": 91,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1166,
             "user_id": 2,
             "task_id": 25,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1167,
             "user_id": 17,
             "task_id": 141,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1168,
             "user_id": 7,
             "task_id": 41,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1169,
             "user_id": 35,
             "task_id": 94,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1170,
             "user_id": 29,
             "task_id": 81,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1171,
             "user_id": 17,
             "task_id": 49,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1172,
             "user_id": 7,
             "task_id": 75,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1173,
             "user_id": 6,
             "task_id": 142,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1174,
             "user_id": 7,
             "task_id": 138,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1175,
             "user_id": 3,
             "task_id": 132,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1176,
             "user_id": 37,
             "task_id": 77,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1177,
             "user_id": 17,
             "task_id": 23,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1178,
             "user_id": 3,
             "task_id": 7,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1179,
             "user_id": 5,
             "task_id": 77,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1180,
             "user_id": 38,
             "task_id": 27,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1181,
             "user_id": 37,
             "task_id": 106,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1182,
             "user_id": 1,
             "task_id": 144,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1183,
             "user_id": 12,
             "task_id": 25,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1184,
             "user_id": 2,
             "task_id": 82,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1185,
             "user_id": 16,
             "task_id": 28,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1186,
             "user_id": 1,
             "task_id": 65,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1187,
             "user_id": 27,
             "task_id": 83,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1188,
             "user_id": 44,
             "task_id": 27,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1189,
             "user_id": 44,
             "task_id": 84,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1190,
             "user_id": 2,
             "task_id": 90,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1191,
             "user_id": 44,
             "task_id": 42,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1192,
             "user_id": 7,
             "task_id": 57,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1193,
             "user_id": 3,
             "task_id": 34,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1194,
             "user_id": 35,
             "task_id": 11,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1195,
             "user_id": 44,
             "task_id": 37,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1196,
             "user_id": 30,
             "task_id": 57,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1197,
             "user_id": 5,
             "task_id": 76,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1198,
             "user_id": 17,
             "task_id": 53,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1199,
             "user_id": 12,
             "task_id": 106,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1200,
             "user_id": 38,
             "task_id": 145,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1201,
             "user_id": 38,
             "task_id": 131,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1202,
             "user_id": 17,
             "task_id": 83,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1203,
             "user_id": 16,
             "task_id": 12,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1204,
             "user_id": 12,
             "task_id": 90,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1205,
             "user_id": 15,
             "task_id": 126,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1206,
             "user_id": 27,
             "task_id": 2,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1207,
             "user_id": 4,
             "task_id": 26,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1208,
             "user_id": 15,
             "task_id": 51,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1209,
             "user_id": 2,
             "task_id": 42,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1210,
             "user_id": 44,
             "task_id": 47,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1211,
             "user_id": 38,
             "task_id": 82,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1212,
             "user_id": 38,
             "task_id": 41,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1213,
             "user_id": 37,
             "task_id": 133,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1214,
             "user_id": 27,
             "task_id": 149,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1215,
             "user_id": 12,
             "task_id": 93,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1216,
             "user_id": 5,
             "task_id": 89,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1217,
             "user_id": 7,
             "task_id": 111,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1218,
             "user_id": 37,
             "task_id": 143,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1219,
             "user_id": 38,
             "task_id": 129,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1220,
             "user_id": 1,
             "task_id": 135,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1221,
             "user_id": 23,
             "task_id": 81,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1222,
             "user_id": 1,
             "task_id": 108,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1223,
             "user_id": 7,
             "task_id": 16,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1224,
             "user_id": 44,
             "task_id": 124,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1225,
             "user_id": 23,
             "task_id": 127,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1226,
             "user_id": 3,
             "task_id": 122,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1227,
             "user_id": 37,
             "task_id": 150,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1228,
             "user_id": 16,
             "task_id": 2,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1229,
             "user_id": 17,
             "task_id": 37,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1230,
             "user_id": 27,
             "task_id": 62,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1231,
             "user_id": 17,
             "task_id": 114,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1232,
             "user_id": 1,
             "task_id": 13,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1233,
             "user_id": 7,
             "task_id": 62,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1234,
             "user_id": 3,
             "task_id": 107,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1235,
             "user_id": 30,
             "task_id": 92,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1236,
             "user_id": 29,
             "task_id": 149,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1237,
             "user_id": 17,
             "task_id": 65,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1238,
             "user_id": 4,
             "task_id": 31,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1239,
             "user_id": 4,
             "task_id": 9,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1240,
             "user_id": 4,
             "task_id": 22,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1241,
             "user_id": 35,
             "task_id": 44,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1242,
             "user_id": 3,
             "task_id": 109,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1243,
             "user_id": 29,
             "task_id": 5,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1244,
             "user_id": 17,
             "task_id": 32,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1245,
             "user_id": 44,
             "task_id": 96,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1246,
             "user_id": 29,
             "task_id": 126,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1247,
             "user_id": 38,
             "task_id": 126,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1248,
             "user_id": 17,
             "task_id": 90,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1249,
             "user_id": 7,
             "task_id": 27,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1250,
             "user_id": 30,
             "task_id": 136,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1251,
             "user_id": 38,
             "task_id": 106,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1252,
             "user_id": 30,
             "task_id": 129,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         },
         {
             "id": 1253,
             "user_id": 5,
             "task_id": 98,
-            "vote": 0
+            "vote": 0,
+            "result": null,
+            "amount_donations": 0
         }
     ]
 }
@@ -33829,7 +37109,9 @@ print_r(json_decode((string) $body));
         "id": 1,
         "user_id": 30,
         "task_id": 1,
-        "vote": 0
+        "vote": 0,
+        "result": null,
+        "amount_donations": 0
     }
 }
 ```

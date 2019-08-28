@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\StreamStatus;
 use App\Http\Requests\ChannelRequest;
 use Illuminate\Database\Eloquent\Model;
 use \Spatie\Tags\HasTags;
@@ -86,7 +87,7 @@ class Stream extends Model implements ViewableContract
     {
         $user = auth()->user();
 
-        if($this->status==Stream::STATUS_ACTIVE)
+        if($this->status==StreamStatus::Active)
         {
             if($this->allow_task_when_stream)
             {
@@ -97,8 +98,7 @@ class Stream extends Model implements ViewableContract
                 return response()->json(['error' => trans('api/streams/task.not_allow_create_task_when_stream_active')], 422);
             }
         }
-
-        if($this->status==Stream::STATUS_CREATED)
+        else if($this->status==StreamStatus::Created)
         {
             if($this->allow_task_before_stream)
             {
@@ -107,10 +107,9 @@ class Stream extends Model implements ViewableContract
             }else{
                 return response()->json(['error' => trans('api/streams/task.not_allow_create_task_before_stream')], 422);
             }
-        }
-
-        if($this->status==Stream::STATUS_FINISHED)
+        }else{
             return response()->json(['error' => trans('api/streams/task.stream_finished')], 422);
+        }
     }
 
     /**
@@ -120,11 +119,11 @@ class Stream extends Model implements ViewableContract
     {
         $amount = 0;
 
-        if($this->status==Stream::STATUS_ACTIVE)
+        if($this->status==StreamStatus::Active)
         {
             $amount = $this->min_amount_task_when_stream;
         }
-        else if($this->status==Stream::STATUS_CREATED)
+        else if($this->status==StreamStatus::Created)
         {
             $amount = $this->min_amount_task_before_stream;
         }
@@ -139,11 +138,11 @@ class Stream extends Model implements ViewableContract
     {
         $amount = 0;
 
-        if($this->status==Stream::STATUS_ACTIVE)
+        if($this->status==StreamStatus::Active)
         {
             $amount = $this->min_amount_task_when_stream;
         }
-        else if($this->status==Stream::STATUS_CREATED)
+        else if($this->status==StreamStatus::Created)
         {
             $amount = $this->min_amount_task_before_stream;
         }

@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Enums\StreamStatus;
+use App\Enums\TaskStatus;
 use App\Http\Resources\ThreadResource;
 use App\Models\Channel;
 use Carbon\Carbon;
 use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\Filter;
 use Illuminate\Http\Request;
 use App\Models\Stream;
 use App\Http\Resources\StreamResource;
 use App\Http\Requests\StreamRequest;
 use Illuminate\Support\Str;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Cache;
 
 /**
@@ -140,31 +140,54 @@ class StreamController extends Controller
     public function update(Stream $stream, StreamRequest $request)
     {
         $user = auth()->user();
+        $status = $request->has('status') ? $request->get('status') : -1;
 
         if(!$user->channel || ($user->channel->id != $stream->channel_id))
             return response()->json(['error' => trans('api/stream.failed_channel')], 422);
 
-        if($stream->status==StreamStatus::Created)
-        {
-            $allowed = ['link', 'start_at', 'title', 'tags',
-                'allow_task_before_stream', 'allow_task_when_stream', 'min_amount_task_before_stream',
-                'min_amount_task_when_stream', 'min_amount_donate_task_before_stream', 'min_amount_donate_task_when_stream'
-            ];
-        }else if($stream->status==StreamStatus::Active){
-            $allowed = ['allow_task_before_stream', 'allow_task_when_stream', 'min_amount_task_before_stream',
-                'min_amount_task_when_stream', 'min_amount_donate_task_before_stream', 'min_amount_donate_task_when_stream'];
-        }else{
-            return response()->json(['error' => trans('api/stream.cannot_update_stream_already_finished')], 422);
-        }
+        //try to change to another status
+        if($status>-1 && $status!=StreamStatus::FinishedWaitPay)
+            return response()->json(['error' => trans('api/stream.cannot_update_status_stream')], 422);
 
         //Set finished
-        if($stream->status==StreamStatus::Active && $request->has('status') && $request->get('status')==StreamStatus::FinishedWaitPay)
+        if($stream->status==StreamStatus::Active && $status==StreamStatus::FinishedWaitPay)
         {
-            $stream->update([
-                'status' => StreamStatus::FinishedWaitPay,
-                'ended_at' => Carbon::now('UTC')
-            ]);
+            try {
+                $stream = DB::transaction(function () use ($stream) {
+
+                    $stream->update([
+                        'status' => StreamStatus::FinishedWaitPay,
+                        'ended_at' => Carbon::now('UTC')
+                    ]);
+
+                    //set all task to status can vote
+                    $tasks = $stream->tasks;    //Todo: All task?
+                    if(count($tasks)>0)
+                    {
+                        foreach($tasks as $task)
+                            $task->update(['status' => TaskStatus::AllowVote]);
+                    }
+
+                    return $stream;
+                });
+            } catch (\Exception $e) {
+                return response($e->getMessage(), 422);
+            }
         }else{
+
+            if($stream->status==StreamStatus::Created)
+            {
+                $allowed = ['link', 'start_at', 'title', 'tags',
+                    'allow_task_before_stream', 'allow_task_when_stream', 'min_amount_task_before_stream',
+                    'min_amount_task_when_stream', 'min_amount_donate_task_before_stream', 'min_amount_donate_task_when_stream'
+                ];
+            }else if($stream->status==StreamStatus::Active){
+                $allowed = ['allow_task_before_stream', 'allow_task_when_stream', 'min_amount_task_before_stream',
+                    'min_amount_task_when_stream', 'min_amount_donate_task_before_stream', 'min_amount_donate_task_when_stream'];
+            }else{
+                return response()->json(['error' => trans('api/stream.cannot_update_stream_already_finished')], 422);
+            }
+
             $stream->update($request->only($allowed));
         }
 
