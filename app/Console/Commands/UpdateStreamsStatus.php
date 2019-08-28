@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Enums\StreamStatus;
 use App\Models\Stream;
-use App\Models\Task;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -39,9 +39,7 @@ class UpdateStreamsStatus extends Command
         $bar = $this->output->createProgressBar(100);
 
         $now = Carbon::now('UTC');
-
-        $streams = Stream::where('status', Stream::STATUS_CREATED)
-            ->where('start_at', '>', $now)->get();
+        $streams = Stream::where('status', StreamStatus::Created)->where('start_at', '>', $now)->get();
 
         if(count($streams)>0)
         {
@@ -49,9 +47,7 @@ class UpdateStreamsStatus extends Command
             {
                 try {
                     DB::transaction(function () use ($stream) {
-                        $stream->update([
-                            'status' => Stream::STATUS_ACTIVE
-                        ]);
+                        $stream->update(['status' => StreamStatus::Active]);
                     });
                 } catch (\Exception $e) {
                     echo response($e->getMessage(), 422);

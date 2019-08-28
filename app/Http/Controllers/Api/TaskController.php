@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\TaskStatus;
+use App\Enums\VoteStatus;
 use App\Models\Vote;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -52,7 +54,7 @@ class TaskController extends Controller
     {
         $user = auth()->user();
 
-        if($task->check_vote==Task::VOTE_FINISHED)
+        if($task->check_vote!=TaskStatus::AllowVote)
             return response()->json(['error' => trans('api/task.vote_finished')], 422);
 
         $votes = $task->votes()->where('user_id', $user->id);
@@ -62,7 +64,7 @@ class TaskController extends Controller
 
         $vote = $votes->first();
 
-        if($vote->vote!=Vote::VOTE_PENDING)
+        if($vote->vote!=VoteStatus::Pending)
             return response()->json(['error' => trans('api/task.already_vote')], 422);
 
         $vote->update($request->only('vote'));

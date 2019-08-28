@@ -14,11 +14,6 @@ class Stream extends Model implements ViewableContract
 {
     use HasTags, BelongsToThrough, Viewable;
 
-    const STATUS_CREATED = 0;
-    const STATUS_ACTIVE = 1;
-    const STATUS_FINISHED = 3;
-    const STATUS_FINISHED_AND_PAYED = 4;
-
     /**
      * The table associated with the model.
      *
@@ -148,41 +143,5 @@ class Stream extends Model implements ViewableContract
         }
 
         return $amount;
-    }
-
-    public function canMakeDonate($amount)
-    {
-        $user = auth()->user();
-
-        if($this->status==Stream::STATUS_ACTIVE)
-        {
-            if($this->allow_task_when_stream)
-            {
-                if($user->account->amount<$this->min_amount_task_when_stream)
-                    return response()->json(['error' => trans('api/streams/task.not_enough_money')], 422);
-
-                if($amount<$this->min_amount_task_when_stream)
-                    return response()->json(['error' => trans('api/streams/task.amount_less_min_amount')], 422);
-            }else{
-                return response()->json(['error' => trans('api/streams/task.not_allow_create_task_when_stream_active')], 422);
-            }
-        }
-
-        if($this->status==Stream::STATUS_CREATED)
-        {
-            if($this->allow_task_before_stream)
-            {
-                if($user->account->amount<$this->min_amount_task_before_stream)
-                    return response()->json(['error' => trans('api/streams/task.not_enough_money')], 422);
-
-                if($amount<$this->min_amount_task_before_stream)
-                    return response()->json(['error' => trans('api/streams/task.amount_less_min_amount')], 422);
-            }else{
-                return response()->json(['error' => trans('api/streams/task.not_allow_create_task_before_stream')], 422);
-            }
-        }
-
-        if($this->status==Stream::STATUS_FINISHED)
-            return response()->json(['error' => trans('api/streams/task.stream_finished')], 422);
     }
 }

@@ -6,10 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vote extends Model
 {
-    const VOTE_PENDING = 0;
-    const VOTE_YES = 1;
-    const VOTE_NO = 2;
-
     public $timestamps = false;
 
     /**

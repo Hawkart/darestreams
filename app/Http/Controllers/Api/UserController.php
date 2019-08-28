@@ -405,7 +405,7 @@ class UserController extends Controller
             foreach ($items as &$item)
                 $item->donates = $data[$item->id];
 
-            $cacheTags->put($cache_key, $items, 30);
+            $cacheTags->put($cache_key, $items, 1800);
         }
 
         return UserResource::collection($items);

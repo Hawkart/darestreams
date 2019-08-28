@@ -261,7 +261,7 @@ class StreamController extends Controller
                 //->where('status', StreamStatus::Active)  //Todo: uncomment in production
                 ->jsonPaginate();
 
-            $cacheTags->put($cache_key, $items, 30);
+            $cacheTags->put($cache_key, $items, 1800);
         }
 
         return StreamResource::collection($items);

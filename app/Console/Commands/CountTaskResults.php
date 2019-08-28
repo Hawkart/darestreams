@@ -2,15 +2,15 @@
 
 namespace App\Console\Commands;
 
+use App\Enums\StreamStatus;
+use App\Enums\TaskStatus;
+use App\Enums\TransactionStatus;
+use App\Enums\VoteStatus;
 use App\Models\Stream;
 use App\Models\Task;
-use App\Models\Transaction;
-use App\Models\Vote;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-use Image;
-use File;
 
 class CountTaskResults extends Command
 {
@@ -42,17 +42,17 @@ class CountTaskResults extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
-        $minus10 = Carbon::now('UTC')->subMinutes(10);
-        $streams = Stream::where('ended_at', '<', $minus10)
+        $after = Carbon::now('UTC')->subMinutes(30);
+        $streams = Stream::where('ended_at', '<', $after)
                     ->whereNotNull('ended_at')
-                    ->where('status', Stream::STATUS_FINISHED)
+                    ->where('status', StreamStatus::FinishedWaitPay)
                     ->get();
 
         if(count($streams)>0)
         {
             foreach($streams as $stream)
             {
-                $tasks = $stream->tasks()->where('check_vote', '<>', Task::VOTE_FINISHED)->with(['votes'])->get();
+                $tasks = $stream->tasks()->where('status', TaskStatus::VoteFinished)->with(['votes'])->get();
 
                 if(count($tasks)>0)
                 {
@@ -62,12 +62,13 @@ class CountTaskResults extends Command
                         //$votes = Vote::where('task_id', $task->id)->get();
                         $votes = $task->votes;
 
+                        //Todo: Formula + result to field
                         foreach($votes as $vote)
                         {
-                            if($vote->vote==Vote::VOTE_YES)
+                            if($vote->vote==VoteStatus::Yes)
                                 $result++;
 
-                            if($vote->vote==Vote::VOTE_NO)
+                            if($vote->vote==VoteStatus::No)
                                 $result--;
                         }
 
@@ -76,20 +77,18 @@ class CountTaskResults extends Command
                             DB::transaction(function () use ($task, $result)
                             {
                                 if($result>0)
-                                    $tstatus = Transaction::PAYMENT_COMPLETED;
+                                    $tstatus = TransactionStatus::Completed;
                                 else
-                                    $tstatus = Transaction::PAYMENT_CANCELED;
+                                    $tstatus = TransactionStatus::Canceled;
 
                                 $transactions = $task->transactions;
                                 foreach($transactions as $transaction)
                                 {
-                                    if($transaction->status!=Transaction::PAYMENT_COMPLETED && $transaction->status!=Transaction::PAYMENT_CANCELED)
+                                    if($transaction->status!=TransactionStatus::Completed && $transaction->status!=TransactionStatus::Canceled)
                                         $transaction->update(['status' => $tstatus]);
                                 }
 
-                                $task->update([
-                                    'check_vote' => Task::VOTE_FINISHED
-                                ]);
+                                $task->update(['status' => TaskStatus::PayFinished]);
                             });
                         } catch (\Exception $e) {
                             echo response($e->getMessage(), 422);
@@ -97,8 +96,8 @@ class CountTaskResults extends Command
                     }
 
                     //check all tasks voted then stream to payed
-                    if(Task::where('stream_id', $stream->id)->where('check_vote', '<>', Task::VOTE_FINISHED)->count()==0)
-                        $stream->update(['status' => Stream::STATUS_FINISHED_AND_PAYED]);
+                    if(Task::where('stream_id', $stream->id)->where('status', '<>', TaskStatus::PayFinished)->count()==0)
+                        $stream->update(['status' => StreamStatus::FinishedIsPayed]);
                 }
             }
         }

@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
+use App\Enums\TransactionStatus;
 use App\Events\TransactionCreatedEvent;
-use App\Models\Transaction;
 use App\Models\Vote;
 
 class TransactionCreatedListener
@@ -19,12 +19,12 @@ class TransactionCreatedListener
         $transaction = $event->transaction;
 
         //donate to user
-        if($transaction->status==Transaction::PAYMENT_COMPLETED)
+        if($transaction->status==TransactionStatus::Completed)
         {
             //Update receiver's account amount
             $account = $transaction->accountReceiver;
             $account->update([
-                "amount" => sumAmounts($account->amount, $transaction->amount, 2)
+                "amount" => $account->amount+$transaction->amount
             ]);
 
             //Update sender's account amount
@@ -32,17 +32,17 @@ class TransactionCreatedListener
             {
                 $account = $transaction->accountSender;
                 $account->update([
-                    "amount" => sumAmounts($account->amount, (-1)*$transaction->amount, 2)
+                    "amount" => $account->amount-$transaction->amount
                 ]);
             }
-        }else if($transaction->status==Transaction::PAYMENT_HOLDING){  //to task
+        }else if($transaction->status==TransactionStatus::Holding){  //to task
 
             //Update sender's account amount
             if(intval($transaction->account_sender_id)>0)
             {
                 $account = $transaction->accountSender;
                 $account->update([
-                    "amount" => sumAmounts($account->amount, (-1)*$transaction->amount, 2)
+                    "amount" => $account->amount-$transaction->amount
                 ]);
             }
         }else{
@@ -56,16 +56,16 @@ class TransactionCreatedListener
             $stream = $task->stream;
             $user = $transaction->accountSender->user;
 
-            if($transaction->status==Transaction::PAYMENT_COMPLETED)
+            if($transaction->status==TransactionStatus::Completed)
             {
                 $task->update([
-                    "amount_donations" => sumAmounts($task->amount_donations, $transaction->amount, 2)
+                    "amount_donations" => $task->amount_donations+$transaction->amount
                 ]);
 
                 $stream = $task->steam;
                 $stream->update([
                     'quantity_donations' => intval($stream->quantity_donations) + 1,
-                    "amount_donations" => sumAmounts($task->amount_donations, $transaction->amount, 2)
+                    "amount_donations" => $task->amount_donations+$transaction->amount
                 ]);
             }
 

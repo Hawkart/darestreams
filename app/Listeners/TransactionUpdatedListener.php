@@ -2,9 +2,8 @@
 
 namespace App\Listeners;
 
+use App\Enums\TransactionStatus;
 use App\Events\TransactionUpdatedEvent;
-use App\Models\Transaction;
-use App\Models\Vote;
 
 class TransactionUpdatedListener
 {
@@ -20,17 +19,17 @@ class TransactionUpdatedListener
 
         if($transaction->isDirty('status'))
         {
-            if($transaction->status==Transaction::PAYMENT_COMPLETED)
+            if($transaction->status==TransactionStatus::Completed)
             {
                 //pending,canceled->completed
-                if($transaction->getOriginal('status')!=Transaction::PAYMENT_HOLDING)
+                if($transaction->getOriginal('status')!=TransactionStatus::Holding)
                 {
                     //Update sender's account amount
                     if(intval($transaction->account_sender_id)>0)
                     {
                         $account = $transaction->accountSender;
                         $account->update([
-                            "amount" => sumAmounts($account->amount, (-1)*$transaction->amount, 2)
+                            "amount" => $account->amoun-$transaction->amount
                         ]);
                     }
                 }
@@ -38,7 +37,7 @@ class TransactionUpdatedListener
                 //Update receiver's account amount
                 $account = $transaction->accountReceiver;
                 $account->update([
-                    "amount" => sumAmounts($account->amount, $transaction->amount, 2)
+                    "amount" => $account->amount+$transaction->amount
                 ]);
 
                 if(intval($transaction->task_id)>0)
@@ -55,28 +54,28 @@ class TransactionUpdatedListener
                     ]);
                 }
 
-            }else if($transaction->status==Transaction::PAYMENT_CANCELED)
+            }else if($transaction->status==TransactionStatus::Canceled)
             {
                 //holding -> canceled
-                if($transaction->getOriginal('status')==Transaction::PAYMENT_HOLDING)
+                if($transaction->getOriginal('status')==TransactionStatus::Holding)
                 {
                     //Update sender's account amount
                     if(intval($transaction->account_sender_id)>0)
                     {
                         $account = $transaction->accountSender;
                         $account->update([
-                            "amount" => sumAmounts($account->amount, $transaction->amount, 2)
+                            "amount" => $account->amount+$transaction->amount
                         ]);
                     }
                 }
 
                 //completed -> canceled
-                if($transaction->getOriginal('status')!=Transaction::PAYMENT_COMPLETED)
+                if($transaction->getOriginal('status')!=TransactionStatus::Completed)
                 {
                     //Update receiver's account amount
                     $account = $transaction->accountReceiver;
                     $account->update([
-                        "amount" => sumAmounts($account->amount, (-1)*$transaction->amount, 2)
+                        "amount" => $account->amount-$transaction->amount
                     ]);
                 }
 
@@ -84,13 +83,13 @@ class TransactionUpdatedListener
                 {
                     $task = $transaction->task;
                     $task->update([
-                        "amount_donations" => sumAmounts($task->amount_donations, (-1)*$transaction->amount, 2)
+                        "amount_donations" => $task->amount_donations-$transaction->amount
                     ]);
 
                     $stream = $task->steam;
                     $stream->update([
                         'quantity_donations' => intval($stream->quantity_donations) - 1,
-                        "amount_donations" => sumAmounts($task->amount_donations, (-1)*$transaction->amount, 2)
+                        "amount_donations" => $task->amount_donations-$transaction->amount
                     ]);
                 }
             }
