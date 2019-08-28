@@ -4,8 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Auth;
+use App\Enums\VoteStatus;
+use BenSampo\Enum\Rules\EnumValue;
 
 class VoteRequest extends FormRequest {
     /**
@@ -25,7 +25,7 @@ class VoteRequest extends FormRequest {
     public function rules(Request $request)
     {
         return [
-            'vote' => 'required|in:1,2'
+            'vote' => ['required', new EnumValue(VoteStatus::class)],
         ];
     }
 

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\StreamStatus;
 use App\Http\Resources\ThreadResource;
 use App\Models\Channel;
+use Carbon\Carbon;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
 use Illuminate\Http\Request;
@@ -24,7 +26,7 @@ class StreamController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api')->only(['store', 'update']);
+        $this->middleware('auth:api')->only(['store', 'update', 'setFinished']);
     }
 
     /**
@@ -89,7 +91,8 @@ class StreamController extends Controller
         if(!$user->channel || $user->channel->id!=$request->get('channel_id'))
             return response()->json(['error' => trans('api/stream.failed_no_channel')], 422);
 
-        if($user->streams()->where('status', '<>', Stream::STATUS_FINISHED)->count()>0)
+        //Cannot create new before exists not finished
+        if($user->streams()->whereIn('status', [StreamStatus::Created, StreamStatus::Active])->count()>0)
             return response()->json(['error' => trans('api/stream.you_still_have_active_streams')], 422);
 
         $input = $request->all();
@@ -121,6 +124,7 @@ class StreamController extends Controller
      * @bodyParam title string Title of stream.
      * @bodyParam link string Link on the stream.
      * @bodyParam start_at datetime Datetime of starting stream.
+     * @bodyParam status integer Status of stream.
      * @bodyParam allow_task_before_stream boolean Allow to create task before stream starts.
      * @bodyParam allow_task_when_stream boolean Allow to create task while stream is active.
      * @bodyParam min_amount_task_before_stream decimal Min amount to create task before stream starts.
@@ -136,25 +140,34 @@ class StreamController extends Controller
     public function update(Stream $stream, StreamRequest $request)
     {
         $user = auth()->user();
-        $inputs = [];
-
-        //Todo: Check all rules and fields allowed to change
 
         if(!$user->channel || ($user->channel->id != $stream->channel_id))
             return response()->json(['error' => trans('api/stream.failed_channel')], 422);
 
-        if($stream->status==Stream::STATUS_FINISHED)
+        if($stream->status==StreamStatus::Created)
+        {
+            $allowed = ['link', 'start_at', 'title', 'tags',
+                'allow_task_before_stream', 'allow_task_when_stream', 'min_amount_task_before_stream',
+                'min_amount_task_when_stream', 'min_amount_donate_task_before_stream', 'min_amount_donate_task_when_stream'
+            ];
+        }else if($stream->status==StreamStatus::Active){
+            $allowed = ['allow_task_before_stream', 'allow_task_when_stream', 'min_amount_task_before_stream',
+                'min_amount_task_when_stream', 'min_amount_donate_task_before_stream', 'min_amount_donate_task_when_stream'];
+        }else{
             return response()->json(['error' => trans('api/stream.cannot_update_stream_already_finished')], 422);
+        }
 
-        if($stream->status==Stream::STATUS_ACTIVE)
-            $inputs = $request->only(['status']);
+        //Set finished
+        if($stream->status==StreamStatus::Active && $request->has('status') && $request->get('status')==StreamStatus::FinishedWaitPay)
+        {
+            $stream->update([
+                'status' => StreamStatus::FinishedWaitPay,
+                'ended_at' => Carbon::now('UTC')
+            ]);
+        }else{
+            $stream->update($request->only($allowed));
+        }
 
-        if($stream->status==Stream::STATUS_CREATED)
-            $inputs = $request->except('game_id', 'channel_id', 'created_at', 'updated_at');
-
-        $stream->update($inputs);
-
-        //Todo: Add tags code.
         StreamResource::withoutWrapping();
 
         return response()->json([
@@ -222,7 +235,7 @@ class StreamController extends Controller
                 ->whereIn('id', $ids)
                 ->orderByRaw(DB::raw("FIELD(id, $oids)"))
                 ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-                //->where('status', Stream::STATUS_ACTIVE)  //Todo: uncomment in production
+                //->where('status', StreamStatus::Active)  //Todo: uncomment in production
                 ->jsonPaginate();
 
             $cacheTags->put($cache_key, $items, 30);

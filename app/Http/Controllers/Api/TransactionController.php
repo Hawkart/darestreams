@@ -40,7 +40,7 @@ class TransactionController extends Controller
         $request->validate([
             'task_id' => 'sometimes|required|exists:tasks,id',
             'user_id' => 'sometimes|required|exists:users,id',
-            'amount' => 'required|regex:/^\d+(\.\d{1,2})?$/'
+            'amount' => 'required|integer|min:1'
         ]);
 
         $user = auth()->user();

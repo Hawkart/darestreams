@@ -4,8 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Auth;
+use App\Enums\StreamStatus;
+use BenSampo\Enum\Rules\EnumValue;
 
 class StreamRequest extends FormRequest {
     /**
@@ -40,10 +40,10 @@ class StreamRequest extends FormRequest {
                         'start_at' => 'required|date|after:now',
                         'allow_task_before_stream' => 'required_without:allow_task_when_stream|boolean',
                         'allow_task_when_stream' => 'required_without:allow_task_before_stream|boolean',
-                        'min_amount_task_before_stream' => 'required_if:allow_task_before_stream,1|regex:/^\d+(\.\d{1,2})?$/',
-                        'min_amount_donate_task_before_stream' => 'required_if:allow_task_before_stream,1|regex:/^\d+(\.\d{1,2})?$/',
-                        'min_amount_task_when_stream' => 'required_if:allow_task_when_stream,1|regex:/^\d+(\.\d{1,2})?$/',
-                        'min_amount_donate_task_when_stream' => 'required_if:allow_task_when_stream,1|regex:/^\d+(\.\d{1,2})?$/',
+                        'min_amount_task_before_stream' => 'required_if:allow_task_before_stream,1|integer|min:0',
+                        'min_amount_donate_task_before_stream' => 'required_if:allow_task_before_stream,1|integer|min:0',
+                        'min_amount_task_when_stream' => 'required_if:allow_task_when_stream,1|integer|min:0',
+                        'min_amount_donate_task_when_stream' => 'required_if:allow_task_when_stream,1|integer|min:0',
 
                         //Todo: Add validation of superbowl
                     ];
@@ -55,12 +55,13 @@ class StreamRequest extends FormRequest {
                         'title'  => 'sometimes|required',
                         'link'     => 'sometimes|required|url',
                         'start_at' => 'sometimes|required|date|after:now',
+                        'status' => ['sometimes', 'required', new EnumValue(StreamStatus::class)],
                         'allow_task_before_stream' => 'sometimes|required_without:allow_task_when_stream|boolean',
                         'allow_task_when_stream' => 'sometimes|required_without:allow_task_before_stream|boolean',
-                        'min_amount_task_before_stream' => 'sometimes|required_if:allow_task_before_stream,1|regex:/^\d+(\.\d{1,2})?$/',
-                        'min_amount_donate_task_before_stream' => 'sometimes|required_if:allow_task_before_stream,1|regex:/^\d+(\.\d{1,2})?$/',
-                        'min_amount_task_when_stream' => 'sometimes|required_if:allow_task_when_stream,1|regex:/^\d+(\.\d{1,2})?$/',
-                        'min_amount_donate_task_when_stream' => 'sometimes|required_if:allow_task_when_stream,1|regex:/^\d+(\.\d{1,2})?$/',
+                        'min_amount_task_before_stream' => 'sometimes|required_if:allow_task_before_stream,1|integer|min:0',
+                        'min_amount_donate_task_before_stream' => 'sometimes|required_if:allow_task_before_stream,1|integer|min:0',
+                        'min_amount_task_when_stream' => 'sometimes|required_if:allow_task_when_stream,1|integer|min:0',
+                        'min_amount_donate_task_when_stream' => 'sometimes|required_if:allow_task_when_stream,1|integer|min:0',
                     ];
                 }
             default:break;

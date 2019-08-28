@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\TransactionStatus;
+use App\Enums\TransactionType;
 use App\Http\Resources\TransactionResource;
 use App\Models\Task;
 use App\Models\Transaction;
@@ -59,7 +61,7 @@ class PaymentController extends Controller
     public function checkout($gate, $user_id, $task_id, Request $request)
     {
         $request->validate([
-            'amount' => 'required|regex:/^\d+(\.\d{1,2})?$/'
+            'amount' => 'required|integer|min:1'
         ]);
 
         if((intval($user_id)>0 && intval($task_id)>0) || (intval($user_id)==0 && intval($task_id)==0) )
@@ -79,6 +81,8 @@ class PaymentController extends Controller
             'comment' => "Money transfer from PayPal.",
             'currency' => $currency,
             'payment' => $this->gate,
+            'status' => TransactionStatus::Created,
+            'type' => TransactionType::Deposit
         ];
 
         try {
@@ -148,13 +152,13 @@ class PaymentController extends Controller
                 if ($t->currency != $currency)
                     return response()->json(['error' => trans('api/paypal.currency_not_match')], 422);
 
-                if ($t->status != Transaction::PAYMENT_COMPLETED)
+                if ($t->status != TransactionStatus::Completed)
                 {
                     try {
                         $t = DB::transaction(function () use ($data, $t, $amount, $user_id, $task_id, $description) {
 
                             $t->update([
-                                'status' => Transaction::PAYMENT_COMPLETED,
+                                'status' => TransactionStatus::Completed,
                                 'amount' => $amount,
                                 'json' => $data
                             ]);
@@ -177,7 +181,8 @@ class PaymentController extends Controller
                                     'amount' => $t->amount,
                                     'account_sender_id' => $t->account_receiver_id,
                                     'account_receiver_id' => $task ? $task->stream->user->account->id : $user->account->id,
-                                    'status' => $task ? Transaction::PAYMENT_HOLDING : Transaction::PAYMENT_COMPLETED
+                                    'status' => $task ? TransactionStatus::Holding : TransactionStatus::Completed,
+                                    'type' => TransactionType::Donation
                                 ]);
                             }
 

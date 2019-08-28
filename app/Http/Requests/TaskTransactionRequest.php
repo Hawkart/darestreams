@@ -34,7 +34,7 @@ class TaskTransactionRequest extends FormRequest {
             case 'POST':
                 {
                     return [
-                        'amount' => "required|regex:/^\d+(\.\d{1,2})?$/"
+                        'amount' => "required|integer|min:1"
                     ];
                 }
             case 'PUT':

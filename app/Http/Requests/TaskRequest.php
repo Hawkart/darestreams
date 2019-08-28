@@ -4,8 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Auth;
+use App\Enums\TaskStatus;
+use BenSampo\Enum\Rules\EnumValue;
 
 class TaskRequest extends FormRequest {
     /**
@@ -43,7 +43,7 @@ class TaskRequest extends FormRequest {
             case 'PATCH':
                 {
                     return [
-                        'check_vote' => 'sometimes|required|integer|between:0,2',
+                        'status' => ['sometimes', 'required', new EnumValue(TaskStatus::class)],
                         'small_desc' => 'sometimes|required|string|min:1',
                         'full_desc' => 'sometimes|required|string|min:1',
                         'interval_time' => 'sometimes|required|numeric|min:0'

@@ -4,6 +4,7 @@ use App\Enums\StreamStatus;
 use App\Enums\TaskStatus;
 use App\Enums\TransactionStatus;
 use App\Enums\TransactionType;
+use App\Enums\VoteStatus;
 
 return [
     StreamStatus::class => [
@@ -33,5 +34,10 @@ return [
         TransactionType::Deposit => 'Deposit',
         TransactionType::Donation => 'Donation',
         TransactionType::Withdraw => 'Withdraw'
+    ],
+    VoteStatus::class => [
+        VoteStatus::Pending => 'Pending',
+        VoteStatus::Yes => 'Yes',
+        VoteStatus::No => 'No'
     ]
 ];

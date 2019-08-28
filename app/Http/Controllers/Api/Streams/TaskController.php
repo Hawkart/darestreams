@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api\Streams;
 
+use App\Enums\TransactionStatus;
+use App\Enums\TransactionType;
 use App\Http\Controllers\Api\Controller;
 use App\Http\Requests\TaskRequest;
 use App\Models\Transaction;
@@ -107,7 +109,8 @@ class TaskController extends Controller
                         'amount' => $amount,
                         'account_sender_id' => $user->account->id,
                         'account_receiver_id' => $task->stream->user->account->id,
-                        'status' => Transaction::PAYMENT_HOLDING
+                        'status' => TransactionStatus::Holding,
+                        'type' => TransactionType::Donation
                     ]);
                 }
 
