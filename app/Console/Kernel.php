@@ -18,7 +18,8 @@ class Kernel extends ConsoleKernel
         Commands\ImportGames::class,
         Commands\ImportChannelsViews::class,
         Commands\CountTaskResults::class,
-        Commands\UpdateStreamsStatus::class
+        Commands\UpdateStreamsStatus::class,
+        Commands\CheckTaskInterval::class
     ];
 
     /**
@@ -31,6 +32,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('games:import')->weeklyOn(1);
         $schedule->command('channels:get_views')->hourly();
+        $schedule->command('tasks:check_interval')->everyMinute();
+        $schedule->command('streams:update_status')->everyMinute();
     }
 
     /**

@@ -9,6 +9,7 @@ use App\Enums\TransactionType;
 use App\Http\Controllers\Api\Controller;
 use App\Http\Requests\TaskRequest;
 use App\Models\Transaction;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Psy\Util\Str;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -163,12 +164,14 @@ class TaskController extends Controller
         //only streamer can make task to work or allow to vote (task done) if stream active
         if($stream->status==StreamStatus::Active && $user->id==$stream->user->id && $status>-1)
         {
-            if(
-                ($task->status==TaskStatus::Created && $status==TaskStatus::Active) ||
-                ($task->status==TaskStatus::Active && $status==TaskStatus::AllowVote)
-            )
+            if($task->status==TaskStatus::Created && $status==TaskStatus::Active)
             {
                 $task->update(['status' => $status]);
+            } else if($task->status==TaskStatus::Active && $status==TaskStatus::AllowVote) {
+                $task->update([
+                    'status' => $status,
+                    'start_active' => Carbon::now('UTC')
+                ]);
             }else{
                 return response()->json(['error' => trans('api/streams/tasks.failed_change_to_another_status')], 422);
             }

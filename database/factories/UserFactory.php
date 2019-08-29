@@ -12,9 +12,8 @@ $factory->define(User::class, function (Faker $faker) {
     if(!File::exists($filepath))
         File::makeDirectory($filepath);
 
-    $nicknames = ['Kitboga', 'TimTheTatman', 'dota2ti_ru', 'UCCleague', 'GohaMedia', 'archangel_hs',
-        'TpaBoMaH', 'aravay46', 'Rubius', 'mrfreshasian', 'Nixjke', 'unforgettabletv', 'NBA', 'TFBlade',
-        'dakotaz', 'SimCopter1', 'koil', 'itsHafu', 'JoblessGarrett', 'EsfandTV', 'IWillDominate', 'h3x_TV', 'Mikasa_th'];
+    $nicknames = ['amouranth','hardgamechannel','gabepeixe','sweet_anita','texaswildlife','violettavalery','gaules',
+        'asmr_kotya','exbc','rocketbeanstv','copykat_','yoda','shroud','noway4u_sir','stpeach'];
 
     return [
         'name' => $faker->name,

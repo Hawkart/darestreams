@@ -17,6 +17,14 @@ use App\Models\Task;
 class TaskController extends Controller
 {
     /**
+     * ChannelController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api')->only(['setVote']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -46,6 +54,14 @@ class TaskController extends Controller
     }
 
     /**
+     * Set vote for task.
+     *
+     * {task} - integer id of task.
+     *
+     * @authenticated
+     *
+     * @bodyParam vote int Vote parameter, 1-Yes, 2-No, 0 - Pending.
+     *
      * @param Task $task
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -54,7 +70,7 @@ class TaskController extends Controller
     {
         $user = auth()->user();
 
-        if($task->check_vote!=TaskStatus::AllowVote)
+        if($task->status!=TaskStatus::AllowVote && $task->status!=TaskStatus::IntervalFinishedAllowVote)
             return response()->json(['error' => trans('api/task.vote_finished')], 422);
 
         $votes = $task->votes()->where('user_id', $user->id);

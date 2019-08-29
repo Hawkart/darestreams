@@ -42,7 +42,7 @@ class CountTaskResults extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
-        $after = Carbon::now('UTC')->subMinutes(30);
+        $after = Carbon::now('UTC')->subMinutes(config('app.time_vote_until_stream_finished'));
         $streams = Stream::where('ended_at', '<', $after)
                     ->whereNotNull('ended_at')
                     ->where('status', StreamStatus::FinishedWaitPay)

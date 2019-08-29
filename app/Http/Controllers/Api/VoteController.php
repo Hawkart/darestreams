@@ -42,13 +42,4 @@ class VoteController extends Controller
 
         return new VoteResource($item);
     }
-
-    /**
-     * @param Request $request
-     * @param $vote
-     */
-    public function update(VoteRequest $request, Vote $vote)
-    {
-
-    }
 }

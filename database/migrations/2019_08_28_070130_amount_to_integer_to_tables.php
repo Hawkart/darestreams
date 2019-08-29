@@ -46,9 +46,5 @@ class AmountToIntegerToTables extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::table('integer_to_tables', function (Blueprint $table) {
-            //
-        });
-    }
+    {}
 }

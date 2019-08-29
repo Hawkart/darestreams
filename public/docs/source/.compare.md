@@ -336,10 +336,10 @@ print_r(json_decode((string) $body));
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/channels/top", [
     'query' => [
-            "hours" => "molestias",
-            "limit" => "in",
-            "skip" => "omnis",
-            "game_id" => "ab",
+            "hours" => "aperiam",
+            "limit" => "nihil",
+            "skip" => "perferendis",
+            "game_id" => "sed",
             "include" => "user,streams",
         ],
 ]);
@@ -384,7 +384,7 @@ $response = $client->get("https://darestreams.com/api/channels", [
     'query' => [
             "include" => "user,streams",
             "sort" => "-id",
-            "page" => "15",
+            "page" => "8",
         ],
 ]);
 $body = $response->getBody();
@@ -422,7 +422,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\0f010a11fde61d0d29e99a2aedaa04d5.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:56.000000Z",
-                "updated_at": "2019-08-26T09:14:56.000000Z"
+                "updated_at": "2019-08-26T09:14:56.000000Z",
+                "lang": "ru"
             },
             "streams": []
         },
@@ -450,7 +451,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbf20bbb6ce39c9b54765c2c93e6b1b7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             },
             "streams": []
         },
@@ -478,7 +480,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\760c8c01789ba3cc9188e9e338df381b.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             },
             "streams": [
                 {
@@ -487,7 +490,7 @@ print_r(json_decode((string) $body));
                     "game_id": 7,
                     "title": "Explicabo a nemo aut voluptas in et consequatur.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?29331",
-                    "start_at": "1996-04-25 04:33:16",
+                    "start_at": "1996-04-25T04:33:16.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -512,7 +515,7 @@ print_r(json_decode((string) $body));
                     "game_id": 18,
                     "title": "Quod non quas consequatur minima dolorem repellendus facere ad.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?90209",
-                    "start_at": "1994-05-03 19:20:53",
+                    "start_at": "1994-05-03T19:20:53.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -557,7 +560,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e8351ae6b338ee67fc3c4d6a7c5087f7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:50.000000Z",
-                "updated_at": "2019-08-26T09:14:50.000000Z"
+                "updated_at": "2019-08-26T09:14:50.000000Z",
+                "lang": "ru"
             },
             "streams": [
                 {
@@ -566,7 +570,7 @@ print_r(json_decode((string) $body));
                     "game_id": 8,
                     "title": "Dolorum sapiente quia eum et dolor. In expedita iusto delectus suscipit consequatur.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?15023",
-                    "start_at": "2004-09-07 05:31:47",
+                    "start_at": "2004-09-07T05:31:47.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -611,7 +615,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\efe8de2c3a183b231e52442a1a21f0bb.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             },
             "streams": []
         },
@@ -639,7 +644,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\fcfb305f042797ea52896f1bbde0c88d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             },
             "streams": [
                 {
@@ -648,7 +654,7 @@ print_r(json_decode((string) $body));
                     "game_id": 15,
                     "title": "Voluptas numquam voluptatem qui quia sit.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?59969",
-                    "start_at": "1997-02-13 07:52:29",
+                    "start_at": "1997-02-13T07:52:29.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -693,7 +699,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\736ce15abe731d69b346999f05fd968d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:45.000000Z",
-                "updated_at": "2019-08-26T09:14:45.000000Z"
+                "updated_at": "2019-08-26T09:14:45.000000Z",
+                "lang": "ru"
             },
             "streams": []
         },
@@ -721,7 +728,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dd148817619a0364b83b8c6fa10092bd.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:42.000000Z",
-                "updated_at": "2019-08-26T09:14:42.000000Z"
+                "updated_at": "2019-08-26T09:14:42.000000Z",
+                "lang": "ru"
             },
             "streams": [
                 {
@@ -730,7 +738,7 @@ print_r(json_decode((string) $body));
                     "game_id": 17,
                     "title": "Reprehenderit molestiae labore totam officia. Veritatis est delectus ratione.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?19988",
-                    "start_at": "1990-04-19 04:22:47",
+                    "start_at": "1990-04-19T04:22:47.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -775,7 +783,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ed236983eeafa45e570a6937f097a261.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:36.000000Z",
-                "updated_at": "2019-08-26T09:14:36.000000Z"
+                "updated_at": "2019-08-26T09:14:36.000000Z",
+                "lang": "ru"
             },
             "streams": [
                 {
@@ -784,7 +793,7 @@ print_r(json_decode((string) $body));
                     "game_id": 17,
                     "title": "Quod saepe aut rerum recusandae velit. Omnis blanditiis dolor molestias.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?38809",
-                    "start_at": "2013-05-12 04:47:13",
+                    "start_at": "2013-05-12T04:47:13.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -829,7 +838,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\42ba1a82972a4414dc59e84c1f7c2f21.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:36.000000Z",
-                "updated_at": "2019-08-26T09:14:36.000000Z"
+                "updated_at": "2019-08-26T09:14:36.000000Z",
+                "lang": "ru"
             },
             "streams": []
         },
@@ -857,7 +867,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7688695b3429f187faaa1930a9d4a34c.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:36.000000Z",
-                "updated_at": "2019-08-26T09:14:36.000000Z"
+                "updated_at": "2019-08-26T09:14:36.000000Z",
+                "lang": "ru"
             },
             "streams": []
         },
@@ -885,7 +896,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\1c7f654353e154007bd38fd60a4a9868.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:34.000000Z",
-                "updated_at": "2019-08-26T09:14:34.000000Z"
+                "updated_at": "2019-08-26T09:14:34.000000Z",
+                "lang": "ru"
             },
             "streams": [
                 {
@@ -894,7 +906,7 @@ print_r(json_decode((string) $body));
                     "game_id": 1,
                     "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                    "start_at": "2004-02-17 15:51:07",
+                    "start_at": "2004-02-17T15:51:07.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -919,7 +931,7 @@ print_r(json_decode((string) $body));
                     "game_id": 4,
                     "title": "Repellendus consequatur necessitatibus corrupti voluptatem. Omnis nihil numquam dolorem voluptatem.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?68105",
-                    "start_at": "1985-06-12 02:00:53",
+                    "start_at": "1985-06-12T02:00:53.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -964,7 +976,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\04618d3d68fc0da58d76e243853291f3.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:32.000000Z",
-                "updated_at": "2019-08-26T09:14:32.000000Z"
+                "updated_at": "2019-08-26T09:14:32.000000Z",
+                "lang": "ru"
             },
             "streams": []
         },
@@ -992,7 +1005,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\97af6830fea41f22bb93e83f5eb73b7d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             },
             "streams": [
                 {
@@ -1001,7 +1015,7 @@ print_r(json_decode((string) $body));
                     "game_id": 19,
                     "title": "Dolorem adipisci repudiandae voluptatem officia. Sequi et reprehenderit ut repellendus aut dolorem nostrum.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?45895",
-                    "start_at": "2017-03-19 09:23:39",
+                    "start_at": "2017-03-19T09:23:39.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -1046,7 +1060,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a6a6d8a998b1bcdd5e822f1bc356f103.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             },
             "streams": [
                 {
@@ -1055,7 +1070,7 @@ print_r(json_decode((string) $body));
                     "game_id": 20,
                     "title": "Repellendus asperiores ullam quod qui eveniet.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?30277",
-                    "start_at": "1992-03-25 08:24:29",
+                    "start_at": "1992-03-25T08:24:29.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -1100,7 +1115,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\48c4704e31cc75fbe6a9106a3066bacc.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             },
             "streams": []
         },
@@ -1128,7 +1144,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\514d97d878f59d2d1a1318e5c02392a3.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             },
             "streams": []
         },
@@ -1156,7 +1173,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\03a6fba982a694f48792b36fbc5c2cd6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             },
             "streams": []
         },
@@ -1184,7 +1202,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e2bc3a35f7bbf98ba9357676e705eb33.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             },
             "streams": []
         },
@@ -1212,7 +1231,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\652d733740fcdd9db05dcb3d9f17c5d6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             },
             "streams": []
         }
@@ -1280,7 +1300,8 @@ print_r(json_decode((string) $body));
             "avatar": "http:\/\/darestreams.local\/storage\/avatars\\652d733740fcdd9db05dcb3d9f17c5d6.jpg",
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:31.000000Z",
-            "updated_at": "2019-08-26T09:14:31.000000Z"
+            "updated_at": "2019-08-26T09:14:31.000000Z",
+            "lang": "ru"
         },
         "streams": []
     }
@@ -1313,8 +1334,8 @@ $response = $client->put("https://darestreams.com/api/channels/1", [
         ],
     'json' => [
             "description" => "Long description.",
-            "logo" => "quidem",
-            "game_id" => "18",
+            "logo" => "perspiciatis",
+            "game_id" => "3",
         ],
 ]);
 $body = $response->getBody();
@@ -1350,9 +1371,9 @@ Parameter | Type | Status | Description
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/games/top", [
     'query' => [
-            "hours" => "et",
-            "limit" => "eos",
-            "skip" => "laborum",
+            "hours" => "rerum",
+            "limit" => "tempore",
+            "skip" => "non",
             "include" => "tags,streams",
         ],
 ]);
@@ -1396,7 +1417,7 @@ $response = $client->get("https://darestreams.com/api/games", [
     'query' => [
             "include" => "tags,streams",
             "sort" => "-popularity",
-            "page" => "19",
+            "page" => "8",
         ],
 ]);
 $body = $response->getBody();
@@ -1436,7 +1457,7 @@ print_r(json_decode((string) $body));
                     "game_id": 4,
                     "title": "Repellendus consequatur necessitatibus corrupti voluptatem. Omnis nihil numquam dolorem voluptatem.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?68105",
-                    "start_at": "1985-06-12 02:00:53",
+                    "start_at": "1985-06-12T02:00:53.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -1473,7 +1494,7 @@ print_r(json_decode((string) $body));
                     "game_id": 1,
                     "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                    "start_at": "2004-02-17 15:51:07",
+                    "start_at": "2004-02-17T15:51:07.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -1543,7 +1564,7 @@ print_r(json_decode((string) $body));
                     "game_id": 7,
                     "title": "Explicabo a nemo aut voluptas in et consequatur.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?29331",
-                    "start_at": "1996-04-25 04:33:16",
+                    "start_at": "1996-04-25T04:33:16.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -1580,7 +1601,7 @@ print_r(json_decode((string) $body));
                     "game_id": 8,
                     "title": "Dolorum sapiente quia eum et dolor. In expedita iusto delectus suscipit consequatur.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?15023",
-                    "start_at": "2004-09-07 05:31:47",
+                    "start_at": "2004-09-07T05:31:47.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -1672,7 +1693,7 @@ print_r(json_decode((string) $body));
                     "game_id": 20,
                     "title": "Repellendus asperiores ullam quod qui eveniet.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?30277",
-                    "start_at": "1992-03-25 08:24:29",
+                    "start_at": "1992-03-25T08:24:29.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -1709,7 +1730,7 @@ print_r(json_decode((string) $body));
                     "game_id": 18,
                     "title": "Quod non quas consequatur minima dolorem repellendus facere ad.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?90209",
-                    "start_at": "1994-05-03 19:20:53",
+                    "start_at": "1994-05-03T19:20:53.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -1746,7 +1767,7 @@ print_r(json_decode((string) $body));
                     "game_id": 15,
                     "title": "Voluptas numquam voluptatem qui quia sit.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?59969",
-                    "start_at": "1997-02-13 07:52:29",
+                    "start_at": "1997-02-13T07:52:29.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -1783,7 +1804,7 @@ print_r(json_decode((string) $body));
                     "game_id": 19,
                     "title": "Dolorem adipisci repudiandae voluptatem officia. Sequi et reprehenderit ut repellendus aut dolorem nostrum.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?45895",
-                    "start_at": "2017-03-19 09:23:39",
+                    "start_at": "2017-03-19T09:23:39.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -1820,7 +1841,7 @@ print_r(json_decode((string) $body));
                     "game_id": 17,
                     "title": "Reprehenderit molestiae labore totam officia. Veritatis est delectus ratione.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?19988",
-                    "start_at": "1990-04-19 04:22:47",
+                    "start_at": "1990-04-19T04:22:47.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -1845,7 +1866,7 @@ print_r(json_decode((string) $body));
                     "game_id": 17,
                     "title": "Quod saepe aut rerum recusandae velit. Omnis blanditiis dolor molestias.",
                     "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?38809",
-                    "start_at": "2013-05-12 04:47:13",
+                    "start_at": "2013-05-12T04:47:13.000000Z",
                     "ended_at": null,
                     "status": {
                         "key": "Created",
@@ -1944,7 +1965,7 @@ print_r(json_decode((string) $body));
                 "game_id": 1,
                 "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                "start_at": "2004-02-17 15:51:07",
+                "start_at": "2004-02-17T15:51:07.000000Z",
                 "ended_at": null,
                 "status": {
                     "key": "Created",
@@ -2032,7 +2053,7 @@ $response = $client->get("https://darestreams.com/api/payments/1/1/1/checkout", 
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "amount" => "133118.82206",
+            "amount" => "44752283.1354",
         ],
 ]);
 $body = $response->getBody();
@@ -2131,8 +2152,8 @@ print_r(json_decode((string) $body));
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/streams/top", [
     'query' => [
-            "limit" => "magnam",
-            "skip" => "quia",
+            "limit" => "vel",
+            "skip" => "dolorem",
             "include" => "user,tasks",
         ],
 ]);
@@ -2175,7 +2196,7 @@ $response = $client->get("https://darestreams.com/api/streams", [
     'query' => [
             "include" => "game,tasks",
             "sort" => "-quantity_donators",
-            "page" => "6",
+            "page" => "5",
         ],
 ]);
 $body = $response->getBody();
@@ -2195,7 +2216,7 @@ print_r(json_decode((string) $body));
             "game_id": 8,
             "title": "Dolorum sapiente quia eum et dolor. In expedita iusto delectus suscipit consequatur.",
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?15023",
-            "start_at": "2004-09-07 05:31:47",
+            "start_at": "2004-09-07T05:31:47.000000Z",
             "ended_at": null,
             "status": {
                 "key": "Created",
@@ -2554,7 +2575,7 @@ print_r(json_decode((string) $body));
             "game_id": 20,
             "title": "Repellendus asperiores ullam quod qui eveniet.",
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?30277",
-            "start_at": "1992-03-25 08:24:29",
+            "start_at": "1992-03-25T08:24:29.000000Z",
             "ended_at": null,
             "status": {
                 "key": "Created",
@@ -2875,7 +2896,7 @@ print_r(json_decode((string) $body));
             "game_id": 17,
             "title": "Quod saepe aut rerum recusandae velit. Omnis blanditiis dolor molestias.",
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?38809",
-            "start_at": "2013-05-12 04:47:13",
+            "start_at": "2013-05-12T04:47:13.000000Z",
             "ended_at": null,
             "status": {
                 "key": "Created",
@@ -3158,7 +3179,7 @@ print_r(json_decode((string) $body));
             "game_id": 15,
             "title": "Voluptas numquam voluptatem qui quia sit.",
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?59969",
-            "start_at": "1997-02-13 07:52:29",
+            "start_at": "1997-02-13T07:52:29.000000Z",
             "ended_at": null,
             "status": {
                 "key": "Created",
@@ -3441,7 +3462,7 @@ print_r(json_decode((string) $body));
             "game_id": 18,
             "title": "Quod non quas consequatur minima dolorem repellendus facere ad.",
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?90209",
-            "start_at": "1994-05-03 19:20:53",
+            "start_at": "1994-05-03T19:20:53.000000Z",
             "ended_at": null,
             "status": {
                 "key": "Created",
@@ -3857,7 +3878,7 @@ print_r(json_decode((string) $body));
             "game_id": 7,
             "title": "Explicabo a nemo aut voluptas in et consequatur.",
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?29331",
-            "start_at": "1996-04-25 04:33:16",
+            "start_at": "1996-04-25T04:33:16.000000Z",
             "ended_at": null,
             "status": {
                 "key": "Created",
@@ -4311,7 +4332,7 @@ print_r(json_decode((string) $body));
             "game_id": 17,
             "title": "Reprehenderit molestiae labore totam officia. Veritatis est delectus ratione.",
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?19988",
-            "start_at": "1990-04-19 04:22:47",
+            "start_at": "1990-04-19T04:22:47.000000Z",
             "ended_at": null,
             "status": {
                 "key": "Created",
@@ -4575,7 +4596,7 @@ print_r(json_decode((string) $body));
             "game_id": 1,
             "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-            "start_at": "2004-02-17 15:51:07",
+            "start_at": "2004-02-17T15:51:07.000000Z",
             "ended_at": null,
             "status": {
                 "key": "Created",
@@ -4858,7 +4879,7 @@ print_r(json_decode((string) $body));
             "game_id": 19,
             "title": "Dolorem adipisci repudiandae voluptatem officia. Sequi et reprehenderit ut repellendus aut dolorem nostrum.",
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?45895",
-            "start_at": "2017-03-19 09:23:39",
+            "start_at": "2017-03-19T09:23:39.000000Z",
             "ended_at": null,
             "status": {
                 "key": "Created",
@@ -5141,7 +5162,7 @@ print_r(json_decode((string) $body));
             "game_id": 4,
             "title": "Repellendus consequatur necessitatibus corrupti voluptatem. Omnis nihil numquam dolorem voluptatem.",
             "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?68105",
-            "start_at": "1985-06-12 02:00:53",
+            "start_at": "1985-06-12T02:00:53.000000Z",
             "ended_at": null,
             "status": {
                 "key": "Created",
@@ -5430,17 +5451,17 @@ $response = $client->post("https://darestreams.com/api/streams", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "channel_id" => "14",
-            "title" => "et",
-            "link" => "ut",
-            "start_at" => "error",
-            "allow_task_before_stream" => "",
-            "allow_task_when_stream" => "",
-            "min_amount_task_before_stream" => "doloremque",
-            "min_amount_task_when_stream" => "nisi",
-            "min_amount_donate_task_before_stream" => "laudantium",
-            "min_amount_donate_task_when_stream" => "sit",
-            "tags" => "voluptatibus",
+            "channel_id" => "1",
+            "title" => "corporis",
+            "link" => "vero",
+            "start_at" => "est",
+            "allow_task_before_stream" => "1",
+            "allow_task_when_stream" => "1",
+            "min_amount_task_before_stream" => "quos",
+            "min_amount_task_when_stream" => "temporibus",
+            "min_amount_donate_task_before_stream" => "atque",
+            "min_amount_donate_task_when_stream" => "ipsa",
+            "tags" => "aliquam",
         ],
 ]);
 $body = $response->getBody();
@@ -5490,11 +5511,293 @@ print_r(json_decode((string) $body));
 
 
 
-> Example response (400):
+> Example response (200):
 
 ```json
 {
-    "message": "Given include(s) `tasks` are not allowed. Allowed include(s) are `game, streams, channel, tags, user`."
+    "data": {
+        "id": 1,
+        "channel_id": 17,
+        "game_id": 1,
+        "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
+        "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
+        "start_at": "2004-02-17T15:51:07.000000Z",
+        "ended_at": null,
+        "status": {
+            "key": "Created",
+            "value": 0,
+            "description": "Created"
+        },
+        "allow_task_before_stream": 0,
+        "allow_task_when_stream": 0,
+        "min_amount_task_before_stream": 0,
+        "min_amount_task_when_stream": 0,
+        "min_amount_donate_task_before_stream": 0,
+        "min_amount_donate_task_when_stream": 0,
+        "quantity_donators": 2,
+        "quantity_donations": 346,
+        "amount_donations": 291,
+        "created_at": "2019-08-26T09:15:21.000000Z",
+        "updated_at": "2019-08-26T09:15:21.000000Z",
+        "game": {
+            "id": 1,
+            "title": "League of Legends",
+            "title_short": "League of Legends",
+            "popularity": 106512,
+            "logo": "http:\/\/darestreams.local\/storage\/games\/b3aad6fa11fd2c7a080fac75b22cdfe4.jpg",
+            "logo_small": "http:\/\/darestreams.local\/storage\/games\/6a38884f9ea907716d691ad8ec0cb78e.jpg",
+            "views": 95259
+        },
+        "tasks": [
+            {
+                "id": 3,
+                "stream_id": 1,
+                "user_id": 37,
+                "small_desc": "Vel quasi qui deserunt quisquam.",
+                "full_desc": "Accusantium placeat error consequatur adipisci quos aut sequi. Iusto sed aut exercitationem nulla consectetur. Et quaerat quia at libero.",
+                "is_superbowl": 0,
+                "interval_time": 19,
+                "min_amount": null,
+                "min_amount_superbowl": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
+                "created_at": "2019-08-26T09:15:22.000000Z",
+                "updated_at": "2019-08-26T09:15:22.000000Z"
+            },
+            {
+                "id": 16,
+                "stream_id": 1,
+                "user_id": 12,
+                "small_desc": "Occaecati doloremque aut labore non aliquid a.",
+                "full_desc": "Rerum aut ad quisquam esse est. Mollitia autem atque nemo reprehenderit aliquam occaecati accusamus. Nihil ipsa ut et alias.",
+                "is_superbowl": 0,
+                "interval_time": 50,
+                "min_amount": null,
+                "min_amount_superbowl": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
+                "created_at": "2019-08-26T09:15:22.000000Z",
+                "updated_at": "2019-08-26T09:15:22.000000Z"
+            },
+            {
+                "id": 29,
+                "stream_id": 1,
+                "user_id": 1,
+                "small_desc": "Molestiae fugit sed asperiores quia. Perspiciatis ea aliquid aut in.",
+                "full_desc": "Voluptates rerum perferendis laboriosam minus vero corporis. Deleniti sunt eum nobis est ipsa sequi. Consequuntur aut deserunt ratione aut a accusamus. Aut nisi iure rerum eum cum reiciendis dolores.",
+                "is_superbowl": 1,
+                "interval_time": 29,
+                "min_amount": null,
+                "min_amount_superbowl": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
+                "created_at": "2019-08-26T09:15:23.000000Z",
+                "updated_at": "2019-08-26T09:15:23.000000Z"
+            },
+            {
+                "id": 34,
+                "stream_id": 1,
+                "user_id": 6,
+                "small_desc": "Est eius ratione delectus sunt incidunt.",
+                "full_desc": "Sapiente eos illo minus minima hic magni aut. Voluptas itaque nostrum quia aliquam et sunt. Voluptas cupiditate dolorem neque suscipit quia repellendus.",
+                "is_superbowl": 0,
+                "interval_time": 4,
+                "min_amount": null,
+                "min_amount_superbowl": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
+                "created_at": "2019-08-26T09:15:23.000000Z",
+                "updated_at": "2019-08-26T09:15:23.000000Z"
+            },
+            {
+                "id": 46,
+                "stream_id": 1,
+                "user_id": 5,
+                "small_desc": "Mollitia et soluta est qui omnis distinctio.",
+                "full_desc": "Eligendi aliquid sapiente velit ipsum nam. Assumenda esse quia pariatur omnis voluptatem sint repellat. Recusandae explicabo fugiat omnis tempora sit dolorem.",
+                "is_superbowl": 1,
+                "interval_time": 42,
+                "min_amount": null,
+                "min_amount_superbowl": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
+                "created_at": "2019-08-26T09:15:23.000000Z",
+                "updated_at": "2019-08-26T09:15:23.000000Z"
+            },
+            {
+                "id": 48,
+                "stream_id": 1,
+                "user_id": 17,
+                "small_desc": "Excepturi sapiente necessitatibus rerum illo voluptatibus.",
+                "full_desc": "Sequi porro dolorem error quis qui non. Facilis cupiditate illo et non facere. Exercitationem dolorem qui ab molestiae atque amet ducimus.",
+                "is_superbowl": 1,
+                "interval_time": 1,
+                "min_amount": null,
+                "min_amount_superbowl": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
+                "created_at": "2019-08-26T09:15:23.000000Z",
+                "updated_at": "2019-08-26T09:15:23.000000Z"
+            },
+            {
+                "id": 50,
+                "stream_id": 1,
+                "user_id": 9,
+                "small_desc": "Dolor qui unde architecto voluptatum non est voluptate voluptate. Est consequatur dignissimos vel quaerat eveniet sunt vero.",
+                "full_desc": "Soluta sapiente fugiat aliquam unde iusto expedita sunt. Repellat animi sed amet maiores accusantium a necessitatibus ut.",
+                "is_superbowl": 1,
+                "interval_time": 30,
+                "min_amount": null,
+                "min_amount_superbowl": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
+                "created_at": "2019-08-26T09:15:23.000000Z",
+                "updated_at": "2019-08-26T09:15:23.000000Z"
+            },
+            {
+                "id": 66,
+                "stream_id": 1,
+                "user_id": 15,
+                "small_desc": "Sit et ex asperiores sequi temporibus nihil sint enim. Earum similique praesentium sunt tenetur.",
+                "full_desc": "Numquam esse recusandae sint. Porro aliquid eaque fugit est.",
+                "is_superbowl": 1,
+                "interval_time": 1,
+                "min_amount": null,
+                "min_amount_superbowl": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
+                "created_at": "2019-08-26T09:15:23.000000Z",
+                "updated_at": "2019-08-26T09:15:23.000000Z"
+            },
+            {
+                "id": 77,
+                "stream_id": 1,
+                "user_id": 17,
+                "small_desc": "Qui dolores soluta sit excepturi.",
+                "full_desc": "Ut et repellendus in. Voluptatibus debitis dolorem id ea iusto.",
+                "is_superbowl": 0,
+                "interval_time": 46,
+                "min_amount": null,
+                "min_amount_superbowl": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
+                "created_at": "2019-08-26T09:15:23.000000Z",
+                "updated_at": "2019-08-26T09:15:23.000000Z"
+            },
+            {
+                "id": 98,
+                "stream_id": 1,
+                "user_id": 4,
+                "small_desc": "Nobis et quas deleniti aut labore nobis alias aspernatur. Doloremque ut tempora ipsum et veniam saepe.",
+                "full_desc": "Sapiente rerum id dolorum ut quia. Magnam nisi animi voluptatem dolores quae. Accusantium nulla modi officiis voluptate reprehenderit delectus nam.",
+                "is_superbowl": 1,
+                "interval_time": 21,
+                "min_amount": null,
+                "min_amount_superbowl": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
+                "created_at": "2019-08-26T09:15:23.000000Z",
+                "updated_at": "2019-08-26T09:15:23.000000Z"
+            },
+            {
+                "id": 101,
+                "stream_id": 1,
+                "user_id": 30,
+                "small_desc": "Ipsa natus ipsam saepe et sunt est atque.",
+                "full_desc": "Qui animi ullam et impedit ex dignissimos voluptate facere. Non nesciunt totam pariatur in error. Voluptates veniam reiciendis et sapiente sint accusantium.",
+                "is_superbowl": 0,
+                "interval_time": 15,
+                "min_amount": null,
+                "min_amount_superbowl": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
+                "created_at": "2019-08-26T09:15:23.000000Z",
+                "updated_at": "2019-08-26T09:15:23.000000Z"
+            },
+            {
+                "id": 118,
+                "stream_id": 1,
+                "user_id": 7,
+                "small_desc": "Optio ea corrupti eum asperiores optio aut.",
+                "full_desc": "Et atque quis aliquam veritatis ducimus facere ut. Vel ut aut aut et doloribus harum. Pariatur architecto blanditiis delectus sed rem dolorem nisi. Iusto optio ut facere enim dolorem nemo.",
+                "is_superbowl": 0,
+                "interval_time": 44,
+                "min_amount": null,
+                "min_amount_superbowl": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
+                "created_at": "2019-08-26T09:15:23.000000Z",
+                "updated_at": "2019-08-26T09:15:23.000000Z"
+            },
+            {
+                "id": 134,
+                "stream_id": 1,
+                "user_id": 29,
+                "small_desc": "Temporibus autem temporibus qui quia voluptates.",
+                "full_desc": "Laboriosam neque exercitationem exercitationem occaecati odit ut et. Et et quidem ut error. Rerum sed totam est nesciunt atque saepe. Quidem aut similique quae expedita.",
+                "is_superbowl": 0,
+                "interval_time": 33,
+                "min_amount": null,
+                "min_amount_superbowl": null,
+                "status": {
+                    "key": "Created",
+                    "value": 0,
+                    "description": "Created"
+                },
+                "amount_donations": 0,
+                "created_at": "2019-08-26T09:15:24.000000Z",
+                "updated_at": "2019-08-26T09:15:24.000000Z"
+            }
+        ]
+    }
 }
 ```
 
@@ -5525,17 +5828,17 @@ $response = $client->put("https://darestreams.com/api/streams/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "title" => "et",
-            "link" => "nihil",
-            "start_at" => "et",
-            "status" => "6",
+            "title" => "enim",
+            "link" => "et",
+            "start_at" => "exercitationem",
+            "status" => "4",
             "allow_task_before_stream" => "",
             "allow_task_when_stream" => "1",
-            "min_amount_task_before_stream" => "numquam",
-            "min_amount_task_when_stream" => "rerum",
-            "min_amount_donate_task_before_stream" => "at",
-            "min_amount_donate_task_when_stream" => "aut",
-            "tags" => "ut",
+            "min_amount_task_before_stream" => "cum",
+            "min_amount_task_when_stream" => "aut",
+            "min_amount_donate_task_before_stream" => "velit",
+            "min_amount_donate_task_when_stream" => "perspiciatis",
+            "tags" => "cupiditate",
         ],
 ]);
 $body = $response->getBody();
@@ -6727,7 +7030,7 @@ $response = $client->get("https://darestreams.com/api/streams/1/tasks", [
     'query' => [
             "include" => "user,stream",
             "sort" => "-amount_donations",
-            "page" => "3",
+            "page" => "13",
         ],
 ]);
 $body = $response->getBody();
@@ -6770,7 +7073,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\760c8c01789ba3cc9188e9e338df381b.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             },
             "stream": {
                 "id": 1,
@@ -6778,7 +7082,7 @@ print_r(json_decode((string) $body));
                 "game_id": 1,
                 "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                "start_at": "2004-02-17 15:51:07",
+                "start_at": "2004-02-17T15:51:07.000000Z",
                 "ended_at": null,
                 "status": {
                     "key": "Created",
@@ -6827,7 +7131,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\1c7f654353e154007bd38fd60a4a9868.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:34.000000Z",
-                "updated_at": "2019-08-26T09:14:34.000000Z"
+                "updated_at": "2019-08-26T09:14:34.000000Z",
+                "lang": "ru"
             },
             "stream": {
                 "id": 1,
@@ -6835,7 +7140,7 @@ print_r(json_decode((string) $body));
                 "game_id": 1,
                 "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                "start_at": "2004-02-17 15:51:07",
+                "start_at": "2004-02-17T15:51:07.000000Z",
                 "ended_at": null,
                 "status": {
                     "key": "Created",
@@ -6884,7 +7189,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\652d733740fcdd9db05dcb3d9f17c5d6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             },
             "stream": {
                 "id": 1,
@@ -6892,7 +7198,7 @@ print_r(json_decode((string) $body));
                 "game_id": 1,
                 "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                "start_at": "2004-02-17 15:51:07",
+                "start_at": "2004-02-17T15:51:07.000000Z",
                 "ended_at": null,
                 "status": {
                     "key": "Created",
@@ -6941,7 +7247,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a6a6d8a998b1bcdd5e822f1bc356f103.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             },
             "stream": {
                 "id": 1,
@@ -6949,7 +7256,7 @@ print_r(json_decode((string) $body));
                 "game_id": 1,
                 "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                "start_at": "2004-02-17 15:51:07",
+                "start_at": "2004-02-17T15:51:07.000000Z",
                 "ended_at": null,
                 "status": {
                     "key": "Created",
@@ -6998,7 +7305,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\48c4704e31cc75fbe6a9106a3066bacc.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             },
             "stream": {
                 "id": 1,
@@ -7006,7 +7314,7 @@ print_r(json_decode((string) $body));
                 "game_id": 1,
                 "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                "start_at": "2004-02-17 15:51:07",
+                "start_at": "2004-02-17T15:51:07.000000Z",
                 "ended_at": null,
                 "status": {
                     "key": "Created",
@@ -7055,7 +7363,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ed236983eeafa45e570a6937f097a261.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:36.000000Z",
-                "updated_at": "2019-08-26T09:14:36.000000Z"
+                "updated_at": "2019-08-26T09:14:36.000000Z",
+                "lang": "ru"
             },
             "stream": {
                 "id": 1,
@@ -7063,7 +7372,7 @@ print_r(json_decode((string) $body));
                 "game_id": 1,
                 "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                "start_at": "2004-02-17 15:51:07",
+                "start_at": "2004-02-17T15:51:07.000000Z",
                 "ended_at": null,
                 "status": {
                     "key": "Created",
@@ -7112,7 +7421,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\04618d3d68fc0da58d76e243853291f3.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:32.000000Z",
-                "updated_at": "2019-08-26T09:14:32.000000Z"
+                "updated_at": "2019-08-26T09:14:32.000000Z",
+                "lang": "ru"
             },
             "stream": {
                 "id": 1,
@@ -7120,7 +7430,7 @@ print_r(json_decode((string) $body));
                 "game_id": 1,
                 "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                "start_at": "2004-02-17 15:51:07",
+                "start_at": "2004-02-17T15:51:07.000000Z",
                 "ended_at": null,
                 "status": {
                     "key": "Created",
@@ -7169,7 +7479,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7688695b3429f187faaa1930a9d4a34c.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:36.000000Z",
-                "updated_at": "2019-08-26T09:14:36.000000Z"
+                "updated_at": "2019-08-26T09:14:36.000000Z",
+                "lang": "ru"
             },
             "stream": {
                 "id": 1,
@@ -7177,7 +7488,7 @@ print_r(json_decode((string) $body));
                 "game_id": 1,
                 "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                "start_at": "2004-02-17 15:51:07",
+                "start_at": "2004-02-17T15:51:07.000000Z",
                 "ended_at": null,
                 "status": {
                     "key": "Created",
@@ -7226,7 +7537,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ed236983eeafa45e570a6937f097a261.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:36.000000Z",
-                "updated_at": "2019-08-26T09:14:36.000000Z"
+                "updated_at": "2019-08-26T09:14:36.000000Z",
+                "lang": "ru"
             },
             "stream": {
                 "id": 1,
@@ -7234,7 +7546,7 @@ print_r(json_decode((string) $body));
                 "game_id": 1,
                 "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                "start_at": "2004-02-17 15:51:07",
+                "start_at": "2004-02-17T15:51:07.000000Z",
                 "ended_at": null,
                 "status": {
                     "key": "Created",
@@ -7283,7 +7595,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\514d97d878f59d2d1a1318e5c02392a3.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             },
             "stream": {
                 "id": 1,
@@ -7291,7 +7604,7 @@ print_r(json_decode((string) $body));
                 "game_id": 1,
                 "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                "start_at": "2004-02-17 15:51:07",
+                "start_at": "2004-02-17T15:51:07.000000Z",
                 "ended_at": null,
                 "status": {
                     "key": "Created",
@@ -7340,7 +7653,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\efe8de2c3a183b231e52442a1a21f0bb.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             },
             "stream": {
                 "id": 1,
@@ -7348,7 +7662,7 @@ print_r(json_decode((string) $body));
                 "game_id": 1,
                 "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                "start_at": "2004-02-17 15:51:07",
+                "start_at": "2004-02-17T15:51:07.000000Z",
                 "ended_at": null,
                 "status": {
                     "key": "Created",
@@ -7397,7 +7711,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\97af6830fea41f22bb93e83f5eb73b7d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             },
             "stream": {
                 "id": 1,
@@ -7405,7 +7720,7 @@ print_r(json_decode((string) $body));
                 "game_id": 1,
                 "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                "start_at": "2004-02-17 15:51:07",
+                "start_at": "2004-02-17T15:51:07.000000Z",
                 "ended_at": null,
                 "status": {
                     "key": "Created",
@@ -7454,7 +7769,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\fcfb305f042797ea52896f1bbde0c88d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             },
             "stream": {
                 "id": 1,
@@ -7462,7 +7778,7 @@ print_r(json_decode((string) $body));
                 "game_id": 1,
                 "title": "Quis saepe voluptatem consequatur eos. Doloribus dicta sed incidunt amet rerum.",
                 "link": "https:\/\/lorempixel.com\/800\/600\/cats\/?34464",
-                "start_at": "2004-02-17 15:51:07",
+                "start_at": "2004-02-17T15:51:07.000000Z",
                 "ended_at": null,
                 "status": {
                     "key": "Created",
@@ -7515,11 +7831,11 @@ $response = $client->post("https://darestreams.com/api/streams/1/tasks", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_text" => "fugiat",
-            "full_text" => "earum",
-            "interval_time" => "16",
+            "small_text" => "suscipit",
+            "full_text" => "quia",
+            "interval_time" => "4",
             "is_superbowl" => "",
-            "tags" => "dolorem",
+            "tags" => "ducimus",
         ],
 ]);
 $body = $response->getBody();
@@ -7602,12 +7918,12 @@ $response = $client->put("https://darestreams.com/api/streams/1/tasks/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "status" => "16",
-            "small_text" => "mollitia",
-            "full_text" => "delectus",
-            "interval_time" => "15",
-            "is_superbowl" => "1",
-            "tags" => "officia",
+            "status" => "12",
+            "small_text" => "magnam",
+            "full_text" => "quibusdam",
+            "interval_time" => "5",
+            "is_superbowl" => "",
+            "tags" => "aut",
         ],
 ]);
 $body = $response->getBody();
@@ -7651,7 +7967,7 @@ $response = $client->get("https://darestreams.com/api/streams/1/tasks/1/transact
     'query' => [
             "include" => "task",
             "sort" => "-created_at",
-            "page" => "19",
+            "page" => "17",
         ],
 ]);
 $body = $response->getBody();
@@ -7722,6 +8038,2973 @@ Parameter | Status | Description
     include |  optional  | string String of connections: account_sender, account_receiver, account_sender.user, account_receiver.user, task.
 
 <!-- END_20628eb60d6b21c80fa2870ddeaca2dc -->
+
+#Tasks
+<!-- START_4227b9e5e54912af051e8dd5472afbce -->
+## Display a listing of the resource.
+
+> Example request:
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->get("https://darestreams.com/api/tasks", [
+]);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+
+> Example response (200):
+
+```json
+{
+    "data": [
+        {
+            "id": 1,
+            "stream_id": 7,
+            "user_id": 30,
+            "small_desc": "Omnis quae quia aut officiis vel. Velit ea voluptatum quia.",
+            "full_desc": "Omnis quos in omnis ut distinctio voluptatem. Ea quasi deserunt rerum vitae et. Quo quia modi harum sed aut accusamus. Est quam voluptas voluptatum ipsam earum. Dolorum sint quisquam vel distinctio mollitia.",
+            "is_superbowl": 0,
+            "interval_time": 33,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 2,
+            "stream_id": 10,
+            "user_id": 4,
+            "small_desc": "Consequatur culpa dolorem accusamus voluptate ut.",
+            "full_desc": "Aspernatur itaque molestiae neque facere dolores dolorem. Repellat est nisi ducimus ipsa omnis eum doloribus pariatur.",
+            "is_superbowl": 1,
+            "interval_time": 30,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 3,
+            "stream_id": 1,
+            "user_id": 37,
+            "small_desc": "Vel quasi qui deserunt quisquam.",
+            "full_desc": "Accusantium placeat error consequatur adipisci quos aut sequi. Iusto sed aut exercitationem nulla consectetur. Et quaerat quia at libero.",
+            "is_superbowl": 0,
+            "interval_time": 19,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 4,
+            "stream_id": 7,
+            "user_id": 44,
+            "small_desc": "Voluptas aut aut in rerum inventore provident eveniet.",
+            "full_desc": "Inventore nihil tenetur porro. Illo architecto harum nulla et. Dolores voluptatem quia voluptate odit. Inventore optio debitis repellat. Ipsam asperiores impedit esse quae.",
+            "is_superbowl": 0,
+            "interval_time": 0,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 5,
+            "stream_id": 5,
+            "user_id": 6,
+            "small_desc": "Accusamus quo nesciunt ullam ducimus.",
+            "full_desc": "Sit eos qui illum laudantium. Consequatur blanditiis odio sunt velit laboriosam eligendi minus. Excepturi ea quo labore dolores omnis. Id qui minima numquam cumque unde.",
+            "is_superbowl": 0,
+            "interval_time": 2,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 6,
+            "stream_id": 9,
+            "user_id": 37,
+            "small_desc": "Quibusdam praesentium sint doloribus dolorem sapiente maxime. Omnis ipsa voluptate vitae vel et.",
+            "full_desc": "Molestiae numquam eum voluptatem ducimus non pariatur ducimus. Temporibus voluptatum exercitationem sint eum. Illo labore voluptatem nobis aut velit accusamus explicabo. Magnam ut doloremque praesentium pariatur.",
+            "is_superbowl": 0,
+            "interval_time": 47,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 7,
+            "stream_id": 8,
+            "user_id": 6,
+            "small_desc": "Ut cum temporibus vel aut nemo debitis qui ut.",
+            "full_desc": "At modi architecto accusamus vero possimus. Laudantium alias praesentium ea dolor. Aut non excepturi cumque ullam.",
+            "is_superbowl": 1,
+            "interval_time": 18,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 8,
+            "stream_id": 7,
+            "user_id": 5,
+            "small_desc": "Eos praesentium esse pariatur quas. Veritatis corporis sed nihil eos molestiae porro.",
+            "full_desc": "Fugit aspernatur aut ut quas. Provident cum perspiciatis sit aut assumenda veniam. Aut pariatur quidem eum nesciunt neque. Deserunt earum sed autem rerum reprehenderit. Temporibus omnis sint quod suscipit reprehenderit.",
+            "is_superbowl": 0,
+            "interval_time": 32,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 9,
+            "stream_id": 2,
+            "user_id": 7,
+            "small_desc": "Aut alias vel optio autem.",
+            "full_desc": "Corrupti quia et omnis est. Consequuntur assumenda aut est labore a atque maxime. Non et recusandae laboriosam non ullam quasi.",
+            "is_superbowl": 0,
+            "interval_time": 29,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 10,
+            "stream_id": 4,
+            "user_id": 37,
+            "small_desc": "Praesentium qui eum reiciendis enim corrupti quis eos.",
+            "full_desc": "Fugit provident illum est consequatur at. Inventore dolor a ut aut ad. Numquam eum adipisci reiciendis occaecati quaerat temporibus. Quod cumque dolorum error autem officia distinctio sint.",
+            "is_superbowl": 0,
+            "interval_time": 3,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 11,
+            "stream_id": 8,
+            "user_id": 38,
+            "small_desc": "Voluptate non esse ut voluptatem perspiciatis illum et. Dolorum saepe voluptatem culpa sunt sed eum provident.",
+            "full_desc": "Soluta iusto dolores facilis consequuntur. Corrupti consequatur ducimus error quae quas. Sequi odit ut sint minus. Et doloremque rerum consequatur qui dolorem. Aut quo cumque quidem autem.",
+            "is_superbowl": 1,
+            "interval_time": 27,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 12,
+            "stream_id": 3,
+            "user_id": 38,
+            "small_desc": "Vitae ut hic autem mollitia rerum deserunt distinctio. Cum nisi magni tempore deleniti cum voluptas qui.",
+            "full_desc": "Est totam error eos ullam placeat temporibus. Ut dignissimos ab explicabo perspiciatis qui. Minima perspiciatis ipsum ut laudantium blanditiis rem aut.",
+            "is_superbowl": 0,
+            "interval_time": 16,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 13,
+            "stream_id": 4,
+            "user_id": 3,
+            "small_desc": "Dicta ea occaecati quia ullam. Pariatur ratione iure molestiae.",
+            "full_desc": "Cum eveniet debitis quos aut temporibus. Ratione ut nihil rerum sed et nobis tenetur. Nisi sit architecto qui pariatur quis tenetur ut. Ullam iusto aspernatur omnis debitis provident quidem.",
+            "is_superbowl": 1,
+            "interval_time": 41,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 14,
+            "stream_id": 4,
+            "user_id": 16,
+            "small_desc": "Accusantium dolorem et veritatis velit ea.",
+            "full_desc": "Et saepe hic dolorem. Et voluptatibus distinctio blanditiis repellendus. Veniam ut quidem ut quibusdam quibusdam. Earum optio unde debitis consectetur.",
+            "is_superbowl": 1,
+            "interval_time": 14,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 15,
+            "stream_id": 2,
+            "user_id": 30,
+            "small_desc": "Voluptatem vel voluptate repellat et nemo qui.",
+            "full_desc": "Modi tenetur qui quod. Ea sint veritatis ut et. Odio error animi qui et.",
+            "is_superbowl": 1,
+            "interval_time": 12,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 16,
+            "stream_id": 1,
+            "user_id": 12,
+            "small_desc": "Occaecati doloremque aut labore non aliquid a.",
+            "full_desc": "Rerum aut ad quisquam esse est. Mollitia autem atque nemo reprehenderit aliquam occaecati accusamus. Nihil ipsa ut et alias.",
+            "is_superbowl": 0,
+            "interval_time": 50,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 17,
+            "stream_id": 9,
+            "user_id": 23,
+            "small_desc": "Sit omnis ullam totam neque qui harum animi. Maxime quis tempora doloremque velit doloribus.",
+            "full_desc": "Rem sint magnam in molestiae et commodi. Officia deserunt rerum voluptatum similique. Deserunt et qui eum laboriosam.",
+            "is_superbowl": 1,
+            "interval_time": 17,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 18,
+            "stream_id": 9,
+            "user_id": 23,
+            "small_desc": "Nobis et quia voluptatem harum amet veritatis ea.",
+            "full_desc": "Voluptas pariatur quia modi voluptates doloremque. Voluptatibus neque inventore reiciendis. Ipsam ipsum velit quisquam.",
+            "is_superbowl": 1,
+            "interval_time": 22,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 19,
+            "stream_id": 4,
+            "user_id": 37,
+            "small_desc": "Est asperiores voluptatum tempora neque odio dignissimos.",
+            "full_desc": "Enim consectetur qui facilis tenetur odit quam et. Omnis quia eligendi corporis dolores facilis corporis ut. Sit pariatur dolore itaque accusamus. Nobis sapiente dolore aut qui. Culpa voluptatibus rem rerum.",
+            "is_superbowl": 1,
+            "interval_time": 22,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 20,
+            "stream_id": 3,
+            "user_id": 30,
+            "small_desc": "Aut fuga voluptatibus occaecati quis numquam quam saepe veritatis. Neque nam ut aut voluptatem dolorem optio laudantium.",
+            "full_desc": "Sint et maxime error eligendi et perferendis vel. Dolor quae sapiente occaecati dolor. Reprehenderit voluptatem quas consectetur repellat ipsa officia eius.",
+            "is_superbowl": 1,
+            "interval_time": 9,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 21,
+            "stream_id": 6,
+            "user_id": 4,
+            "small_desc": "Facere assumenda quae qui vitae repellat illo animi. Nihil voluptatem numquam at consectetur eos consectetur incidunt.",
+            "full_desc": "Ratione voluptates perferendis dicta accusamus repudiandae repellendus deserunt. Sunt et hic ea labore inventore. Expedita fuga sunt veniam excepturi quos. Voluptates ea quibusdam reiciendis est et voluptatum.",
+            "is_superbowl": 0,
+            "interval_time": 26,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 22,
+            "stream_id": 9,
+            "user_id": 30,
+            "small_desc": "Nesciunt molestiae quasi est earum incidunt est.",
+            "full_desc": "Aut aut odit fugit. Eligendi recusandae sit blanditiis sunt id. Culpa vitae sed expedita voluptatem quia a dolores fugit.",
+            "is_superbowl": 1,
+            "interval_time": 49,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 23,
+            "stream_id": 6,
+            "user_id": 5,
+            "small_desc": "Molestias qui qui sed quo autem eum possimus ut. Vel autem sint quia mollitia molestiae.",
+            "full_desc": "Praesentium qui aut voluptatem dignissimos amet aliquam atque. Doloribus et labore modi ut vel quasi. Dignissimos cumque aut veniam fugit tempore placeat. Reprehenderit nisi quis rerum voluptate.",
+            "is_superbowl": 1,
+            "interval_time": 16,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 24,
+            "stream_id": 2,
+            "user_id": 4,
+            "small_desc": "Nobis minima sit vero iure consequatur enim. Commodi et dolorem qui omnis at.",
+            "full_desc": "Eos quasi iste vitae rerum explicabo. Ipsam autem ex eos dicta quia. Sed reprehenderit delectus in id.",
+            "is_superbowl": 1,
+            "interval_time": 25,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:22.000000Z",
+            "updated_at": "2019-08-26T09:15:22.000000Z"
+        },
+        {
+            "id": 25,
+            "stream_id": 8,
+            "user_id": 1,
+            "small_desc": "Est vitae consequatur est reiciendis maiores itaque.",
+            "full_desc": "Amet sit ducimus aut et doloremque. Dolorem illum dolores similique consequatur. Excepturi velit omnis ut facilis facilis rerum. Ut dolorem beatae perferendis vitae. Et aut repellat autem ipsam qui optio.",
+            "is_superbowl": 0,
+            "interval_time": 38,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 26,
+            "stream_id": 9,
+            "user_id": 3,
+            "small_desc": "Et ex ipsa sapiente rem soluta magni.",
+            "full_desc": "Corporis nemo autem porro temporibus. Perferendis sint ut aut aspernatur nemo laboriosam sed. Ipsum nulla optio aspernatur expedita neque fuga eum nobis. Vero ipsa dolorem provident ex est consequatur.",
+            "is_superbowl": 1,
+            "interval_time": 8,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 27,
+            "stream_id": 4,
+            "user_id": 3,
+            "small_desc": "Quo eum expedita quo quo inventore.",
+            "full_desc": "Eligendi ullam beatae sunt veniam repudiandae vitae. Et mollitia velit voluptatem quia ratione. Dolorem ipsum consequuntur accusantium ut voluptatum qui. Temporibus velit voluptatem vel rem architecto id eaque.",
+            "is_superbowl": 1,
+            "interval_time": 30,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 28,
+            "stream_id": 10,
+            "user_id": 37,
+            "small_desc": "Ad possimus aut ea illo deserunt nulla.",
+            "full_desc": "Ducimus quia omnis voluptatum voluptatem. Dolores ea qui autem natus consequatur. Architecto dignissimos hic minus aut eos. Sed ut id ut voluptas blanditiis veniam.",
+            "is_superbowl": 1,
+            "interval_time": 44,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 29,
+            "stream_id": 1,
+            "user_id": 1,
+            "small_desc": "Molestiae fugit sed asperiores quia. Perspiciatis ea aliquid aut in.",
+            "full_desc": "Voluptates rerum perferendis laboriosam minus vero corporis. Deleniti sunt eum nobis est ipsa sequi. Consequuntur aut deserunt ratione aut a accusamus. Aut nisi iure rerum eum cum reiciendis dolores.",
+            "is_superbowl": 1,
+            "interval_time": 29,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 30,
+            "stream_id": 8,
+            "user_id": 12,
+            "small_desc": "Adipisci voluptatem ut hic ipsum ea. Maxime quasi ipsa voluptatem.",
+            "full_desc": "Veniam totam deserunt dignissimos sit. Aspernatur aliquam veniam ullam id molestias non. Cumque voluptatum delectus consequatur velit fugiat et est.",
+            "is_superbowl": 0,
+            "interval_time": 14,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 31,
+            "stream_id": 6,
+            "user_id": 5,
+            "small_desc": "Et amet quas officia accusantium facere eos. Et sint aut et laudantium consequatur et.",
+            "full_desc": "Voluptatem eius consequuntur omnis officiis error alias. Sit provident provident quis tenetur consequatur. Omnis est autem quia nobis amet.",
+            "is_superbowl": 1,
+            "interval_time": 39,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 32,
+            "stream_id": 4,
+            "user_id": 6,
+            "small_desc": "Illo quam iste quia et minima et minima.",
+            "full_desc": "Quia voluptatibus sed itaque magni. Reiciendis rerum ut ut doloribus consequatur quo. Id laborum quia illo error. Aut fugiat ipsum nemo reiciendis modi voluptatem iusto.",
+            "is_superbowl": 0,
+            "interval_time": 44,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 33,
+            "stream_id": 3,
+            "user_id": 15,
+            "small_desc": "Adipisci aut odio debitis velit. Nihil doloribus iste accusantium sequi et sit.",
+            "full_desc": "Est reprehenderit laboriosam optio sit exercitationem. Veritatis inventore sit cumque aut deserunt eveniet et. Nulla adipisci reprehenderit magnam ipsa est mollitia.",
+            "is_superbowl": 0,
+            "interval_time": 24,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 34,
+            "stream_id": 1,
+            "user_id": 6,
+            "small_desc": "Est eius ratione delectus sunt incidunt.",
+            "full_desc": "Sapiente eos illo minus minima hic magni aut. Voluptas itaque nostrum quia aliquam et sunt. Voluptas cupiditate dolorem neque suscipit quia repellendus.",
+            "is_superbowl": 0,
+            "interval_time": 4,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 35,
+            "stream_id": 9,
+            "user_id": 7,
+            "small_desc": "In voluptatem nemo pariatur. Doloribus aut et facere quia praesentium.",
+            "full_desc": "Corrupti eos aut repellat. Autem voluptatem deleniti aut expedita. Quia sunt illo omnis autem sit. Eligendi omnis non delectus delectus debitis.",
+            "is_superbowl": 0,
+            "interval_time": 40,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 36,
+            "stream_id": 9,
+            "user_id": 23,
+            "small_desc": "Et ut nisi molestiae qui sint. Nihil dolore odit blanditiis et ut quia.",
+            "full_desc": "Sed sequi aut pariatur repellendus. Ut repellendus sit et officiis sint voluptas commodi. Voluptatum assumenda unde nihil id. Non quam deleniti id. Dolores pariatur earum enim omnis molestias molestias molestiae quos.",
+            "is_superbowl": 1,
+            "interval_time": 42,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 37,
+            "stream_id": 6,
+            "user_id": 12,
+            "small_desc": "Debitis numquam facilis distinctio et cumque eaque. Et dolorum repellendus eos molestiae.",
+            "full_desc": "Sed voluptatum dolores assumenda omnis voluptatibus. Mollitia in explicabo ad sed delectus asperiores beatae. Minima et officia distinctio quod sit explicabo aliquid voluptas.",
+            "is_superbowl": 0,
+            "interval_time": 18,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 38,
+            "stream_id": 6,
+            "user_id": 29,
+            "small_desc": "Dolor nam id quae ullam.",
+            "full_desc": "Excepturi itaque debitis similique non porro maiores error. Reiciendis at culpa officia repellendus delectus facilis quia. Et sed aut doloribus vitae.",
+            "is_superbowl": 0,
+            "interval_time": 42,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 39,
+            "stream_id": 6,
+            "user_id": 12,
+            "small_desc": "Consequatur iste incidunt eaque et est cupiditate. Qui quae consectetur est voluptatibus.",
+            "full_desc": "Architecto aut autem dolorem vitae eligendi. Adipisci et voluptatum accusantium. Amet quaerat officia excepturi eum natus.",
+            "is_superbowl": 0,
+            "interval_time": 11,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 40,
+            "stream_id": 7,
+            "user_id": 37,
+            "small_desc": "Ut tempora et mollitia consequuntur.",
+            "full_desc": "Cupiditate illum assumenda aperiam placeat inventore. Culpa ex aspernatur nemo accusantium aspernatur tempore. Porro quia accusamus rem eius quo. Maxime minima deleniti nisi eaque aut.",
+            "is_superbowl": 1,
+            "interval_time": 40,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 41,
+            "stream_id": 6,
+            "user_id": 29,
+            "small_desc": "Rem distinctio dolores quas laborum magnam. Adipisci ut molestiae qui repellat ipsam dolores.",
+            "full_desc": "Animi sit aspernatur itaque aut molestiae accusantium ratione dolore. Quibusdam dolor rerum repellat deserunt quis eligendi rerum. Necessitatibus et soluta quo ut ut recusandae et. Velit qui blanditiis magni iusto culpa consequuntur quo. Voluptas et ex placeat consequatur minus asperiores est.",
+            "is_superbowl": 1,
+            "interval_time": 6,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 42,
+            "stream_id": 4,
+            "user_id": 38,
+            "small_desc": "Et rerum cupiditate expedita dicta vel. Neque et aliquid repudiandae libero voluptates quidem voluptas.",
+            "full_desc": "Unde atque numquam hic. Velit praesentium inventore aut fugiat expedita nulla. Sed et ut cumque iste laudantium quia tempora.",
+            "is_superbowl": 1,
+            "interval_time": 40,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 43,
+            "stream_id": 3,
+            "user_id": 35,
+            "small_desc": "Cum aut laboriosam sit aliquam.",
+            "full_desc": "Reiciendis rerum sed libero iste autem libero saepe. Consequuntur eaque molestias voluptates eveniet. Molestias veritatis neque quidem debitis qui quia. Natus sint et atque eos eos vitae optio.",
+            "is_superbowl": 0,
+            "interval_time": 30,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 44,
+            "stream_id": 5,
+            "user_id": 30,
+            "small_desc": "Minus ut repellat fugit fugiat. Quo cum atque sunt est architecto tempore.",
+            "full_desc": "Sunt tenetur id exercitationem sed debitis quia. Autem voluptate nostrum facere consequatur. Quidem omnis similique harum earum. Enim repellat deleniti qui quis quasi nihil. Placeat consequatur architecto ut.",
+            "is_superbowl": 0,
+            "interval_time": 34,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 45,
+            "stream_id": 7,
+            "user_id": 23,
+            "small_desc": "Dignissimos nisi fugiat omnis corrupti minus.",
+            "full_desc": "Consectetur libero itaque odit occaecati molestias labore. Expedita veniam ducimus sunt hic qui. Velit nisi dolore repellat et blanditiis dolorum delectus.",
+            "is_superbowl": 1,
+            "interval_time": 44,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 46,
+            "stream_id": 1,
+            "user_id": 5,
+            "small_desc": "Mollitia et soluta est qui omnis distinctio.",
+            "full_desc": "Eligendi aliquid sapiente velit ipsum nam. Assumenda esse quia pariatur omnis voluptatem sint repellat. Recusandae explicabo fugiat omnis tempora sit dolorem.",
+            "is_superbowl": 1,
+            "interval_time": 42,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 47,
+            "stream_id": 2,
+            "user_id": 17,
+            "small_desc": "Pariatur eveniet qui debitis qui.",
+            "full_desc": "Voluptas aut deleniti dolor dolorem dolore. Culpa et repudiandae autem dicta doloribus. Molestiae veritatis nesciunt sed saepe alias eum.",
+            "is_superbowl": 1,
+            "interval_time": 44,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 48,
+            "stream_id": 1,
+            "user_id": 17,
+            "small_desc": "Excepturi sapiente necessitatibus rerum illo voluptatibus.",
+            "full_desc": "Sequi porro dolorem error quis qui non. Facilis cupiditate illo et non facere. Exercitationem dolorem qui ab molestiae atque amet ducimus.",
+            "is_superbowl": 1,
+            "interval_time": 1,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 49,
+            "stream_id": 2,
+            "user_id": 35,
+            "small_desc": "Provident beatae est qui delectus dolores aperiam consequatur.",
+            "full_desc": "Dolorum ipsa ducimus voluptatum voluptatem. Sint aut quo sed laudantium. Eos explicabo sequi accusantium consectetur.",
+            "is_superbowl": 0,
+            "interval_time": 29,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 50,
+            "stream_id": 1,
+            "user_id": 9,
+            "small_desc": "Dolor qui unde architecto voluptatum non est voluptate voluptate. Est consequatur dignissimos vel quaerat eveniet sunt vero.",
+            "full_desc": "Soluta sapiente fugiat aliquam unde iusto expedita sunt. Repellat animi sed amet maiores accusantium a necessitatibus ut.",
+            "is_superbowl": 1,
+            "interval_time": 30,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 51,
+            "stream_id": 8,
+            "user_id": 16,
+            "small_desc": "Praesentium adipisci velit dolor et consequatur.",
+            "full_desc": "Voluptatem fuga rem corrupti sit consequatur. Delectus voluptatem cupiditate quas aliquid modi. Possimus ut impedit omnis sed doloribus ipsum. Eos quisquam excepturi maiores sunt.",
+            "is_superbowl": 1,
+            "interval_time": 45,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 52,
+            "stream_id": 2,
+            "user_id": 3,
+            "small_desc": "Ducimus voluptas voluptas voluptatum et est tempore eius. Quia et ut ut eos quia vero.",
+            "full_desc": "Exercitationem provident voluptatem consequatur quia quia porro quibusdam aut. Asperiores explicabo nemo officia deleniti. Porro omnis vel assumenda quos aut officiis accusamus aut. Quidem voluptates recusandae eum quaerat culpa ea amet facilis.",
+            "is_superbowl": 0,
+            "interval_time": 39,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 53,
+            "stream_id": 3,
+            "user_id": 6,
+            "small_desc": "Enim ut rerum harum ex consequatur.",
+            "full_desc": "Et voluptate adipisci porro hic accusamus et incidunt. Aliquid vero omnis corrupti qui accusantium. Possimus corporis consequatur quos laudantium.",
+            "is_superbowl": 0,
+            "interval_time": 20,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 54,
+            "stream_id": 3,
+            "user_id": 4,
+            "small_desc": "Perspiciatis quia error itaque quas magni.",
+            "full_desc": "Molestias expedita ipsum qui expedita praesentium. Adipisci non dolores nam quae natus dolore. Ipsum a rerum sit sit maiores consequuntur sint nulla. Enim quam aliquid in facilis accusantium.",
+            "is_superbowl": 0,
+            "interval_time": 6,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 55,
+            "stream_id": 2,
+            "user_id": 9,
+            "small_desc": "Rem expedita at ullam. Maxime vel consequuntur vel hic et autem sunt.",
+            "full_desc": "Architecto praesentium in voluptas beatae distinctio delectus. Quas laboriosam aut dicta commodi maxime voluptatem delectus. Libero recusandae odio labore distinctio molestias.",
+            "is_superbowl": 0,
+            "interval_time": 14,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 56,
+            "stream_id": 8,
+            "user_id": 12,
+            "small_desc": "Deleniti minus rem quae labore perspiciatis.",
+            "full_desc": "Omnis voluptas tempora magni tempora voluptas quisquam optio. Eos eos odit nihil facilis quis. Quo molestiae laboriosam rem reiciendis dolorem dolore. Quos sed perspiciatis harum est quis debitis quisquam.",
+            "is_superbowl": 0,
+            "interval_time": 38,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 57,
+            "stream_id": 7,
+            "user_id": 2,
+            "small_desc": "Suscipit quo eveniet quo quaerat sed et nobis. Ex laborum impedit aut accusamus omnis ut saepe.",
+            "full_desc": "Cum non aut minima officiis et est vero. Tempore voluptatum aspernatur odio magni et qui praesentium. Soluta rerum sequi eum beatae recusandae aliquid vero.",
+            "is_superbowl": 1,
+            "interval_time": 31,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 58,
+            "stream_id": 6,
+            "user_id": 2,
+            "small_desc": "Quas eligendi veniam quia quidem autem ea omnis.",
+            "full_desc": "Ex sit est et aliquam rerum. Magni alias voluptas ipsam. Non quas illum provident laboriosam ea voluptate. Dolores aspernatur quisquam blanditiis perspiciatis minus.",
+            "is_superbowl": 1,
+            "interval_time": 26,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 59,
+            "stream_id": 3,
+            "user_id": 23,
+            "small_desc": "Vero reprehenderit laboriosam non aut eligendi adipisci. Delectus accusamus qui possimus enim.",
+            "full_desc": "Rem illo sunt officiis ad. Qui ratione eum culpa sequi pariatur. Rerum consequatur odit eos. Voluptatum est id magni qui.",
+            "is_superbowl": 0,
+            "interval_time": 17,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 60,
+            "stream_id": 6,
+            "user_id": 17,
+            "small_desc": "Molestiae sapiente et quo veniam delectus necessitatibus. Possimus quis non veniam debitis neque asperiores corrupti ipsa.",
+            "full_desc": "Fugiat magnam in non ut omnis. Aut voluptatem est quis exercitationem recusandae et. Ut fugiat ut in alias voluptates. Eum voluptatum qui laboriosam et laudantium.",
+            "is_superbowl": 1,
+            "interval_time": 22,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 61,
+            "stream_id": 2,
+            "user_id": 23,
+            "small_desc": "Ut aliquid ut iusto necessitatibus illum.",
+            "full_desc": "Est vitae aut nemo saepe dolores suscipit et. Sed recusandae fugit et consequuntur perferendis mollitia. Sit qui voluptatibus ut sequi unde.",
+            "is_superbowl": 1,
+            "interval_time": 4,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 62,
+            "stream_id": 4,
+            "user_id": 17,
+            "small_desc": "Aut aut et doloremque voluptatibus.",
+            "full_desc": "Est aliquid similique veniam modi. Aperiam dolores cumque deserunt quasi ab laboriosam. Aut dolor reiciendis ullam.",
+            "is_superbowl": 0,
+            "interval_time": 46,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 63,
+            "stream_id": 5,
+            "user_id": 37,
+            "small_desc": "Eum similique inventore placeat deserunt vel rerum eos. Dolores accusamus ut quo assumenda velit.",
+            "full_desc": "Quia ullam ipsam sunt. Quo tenetur est voluptatem nostrum dolorum corporis quisquam. Architecto minima adipisci aut consequatur tempore debitis et.",
+            "is_superbowl": 1,
+            "interval_time": 21,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 64,
+            "stream_id": 6,
+            "user_id": 5,
+            "small_desc": "Voluptatem illo delectus animi ipsa ut.",
+            "full_desc": "Dicta dicta recusandae repellat et et ullam cupiditate. Error quidem sed et consequatur. Recusandae sapiente ullam id earum quia.",
+            "is_superbowl": 1,
+            "interval_time": 29,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 65,
+            "stream_id": 5,
+            "user_id": 35,
+            "small_desc": "Rerum cumque quia at id quia.",
+            "full_desc": "Consectetur impedit quos qui accusamus vel. Reprehenderit eos dolores voluptatibus et voluptatibus eaque repellendus. Et consectetur non ea. Accusantium eaque aut fugiat.",
+            "is_superbowl": 1,
+            "interval_time": 4,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 66,
+            "stream_id": 1,
+            "user_id": 15,
+            "small_desc": "Sit et ex asperiores sequi temporibus nihil sint enim. Earum similique praesentium sunt tenetur.",
+            "full_desc": "Numquam esse recusandae sint. Porro aliquid eaque fugit est.",
+            "is_superbowl": 1,
+            "interval_time": 1,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 67,
+            "stream_id": 2,
+            "user_id": 27,
+            "small_desc": "Eos quos suscipit inventore ullam tempore. Eos illo reiciendis earum et laudantium occaecati.",
+            "full_desc": "Asperiores vero nulla et voluptatum quisquam quas rerum culpa. Et repellat sit ea est facilis odio et quidem. Voluptates quia rerum ut nemo corporis quis. Consequatur omnis cum aut eos.",
+            "is_superbowl": 1,
+            "interval_time": 48,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 68,
+            "stream_id": 2,
+            "user_id": 35,
+            "small_desc": "Molestiae unde quia cupiditate voluptas iste qui.",
+            "full_desc": "Autem dolorem eum vitae voluptatem. Voluptas aut dolores rerum non illo. Quas reprehenderit occaecati qui earum enim totam necessitatibus eligendi.",
+            "is_superbowl": 0,
+            "interval_time": 28,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 69,
+            "stream_id": 6,
+            "user_id": 6,
+            "small_desc": "Reiciendis dolor et at enim commodi laudantium quis.",
+            "full_desc": "Doloribus sit et ab enim adipisci necessitatibus. Ullam ab autem porro sunt. Qui cumque repellat est perspiciatis. Et sit quo repudiandae magni.",
+            "is_superbowl": 0,
+            "interval_time": 39,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 70,
+            "stream_id": 4,
+            "user_id": 44,
+            "small_desc": "Laboriosam ut iusto corporis et reiciendis sunt. Est veniam rerum non dolor.",
+            "full_desc": "Dolores aliquid consequatur et velit vero provident ut. Et iusto ut aut accusantium quia enim rem. Non suscipit quasi et excepturi dolorem sed accusantium. Nobis et modi veritatis rerum tenetur.",
+            "is_superbowl": 1,
+            "interval_time": 5,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 71,
+            "stream_id": 4,
+            "user_id": 7,
+            "small_desc": "Optio voluptatem dolorem aut suscipit.",
+            "full_desc": "Explicabo occaecati aut voluptatibus accusantium voluptate aut atque. Mollitia dolore reprehenderit qui deleniti quasi. Qui labore expedita enim nesciunt ea quis.",
+            "is_superbowl": 0,
+            "interval_time": 43,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 72,
+            "stream_id": 4,
+            "user_id": 7,
+            "small_desc": "Et earum autem voluptas aut laboriosam. Ipsum dignissimos placeat repudiandae expedita.",
+            "full_desc": "Voluptas assumenda ut dicta mollitia error amet. Qui velit placeat et vel delectus itaque. In doloremque maiores autem unde. In repellendus quis dolor quia fugiat dolor.",
+            "is_superbowl": 1,
+            "interval_time": 14,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 73,
+            "stream_id": 10,
+            "user_id": 7,
+            "small_desc": "Sunt nihil sapiente est ad corporis ab earum laboriosam. Voluptas ipsam omnis aut aspernatur.",
+            "full_desc": "Quia aut qui rerum ratione ullam. Quo enim odit earum beatae officiis voluptate asperiores quia. Dolores in veniam commodi voluptatem ea ad.",
+            "is_superbowl": 1,
+            "interval_time": 1,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 74,
+            "stream_id": 8,
+            "user_id": 30,
+            "small_desc": "Culpa iste nobis nemo est.",
+            "full_desc": "Ut porro architecto iure debitis harum et. Nihil illo tempore harum similique cupiditate ut. Libero praesentium voluptas earum voluptas.",
+            "is_superbowl": 0,
+            "interval_time": 23,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 75,
+            "stream_id": 7,
+            "user_id": 2,
+            "small_desc": "Et quia qui nisi modi et quis voluptate voluptate. Quia ut voluptas id ullam rem iusto.",
+            "full_desc": "Doloremque voluptatem qui ipsam aut porro commodi voluptas deleniti. Laborum minima dolorum ipsum nobis laboriosam corrupti. Est consequuntur iusto impedit corporis fugiat modi.",
+            "is_superbowl": 1,
+            "interval_time": 21,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 76,
+            "stream_id": 2,
+            "user_id": 17,
+            "small_desc": "Nesciunt doloremque consequuntur consequuntur aliquid. Dolore consequuntur sed est nobis iste.",
+            "full_desc": "Beatae vitae veritatis ut ratione occaecati suscipit. Culpa sunt blanditiis accusamus vero molestiae ea. Doloribus nulla aspernatur quisquam amet. Ad corporis est numquam quas earum sint eaque.",
+            "is_superbowl": 0,
+            "interval_time": 12,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 77,
+            "stream_id": 1,
+            "user_id": 17,
+            "small_desc": "Qui dolores soluta sit excepturi.",
+            "full_desc": "Ut et repellendus in. Voluptatibus debitis dolorem id ea iusto.",
+            "is_superbowl": 0,
+            "interval_time": 46,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 78,
+            "stream_id": 3,
+            "user_id": 1,
+            "small_desc": "Qui voluptatem quia et laboriosam. Minima distinctio dignissimos non deserunt autem consequuntur.",
+            "full_desc": "Est dolores et veniam qui ducimus quia. Id non sequi aspernatur error dolores facilis. Et saepe eum ut laudantium laudantium.",
+            "is_superbowl": 1,
+            "interval_time": 9,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 79,
+            "stream_id": 7,
+            "user_id": 29,
+            "small_desc": "Nisi hic sunt sed rerum. Libero ut aperiam ducimus harum.",
+            "full_desc": "Sit ad quos aut nostrum voluptatibus. Perspiciatis qui quos quod eos in. Aliquid et deserunt ex corrupti. Placeat facilis quia esse libero adipisci incidunt.",
+            "is_superbowl": 0,
+            "interval_time": 35,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 80,
+            "stream_id": 6,
+            "user_id": 15,
+            "small_desc": "Expedita cumque distinctio quae sint est. Ullam voluptas et est.",
+            "full_desc": "Corporis ex repellat in soluta atque veritatis. Qui modi quidem quia delectus in autem ratione. Ullam quaerat illum et occaecati beatae. Et facere reiciendis quo necessitatibus voluptas commodi.",
+            "is_superbowl": 0,
+            "interval_time": 45,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 81,
+            "stream_id": 10,
+            "user_id": 35,
+            "small_desc": "Tempora voluptas odit totam delectus reiciendis amet vero.",
+            "full_desc": "Magnam sit quia assumenda esse hic iste. Consequatur accusantium est reiciendis qui. Aut labore consequatur aut et quidem.",
+            "is_superbowl": 1,
+            "interval_time": 11,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 82,
+            "stream_id": 10,
+            "user_id": 35,
+            "small_desc": "A delectus facere aut vel.",
+            "full_desc": "Neque libero nostrum placeat est eligendi velit. Minus sunt nihil laudantium aliquid vitae est. Tenetur numquam beatae eos occaecati. Quis iusto quod voluptatem dicta quis.",
+            "is_superbowl": 1,
+            "interval_time": 42,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 83,
+            "stream_id": 6,
+            "user_id": 23,
+            "small_desc": "Maxime velit ea magnam. Enim est et a aliquid.",
+            "full_desc": "Incidunt laborum velit assumenda et minus sed quam aut. Consequatur odit ut officia sequi. Adipisci ab iure et voluptas. Ducimus dolor velit voluptatem vel ut voluptatem.",
+            "is_superbowl": 1,
+            "interval_time": 31,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 84,
+            "stream_id": 9,
+            "user_id": 15,
+            "small_desc": "Iusto quidem et debitis.",
+            "full_desc": "Aliquid cumque facilis cumque autem non voluptates. Velit sunt est delectus repudiandae. Asperiores ut ab ratione rerum enim recusandae. Amet dicta ipsum sit magni placeat autem unde.",
+            "is_superbowl": 1,
+            "interval_time": 40,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 85,
+            "stream_id": 8,
+            "user_id": 5,
+            "small_desc": "Laborum iure omnis voluptatum voluptatum amet alias. Enim modi optio consectetur quos asperiores impedit dolorum.",
+            "full_desc": "Quod dicta recusandae voluptatem distinctio. Libero autem atque provident voluptas asperiores ipsa. Ratione et dolor ullam ipsam odio.",
+            "is_superbowl": 0,
+            "interval_time": 48,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 86,
+            "stream_id": 10,
+            "user_id": 15,
+            "small_desc": "In id ducimus esse quia sit fuga.",
+            "full_desc": "Voluptate iste quis omnis ut rerum mollitia voluptatem ut. Qui eos qui libero eligendi architecto. Aperiam ea doloremque est possimus laboriosam molestias.",
+            "is_superbowl": 1,
+            "interval_time": 30,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 87,
+            "stream_id": 4,
+            "user_id": 37,
+            "small_desc": "Nisi occaecati ipsum et possimus. Nihil rerum facere maiores optio sit.",
+            "full_desc": "Aperiam dolorum est aperiam sit libero dignissimos neque ullam. Quam ea quas aperiam aut.",
+            "is_superbowl": 0,
+            "interval_time": 45,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 88,
+            "stream_id": 2,
+            "user_id": 27,
+            "small_desc": "Dolorum atque voluptas aut aliquam aut non et aliquam.",
+            "full_desc": "Enim dolorum ut veniam id culpa minus illum inventore. Qui vero voluptatem et totam. Saepe quae magnam ipsum excepturi consequatur quisquam et aut. Aut voluptas natus sequi possimus ratione est et.",
+            "is_superbowl": 0,
+            "interval_time": 17,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 89,
+            "stream_id": 5,
+            "user_id": 38,
+            "small_desc": "Repellat architecto ex excepturi earum necessitatibus.",
+            "full_desc": "Modi veniam mollitia rerum dolor modi assumenda. Sed culpa velit commodi itaque. Et qui inventore rerum. Sit iusto ducimus placeat tenetur. Sit impedit sunt expedita labore doloribus repellat dolores dolorem.",
+            "is_superbowl": 1,
+            "interval_time": 43,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 90,
+            "stream_id": 5,
+            "user_id": 5,
+            "small_desc": "Quam deserunt quia optio consequuntur sit soluta at.",
+            "full_desc": "Expedita pariatur earum porro et aut. Eum accusamus nisi quaerat voluptas et hic et. Quidem et perferendis nulla illo sunt quis corrupti.",
+            "is_superbowl": 0,
+            "interval_time": 11,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 91,
+            "stream_id": 10,
+            "user_id": 37,
+            "small_desc": "Odio animi similique qui et ad dolor. Quasi qui soluta ipsum sint eos quod velit.",
+            "full_desc": "Voluptatum rem accusantium ullam dolorum. Sint fugit reiciendis aut harum maxime. Ut fuga ex nesciunt.",
+            "is_superbowl": 1,
+            "interval_time": 16,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 92,
+            "stream_id": 8,
+            "user_id": 2,
+            "small_desc": "Quos earum sapiente sed quam architecto. Voluptates impedit libero ipsa.",
+            "full_desc": "Fugiat possimus ipsa voluptatibus sit est vitae. Rerum velit beatae omnis delectus est iure nam. Nihil suscipit consequatur et repudiandae commodi.",
+            "is_superbowl": 0,
+            "interval_time": 42,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 93,
+            "stream_id": 6,
+            "user_id": 1,
+            "small_desc": "Laboriosam eius natus quis eaque. Corrupti nostrum nam est voluptas quis cumque aut veniam.",
+            "full_desc": "Quod ipsam nihil expedita ipsa. Rerum quo illum eos dolore beatae facilis tempore. Dolorem non voluptas veniam nostrum non. Aut debitis quis quia aut repellendus sit amet eaque.",
+            "is_superbowl": 1,
+            "interval_time": 13,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 94,
+            "stream_id": 10,
+            "user_id": 2,
+            "small_desc": "Labore dolorem minima omnis nesciunt expedita qui consectetur dicta. Assumenda est tempora molestiae perferendis qui est expedita.",
+            "full_desc": "Aspernatur rerum repellendus dolor dolor ea dolor voluptates debitis. Est assumenda provident neque. Maiores possimus repellendus dolorem et officiis.",
+            "is_superbowl": 0,
+            "interval_time": 3,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 95,
+            "stream_id": 2,
+            "user_id": 3,
+            "small_desc": "Quos deleniti officia minima aut cupiditate impedit omnis.",
+            "full_desc": "Atque vero quis ipsa velit quasi dolor. Non quo aut maiores. Quas architecto sed aperiam minus animi voluptatem quod. Ut omnis animi et et.",
+            "is_superbowl": 0,
+            "interval_time": 6,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 96,
+            "stream_id": 4,
+            "user_id": 1,
+            "small_desc": "Quisquam voluptatem deserunt dolor natus sed in sapiente et.",
+            "full_desc": "Libero dolor tempora quia nihil qui. Expedita delectus iusto non deserunt excepturi consectetur. Ut aspernatur earum et accusantium tempora id ut. Ut ducimus adipisci ut a aliquid sit laborum laudantium.",
+            "is_superbowl": 1,
+            "interval_time": 45,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 97,
+            "stream_id": 8,
+            "user_id": 17,
+            "small_desc": "Dolor beatae dolorem possimus eum ut quo optio.",
+            "full_desc": "Aliquam et non provident repudiandae. Vero iure provident perspiciatis earum voluptatem labore. Aperiam est sapiente a dolorem iure et reiciendis.",
+            "is_superbowl": 0,
+            "interval_time": 28,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 98,
+            "stream_id": 1,
+            "user_id": 4,
+            "small_desc": "Nobis et quas deleniti aut labore nobis alias aspernatur. Doloremque ut tempora ipsum et veniam saepe.",
+            "full_desc": "Sapiente rerum id dolorum ut quia. Magnam nisi animi voluptatem dolores quae. Accusantium nulla modi officiis voluptate reprehenderit delectus nam.",
+            "is_superbowl": 1,
+            "interval_time": 21,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 99,
+            "stream_id": 6,
+            "user_id": 30,
+            "small_desc": "Porro quas magnam quis est ea.",
+            "full_desc": "Et aliquam quos consequatur et tempore veritatis quia. Est architecto fugiat tempore odio id labore nihil. Aut repellat dolor explicabo nesciunt expedita itaque.",
+            "is_superbowl": 0,
+            "interval_time": 19,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 100,
+            "stream_id": 7,
+            "user_id": 5,
+            "small_desc": "Blanditiis qui dolorem aspernatur ut impedit vel. Consequatur neque deserunt quia possimus ut quia maiores.",
+            "full_desc": "Molestiae nobis sunt tenetur distinctio voluptas voluptas. Vel modi ipsam eos impedit saepe. Minus possimus tempore sed minima vel sed. Quasi suscipit ullam quis non excepturi. Velit consequuntur vero perspiciatis earum ipsa velit.",
+            "is_superbowl": 1,
+            "interval_time": 44,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 101,
+            "stream_id": 1,
+            "user_id": 30,
+            "small_desc": "Ipsa natus ipsam saepe et sunt est atque.",
+            "full_desc": "Qui animi ullam et impedit ex dignissimos voluptate facere. Non nesciunt totam pariatur in error. Voluptates veniam reiciendis et sapiente sint accusantium.",
+            "is_superbowl": 0,
+            "interval_time": 15,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 102,
+            "stream_id": 5,
+            "user_id": 29,
+            "small_desc": "Eligendi fugit perspiciatis voluptates alias nostrum. Saepe laborum facere et vel magnam ipsa et.",
+            "full_desc": "Molestiae illo voluptatem aperiam et. Dolorum magni sint veritatis unde. Illum a quas fugiat et est dolorem.",
+            "is_superbowl": 1,
+            "interval_time": 3,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 103,
+            "stream_id": 5,
+            "user_id": 30,
+            "small_desc": "Et rerum blanditiis eligendi saepe ad sequi.",
+            "full_desc": "Expedita explicabo impedit accusamus est. Distinctio totam aut et molestiae sit ratione minus architecto. Exercitationem dolores ex accusamus quos voluptas doloribus eum.",
+            "is_superbowl": 1,
+            "interval_time": 33,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 104,
+            "stream_id": 2,
+            "user_id": 44,
+            "small_desc": "Ab quis reprehenderit dicta. Velit voluptatem molestias molestiae.",
+            "full_desc": "Reprehenderit aliquid ad voluptatum. Nisi dolores earum voluptate ea eveniet. Possimus id deleniti ea temporibus aliquam doloribus.",
+            "is_superbowl": 1,
+            "interval_time": 25,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 105,
+            "stream_id": 5,
+            "user_id": 6,
+            "small_desc": "Adipisci inventore et ut autem voluptates quod ipsa impedit. Ipsam ut officia enim reprehenderit debitis qui.",
+            "full_desc": "Consequuntur quasi aut numquam nihil reiciendis quo. Iusto iste reiciendis quas et sequi aspernatur. Sed aperiam tempore veniam iure consequatur distinctio repudiandae.",
+            "is_superbowl": 1,
+            "interval_time": 33,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 106,
+            "stream_id": 9,
+            "user_id": 5,
+            "small_desc": "Numquam minima eum numquam reprehenderit aut et ducimus.",
+            "full_desc": "Recusandae distinctio est omnis voluptas. Quia est tempore soluta quidem voluptatum cupiditate maxime. Minima et exercitationem voluptatum molestiae. Et consequuntur et sint perspiciatis sit aut cumque.",
+            "is_superbowl": 0,
+            "interval_time": 21,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 107,
+            "stream_id": 2,
+            "user_id": 12,
+            "small_desc": "Labore quam nesciunt occaecati exercitationem sunt quas eveniet beatae. Rerum sequi consequuntur laborum et est sequi iure.",
+            "full_desc": "Dolore quos nihil assumenda dolore. Doloribus tempore ipsum ut consequatur aut molestiae et ad. Dolore suscipit fugiat officiis molestiae quia a.",
+            "is_superbowl": 1,
+            "interval_time": 45,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 108,
+            "stream_id": 10,
+            "user_id": 38,
+            "small_desc": "Debitis alias architecto dolores.",
+            "full_desc": "Cum molestiae ut et quae repellat. Sapiente aliquid officiis dolor molestiae molestiae officia. Fugit voluptatum rem rerum perspiciatis voluptatum. Accusamus non repudiandae sapiente soluta aperiam.",
+            "is_superbowl": 0,
+            "interval_time": 5,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 109,
+            "stream_id": 2,
+            "user_id": 2,
+            "small_desc": "Sint esse eos reprehenderit voluptatem non accusantium voluptatibus vel.",
+            "full_desc": "Ut molestias sint sapiente beatae ipsa voluptatum. Nisi quibusdam dolorum in et possimus in.",
+            "is_superbowl": 1,
+            "interval_time": 3,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 110,
+            "stream_id": 3,
+            "user_id": 6,
+            "small_desc": "Tempore officia dolore nihil sunt sed ex ut. Cupiditate possimus reprehenderit consequatur minus.",
+            "full_desc": "Unde quae enim sint officiis magnam nesciunt consequatur. Recusandae sed sed aut itaque voluptate et. Saepe molestias culpa maiores ullam quam sed tempore sint. Cupiditate consequatur rem quod odio labore consequuntur.",
+            "is_superbowl": 0,
+            "interval_time": 3,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 111,
+            "stream_id": 2,
+            "user_id": 27,
+            "small_desc": "Cumque dolore at molestiae magnam earum ut.",
+            "full_desc": "Vero maxime maxime fuga aspernatur repellendus nulla dolores. Voluptas occaecati numquam autem error error quaerat. Explicabo ducimus explicabo et quam beatae consectetur. Necessitatibus inventore quia sint vel adipisci consequatur sed quam.",
+            "is_superbowl": 1,
+            "interval_time": 4,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 112,
+            "stream_id": 2,
+            "user_id": 6,
+            "small_desc": "Error voluptas nisi sunt sit itaque sint error. Suscipit quia ut consequatur eos.",
+            "full_desc": "Quae sint nesciunt distinctio molestias delectus. Tempore unde repellendus ratione tenetur doloremque voluptatem iste. Voluptas ipsam voluptatem qui et vel provident. Culpa et asperiores et nihil suscipit aut.",
+            "is_superbowl": 1,
+            "interval_time": 44,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 113,
+            "stream_id": 2,
+            "user_id": 27,
+            "small_desc": "Neque voluptatibus quis veniam.",
+            "full_desc": "Et ut non quos consequatur. Explicabo est blanditiis enim eos porro ipsa enim ipsam. Aliquid autem quidem quia temporibus qui laboriosam ad.",
+            "is_superbowl": 0,
+            "interval_time": 50,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 114,
+            "stream_id": 4,
+            "user_id": 27,
+            "small_desc": "Distinctio consequatur quidem officiis quia enim.",
+            "full_desc": "Rerum qui est soluta soluta et animi qui. Perspiciatis illum ad velit alias natus sint voluptas. Quis ex nihil et nesciunt expedita fugit aut praesentium. Porro quia cumque distinctio sapiente. Deleniti voluptate omnis rerum deserunt non eveniet ut reprehenderit.",
+            "is_superbowl": 1,
+            "interval_time": 2,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 115,
+            "stream_id": 7,
+            "user_id": 6,
+            "small_desc": "Ut enim architecto minima voluptas et ut praesentium. Ea consequatur tenetur id explicabo.",
+            "full_desc": "Laboriosam neque asperiores debitis dignissimos non repudiandae. Ducimus odit voluptates beatae quia quia iste deleniti optio. Impedit voluptatum beatae veritatis officia et consequuntur.",
+            "is_superbowl": 0,
+            "interval_time": 37,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 116,
+            "stream_id": 3,
+            "user_id": 35,
+            "small_desc": "Soluta suscipit at ipsam et quaerat commodi est. Laborum vero cupiditate qui iusto aut.",
+            "full_desc": "Sit possimus similique quia officia. Velit culpa officia est ex voluptas. Deserunt sed soluta doloremque vel officia. Aut optio tenetur impedit ducimus. Veniam dolor alias fuga debitis atque.",
+            "is_superbowl": 1,
+            "interval_time": 24,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 117,
+            "stream_id": 5,
+            "user_id": 38,
+            "small_desc": "Quidem omnis minima optio est eos amet quae. Nobis aliquid tempore ut aliquid eum.",
+            "full_desc": "Aut similique dolorum qui nihil reprehenderit aut quis officiis. Qui illum eveniet aliquam perspiciatis alias. Eligendi voluptatem commodi distinctio dolorem est facilis. Quidem fugit aut sit sapiente.",
+            "is_superbowl": 1,
+            "interval_time": 35,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 118,
+            "stream_id": 1,
+            "user_id": 7,
+            "small_desc": "Optio ea corrupti eum asperiores optio aut.",
+            "full_desc": "Et atque quis aliquam veritatis ducimus facere ut. Vel ut aut aut et doloribus harum. Pariatur architecto blanditiis delectus sed rem dolorem nisi. Iusto optio ut facere enim dolorem nemo.",
+            "is_superbowl": 0,
+            "interval_time": 44,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 119,
+            "stream_id": 4,
+            "user_id": 7,
+            "small_desc": "Excepturi reprehenderit iusto nihil earum sunt qui error. Sit est qui aut voluptatem quos similique.",
+            "full_desc": "Eligendi ullam similique hic rerum. Aperiam ullam non repellat ut explicabo dolorum animi. Ut et consequatur eligendi. Quis impedit quae rerum totam.",
+            "is_superbowl": 1,
+            "interval_time": 16,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 120,
+            "stream_id": 3,
+            "user_id": 16,
+            "small_desc": "Sint sint repellat non sequi.",
+            "full_desc": "Aut nihil nesciunt quia assumenda impedit eius ipsum. Itaque eum iste perferendis eum modi rerum. Ut ut provident commodi id voluptatem quas.",
+            "is_superbowl": 0,
+            "interval_time": 48,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 121,
+            "stream_id": 4,
+            "user_id": 44,
+            "small_desc": "Assumenda facere harum ullam modi.",
+            "full_desc": "Reprehenderit nihil perspiciatis eum et consequatur. Quam impedit cumque doloremque minima voluptates quia. Qui amet cupiditate a reprehenderit eveniet cumque voluptatem voluptates.",
+            "is_superbowl": 0,
+            "interval_time": 33,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 122,
+            "stream_id": 8,
+            "user_id": 15,
+            "small_desc": "Quisquam sunt quia nostrum soluta voluptas.",
+            "full_desc": "Quod sint perferendis quis consequuntur sequi corporis assumenda. Eius eum iure sit provident modi. Aut molestiae a dolor iure officia cupiditate vel. Porro eum odio eius excepturi.",
+            "is_superbowl": 0,
+            "interval_time": 38,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 123,
+            "stream_id": 2,
+            "user_id": 27,
+            "small_desc": "Aut quis odit unde atque.",
+            "full_desc": "Laboriosam asperiores porro rem ex voluptatibus. Doloribus nihil qui magnam. Dicta quo occaecati placeat atque voluptas. Soluta est porro iusto qui hic voluptatum in. Est esse velit amet saepe.",
+            "is_superbowl": 1,
+            "interval_time": 30,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:23.000000Z",
+            "updated_at": "2019-08-26T09:15:23.000000Z"
+        },
+        {
+            "id": 124,
+            "stream_id": 3,
+            "user_id": 1,
+            "small_desc": "Veniam minus quo omnis voluptate.",
+            "full_desc": "Dignissimos dicta doloremque repudiandae non repellendus laboriosam eveniet. Beatae nisi minima at non perspiciatis. Sit est nihil nulla eius occaecati quidem. Ut sit repellendus ea officiis.",
+            "is_superbowl": 1,
+            "interval_time": 50,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 125,
+            "stream_id": 2,
+            "user_id": 37,
+            "small_desc": "Corporis possimus maxime qui.",
+            "full_desc": "Dolor delectus a sit quia officiis voluptatibus. Qui facere aliquam unde. Esse adipisci soluta suscipit quasi voluptatem minus.",
+            "is_superbowl": 0,
+            "interval_time": 12,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 126,
+            "stream_id": 5,
+            "user_id": 5,
+            "small_desc": "Magnam laborum ex id perferendis reiciendis sed. Nesciunt aut dolorem expedita similique.",
+            "full_desc": "Iste iusto nobis et tempora. Laboriosam delectus quia recusandae eveniet maxime et sed. Commodi velit sed non debitis dolor quo. Aut sed dolores quos consectetur aut.",
+            "is_superbowl": 1,
+            "interval_time": 25,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 127,
+            "stream_id": 10,
+            "user_id": 5,
+            "small_desc": "Sapiente consequatur perferendis aliquam qui id nihil.",
+            "full_desc": "Ut deleniti doloribus eum voluptas sint voluptatibus. Harum molestiae temporibus quaerat sed praesentium. Repellat sint quos qui soluta adipisci occaecati. Nostrum quisquam dolor omnis numquam omnis.",
+            "is_superbowl": 1,
+            "interval_time": 17,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 128,
+            "stream_id": 9,
+            "user_id": 2,
+            "small_desc": "Dolor eveniet libero delectus sunt tenetur.",
+            "full_desc": "Voluptate nihil recusandae repudiandae ut est minus. Maxime architecto impedit voluptatem voluptas eum consequatur. Aut ut eveniet aut cumque sequi dolorem. Facilis impedit architecto rerum ut.",
+            "is_superbowl": 1,
+            "interval_time": 20,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 129,
+            "stream_id": 9,
+            "user_id": 3,
+            "small_desc": "Pariatur esse fugiat laboriosam dolor repudiandae consequatur voluptatibus.",
+            "full_desc": "Cumque inventore odio et nesciunt cumque nulla illo. Sit omnis vero nulla facere quisquam aperiam amet. Qui ut praesentium incidunt debitis dolor porro.",
+            "is_superbowl": 1,
+            "interval_time": 12,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 130,
+            "stream_id": 10,
+            "user_id": 9,
+            "small_desc": "Dolor quidem officiis quasi beatae modi vitae accusamus.",
+            "full_desc": "Dolor repellat neque ipsum quos dolores. Accusamus expedita necessitatibus omnis dignissimos quia eum officiis. Porro aut voluptates esse maiores sed ratione rerum.",
+            "is_superbowl": 0,
+            "interval_time": 38,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 131,
+            "stream_id": 7,
+            "user_id": 23,
+            "small_desc": "Nostrum dolor et dolores ut molestiae. Magni non enim sint illo quia omnis.",
+            "full_desc": "Laudantium est alias iusto et doloribus. Facere ex dolores occaecati aliquid voluptas accusantium perferendis. Eaque possimus optio laborum quibusdam consequatur odio. Cum distinctio repellendus est inventore quam et voluptatibus.",
+            "is_superbowl": 1,
+            "interval_time": 42,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 132,
+            "stream_id": 6,
+            "user_id": 4,
+            "small_desc": "Debitis voluptatem doloribus ullam. Est repudiandae distinctio debitis dignissimos hic soluta sit.",
+            "full_desc": "Quaerat explicabo qui ut nihil sed. Eos qui quisquam est aut. Rerum voluptates excepturi natus et atque quia. Rerum est qui culpa magni omnis.",
+            "is_superbowl": 1,
+            "interval_time": 41,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 133,
+            "stream_id": 3,
+            "user_id": 4,
+            "small_desc": "Eaque incidunt maxime eum porro alias enim laboriosam. Doloremque molestias inventore culpa quo.",
+            "full_desc": "Voluptates alias perferendis doloribus totam. Voluptatem vitae corrupti expedita exercitationem. Qui nihil nesciunt eum minima enim omnis. Id dolores et modi recusandae.",
+            "is_superbowl": 1,
+            "interval_time": 43,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 134,
+            "stream_id": 1,
+            "user_id": 29,
+            "small_desc": "Temporibus autem temporibus qui quia voluptates.",
+            "full_desc": "Laboriosam neque exercitationem exercitationem occaecati odit ut et. Et et quidem ut error. Rerum sed totam est nesciunt atque saepe. Quidem aut similique quae expedita.",
+            "is_superbowl": 0,
+            "interval_time": 33,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 135,
+            "stream_id": 4,
+            "user_id": 29,
+            "small_desc": "Dignissimos quas vel quasi enim error occaecati animi. Eaque velit voluptatem vel vel dolorem laborum et.",
+            "full_desc": "Minima omnis recusandae nostrum voluptates dicta. Amet nihil nesciunt aspernatur occaecati possimus enim.",
+            "is_superbowl": 0,
+            "interval_time": 44,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 136,
+            "stream_id": 3,
+            "user_id": 29,
+            "small_desc": "Pariatur alias id officiis modi et minima magnam. Dolore consequatur commodi cum ducimus quo eum.",
+            "full_desc": "Iure accusamus est nam dolorem eligendi dolor. Et est et aut dolor aperiam provident fuga. Eum natus numquam ducimus praesentium quidem occaecati et aperiam.",
+            "is_superbowl": 0,
+            "interval_time": 28,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 137,
+            "stream_id": 5,
+            "user_id": 44,
+            "small_desc": "Ad eos cum modi quas.",
+            "full_desc": "Et esse ad veritatis sit velit et earum. Est et recusandae blanditiis. Ut quae animi magnam alias ut perferendis.",
+            "is_superbowl": 1,
+            "interval_time": 49,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 138,
+            "stream_id": 2,
+            "user_id": 44,
+            "small_desc": "Ab eos reprehenderit earum. Enim sed harum autem.",
+            "full_desc": "Qui officia consectetur ad officia aliquid expedita. Et enim et et at eos est. Aliquid deleniti rerum voluptatum.",
+            "is_superbowl": 1,
+            "interval_time": 41,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 139,
+            "stream_id": 4,
+            "user_id": 35,
+            "small_desc": "Eius magni velit aut ut.",
+            "full_desc": "Blanditiis vel vitae blanditiis sed. Eos atque est et sed.",
+            "is_superbowl": 1,
+            "interval_time": 37,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 140,
+            "stream_id": 6,
+            "user_id": 16,
+            "small_desc": "Atque ut et sapiente cupiditate atque dolor.",
+            "full_desc": "Doloremque molestias pariatur reiciendis at ratione nostrum. Ullam inventore quos perferendis quia. Aperiam sint facilis non aut.",
+            "is_superbowl": 1,
+            "interval_time": 18,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 141,
+            "stream_id": 9,
+            "user_id": 16,
+            "small_desc": "Deserunt recusandae magnam vitae. Similique sed quam minima nisi ipsum delectus ea.",
+            "full_desc": "Sed exercitationem similique tenetur consectetur officia pariatur quia. Commodi deleniti occaecati aperiam ut. Commodi amet voluptatum nisi temporibus fuga libero.",
+            "is_superbowl": 0,
+            "interval_time": 22,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 142,
+            "stream_id": 7,
+            "user_id": 3,
+            "small_desc": "Aut facilis deserunt numquam eum libero et voluptate. Voluptas nemo inventore atque distinctio illum suscipit.",
+            "full_desc": "Vel non labore voluptas. Neque dignissimos est et voluptatem qui reiciendis.",
+            "is_superbowl": 1,
+            "interval_time": 27,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 143,
+            "stream_id": 3,
+            "user_id": 15,
+            "small_desc": "Accusantium delectus corporis ea consequatur nam est. Aut nulla voluptatem ducimus velit consequuntur.",
+            "full_desc": "Fugiat non consectetur ab unde fugiat rerum dolore. Aut totam architecto in impedit neque temporibus. Quis dolorem eum sit error sapiente veritatis deserunt. Officiis occaecati a dolores earum.",
+            "is_superbowl": 0,
+            "interval_time": 9,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 144,
+            "stream_id": 9,
+            "user_id": 29,
+            "small_desc": "Consectetur id harum eius nostrum. Hic porro voluptas eius numquam dolorem.",
+            "full_desc": "Voluptas fugiat at at. Suscipit ipsam molestias similique pariatur. Est dolorem veritatis optio aut tenetur hic. Voluptatem molestiae inventore quia enim aliquam qui.",
+            "is_superbowl": 1,
+            "interval_time": 41,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 145,
+            "stream_id": 4,
+            "user_id": 4,
+            "small_desc": "Temporibus ducimus mollitia sunt consequatur aut deserunt rerum. Fugiat quam nihil voluptas et.",
+            "full_desc": "Eos distinctio earum molestiae ea assumenda. Voluptas aut aliquam voluptas voluptas cum. Et aspernatur in quisquam. Eius ipsam et sed dolorem debitis sit.",
+            "is_superbowl": 0,
+            "interval_time": 20,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 146,
+            "stream_id": 8,
+            "user_id": 44,
+            "small_desc": "Vero deleniti totam praesentium enim molestias commodi iste. Fugiat sit maiores vitae deleniti.",
+            "full_desc": "Nam saepe esse rerum quia repellendus sit nemo. Vero numquam saepe est atque voluptate tempora. Nam temporibus sint aut. In suscipit incidunt accusamus magni laudantium corrupti quam. Molestiae qui aliquid modi.",
+            "is_superbowl": 0,
+            "interval_time": 1,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 147,
+            "stream_id": 10,
+            "user_id": 3,
+            "small_desc": "Delectus officiis similique repudiandae facere. Ipsam nihil animi repellendus qui voluptas dolorem quos.",
+            "full_desc": "Qui sit molestiae veniam voluptas corporis id. Ea velit numquam a itaque sed ad in. Rerum natus facilis et aut. Libero et reprehenderit officiis qui repudiandae commodi quia. Eum eius et deserunt.",
+            "is_superbowl": 1,
+            "interval_time": 43,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 148,
+            "stream_id": 7,
+            "user_id": 23,
+            "small_desc": "Totam est aut consequatur repudiandae voluptas. Nihil est nesciunt accusamus molestiae dicta reiciendis omnis reprehenderit.",
+            "full_desc": "Qui vel consequatur laborum ut. Ut neque quo beatae quam cupiditate sint. Nam vel et omnis tenetur. Nemo adipisci culpa saepe quisquam est quibusdam quaerat itaque.",
+            "is_superbowl": 1,
+            "interval_time": 44,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 149,
+            "stream_id": 4,
+            "user_id": 2,
+            "small_desc": "Enim quo omnis id magni rerum facilis.",
+            "full_desc": "Rerum voluptas reiciendis quia sunt pariatur. Quia harum sed aspernatur optio. Odit vel molestiae ipsum odio voluptatum rem porro.",
+            "is_superbowl": 1,
+            "interval_time": 39,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        },
+        {
+            "id": 150,
+            "stream_id": 8,
+            "user_id": 5,
+            "small_desc": "Atque commodi qui ut ratione aut culpa voluptatem vel.",
+            "full_desc": "Quidem non ipsum sint iusto ex velit excepturi. Quibusdam deleniti minus officiis qui sint. Ex cupiditate harum expedita molestiae. Aut sit laborum aliquid et et deleniti.",
+            "is_superbowl": 1,
+            "interval_time": 21,
+            "min_amount": null,
+            "min_amount_superbowl": null,
+            "status": {
+                "key": "Created",
+                "value": 0,
+                "description": "Created"
+            },
+            "amount_donations": 0,
+            "created_at": "2019-08-26T09:15:24.000000Z",
+            "updated_at": "2019-08-26T09:15:24.000000Z"
+        }
+    ]
+}
+```
+
+### HTTP Request
+`GET api/tasks`
+
+
+<!-- END_4227b9e5e54912af051e8dd5472afbce -->
+
+<!-- START_5297efa151ae4fd515fec2efd5cb1e9a -->
+## Display the specified resource.
+
+> Example request:
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->get("https://darestreams.com/api/tasks/1", [
+]);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+
+> Example response (200):
+
+```json
+{
+    "data": {
+        "id": 1,
+        "stream_id": 7,
+        "user_id": 30,
+        "small_desc": "Omnis quae quia aut officiis vel. Velit ea voluptatum quia.",
+        "full_desc": "Omnis quos in omnis ut distinctio voluptatem. Ea quasi deserunt rerum vitae et. Quo quia modi harum sed aut accusamus. Est quam voluptas voluptatum ipsam earum. Dolorum sint quisquam vel distinctio mollitia.",
+        "is_superbowl": 0,
+        "interval_time": 33,
+        "min_amount": null,
+        "min_amount_superbowl": null,
+        "status": {
+            "key": "Created",
+            "value": 0,
+            "description": "Created"
+        },
+        "amount_donations": 0,
+        "created_at": "2019-08-26T09:15:22.000000Z",
+        "updated_at": "2019-08-26T09:15:22.000000Z"
+    }
+}
+```
+
+### HTTP Request
+`GET api/tasks/{task}`
+
+
+<!-- END_5297efa151ae4fd515fec2efd5cb1e9a -->
+
+<!-- START_01696fa8fa1188ab6c0699dfca26ee69 -->
+## Set vote for task.
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+{task} - integer id of task.
+
+> Example request:
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->patch("https://darestreams.com/api/tasks/1/setVote", [
+    'headers' => [
+            "Content-Type" => "application/json",
+        ],
+    'json' => [
+            "vote" => "1",
+        ],
+]);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+
+
+### HTTP Request
+`PATCH api/tasks/{task}/setVote`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    vote | integer |  optional  | Vote parameter, 1-Yes, 2-No, 0 - Pending.
+
+<!-- END_01696fa8fa1188ab6c0699dfca26ee69 -->
 
 #Threads
 <!-- START_0243e324e32b67b8af814736702d84a1 -->
@@ -19843,7 +23126,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\03a6fba982a694f48792b36fbc5c2cd6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -19865,7 +23149,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\efe8de2c3a183b231e52442a1a21f0bb.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -19887,7 +23172,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\652d733740fcdd9db05dcb3d9f17c5d6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -19909,7 +23195,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\42ba1a82972a4414dc59e84c1f7c2f21.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:36.000000Z",
-                "updated_at": "2019-08-26T09:14:36.000000Z"
+                "updated_at": "2019-08-26T09:14:36.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -19931,7 +23218,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\1c7f654353e154007bd38fd60a4a9868.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:34.000000Z",
-                "updated_at": "2019-08-26T09:14:34.000000Z"
+                "updated_at": "2019-08-26T09:14:34.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -19953,7 +23241,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e8351ae6b338ee67fc3c4d6a7c5087f7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:50.000000Z",
-                "updated_at": "2019-08-26T09:14:50.000000Z"
+                "updated_at": "2019-08-26T09:14:50.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -19975,7 +23264,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\514d97d878f59d2d1a1318e5c02392a3.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -19997,7 +23287,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\97af6830fea41f22bb93e83f5eb73b7d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20019,7 +23310,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\48c4704e31cc75fbe6a9106a3066bacc.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20041,7 +23333,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\48c4704e31cc75fbe6a9106a3066bacc.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20063,7 +23356,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\760c8c01789ba3cc9188e9e338df381b.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20085,7 +23379,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\0f010a11fde61d0d29e99a2aedaa04d5.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:56.000000Z",
-                "updated_at": "2019-08-26T09:14:56.000000Z"
+                "updated_at": "2019-08-26T09:14:56.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20107,7 +23402,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7688695b3429f187faaa1930a9d4a34c.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:36.000000Z",
-                "updated_at": "2019-08-26T09:14:36.000000Z"
+                "updated_at": "2019-08-26T09:14:36.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20129,7 +23425,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a6a6d8a998b1bcdd5e822f1bc356f103.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20151,7 +23448,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\fcfb305f042797ea52896f1bbde0c88d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20173,7 +23471,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\97af6830fea41f22bb93e83f5eb73b7d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20195,7 +23494,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dd148817619a0364b83b8c6fa10092bd.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:42.000000Z",
-                "updated_at": "2019-08-26T09:14:42.000000Z"
+                "updated_at": "2019-08-26T09:14:42.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20217,7 +23517,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\efe8de2c3a183b231e52442a1a21f0bb.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20239,7 +23540,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e8351ae6b338ee67fc3c4d6a7c5087f7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:50.000000Z",
-                "updated_at": "2019-08-26T09:14:50.000000Z"
+                "updated_at": "2019-08-26T09:14:50.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20261,7 +23563,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\97af6830fea41f22bb93e83f5eb73b7d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20283,7 +23586,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e2bc3a35f7bbf98ba9357676e705eb33.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20305,7 +23609,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\03a6fba982a694f48792b36fbc5c2cd6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20327,7 +23632,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\736ce15abe731d69b346999f05fd968d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:45.000000Z",
-                "updated_at": "2019-08-26T09:14:45.000000Z"
+                "updated_at": "2019-08-26T09:14:45.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20349,7 +23655,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dd148817619a0364b83b8c6fa10092bd.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:42.000000Z",
-                "updated_at": "2019-08-26T09:14:42.000000Z"
+                "updated_at": "2019-08-26T09:14:42.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20371,7 +23678,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\97af6830fea41f22bb93e83f5eb73b7d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20393,7 +23701,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\97af6830fea41f22bb93e83f5eb73b7d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20415,7 +23724,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbf20bbb6ce39c9b54765c2c93e6b1b7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20437,7 +23747,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dd148817619a0364b83b8c6fa10092bd.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:42.000000Z",
-                "updated_at": "2019-08-26T09:14:42.000000Z"
+                "updated_at": "2019-08-26T09:14:42.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20459,7 +23770,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dd148817619a0364b83b8c6fa10092bd.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:42.000000Z",
-                "updated_at": "2019-08-26T09:14:42.000000Z"
+                "updated_at": "2019-08-26T09:14:42.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20481,7 +23793,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e8351ae6b338ee67fc3c4d6a7c5087f7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:50.000000Z",
-                "updated_at": "2019-08-26T09:14:50.000000Z"
+                "updated_at": "2019-08-26T09:14:50.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20503,7 +23816,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\48c4704e31cc75fbe6a9106a3066bacc.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20525,7 +23839,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\652d733740fcdd9db05dcb3d9f17c5d6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20547,7 +23862,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e2bc3a35f7bbf98ba9357676e705eb33.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20569,7 +23885,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dd148817619a0364b83b8c6fa10092bd.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:42.000000Z",
-                "updated_at": "2019-08-26T09:14:42.000000Z"
+                "updated_at": "2019-08-26T09:14:42.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20591,7 +23908,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\652d733740fcdd9db05dcb3d9f17c5d6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20613,7 +23931,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\0f010a11fde61d0d29e99a2aedaa04d5.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:56.000000Z",
-                "updated_at": "2019-08-26T09:14:56.000000Z"
+                "updated_at": "2019-08-26T09:14:56.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20635,7 +23954,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e2bc3a35f7bbf98ba9357676e705eb33.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20657,7 +23977,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\efe8de2c3a183b231e52442a1a21f0bb.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20679,7 +24000,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\97af6830fea41f22bb93e83f5eb73b7d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20701,7 +24023,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dd148817619a0364b83b8c6fa10092bd.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:42.000000Z",
-                "updated_at": "2019-08-26T09:14:42.000000Z"
+                "updated_at": "2019-08-26T09:14:42.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20723,7 +24046,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dd148817619a0364b83b8c6fa10092bd.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:42.000000Z",
-                "updated_at": "2019-08-26T09:14:42.000000Z"
+                "updated_at": "2019-08-26T09:14:42.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20745,7 +24069,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e8351ae6b338ee67fc3c4d6a7c5087f7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:50.000000Z",
-                "updated_at": "2019-08-26T09:14:50.000000Z"
+                "updated_at": "2019-08-26T09:14:50.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20767,7 +24092,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\efe8de2c3a183b231e52442a1a21f0bb.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20789,7 +24115,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\736ce15abe731d69b346999f05fd968d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:45.000000Z",
-                "updated_at": "2019-08-26T09:14:45.000000Z"
+                "updated_at": "2019-08-26T09:14:45.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20811,7 +24138,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\efe8de2c3a183b231e52442a1a21f0bb.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20833,7 +24161,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e2bc3a35f7bbf98ba9357676e705eb33.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20855,7 +24184,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\97af6830fea41f22bb93e83f5eb73b7d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20877,7 +24207,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\736ce15abe731d69b346999f05fd968d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:45.000000Z",
-                "updated_at": "2019-08-26T09:14:45.000000Z"
+                "updated_at": "2019-08-26T09:14:45.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20899,7 +24230,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbf20bbb6ce39c9b54765c2c93e6b1b7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20921,7 +24253,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\736ce15abe731d69b346999f05fd968d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:45.000000Z",
-                "updated_at": "2019-08-26T09:14:45.000000Z"
+                "updated_at": "2019-08-26T09:14:45.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20943,7 +24276,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbf20bbb6ce39c9b54765c2c93e6b1b7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20965,7 +24299,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\514d97d878f59d2d1a1318e5c02392a3.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -20987,7 +24322,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\03a6fba982a694f48792b36fbc5c2cd6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21009,7 +24345,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\0f010a11fde61d0d29e99a2aedaa04d5.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:56.000000Z",
-                "updated_at": "2019-08-26T09:14:56.000000Z"
+                "updated_at": "2019-08-26T09:14:56.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21031,7 +24368,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\760c8c01789ba3cc9188e9e338df381b.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21053,7 +24391,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\04618d3d68fc0da58d76e243853291f3.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:32.000000Z",
-                "updated_at": "2019-08-26T09:14:32.000000Z"
+                "updated_at": "2019-08-26T09:14:32.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21075,7 +24414,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e8351ae6b338ee67fc3c4d6a7c5087f7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:50.000000Z",
-                "updated_at": "2019-08-26T09:14:50.000000Z"
+                "updated_at": "2019-08-26T09:14:50.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21097,7 +24437,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e2bc3a35f7bbf98ba9357676e705eb33.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21119,7 +24460,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbf20bbb6ce39c9b54765c2c93e6b1b7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21141,7 +24483,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbf20bbb6ce39c9b54765c2c93e6b1b7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21163,7 +24506,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\760c8c01789ba3cc9188e9e338df381b.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21185,7 +24529,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\0f010a11fde61d0d29e99a2aedaa04d5.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:56.000000Z",
-                "updated_at": "2019-08-26T09:14:56.000000Z"
+                "updated_at": "2019-08-26T09:14:56.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21207,7 +24552,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\736ce15abe731d69b346999f05fd968d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:45.000000Z",
-                "updated_at": "2019-08-26T09:14:45.000000Z"
+                "updated_at": "2019-08-26T09:14:45.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21229,7 +24575,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\514d97d878f59d2d1a1318e5c02392a3.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21251,7 +24598,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\1c7f654353e154007bd38fd60a4a9868.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:34.000000Z",
-                "updated_at": "2019-08-26T09:14:34.000000Z"
+                "updated_at": "2019-08-26T09:14:34.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21273,7 +24621,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\04618d3d68fc0da58d76e243853291f3.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:32.000000Z",
-                "updated_at": "2019-08-26T09:14:32.000000Z"
+                "updated_at": "2019-08-26T09:14:32.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21295,7 +24644,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\48c4704e31cc75fbe6a9106a3066bacc.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21317,7 +24667,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\48c4704e31cc75fbe6a9106a3066bacc.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21339,7 +24690,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\42ba1a82972a4414dc59e84c1f7c2f21.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:36.000000Z",
-                "updated_at": "2019-08-26T09:14:36.000000Z"
+                "updated_at": "2019-08-26T09:14:36.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21361,7 +24713,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\dd148817619a0364b83b8c6fa10092bd.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:42.000000Z",
-                "updated_at": "2019-08-26T09:14:42.000000Z"
+                "updated_at": "2019-08-26T09:14:42.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21383,7 +24736,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\652d733740fcdd9db05dcb3d9f17c5d6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21405,7 +24759,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\03a6fba982a694f48792b36fbc5c2cd6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21427,7 +24782,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ed236983eeafa45e570a6937f097a261.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:36.000000Z",
-                "updated_at": "2019-08-26T09:14:36.000000Z"
+                "updated_at": "2019-08-26T09:14:36.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21449,7 +24805,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\48c4704e31cc75fbe6a9106a3066bacc.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21471,7 +24828,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\0f010a11fde61d0d29e99a2aedaa04d5.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:56.000000Z",
-                "updated_at": "2019-08-26T09:14:56.000000Z"
+                "updated_at": "2019-08-26T09:14:56.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21493,7 +24851,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\efe8de2c3a183b231e52442a1a21f0bb.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21515,7 +24874,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\760c8c01789ba3cc9188e9e338df381b.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21537,7 +24897,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\514d97d878f59d2d1a1318e5c02392a3.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21559,7 +24920,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\efe8de2c3a183b231e52442a1a21f0bb.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21581,7 +24943,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e8351ae6b338ee67fc3c4d6a7c5087f7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:50.000000Z",
-                "updated_at": "2019-08-26T09:14:50.000000Z"
+                "updated_at": "2019-08-26T09:14:50.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21603,7 +24966,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\48c4704e31cc75fbe6a9106a3066bacc.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21625,7 +24989,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e2bc3a35f7bbf98ba9357676e705eb33.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21647,7 +25012,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\97af6830fea41f22bb93e83f5eb73b7d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21669,7 +25035,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\03a6fba982a694f48792b36fbc5c2cd6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21691,7 +25058,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\fcfb305f042797ea52896f1bbde0c88d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21713,7 +25081,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\652d733740fcdd9db05dcb3d9f17c5d6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21735,7 +25104,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\0f010a11fde61d0d29e99a2aedaa04d5.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:56.000000Z",
-                "updated_at": "2019-08-26T09:14:56.000000Z"
+                "updated_at": "2019-08-26T09:14:56.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21757,7 +25127,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a6a6d8a998b1bcdd5e822f1bc356f103.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21779,7 +25150,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\760c8c01789ba3cc9188e9e338df381b.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21801,7 +25173,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e8351ae6b338ee67fc3c4d6a7c5087f7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:50.000000Z",
-                "updated_at": "2019-08-26T09:14:50.000000Z"
+                "updated_at": "2019-08-26T09:14:50.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21823,7 +25196,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\760c8c01789ba3cc9188e9e338df381b.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21845,7 +25219,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\760c8c01789ba3cc9188e9e338df381b.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21867,7 +25242,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\04618d3d68fc0da58d76e243853291f3.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:32.000000Z",
-                "updated_at": "2019-08-26T09:14:32.000000Z"
+                "updated_at": "2019-08-26T09:14:32.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21889,7 +25265,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\04618d3d68fc0da58d76e243853291f3.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:32.000000Z",
-                "updated_at": "2019-08-26T09:14:32.000000Z"
+                "updated_at": "2019-08-26T09:14:32.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21911,7 +25288,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7688695b3429f187faaa1930a9d4a34c.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:36.000000Z",
-                "updated_at": "2019-08-26T09:14:36.000000Z"
+                "updated_at": "2019-08-26T09:14:36.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21933,7 +25311,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\03a6fba982a694f48792b36fbc5c2cd6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21955,7 +25334,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\1c7f654353e154007bd38fd60a4a9868.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:34.000000Z",
-                "updated_at": "2019-08-26T09:14:34.000000Z"
+                "updated_at": "2019-08-26T09:14:34.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21977,7 +25357,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\652d733740fcdd9db05dcb3d9f17c5d6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -21999,7 +25380,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\652d733740fcdd9db05dcb3d9f17c5d6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22021,7 +25403,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\48c4704e31cc75fbe6a9106a3066bacc.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22043,7 +25426,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e2bc3a35f7bbf98ba9357676e705eb33.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22065,7 +25449,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\efe8de2c3a183b231e52442a1a21f0bb.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22087,7 +25472,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\03a6fba982a694f48792b36fbc5c2cd6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22109,7 +25495,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\7688695b3429f187faaa1930a9d4a34c.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:36.000000Z",
-                "updated_at": "2019-08-26T09:14:36.000000Z"
+                "updated_at": "2019-08-26T09:14:36.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22131,7 +25518,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e8351ae6b338ee67fc3c4d6a7c5087f7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:50.000000Z",
-                "updated_at": "2019-08-26T09:14:50.000000Z"
+                "updated_at": "2019-08-26T09:14:50.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22153,7 +25541,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\1c7f654353e154007bd38fd60a4a9868.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:34.000000Z",
-                "updated_at": "2019-08-26T09:14:34.000000Z"
+                "updated_at": "2019-08-26T09:14:34.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22175,7 +25564,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e8351ae6b338ee67fc3c4d6a7c5087f7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:50.000000Z",
-                "updated_at": "2019-08-26T09:14:50.000000Z"
+                "updated_at": "2019-08-26T09:14:50.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22197,7 +25587,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\760c8c01789ba3cc9188e9e338df381b.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22219,7 +25610,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a6a6d8a998b1bcdd5e822f1bc356f103.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22241,7 +25633,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\736ce15abe731d69b346999f05fd968d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:45.000000Z",
-                "updated_at": "2019-08-26T09:14:45.000000Z"
+                "updated_at": "2019-08-26T09:14:45.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22263,7 +25656,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\0f010a11fde61d0d29e99a2aedaa04d5.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:56.000000Z",
-                "updated_at": "2019-08-26T09:14:56.000000Z"
+                "updated_at": "2019-08-26T09:14:56.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22285,7 +25679,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\e2bc3a35f7bbf98ba9357676e705eb33.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22307,7 +25702,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\514d97d878f59d2d1a1318e5c02392a3.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22329,7 +25725,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\97af6830fea41f22bb93e83f5eb73b7d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22351,7 +25748,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\04618d3d68fc0da58d76e243853291f3.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:32.000000Z",
-                "updated_at": "2019-08-26T09:14:32.000000Z"
+                "updated_at": "2019-08-26T09:14:32.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22373,7 +25771,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\760c8c01789ba3cc9188e9e338df381b.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22395,7 +25794,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\a6a6d8a998b1bcdd5e822f1bc356f103.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22417,7 +25817,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\fcfb305f042797ea52896f1bbde0c88d.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22439,7 +25840,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\652d733740fcdd9db05dcb3d9f17c5d6.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:31.000000Z",
-                "updated_at": "2019-08-26T09:14:31.000000Z"
+                "updated_at": "2019-08-26T09:14:31.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22461,7 +25863,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\efe8de2c3a183b231e52442a1a21f0bb.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:46.000000Z",
-                "updated_at": "2019-08-26T09:14:46.000000Z"
+                "updated_at": "2019-08-26T09:14:46.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22483,7 +25886,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\bbf20bbb6ce39c9b54765c2c93e6b1b7.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:51.000000Z",
-                "updated_at": "2019-08-26T09:14:51.000000Z"
+                "updated_at": "2019-08-26T09:14:51.000000Z",
+                "lang": "ru"
             }
         },
         {
@@ -22505,7 +25909,8 @@ print_r(json_decode((string) $body));
                 "avatar": "http:\/\/darestreams.local\/storage\/avatars\\ed236983eeafa45e570a6937f097a261.jpg",
                 "overlay": "\/img\/default_overlay.jpg",
                 "created_at": "2019-08-26T09:14:36.000000Z",
-                "updated_at": "2019-08-26T09:14:36.000000Z"
+                "updated_at": "2019-08-26T09:14:36.000000Z",
+                "lang": "ru"
             }
         }
     ]
@@ -22536,7 +25941,7 @@ $response = $client->post("https://darestreams.com/api/threads/1/messages", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "body" => "iusto",
+            "body" => "sint",
         ],
 ]);
 $body = $response->getBody();
@@ -22669,8 +26074,8 @@ $response = $client->post("https://darestreams.com/api/transactions", [
         ],
     'json' => [
             "task_id" => "19",
-            "user_id" => "2",
-            "amount" => "7",
+            "user_id" => "17",
+            "amount" => "18",
         ],
 ]);
 $body = $response->getBody();
@@ -22704,8 +26109,8 @@ Parameter | Type | Status | Description
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/users/top", [
     'query' => [
-            "limit" => "excepturi",
-            "skip" => "architecto",
+            "limit" => "dolorem",
+            "skip" => "molestias",
             "include" => "tasks,channel",
         ],
 ]);
@@ -22812,6 +26217,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:46.000000Z",
             "updated_at": "2019-08-26T09:14:46.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 29,
                 "user_id": 29,
@@ -22993,6 +26399,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:32.000000Z",
             "updated_at": "2019-08-26T09:14:32.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 15,
                 "user_id": 9,
@@ -23079,6 +26486,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:31.000000Z",
             "updated_at": "2019-08-26T09:14:31.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 11,
                 "user_id": 6,
@@ -23298,6 +26706,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:36.000000Z",
             "updated_at": "2019-08-26T09:14:36.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 21,
                 "user_id": 16,
@@ -23422,6 +26831,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:46.000000Z",
             "updated_at": "2019-08-26T09:14:46.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 31,
                 "user_id": 30,
@@ -23622,6 +27032,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:36.000000Z",
             "updated_at": "2019-08-26T09:14:36.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 23,
                 "user_id": 17,
@@ -23784,6 +27195,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:42.000000Z",
             "updated_at": "2019-08-26T09:14:42.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 25,
                 "user_id": 23,
@@ -23984,6 +27396,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:31.000000Z",
             "updated_at": "2019-08-26T09:14:31.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 7,
                 "user_id": 4,
@@ -24165,6 +27578,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:51.000000Z",
             "updated_at": "2019-08-26T09:14:51.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 35,
                 "user_id": 37,
@@ -24384,6 +27798,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:31.000000Z",
             "updated_at": "2019-08-26T09:14:31.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 13,
                 "user_id": 7,
@@ -24546,6 +27961,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:36.000000Z",
             "updated_at": "2019-08-26T09:14:36.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 19,
                 "user_id": 15,
@@ -24708,6 +28124,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:31.000000Z",
             "updated_at": "2019-08-26T09:14:31.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 5,
                 "user_id": 3,
@@ -24889,6 +28306,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:34.000000Z",
             "updated_at": "2019-08-26T09:14:34.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 17,
                 "user_id": 12,
@@ -25032,6 +28450,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:51.000000Z",
             "updated_at": "2019-08-26T09:14:51.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 37,
                 "user_id": 38,
@@ -25175,6 +28594,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:31.000000Z",
             "updated_at": "2019-08-26T09:14:31.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 3,
                 "user_id": 2,
@@ -25356,6 +28776,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:56.000000Z",
             "updated_at": "2019-08-26T09:14:56.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 39,
                 "user_id": 44,
@@ -25518,6 +28939,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:50.000000Z",
             "updated_at": "2019-08-26T09:14:50.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 33,
                 "user_id": 35,
@@ -25699,6 +29121,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:31.000000Z",
             "updated_at": "2019-08-26T09:14:31.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 1,
                 "user_id": 1,
@@ -25842,6 +29265,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:45.000000Z",
             "updated_at": "2019-08-26T09:14:45.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 27,
                 "user_id": 27,
@@ -25985,6 +29409,7 @@ print_r(json_decode((string) $body));
             "overlay": "\/img\/default_overlay.jpg",
             "created_at": "2019-08-26T09:14:31.000000Z",
             "updated_at": "2019-08-26T09:14:31.000000Z",
+            "lang": "ru",
             "channel": {
                 "id": 9,
                 "user_id": 5,
@@ -26281,6 +29706,7 @@ print_r(json_decode((string) $body));
         "overlay": "\/img\/default_overlay.jpg",
         "created_at": "2019-08-26T09:14:31.000000Z",
         "updated_at": "2019-08-26T09:14:31.000000Z",
+        "lang": "ru",
         "channel": {
             "id": 1,
             "user_id": 1,
@@ -26441,8 +29867,8 @@ $response = $client->put("https://darestreams.com/api/users/1", [
         ],
     'json' => [
             "name" => "Archibald",
-            "last_name" => "non",
-            "middle_name" => "nesciunt",
+            "last_name" => "ut",
+            "middle_name" => "laudantium",
             "email" => "example@example.ru",
         ],
 ]);
@@ -26961,7 +30387,7 @@ $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/users/1/transactions", [
     'query' => [
             "include" => "task.",
-            "page" => "4",
+            "page" => "12",
         ],
 ]);
 $body = $response->getBody();
@@ -37121,29 +40547,5 @@ print_r(json_decode((string) $body));
 
 
 <!-- END_776ad2521c7bfc48fab5b2b7e8bc101b -->
-
-<!-- START_46d615f5dd5b3aa29d2a6e77dbebc99d -->
-## api/votes/{vote}
-> Example request:
-
-```php
-
-$client = new \GuzzleHttp\Client();
-$response = $client->put("https://darestreams.com/api/votes/1", [
-]);
-$body = $response->getBody();
-print_r(json_decode((string) $body));
-```
-
-
-
-
-### HTTP Request
-`PUT api/votes/{vote}`
-
-`PATCH api/votes/{vote}`
-
-
-<!-- END_46d615f5dd5b3aa29d2a6e77dbebc99d -->
 
 
