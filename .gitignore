@@ -19,3 +19,5 @@ todo.txt
 !/public/docs/
 
 /resources/views/index.blade.php
+/package.json
+/package-lock.json
