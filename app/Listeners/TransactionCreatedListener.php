@@ -56,7 +56,27 @@ class TransactionCreatedListener
             $stream = $task->stream;
             $user = $transaction->accountSender->user;
 
-            if($transaction->status==TransactionStatus::Completed)
+            /*$uids = $task->votes()->pluck('user_id')->toArray();
+            if (!in_array($user->id, $uids) && $user->id != $stream->user_id) {
+                $vote = new Vote([
+                    'user_id' => $user->id,
+                    'task_id' => $task->id
+                ]);
+
+                $task->votes()->save($vote);
+            }*/
+            if($user->id != $stream->user_id)
+            {
+                $vote = Vote::firstOrCreate([
+                    'user_id' => $user->id,
+                    'task_id' => $task->id
+                ]);
+                $vote->amount_donations = isset($vote->amount_donations) ? intval($vote->amount_donations)+$transaction->amount : $transaction->amount;
+                $vote->save();
+            }
+
+            //update task & stream info
+            if($transaction->status==TransactionStatus::Completed || $transaction->status==TransactionStatus::Holding)
             {
                 $task->update([
                     "amount_donations" => $task->amount_donations+$transaction->amount
@@ -69,18 +89,8 @@ class TransactionCreatedListener
                 ]);
             }
 
-            $uids = $task->votes()->pluck('user_id')->toArray();
-            if (!in_array($user->id, $uids) && $user->id != $stream->user_id) {
-                $vote = new Vote([
-                    'user_id' => $user->id,
-                    'task_id' => $task->id
-                ]);
-
-                $task->votes()->save($vote);
-            }
-
-            //$thread = $stream->threads[0];
-            //$thread->setParticipant();
+            $thread = $stream->threads[0];
+            $thread->setParticipant($user);
         }
     }
 }

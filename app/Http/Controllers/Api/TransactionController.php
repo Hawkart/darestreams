@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Enums\TaskStatus;
 use App\Enums\TransactionStatus;
 use App\Enums\TransactionType;
+use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use App\Models\Transaction;
 use App\Models\User;
@@ -78,14 +79,17 @@ class TransactionController extends Controller
             ];
 
             try {
-                DB::transaction(function () use ($data) {
+                $transaction = DB::transaction(function () use ($data) {
                     return Transaction::create($data);
                 });
             } catch (\Exception $e) {
                 return response($e->getMessage(), 422);
             }
 
+            TaskResource::withoutWrapping();
+
             return response()->json([
+                'data' => new TaskResource($transaction->task),
                 'success' => true,
                 'message'=> trans('api/streams/tasks/transaction.success_created')
             ], 200);

@@ -17,9 +17,10 @@ class Kernel extends ConsoleKernel
         Commands\DropTables::class,
         Commands\ImportGames::class,
         Commands\ImportChannelsViews::class,
-        Commands\CountTaskResults::class,
+        Commands\MakePaymentsByStreams::class,
         Commands\UpdateStreamsStatus::class,
-        Commands\CheckTaskInterval::class
+        Commands\CheckTaskInterval::class,
+        Commands\FinishVotes::class,
     ];
 
     /**
@@ -34,6 +35,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('channels:get_views')->hourly();
         $schedule->command('tasks:check_interval')->everyMinute();
         $schedule->command('streams:update_status')->everyMinute();
+        $schedule->command('votes:finish')->everyMinute();
+        $schedule->command('streams:pay_donations')->daily()->timezone('America/New_York')->at('02:00');
     }
 
     /**

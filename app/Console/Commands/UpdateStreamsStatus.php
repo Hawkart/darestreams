@@ -37,9 +37,18 @@ class UpdateStreamsStatus extends Command
     public function handle()
     {
         $bar = $this->output->createProgressBar(100);
-
         $now = Carbon::now('UTC');
-        $streams = Stream::where('status', StreamStatus::Created)->where('start_at', '>', $now)->get();
+
+        try {
+            DB::transaction(function () use ($now) {
+                Stream::where('status', StreamStatus::Created)->where('start_at', '>', $now)
+                        ->update(['status' => StreamStatus::Active]);
+            });
+        } catch (\Exception $e) {
+            echo response($e->getMessage(), 422);
+        }
+
+        /*$streams = Stream::where('status', StreamStatus::Created)->where('start_at', '>', $now)->get();
 
         if(count($streams)>0)
         {
@@ -53,7 +62,7 @@ class UpdateStreamsStatus extends Command
                     echo response($e->getMessage(), 422);
                 }
             }
-        }
+        }*/
 
         $bar->finish();
     }

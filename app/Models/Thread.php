@@ -15,14 +15,17 @@ class Thread extends MThread
         return $this->belongsTo(Threadable::class, 'thread_id');
     }
 
-    public function setParticipant()
+    public function setParticipant($user = null)
     {
-        if(!empty(auth()->user()))
+        if(!$user && !empty(auth()->user()))
+            $user = auth()->user();
+
+        if($user)
         {
             //Add new $participant
             $participant = Participant::firstOrCreate([
                 'thread_id' => $this->id,
-                'user_id' => auth()->user()->id,
+                'user_id' => $user->id,
             ]);
             $participant->last_read = new Carbon;
             $participant->save();

@@ -40,19 +40,21 @@ class TransactionUpdatedListener
                     "amount" => $account->amount+$transaction->amount
                 ]);
 
+                /*
                 if(intval($transaction->task_id)>0)
                 {
                     $task = $transaction->task;
                     $task->update([
-                        "amount_donations" => sumAmounts($task->amount_donations, $transaction->amount, 2)
+                        "amount_donations" => $task->amount_donations + $transaction->amount
                     ]);
 
                     $stream = $task->steam;
                     $stream->update([
                         'quantity_donations' => intval($stream->quantity_donations) + 1,
-                        "amount_donations" => sumAmounts($task->amount_donations, $transaction->amount, 2)
+                        "amount_donations" => $task->amount_donations + $transaction->amount
                     ]);
                 }
+                */
 
             }else if($transaction->status==TransactionStatus::Canceled)
             {
@@ -86,11 +88,15 @@ class TransactionUpdatedListener
                         "amount_donations" => $task->amount_donations-$transaction->amount
                     ]);
 
-                    $stream = $task->steam;
-                    $stream->update([
-                        'quantity_donations' => intval($stream->quantity_donations) - 1,
-                        "amount_donations" => $task->amount_donations-$transaction->amount
-                    ]);
+                    //holding -> canceled
+                    if($transaction->getOriginal('status')==TransactionStatus::Holding)
+                    {
+                        $stream = $task->steam;
+                        $stream->update([
+                            'quantity_donations' => intval($stream->quantity_donations) - 1,
+                            "amount_donations" => $task->amount_donations - $transaction->amount
+                        ]);
+                    }
                 }
             }
         }

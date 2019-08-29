@@ -402,9 +402,9 @@ print_r(json_decode((string) $body));</code></pre>
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/channels/top", [
     'query' =&gt; [
-            "hours" =&gt; "aperiam",
-            "limit" =&gt; "nihil",
-            "skip" =&gt; "perferendis",
+            "hours" =&gt; "voluptas",
+            "limit" =&gt; "vitae",
+            "skip" =&gt; "veritatis",
             "game_id" =&gt; "sed",
             "include" =&gt; "user,streams",
         ],
@@ -468,7 +468,7 @@ $response = $client-&gt;get("https://darestreams.com/api/channels", [
     'query' =&gt; [
             "include" =&gt; "user,streams",
             "sort" =&gt; "-id",
-            "page" =&gt; "8",
+            "page" =&gt; "6",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -516,7 +516,7 @@ print_r(json_decode((string) $body));</code></pre>
             "slug": "h3x-tv",
             "description": "Sit animi sit quas ad. Cupiditate vel enim voluptate dolorem repellendus perspiciatis. Ex placeat minima nesciunt.",
             "provider": "twitch",
-            "views": 424,
+            "views": 0,
             "logo": "https:\/\/static-cdn.jtvnw.net\/jtv_user_pictures\/76e650d1-5e4e-4402-a25c-b077a9adae35-profile_image-300x300.jpeg",
             "overlay": "https:\/\/static-cdn.jtvnw.net\/jtv_user_pictures\/c33e446e7ee3dd34-channel_offline_image-1920x1080.jpeg",
             "created_at": "2019-08-26T09:15:21.000000Z",
@@ -709,7 +709,7 @@ print_r(json_decode((string) $body));</code></pre>
             "slug": "uccleague",
             "description": "Quia fuga aut occaecati sit modi quaerat tempora eaque. Qui soluta cum a. Accusantium eum dicta exercitationem doloremque suscipit ut asperiores.",
             "provider": "twitch",
-            "views": 31,
+            "views": 3,
             "logo": "https:\/\/static-cdn.jtvnw.net\/jtv_user_pictures\/826ea56d-fbd0-46de-874b-d061419aedbc-profile_image-300x300.png",
             "overlay": "https:\/\/static-cdn.jtvnw.net\/jtv_user_pictures\/4feebef3-6754-44d4-9730-58bf32ad0426-channel_offline_image-1920x1080.png",
             "created_at": "2019-08-26T09:15:19.000000Z",
@@ -1070,7 +1070,7 @@ print_r(json_decode((string) $body));</code></pre>
             "slug": "koil",
             "description": "Voluptatibus consectetur aut voluptate et cum porro rerum est. Ullam tempore non eos ipsum ad eveniet. Amet magni nobis perspiciatis qui earum. Et ratione ipsam voluptatem labore eum.",
             "provider": "twitch",
-            "views": 16,
+            "views": 0,
             "logo": "https:\/\/static-cdn.jtvnw.net\/jtv_user_pictures\/10f08297-b660-4977-8672-9d12860cab81-profile_image-300x300.png",
             "overlay": "https:\/\/static-cdn.jtvnw.net\/jtv_user_pictures\/koil-channel_offline_image-804ab10882d2dbf7-1920x1080.png",
             "created_at": "2019-08-26T09:15:17.000000Z",
@@ -1430,8 +1430,8 @@ $response = $client-&gt;put("https://darestreams.com/api/channels/1", [
         ],
     'json' =&gt; [
             "description" =&gt; "Long description.",
-            "logo" =&gt; "perspiciatis",
-            "game_id" =&gt; "3",
+            "logo" =&gt; "impedit",
+            "game_id" =&gt; "16",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -1481,9 +1481,9 @@ print_r(json_decode((string) $body));</code></pre>
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/games/top", [
     'query' =&gt; [
-            "hours" =&gt; "rerum",
-            "limit" =&gt; "tempore",
-            "skip" =&gt; "non",
+            "hours" =&gt; "asperiores",
+            "limit" =&gt; "doloribus",
+            "skip" =&gt; "occaecati",
             "include" =&gt; "tags,streams",
         ],
 ]);
@@ -1541,7 +1541,7 @@ $response = $client-&gt;get("https://darestreams.com/api/games", [
     'query' =&gt; [
             "include" =&gt; "tags,streams",
             "sort" =&gt; "-popularity",
-            "page" =&gt; "8",
+            "page" =&gt; "11",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -2193,7 +2193,7 @@ $response = $client-&gt;get("https://darestreams.com/api/payments/1/1/1/checkout
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "amount" =&gt; "44752283.1354",
+            "amount" =&gt; "787153.83",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -2276,8 +2276,8 @@ print_r(json_decode((string) $body));</code></pre>
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/streams/top", [
     'query' =&gt; [
-            "limit" =&gt; "vel",
-            "skip" =&gt; "dolorem",
+            "limit" =&gt; "itaque",
+            "skip" =&gt; "a",
             "include" =&gt; "user,tasks",
         ],
 ]);
@@ -2330,7 +2330,7 @@ $response = $client-&gt;get("https://darestreams.com/api/streams", [
     'query' =&gt; [
             "include" =&gt; "game,tasks",
             "sort" =&gt; "-quantity_donators",
-            "page" =&gt; "5",
+            "page" =&gt; "18",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -5595,17 +5595,17 @@ $response = $client-&gt;post("https://darestreams.com/api/streams", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "channel_id" =&gt; "1",
-            "title" =&gt; "corporis",
-            "link" =&gt; "vero",
-            "start_at" =&gt; "est",
-            "allow_task_before_stream" =&gt; "1",
+            "channel_id" =&gt; "18",
+            "title" =&gt; "ab",
+            "link" =&gt; "alias",
+            "start_at" =&gt; "dolorum",
+            "allow_task_before_stream" =&gt; "",
             "allow_task_when_stream" =&gt; "1",
-            "min_amount_task_before_stream" =&gt; "quos",
-            "min_amount_task_when_stream" =&gt; "temporibus",
-            "min_amount_donate_task_before_stream" =&gt; "atque",
-            "min_amount_donate_task_when_stream" =&gt; "ipsa",
-            "tags" =&gt; "aliquam",
+            "min_amount_task_before_stream" =&gt; "delectus",
+            "min_amount_task_when_stream" =&gt; "aut",
+            "min_amount_donate_task_before_stream" =&gt; "voluptatem",
+            "min_amount_donate_task_when_stream" =&gt; "aut",
+            "tags" =&gt; "et",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -6028,17 +6028,17 @@ $response = $client-&gt;put("https://darestreams.com/api/streams/1", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "title" =&gt; "enim",
-            "link" =&gt; "et",
-            "start_at" =&gt; "exercitationem",
-            "status" =&gt; "4",
+            "title" =&gt; "omnis",
+            "link" =&gt; "assumenda",
+            "start_at" =&gt; "nulla",
+            "status" =&gt; "1",
             "allow_task_before_stream" =&gt; "",
             "allow_task_when_stream" =&gt; "1",
-            "min_amount_task_before_stream" =&gt; "cum",
-            "min_amount_task_when_stream" =&gt; "aut",
-            "min_amount_donate_task_before_stream" =&gt; "velit",
-            "min_amount_donate_task_when_stream" =&gt; "perspiciatis",
-            "tags" =&gt; "cupiditate",
+            "min_amount_task_before_stream" =&gt; "consequuntur",
+            "min_amount_task_when_stream" =&gt; "facere",
+            "min_amount_donate_task_before_stream" =&gt; "esse",
+            "min_amount_donate_task_when_stream" =&gt; "accusantium",
+            "tags" =&gt; "quidem",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -7285,7 +7285,7 @@ $response = $client-&gt;get("https://darestreams.com/api/streams/1/tasks", [
     'query' =&gt; [
             "include" =&gt; "user,stream",
             "sort" =&gt; "-amount_donations",
-            "page" =&gt; "13",
+            "page" =&gt; "8",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -8095,11 +8095,11 @@ $response = $client-&gt;post("https://darestreams.com/api/streams/1/tasks", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "small_text" =&gt; "suscipit",
-            "full_text" =&gt; "quia",
+            "small_text" =&gt; "voluptatem",
+            "full_text" =&gt; "dolorem",
             "interval_time" =&gt; "4",
             "is_superbowl" =&gt; "",
-            "tags" =&gt; "ducimus",
+            "tags" =&gt; "corporis",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -8207,12 +8207,12 @@ $response = $client-&gt;put("https://darestreams.com/api/streams/1/tasks/1", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "status" =&gt; "12",
-            "small_text" =&gt; "magnam",
-            "full_text" =&gt; "quibusdam",
-            "interval_time" =&gt; "5",
-            "is_superbowl" =&gt; "",
-            "tags" =&gt; "aut",
+            "status" =&gt; "17",
+            "small_text" =&gt; "hic",
+            "full_text" =&gt; "exercitationem",
+            "interval_time" =&gt; "3",
+            "is_superbowl" =&gt; "1",
+            "tags" =&gt; "eius",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -8284,7 +8284,7 @@ $response = $client-&gt;get("https://darestreams.com/api/streams/1/tasks/1/trans
     'query' =&gt; [
             "include" =&gt; "task",
             "sort" =&gt; "-created_at",
-            "page" =&gt; "17",
+            "page" =&gt; "6",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -26263,7 +26263,7 @@ $response = $client-&gt;post("https://darestreams.com/api/threads/1/messages", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "body" =&gt; "sint",
+            "body" =&gt; "voluptatem",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -26381,9 +26381,9 @@ $response = $client-&gt;post("https://darestreams.com/api/transactions", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "task_id" =&gt; "19",
-            "user_id" =&gt; "17",
-            "amount" =&gt; "18",
+            "task_id" =&gt; "17",
+            "user_id" =&gt; "2",
+            "amount" =&gt; "8",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -26432,8 +26432,8 @@ print_r(json_decode((string) $body));</code></pre>
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/users/top", [
     'query' =&gt; [
-            "limit" =&gt; "dolorem",
-            "skip" =&gt; "molestias",
+            "limit" =&gt; "quis",
+            "skip" =&gt; "aut",
             "include" =&gt; "tasks,channel",
         ],
 ]);
@@ -26558,7 +26558,7 @@ print_r(json_decode((string) $body));</code></pre>
                 "slug": "uccleague",
                 "description": "Quia fuga aut occaecati sit modi quaerat tempora eaque. Qui soluta cum a. Accusantium eum dicta exercitationem doloremque suscipit ut asperiores.",
                 "provider": "twitch",
-                "views": 31,
+                "views": 3,
                 "logo": "https:\/\/static-cdn.jtvnw.net\/jtv_user_pictures\/826ea56d-fbd0-46de-874b-d061419aedbc-profile_image-300x300.png",
                 "overlay": "https:\/\/static-cdn.jtvnw.net\/jtv_user_pictures\/4feebef3-6754-44d4-9730-58bf32ad0426-channel_offline_image-1920x1080.png",
                 "created_at": "2019-08-26T09:15:19.000000Z"
@@ -28139,7 +28139,7 @@ print_r(json_decode((string) $body));</code></pre>
                 "slug": "koil",
                 "description": "Voluptatibus consectetur aut voluptate et cum porro rerum est. Ullam tempore non eos ipsum ad eveniet. Amet magni nobis perspiciatis qui earum. Et ratione ipsam voluptatem labore eum.",
                 "provider": "twitch",
-                "views": 16,
+                "views": 0,
                 "logo": "https:\/\/static-cdn.jtvnw.net\/jtv_user_pictures\/10f08297-b660-4977-8672-9d12860cab81-profile_image-300x300.png",
                 "overlay": "https:\/\/static-cdn.jtvnw.net\/jtv_user_pictures\/koil-channel_offline_image-804ab10882d2dbf7-1920x1080.png",
                 "created_at": "2019-08-26T09:15:17.000000Z"
@@ -28791,7 +28791,7 @@ print_r(json_decode((string) $body));</code></pre>
                 "slug": "h3x-tv",
                 "description": "Sit animi sit quas ad. Cupiditate vel enim voluptate dolorem repellendus perspiciatis. Ex placeat minima nesciunt.",
                 "provider": "twitch",
-                "views": 424,
+                "views": 0,
                 "logo": "https:\/\/static-cdn.jtvnw.net\/jtv_user_pictures\/76e650d1-5e4e-4402-a25c-b077a9adae35-profile_image-300x300.jpeg",
                 "overlay": "https:\/\/static-cdn.jtvnw.net\/jtv_user_pictures\/c33e446e7ee3dd34-channel_offline_image-1920x1080.jpeg",
                 "created_at": "2019-08-26T09:15:21.000000Z"
@@ -30210,8 +30210,8 @@ $response = $client-&gt;put("https://darestreams.com/api/users/1", [
         ],
     'json' =&gt; [
             "name" =&gt; "Archibald",
-            "last_name" =&gt; "ut",
-            "middle_name" =&gt; "laudantium",
+            "last_name" =&gt; "natus",
+            "middle_name" =&gt; "incidunt",
             "email" =&gt; "example@example.ru",
         ],
 ]);
@@ -30607,7 +30607,7 @@ $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/users/1/transactions", [
     'query' =&gt; [
             "include" =&gt; "task.",
-            "page" =&gt; "12",
+            "page" =&gt; "5",
         ],
 ]);
 $body = $response-&gt;getBody();

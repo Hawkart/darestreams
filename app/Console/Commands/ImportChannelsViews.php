@@ -2,8 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Resources\ChannelResource;
-use App\Models\Game;
+use App\Models\Channel;
 use Illuminate\Console\Command;
 use Image;
 
