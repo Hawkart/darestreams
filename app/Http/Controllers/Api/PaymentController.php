@@ -29,7 +29,7 @@ class PaymentController extends Controller
     {
         $this->middleware('auth:api')->only(['checkout']);
 
-        $this->gate = 'PayPal_Rest';//$request->route()->parameter('gateway');
+        $this->gate = $request->route()->parameter('gateway');
         $gateway = Omnipay::create($this->gate);
 
         //Todo: Change initialize params
@@ -54,7 +54,7 @@ class PaymentController extends Controller
      *
      * @authenticated
      *
-     * @bodyParam amount float required Amount for payment.
+     * @bodyParam amount integer required Amount for payment.
      *
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
@@ -137,6 +137,7 @@ class PaymentController extends Controller
         ));
 
         $result = $transaction->send();
+        $error = false;
 
         if ($data = $result->getData())
         {
@@ -179,7 +180,7 @@ class PaymentController extends Controller
                             {
                                 Transaction::create([
                                     'task_id' => $task ? $task->id : 0,
-                                    'amount' => $t->amount,
+                                    'amount' => intval($t->amount),
                                     'account_sender_id' => $t->account_receiver_id,
                                     'account_receiver_id' => $task ? $task->stream->user->account->id : $user->account->id,
                                     'status' => $task ? TransactionStatus::Holding : TransactionStatus::Completed,
@@ -189,18 +190,34 @@ class PaymentController extends Controller
 
                             return $t;
                         });
+
+                        $response = intval($t->amount);
+
                     }catch (\Exception $e) {
-                        return response($e->getMessage(), 422);
+                        $response = 0;
+                        $error = $e->getMessage();
+                        //return response($e->getMessage(), 422);
                     }
+                }else{
+                    $response = 0;
                 }
 
-                return new TransactionResource($t);
+                //return new TransactionResource($t);
             }else{
-                return response()->json(['error' => trans('api/paypal.not_approved')], 422);
+                $response = 0;
+                $error = trans('api/paypal.not_approved');
+                //return response()->json(['error' => trans('api/paypal.not_approved')], 422);
             }
         }else{
-            return response()->json(['error' => trans('api/paypal.purchase_mistake')], 422);
+            $response = 0;
+            $error = trans('api/paypal.purchase_mistake');
+            //return response()->json(['error' => trans('api/paypal.purchase_mistake')], 422);
         }
+
+        return response()->view('payments.callback', [
+            'result' => $response,
+            'error' => $error
+        ], !$error ? 422 : 200);
     }
 
     /**
@@ -210,6 +227,9 @@ class PaymentController extends Controller
      */
     public function cancelled($gate, $user, $task, Request $request)
     {
-        return response()->json(['error' => trans('api/paypal.purchase_canceled')], 422);
+        return response()->view('payments.callback', [
+            'result' => 0,
+            'error' => trans('api/paypal.purchase_canceled')
+        ], 200);
     }
 }
