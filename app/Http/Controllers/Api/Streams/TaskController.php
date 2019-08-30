@@ -106,7 +106,7 @@ class TaskController extends Controller
                 'created_amount' => trans('api/streams/task.not_enough_money')
             ]], 422);
         }
-        
+
         //If not owner of stream check how much money you have
         if($user->channel->id != $stream->channel_id && $user->account->amount<$amount)
             return response()->json(['error' => trans('api/streams/task.not_enough_money')], 422);

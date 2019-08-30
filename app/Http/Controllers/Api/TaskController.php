@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Enums\TaskStatus;
+use App\Enums\TransactionStatus;
 use App\Enums\VoteStatus;
-use App\Models\Vote;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
@@ -83,7 +84,24 @@ class TaskController extends Controller
         if($vote->vote!=VoteStatus::Pending)
             return response()->json(['error' => trans('api/task.already_vote')], 422);
 
-        $vote->update($request->only('vote'));
+        try {
+            DB::transaction(function () use ($vote, $request, $task, $user) {
+                $vote->update($request->only('vote'));
+
+                $amount = Transaction::where('task_id', $task->id)
+                    ->where('account_sender_id', $user->account->id)
+                    ->whereIn('status', [TransactionStatus::Completed, TransactionStatus::Holding])
+                    ->sum('amount');
+
+                if($request->only('vote')==VoteStatus::Yes){
+                    $task->update(['vote_yes' => $task->vote_yes + $amount]);
+                }else{
+                    $task->update(['vote_no' => $task->vote_no + $amount]);
+                }
+            });
+        } catch (\Exception $e) {
+            return response($e->getMessage(), 422);
+        }
 
         return response()->json([
             'success' => true,

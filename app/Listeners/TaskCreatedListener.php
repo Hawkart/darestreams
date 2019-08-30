@@ -16,18 +16,14 @@ class TaskCreatedListener
     public function handle(TaskCreatedEvent $event)
     {
         $task = $event->task;
-        $stream = $task->stream;
 
-        if($task->user_id != $stream->user_id)
-        {
-            $vote = Vote::firstOrCreate([
-                'user_id' => $task->user_id,
-                'task_id' => $task->id
-            ]);
-            $vote->save();
+        $vote = Vote::firstOrCreate([
+            'user_id' => $task->user_id,
+            'task_id' => $task->id
+        ]);
+        $vote->save();
 
-            $thread = $task->stream->threads[0];
-            $thread->setParticipant();
-        }
+        $thread = $task->stream->threads[0];
+        $thread->setParticipant();
     }
 }
