@@ -12,6 +12,6 @@ class StreamsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Stream::class, 200)->create();
+        factory(Stream::class, 3000)->create();
     }
 }
