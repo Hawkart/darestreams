@@ -34,6 +34,7 @@ class TaskRequest extends FormRequest {
             case 'POST':
                 {
                     return [
+                        'created_amount' => 'required|numeric|min:0',
                         'small_desc' => 'required|string|min:1',
                         'full_desc' => 'required|string|min:1',
                         'interval_time' => 'sometimes|required|numeric|min:0'

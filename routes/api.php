@@ -56,14 +56,18 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('channels/top', 'ChannelController@top');
     Route::apiResource('channels', 'ChannelController')->only(['index', 'show', 'update']);
 
+    Route::get('transactions/statuses', 'TransactionController@statuses');
+    Route::get('transactions/types', 'TransactionController@types');
     Route::apiResource('transactions', 'TransactionController')->only(['store']);
 
     Route::get('streams/top', 'StreamController@top');
+    Route::get('streams/statuses', 'StreamController@statuses');
     Route::apiResource('streams', 'StreamController');
     Route::get('streams/{stream}/thread', 'StreamController@thread');
     Route::apiResource('streams.tasks', 'Streams\TaskController');
     Route::apiResource('streams.tasks.transactions', 'Streams\Tasks\TransactionController')->only(['index', 'show']);
 
+    Route::get('tasks/statuses', 'TaskController@statuses');
     Route::apiResource('tasks', 'TaskController');
     Route::patch('tasks/{task}/setVote', 'TaskController@setVote');
 

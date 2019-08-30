@@ -29,7 +29,7 @@ class PaymentController extends Controller
     {
         $this->middleware('auth:api')->only(['checkout']);
 
-        $this->gate = $request->route()->parameter('gateway');
+        $this->gate = 'PayPal_Rest';//$request->route()->parameter('gateway');
         $gateway = Omnipay::create($this->gate);
 
         //Todo: Change initialize params
@@ -47,11 +47,12 @@ class PaymentController extends Controller
      * Create a payment.
      * Add money to authorized user account. Donation to user or task.
      *
-     * @authenticated
-     * {gate} - gateway required from Omipay. Only 'PayPal_Rest' right now.
+     * {gate} - gateway required from Omipay. Only 'PayPal_Rest' right now. Example: PayPal_Rest
      * {user} - user integer id. Default: 0
      * {task} - task integer id. Default: 0
      * {user} and {task} both cannot be >0 or =0 at the same time.
+     *
+     * @authenticated
      *
      * @bodyParam amount float required Amount for payment.
      *

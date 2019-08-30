@@ -266,4 +266,14 @@ class StreamController extends Controller
 
         return StreamResource::collection($items);
     }
+
+    /**
+     * Get list of statuses
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function statuses()
+    {
+        return response()->json(StreamStatus::getInstances(), 200);
+    }
 }

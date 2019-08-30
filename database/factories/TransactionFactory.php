@@ -24,6 +24,6 @@ $factory->define(Transaction::class, function (Faker $faker) {
         'task_id'   =>  function () use ($task) {
             return $task->id;
         },
-        'status' => $faker->randomElement([TransactionStatus::Holding, TransactionStatus::Completed, TransactionStatus::Created])
+        'status' => $faker->randomElement([TransactionStatus::Holding, TransactionStatus::Completed])
     ];
 });

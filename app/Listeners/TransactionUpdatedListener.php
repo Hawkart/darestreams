@@ -85,7 +85,7 @@ class TransactionUpdatedListener
                 {
                     $task = $transaction->task;
                     $task->update([
-                        "amount_donations" => $task->amount_donations-$transaction->amount
+                        "amount_donations" => intval($task->amount_donations)-intval($transaction->amount)
                     ]);
 
                     //holding -> canceled
@@ -94,7 +94,7 @@ class TransactionUpdatedListener
                         $stream = $task->steam;
                         $stream->update([
                             'quantity_donations' => intval($stream->quantity_donations) - 1,
-                            "amount_donations" => $task->amount_donations - $transaction->amount
+                            "amount_donations" => intval($stream->amount_donations) - intval($transaction->amount)
                         ]);
                     }
                 }

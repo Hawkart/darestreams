@@ -108,4 +108,24 @@ class TransactionController extends Controller
             ], 422);
         }
     }
+
+    /**
+     * Get list of statuses
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function statuses()
+    {
+        return response()->json(TransactionStatus::getInstances(), 200);
+    }
+
+    /**
+     * Get list of types
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function types()
+    {
+        return response()->json(TransactionType::getInstances(), 200);
+    }
 }

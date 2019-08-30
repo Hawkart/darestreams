@@ -56,15 +56,6 @@ class TransactionCreatedListener
             $stream = $task->stream;
             $user = $transaction->accountSender->user;
 
-            /*$uids = $task->votes()->pluck('user_id')->toArray();
-            if (!in_array($user->id, $uids) && $user->id != $stream->user_id) {
-                $vote = new Vote([
-                    'user_id' => $user->id,
-                    'task_id' => $task->id
-                ]);
-
-                $task->votes()->save($vote);
-            }*/
             if($user->id != $stream->user_id)
             {
                 $vote = Vote::firstOrCreate([
@@ -79,13 +70,13 @@ class TransactionCreatedListener
             if($transaction->status==TransactionStatus::Completed || $transaction->status==TransactionStatus::Holding)
             {
                 $task->update([
-                    "amount_donations" => $task->amount_donations+$transaction->amount
+                    "amount_donations" => intval($task->amount_donations)+intval($transaction->amount)
                 ]);
 
                 $stream = $task->stream;
                 $stream->update([
                     'quantity_donations' => intval($stream->quantity_donations) + 1,
-                    "amount_donations" => $task->amount_donations+$transaction->amount
+                    "amount_donations" => intval($stream->amount_donations)+intval($transaction->amount)
                 ]);
             }
 

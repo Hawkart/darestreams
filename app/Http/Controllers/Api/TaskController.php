@@ -90,4 +90,14 @@ class TaskController extends Controller
             'message'=> trans('api/task.vote_accepted')
         ], 200);
     }
+
+    /**
+     * Get list of statuses
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function statuses()
+    {
+        return response()->json(TaskStatus::getInstances(), 200);
+    }
 }
