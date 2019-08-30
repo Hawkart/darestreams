@@ -258,7 +258,7 @@ class StreamController extends Controller
                 ->whereIn('id', $ids)
                 ->orderByRaw(DB::raw("FIELD(id, $oids)"))
                 ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-                //->where('status', StreamStatus::Active)  //Todo: uncomment in production
+                ->where('status', StreamStatus::Active)
                 ->jsonPaginate();
 
             $cacheTags->put($cache_key, $items, 1800);
