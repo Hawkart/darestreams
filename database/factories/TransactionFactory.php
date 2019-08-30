@@ -6,6 +6,7 @@ use App\Models\Transaction;
 use App\Models\Task;
 use App\Models\Account;
 use Faker\Generator as Faker;
+use App\Enums\TransactionStatus;
 
 $factory->define(Transaction::class, function (Faker $faker) {
 
@@ -13,7 +14,7 @@ $factory->define(Transaction::class, function (Faker $faker) {
     $receiver = $task->stream->user->account;
 
     return [
-        'amount'    => $faker->randomFloat(2, 100, 1000),
+        'amount'    => $faker->randomNumber(2),
         'account_sender_id'  => function () use ($receiver) {
             return Account::where('id', '<>', $receiver->id)->inRandomOrder()->first();
         },
@@ -22,6 +23,7 @@ $factory->define(Transaction::class, function (Faker $faker) {
         },
         'task_id'   =>  function () use ($task) {
             return $task->id;
-        }
+        },
+        'status' => $faker->randomElement([TransactionStatus::Holding, TransactionStatus::Completed, TransactionStatus::Created])
     ];
 });

@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $items = factory(User::class, 20)->make();
+        $items = factory(User::class, 100)->make();
 
         foreach ($items as $item) {
             repeat:

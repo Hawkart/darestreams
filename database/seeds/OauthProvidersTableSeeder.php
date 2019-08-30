@@ -12,6 +12,6 @@ class OauthProvidersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(OAuthProvider::class, 10)->create();
+        factory(OAuthProvider::class, 100)->create();
     }
 }

@@ -12,7 +12,7 @@ class ChannelsTableSeeder extends Seeder
      */
     public function run()
     {
-        $items = factory(Channel::class, 20)->make();
+        $items = factory(Channel::class, 100)->make();
 
         foreach ($items as $item) {
             repeat:

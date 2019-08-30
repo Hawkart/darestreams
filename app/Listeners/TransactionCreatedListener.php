@@ -82,7 +82,7 @@ class TransactionCreatedListener
                     "amount_donations" => $task->amount_donations+$transaction->amount
                 ]);
 
-                $stream = $task->steam;
+                $stream = $task->stream;
                 $stream->update([
                     'quantity_donations' => intval($stream->quantity_donations) + 1,
                     "amount_donations" => $task->amount_donations+$transaction->amount

@@ -16,9 +16,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UsersTableSeeder::class);
         $this->call(OauthProvidersTableSeeder::class);
-        //$this->call(GamesTableSeeder::class);
 
         \Artisan::call('games:import', []);
+
+        DB::table('accounts')->update(['amount' => 1000000]);
 
         $this->call(ChannelsTableSeeder::class);
         $this->call(StreamsTableSeeder::class);
