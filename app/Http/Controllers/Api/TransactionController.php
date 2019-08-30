@@ -59,7 +59,7 @@ class TransactionController extends Controller
             if($task->status!=TaskStatus::Active)
                 return response()->json(['error' => trans('api/transaction.failed_task_not_active')], 422);
 
-            if($amount<$task->amount)
+            if($amount<$task->min_donation)
                 return response()->json(['error' => trans('api/transaction.not_enough_money')], 422);
         }
 

@@ -15,7 +15,7 @@ class AddVoteYesAndNoToTasks extends Migration
     {
         Schema::table('tasks', function (Blueprint $table) {
             $table->bigInteger('vote_yes')->unsigned()->default(0);
-            $table->bigInteger('vote_')->unsigned()->default(0);
+            $table->bigInteger('vote_no')->unsigned()->default(0);
         });
     }
 

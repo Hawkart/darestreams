@@ -98,7 +98,7 @@ class TaskController extends Controller
 
         $input = $request->all();
         $input['user_id'] = $user->id;
-        $input['min_amount'] = $minDonate;
+        $input['min_donation'] = $minDonate;
 
         //If not owner of stream check how much money you have
         if($user->channel->id != $stream->channel_id && $user->account->amount<$amount)
