@@ -141,6 +141,8 @@ class PaymentController extends Controller
 
         if ($data = $result->getData())
         {
+            dd($data);
+
             $transaction = $data['transactions'][0];
 
             if ($data['state'] == 'approved')

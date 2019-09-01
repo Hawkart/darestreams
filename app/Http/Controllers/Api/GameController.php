@@ -91,7 +91,7 @@ class GameController extends Controller
     /**
      * Top categories
      *
-     * @queryParam hours integer Check amount donations sum for last N hours. Default: 240.
+     * @queryParam hours integer. Check amount donations sum for last N hours. Default: 240. Example: 240
      * @queryParam limit integer. Limit of top categories. Default: 10.
      * @queryParam skip Integer. Offset of top categories. Default: 0.
      * @queryParam include string String of connections: streams,tags, channels. Example: tags,streams

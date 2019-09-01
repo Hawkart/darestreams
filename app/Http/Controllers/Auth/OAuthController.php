@@ -22,7 +22,7 @@ class OAuthController extends Controller
     /**
      * Redirect the user to the provider authentication page.
      *
-     * {driver} - social provider: facebook, twitch, youtube, steam, discord
+     * {driver} - social provider: facebook, twitch, youtube, steam, discord. Example: twitch
      *
      * @param  string $provider
      * @return \Illuminate\Http\RedirectResponse
