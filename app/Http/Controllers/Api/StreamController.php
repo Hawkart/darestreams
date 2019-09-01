@@ -89,11 +89,11 @@ class StreamController extends Controller
         $user = auth()->user();
 
         if(!$user->channel || $user->channel->id!=$request->get('channel_id'))
-            return response()->json(['error' => trans('api/stream.failed_no_channel')], 422);
+            return setErrorAfterValidation(['id' => trans('api/stream.failed_no_channel')]);
 
         //Cannot create new before exists not finished
         if($user->streams()->whereIn('status', [StreamStatus::Created, StreamStatus::Active])->count()>0)
-            return response()->json(['error' => trans('api/stream.you_still_have_active_streams')], 422);
+            return setErrorAfterValidation(['status' => trans('api/stream.you_still_have_active_streams')]);
 
         $input = $request->all();
         $channel = Channel::findOrFail($request->get('channel_id'));
@@ -143,11 +143,11 @@ class StreamController extends Controller
         $status = $request->has('status') ? $request->get('status') : -1;
 
         if(!$user->channel || ($user->channel->id != $stream->channel_id))
-            return response()->json(['error' => trans('api/stream.failed_channel')], 422);
+            return setErrorAfterValidation(['id' => trans('api/stream.failed_channel')]);
 
         //try to change to another status
         if($status>-1 && $status!=StreamStatus::FinishedWaitPay)
-            return response()->json(['error' => trans('api/stream.cannot_update_status_stream')], 422);
+            return setErrorAfterValidation(['status' => trans('api/stream.cannot_update_status_stream')]);
 
         //Set finished
         if($stream->status==StreamStatus::Active && $status==StreamStatus::FinishedWaitPay)
@@ -185,7 +185,7 @@ class StreamController extends Controller
                 $allowed = ['allow_task_before_stream', 'allow_task_when_stream', 'min_amount_task_before_stream',
                     'min_amount_task_when_stream', 'min_amount_donate_task_before_stream', 'min_amount_donate_task_when_stream'];
             }else{
-                return response()->json(['error' => trans('api/stream.cannot_update_stream_already_finished')], 422);
+                return setErrorAfterValidation(['status' => trans('api/stream.cannot_update_stream_already_finished')]);
             }
 
             $stream->update($request->only($allowed));

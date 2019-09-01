@@ -11,7 +11,6 @@ use App\Http\Requests\TaskRequest;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Psy\Util\Str;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\TaskResource;
@@ -101,15 +100,11 @@ class TaskController extends Controller
         $input['min_donation'] = $minDonate;
 
         if($input['created_amount']<$amount)
-        {
-            return response()->json(['errors' =>[
-                'created_amount' => trans('api/streams/task.not_enough_money')
-            ]], 422);
-        }
+            return setErrorAfterValidation(['created_amount' => trans('api/streams/tasks.not_enough_money')]);
 
         //If not owner of stream check how much money you have
         if($user->channel->id != $stream->channel_id && $user->account->amount<$amount)
-            return response()->json(['error' => trans('api/streams/task.not_enough_money')], 422);
+            return abort(402);
 
         try {
             $task = DB::transaction(function () use ($input, $user, $stream, $amount) {
@@ -166,7 +161,7 @@ class TaskController extends Controller
         $status = $request->has('status') ? $request->get('status') : -1;
 
         if(!$stream->tasks()->where('id', $task->id)->exists())
-            return response()->json(['error' => trans('api/streams/tasks.failed_not_belong_to_stream')], 422);
+            return setErrorAfterValidation(['id' => trans('api/streams/tasks.failed_not_belong_to_stream')]);
 
         //only streamer can make task to work or allow to vote (task done) if stream active
         if($stream->status==StreamStatus::Active && $user->id==$stream->user->id && $status>-1)
@@ -180,7 +175,7 @@ class TaskController extends Controller
                     'start_active' => Carbon::now('UTC')
                 ]);
             }else{
-                return response()->json(['error' => trans('api/streams/tasks.failed_change_to_another_status')], 422);
+                return setErrorAfterValidation(['status' => trans('api/streams/tasks.failed_change_to_another_status')]);
             }
         }
         //Owner of task can change if stream active or just created
@@ -188,7 +183,7 @@ class TaskController extends Controller
         {
             $task->update($request->only(['small_text', 'interval_time', 'full_text', 'is_superbowl']));
         }else{
-            return response()->json(['error' => trans('api/streams/tasks.failed_cannot_change_info')], 422);
+            return setErrorAfterValidation(['status' => trans('api/streams/tasks.failed_cannot_change_info')]);
         }
 
         TaskResource::withoutWrapping();

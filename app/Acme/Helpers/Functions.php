@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Validation\ValidationException;
+
 /**
  * @param $image
  * @param $default
@@ -13,7 +15,17 @@ function getImageLink($image, $default)
     return $image;
 }
 
-function sumAmounts($a, $b, $scale=0)
+/**
+ * @param $errors
+ * @throws ValidationException
+ */
+function setErrorAfterValidation($errors)
 {
-    return bcadd($a, $b, $scale);
+    $validator = Validator::make([], []);
+    foreach($errors as $key => $error)
+    {
+        $validator->errors()->add($key, $error);
+    }
+
+    throw new ValidationException($validator);
 }

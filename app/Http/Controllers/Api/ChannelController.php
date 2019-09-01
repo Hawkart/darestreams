@@ -80,7 +80,7 @@ class ChannelController extends Controller
         $user = auth()->user();
 
         if(!isset($user->channel) || $user->channel->id!=$channel->id)
-            return response()->json(['error' => trans('api/channel.failed_not_your_channel')], 422);
+            return setErrorAfterValidation(['id' => trans('api/channel.failed_not_your_channel')]);
 
         $channel->fill($request->only(['description', 'logo', 'game_id']));
         $channel->save();

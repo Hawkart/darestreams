@@ -66,7 +66,7 @@ class PaymentController extends Controller
         ]);
 
         if((intval($user_id)>0 && intval($task_id)>0) || (intval($user_id)==0 && intval($task_id)==0) )
-            return response()->json(['error' => trans('api/paypal.user_task_failed')], 422);
+            return setErrorAfterValidation(['user' => trans('api/paypal.user_task_failed')]);
 
         if(intval($user_id)>0)
             $user = User::findOrFail($user_id);
@@ -138,15 +138,13 @@ class PaymentController extends Controller
 
         $result = $transaction->send();
         $error = false;
+        $response = 0;
 
         if ($data = $result->getData())
         {
-            dd($data);
-
-            $transaction = $data['transactions'][0];
-
-            if ($data['state'] == 'approved')
+            if (isset($data['state']) && $data['state'] == 'approved')
             {
+                $transaction = $data['transactions'][0];
                 $t = Transaction::findOrFail($transaction['invoice_number']);
 
                 $amount = $transaction['amount']['total'];
@@ -154,7 +152,7 @@ class PaymentController extends Controller
                 $description = $transaction['description'];
 
                 if ($t->currency != $currency)
-                    return response()->json(['error' => trans('api/paypal.currency_not_match')], 422);
+                    return setErrorAfterValidation(['currency' => trans('api/paypal.currency_not_match')]);
 
                 if ($t->status != TransactionStatus::Completed)
                 {

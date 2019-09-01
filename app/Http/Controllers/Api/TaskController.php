@@ -72,17 +72,17 @@ class TaskController extends Controller
         $user = auth()->user();
 
         if($task->status!=TaskStatus::AllowVote && $task->status!=TaskStatus::IntervalFinishedAllowVote)
-            return response()->json(['error' => trans('api/task.vote_finished')], 422);
+            return setErrorAfterValidation(['status' => trans('api/task.vote_finished')]);
 
         $votes = $task->votes()->where('user_id', $user->id);
 
         if($votes->count()==0)
-            return response()->json(['error' => trans('api/task.no_vote')], 422);
+            return setErrorAfterValidation(['status' => trans('api/task.no_vote')]);
 
         $vote = $votes->first();
 
         if($vote->vote!=VoteStatus::Pending)
-            return response()->json(['error' => trans('api/task.already_vote')], 422);
+            return setErrorAfterValidation(['status' => trans('api/task.already_vote')]);
 
         try {
             DB::transaction(function () use ($vote, $request, $task, $user) {

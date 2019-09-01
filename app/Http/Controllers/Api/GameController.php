@@ -77,7 +77,7 @@ class GameController extends Controller
     public function offer(GameRequest $request)
     {
         if(Game::where('title', $request->get('title'))->exists())
-            return response()->json(['error' => trans('api/game.failed_already_exists')], 422);
+            return setErrorAfterValidation(['title' => trans('api/game.failed_already_exists')]);
 
         Notification::route('mail', config('mail.game_offer_email'))
             ->notify(new NewGameOffer($request->get('title')));

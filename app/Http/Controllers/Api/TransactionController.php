@@ -57,10 +57,10 @@ class TransactionController extends Controller
         {
             $task = Task::findOrFail($task_id);
             if($task->status!=TaskStatus::Active)
-                return response()->json(['error' => trans('api/transaction.failed_task_not_active')], 422);
+                return setErrorAfterValidation(['status' => trans('api/transaction.failed_task_not_active')]);
 
             if($amount<$task->min_donation)
-                return response()->json(['error' => trans('api/transaction.not_enough_money')], 422);
+                return setErrorAfterValidation(['min_donation' => trans('api/transaction.not_enough_money')]);
         }
 
         //enough money
@@ -95,17 +95,7 @@ class TransactionController extends Controller
             ], 200);
 
         }else{
-
-            $diff = $request->get('amount') - $user->account->amount;
-
-            $request->merge([
-                'amount' => $diff,
-            ]);
-
-            return response()->json([
-                'diff' => $diff,
-                'error' => trans('api/transaction.not_enough_money')
-            ], 422);
+            return abort(402);
         }
     }
 

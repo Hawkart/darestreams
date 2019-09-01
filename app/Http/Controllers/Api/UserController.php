@@ -106,7 +106,7 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user)
     {
         if ($user->id != auth()->user()->id)
-            return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
+            return setErrorAfterValidation(['id' => trans('api/user.failed_user_not_current')]);
 
         $allowedFields = ['name', 'last_name', 'middle_name'];
         if ($user instanceof MustVerifyEmail && !$user->hasVerifiedEmail())
@@ -138,7 +138,7 @@ class UserController extends Controller
         ]);
 
         if ($user->id != auth()->user()->id)
-            return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
+            return setErrorAfterValidation(['id' => trans('api/user.failed_user_not_current')]);
 
         if($user->avatar)
         {
@@ -212,7 +212,7 @@ class UserController extends Controller
     public function updatePassword(User $user, UserPasswordUpdateRequest $request)
     {
         if ($user->id != auth()->user()->id)
-            return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
+            return setErrorAfterValidation(['id' => trans('api/user.failed_user_not_current')]);
 
         if($result = $user->update([
             'password' => bcrypt($request->get('password'))
@@ -243,10 +243,10 @@ class UserController extends Controller
     public function follow(User $user)
     {
         if ($user->id == auth()->user()->id)
-            return response()->json(['error' => trans('api/user.failed_user_cannot_follow_to_yourself')], 403);
+            return setErrorAfterValidation(['id' => trans('api/user.failed_user_cannot_follow_to_yourself')]);
 
         if(auth()->user()->isFollowing($user))
-            return response()->json(['error' => trans('api/user.already_following')], 422);
+            return setErrorAfterValidation(['id' => trans('api/user.already_following')]);
 
         $user->followers()->attach(auth()->user()->id);
 
@@ -268,10 +268,10 @@ class UserController extends Controller
     public function unfollow(User $user)
     {
         if ($user->id == auth()->user()->id)
-            return response()->json(['error' => trans('api/user.failed_user_cannot_unfollow_to_yourself')], 403);
+            return setErrorAfterValidation(['id' => trans('api/user.failed_user_cannot_unfollow_to_yourself')]);
 
         if(!$user->isFollowedBy(auth()->user()))
-            return response()->json(['error' => trans('api/user.failed_follow_user')], 422);
+           return setErrorAfterValidation(['id' => trans('api/user.failed_follow_user')]);
 
         $user->followers()->detach(auth()->user()->id);
 
@@ -326,7 +326,7 @@ class UserController extends Controller
     public function account(User $user)
     {
         if(auth()->user()->id!=$user->id)
-            return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
+            return setErrorAfterValidation(['id' => trans('api/user.failed_user_not_current')]);
 
         $query = $user->account()->getQuery();
 
