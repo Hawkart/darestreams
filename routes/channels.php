@@ -11,6 +11,6 @@ Broadcast::channel('channel_{thread_id}', function ($user, $thread_id) {
     return in_array((int) $user->id, $thread->participantsUserIds());
 });
 
-Broadcast::channel('streams/{id}', function() {
+Broadcast::channel('streams.{id}', function($id) {
     return true;
 });

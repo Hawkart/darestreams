@@ -28,6 +28,11 @@ class SocketOnDonate implements ShouldBroadcast
 
     public function broadcastOn()
     {
-        return new Channel("streams/" . (string)$this->data->stream->id);
+        Log::info('Stream socket on donate', [
+            'file' => __FILE__,
+            'line' => __LINE__
+        ]);
+
+        return new Channel("streams." . (string)$this->data->stream->id);
     }
 }
