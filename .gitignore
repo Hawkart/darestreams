@@ -21,3 +21,5 @@ todo.txt
 /resources/views/index.blade.php
 /package.json
 /package-lock.json
+
+/laravel-echo-server.json
