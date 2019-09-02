@@ -24,6 +24,9 @@ class OAuthController extends Controller
      *
      * {driver} - social provider: facebook, twitch, youtube, steam, discord. Example: twitch
      *
+     * @responseFile responses/response.json
+     * @responseFile 404 responses/not_found.json
+     *
      * @param  string $provider
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -41,6 +44,9 @@ class OAuthController extends Controller
      * Obtain the user information from the provider.
      *
      * {driver} - social provider: facebook, twitch, youtube, steam, discord, streamlabs
+     *
+     * @responseFile responses/response.json
+     * @responseFile 404 responses/not_found.json
      *
      * @param  string $driver
      * @return \Illuminate\Http\Response

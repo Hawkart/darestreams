@@ -69,9 +69,9 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('streams.tasks.transactions', 'Streams\Tasks\TransactionController')->only(['index', 'show']);
 
     Route::post('tasks/{task}/donate', 'TaskController@donate');
+    Route::patch('tasks/{task}/setVote', 'TaskController@setVote');
     Route::get('tasks/statuses', 'TaskController@statuses');
     Route::apiResource('tasks', 'TaskController');
-    Route::patch('tasks/{task}/setVote', 'TaskController@setVote');
 
     Route::apiResource('threads', 'ThreadController')->only(['index', 'show']);
     Route::apiResource('threads.participants', 'Threads\ParticipantController')->only(['index']);

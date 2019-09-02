@@ -99,6 +99,9 @@ class ChannelController extends Controller
      * @queryParam game_id Integer. Filter channels by category.
      *
      * @queryParam include string String of connections: user, streams, tags, game. Example: user,streams
+     *
+     * @responseFile responses/response.json
+     * @responseFile 404 responses/not_found.json
      */
     public function top(Request $request)
     {

@@ -26,7 +26,7 @@ return [
         /*
          * Specify whether the Postman collection should be generated.
          */
-        'enabled' => false,
+        'enabled' => true,
 
         /*
          * The name for the exported Postman collection. Default: config('app.name')." API"
@@ -130,7 +130,9 @@ return [
                      * However, there must only be one parameter per path.
                      */
                     'bindings' => [
-                        // '{user}' => 1,
+                        '/oauth/{driver}' => 'twitch',
+                        '/oauth/{driver}/callback' => 'twitch',
+                        '/oauth/{gateway}/(?)' => 'PayPal_Rest'
                     ],
 
                     /*

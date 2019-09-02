@@ -56,6 +56,9 @@ class PaymentController extends Controller
      *
      * @bodyParam amount integer required Amount for payment.
      *
+     * @responseFile responses/response.json
+     * @responseFile 404 responses/not_found.json
+     *
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
@@ -125,6 +128,9 @@ class PaymentController extends Controller
 
     /**
      * Complete purchase.
+     *
+     * @responseFile responses/response.json
+     * @responseFile 404 responses/not_found.json
      *
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
@@ -222,6 +228,10 @@ class PaymentController extends Controller
 
     /**
      * Payment cancel
+     *
+     * @responseFile responses/response.json
+     * @responseFile 404 responses/not_found.json
+     *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */

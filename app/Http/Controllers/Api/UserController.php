@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Enums\TransactionStatus;
 use App\Enums\TransactionType;
+use App\Http\Requests\TaskTransactionRequest;
 use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\AccountResource;
@@ -366,6 +367,10 @@ class UserController extends Controller
      * @queryParam skip Integer. Offset of top channels. Default: 0.
      *
      * @queryParam include string String of connections: tasks, streams, channel. Example: tasks,channel
+     *
+     * @responseFile responses/response.json
+     * @responseFile 404 responses/not_found.json
+     *
      */
     public function top(Request $request)
     {
@@ -423,12 +428,8 @@ class UserController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
-    public function donate(User $userReceiver, Request $request)
+    public function donate(User $userReceiver, TaskTransactionRequest $request)
     {
-        $request->validate([
-            'amount' => 'required|integer|min:1'
-        ]);
-
         $user = auth()->user();
         $amount = $request->get('amount');
 

@@ -223,6 +223,9 @@ class StreamController extends Controller
      * @queryParam skip Integer. Offset of top channels. Default: 0.
      *
      * @queryParam include string String of connections: user, tasks, tags, game. Example: user,tasks
+     *
+     * @responseFile responses/response.json
+     * @responseFile 404 responses/not_found.json
      */
     public function top(Request $request)
     {

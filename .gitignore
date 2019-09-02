@@ -13,10 +13,10 @@ yarn-error.log
 todo.txt
 
 # you can skip this first one if it is not already excluded by prior patterns
-!/public/
+#!/public/
 
-/public/*
-!/public/docs/
+#/public/*
+#!/public/docs/
 
 /resources/views/index.blade.php
 /package.json
