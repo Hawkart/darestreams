@@ -22,4 +22,6 @@ todo.txt
 /package.json
 /package-lock.json
 
+/storage
+
 /laravel-echo-server.json
