@@ -95,10 +95,10 @@ class Stream extends Model implements ViewableContract
             {
                 if($user->account->amount<$this->min_amount_task_when_stream)
                     abort(
-                        response()->json(['message' => trans('api/streams/task.not_enough_money')], 402)
+                        response()->json(['message' => trans('api/stream.not_enough_money')], 402)
                     );
             }else{
-                return setErrorAfterValidation(['status' => trans('api/streams/task.not_allow_create_task_when_stream_active')]);
+                return setErrorAfterValidation(['created_amount' => trans('api/stream.not_allow_create_task_when_stream_active')]);
             }
         }
         else if($this->status==StreamStatus::Created)
@@ -107,13 +107,13 @@ class Stream extends Model implements ViewableContract
             {
                 if($user->account->amount<$this->min_amount_task_before_stream)
                     abort(
-                        response()->json(['message' => trans('api/streams/task.not_enough_money')], 402)
+                        response()->json(['message' => trans('api/stream.not_enough_money')], 402)
                     );
             }else{
-                return setErrorAfterValidation(['status' => trans('api/streams/task.not_allow_create_task_when_stream_active')]);
+                return setErrorAfterValidation(['created_amount' => trans('api/stream.not_allow_create_task_when_stream_active')]);
             }
         }else{
-            return setErrorAfterValidation(['status' => trans('api/streams/task.stream_finished')]);
+            return setErrorAfterValidation(['status' => trans('api/stream.stream_finished')]);
         }
     }
 

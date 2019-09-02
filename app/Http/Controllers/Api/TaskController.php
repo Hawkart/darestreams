@@ -35,15 +35,24 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @queryParam stream_id integer required
+     * @queryParam include string String of connections: user, stream, transactions. Example: user,stream
+     * @queryParam sort string Sort items by fields: amount_donations, id. For desc use '-' prefix. Example: -amount_donations
+     * @queryParam page array Use as page[number]=1&page[size]=2.
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         $items = QueryBuilder::for(Task::class)
+            ->where('stream_id', $request->get('stream_id'))
+            ->defaultSort('amount_donations')
+            ->allowedSorts(['amount_donations', 'id'])
             ->allowedIncludes(['user', 'stream', 'transactions'])
             ->jsonPaginate();
 
         return TaskResource::collection($items);
+
     }
 
     /**

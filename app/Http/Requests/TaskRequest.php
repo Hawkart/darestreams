@@ -27,6 +27,9 @@ class TaskRequest extends FormRequest {
         switch($this->method())
         {
             case 'GET':
+                return [
+                    'stream_id' => 'required|exists:streams,id'
+                ];
             case 'DELETE':
                 {
                     return [];
