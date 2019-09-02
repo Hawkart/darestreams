@@ -95,7 +95,7 @@ class TransactionController extends Controller
             ], 200);
 
         }else{
-            return abort(402);
+            abort(402);
         }
     }
 

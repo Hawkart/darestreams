@@ -60,7 +60,7 @@ class MessageController extends Controller
     public function show(Thread $thread, Message $message)
     {
         if(!$thread->messages()->where('id', $message->id)->exists())
-            return response()->json(['error' => trans('api/threads/message.failed_not_belong_to_thread')], 403);
+            return setErrorAfterValidation(['id' => trans('api/threads/message.failed_not_belong_to_thread')]);
 
         $item = QueryBuilder::for(Message::whereId($message->id))
             ->allowedIncludes(['user', 'thread'])
@@ -85,7 +85,7 @@ class MessageController extends Controller
         $user = auth()->user();
 
         if(!in_array($user->id, $thread->participantsUserIds()))
-            return response()->json(['error' => trans('api/threads/message.failed_cannot_write_to_thread')], 422);
+            return setErrorAfterValidation(['id' => trans('api/threads/message.failed_cannot_write_to_thread')]);
 
         // Message
         $message = Message::create([
@@ -108,18 +108,5 @@ class MessageController extends Controller
         event(new MessageSent($thread->id, $message));
 
         return response()->json([], 200);
-    }
-
-    /**
-     * Update message.
-     *
-     * @param Request $request
-     * @param Thread $thread
-     * @param Message $message
-     */
-    public function update(MessageRequest $request, Thread $thread, Message $message)
-    {
-        //Todo: Check message belongs to thread.
-        //Todo: Check user can chanege it.
     }
 }

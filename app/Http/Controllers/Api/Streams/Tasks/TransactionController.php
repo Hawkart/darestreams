@@ -45,7 +45,7 @@ class TransactionController extends Controller
     public function index(Request $request, Stream $stream, Task $task)
     {
         if(!$stream->tasks()->where('id', $task->id)->exists())
-            return response()->json(['error' => trans('api/streams/tasks/transaction.task_not_belong_to_stream')], 422);
+            return setErrorAfterValidation(['id' => trans('api/streams/tasks/transaction.task_not_belong_to_stream')]);
 
         $query = $task->transactions()->getQuery();
 
@@ -74,10 +74,10 @@ class TransactionController extends Controller
     public function show(Stream $stream, Task $task, $transaction)
     {
         if(!$stream->tasks()->where('id', $task->id)->exists())
-            return response()->json(['error' => trans('api/streams/tasks/transaction.task_not_belong_to_stream')], 422);
+            return setErrorAfterValidation(['id' => trans('api/streams/tasks/transaction.task_not_belong_to_stream')]);
 
         if(!$task->transactions()->where('id', $transaction)->exists())
-            return response()->json(['error' => trans('api/streams/tasks/transaction.transaction_not_belong_to_task')], 422);
+            return setErrorAfterValidation(['id' => trans('api/streams/tasks/transaction.transaction_not_belong_to_task')]);
 
         $item = QueryBuilder::for(Transaction::class)
             ->allowedIncludes(['account_sender', 'account_receiver', 'account_sender.user', 'account_receiver.user', 'task'])

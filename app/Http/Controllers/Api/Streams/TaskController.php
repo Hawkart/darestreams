@@ -104,7 +104,7 @@ class TaskController extends Controller
 
         //If not owner of stream check how much money you have
         if($user->channel->id != $stream->channel_id && $user->account->amount<$amount)
-            return abort(402);
+            abort(402);
 
         try {
             $task = DB::transaction(function () use ($input, $user, $stream, $amount) {
