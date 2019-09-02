@@ -463,4 +463,20 @@ class UserController extends Controller
             );
         }
     }
+
+    /**
+     * @param User $user
+     * @return \Illuminate\Http\Response
+     */
+    public function fakeLogin(User $user)
+    {
+        $token = auth()->login($user);
+        $expiration = $this->guard()->getPayload()->get('exp');
+
+        return response()->json([
+            'token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => $expiration,
+        ]);
+    }
 }

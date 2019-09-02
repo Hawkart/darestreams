@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Enums\TransactionStatus;
+use App\Events\SocketOnDonate;
 use App\Events\TransactionCreatedEvent;
 use App\Models\Vote;
 
@@ -79,6 +80,11 @@ class TransactionCreatedListener
 
             $thread = $stream->threads[0];
             $thread->setParticipant($user);
+
+            $task->load('stream');
+
+            // Dispatch an event. Will be broadcasted over Redis.
+            event(new SocketOnDonate($task));
         }
     }
 }

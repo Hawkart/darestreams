@@ -24,6 +24,8 @@ Route::group(['namespace' => 'Auth'], function () {
 
 Route::group(['namespace' => 'Api'], function () {
 
+    Route::get('users/{user}/login', 'UserController@fakeLogin');
+
     Route::post('deploy', 'DeployController@deploy');
 
     Route::get('games/top', 'GameController@top');
