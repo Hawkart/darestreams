@@ -87,7 +87,7 @@ class TaskController extends Controller
     {
         $user = auth()->user();
 
-        $stream = Stream::firstOrFail($request->get('stream_id'));
+        $stream = Stream::findOrFail($request->get('stream_id'));
 
         $stream->canTaskCreate();
         $amount = $stream->getTaskCreateAmount();
