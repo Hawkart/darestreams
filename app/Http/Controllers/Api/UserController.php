@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\TransactionStatus;
+use App\Enums\TransactionType;
 use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\AccountResource;
 use App\Http\Resources\ChannelResource;
 use App\Models\Account;
+use App\Models\Transaction;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
 use Illuminate\Http\Request;
@@ -32,7 +35,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api')
-            ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account']);
+            ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account', 'donate']);
     }
 
     /**
@@ -409,5 +412,54 @@ class UserController extends Controller
         }
 
         return UserResource::collection($items);
+    }
+
+    /**
+     * Donate to user.
+     *
+     * @authenticated
+     *
+     * @param $userReceiver
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
+     */
+    public function donate(User $userReceiver, Request $request)
+    {
+        $request->validate([
+            'amount' => 'required|integer|min:1'
+        ]);
+
+        $user = auth()->user();
+        $amount = $request->get('amount');
+
+        //enough money
+        if($amount <= $user->account->amount)
+        {
+            $data = [
+                'amount' => $request->get('amount'),
+                'account_sender_id' => $user->account->id,
+                'account_receiver_id' => $userReceiver->account->id,
+                'status' => TransactionStatus::Completed,
+                'type' => TransactionType::Donation
+            ];
+
+            try {
+                $transaction = DB::transaction(function () use ($data) {
+                    return Transaction::create($data);
+                });
+            } catch (\Exception $e) {
+                return response($e->getMessage(), 422);
+            }
+
+            return response()->json([
+                'success' => true,
+                'message'=> trans('api/streams/tasks/transaction.success_created')
+            ], 200);
+
+        }else{
+            abort(
+                response()->json(['message' => trans('api/transaction.not_enough_money')], 402)
+            );
+        }
     }
 }

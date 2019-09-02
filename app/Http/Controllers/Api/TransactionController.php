@@ -43,7 +43,6 @@ class TransactionController extends Controller
     {
         $request->validate([
             'task_id' => 'required_without:user_id|required|exists:tasks,id',
-            'user_id' => 'required_without:task_id|required|exists:users,id',
             'amount' => 'required|integer|min:1'
         ]);
 
@@ -95,7 +94,9 @@ class TransactionController extends Controller
             ], 200);
 
         }else{
-            abort(402);
+            abort(
+                response()->json(['message' => trans('api/transaction.not_enough_money')], 402)
+            );
         }
     }
 

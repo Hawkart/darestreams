@@ -98,13 +98,16 @@ class TaskController extends Controller
         $input = $request->all();
         $input['user_id'] = $user->id;
         $input['min_donation'] = $minDonate;
+        $input['status'] = TaskStatus::Created;
 
         if($input['created_amount']<$amount)
             return setErrorAfterValidation(['created_amount' => trans('api/streams/tasks.not_enough_money')]);
 
         //If not owner of stream check how much money you have
         if($user->channel->id != $stream->channel_id && $user->account->amount<$amount)
-            abort(402);
+            abort(
+                response()->json(['message' => trans('api/streams/tasks.not_enough_money')], 402)
+            );
 
         try {
             $task = DB::transaction(function () use ($input, $user, $stream, $amount) {

@@ -32,6 +32,7 @@ Route::group(['namespace' => 'Api'], function () {
 
     Route::get('users/top', 'UserController@top');
     Route::get('users/me', 'UserController@me');
+    Route::post('users/{user}/donate', 'UserController@donate');
     Route::apiResource('users', 'UserController')->only(['index', 'show', 'update']);
     Route::get('users/{user}/account', 'UserController@account');
     Route::get('users/{user}/channel', 'UserController@channel');
@@ -67,6 +68,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('streams.tasks', 'Streams\TaskController');
     Route::apiResource('streams.tasks.transactions', 'Streams\Tasks\TransactionController')->only(['index', 'show']);
 
+    Route::post('tasks/{task}/donate', 'TaskController@donate');
     Route::get('tasks/statuses', 'TaskController@statuses');
     Route::apiResource('tasks', 'TaskController');
     Route::patch('tasks/{task}/setVote', 'TaskController@setVote');
