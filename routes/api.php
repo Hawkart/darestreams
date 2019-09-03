@@ -25,7 +25,6 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::group(['namespace' => 'Api'], function () {
 
     Route::get('users/{user}/login', 'UserController@fakeLogin');
-    Route::get('streams/{stream}/fake', 'UserController@donateFake');
 
     Route::post('deploy', 'DeployController@deploy');
 

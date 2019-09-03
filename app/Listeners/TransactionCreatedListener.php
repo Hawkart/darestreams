@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Enums\TransactionStatus;
 use App\Events\SocketOnDonate;
 use App\Events\TransactionCreatedEvent;
+use App\Http\Resources\StreamResource;
 use App\Models\Vote;
 
 class TransactionCreatedListener
@@ -81,10 +82,10 @@ class TransactionCreatedListener
             $thread = $stream->threads[0];
             $thread->setParticipant($user);
 
-            $task->load('stream');
-
-            // Dispatch an event. Will be broadcasted over Redis.
-            event(new SocketOnDonate($task));
+            $stream = $task->stream;
+            $stream->load(['user','channel','game','tasks']);
+            StreamResource::withoutWrapping();
+            event(new SocketOnDonate(new StreamResource($stream)));
         }
     }
 }

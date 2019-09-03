@@ -6,7 +6,6 @@ use App\Enums\TaskStatus;
 use App\Enums\TransactionStatus;
 use App\Enums\TransactionType;
 use App\Enums\VoteStatus;
-use App\Events\SocketOnDonate;
 use App\Http\Requests\TaskTransactionRequest;
 use App\Models\Stream;
 use App\Models\Transaction;
@@ -134,9 +133,6 @@ class TaskController extends Controller
         }
 
         TaskResource::withoutWrapping();
-
-        $task->load('stream');
-        event(new SocketOnDonate($task));
 
         return response()->json([
             'success' => true,
@@ -293,10 +289,6 @@ class TaskController extends Controller
             }
 
             TaskResource::withoutWrapping();
-
-            $task = $transaction->task;
-            $task->load('stream');
-            event(new SocketOnDonate($task));
 
             return response()->json([
                 'data' => new TaskResource($transaction->task),

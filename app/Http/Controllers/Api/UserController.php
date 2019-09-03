@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Enums\TransactionStatus;
 use App\Enums\TransactionType;
-use App\Events\SocketOnDonate;
 use App\Http\Requests\TaskTransactionRequest;
 use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserRequest;
@@ -480,16 +479,5 @@ class UserController extends Controller
             'token_type' => 'bearer',
             'expires_in' => $expiration,
         ]);
-    }
-
-    /**
-     * @param Stream $stream
-     */
-    public function donateFake(Stream $stream)
-    {
-        $task = $stream->tasks[0];
-        $task->load('stream');
-        event(new SocketOnDonate($task));
-        return response()->json(['task' => $task], 200);
     }
 }
