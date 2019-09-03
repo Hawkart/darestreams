@@ -490,6 +490,6 @@ class UserController extends Controller
         $task = $stream->tasks[0];
         $task->load('stream');
         event(new SocketOnDonate($task));
-        response()->json(['task' => $task], 200);
+        return response()->json(['task' => $task], 200);
     }
 }
