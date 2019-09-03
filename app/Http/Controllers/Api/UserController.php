@@ -11,6 +11,7 @@ use App\Http\Requests\UserRequest;
 use App\Http\Resources\AccountResource;
 use App\Http\Resources\ChannelResource;
 use App\Models\Account;
+use App\Models\Stream;
 use App\Models\Transaction;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
@@ -481,7 +482,10 @@ class UserController extends Controller
         ]);
     }
 
-    public function donateFake($stream)
+    /**
+     * @param Stream $stream
+     */
+    public function donateFake(Stream $stream)
     {
         $task = $stream->tasks[0];
         $task->load('stream');
