@@ -34,6 +34,8 @@ class SocketOnDonate implements ShouldBroadcastNow
             'line' => __LINE__
         ]);
 
-        return new Channel("streams." . (string)$this->data->stream->id);
+        return ['streams.' . (string)$this->data->stream->id];
+
+        //return new Channel("streams." . (string)$this->data->stream->id);
     }
 }
