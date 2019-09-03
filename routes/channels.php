@@ -2,6 +2,7 @@
 
 use Cmgmyr\Messenger\Models\Thread;
 use Illuminate\Support\Facades\Log;
+use App\Models\Stream;
 
 /*
 Broadcast::channel('App.User.{id}', function ($user, $id) {
@@ -14,9 +15,9 @@ Broadcast::channel('channel_{thread_id}', function ($user, $thread_id) {
 });
 */
 
-Broadcast::channel('streams.{id}', function($id) {
+Broadcast::channel('streams.{stream}', function($user, Stream $stream) {
     Log::info('Stream socket on donate in routes', [
-        'id' => $id,
+        'stream' => $stream,
         'file' => __FILE__,
         'line' => __LINE__
     ]);
