@@ -9,6 +9,7 @@ use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\AccountResource;
 use App\Http\Resources\ChannelResource;
+use App\Http\Resources\TransactionResource;
 use App\Models\Account;
 use App\Models\Stream;
 use App\Models\Transaction;
@@ -37,7 +38,8 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api')
-            ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account', 'donate']);
+            ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account',
+                'donate', 'transactions']);
     }
 
     /**
@@ -479,5 +481,30 @@ class UserController extends Controller
             'token_type' => 'bearer',
             'expires_in' => $expiration,
         ]);
+    }
+
+    /**
+     * Get user's transactions.
+     *
+     * @authenticated
+     *
+     * {user} - user id integer
+     * @queryParam include string String of connections: ['account_sender', 'account_receiver', 'account_sender.user', 'account_receiver.user', 'task']. Example: task.
+     * @queryParam page array Use as page[number]=1&page[size]=2.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function transactions(Request $request, User $user)
+    {
+        if(auth()->user()->id!=$user->id)
+            return setErrorAfterValidation(['id' => trans('api/user.failed_user_not_current')]);
+
+        $transactions = $user->getTransactions();
+
+        $items = QueryBuilder::for($transactions)
+            ->allowedIncludes(['account_sender', 'account_receiver', 'account_sender.user', 'account_receiver.user', 'task'])
+            ->jsonPaginate();
+
+        return TransactionResource::collection($items);
     }
 }
