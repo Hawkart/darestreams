@@ -23,6 +23,13 @@ class Account extends Model
     protected $guarded = ['id'];
 
     /**
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'updated' => \App\Events\AccountUpdatedEvent::class,
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()

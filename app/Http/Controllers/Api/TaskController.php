@@ -6,7 +6,9 @@ use App\Enums\TaskStatus;
 use App\Enums\TransactionStatus;
 use App\Enums\TransactionType;
 use App\Enums\VoteStatus;
+use App\Events\SocketOnDonate;
 use App\Http\Requests\TaskTransactionRequest;
+use App\Http\Resources\StreamResource;
 use App\Models\Stream;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -114,7 +116,7 @@ class TaskController extends Controller
                 $task->fill($input);
                 $task->save();
 
-                if($user->channel->id != $stream->channel_id)
+                if($user->channel->id != $stream->channel_id && $amount>0)
                 {
                     Transaction::create($data = [
                         'task_id' => $task->id,
@@ -242,6 +244,11 @@ class TaskController extends Controller
         } catch (\Exception $e) {
             return response($e->getMessage(), 422);
         }
+
+        $stream = $task->stream;
+        $stream->load(['user','channel','game','tasks']);
+        StreamResource::withoutWrapping();
+        event(new SocketOnDonate(new StreamResource($stream)));
 
         return response()->json([
             'success' => true,

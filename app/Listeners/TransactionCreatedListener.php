@@ -6,6 +6,7 @@ use App\Enums\TransactionStatus;
 use App\Events\SocketOnDonate;
 use App\Events\TransactionCreatedEvent;
 use App\Http\Resources\StreamResource;
+use App\Models\Account;
 use App\Models\Vote;
 
 class TransactionCreatedListener
@@ -37,6 +38,7 @@ class TransactionCreatedListener
                     "amount" => $account->amount-$transaction->amount
                 ]);
             }
+
         }else if($transaction->status==TransactionStatus::Holding){  //to task
 
             //Update sender's account amount

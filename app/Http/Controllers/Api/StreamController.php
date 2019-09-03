@@ -219,7 +219,7 @@ class StreamController extends Controller
 
     /**
      * Get top streams
-     * @queryParam limit Integer. Limit of top channels. Default: 10.
+     * @queryParam limit Integer. Limit of top channels. Default: 3.
      * @queryParam skip Integer. Offset of top channels. Default: 0.
      *
      * @queryParam include string String of connections: user, tasks, tags, game. Example: user,tasks
@@ -229,7 +229,7 @@ class StreamController extends Controller
      */
     public function top(Request $request)
     {
-        $limit = $request->has('limit') ? $request->get('limit') : 10;
+        $limit = $request->has('limit') ? $request->get('limit') : 3;
         $skip = $request->has('skip') ? $request->get('skip') : 0;
 
         $queryParams = request()->query();
@@ -244,7 +244,7 @@ class StreamController extends Controller
             $items = $cacheTags->get($cache_key);
         } else {
 
-            $list = DB::table('channels as ch')
+            /*$list = DB::table('channels as ch')
                 ->select('st.id', 'ch.views')
                 ->leftJoin('streams as st', 'ch.id', '=', 'st.channel_id')
                 ->groupBy('st.id', 'ch.views')
@@ -262,6 +262,15 @@ class StreamController extends Controller
                 ->orderByRaw(DB::raw("FIELD(id, $oids)"))
                 ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
                 ->where('status', StreamStatus::Active)
+                ->jsonPaginate();*/
+
+            $items = QueryBuilder::for(Stream::class)
+                ->inRandomOrder()
+                ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
+                ->where('status', StreamStatus::Active)
+                ->offset($skip)
+                ->limit($limit)
+                ->distinct('channel_id')
                 ->jsonPaginate();
 
             $cacheTags->put($cache_key, $items, 1800);

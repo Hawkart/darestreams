@@ -67,8 +67,6 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('streams/statuses', 'StreamController@statuses');
     Route::apiResource('streams', 'StreamController');
     Route::get('streams/{stream}/thread', 'StreamController@thread');
-    Route::apiResource('streams.tasks', 'Streams\TaskController');
-    Route::apiResource('streams.tasks.transactions', 'Streams\Tasks\TransactionController')->only(['index', 'show']);
 
     Route::post('tasks/{task}/donate', 'TaskController@donate');
     Route::patch('tasks/{task}/setVote', 'TaskController@setVote');

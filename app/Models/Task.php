@@ -25,6 +25,7 @@ class Task extends Model
      */
     protected $dispatchesEvents = [
         'created' => \App\Events\TaskCreatedEvent::class,
+        'updated' => \App\Events\TaskUpdatedEvent::class,
     ];
 
     /**

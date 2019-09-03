@@ -33,6 +33,12 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\TaskCreatedEvent::class => [
             \App\Listeners\TaskCreatedListener::class
         ],
+        \App\Events\TaskUpdatedEvent::class => [
+            \App\Listeners\TaskUpdatedListener::class
+        ],
+        \App\Events\AccountUpdatedEvent::class => [
+            \App\Listeners\AccountUpdatedListener::class
+        ],
         \SocialiteProviders\Manager\SocialiteWasCalled::class => [
             'SocialiteProviders\\Twitch\\TwitchExtendSocialite@handle',
             'SocialiteProviders\\YouTube\\YouTubeExtendSocialite@handle',
