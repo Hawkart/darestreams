@@ -32,9 +32,15 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('games', 'GameController')->only(['index', 'show']);
     Route::post('games/offer', 'GameController@offer');
 
-    Route::get('users/top', 'UserController@top');
+
     Route::get('users/me', 'UserController@me');
+    Route::get('users/me/get-donates-by-date', 'UserController@getDonatesByDate');
+    Route::get('users/me/get-debit-withdraw-by-date', 'UserController@getDebitWithdrawByDate');
+
+    Route::get('users/top', 'UserController@top');
     Route::post('users/{user}/donate', 'UserController@donate');
+
+    Route::get('users/me/donate', 'UserController@donate');
     Route::apiResource('users', 'UserController')->only(['index', 'show', 'update']);
     Route::get('users/{user}/account', 'UserController@account');
     Route::get('users/{user}/channel', 'UserController@channel');
@@ -52,9 +58,9 @@ Route::group(['namespace' => 'Api'], function () {
 
     //Notifications
     Route::get('users/{user}/notifications/unread', 'Users\NotificationController@unread');
-    Route::patch('users/{user}/notifications/setReadAll', 'Users\NotificationController@setReadAll');
+    Route::patch('users/{user}/notifications/set-read-all', 'Users\NotificationController@setReadAll');
     Route::apiResource('users.notifications', 'Users\NotificationController');
-    Route::patch('users/{user}/notifications/{notification}/setRead', 'Users\NotificationController@setRead');
+    Route::patch('users/{user}/notifications/{notification}/set-read', 'Users\NotificationController@setRead');
 
     Route::get('channels/top', 'ChannelController@top');
     Route::apiResource('channels', 'ChannelController')->only(['index', 'show', 'update']);
@@ -69,7 +75,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('streams/{stream}/thread', 'StreamController@thread');
 
     Route::post('tasks/{task}/donate', 'TaskController@donate');
-    Route::patch('tasks/{task}/setVote', 'TaskController@setVote');
+    Route::patch('tasks/{task}/set-vote', 'TaskController@setVote');
     Route::get('tasks/statuses', 'TaskController@statuses');
     Route::apiResource('tasks', 'TaskController');
 
@@ -83,5 +89,4 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('/payments/{gateway}/{user}/{task}/checkout', array('as' => 'payment.checkout.create', 'uses' => 'PaymentController@checkout'));
     Route::get('/payments/{gateway}/{user}/{task}/completed', array('as' => 'payment.checkout.completed','uses' => 'PaymentController@completed'));
     Route::get('/payments/{gateway}/{user}/{task}/cancelled', array('as' => 'payment.checkout.cancelled','uses' => 'PaymentController@cancelled'));
-    Route::get('/payments/group-by-date', 'PaymentController@groupByDate');
 });

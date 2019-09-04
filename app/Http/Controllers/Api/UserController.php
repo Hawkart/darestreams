@@ -9,9 +9,6 @@ use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\AccountResource;
 use App\Http\Resources\ChannelResource;
-use App\Http\Resources\TransactionResource;
-use App\Models\Account;
-use App\Models\Stream;
 use App\Models\Transaction;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
@@ -39,7 +36,7 @@ class UserController extends Controller
     {
         $this->middleware('auth:api')
             ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account',
-                'donate', 'transactions']);
+                'donate', 'getDebitWithdrawByDate', 'getDonatesByDate']);
     }
 
     /**
@@ -484,27 +481,105 @@ class UserController extends Controller
     }
 
     /**
-     * Get user's transactions.
+     * Get user's withdraws and debits
      *
      * @authenticated
      *
-     * {user} - user id integer
-     * @queryParam include string String of connections: ['account_sender', 'account_receiver', 'account_sender.user', 'account_receiver.user', 'task']. Example: task.
-     * @queryParam page array Use as page[number]=1&page[size]=2.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|void
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function transactions(Request $request, User $user)
+    public static function getDebitWithdrawByDate()
     {
-        if(auth()->user()->id!=$user->id)
-            return setErrorAfterValidation(['id' => trans('api/user.failed_user_not_current')]);
+        $user = auth()->user();
 
-        $transactions = $user->getTransactions();
+        $getDates = DB::table('transactions')
+            ->select(DB::raw('DATE(created_at) as day'), DB::raw('if(type=0, account_receiver_id, account_sender_id) as account_id'))
+            ->whereIn('type', [TransactionType::Deposit, TransactionType::Withdraw])
+            ->groupBy('day', 'type', 'account_id');
 
-        $items = QueryBuilder::for($transactions)
-            ->allowedIncludes(['account_sender', 'account_receiver', 'account_sender.user', 'account_receiver.user', 'task'])
-            ->jsonPaginate();
+        $getDeposits = DB::table('transactions')
+            ->select(DB::raw('DATE(created_at) as day'), DB::raw('sum(amount) as deposit'), 'account_receiver_id as account_id')
+            ->where('type', TransactionType::Deposit)
+            ->groupBy('account_id', 'day');
 
-        return TransactionResource::collection($items);
+        $getWithdraws = DB::table('transactions')
+            ->select(DB::raw('DATE(created_at) as day'), DB::raw('sum(amount) as withdraw'), 'account_sender_id as account_id')
+            ->where('type', TransactionType::Withdraw)
+            ->groupBy('account_id', 'day');
+
+        $items = DB::table('accounts as a')
+            ->select('t1.day', 'deposit', 'withdraw')
+
+            ->joinSub($getDates, 't1', function ($join) {
+                $join->on( "t1.account_id", "=", "a.id");
+            })
+
+            ->leftJoinSub($getDeposits, 'dt', function ($join) {
+                $join->on("dt.account_id", "=", "a.id")
+                    ->where("dt.day", "t1.day");
+            })
+
+            ->leftJoinSub($getWithdraws, 'wt', function ($join) {
+                $join->on("wt.account_id", "=", "a.id")
+                    ->where("wt.day", "t1.day");
+            })
+
+            ->where('a.user_id', $user->id)
+            ->whereDate('t1.day',  '>', DB::raw(Carbon::now()->subMonth()->toDateString()))
+            ->orderByDesc('t1.day')
+            ->get();
+
+        return response()->json($items, 200);
+    }
+
+    /**
+     * Get user's donation (sent and received) transaction
+     *
+     * @authenticated
+     *
+     * @return \Illuminate\Http\JsonResponse|void
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public static function getDonatesByDate()
+    {
+        $user = auth()->user();
+
+        $getPlus =  DB::table('transactions')
+            ->select(DB::raw('DATE(created_at) as day'), DB::raw('sum(amount) as plus'), 'account_receiver_id as account_id')
+            ->where('type', TransactionType::Donation)
+            ->groupBy('account_id', 'day');
+
+        $getMinus = DB::table('transactions')
+            ->select(DB::raw('DATE(created_at) as day'), DB::raw('sum(amount) as minus'), 'account_sender_id as account_id')
+            ->where('type', TransactionType::Deposit)
+            ->groupBy('account_id', 'day');
+
+        $getPlusSubQuery = DB::table('accounts as a')
+            ->select('day', 'plus', DB::raw('0 as minus'))
+            ->leftJoinSub($getPlus, 'dt', function ($join) {
+                $join->on("dt.account_id", "=", "a.id");
+            })
+            ->where('a.user_id', $user->id)
+            ->whereDate('day',  '>', DB::raw(Carbon::now()->subMonth()->toDateString()));
+
+        $getMinusSubQuery = DB::table('accounts as a')
+            ->select('day', DB::raw('0 as plus'), 'minus')
+            ->leftJoinSub($getMinus, 'wt', function ($join) {
+                $join->on("wt.account_id", "=", "a.id");
+            })
+            ->where('a.user_id', $user->id)
+            ->whereDate('day',  '>', DB::raw(Carbon::now()->subMonth()->toDateString()));
+
+        $sub = $getPlusSubQuery->union($getMinusSubQuery);
+
+        $items = DB::table(DB::raw("({$sub->toSql()}) as t"))
+            ->mergeBindings($sub)
+            ->select('day', DB::raw('sum(plus)'), DB::raw('sum(minus)'))
+            ->groupBy('day')
+            ->orderByDesc('day')
+            ->get();
+        //->toSql();
+
+        return response()->json($items, 200);
     }
 }
