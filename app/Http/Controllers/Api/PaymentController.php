@@ -188,14 +188,20 @@ class PaymentController extends Controller
 
                             if(($user || $task) && ($t->accountReceiver->amount>=$t->amount))
                             {
-                                Transaction::create([
-                                    'task_id' => $task ? $task->id : 0,
-                                    'amount' => intval($t->amount),
-                                    'account_sender_id' => $t->account_receiver_id,
-                                    'account_receiver_id' => $task ? $task->stream->user->account->id : $user->account->id,
-                                    'status' => $task ? TransactionStatus::Holding : TransactionStatus::Completed,
-                                    'type' => TransactionType::Donation
-                                ]);
+                                $receiver_id = $task ? $task->stream->user->account->id : $user->account->id;
+                                $sender_id = $t->account_receiver_id;
+
+                                if($receiver_id!=$sender_id)
+                                {
+                                    Transaction::create([
+                                        'task_id' => $task ? $task->id : 0,
+                                        'amount' => intval($t->amount),
+                                        'account_sender_id' => $sender_id,
+                                        'account_receiver_id' => $receiver_id,
+                                        'status' => $task ? TransactionStatus::Holding : TransactionStatus::Completed,
+                                        'type' => TransactionType::Donation
+                                    ]);
+                                }
                             }
 
                             return $t;
