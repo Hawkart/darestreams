@@ -37,7 +37,7 @@ class TaskRequest extends FormRequest {
             case 'POST':
                 {
                     return [
-                        'stream_id' => 'sometimes|required|exists:streams,id',
+                        'stream_id' => 'required|exists:streams,id',
                         'created_amount' => 'required|numeric|min:0',
                         'small_desc' => 'required|string|min:1',
                         'full_desc' => 'required|string|min:1',

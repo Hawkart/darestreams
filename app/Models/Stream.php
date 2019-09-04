@@ -33,6 +33,7 @@ class Stream extends Model implements ViewableContract
      */
     protected $dispatchesEvents = [
         'created' => \App\Events\StreamCreatedEvent::class,
+        'updated' => \App\Events\StreamUpdatedEvent::class,
     ];
 
     /**

@@ -24,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\StreamCreatedEvent::class => [
             \App\Listeners\StreamCreatedListener::class,
         ],
+        \App\Events\StreamUpdatedEvent::class => [
+            \App\Listeners\StreamUpdatedListener::class
+        ],
         \App\Events\TransactionCreatedEvent::class => [
             \App\Listeners\TransactionCreatedListener::class,
         ],

@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Channel;
 use Illuminate\Console\Command;
 use Image;
+use Illuminate\Support\Facades\Log;
 
 class ImportChannelsViews extends Command
 {
@@ -40,8 +41,7 @@ class ImportChannelsViews extends Command
             'client_id' => config('app.twitch_api_cid')
         ]);
 
-        $twitchClient->setApiVersion(3);
-
+        //$twitchClient->setApiVersion(3);
         $channels = Channel::where('provider', 'twitch')->get();
 
         foreach($channels as $channel)
@@ -50,7 +50,11 @@ class ImportChannelsViews extends Command
                 $data = $twitchClient->getChannel($channel->exid);
                 $channel->update(['views' =>  $data['views']]);
             } catch (\Exception $e){
-                //return $e->getMessage();
+                Log::info('ImportChannelsViews', [
+                    'error' => $e->getMessage(),
+                    'file' => __FILE__,
+                    'line' => __LINE__
+                ]);
             }
         }
 

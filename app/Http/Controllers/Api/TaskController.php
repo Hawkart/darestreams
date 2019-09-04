@@ -54,7 +54,6 @@ class TaskController extends Controller
             ->jsonPaginate();
 
         return TaskResource::collection($items);
-
     }
 
     /**
@@ -100,7 +99,11 @@ class TaskController extends Controller
         $input['min_donation'] = $minDonate;
         $input['status'] = TaskStatus::Created;
 
-        if($input['created_amount']<$amount)
+        //If is streamer
+        if( $stream->channel_id==$user->channel->id)
+            $input['created_amount'] = 0;
+
+        if($input['created_amount']<$amount && $stream->channel_id!=$user->channel->id)
             return setErrorAfterValidation(['created_amount' => trans('api/streams/tasks.not_enough_money')]);
 
         //If not owner of stream check how much money you have
@@ -110,17 +113,17 @@ class TaskController extends Controller
             );
 
         try {
-            $task = DB::transaction(function () use ($input, $user, $stream, $amount) {
+            $task = DB::transaction(function () use ($input, $user, $stream) {
 
                 $task = new Task();
                 $task->fill($input);
                 $task->save();
 
-                if($user->channel->id != $stream->channel_id && $amount>0)
+                if($user->channel->id != $stream->channel_id && $input['created_amount']>0)
                 {
                     Transaction::create($data = [
                         'task_id' => $task->id,
-                        'amount' => $amount,
+                        'amount' => $input['created_amount'],
                         'account_sender_id' => $user->account->id,
                         'account_receiver_id' => $task->stream->user->account->id,
                         'status' => TransactionStatus::Holding,
