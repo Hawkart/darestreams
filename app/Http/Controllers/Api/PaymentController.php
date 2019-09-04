@@ -8,6 +8,7 @@ use App\Http\Resources\TransactionResource;
 use App\Models\Task;
 use App\Models\Transaction;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Omnipay\Omnipay;
 use Illuminate\Support\Facades\DB;
@@ -27,20 +28,23 @@ class PaymentController extends Controller
      */
     public function __construct(Request $request)
     {
-        $this->middleware('auth:api')->only(['checkout']);
+        $this->middleware('auth:api')->only(['checkout', 'groupByDate']);
 
         $this->gate = $request->route()->parameter('gateway');
-        $gateway = Omnipay::create($this->gate);
+        if(!empty($this->gate))
+        {
+            $gateway = Omnipay::create($this->gate);
 
-        //Todo: Change initialize params
-        //Initialise the gateway
-        $gateway->initialize(array(
-            'clientId' => config('services.paypal.client_id'),
-            'secret'   => config('services.paypal.secret'),
-            'testMode' => config('services.paypal.sandbox')
-        ));
+            //Todo: Change initialize params
+            //Initialise the gateway
+            $gateway->initialize(array(
+                'clientId' => config('services.paypal.client_id'),
+                'secret'   => config('services.paypal.secret'),
+                'testMode' => config('services.paypal.sandbox')
+            ));
 
-        $this->gateway = $gateway;
+            $this->gateway = $gateway;
+        }
     }
 
     /**
@@ -241,5 +245,52 @@ class PaymentController extends Controller
             'result' => 0,
             'error' => trans('api/paypal.purchase_canceled')
         ], 200);
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public static function groupByDate()
+    {
+        $user = auth()->user();
+
+        $getDates = DB::table('transactions')
+            ->select(DB::raw('DATE(created_at) as day'), DB::raw('if(type=0, account_receiver_id, account_sender_id) as account_id'))
+            ->whereIn('type', [TransactionType::Deposit, TransactionType::Withdraw])
+            ->groupBy('day', 'type', 'account_id');
+
+        $getDeposits = DB::table('transactions')
+            ->select(DB::raw('DATE(created_at) as day'), DB::raw('sum(amount) as deposit'), 'account_receiver_id as account_id')
+            ->where('type', TransactionType::Deposit)
+            ->groupBy('account_id', 'day');
+
+        $getWithdraws = DB::table('transactions')
+            ->select(DB::raw('DATE(created_at) as day'), DB::raw('sum(amount) as withdraw'), 'account_sender_id as account_id')
+            ->where('type', TransactionType::Withdraw)
+            ->groupBy('account_id', 'day');
+
+        $items = DB::table('accounts as a')
+            ->select('t1.day', 'deposit', 'withdraw')
+
+            ->joinSub($getDates, 't1', function ($join) {
+                $join->on( "t1.account_id", "=", "a.id");
+            })
+
+            ->leftJoinSub($getDeposits, 'dt', function ($join) {
+                $join->on("dt.account_id", "=", "a.id")
+                    ->where("dt.day", "t1.day");
+            })
+
+            ->leftJoinSub($getWithdraws, 'wt', function ($join) {
+                $join->on("wt.account_id", "=", "a.id")
+                    ->where("wt.day", "t1.day");
+            })
+
+            ->where('a.user_id', $user->id)
+            ->whereDate('t1.day',  '>', DB::raw(Carbon::now()->subMonth()->toDateString()))
+            ->orderByDesc('t1.day')
+            ->get();
+
+        return response()->json($items, 200);
     }
 }

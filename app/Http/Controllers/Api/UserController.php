@@ -499,9 +499,6 @@ class UserController extends Controller
         if(auth()->user()->id!=$user->id)
             return setErrorAfterValidation(['id' => trans('api/user.failed_user_not_current')]);
 
-
-
-
         $transactions = $user->getTransactions();
 
         $items = QueryBuilder::for($transactions)
