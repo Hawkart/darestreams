@@ -38,13 +38,11 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('users/me/get-debit-withdraw-by-date', 'UserController@getDebitWithdrawByDate');
 
     Route::get('users/top', 'UserController@top');
-    Route::post('users/{user}/donate', 'UserController@donate');
+    //Route::post('users/{user}/donate', 'UserController@donate');
 
-    Route::get('users/me/donate', 'UserController@donate');
     Route::apiResource('users', 'UserController')->only(['index', 'show', 'update']);
     Route::get('users/{user}/account', 'UserController@account');
     Route::get('users/{user}/channel', 'UserController@channel');
-    Route::get('users/{user}/transactions', 'UserController@transactions');
     Route::post('users/{user}/avatar', 'UserController@updateAvatar');
     Route::post('users/{user}/overlay', 'UserController@updateOverlay');
     Route::patch('users/{user}/password', 'UserController@updatePassword');
