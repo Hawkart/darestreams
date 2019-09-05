@@ -593,7 +593,7 @@ class UserController extends Controller
                 GROUP BY account_id, task_id, status, title, st.id, st.title
             ) as tt
             
-            GROUP BY stream_id"
+            GROUP BY stream_id, title"
         ), [
             'type_donation' => TransactionType::Donation,
             'status_holding' => TransactionStatus::Holding,
@@ -627,7 +627,7 @@ class UserController extends Controller
                 GROUP BY account_id, task_id, status, title, st.id, st.title
             ) as tt
             
-            GROUP BY stream_id"
+            GROUP BY stream_id, title"
         ), [
             'type_donation' => TransactionType::Donation,
             'status_holding' => TransactionStatus::Holding,
