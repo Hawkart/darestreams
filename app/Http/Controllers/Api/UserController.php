@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         $this->middleware('auth:api')
             ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account',
-                'donate', 'getDebitWithdrawGroupDates', 'getDonatesByDate', 'getDebitWithdrawGroupDatesByDate']);
+                'donate', 'getDebitWithdrawGroupDates', 'getDonateGroupDates', 'getDebitWithdrawGroupDatesByDate']);
     }
 
     /**
@@ -563,10 +563,106 @@ class UserController extends Controller
      * @return \Illuminate\Http\JsonResponse|void
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function getDonatesByDate()
+    public function getDonateGroupDatesByDate($date)
     {
         $user = auth()->user();
 
+        $minus = DB::select( DB::raw("SELECT title, sum(amount), stream, 0 as type
+          FROM(
+                SELECT sum(amount) as amount, account_sender_id as account_id, status, task_id, st.id as stream, st.title as title
+                FROM transactions as t
+            
+                LEFT JOIN (
+                    SELECT id, stream_id
+                    FROM tasks
+                    GROUP BY id, stream_id
+                ) as ts on ts.id = t.task_id
+            
+                LEFT JOIN (
+                    SELECT id, title
+                    FROM streams
+                    GROUP BY id, title
+                ) as st on st.id=ts.stream_id
+            
+                WHERE type = :type_donation 
+                  AND status in (:status_holding, :status_completed) 
+                  AND account_sender_id = :account_id 
+                  AND DATE(created_at) = :tdate
+                  
+                GROUP BY account_id, task_id
+            ) as tt
+            
+            GROUP BY stream"
+        ), [
+            'type_donation' => TransactionType::Donation,
+            'status_holding' => TransactionStatus::Holding,
+            'status_completed' => TransactionStatus::Completed,
+            'account_id' => $user->account->id,
+            'tdate' => Carbon::parse($date)->toDateString(),
+        ]);
+
+        $plus = DB::select( DB::raw("SELECT title, sum(amount), stream, 1 as type
+          FROM(
+                SELECT sum(amount) as amount, account_receiver_id as account_id, status, task_id, st.id as stream, st.title as title
+                FROM transactions as t
+            
+                LEFT JOIN (
+                    SELECT id, stream_id
+                    FROM tasks
+                    GROUP BY id, stream_id
+                ) as ts on ts.id = t.task_id
+            
+                LEFT JOIN (
+                    SELECT id, title
+                    FROM streams
+                    GROUP BY id, title
+                ) as st on st.id=ts.stream_id
+            
+                WHERE type = :type_donation 
+                  AND status in (:status_holding, :status_completed) 
+                  AND account_receiver_id = :account_id 
+                  AND DATE(created_at) = :tdate
+                  
+                GROUP BY account_id, task_id
+            ) as tt
+            
+            GROUP BY stream"
+        ), [
+            'type_donation' => TransactionType::Donation,
+            'status_holding' => TransactionStatus::Holding,
+            'status_completed' => TransactionStatus::Completed,
+            'account_id' => $user->account->id,
+            'tdate' => Carbon::parse($date)->toDateString(),
+        ]);
+
+        $items = array_merge($minus, $plus);
+
+        return response()->json($items, 200);
+    }
+
+
+    public function getDonateGroupDatesByDateSream($date, $stream)
+    {
+        $user = auth()->user();
+
+        $items = [];
+
+        return response()->json($items, 200);
+    }
+
+
+
+    /**
+     * Get user's donation (sent and received) transaction
+     *
+     * @authenticated
+     *
+     * @return \Illuminate\Http\JsonResponse|void
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function getDonateGroupDates()
+    {
+        $user = auth()->user();
         $items = DB::select( DB::raw("SELECT day, sum(plus) as plus, sum(minus) as minus
                 FROM (
                     SELECT day, plus, 0 as minus
@@ -601,7 +697,6 @@ class UserController extends Controller
             'user_id' => $user->id,
             'user_id_2' => $user->id,
         ]);
-
         return response()->json($items, 200);
     }
 }

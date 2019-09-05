@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\TaskStatus;
 use App\Enums\TransactionStatus;
 use App\Enums\TransactionType;
 use App\Http\Resources\TransactionResource;
@@ -77,7 +78,12 @@ class PaymentController extends Controller
             $user = User::findOrFail($user_id);
 
         if(intval($task_id)>0)
+        {
             $task = Task::findOrFail($task_id);
+
+            if($task->status!=TaskStatus::Active && !(auth()->user()->id==$task->user_id && $task->status==TaskStatus::Created))
+                return setErrorAfterValidation(['status' => trans('api/transaction.failed_task_not_active')]);
+        }
 
         $currency = "RUB";
 
