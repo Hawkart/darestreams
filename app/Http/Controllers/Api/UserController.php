@@ -481,24 +481,54 @@ class UserController extends Controller
     }
 
     /**
-     * Get user's withdraws and debits
+     * Get user's dates of withdraws and debits
      *
      * @authenticated
      *
      * @return \Illuminate\Http\JsonResponse|void
      * @throws \Illuminate\Validation\ValidationException
      */
-    public static function getDebitWithdrawByDate()
+    public function getDebitWithdrawGroupDates()
     {
         $user = auth()->user();
 
-        $getDates = DB::table('transactions')
-            ->select(DB::raw('DATE(created_at) as day'), DB::raw('if(type=0, account_receiver_id, account_sender_id) as account_id'))
-            ->whereIn('type', [TransactionType::Deposit, TransactionType::Withdraw])
+        $items = DB::select( DB::raw("SELECT t1.day, deposit, withdraw
+            FROM accounts as a
+            JOIN (
+                SELECT DATE(created_at) as day, if(t.type=0, t.account_receiver_id, t.account_sender_id) as account_id
+                FROM transactions as t
+                WHERE t.type in (:status_deposit, :status_withdraw)
+                GROUP BY day,account_id
+            ) as t1 on t1.account_id = a.id
+            LEFT JOIN (
+                SELECT DATE(created_at) as day, sum(amount) as deposit, account_receiver_id as account_id
+                FROM transactions
+                WHERE type = :status_deposit_2
+                GROUP BY account_id, day
+            ) as dT on dT.account_id = a.id and dT.day = t1.day
+            LEFT JOIN (
+                SELECT DATE(created_at) as day, sum(amount) as withdraw, account_sender_id as account_id
+                FROM transactions
+                WHERE type = :status_withdraw_2
+                GROUP BY account_id, day
+            ) as wT on wT.account_id = a.id  and dT.day = t1.day
+            WHERE a.user_id = :user_id and t1.day > DATE_SUB(NOW(), INTERVAL 1 MONTH)"
+        ), [
+            'status_deposit' => TransactionType::Deposit,
+            'status_deposit_2' => TransactionType::Deposit,
+            'status_withdraw' => TransactionType::Withdraw,
+            'status_withdraw_2' => TransactionType::Withdraw,
+            'user_id' => auth()->user()
+        ]);
+
+        /*$getDates = DB::table('transactions as t')
+            ->select(DB::raw('DATE(created_at) as day'), DB::raw('if(t.type=0, t.account_receiver_id, t.account_sender_id) as account_id'))
+            ->whereIn('t.type', [TransactionType::Deposit, TransactionType::Withdraw])
+            ->whereIn('status', [TransactionStatus::Holding, TransactionStatus::Completed])
             ->groupBy('day', 'type', 'account_id');
 
         $getDeposits = DB::table('transactions')
-            ->select(DB::raw('DATE(created_at) as day'), DB::raw('sum(amount) as deposit'), 'account_receiver_id as account_id')
+            ->select(DB::raw('DATE(created_at) as day'), DB::raw('sum(amount) as deposite'), 'account_receiver_id as account_id')
             ->where('type', TransactionType::Deposit)
             ->groupBy('account_id', 'day');
 
@@ -507,8 +537,8 @@ class UserController extends Controller
             ->where('type', TransactionType::Withdraw)
             ->groupBy('account_id', 'day');
 
-        $items = DB::table('accounts as a')
-            ->select('t1.day', 'deposit', 'withdraw')
+        $query = DB::table('accounts as a')
+            ->select('t1.day', 'deposite', 'withdraw')
 
             ->joinSub($getDates, 't1', function ($join) {
                 $join->on( "t1.account_id", "=", "a.id");
@@ -525,11 +555,45 @@ class UserController extends Controller
             })
 
             ->where('a.user_id', $user->id)
-            ->whereDate('t1.day',  '>', DB::raw(Carbon::now()->subMonth()->toDateString()))
-            ->orderByDesc('t1.day')
-            ->get();
+            ->where('t1.day',  '>', DB::raw('DATE_SUB(NOW(), INTERVAL 1 MONTH)'))
+            ->orderByDesc('t1.day');*/
+
+        //$items = $query->get();
+
+        //echo $this->getEloquentSqlWithBindings($query);
 
         return response()->json($items, 200);
+    }
+
+    /**
+     * Get user's dates of withdraws and debits
+     *
+     * @param $date
+     * @return mixed
+     */
+    public function getDebitWithdrawGroupDatesByDate($date)
+    {
+        //$user = auth()->user();
+        //$account = $user->account;
+
+        $query = Transaction::whereIn('type', [TransactionType::Deposit, TransactionType::Withdraw])
+            ->whereDate('created_at', DB::raw(Carbon::parse($date)->toDateString()))
+            ->whereIn('status', [TransactionStatus::Holding, TransactionStatus::Completed])
+            ->where('account_sender_id', 103)
+            ->orWhere('account_receiver_id', 103);
+
+        $items = $query->get();
+
+        dd($this->getEloquentSqlWithBindings($query));
+
+        return TransactionResource::collection($items);
+    }
+
+    public function getEloquentSqlWithBindings($query)
+    {
+        return vsprintf(str_replace('?', '%s', $query->toSql()), collect($query->getBindings())->map(function ($binding) {
+            return is_numeric($binding) ? $binding : "{$binding}";
+        })->toArray());
     }
 
     /**
@@ -540,18 +604,20 @@ class UserController extends Controller
      * @return \Illuminate\Http\JsonResponse|void
      * @throws \Illuminate\Validation\ValidationException
      */
-    public static function getDonatesByDate()
+    public function getDonatesByDate()
     {
         $user = auth()->user();
 
         $getPlus =  DB::table('transactions')
             ->select(DB::raw('DATE(created_at) as day'), DB::raw('sum(amount) as plus'), 'account_receiver_id as account_id')
             ->where('type', TransactionType::Donation)
+            ->whereIn('status', [TransactionStatus::Holding, TransactionStatus::Completed])
             ->groupBy('account_id', 'day');
 
         $getMinus = DB::table('transactions')
             ->select(DB::raw('DATE(created_at) as day'), DB::raw('sum(amount) as minus'), 'account_sender_id as account_id')
             ->where('type', TransactionType::Deposit)
+            ->whereIn('status', [TransactionStatus::Holding, TransactionStatus::Completed])
             ->groupBy('account_id', 'day');
 
         $getPlusSubQuery = DB::table('accounts as a')
@@ -560,7 +626,7 @@ class UserController extends Controller
                 $join->on("dt.account_id", "=", "a.id");
             })
             ->where('a.user_id', $user->id)
-            ->whereDate('day',  '>', DB::raw(Carbon::now()->subMonth()->toDateString()));
+            ->where('day',  '>', DB::raw('DATE_SUB(NOW(), INTERVAL 1 MONTH)'));
 
         $getMinusSubQuery = DB::table('accounts as a')
             ->select('day', DB::raw('0 as plus'), 'minus')
@@ -568,17 +634,16 @@ class UserController extends Controller
                 $join->on("wt.account_id", "=", "a.id");
             })
             ->where('a.user_id', $user->id)
-            ->whereDate('day',  '>', DB::raw(Carbon::now()->subMonth()->toDateString()));
+            ->where('day',  '>', DB::raw('DATE_SUB(NOW(), INTERVAL 1 MONTH)'));
 
         $sub = $getPlusSubQuery->union($getMinusSubQuery);
 
         $items = DB::table(DB::raw("({$sub->toSql()}) as t"))
             ->mergeBindings($sub)
-            ->select('day', DB::raw('sum(plus)'), DB::raw('sum(minus)'))
+            ->select('day', DB::raw('sum(plus) as plus'), DB::raw('sum(minus) as minus'))
             ->groupBy('day')
             ->orderByDesc('day')
             ->get();
-        //->toSql();
 
         return response()->json($items, 200);
     }

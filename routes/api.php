@@ -35,7 +35,8 @@ Route::group(['namespace' => 'Api'], function () {
 
     Route::get('users/me', 'UserController@me');
     Route::get('users/me/get-donates-by-date', 'UserController@getDonatesByDate');
-    Route::get('users/me/get-debit-withdraw-by-date', 'UserController@getDebitWithdrawByDate');
+    Route::get('users/me/get-debit-withdraw-by-date', 'UserController@getDebitWithdrawGroupDates');
+    Route::get('users/me/get-debit-withdraw-by-date/{date}', 'UserController@getDebitWithdrawGroupDatesByDate');
 
     Route::get('users/top', 'UserController@top');
     //Route::post('users/{user}/donate', 'UserController@donate');
