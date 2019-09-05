@@ -239,12 +239,12 @@ class StreamController extends Controller
 
         $tags = ['index', 'topStreams'];
 
-        $cacheTags = Cache::tags($tags);
+        /*$cacheTags = Cache::tags($tags);
         if ($cacheTags->get($cache_key)){
             $items = $cacheTags->get($cache_key);
         } else {
 
-            /*$list = DB::table('channels as ch')
+            $list = DB::table('channels as ch')
                 ->select('st.id', 'ch.views')
                 ->leftJoin('streams as st', 'ch.id', '=', 'st.channel_id')
                 ->groupBy('st.id', 'ch.views')
@@ -262,19 +262,19 @@ class StreamController extends Controller
                 ->orderByRaw(DB::raw("FIELD(id, $oids)"))
                 ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
                 ->where('status', StreamStatus::Active)
-                ->jsonPaginate();*/
-
-            $items = QueryBuilder::for(Stream::class)
-                ->inRandomOrder()
-                ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-                ->where('status', StreamStatus::Active)
-                ->offset($skip)
-                ->limit($limit)
-                ->distinct('channel_id')
                 ->jsonPaginate();
 
             $cacheTags->put($cache_key, $items, 1800);
-        }
+        }*/
+
+        $items = QueryBuilder::for(Stream::class)
+            ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
+            ->where('status', StreamStatus::Active)
+            ->offset($skip)
+            ->limit($limit)
+            ->distinct('channel_id')
+            ->orderByDesc('views')
+            ->jsonPaginate();
 
         return StreamResource::collection($items);
     }

@@ -32,8 +32,10 @@ class SyncStreamByTwitch implements ShouldQueue
             'client_id' => config('app.twitch_api_cid')
         ]);
 
+        $twitchClient->setApiVersion(3);
+
         try {
-            $data = $twitchClient->getChannelVideos($this->stream->channel->exid, 1, 0, 'archives');
+            $data = $twitchClient->getChannelVideos($this->stream->channel->user->nickanem, 1, 0, 'archives');    //$this->stream->channel->exid
 
             if(isset($data['videos']) && count($data['_total'])>0)
             {

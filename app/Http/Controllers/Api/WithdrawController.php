@@ -21,6 +21,10 @@ class WithdrawController extends Controller
     }
 
     /**
+     * Create withdraw.
+     *
+     * Sends email for verification the withdraw
+     *
      * @param TaskTransactionRequest $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
@@ -62,8 +66,36 @@ class WithdrawController extends Controller
         }
     }
 
-    public function verify(Request $request)
+    /**
+     * @param $code
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
+     */
+    public function verify($code)
     {
-        //$transaction = Transaction::where('account_sender_id', $request->get('code')->first();
+        $transaction = Transaction::where('verify_code', $code)
+                        ->where('status', TransactionStatus::Created)->first();
+
+        $account = $transaction->accountSender;
+
+        if($transaction->amount > $account->amount)
+            abort(
+                response()->json(['message' => trans('api/transaction.not_enough_money')], 402)
+            );
+
+        try {
+            DB::transaction(function () use ($transaction) {
+                $transaction->update([
+                    'status' => TransactionStatus::Holding,
+                    'verify_code' => null
+                ]);
+            });
+
+            //Send notification to admin
+
+        } catch (\Exception $e) {
+            return response($e->getMessage(), 422);
+        }
+
+        return response()->json(['success' => true], 200);
     }
 }
