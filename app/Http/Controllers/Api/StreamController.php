@@ -221,6 +221,7 @@ class StreamController extends Controller
      * Get top streams
      * @queryParam limit Integer. Limit of top channels. Default: 3.
      * @queryParam skip Integer. Offset of top channels. Default: 0.
+     * @queryParam game_id Integer. Filter channels by category.
      *
      * @queryParam include string String of connections: user, tasks, tags, game. Example: user,tasks
      *
@@ -238,6 +239,8 @@ class StreamController extends Controller
         $cache_key = Str::slug('topStreams'.$queryString);
 
         $tags = ['index', 'topStreams'];
+        if($request->has('game_id'))
+            $tags[] = 'byGame';
 
         /*$cacheTags = Cache::tags($tags);
         if ($cacheTags->get($cache_key)){
@@ -267,15 +270,28 @@ class StreamController extends Controller
             $cacheTags->put($cache_key, $items, 1800);
         }*/
 
-        $items = QueryBuilder::for(Stream::class)
-            ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-            ->where('status', StreamStatus::Active)
-            ->orderByDesc('views')
-            ->orderByDesc('amount_donations')
-            ->offset($skip)
-            ->limit($limit)
-            //->groupBy(['channel_id'])
-            ->get();
+        $cacheTags = Cache::tags($tags);
+        if ($cacheTags->get($cache_key)){
+            $items = $cacheTags->get($cache_key);
+        } else {
+            $items = QueryBuilder::for(Stream::class)
+                ->where('status', StreamStatus::Active);
+
+            if($request->has('game_id'))
+                $items = $items->whereHas('channel', function($q) use ($request){
+                    $q->where('game_id', $request->get('game_id'));
+                });
+
+            $items = $items->distinct()
+                ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
+                ->orderByDesc('views')
+                ->orderByDesc('amount_donations')
+                ->offset($skip)
+                ->limit($limit)
+                ->get();
+
+            $cacheTags->put($cache_key, $items, 300);
+        }
 
         return StreamResource::collection($items);
     }
