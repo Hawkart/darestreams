@@ -36,7 +36,7 @@ class UserController extends Controller
     {
         $this->middleware('auth:api')
             ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account',
-                'donate', 'getDebitWithdrawByDate', 'getDonatesByDate']);
+                'donate', 'getDebitWithdrawByDate', 'getDonatesByDate', 'getDebitWithdrawGroupDatesByDate']);
     }
 
     /**
@@ -573,19 +573,16 @@ class UserController extends Controller
      */
     public function getDebitWithdrawGroupDatesByDate($date)
     {
-        //$user = auth()->user();
-        //$account = $user->account;
+        $user = auth()->user();
+        $account = $user->account;
 
         $query = Transaction::whereIn('type', [TransactionType::Deposit, TransactionType::Withdraw])
             ->whereDate('created_at', DB::raw(Carbon::parse($date)->toDateString()))
             ->whereIn('status', [TransactionStatus::Holding, TransactionStatus::Completed])
-            ->where('account_sender_id', 103)
-            ->orWhere('account_receiver_id', 103);
+            ->where('account_sender_id', $account->id)
+            ->orWhere('account_receiver_id', $account->id);
 
         $items = $query->get();
-
-        dd($this->getEloquentSqlWithBindings($query));
-
         return TransactionResource::collection($items);
     }
 
