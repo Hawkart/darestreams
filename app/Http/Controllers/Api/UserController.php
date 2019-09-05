@@ -653,9 +653,7 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-        $user = auth()->user();
-
-        $minus = DB::select( DB::raw("SELECT sum(amount) as amount, task_id, ts.small_desc, ts.full_desc, 0 as type
+        $minus = DB::select( DB::raw("SELECT sum(amount) as amount, task_id, ts.small_desc as small_desc, ts.full_desc as full_desc, 0 as type
             FROM transactions as t
         
             LEFT JOIN (
@@ -680,7 +678,7 @@ class UserController extends Controller
             'stream_id' => $stream
         ]);
 
-        $plus = DB::select( DB::raw("SELECT sum(amount) as amount, task_id, ts.small_desc, ts.full_desc, 1 as type
+        $plus = DB::select( DB::raw("SELECT sum(amount) as amount, task_id, ts.small_desc as small_desc, ts.full_desc as full_desc, 1 as type
             FROM transactions as t
         
             LEFT JOIN (
