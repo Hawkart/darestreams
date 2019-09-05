@@ -51,6 +51,10 @@ class ClearSeederData extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
+        if (!$this->confirm('CONFIRM CLEAR ALL DATA IN DB? [y|N]')) {
+            exit('Clear data command aborted');
+        }
+
         DB::statement("SET foreign_key_checks=0");
         User::truncate();
         Account::truncate();

@@ -21,6 +21,7 @@ class Kernel extends ConsoleKernel
         Commands\UpdateStreamsStatus::class,
         Commands\CheckTaskInterval::class,
         Commands\FinishVotes::class,
+        Commands\ClearDroppedTransactions::class
     ];
 
     /**
@@ -32,10 +33,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('games:import')->weeklyOn(1);
-        $schedule->command('tasks:check_interval')->everyMinute();
         $schedule->command('streams:update_status')->everyMinute();
         $schedule->command('streams:get_views')->everyFiveMinutes();
         $schedule->command('streams:pay_donations')->daily()->timezone('America/New_York')->at('02:00');
+        $schedule->command('tasks:check_interval')->everyMinute();
+        $schedule->command('transactions:clear_dropped')->daily()->timezone('America/New_York')->at('02:00');
         $schedule->command('votes:finish')->everyMinute();
     }
 

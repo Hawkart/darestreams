@@ -36,7 +36,7 @@ class UserController extends Controller
     {
         $this->middleware('auth:api')
             ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account',
-                'donate', 'getDebitWithdrawByDate', 'getDonatesByDate', 'getDebitWithdrawGroupDatesByDate']);
+                'donate', 'getDebitWithdrawGroupDates', 'getDonatesByDate', 'getDebitWithdrawGroupDatesByDate']);
     }
 
     /**
@@ -495,72 +495,37 @@ class UserController extends Controller
         $items = DB::select( DB::raw("SELECT t1.day, deposit, withdraw
             FROM accounts as a
             JOIN (
-                SELECT DATE(created_at) as day, if(t.type=0, t.account_receiver_id, t.account_sender_id) as account_id
+                SELECT DATE(created_at) as day, if(t.type=0, t.account_receiver_id, t.account_sender_id) as account_id, status
                 FROM transactions as t
-                WHERE t.type in (:status_deposit, :status_withdraw)
-                GROUP BY day,account_id
+                WHERE t.type in (:type_deposit, :type_withdraw) AND status in (:status_holding, :status_completed)
+                GROUP BY day,account_id, status
             ) as t1 on t1.account_id = a.id
             LEFT JOIN (
-                SELECT DATE(created_at) as day, sum(amount) as deposit, account_receiver_id as account_id
+                SELECT DATE(created_at) as day, sum(amount) as deposit, account_receiver_id as account_id, status
                 FROM transactions
-                WHERE type = :status_deposit_2
-                GROUP BY account_id, day
+                WHERE type = :type_deposit_2 AND status in (:status_holding_2, :status_completed_2)
+                GROUP BY account_id, day, status
             ) as dT on dT.account_id = a.id and dT.day = t1.day
             LEFT JOIN (
-                SELECT DATE(created_at) as day, sum(amount) as withdraw, account_sender_id as account_id
+                SELECT DATE(created_at) as day, sum(amount) as withdraw, account_sender_id as account_id, status
                 FROM transactions
-                WHERE type = :status_withdraw_2
-                GROUP BY account_id, day
+                WHERE type = :type_withdraw_2 AND status in (:status_holding_3, :status_completed_3)
+                GROUP BY account_id, day, status
             ) as wT on wT.account_id = a.id  and dT.day = t1.day
             WHERE a.user_id = :user_id and t1.day > DATE_SUB(NOW(), INTERVAL 1 MONTH)"
         ), [
-            'status_deposit' => TransactionType::Deposit,
-            'status_deposit_2' => TransactionType::Deposit,
-            'status_withdraw' => TransactionType::Withdraw,
-            'status_withdraw_2' => TransactionType::Withdraw,
+            'type_deposit' => TransactionType::Deposit,
+            'type_deposit_2' => TransactionType::Deposit,
+            'type_withdraw' => TransactionType::Withdraw,
+            'type_withdraw_2' => TransactionType::Withdraw,
+            'status_holding' => TransactionStatus::Holding,
+            'status_completed' => TransactionStatus::Completed,
+            'status_holding_2' => TransactionStatus::Holding,
+            'status_completed_2' => TransactionStatus::Completed,
+            'status_holding_3' => TransactionStatus::Holding,
+            'status_completed_3' => TransactionStatus::Completed,
             'user_id' => $user->id
         ]);
-
-        /*$getDates = DB::table('transactions as t')
-            ->select(DB::raw('DATE(created_at) as day'), DB::raw('if(t.type=0, t.account_receiver_id, t.account_sender_id) as account_id'))
-            ->whereIn('t.type', [TransactionType::Deposit, TransactionType::Withdraw])
-            ->whereIn('status', [TransactionStatus::Holding, TransactionStatus::Completed])
-            ->groupBy('day', 'type', 'account_id');
-
-        $getDeposits = DB::table('transactions')
-            ->select(DB::raw('DATE(created_at) as day'), DB::raw('sum(amount) as deposite'), 'account_receiver_id as account_id')
-            ->where('type', TransactionType::Deposit)
-            ->groupBy('account_id', 'day');
-
-        $getWithdraws = DB::table('transactions')
-            ->select(DB::raw('DATE(created_at) as day'), DB::raw('sum(amount) as withdraw'), 'account_sender_id as account_id')
-            ->where('type', TransactionType::Withdraw)
-            ->groupBy('account_id', 'day');
-
-        $query = DB::table('accounts as a')
-            ->select('t1.day', 'deposite', 'withdraw')
-
-            ->joinSub($getDates, 't1', function ($join) {
-                $join->on( "t1.account_id", "=", "a.id");
-            })
-
-            ->leftJoinSub($getDeposits, 'dt', function ($join) {
-                $join->on("dt.account_id", "=", "a.id")
-                    ->where("dt.day", "t1.day");
-            })
-
-            ->leftJoinSub($getWithdraws, 'wt', function ($join) {
-                $join->on("wt.account_id", "=", "a.id")
-                    ->where("wt.day", "t1.day");
-            })
-
-            ->where('a.user_id', $user->id)
-            ->where('t1.day',  '>', DB::raw('DATE_SUB(NOW(), INTERVAL 1 MONTH)'))
-            ->orderByDesc('t1.day');*/
-
-        //$items = $query->get();
-
-        //echo $this->getEloquentSqlWithBindings($query);
 
         return response()->json($items, 200);
     }
