@@ -556,7 +556,7 @@ class UserController extends Controller
     }
 
     /**
-     * Get user's donation (sent and received) transaction
+     * Get user's donation (sent and received) transaction by date
      *
      * @authenticated
      *
@@ -567,9 +567,9 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-        $minus = DB::select( DB::raw("SELECT title, sum(amount), stream, 0 as type
+        $minus = DB::select( DB::raw("SELECT title, sum(amount), stream_id, 0 as type
           FROM(
-                SELECT sum(amount) as amount, account_sender_id as account_id, status, task_id, st.id as stream, st.title as title
+                SELECT sum(amount) as amount, account_sender_id as account_id, status, task_id, st.id as stream_id, st.title as title
                 FROM transactions as t
             
                 LEFT JOIN (
@@ -592,7 +592,7 @@ class UserController extends Controller
                 GROUP BY account_id, task_id
             ) as tt
             
-            GROUP BY stream"
+            GROUP BY stream_id"
         ), [
             'type_donation' => TransactionType::Donation,
             'status_holding' => TransactionStatus::Holding,
@@ -601,9 +601,9 @@ class UserController extends Controller
             'tdate' => Carbon::parse($date)->toDateString(),
         ]);
 
-        $plus = DB::select( DB::raw("SELECT title, sum(amount), stream, 1 as type
+        $plus = DB::select( DB::raw("SELECT title, sum(amount), stream_id, 1 as type
           FROM(
-                SELECT sum(amount) as amount, account_receiver_id as account_id, status, task_id, st.id as stream, st.title as title
+                SELECT sum(amount) as amount, account_receiver_id as account_id, status, task_id, st.id as stream_id, st.title as title
                 FROM transactions as t
             
                 LEFT JOIN (
@@ -626,7 +626,7 @@ class UserController extends Controller
                 GROUP BY account_id, task_id
             ) as tt
             
-            GROUP BY stream"
+            GROUP BY stream_id"
         ), [
             'type_donation' => TransactionType::Donation,
             'status_holding' => TransactionStatus::Holding,
@@ -640,17 +640,74 @@ class UserController extends Controller
         return response()->json($items, 200);
     }
 
-
+    /**
+     * Get user's donation (sent and received) transaction by date and stream
+     *
+     * @authenticated
+     *
+     * @return \Illuminate\Http\JsonResponse|void
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function getDonateGroupDatesByDateSream($date, $stream)
     {
         $user = auth()->user();
 
-        $items = [];
+        $user = auth()->user();
+
+        $minus = DB::select( DB::raw("SELECT sum(amount) as amount, task_id, ts.small_desc, ts.full_desc, 0 as type
+            FROM transactions as t
+        
+            LEFT JOIN (
+                SELECT id, stream_id, small_desc, full_desc
+                FROM tasks
+                GROUP BY id, stream_id
+            ) as ts on ts.id = t.task_id
+        
+            WHERE type = :type_donation
+              AND status in (:status_holding,:status_completed) 
+              AND account_sender_id = :account_id 
+              AND DATE(created_at) = :tdate 
+              AND ts.stream_id = :stream_id
+              
+            GROUP BY account_sender_id, task_id"
+        ), [
+            'type_donation' => TransactionType::Donation,
+            'status_holding' => TransactionStatus::Holding,
+            'status_completed' => TransactionStatus::Completed,
+            'account_id' => $user->account->id,
+            'tdate' => Carbon::parse($date)->toDateString(),
+            'stream_id' => $stream
+        ]);
+
+        $plus = DB::select( DB::raw("SELECT sum(amount) as amount, task_id, ts.small_desc, ts.full_desc, 1 as type
+            FROM transactions as t
+        
+            LEFT JOIN (
+                SELECT id, stream_id, small_desc, full_desc
+                FROM tasks
+                GROUP BY id, stream_id
+            ) as ts on ts.id = t.task_id
+        
+            WHERE type = :type_donation 
+              AND status in (:status_holding,:status_completed) 
+              AND account_receiver_id = :account_id 
+              AND DATE(created_at) = :tdate 
+              AND ts.stream_id = :stream_id
+              
+            GROUP BY account_receiver_id, task_id"
+        ), [
+            'type_donation' => TransactionType::Donation,
+            'status_holding' => TransactionStatus::Holding,
+            'status_completed' => TransactionStatus::Completed,
+            'account_id' => $user->account->id,
+            'tdate' => Carbon::parse($date)->toDateString(),
+            'stream_id' => $stream
+        ]);
+
+        $items = array_merge($minus, $plus);
 
         return response()->json($items, 200);
     }
-
-
 
     /**
      * Get user's donation (sent and received) transaction
