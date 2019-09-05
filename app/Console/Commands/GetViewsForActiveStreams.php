@@ -46,7 +46,9 @@ class GetViewsForActiveStreams extends Command
         $streams = Stream::where('status', StreamStatus::Active)
             ->whereHas('channel', function($q) {
                 $q->where('provider', 'twitch');
-            })->get();
+            })
+            ->orderByDesc('created_at')
+            ->get();
 
         if(count($streams)>0)
         {
@@ -56,8 +58,9 @@ class GetViewsForActiveStreams extends Command
                     if($data = $twitchClient->getChannel($stream->channel->user->nickname)) //$stream->channel->exid
                         $stream->update(['views' =>  $data['views']]);
 
+                    echo $stream->id."\r\n";
                 } catch (\Exception $e) {
-
+                    echo $e->getMessage()."\r\n";
                     Log::info('GetViewsForActiveStreams', [
                         'error' => $e->getMessage(),
                         'file' => __FILE__,
