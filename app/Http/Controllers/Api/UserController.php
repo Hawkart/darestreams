@@ -9,6 +9,7 @@ use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\AccountResource;
 use App\Http\Resources\ChannelResource;
+use App\Http\Resources\TransactionResource;
 use App\Models\Transaction;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filter;
