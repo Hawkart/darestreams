@@ -544,7 +544,7 @@ class UserController extends Controller
         $account = $user->account;
 
         $query = Transaction::whereIn('type', [TransactionType::Deposit, TransactionType::Withdraw])
-            ->whereDate('created_at', DB::raw(Carbon::parse($date)->toDateString()))
+            ->whereDate('created_at', Carbon::parse($date)->toDateString())
             ->whereIn('status', [TransactionStatus::Holding, TransactionStatus::Completed])
             ->where('account_sender_id', $account->id)
             ->orWhere('account_receiver_id', $account->id);
