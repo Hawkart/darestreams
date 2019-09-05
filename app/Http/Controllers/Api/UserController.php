@@ -670,7 +670,7 @@ class UserController extends Controller
               AND DATE(created_at) = :tdate 
               AND ts.stream_id = :stream_id
               
-            GROUP BY task_id"
+            GROUP BY task_id, small_desc, full_desc"
         ), [
             'type_donation' => TransactionType::Donation,
             'status_holding' => TransactionStatus::Holding,
@@ -695,7 +695,7 @@ class UserController extends Controller
               AND DATE(created_at) = :tdate 
               AND ts.stream_id = :stream_id
               
-            GROUP BY task_id"
+            GROUP BY task_id, small_desc, full_desc"
         ), [
             'type_donation' => TransactionType::Donation,
             'status_holding' => TransactionStatus::Holding,
