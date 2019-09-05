@@ -38,7 +38,7 @@ class UserController extends Controller
         $this->middleware('auth:api')
             ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account',
                 'donate', 'getDebitWithdrawGroupDates', 'getDebitWithdrawGroupDatesByDate',
-                'getDonateGroupDates', 'getDonateGroupDatesByDate', 'getDonateGroupDatesByDateSream']);
+                'getDonateGroupDates', 'getDonateGroupDatesByDate', 'getDonateGroupDatesByDateStream']);
     }
 
     /**
@@ -568,7 +568,7 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-        $minus = DB::select( DB::raw("SELECT title, sum(amount), stream_id, 0 as type
+        $minus = DB::select( DB::raw("SELECT title, sum(amount) as amount, stream_id, 0 as type
           FROM(
                 SELECT sum(amount) as amount, account_sender_id as account_id, status, task_id, st.id as stream_id, st.title as title
                 FROM transactions as t
@@ -602,7 +602,7 @@ class UserController extends Controller
             'tdate' => Carbon::parse($date)->toDateString(),
         ]);
 
-        $plus = DB::select( DB::raw("SELECT title, sum(amount), stream_id, 1 as type
+        $plus = DB::select( DB::raw("SELECT title, sum(amount) as amount, stream_id, 1 as type
           FROM(
                 SELECT sum(amount) as amount, account_receiver_id as account_id, status, task_id, st.id as stream_id, st.title as title
                 FROM transactions as t
@@ -649,7 +649,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\JsonResponse|void
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function getDonateGroupDatesByDateSream($date, $stream)
+    public function getDonateGroupDatesByDateStream($date, $stream)
     {
         $user = auth()->user();
 
