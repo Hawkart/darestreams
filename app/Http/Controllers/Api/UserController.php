@@ -518,7 +518,7 @@ class UserController extends Controller
             'status_deposit_2' => TransactionType::Deposit,
             'status_withdraw' => TransactionType::Withdraw,
             'status_withdraw_2' => TransactionType::Withdraw,
-            'user_id' => auth()->user()
+            'user_id' => $user->id
         ]);
 
         /*$getDates = DB::table('transactions as t')
