@@ -511,8 +511,9 @@ class UserController extends Controller
                 FROM transactions
                 WHERE type = :type_withdraw_2 AND status in (:status_holding_3, :status_completed_3)
                 GROUP BY account_id, day, status
-            ) as wT on wT.account_id = a.id  and dT.day = t1.day
-            WHERE a.user_id = :user_id and t1.day > DATE_SUB(NOW(), INTERVAL 1 MONTH)"
+            ) as wT on wT.account_id = a.id  and wT.day = t1.day
+            WHERE a.user_id = :user_id and t1.day > DATE_SUB(NOW(), INTERVAL 1 MONTH)
+            ORDER BY t1.day DESC"
         ), [
             'type_deposit' => TransactionType::Deposit,
             'type_deposit_2' => TransactionType::Deposit,
@@ -551,13 +552,6 @@ class UserController extends Controller
         return TransactionResource::collection($items);
     }
 
-    public function getEloquentSqlWithBindings($query)
-    {
-        return vsprintf(str_replace('?', '%s', $query->toSql()), collect($query->getBindings())->map(function ($binding) {
-            return is_numeric($binding) ? $binding : "{$binding}";
-        })->toArray());
-    }
-
     /**
      * Get user's donation (sent and received) transaction
      *
@@ -570,7 +564,42 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-        $getPlus =  DB::table('transactions')
+        $items = DB::select( DB::raw("SELECT day, sum(plus) as plus, sum(minus) as minus
+                FROM (
+                    SELECT day, plus, 0 as minus
+                    FROM accounts as a
+                    LEFT JOIN (
+                        SELECT DATE(created_at) as day, sum(amount) as plus, account_receiver_id as account_id, status
+                        FROM transactions
+                        WHERE type = :type_donation AND status in (:status_holding, :status_completed)
+                        GROUP BY account_id, day, status
+                    ) as dT on dT.account_id = a.id
+                    WHERE a.user_id = :user_id_2 and day > DATE_SUB(NOW(), INTERVAL 1 MONTH)
+                    UNION
+                    SELECT day, 0 as plus, minus
+                    FROM accounts as a
+                    LEFT JOIN (
+                        SELECT DATE(created_at) as day, sum(amount) as minus, account_sender_id as account_id, status
+                        FROM transactions 
+                        WHERE type = :type_donation_2 AND status in (:status_holding_2, :status_completed_2)
+                        GROUP BY account_id, day, status
+                    ) as wT on wT.account_id = a.id
+                    WHERE a.user_id = :user_id and day > DATE_SUB(NOW(), INTERVAL 1 MONTH)
+                ) as t1 
+                GROUP BY day
+                ORDER BY day DESC"
+        ), [
+            'type_donation' => TransactionType::Donation,
+            'type_donation_2' => TransactionType::Donation,
+            'status_holding' => TransactionStatus::Holding,
+            'status_completed' => TransactionStatus::Completed,
+            'status_holding_2' => TransactionStatus::Holding,
+            'status_completed_2' => TransactionStatus::Completed,
+            'user_id' => $user->id,
+            'user_id_2' => $user->id,
+        ]);
+
+        /*$getPlus =  DB::table('transactions')
             ->select(DB::raw('DATE(created_at) as day'), DB::raw('sum(amount) as plus'), 'account_receiver_id as account_id')
             ->where('type', TransactionType::Donation)
             ->whereIn('status', [TransactionStatus::Holding, TransactionStatus::Completed])
@@ -605,7 +634,7 @@ class UserController extends Controller
             ->select('day', DB::raw('sum(plus) as plus'), DB::raw('sum(minus) as minus'))
             ->groupBy('day')
             ->orderByDesc('day')
-            ->get();
+            ->get();*/
 
         return response()->json($items, 200);
     }
