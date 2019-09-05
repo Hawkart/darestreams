@@ -659,7 +659,7 @@ class UserController extends Controller
             LEFT JOIN (
                 SELECT id, stream_id, small_desc, full_desc
                 FROM tasks
-                GROUP BY id, stream_id
+                GROUP BY id, stream_id, small_desc, full_desc
             ) as ts on ts.id = t.task_id
         
             WHERE type = :type_donation
@@ -684,7 +684,7 @@ class UserController extends Controller
             LEFT JOIN (
                 SELECT id, stream_id, small_desc, full_desc
                 FROM tasks
-                GROUP BY id, stream_id
+                GROUP BY id, stream_id, small_desc, full_desc
             ) as ts on ts.id = t.task_id
         
             WHERE type = :type_donation 
