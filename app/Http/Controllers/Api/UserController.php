@@ -590,7 +590,7 @@ class UserController extends Controller
                   AND account_sender_id = :account_id 
                   AND DATE(created_at) = :tdate
                   
-                GROUP BY account_id, task_id
+                GROUP BY account_id, task_id, status, title, stream_id, amount
             ) as tt
             
             GROUP BY stream_id"
@@ -624,7 +624,7 @@ class UserController extends Controller
                   AND account_receiver_id = :account_id 
                   AND DATE(created_at) = :tdate
                   
-                GROUP BY account_id, task_id
+                GROUP BY account_id, task_id, status, title, stream_id, amount
             ) as tt
             
             GROUP BY stream_id"
