@@ -268,13 +268,14 @@ class StreamController extends Controller
         }*/
 
         $items = QueryBuilder::for(Stream::class)
+            ->distinct()
             ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
             ->where('status', StreamStatus::Active)
+            ->orderByDesc('views')
+            ->orderByDesc('amount_donations')
             ->offset($skip)
             ->limit($limit)
-            ->distinct('channel_id')
-            ->orderByDesc('views')
-            ->jsonPaginate();
+            ->get(['channel_id']);
 
         return StreamResource::collection($items);
     }

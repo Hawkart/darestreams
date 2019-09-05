@@ -599,43 +599,6 @@ class UserController extends Controller
             'user_id_2' => $user->id,
         ]);
 
-        /*$getPlus =  DB::table('transactions')
-            ->select(DB::raw('DATE(created_at) as day'), DB::raw('sum(amount) as plus'), 'account_receiver_id as account_id')
-            ->where('type', TransactionType::Donation)
-            ->whereIn('status', [TransactionStatus::Holding, TransactionStatus::Completed])
-            ->groupBy('account_id', 'day');
-
-        $getMinus = DB::table('transactions')
-            ->select(DB::raw('DATE(created_at) as day'), DB::raw('sum(amount) as minus'), 'account_sender_id as account_id')
-            ->where('type', TransactionType::Deposit)
-            ->whereIn('status', [TransactionStatus::Holding, TransactionStatus::Completed])
-            ->groupBy('account_id', 'day');
-
-        $getPlusSubQuery = DB::table('accounts as a')
-            ->select('day', 'plus', DB::raw('0 as minus'))
-            ->leftJoinSub($getPlus, 'dt', function ($join) {
-                $join->on("dt.account_id", "=", "a.id");
-            })
-            ->where('a.user_id', $user->id)
-            ->where('day',  '>', DB::raw('DATE_SUB(NOW(), INTERVAL 1 MONTH)'));
-
-        $getMinusSubQuery = DB::table('accounts as a')
-            ->select('day', DB::raw('0 as plus'), 'minus')
-            ->leftJoinSub($getMinus, 'wt', function ($join) {
-                $join->on("wt.account_id", "=", "a.id");
-            })
-            ->where('a.user_id', $user->id)
-            ->where('day',  '>', DB::raw('DATE_SUB(NOW(), INTERVAL 1 MONTH)'));
-
-        $sub = $getPlusSubQuery->union($getMinusSubQuery);
-
-        $items = DB::table(DB::raw("({$sub->toSql()}) as t"))
-            ->mergeBindings($sub)
-            ->select('day', DB::raw('sum(plus) as plus'), DB::raw('sum(minus) as minus'))
-            ->groupBy('day')
-            ->orderByDesc('day')
-            ->get();*/
-
         return response()->json($items, 200);
     }
 }
