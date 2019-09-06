@@ -4,28 +4,29 @@
 
 use App\Models\Stream;
 use App\Models\Channel;
-use App\Models\Game;
 use Faker\Generator as Faker;
 use App\Enums\StreamStatus;
 
-$factory->define(Stream::class, function (Faker $faker) {
+$factory->define(Stream::class, function (Faker $faker, $attributes) {
+
+    $channel = Channel::findOrFail($attributes['channel_id']);
+
+    $allow = $faker->boolean();
+
     return [
         'title' => $faker->paragraph(1, true),
-        'link'      => $faker->imageUrl(800, 600, 'cats', true),
+        'link'      => $channel->link,
         'start_at'  => $faker->dateTime(),
-        'status'    => StreamStatus::getRandomValue(),
-        'channel_id'   =>  function () {
-            return Channel::inRandomOrder()->first()->id;
-        },
-        'game_id'   =>  function () {
-            return Game::inRandomOrder()->first()->id;
-        },
-        'allow_task_before_stream' => $faker->boolean(),
-        'allow_task_when_stream' => $faker->boolean(),
+        'status'    => StreamStatus::Active,
+        'channel_id'   =>  $channel->id,
+        'game_id'   =>  $channel->game_id,
+        'allow_task_before_stream' => $allow,
+        'allow_task_when_stream' => !$allow,
         'min_amount_task_before_stream' => $faker->numberBetween(1, 100),
         'min_amount_task_when_stream' =>  $faker->numberBetween(1, 100),
         'min_amount_donate_task_before_stream'=> $faker->numberBetween(1, 100),
         'min_amount_donate_task_when_stream'=>  $faker->numberBetween(1, 100),
-        'quantity_donators'    => $faker->numberBetween(1, 10)
+        'quantity_donators'    => $faker->numberBetween(1, 10),
+        'views' => $channel->views
     ];
 });

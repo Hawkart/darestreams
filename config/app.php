@@ -132,6 +132,10 @@ return [
 
     'deploy_secret' => env('APP_DEPLOY_SECRET'),
     'twitch_api_cid' => env('TWITCH_API_CLIENT_ID'),
+
+    'twitch_api_key' => env('TWITCH_KEY'),
+    'twitch_api_secret' => env('TWITCH_SECRET'),
+
     'time_vote_until_stream_finished' => env('TIME_VOTE_UNTIL_STREAM_FINISHED', 30),
 
     /*

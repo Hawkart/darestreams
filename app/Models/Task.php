@@ -62,6 +62,16 @@ class Task extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function vote()
+    {
+        $user_id = auth()->user() ? auth()->user()->id : 0;
+        return $this->hasMany(Vote::class, 'task_id')
+            ->where('user_id', $user_id);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function transactions()
     {
         return $this->hasMany(Transaction::class);

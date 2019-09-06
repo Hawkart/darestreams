@@ -12,6 +12,12 @@ class OauthProvidersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(OAuthProvider::class, 100)->create();
+        $users = \App\Models\User::all();
+        foreach($users as $user)
+        {
+            factory(OAuthProvider::class)->create([
+                'user_id' => $user->id,
+            ]);
+        }
     }
 }

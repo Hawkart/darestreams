@@ -55,19 +55,16 @@ class ClearSeederData extends Command
             exit('Clear data command aborted');
         }
 
-        DB::statement("SET foreign_key_checks=0");
-        User::truncate();
-        Account::truncate();
-        Game::truncate();
-        OAuthProvider::truncate();
-        Stream::truncate();
-        Task::truncate();
-        Vote::truncate();
-        Transaction::truncate();
-        Message::truncate();
-        Threadable::truncate();
-        Thread::truncate();
-        DB::statement("SET foreign_key_checks=1");
+        DB::beginTransaction();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+
+        foreach(\DB::select('SHOW TABLES') as $table) {
+            $table_array = get_object_vars($table);
+            \Schema::truncate($table_array[key($table_array)]);
+        }
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        DB::commit();
 
         $bar->finish();
     }

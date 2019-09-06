@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Channel;
+use App\Models\User;
 
 class ChannelsTableSeeder extends Seeder
 {
@@ -12,16 +13,12 @@ class ChannelsTableSeeder extends Seeder
      */
     public function run()
     {
-        $items = factory(Channel::class, 100)->make();
-
-        foreach ($items as $item) {
-            repeat:
-            try {
-                $item->save();
-            } catch (\Illuminate\Database\QueryException $e) {
-                $item = factory(Channel::class)->make();
-                goto repeat;
-            }
+        $users = User::all();
+        foreach($users as $user)
+        {
+            factory(Channel::class)->create([
+                'user_id' => $user->id,
+            ]);
         }
     }
 }

@@ -92,9 +92,14 @@ class ImportGames extends Command
      */
     public function getImagePath($path)
     {
-        $filename = md5(strtolower( basename($path) ));
-        $filename.=".".strtolower(File::extension(basename($path)));
-        Image::make($path)->save(public_path('storage/games/' . $filename));
-        return 'games/' . $filename;
+        try{
+            $filename = md5(strtolower( basename($path) ));
+            $filename.=".".strtolower(File::extension(basename($path)));
+            Image::make($path)->save(public_path('storage/games/' . $filename));
+            return 'games/' . $filename;
+        } catch(\Exception $e) {
+            echo $e->getMessage()."\r\n";
+            return "";
+        }
     }
 }

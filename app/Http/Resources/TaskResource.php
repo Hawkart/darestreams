@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Enums\TaskStatus;
+use App\Enums\VoteStatus;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class TaskResource extends JsonResource
@@ -15,7 +16,7 @@ class TaskResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        $data = [
             'id' => $this->id,
             'stream_id' => $this->stream_id,
             'user_id' => $this->user_id,
@@ -33,5 +34,34 @@ class TaskResource extends JsonResource
             'stream' => new StreamResource($this->whenLoaded('stream')),
             'transactions' => TransactionResource::collection($this->whenLoaded('transactions')),
         ];
+
+        //Get info by voting for auth user
+        if ($this->whenLoaded('vote') instanceof Illuminate\Http\Resources\MissingValue) {
+            $userVote = $this->whenLoaded('vote');
+        } else {
+            $userVote = [];
+        }
+
+        $canVote = false;
+        $alreadyVote = false;
+
+        if(in_array($this->status, [TaskStatus::IntervalFinishedAllowVote, TaskStatus::AllowVote]) && count($userVote)>0 && isset($userVote[0]))
+        {
+            $canVote = true;
+
+            if($userVote[0]->status!=VoteStatus::Pending)
+                $alreadyVote = true;
+        }
+
+        //Show results if already voted or voting finished
+        if($alreadyVote || in_array($this->status, [TaskStatus::VoteFinished, TaskStatus::PayFinished]))
+        {
+            $data['vote_yes'] = $this->vote_yes;
+            $data['vote_no'] = $this->vote_no;
+        }else{
+            if($userVote ) $data['can_vote'] = $canVote;
+        }
+
+        return $data;
     }
 }
