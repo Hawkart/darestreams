@@ -32,7 +32,7 @@ class StreamController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @queryParam include string String of connections: game, tasks, tags, channel, user. Example: game,tasks
+     * @queryParam include string String of connections: game, tasks, tasks.vote, tags, channel, user. Example: game,tasks
      * @queryParam sort string Sort items by fields: amount_donations, quantity_donators, quantity_donations, id. For desc use '-' prefix. Example: -quantity_donators
      * @queryParam page array Use as page[number]=1&page[size]=2.
      *
@@ -52,7 +52,7 @@ class StreamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @queryParam include string String of connections: game, tasks, tags, channel, user. Example: game,tasks
+     * @queryParam include string String of connections: game, tasks, tasks.vote, tags, channel, user. Example: game,tasks
      *
      * @param  int  $stream
      * @return \Illuminate\Http\Response

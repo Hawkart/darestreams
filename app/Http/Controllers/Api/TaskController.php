@@ -249,7 +249,7 @@ class TaskController extends Controller
         }
 
         $stream = $task->stream;
-        $stream->load(['user','channel','game','tasks']);
+        $stream->load(['user','channel','game','tasks', 'tasks.vote']);
         StreamResource::withoutWrapping();
         event(new SocketOnDonate(new StreamResource($stream)));
 

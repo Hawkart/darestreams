@@ -12,9 +12,11 @@ $factory->define(Transaction::class, function (Faker $faker) {
 
     $task = Task::inRandomOrder()->first();
     $receiver = $task->stream->user->account;
+    $amount = $faker->randomNumber(2);
 
     return [
-        'amount'    => $faker->randomNumber(2),
+        'amount'    => $amount,
+        'money'     => $amount,
         'account_sender_id'  => function () use ($receiver) {
             return Account::where('id', '<>', $receiver->id)->inRandomOrder()->first();
         },
