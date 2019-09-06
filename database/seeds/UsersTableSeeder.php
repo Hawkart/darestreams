@@ -27,6 +27,8 @@ class UsersTableSeeder extends Seeder
             "lorinefairy","panteleev","ameriahime","delaylamy","joskiyokda","dtfru","leniniw","by_owl","yuki2yuki","5live_bgd",
             "shtyr","johnylemonade","theveronicous","steel","busya18plus"];
 
+        $nicknames = array_unique($nicknames);
+
         foreach($nicknames as $nickname)
         {
             factory(User::class)->create([
