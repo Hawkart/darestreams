@@ -176,6 +176,7 @@ class PaymentController extends Controller
                             $t->update([
                                 'status' => TransactionStatus::Completed,
                                 'amount' => $amount,
+                                'money' => $amount,
                                 'json' => $data
                             ]);
 

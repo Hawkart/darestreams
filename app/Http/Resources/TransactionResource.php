@@ -24,10 +24,15 @@ class TransactionResource extends JsonResource
             'account_sender_id' => $this->account_sender_id,
             'account_receiver_id' => $this->account_receiver_id,
             'amount' => $this->amount,
+            'money' => $this->money,
             'status' => TransactionStatus::getInstance($this->status),
             'type' => TransactionType::getInstance($this->type),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+
+            'currency' => $this->when($this->type!=TransactionType::Donation, $this->currency),
+            'payment' => $this->when($this->type!=TransactionType::Donation, $this->payment),
+            'exid' => $this->when($this->type!=TransactionType::Donation, $this->exid),
 
             'task' => new TaskResource($this->whenLoaded('task')),
             'account_sender' => new AccountResource($this->whenLoaded('accountSender')),

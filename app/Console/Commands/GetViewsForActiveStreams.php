@@ -41,8 +41,6 @@ class GetViewsForActiveStreams extends Command
             'client_id' => config('app.twitch_api_cid')
         ]);
 
-        $twitchClient->setApiVersion(3);
-
         $streams = Stream::where('status', StreamStatus::Active)
             ->whereHas('channel', function($q) {
                 $q->where('provider', 'twitch');
@@ -55,7 +53,7 @@ class GetViewsForActiveStreams extends Command
             foreach($streams as $stream)
             {
                 try {
-                    if($data = $twitchClient->getChannel($stream->channel->user->nickname)) //$stream->channel->exid
+                    if($data = $twitchClient->getChannel($stream->channel->exid)) //$stream->channel->user->nickname
                         $stream->update(['views' =>  $data['views']]);
 
                     echo $stream->id."\r\n";
