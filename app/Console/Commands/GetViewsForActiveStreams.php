@@ -65,6 +65,8 @@ class GetViewsForActiveStreams extends Command
                         'line' => __LINE__
                     ]);
                 }
+
+                sleep(2);
             }
         }
 

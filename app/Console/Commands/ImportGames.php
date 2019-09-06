@@ -78,6 +78,8 @@ class ImportGames extends Command
 
             break;
 
+            sleep(2);
+
             $count+= count($games);
             $offset+= $limit;
 
