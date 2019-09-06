@@ -12,6 +12,8 @@ $factory->define(User::class, function (Faker $faker, $attributes) {
     if(!File::exists($filepath))
         File::makeDirectory($filepath);
 
+    echo $attributes['nickname']."\r\n";
+
     return [
         'name' => $faker->name,
         'nickname' => strtolower($attributes['nickname']),

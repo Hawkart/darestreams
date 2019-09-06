@@ -7,6 +7,9 @@ use App\Models\User;
 use Faker\Generator as Faker;
 
 $factory->define(OAuthProvider::class, function (Faker $faker, $attributes) {
+
+    echo $attributes['provider_user_id']."\r\n";
+
     return [
         'provider'          =>  'twitch',
         'provider_user_id'  =>  $attributes['provider_user_id'],
