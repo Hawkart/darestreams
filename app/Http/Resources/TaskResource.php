@@ -36,14 +36,14 @@ class TaskResource extends JsonResource
         ];
 
         //Get info by voting for auth user
-        if ($this->whenLoaded('vote') instanceof Illuminate\Http\Resources\MissingValue) {
-            $userVote = $this->whenLoaded('vote');
+        $canVote = false;
+        $alreadyVote = false;
+
+        if (!$this->whenLoaded('vote') instanceof \Illuminate\Http\Resources\MissingValue) {
+            $userVote = VoteResource::collection($this->whenLoaded('vote'));
         } else {
             $userVote = [];
         }
-
-        $canVote = false;
-        $alreadyVote = false;
 
         if(in_array($this->status, [TaskStatus::IntervalFinishedAllowVote, TaskStatus::AllowVote]) && count($userVote)>0 && isset($userVote[0]))
         {
@@ -59,7 +59,8 @@ class TaskResource extends JsonResource
             $data['vote_yes'] = $this->vote_yes;
             $data['vote_no'] = $this->vote_no;
         }else{
-            if($userVote ) $data['can_vote'] = $canVote;
+            if (!$this->whenLoaded('vote') instanceof \Illuminate\Http\Resources\MissingValue)
+                $data['can_vote'] = $canVote;
         }
 
         return $data;

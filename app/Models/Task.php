@@ -65,8 +65,7 @@ class Task extends Model
     public function vote()
     {
         $user_id = auth()->user() ? auth()->user()->id : 0;
-        return $this->hasMany(Vote::class, 'task_id')
-            ->where('user_id', $user_id);
+        return $this->hasMany(Vote::class, 'task_id')->where('user_id', $user_id);
     }
 
     /**
