@@ -66,7 +66,7 @@ class TaskResource extends JsonResource
             if (!$this->whenLoaded('vote') instanceof \Illuminate\Http\Resources\MissingValue)
             {
                 $data['can_vote'] = $canVote;
-                $data['vote'] = VoteResource::collection($this->whenLoaded('vote'));
+                //$data['vote'] = VoteResource::collection($this->whenLoaded('vote'));
             }
         }
 
