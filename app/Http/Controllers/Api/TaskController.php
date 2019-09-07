@@ -104,12 +104,12 @@ class TaskController extends Controller
             $input['created_amount'] = 0;
 
         if($input['created_amount']<$amount && $stream->channel_id!=$user->channel->id)
-            return setErrorAfterValidation(['created_amount' => trans('api/streams/tasks.not_enough_money')]);
+            return setErrorAfterValidation(['created_amount' => trans('api/task.not_enough_money')]);
 
         //If not owner of stream check how much money you have
         if($user->channel->id != $stream->channel_id && $user->account->amount<$amount)
             abort(
-                response()->json(['message' => trans('api/streams/tasks.not_enough_money')], 402)
+                response()->json(['message' => trans('api/task.not_enough_money')], 402)
             );
 
         try {
@@ -142,7 +142,7 @@ class TaskController extends Controller
         return response()->json([
             'success' => true,
             'data' => new TaskResource($task),
-            'message'=> trans('api/streams/task.success_created')
+            'message'=> trans('api/task.success_created')
         ], 200);
     }
 
@@ -179,7 +179,7 @@ class TaskController extends Controller
                     'start_active' => Carbon::now('UTC')
                 ]);
             }else{
-                return setErrorAfterValidation(['status' => trans('api/streams/tasks.failed_change_to_another_status')]);
+                return setErrorAfterValidation(['status' => trans('api/task.failed_change_to_another_status')]);
             }
         }
         //Owner of task can change if stream active or just created
@@ -187,7 +187,7 @@ class TaskController extends Controller
         {
             $task->update($request->only(['small_text', 'interval_time', 'full_text', 'is_superbowl']));
         }else{
-            return setErrorAfterValidation(['status' => trans('api/streams/tasks.failed_cannot_change_info')]);
+            return setErrorAfterValidation(['status' => trans('api/task.failed_cannot_change_info')]);
         }
 
         TaskResource::withoutWrapping();
@@ -195,7 +195,7 @@ class TaskController extends Controller
         return response()->json([
             'success' => true,
             'data' => new TaskResource($task),
-            'message'=> trans('api/streams/task.success_updated')
+            'message'=> trans('api/task.success_updated')
         ], 200);
     }
 
@@ -222,7 +222,7 @@ class TaskController extends Controller
         $votes = $task->votes()->where('user_id', $user->id);
 
         if($votes->count()==0)
-            return setErrorAfterValidation(['status' => trans('api/task.no_vote')]);
+            return setErrorAfterValidation(['status' => trans('api/task.cannot_vote')]);
 
         $vote = $votes->first();
 
@@ -273,10 +273,10 @@ class TaskController extends Controller
         $amount = $request->get('amount');
 
         if($task->status!=TaskStatus::Active && !($user->id==$task->user_id && $task->status==TaskStatus::Created))
-            return setErrorAfterValidation(['status' => trans('api/transaction.failed_task_not_active')]);
+            return setErrorAfterValidation(['status' => trans('api/task.failed_not_active')]);
 
         if($amount<$task->min_donation)
-            return setErrorAfterValidation(['min_donation' => trans('api/transaction.not_enough_money')]);
+            return setErrorAfterValidation(['min_donation' => trans('api/task.not_enough_money')]);
 
         //enough money
         if($amount <= $user->account->amount)
@@ -303,7 +303,7 @@ class TaskController extends Controller
             return response()->json([
                 'data' => new TaskResource($transaction->task),
                 'success' => true,
-                'message'=> trans('api/streams/tasks/transaction.success_created')
+                'message'=> trans('api/task.donate_success_created')
             ], 200);
 
         }else{

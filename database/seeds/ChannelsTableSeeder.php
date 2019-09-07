@@ -33,7 +33,7 @@ class ChannelsTableSeeder extends Seeder
                         factory(Channel::class)->create([
                             'exid' => $data['_id'],
                             'user_id' => $user->id,
-                            "provider" => 'twtich',
+                            "provider" => 'twitch',
                             "title" => $data['name'],
                             "link" => $data['url'],
                             "game_id" => $game_id,

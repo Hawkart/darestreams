@@ -54,13 +54,19 @@ class TaskResource extends JsonResource
         }
 
         //Show results if already voted or voting finished
-        if($alreadyVote || in_array($this->status, [TaskStatus::VoteFinished, TaskStatus::PayFinished]))
+        if($alreadyVote || in_array($this->status, [TaskStatus::VoteFinished, TaskStatus::PayFinished]) ||
+            (Auth::user() && in_array($this->status, [TaskStatus::VoteFinished, TaskStatus::PayFinished, TaskStatus::AllowVote])
+                && Auth::user()->id==$this->stream->user->id)
+        )
         {
             $data['vote_yes'] = $this->vote_yes;
             $data['vote_no'] = $this->vote_no;
         }else{
             if (!$this->whenLoaded('vote') instanceof \Illuminate\Http\Resources\MissingValue)
+            {
                 $data['can_vote'] = $canVote;
+                $data['vote'] = VoteResource::collection($this->whenLoaded('vote'));
+            }
         }
 
         return $data;

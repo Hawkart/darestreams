@@ -2,7 +2,9 @@
 
 namespace App\Listeners;
 
+use App\Events\SocketOnDonate;
 use App\Events\TaskCreatedEvent;
+use App\Http\Resources\StreamResource;
 use App\Models\Vote;
 
 class TaskCreatedListener
@@ -17,11 +19,19 @@ class TaskCreatedListener
     {
         $task = $event->task;
 
-        $vote = Vote::firstOrCreate([
-            'user_id' => $task->user_id,
-            'task_id' => $task->id
-        ]);
-        $vote->save();
+        if($task->user_id==$task->stream->user->id)
+        {
+            $stream = $task->stream;
+            $stream->load(['user','channel','game','tasks', 'tasks.vote']);
+            StreamResource::withoutWrapping();
+            event(new SocketOnDonate(new StreamResource($stream)));
+        }else{
+            $vote = Vote::firstOrCreate([
+                'user_id' => $task->user_id,
+                'task_id' => $task->id
+            ]);
+            $vote->save();
+        }
 
         $thread = $task->stream->threads[0];
         $thread->setParticipant();
