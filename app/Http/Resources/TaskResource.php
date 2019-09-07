@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use App\Enums\TaskStatus;
 use App\Enums\VoteStatus;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Auth;
 
 class TaskResource extends JsonResource
 {
