@@ -46,7 +46,7 @@ class TaskResource extends JsonResource
             $userVote = [];
         }
 
-        if(in_array($this->status, [TaskStatus::IntervalFinishedAllowVote, TaskStatus::AllowVote]) && count($userVote)>0 && isset($userVote[0]))
+        if(in_array($this->status, [TaskStatus::IntervalFinishedAllowVote, TaskStatus::AllowVote]) && count($userVote)>0)
         {
             $canVote = true;
 
