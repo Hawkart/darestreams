@@ -51,7 +51,10 @@ class TaskResource extends JsonResource
             $canVote = true;
 
             if($userVote[0]->status!=VoteStatus::Pending)
+            {
                 $alreadyVote = true;
+                $canVote = false;
+            }
         }
 
         //Show results if already voted or voting finished
@@ -66,7 +69,8 @@ class TaskResource extends JsonResource
             if (!$this->whenLoaded('vote') instanceof \Illuminate\Http\Resources\MissingValue)
             {
                 $data['can_vote'] = $canVote;
-                //$data['vote'] = VoteResource::collection($this->whenLoaded('vote'));
+                $data['votes'] = VoteResource::collection($this->whenLoaded('vote'));
+                $data['vote'] = $userVote;
             }
         }
 
