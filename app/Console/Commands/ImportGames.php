@@ -76,8 +76,6 @@ class ImportGames extends Command
                 $item->save();
             }
 
-            break;
-
             sleep(2);
 
             $count+= count($games);

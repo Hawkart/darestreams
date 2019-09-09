@@ -32,45 +32,16 @@ class TaskResource extends JsonResource
             'updated_at' => $this->updated_at,
 
             'user' => new UserResource($this->whenLoaded('user')),
+            'votes' => new VoteResource($this->whenLoaded('votes')),
             'stream' => new StreamResource($this->whenLoaded('stream')),
             'transactions' => TransactionResource::collection($this->whenLoaded('transactions')),
         ];
 
-        //Get info by voting for auth user
-        $canVote = false;
-        $alreadyVote = false;
-
-        if (!$this->whenLoaded('vote') instanceof \Illuminate\Http\Resources\MissingValue) {
-            $userVote = VoteResource::collection($this->whenLoaded('vote'));
-        } else {
-            $userVote = [];
-        }
-
-        if(in_array($this->status, [TaskStatus::IntervalFinishedAllowVote, TaskStatus::AllowVote]) && count($userVote)>0)
-        {
-            $canVote = true;
-
-            if($userVote[0]->vote!=VoteStatus::Pending)
-            {
-                $alreadyVote = true;
-                $canVote = false;
-            }
-        }
-
         //Show results if already voted or voting finished
-        if($alreadyVote || in_array($this->status, [TaskStatus::VoteFinished, TaskStatus::PayFinished]) ||
-            (Auth::user() && in_array($this->status, [TaskStatus::VoteFinished, TaskStatus::PayFinished, TaskStatus::AllowVote])
-                && Auth::user()->id==$this->stream->user->id)
-        )
+        if(in_array($this->status, [TaskStatus::VoteFinished, TaskStatus::PayFinished]))
         {
             $data['vote_yes'] = $this->vote_yes;
             $data['vote_no'] = $this->vote_no;
-        }else{
-            if (!$this->whenLoaded('vote') instanceof \Illuminate\Http\Resources\MissingValue)
-            {
-                $data['can_vote'] = $canVote;
-                //$data['votes'] = VoteResource::collection($this->whenLoaded('vote'));
-            }
         }
 
         return $data;

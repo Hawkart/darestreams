@@ -14,6 +14,7 @@
         "bensampo/laravel-enum": "^1.23",
         "cmgmyr/messenger": "^2.18",
         "cviebrock/eloquent-sluggable": "^4.8",
+        "cyber-duck/laravel-excel": "^1.2",
         "cyrildewit/eloquent-viewable": "^4.0",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",

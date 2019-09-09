@@ -238,7 +238,7 @@ class TaskController extends Controller
                     ->whereIn('status', [TransactionStatus::Completed, TransactionStatus::Holding])
                     ->sum('amount');
 
-                if($request->only('vote')==VoteStatus::Yes){
+                if($request->get('vote')==VoteStatus::Yes){
                     $task->update(['vote_yes' => $task->vote_yes + $amount]);
                 }else{
                     $task->update(['vote_no' => $task->vote_no + $amount]);
@@ -248,10 +248,12 @@ class TaskController extends Controller
             return response($e->getMessage(), 422);
         }
 
-        $stream = $task->stream;
-        $stream->load(['user','channel','game','tasks', 'tasks.vote']);
+        $task->stream->socketInit();
+
+        /*$stream = $task->stream;
+        $stream->load(['user','channel','game','tasks', 'tasks.votes']);
         StreamResource::withoutWrapping();
-        event(new SocketOnDonate(new StreamResource($stream)));
+        event(new SocketOnDonate(new StreamResource($stream)));*/
 
         return response()->json([
             'success' => true,

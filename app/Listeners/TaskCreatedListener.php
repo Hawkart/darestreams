@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Enums\VoteStatus;
 use App\Events\SocketOnDonate;
 use App\Events\TaskCreatedEvent;
 use App\Http\Resources\StreamResource;
@@ -19,19 +20,24 @@ class TaskCreatedListener
     {
         $task = $event->task;
 
+        $vdata = [
+            'user_id' => $task->user_id,
+            'task_id' => $task->id
+        ];
+
         if($task->user_id==$task->stream->user->id)
         {
-            $stream = $task->stream;
-            $stream->load(['user','channel','game','tasks', 'tasks.vote']);
+            $vdata['vote'] = VoteStatus::Yes;
+
+            $task->stream->socketInit();
+
+            /*$stream = $task->stream;
+            $stream->load(['user','channel','game','tasks', 'tasks.votes']);
             StreamResource::withoutWrapping();
-            event(new SocketOnDonate(new StreamResource($stream)));
-        }else{
-            $vote = Vote::firstOrCreate([
-                'user_id' => $task->user_id,
-                'task_id' => $task->id
-            ]);
-            $vote->save();
+            event(new SocketOnDonate(new StreamResource($stream)));*/
         }
+
+        Vote::create($vdata);
 
         $thread = $task->stream->threads[0];
         $thread->setParticipant();

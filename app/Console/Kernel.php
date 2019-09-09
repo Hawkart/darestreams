@@ -21,7 +21,8 @@ class Kernel extends ConsoleKernel
         Commands\UpdateStreamsStatus::class,
         Commands\CheckTaskInterval::class,
         Commands\FinishVotes::class,
-        Commands\ClearDroppedTransactions::class
+        Commands\ClearDroppedTransactions::class,
+        Commands\ParseStreamers::class
     ];
 
     /**
@@ -39,6 +40,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('tasks:check_interval')->everyMinute();
         $schedule->command('transactions:clear_dropped')->daily()->timezone('America/New_York')->at('02:00');
         $schedule->command('votes:finish')->everyMinute();
+        $schedule->command('streamers:parse')->hourly();
     }
 
     /**

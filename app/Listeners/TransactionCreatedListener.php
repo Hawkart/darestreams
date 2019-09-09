@@ -7,6 +7,7 @@ use App\Events\SocketOnDonate;
 use App\Events\TransactionCreatedEvent;
 use App\Http\Resources\StreamResource;
 use App\Models\Account;
+use App\Models\Stream;
 use App\Models\Vote;
 
 class TransactionCreatedListener
@@ -81,13 +82,15 @@ class TransactionCreatedListener
                 ]);
             }
 
+            $task->stream->socketInit();
+
             $thread = $stream->threads[0];
             $thread->setParticipant($user);
 
-            $stream = $task->stream;
-            $stream->load(['user','channel','game','tasks', 'tasks.vote']);
+            /*$stream = $task->stream;
+            $stream->load(['user','channel','game','tasks', 'tasks.votes']);
             StreamResource::withoutWrapping();
-            event(new SocketOnDonate(new StreamResource($stream)));
+            event(new SocketOnDonate(new StreamResource($stream)));*/
         }
     }
 }

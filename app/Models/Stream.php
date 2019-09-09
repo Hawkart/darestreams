@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Enums\StreamStatus;
-use App\Http\Requests\ChannelRequest;
 use Illuminate\Database\Eloquent\Model;
 use \Spatie\Tags\HasTags;
 use \Znck\Eloquent\Traits\BelongsToThrough;
 use CyrildeWit\EloquentViewable\Viewable;
 use CyrildeWit\EloquentViewable\Contracts\Viewable as ViewableContract;
+use App\Events\SocketOnDonate;
+use App\Http\Resources\StreamResource;
 
 class Stream extends Model implements ViewableContract
 {
@@ -154,5 +155,15 @@ class Stream extends Model implements ViewableContract
         }
 
         return $amount;
+    }
+
+    /**
+     * @param $stream
+     */
+    public function socketInit()
+    {
+        $this->load(['user','channel','game','tasks', 'tasks.votes']);
+        StreamResource::withoutWrapping();
+        event(new SocketOnDonate(new StreamResource($this)));
     }
 }
