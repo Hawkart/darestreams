@@ -32,7 +32,7 @@ class TaskResource extends JsonResource
             'updated_at' => $this->updated_at,
 
             'user' => new UserResource($this->whenLoaded('user')),
-            'votes' => new VoteResource($this->whenLoaded('votes')),
+            'votes' => VoteResource::collection($this->whenLoaded('votes')),
             'stream' => new StreamResource($this->whenLoaded('stream')),
             'transactions' => TransactionResource::collection($this->whenLoaded('transactions')),
         ];
