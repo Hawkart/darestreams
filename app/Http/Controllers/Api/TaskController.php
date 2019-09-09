@@ -238,17 +238,27 @@ class TaskController extends Controller
                     ->whereIn('status', [TransactionStatus::Completed, TransactionStatus::Holding])
                     ->sum('amount');
 
+                $data = [];
                 if($request->get('vote')==VoteStatus::Yes){
-                    $task->update(['vote_yes' => $task->vote_yes + $amount]);
+                    $data['vote_yes'] = $task->vote_yes + $amount;
                 }else{
-                    $task->update(['vote_no' => $task->vote_no + $amount]);
+                    $data['vote_no'] = $task->vote_no + $amount;
                 }
+
+                //change task status if all voted
+                if($task->votes()->where('vote', '<>', VoteStatus::Pending)->count()==0)
+                {
+                    $data['status'] = TaskStatus::VoteFinished;
+                    $task->update($data);
+                }else{
+                    $task->update($data);
+                    $task->stream->socketInit();
+                }
+
             });
         } catch (\Exception $e) {
             return response($e->getMessage(), 422);
         }
-
-        $task->stream->socketInit();
 
         /*$stream = $task->stream;
         $stream->load(['user','channel','game','tasks', 'tasks.votes']);
