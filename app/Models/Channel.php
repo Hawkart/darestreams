@@ -32,7 +32,8 @@ class Channel extends Model
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'title',
+                'separator' => '_'
             ],
         ];
     }

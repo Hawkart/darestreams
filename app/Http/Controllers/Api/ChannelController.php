@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\StreamStatus;
 use App\Http\Requests\ChannelRequest;
 use App\Http\Resources\ChannelResource;
+use App\Http\Resources\StreamResource;
 use App\Models\Channel;
 use App\Models\Stream;
 use Illuminate\Http\Request;
@@ -171,5 +173,37 @@ class ChannelController extends Controller
         }
 
         return ChannelResource::collection($items);
+    }
+
+    /**
+     * Get streams from channel
+     *
+     * {slug} - slug or id of channel.
+     *
+     * @queryParam include string String of connections: game, tasks, tasks.votes, tags, channel, user. Example: game,tasks
+     * @queryParam sort string Sort items by fields: amount_donations, quantity_donators, quantity_donations, id. For desc use '-' prefix. Example: -quantity_donators
+     * @queryParam page array Use as page[number]=1&page[size]=2.
+     *
+     * @responseFile responses/response.json
+     * @responseFile 404 responses/not_found.json
+     * @return \Illuminate\Http\Response
+     */
+    public function streams($slug, Request $request)
+    {
+        if(is_numeric($slug)) {
+            $channel = Channel::findOrFail($slug);
+        }else{
+            $channel = Channel::where('slug', $slug)->firstOrFail();
+        }
+
+        $items = QueryBuilder::for(Stream::class)
+            ->where('channel_id', $channel->id)
+            ->where('status', '<>', StreamStatus::Canceled)
+            ->defaultSort('-start_at')
+            ->allowedSorts('quantity_donators', 'quantity_donations', 'amount_donations' ,'id')
+            ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
+            ->jsonPaginate();
+
+        return StreamResource::collection($items);
     }
 }

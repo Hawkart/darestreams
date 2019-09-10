@@ -224,6 +224,7 @@ class StreamController extends Controller
      * @queryParam game_id Integer. Filter channels by category.
      *
      * @queryParam include string String of connections: user, tasks, tags, game. Example: user,tasks
+     * @queryParam sort string Sort items by fields: amount_donations, views. For desc use '-' prefix. Example: -views
      *
      * @responseFile responses/response.json
      * @responseFile 404 responses/not_found.json
@@ -242,34 +243,6 @@ class StreamController extends Controller
         if($request->has('game_id'))
             $tags[] = 'byGame';
 
-        /*$cacheTags = Cache::tags($tags);
-        if ($cacheTags->get($cache_key)){
-            $items = $cacheTags->get($cache_key);
-        } else {
-
-            $list = DB::table('channels as ch')
-                ->select('st.id', 'ch.views')
-                ->leftJoin('streams as st', 'ch.id', '=', 'st.channel_id')
-                ->groupBy('st.id', 'ch.views')
-                ->orderByDesc('views')
-                ->whereNotNull('st.id')
-                ->offset($skip)
-                ->limit($limit)
-                ->get();
-
-            $ids = $list->pluck('id')->toArray();
-            $oids = implode(',', $ids);
-
-            $items = QueryBuilder::for(Stream::class)
-                ->whereIn('id', $ids)
-                ->orderByRaw(DB::raw("FIELD(id, $oids)"))
-                ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-                ->where('status', StreamStatus::Active)
-                ->jsonPaginate();
-
-            $cacheTags->put($cache_key, $items, 1800);
-        }*/
-
         $cacheTags = Cache::tags($tags);
         if ($cacheTags->get($cache_key)){
             $items = $cacheTags->get($cache_key);
@@ -284,8 +257,8 @@ class StreamController extends Controller
 
             $items = $items->distinct()
                 ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-                ->orderByDesc('views')
-                ->orderByDesc('amount_donations')
+                ->defaultSort('-views')
+                ->allowedSorts('views', 'amount_donations')
                 ->offset($skip)
                 ->limit($limit)
                 ->get();
