@@ -40,7 +40,8 @@ class TransferChannelLogoToUser extends Command
         {
             foreach($users as $user)
             {
-                $user->update(['avatar' => $user->channel->logo]);
+                if($user->channel)
+                    $user->update(['avatar' => $user->channel->logo]);
             }
         }
 
