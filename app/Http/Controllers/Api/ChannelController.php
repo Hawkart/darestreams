@@ -190,6 +190,7 @@ class ChannelController extends Controller
      * @queryParam include string String of connections: game, tasks, tasks.votes, tags, channel, user. Example: game,tasks
      * @queryParam sort string Sort items by fields: amount_donations, quantity_donators, quantity_donations, id. For desc use '-' prefix. Example: -quantity_donators
      * @queryParam page array Use as page[number]=1&page[size]=2.
+     * @queryParam filter array Allows filter only by status. Use as filter[status]=1,2.
      *
      * @responseFile responses/response.json
      * @responseFile 404 responses/not_found.json
@@ -205,7 +206,7 @@ class ChannelController extends Controller
 
         $items = QueryBuilder::for(Stream::class)
             ->where('channel_id', $channel->id)
-            ->where('status', '<>', StreamStatus::Canceled)
+            ->allowedFilters(['status'])
             ->defaultSort('-start_at')
             ->allowedSorts('quantity_donators', 'quantity_donations', 'amount_donations' ,'id')
             ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
