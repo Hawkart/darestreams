@@ -58,17 +58,20 @@ class GetViewsForActiveStreams extends Command
 
                     if($data = $twitchClient->getStreamByUser($channel->exid)) //$stream->channel->user->nickname
                     {
-                        $channel->update([
-                            "description" => $data['channel']['description'] ? $data['channel']['description'] : "",
-                            'views' => $data['channel']['views'],
-                        ]);
+                        if(!empty($data))
+                        {
+                            $channel->update([
+                                "description" => $data['channel']['description'] ? $data['channel']['description'] : "",
+                                'views' => $data['channel']['views'],
+                            ]);
 
-                        $stream->update(['views' =>  $data['viewers']]);
+                            $stream->update(['views' =>  $data['viewers']]);
 
-                        dd($data);
+                            echo $stream->id. " = ".$data['viewers']."\r\n";
+                        }
                     }
 
-                    echo $stream->id."\r\n";
+
                 } catch (\Exception $e) {
                     echo $e->getMessage()."\r\n";
                     Log::info('GetViewsForActiveStreams', [
