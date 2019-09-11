@@ -22,7 +22,8 @@ class Kernel extends ConsoleKernel
         Commands\CheckTaskInterval::class,
         Commands\FinishVotes::class,
         Commands\ClearDroppedTransactions::class,
-        Commands\ParseStreamers::class
+        Commands\ParseStreamers::class,
+        Commands\TransferChannelLogoToUser::class
     ];
 
     /**

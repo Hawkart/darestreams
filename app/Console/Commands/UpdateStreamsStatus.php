@@ -48,22 +48,6 @@ class UpdateStreamsStatus extends Command
             echo response($e->getMessage(), 422);
         }
 
-        /*$streams = Stream::where('status', StreamStatus::Created)->where('start_at', '>', $now)->get();
-
-        if(count($streams)>0)
-        {
-            foreach($streams as $stream)
-            {
-                try {
-                    DB::transaction(function () use ($stream) {
-                        $stream->update(['status' => StreamStatus::Active]);
-                    });
-                } catch (\Exception $e) {
-                    echo response($e->getMessage(), 422);
-                }
-            }
-        }*/
-
         $bar->finish();
     }
 }

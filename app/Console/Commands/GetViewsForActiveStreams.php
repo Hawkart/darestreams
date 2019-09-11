@@ -45,6 +45,7 @@ class GetViewsForActiveStreams extends Command
             ->whereHas('channel', function($q) {
                 $q->where('provider', 'twitch');
             })
+            ->with(['channel'])
             ->orderByDesc('created_at')
             ->get();
 
@@ -53,8 +54,19 @@ class GetViewsForActiveStreams extends Command
             foreach($streams as $stream)
             {
                 try {
-                    if($data = $twitchClient->getChannel($stream->channel->exid)) //$stream->channel->user->nickname
+                    $channel = $stream->channel;
+
+                    if($data = $twitchClient->getChannel($channel->exid)) //$stream->channel->user->nickname
+                    {
+                        $channel->update([
+                            "description" => $data['description'] ? $data['description'] : "",
+                            'views' => $data['views'],
+                        ]);
+
                         $stream->update(['views' =>  $data['views']]);
+
+                        dd($data);
+                    }
 
                     echo $stream->id."\r\n";
                 } catch (\Exception $e) {
