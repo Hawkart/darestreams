@@ -52,16 +52,23 @@ class ChannelController extends Controller
     /**
      * Detail channel's info.
      *
+     * Get by id or slug.
+     *
      * @queryParam include string String of connections: user, streams, tags, game. Example: user,streams
      *
      * @param  int  $channel
      * @return \Illuminate\Http\Response
      */
-    public function show($channel)
+    public function show($slug)
     {
         $item = QueryBuilder::for(Channel::class)
-            ->allowedIncludes(['user', 'streams', 'tags', 'game'])
-            ->findOrFail($channel);
+            ->allowedIncludes(['user', 'streams', 'tags', 'game']);
+
+        if(is_numeric($slug)) {
+            $item = $item->where('id', $slug)->firstOrFail();
+        }else{
+            $item = $item->where('slug', $slug)->firstOrFail();
+        }
 
         return new ChannelResource($item);
     }
