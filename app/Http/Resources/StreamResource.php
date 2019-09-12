@@ -15,7 +15,7 @@ class StreamResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        $data = [
             'id' => $this->id,
             'channel_id' => $this->channel_id,
             'game_id' => $this->game_id,
@@ -44,5 +44,10 @@ class StreamResource extends JsonResource
             'tasks' => TaskResource::collection($this->whenLoaded('tasks')),
             'tags' => TagResource::collection($this->whenLoaded('tags'))
         ];
+
+        if(isset($this->tasks_count))
+            $data['tasks_count'] = $this->tasks_count;
+
+        return $data;
     }
 }
