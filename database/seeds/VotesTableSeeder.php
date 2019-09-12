@@ -12,6 +12,16 @@ class VotesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Vote::class, 1000)->create();
+        $items = factory(Vote::class, 100)->make();
+
+        foreach ($items as $item) {
+            repeat:
+            try {
+                $item->save();
+            } catch (\Illuminate\Database\QueryException $e) {
+                $item = factory(Vote::class)->make();
+                goto repeat;
+            }
+        }
     }
 }

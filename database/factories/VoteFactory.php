@@ -6,10 +6,11 @@ use App\Models\Task;
 use App\Models\User;
 use App\Models\Vote;
 use Faker\Generator as Faker;
+use App\Enums\VoteStatus;
 
-$factory->define(Account::class, function (Faker $faker) {
+$factory->define(Vote::class, function (Faker $faker) {
     return [
-        'vote'    => $faker->numberBetween(0, 2),
+        'vote'    => VoteStatus::getRandomValue(),
         'task_id'   =>  function () {
             return Task::inRandomOrder()->first()->id;
         },

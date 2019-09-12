@@ -185,7 +185,7 @@ class ChannelController extends Controller
     /**
      * Get streams from channel
      *
-     * {slug} - slug or id of channel.
+     * {slug} - slug or id of channel. Goes with count of tasks.
      *
      * @queryParam include string String of connections: game, tasks, tasks.votes, tags, channel, user. Example: game,tasks
      * @queryParam sort string Sort items by fields: amount_donations, quantity_donators, quantity_donations, id. For desc use '-' prefix. Example: -quantity_donators
@@ -210,6 +210,7 @@ class ChannelController extends Controller
             ->defaultSort('-start_at')
             ->allowedSorts('quantity_donators', 'quantity_donations', 'amount_donations' ,'id')
             ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
+            ->withCount(['tasks'])
             ->jsonPaginate();
 
         return StreamResource::collection($items);
