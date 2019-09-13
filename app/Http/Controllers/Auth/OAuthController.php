@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
+
 /**
  * @group Auth
  */
@@ -81,13 +82,22 @@ class OAuthController extends Controller
             ->first();
 
         if ($oauthProvider) {
+
+            $user = $oauthProvider->user;
+
+            if($user->fake)
+            {
+                $user->clearFakeData();
+                $user = $user->updateThrowOauth($this->prepareData($userProvider));
+            }
+
             $oauthProvider->update([
                 'access_token' => $userProvider->token,
                 'refresh_token' => $userProvider->refreshToken,
                 'json' => isset($userProvider->json) ? $userProvider->json : []
             ]);
 
-            return $oauthProvider->user;
+            return $user;
         }
 
         if(!empty(auth()->user()))
@@ -120,22 +130,32 @@ class OAuthController extends Controller
      */
     protected function createUser($sUser)
     {
-        $user = DB::transaction(function () use ($sUser) {
-            $data = [
-                'name' => $sUser->getName(),
-                'email' => $sUser->getEmail() ? $sUser->getEmail() : $this::generateEmail($sUser),
-                'nickname' => $sUser->getNickname() ? $sUser->getNickname() : $sUser->getName(),
-                'email_verified_at' => $sUser->getEmail() ? now() : null,
-                'password' => bcrypt(Str::random(10))
-            ];
-
-            if(!empty($sUser->getAvatar()))
-                $data['avatar'] = $sUser->getAvatar();
-
+        $data = $this->prepareData($sUser);
+        $user = DB::transaction(function () use ($data) {
             return User::create($data);
         });
 
         return $user;
+    }
+
+    /**
+     * @param $sUser
+     * @return array
+     */
+    protected function prepareData($sUser)
+    {
+        $data = [
+            'name' => $sUser->getName(),
+            'email' => $sUser->getEmail() ? $sUser->getEmail() : $this::generateEmail($sUser),
+            'nickname' => $sUser->getNickname() ? $sUser->getNickname() : $sUser->getName(),
+            'email_verified_at' => $sUser->getEmail() ? now() : null,
+            'password' => bcrypt(Str::random(10))
+        ];
+
+        if(!empty($sUser->getAvatar()))
+            $data['avatar'] = $sUser->getAvatar();
+
+        return $data;
     }
 
     /**

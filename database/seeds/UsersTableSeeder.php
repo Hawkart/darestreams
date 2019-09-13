@@ -33,6 +33,7 @@ class UsersTableSeeder extends Seeder
         {
             factory(User::class)->create([
                 'nickname' => $nickname,
+                'fake' => true
             ]);
         }
     }

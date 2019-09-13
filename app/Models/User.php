@@ -15,6 +15,7 @@ use Overtrue\LaravelFollow\Traits\CanFollow;
 use Overtrue\LaravelFollow\Traits\CanBeFollowed;
 use \Znck\Eloquent\Traits\BelongsToThrough;
 use Storage;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable implements JWTSubject, MustVerifyEmail
 {
@@ -182,5 +183,39 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
                     ->orWhere('account_receiver_id', $this->account->id);
             break;
         }
+    }
+    
+    public function clearFakeData()
+    {
+        DB::beginTransaction();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+
+        $this->account->reset();
+        $this->getTransactions()->delete();
+        $this->votes()->delete();
+        $this->tasks()->delete();
+        $this->streams()->delete();
+        //user_roles
+        //followables
+        Message::where('user_id', $this->id)->forceDelete();
+        Participant::where('user_id', $this->id)->forceDelete();
+        $this->notifications()->delete();
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        DB::commit();
+    }
+
+    public function updateThrowOauth($data)
+    {
+        try {
+            $user = DB::transaction(function () use ($data) {
+                $data['fake'] = false;
+                return $this->update($data);
+            });
+        } catch (\Exception $e) {
+            return response('An Error with updating user info from oauth', 422);
+        }
+
+        return $user;
     }
 }

@@ -35,6 +35,7 @@ class StreamResource extends JsonResource
             'quantity_donations' => $this->quantity_donations,
             'amount_donations' => $this->amount_donations,
             'views' => $this->views,
+            'preview' => getImageLink($this->preview, null),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
 

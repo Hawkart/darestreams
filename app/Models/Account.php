@@ -56,4 +56,12 @@ class Account extends Model
         return Transaction::where('account_sender_id', $this->id)
             ->orWhere('account_receiver_id', $this->id);
     }
+
+    /**
+     * @return bool
+     */
+    public function reset()
+    {
+        return $this->update(['amount' => 0]);
+    }
 }

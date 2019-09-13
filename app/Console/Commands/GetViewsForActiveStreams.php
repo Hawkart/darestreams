@@ -65,9 +65,14 @@ class GetViewsForActiveStreams extends Command
                                 'views' => $data['stream']['channel']['views'],
                             ]);
 
-                            $stream->update(['views' =>  $data['stream']['viewers']]);
+                            $stream->update([
+                                'views' =>  $data['stream']['viewers'],
+                                'preview' =>  $data['stream']['preview']['large']
+                            ]);
 
                             echo $stream->id. " = ".$data['stream']['viewers']."\r\n";
+
+                            dd($data['stream']);
                         }
                     }
 
