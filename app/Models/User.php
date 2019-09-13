@@ -184,21 +184,34 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
             break;
         }
     }
-    
+
     public function clearFakeData()
     {
         DB::beginTransaction();
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
         $this->account->reset();
-        $this->getTransactions()->delete();
-        $this->votes()->delete();
-        $this->tasks()->delete();
-        $this->streams()->delete();
+
+        $tsIds = [];
+        if($this->channel)
+        {
+            $stIds = $this->channel->streams->pluck('id')->toArray();
+            $tsIds = Task::whereIn('stream_id', $stIds)->pluck('id')->toArray();
+        }
+
+        $tsIds = array_merge($tsIds, $this->tasks()->pluck('id')->toArray());
+
+        Transaction::whereIn('task_id', $tsIds)->delete();
+        Vote::whereIn('task_id', $tsIds)->delete();
+        Task::whereIn('id', $tsIds)->delete();
+
         //user_roles
         //followables
         Message::where('user_id', $this->id)->forceDelete();
         Participant::where('user_id', $this->id)->forceDelete();
+
+        $this->streams()->delete();
+        $this->getTransactions()->delete();
         $this->notifications()->delete();
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');

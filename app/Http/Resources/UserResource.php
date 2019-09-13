@@ -31,6 +31,7 @@ class UserResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'lang' => !isset($this->settings['lang']) ? $this->settings['lang'] : "ru",
+            'fake' => $this->fake,
 
             'account' => new AccountResource($this->whenLoaded('account')),
             'oauthProviders' => $this->when(Auth::user() && Auth::user()->id==$this->id, function (){
