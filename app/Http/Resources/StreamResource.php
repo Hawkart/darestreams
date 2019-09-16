@@ -46,8 +46,8 @@ class StreamResource extends JsonResource
             'tags' => TagResource::collection($this->whenLoaded('tags'))
         ];
 
-        if(isset($this->tasks_count))
-            $data['tasks_count'] = $this->tasks_count;
+        if(isset($this->tasks_completed_count))
+            $data['tasks_count'] = $this->tasks_completed_count;
 
         return $data;
     }

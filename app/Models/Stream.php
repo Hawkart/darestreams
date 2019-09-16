@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\StreamStatus;
+use App\Enums\TaskStatus;
 use Illuminate\Database\Eloquent\Model;
 use \Spatie\Tags\HasTags;
 use \Znck\Eloquent\Traits\BelongsToThrough;
@@ -74,6 +75,15 @@ class Stream extends Model implements ViewableContract
     public function tasks()
     {
         return $this->hasMany(Task::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tasksCompleted()
+    {
+        return $this->hasMany(Task::class)
+                    ->where('status', [TaskStatus::VoteFinished, TaskStatus::PayFinished]);
     }
 
     /**

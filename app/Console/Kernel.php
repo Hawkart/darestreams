@@ -23,7 +23,8 @@ class Kernel extends ConsoleKernel
         Commands\FinishVotes::class,
         Commands\ClearDroppedTransactions::class,
         Commands\ParseStreamers::class,
-        Commands\TransferChannelLogoToUser::class
+        Commands\TransferChannelLogoToUser::class,
+        Commands\UpdateStreamTasksDesc::class
     ];
 
     /**
