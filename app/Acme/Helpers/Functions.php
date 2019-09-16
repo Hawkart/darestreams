@@ -29,3 +29,8 @@ function setErrorAfterValidation($errors)
 
     throw new ValidationException($validator);
 }
+
+function getW3cDatetime($datetime)
+{
+    return $datetime ? $datetime->toW3cString() : null;
+}

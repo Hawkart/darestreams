@@ -28,8 +28,8 @@ class UserResource extends JsonResource
             'avatar' => getImageLink($this->avatar, '/img/default_avatar.jpg'),
             'overlay' => getImageLink($this->overlay, '/img/default_overlay.jpg'),
             'donates' => $this->when(isset($this->donates), $this->donates),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'created_at' => getW3cDatetime($this->created_at),
+            'updated_at' => getW3cDatetime($this->updated_at),
             'lang' => !isset($this->settings['lang']) ? $this->settings['lang'] : "ru",
             'fake' => $this->fake,
 

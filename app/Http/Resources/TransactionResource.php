@@ -27,8 +27,8 @@ class TransactionResource extends JsonResource
             'money' => $this->money,
             'status' => TransactionStatus::getInstance($this->status),
             'type' => TransactionType::getInstance($this->type),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'created_at' => getW3cDatetime($this->created_at),
+            'updated_at' => getW3cDatetime($this->updated_at),
 
             'currency' => $this->when($this->type!=TransactionType::Donation, $this->currency),
             'payment' => $this->when($this->type!=TransactionType::Donation, $this->payment),

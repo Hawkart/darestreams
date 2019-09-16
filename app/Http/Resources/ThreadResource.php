@@ -17,9 +17,9 @@ class ThreadResource extends JsonResource
         return [
             'id' => $this->id,
             'subject' => $this->subject,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'deleted_at' => $this->deleted_at,
+            'created_at' => getW3cDatetime($this->created_at),
+            'updated_at' => getW3cDatetime($this->updated_at),
+            'deleted_at' => getW3cDatetime($this->deleted_at),
 
             'messages' => MessageResource::collection($this->whenLoaded('messages')),
             'participants' => ParticipantResource::collection($this->whenLoaded('participants'))

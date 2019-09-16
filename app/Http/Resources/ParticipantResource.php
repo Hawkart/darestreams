@@ -19,9 +19,9 @@ class ParticipantResource extends JsonResource
             'thread_id' => $this->thread_id,
             'user_id' => $this->user_id,
             'last_read' => $this->last_read,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'deleted_at' => $this->deleted_at,
+            'created_at' => getW3cDatetime($this->created_at),
+            'updated_at' => getW3cDatetime($this->updated_at),
+            'deleted_at' => getW3cDatetime($this->deleted_at),
 
             'user' => new UserResource($this->whenLoaded('user')),
             'thread' => new ThreadResource($this->whenLoaded('thread')),

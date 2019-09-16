@@ -28,8 +28,9 @@ class TaskResource extends JsonResource
             'min_donation' => $this->min_donation,
             'status' => TaskStatus::getInstance($this->status),
             'amount_donations' => $this->amount_donations,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'created_at' => getW3cDatetime($this->created_at),
+            'updated_at' => getW3cDatetime($this->updated_at),
+            'start_active' => getW3cDatetime($this->start_active),
 
             'user' => new UserResource($this->whenLoaded('user')),
             'votes' => VoteResource::collection($this->whenLoaded('votes')),

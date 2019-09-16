@@ -29,7 +29,7 @@ class ChannelResource extends JsonResource
             'donates' => $this->when(isset($this->donates), $this->donates),
             'logo' => getImageLink($this->logo, '/img/default_channel.jpg'),
             'overlay' => getImageLink($this->overlay, '/img/default_channel_overlay.jpg'),
-            'created_at' => $this->created_at,
+            'created_at' => getW3cDatetime($this->created_at),
 
             'user' => new UserResource($this->whenLoaded('user')),
             'game' => new GameResource($this->whenLoaded('game')),

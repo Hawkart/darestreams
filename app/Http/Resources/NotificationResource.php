@@ -20,9 +20,9 @@ class NotificationResource extends JsonResource
             'notifiable_type' => $this->notifiable_type,
             'notifiable_id' => $this->notifiable_id,
             'data' => $this->data,
-            'read_at' => $this->read_at,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'read_at' => getW3cDatetime($this->read_at),
+            'created_at' => getW3cDatetime($this->created_at),
+            'updated_at' => getW3cDatetime($this->updated_at)
         ];
     }
 }
