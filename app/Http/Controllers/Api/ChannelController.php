@@ -205,12 +205,12 @@ class ChannelController extends Controller
         }
 
         $items = QueryBuilder::for(Stream::class)
-            ->allowedFilters(['status'])
+            //->allowedFilters(['status'])
+            ->where('channel_id', $channel->id)
             ->defaultSort('-start_at')
             ->allowedSorts('quantity_donators', 'quantity_donations', 'amount_donations' ,'id')
             ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-            ->where('channel_id', $channel->id)
-            ->withCount(['tasksCompleted'])
+            //->withCount(['tasksCompleted'])
             ->jsonPaginate();
 
         return StreamResource::collection($items);
