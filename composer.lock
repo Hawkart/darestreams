@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94de6912df5e9aa6f7664648a4fdd84d",
+    "content-hash": "200a2295cb7ea544e546d0d44a430a8b",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -7032,27 +7032,27 @@
         },
         {
             "name": "spatie/laravel-query-builder",
-            "version": "1.17.5",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-query-builder.git",
-                "reference": "8c5cecd27f69d8d4e6817a9207e796d34dab6a70"
+                "reference": "f38978ce4ec733ddd78b094d5edd832609f25fd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/8c5cecd27f69d8d4e6817a9207e796d34dab6a70",
-                "reference": "8c5cecd27f69d8d4e6817a9207e796d34dab6a70",
+                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/f38978ce4ec733ddd78b094d5edd832609f25fd0",
+                "reference": "f38978ce4ec733ddd78b094d5edd832609f25fd0",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "~5.6.34|~5.7.0|~5.8.0",
-                "illuminate/http": "~5.6.34|~5.7.0|~5.8.0",
-                "illuminate/support": "~5.6.34|~5.7.0|~5.8.0",
+                "illuminate/database": "~5.6.34|~5.7.0|~5.8.0|^6.0",
+                "illuminate/http": "~5.6.34|~5.7.0|~5.8.0|^6.0",
+                "illuminate/support": "~5.6.34|~5.7.0|~5.8.0|^6.0",
                 "php": "^7.1"
             },
             "require-dev": {
                 "ext-json": "*",
-                "orchestra/testbench": "~3.6.0|~3.7.0|~3.8.0",
+                "orchestra/testbench": "~3.6.0|~3.7.0|~3.8.0|^4.0",
                 "phpunit/phpunit": "^7.0|^8.0"
             },
             "type": "library",
@@ -7075,9 +7075,9 @@
             "authors": [
                 {
                     "name": "Alex Vanderbist",
-                    "role": "Developer",
                     "email": "alex@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Easily build Eloquent queries from API requests",
@@ -7086,7 +7086,7 @@
                 "laravel-query-builder",
                 "spatie"
             ],
-            "time": "2019-07-08T09:08:34+00:00"
+            "time": "2019-09-03T13:32:32+00:00"
         },
         {
             "name": "spatie/laravel-tags",

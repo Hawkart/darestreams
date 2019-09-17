@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\Users;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\Controller;
 use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\OAuthProviderResource;
 use App\Models\OAuthProvider;
 use App\Models\User;

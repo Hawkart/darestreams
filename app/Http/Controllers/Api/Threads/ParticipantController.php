@@ -6,7 +6,6 @@ use App\Http\Controllers\Api\Controller;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\Filter;
 use App\Models\Thread;
 use App\Models\Message;
 use App\Models\User;

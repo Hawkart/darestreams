@@ -9,8 +9,8 @@ use App\Http\Resources\StreamResource;
 use App\Models\Channel;
 use App\Models\Stream;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\AllowedInclude;
 use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\Filter;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use DB;
@@ -209,8 +209,7 @@ class ChannelController extends Controller
             ->where('channel_id', $channel->id)
             ->defaultSort('-start_at')
             ->allowedSorts('quantity_donators', 'quantity_donations', 'amount_donations' ,'id')
-            ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-            //->withCount(['tasksCompleted'])
+            ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user', AllowedInclude::count('tasksCompletedCount')])
             ->jsonPaginate();
 
         return StreamResource::collection($items);

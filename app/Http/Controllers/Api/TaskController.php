@@ -13,7 +13,6 @@ use App\Models\Stream;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use DB;

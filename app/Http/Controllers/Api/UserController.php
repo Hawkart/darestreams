@@ -12,7 +12,6 @@ use App\Http\Resources\ChannelResource;
 use App\Http\Resources\TransactionResource;
 use App\Models\Transaction;
 use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\Filter;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Resources\UserResource;

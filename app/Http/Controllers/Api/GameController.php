@@ -7,7 +7,6 @@ use App\Models\Notification;
 use App\Notifications\NewGameOffer;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\GameResource;
 use App\Models\Game;
 use Carbon\Carbon;

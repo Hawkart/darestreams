@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\Users;
 use App\Http\Controllers\Api\Controller;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\Filter;
 use App\Http\Resources\NotificationResource;
 use App\Models\User;
 use App\Models\Notification;
