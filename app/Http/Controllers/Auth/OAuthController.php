@@ -54,19 +54,18 @@ class OAuthController extends Controller
      */
     public function handleProviderCallback($provider)
     {
-        $userProvider = Socialite::driver($provider)->user();
+        $userProvider = Socialite::driver($provider)->stateless()->user();
         $user = $this->findOrCreateUser($provider, $userProvider);
 
         dispatch(new GetUserChannel($user, $userProvider->getId(), $provider));
 
-        $this->guard()->setToken(
-            $token = $this->guard()->login($user)
-        );
+        $user = auth()->setToken($token = auth()->login($user))->user();
+        $payload = auth()->payload();
 
         return response()->view('oauth.callback', [
             'token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => $this->guard()->getPayload()->get('exp')
+            'expires_in' => $payload('exp')
         ], 200);
     }
 
@@ -75,7 +74,7 @@ class OAuthController extends Controller
      * @param $userProvider
      * @return User
      */
-    protected function findOrCreateUser($provider, $userProvider)
+    public function findOrCreateUser($provider, $userProvider)
     {
         $oauthProvider = OAuthProvider::where('provider', $provider)
             ->where('provider_user_id', $userProvider->getId())
@@ -128,7 +127,7 @@ class OAuthController extends Controller
      * @param  \Laravel\Socialite\Contracts\User $sUser
      * @return \App\Models\User
      */
-    protected function createUser($sUser)
+    public function createUser($sUser)
     {
         $data = $this->prepareData($sUser);
         $user = DB::transaction(function () use ($data) {
