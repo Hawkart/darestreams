@@ -83,7 +83,7 @@ class Stream extends Model implements ViewableContract
     public function tasksCompleted()
     {
         return $this->hasMany(Task::class)
-                    ->where('status', [TaskStatus::VoteFinished, TaskStatus::PayFinished]);
+                    ->whereIn('status', [TaskStatus::VoteFinished, TaskStatus::PayFinished]);
     }
 
     /**
