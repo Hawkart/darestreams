@@ -184,9 +184,11 @@ class ChannelController extends Controller
     /**
      * Get streams from channel
      *
-     * {slug} - slug or id of channel. Goes with count of tasks.
+     * {slug} - slug or id of channel.
      *
-     * @queryParam include string String of connections: game, tasks, tasks.votes, tags, channel, user. Example: game,tasks
+     * For any connection may add _count for counting. Example: tasks_completed_count
+     *
+     * @queryParam include string String of connections: game, tasks, tasks.votes, tags, channel, user, tasks_completed. Example: game,tasks
      * @queryParam sort string Sort items by fields: amount_donations, quantity_donators, quantity_donations, id. For desc use '-' prefix. Example: -quantity_donators
      * @queryParam page array Use as page[number]=1&page[size]=2.
      * @queryParam filter array Allows filter only by status. Use as filter[status]=1,2.

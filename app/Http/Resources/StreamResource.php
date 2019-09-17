@@ -47,7 +47,10 @@ class StreamResource extends JsonResource
         ];
 
         if(isset($this->tasks_completed_count))
-            $data['tasks_count'] = $this->tasks_completed_count;
+            $data['tasks_completed_count'] = $this->tasks_completed_count;
+
+        if(isset($this->tasks_count))
+            $data['tasks_count'] = $this->tasks_count;
 
         return $data;
     }
