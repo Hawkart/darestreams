@@ -2,16 +2,13 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Laravel\Socialite\Facades\Socialite;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\DuskTestCase;
 use Illuminate\Support\Facades\Bus;
 use App\Jobs\GetUserChannel;
 
-class AuthTest extends DuskTestCase
+class AuthTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -24,9 +21,12 @@ class AuthTest extends DuskTestCase
     }
 
     /** @test */
-    public function it_retrieves_twitch_request_and_creates_a_new_user()
+    public function it_retrieves_twitch_request_and_creates_a_new_user_correctly()
     {
         Bus::fake();
+
+        $mockSocialite = \Mockery::mock('Laravel\Socialite\Contracts\Factory');
+        $this->app['Laravel\Socialite\Contracts\Factory'] = $mockSocialite;
 
         $abstractUser = \Mockery::mock('Laravel\Socialite\Two\User');
         $abstractUser
@@ -34,20 +34,24 @@ class AuthTest extends DuskTestCase
             ->andReturn(1234)
             ->shouldReceive('getName')
             ->andReturn('Johny')
+            ->shouldReceive('getNickname')
+            ->andReturn('Johny')
             ->shouldReceive('getEmail')
             ->andReturn('foo@bar.com')
             ->shouldReceive('getAvatar')
             ->andReturn('https://en.gravatar.com/userimage');
 
-        Socialite::shouldReceive('driver->fields->scopes->user')
-                ->with('twitch')
-                ->andReturn($abstractUser);
+        $provider = \Mockery::mock('Laravel\Socialite\Contract\Provider');
+        $provider->shouldReceive('user')
+            ->andReturn($abstractUser);
 
-        $this->browse(function ($browser) {
-            $browser->visit('/api/oauth/twitch/callback');
-        });
+        $mockSocialite->shouldReceive('driver')
+            ->with('twitch')
+            ->andReturn($provider);
 
-        /*$this->assertDatabaseHas('oauth_providers', [
+        $this->get('/api/oauth/twitch/callback');
+
+        $this->assertDatabaseHas('oauth_providers', [
             'provider_user_id' => 1234,
         ]);
 
@@ -55,8 +59,12 @@ class AuthTest extends DuskTestCase
             'email' => 'foo@bar.com',
         ]);
 
+        $user = User::where('email', 'foo@bar.com')->first();
+
+        $this->assertEquals($user->id, auth()->user()->id);
+
         Bus::assertDispatched(GetUserChannel::class, function ($job) {
             return $job->id == 1234;
-        });*/
+        });
     }
 }

@@ -54,7 +54,7 @@ class OAuthController extends Controller
      */
     public function handleProviderCallback($provider)
     {
-        $userProvider = Socialite::driver($provider)->stateless()->user();
+        $userProvider = Socialite::driver($provider)->user();
         $user = $this->findOrCreateUser($provider, $userProvider);
 
         dispatch(new GetUserChannel($user, $userProvider->getId(), $provider));

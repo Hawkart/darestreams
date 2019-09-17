@@ -15,9 +15,9 @@ class GetUserChannel implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable;
 
-    protected $user;
-    protected $id;
-    protected $provider;
+    public $user;
+    public $id;
+    public $provider;
 
     /**
      * GetUserChannel constructor.
