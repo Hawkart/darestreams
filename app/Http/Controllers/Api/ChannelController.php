@@ -210,7 +210,7 @@ class ChannelController extends Controller
             ->defaultSort('-start_at')
             ->allowedSorts('quantity_donators', 'quantity_donations', 'amount_donations' ,'id')
             ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-            ->withCount(['tasksCompleted'])
+            //->withCount(['tasksCompleted'])
             ->jsonPaginate();
 
         return StreamResource::collection($items);
