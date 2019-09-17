@@ -199,17 +199,17 @@ class ChannelController extends Controller
     public function streams($slug, Request $request)
     {
         if(is_numeric($slug)) {
-            $channel = Channel::findOrFail($slug);
+            $channel = Channel::where('id', $slug)->firstOrFail();
         }else{
             $channel = Channel::where('slug', $slug)->firstOrFail();
         }
 
         $items = QueryBuilder::for(Stream::class)
-            ->where('channel_id', $channel->id)
             ->allowedFilters(['status'])
             ->defaultSort('-start_at')
             ->allowedSorts('quantity_donators', 'quantity_donations', 'amount_donations' ,'id')
             ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
+            ->where('channel_id', $channel->id)
             ->withCount(['tasksCompleted'])
             ->jsonPaginate();
 

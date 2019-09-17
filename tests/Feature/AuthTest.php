@@ -8,10 +8,12 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\DuskTestCase;
+use Illuminate\Support\Facades\Bus;
+use App\Jobs\GetUserChannel;
 
 class AuthTest extends DuskTestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
 
     /** @test */
     public function it_redirects_to_twitch()
@@ -22,12 +24,14 @@ class AuthTest extends DuskTestCase
     }
 
     /** @test */
-    /*public function it_retrieves_twitch_request_and_creates_a_new_user()
+    public function it_retrieves_twitch_request_and_creates_a_new_user()
     {
+        Bus::fake();
+
         $abstractUser = \Mockery::mock('Laravel\Socialite\Two\User');
         $abstractUser
             ->shouldReceive('getId')
-            ->andReturn(rand())
+            ->andReturn(1234)
             ->shouldReceive('getName')
             ->andReturn('Johny')
             ->shouldReceive('getEmail')
@@ -35,14 +39,24 @@ class AuthTest extends DuskTestCase
             ->shouldReceive('getAvatar')
             ->andReturn('https://en.gravatar.com/userimage');
 
-        Socialite::shouldReceive('driver->fields->scopes->user')->andReturn($abstractUser);
+        Socialite::shouldReceive('driver->fields->scopes->user')
+                ->with('twitch')
+                ->andReturn($abstractUser);
 
         $this->browse(function ($browser) {
             $browser->visit('/api/oauth/twitch/callback');
         });
 
+        /*$this->assertDatabaseHas('oauth_providers', [
+            'provider_user_id' => 1234,
+        ]);
+
         $this->assertDatabaseHas('users', [
             'email' => 'foo@bar.com',
         ]);
-    }*/
+
+        Bus::assertDispatched(GetUserChannel::class, function ($job) {
+            return $job->id == 1234;
+        });*/
+    }
 }
