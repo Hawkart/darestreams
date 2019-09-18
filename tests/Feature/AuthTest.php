@@ -54,16 +54,31 @@ class AuthTest extends TestCase
         });
     }
 
+    /** @test */
+    public function it_retrieves_twitch_request_without_user_data_should_failed()
+    {
+        $abstractUser = \Mockery::mock('Laravel\Socialite\Two\User');
+
+        $this->expectException("Exception");
+        $this->expectExceptionCode(400);
+        $this->initOauthHandler('twitch', $abstractUser);
+    }
+
     /**
      * @param $provider
      * @param $userProvider
+     * @throws \Exception
      */
     public function initOauthHandler($provider, $userProvider)
     {
         $oauth = new OAuthController();
         $user = $oauth->findOrCreateUser($provider, $userProvider);
 
-        dispatch(new GetUserChannel($user, $userProvider->getId(), $provider));
+        try {
+            dispatch(new GetUserChannel($user, $userProvider->getId(), $provider));
+        } catch (\Exception $e) {
+            throw new \Exception("Problem with social abstract user", 400);
+        }
 
         auth()->setToken($token = auth()->login($user))->user();
     }

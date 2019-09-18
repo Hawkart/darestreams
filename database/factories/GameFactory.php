@@ -16,5 +16,8 @@ $factory->define(Game::class, function (Faker $faker) {
         'title_short' => $faker->unique()->company." ".$faker->companySuffix,
         'logo' => $faker->image('public/storage/games',400, 300),
         'logo_small' => $faker->image('public/storage/games',100, 100),
+        'popularity' => $faker->numberBetween(1, 1000),
+        'twitch_id'  =>  $faker->numberBetween(1, 1000000),
+        'views' => $faker->numberBetween(1, 1000),
     ];
 });

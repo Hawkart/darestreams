@@ -57,9 +57,13 @@ class OAuthController extends Controller
         $userProvider = Socialite::driver($provider)->stateless()->user();
         $user = $this->findOrCreateUser($provider, $userProvider);
 
-        dispatch(new GetUserChannel($user, $userProvider->getId(), $provider));
+        try {
+            dispatch(new GetUserChannel($user, $userProvider->getId(), $provider));
+        } catch (\Exception $e) {
+            throw new \Exception("Problem with social abstract user", 400);
+        }
 
-        $user = auth()->setToken($token = auth()->login($user))->user();
+        auth()->setToken($token = auth()->login($user))->user();
         $payload = auth()->payload();
 
         return response()->view('oauth.callback', [
@@ -76,9 +80,13 @@ class OAuthController extends Controller
      */
     public function findOrCreateUser($provider, $userProvider)
     {
-        $oauthProvider = OAuthProvider::where('provider', $provider)
-            ->where('provider_user_id', $userProvider->getId())
-            ->first();
+        try {
+            $oauthProvider = OAuthProvider::where('provider', $provider)
+                ->where('provider_user_id', $userProvider->getId())
+                ->first();
+        } catch (\Exception $e) {
+            return response('Problem with social abstract user', 422);
+        }
 
         if ($oauthProvider) {
 

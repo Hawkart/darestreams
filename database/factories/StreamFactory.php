@@ -7,9 +7,9 @@ use App\Models\Channel;
 use Faker\Generator as Faker;
 use App\Enums\StreamStatus;
 
-$factory->define(Stream::class, function (Faker $faker, $attributes) {
+$factory->define(Stream::class, function (Faker $faker) {
 
-    $channel = Channel::findOrFail($attributes['channel_id']);
+    $channel = Channel::inRandomOrder()->first();
 
     $allow = $faker->boolean();
 

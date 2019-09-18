@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\Account;
+use App\Models\Channel;
+use App\Models\Game;
 use App\Models\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -27,7 +29,7 @@ class UserTest extends TestCase
     /** @test */
     public function get_user_without_token()
     {
-        $this->json('get', '/api/users/me', [], [])
+        $this->json('get', '/api/users/me')
             ->assertStatus(401);
     }
 
@@ -44,13 +46,27 @@ class UserTest extends TestCase
         $this->getJson(url('/api/users/'.$user->id.'/account'), ['Authorization' => 'Bearer ' . $token])
             ->assertStatus(200)
             ->assertJson([
-                'data' => [
-                    'id' => $account->id,
-                    'user_id'  => $user->id,
-                    'amount' => 0,
-                    'currency' => 'USD'
-                ]
+                'id' => $account->id,
+                'user_id'  => $user->id,
+                'amount' => 0,
+                'currency' => 'USD'
             ]);
+    }
+
+    /** @test */
+    public function create_and_get_user_has_channel()
+    {
+        $user = factory(User::class)->create(['email' => 'user@test.com']);
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $user->id, 'game_id'=> $game->id, 'logo' => $game->logo]);
+
+        $this->assertDatabaseHas('channels', ['user_id' => $user->id, 'id' => $channel->id]);
+
+        $this->json('get', '/api/users/'.$user->id.'/channel')
+            ->assertStatus(200)
+            ->assertJsonFragment(
+                ['title' => $channel->title]
+            );
     }
 
     /** @test */
@@ -62,9 +78,7 @@ class UserTest extends TestCase
         $payload = [];
 
         $this->json('get', '/api/users/me/get-donates-by-date', $payload, ['Authorization' => "Bearer $token"])
-            ->assertJsonStructure([
-                '*' => ['id', 'body', 'title', 'created_at', 'updated_at'],
-            ])->assertStatus(200);
+           ->assertStatus(200);
     }
 
     /**
