@@ -68,15 +68,4 @@ class Channel extends Model
     {
         return $this->hasMany(Stream::class);
     }
-
-    /**
-     * @param $query
-     * @return mixed
-     */
-    public function scopeOnline($query)
-    {
-        return $query->whereHas('streams', function($query) {
-            $query->where('start_at', '>', Carbon::now())->whereNull('ended_at');
-        });
-    }
 }

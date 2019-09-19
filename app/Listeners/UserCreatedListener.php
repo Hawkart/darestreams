@@ -20,5 +20,7 @@ class UserCreatedListener
             $user->account()->create([
                 'currency' => 'USD'
             ]);
+
+        $user->refresh();
     }
 }

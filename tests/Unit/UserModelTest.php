@@ -22,6 +22,31 @@ class UserModelTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function check_account_create_on_user_create()
+    {
+        $user = factory(User::class)->create();
+        $user->refresh();
+
+        $this->assertDatabaseHas('accounts', ['user_id' => $user->id]);
+    }
+
+    /** @test */
+    public function user_has_only_one_account()
+    {
+        Event::fake();
+
+        $user = factory(User::class)->create();
+        $account = factory(Account::class)->create(['user_id' => $user->id]);
+
+        Event::assertDispatched(UserCreatedEvent::class, function ($e) use ($user) {
+            return $e->user->id === $user->id;
+        });
+
+        $this->assertDatabaseHas('accounts', ['user_id' => $user->id]);
+        $this->assertEquals($user->account->id, $account->id);
+    }
+
+    /** @test */
     public function user_has_many_oauth_providers_different()
     {
         $user = factory(User::class)->create(['email' => 'user@test.com']);
@@ -61,26 +86,10 @@ class UserModelTest extends TestCase
 
         factory(OAuthProvider::class)->create($data);
 
-        $this->expectException("PDOException");
+        $this->expectException("Exception");
 
         //not unique
         factory(OAuthProvider::class)->create($data);
-    }
-
-    /** @test */
-    public function user_has_only_one_account()
-    {
-        Event::fake();
-
-        $user = factory(User::class)->create();
-        $account = factory(Account::class)->create(['user_id' => $user->id]);
-
-        Event::assertDispatched(UserCreatedEvent::class, function ($e) use ($user) {
-            return $e->user->id === $user->id;
-        });
-
-        $this->assertDatabaseHas('accounts', ['user_id' => $user->id]);
-        $this->assertEquals($user->account->id, $account->id);
     }
 
     /** @test */

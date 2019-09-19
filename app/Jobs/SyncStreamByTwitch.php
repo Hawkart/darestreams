@@ -12,7 +12,7 @@ class SyncStreamByTwitch implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable;
 
-    protected $stream;
+    public $stream;
 
     /**
      * SyncStreamByTwitch constructor.

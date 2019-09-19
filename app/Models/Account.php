@@ -41,10 +41,6 @@ class Account extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function transactionsReceived() {
-        return $this->hasMany(Transaction::class, 'account_sender_id');
-    }
-
-    public function relatedUserRelations() {
         return $this->hasMany(Transaction::class, 'account_receiver_id');
     }
 

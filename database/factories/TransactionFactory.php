@@ -12,18 +12,18 @@ use App\Enums\TransactionType;
 $factory->define(Transaction::class, function (Faker $faker) {
 
     $task = Task::inRandomOrder()->first();
-    $receiver = $task->stream->user->account;
+    $account = Account::inRandomOrder()->first();
     $amount = $faker->randomNumber(2);
     $type = TransactionType::getRandomValue();
 
     return [
         'amount'    => $amount,
         'money'     => $amount,
-        'account_sender_id'  => function () use ($receiver) {
-            return Account::where('id', '<>', $receiver->id)->inRandomOrder()->first();
+        'account_sender_id'  => function () use ($account) {
+            return Account::where('id', '<>', $account->id)->inRandomOrder()->first();
         },
-        'account_receiver_id'  => function () use ($receiver) {
-            return $receiver->id;
+        'account_receiver_id'  => function () use ($account) {
+            return $account->id;
         },
         'task_id'   =>  function () use ($task) {
             return $task->id;
