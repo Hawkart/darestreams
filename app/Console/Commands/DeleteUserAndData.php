@@ -62,6 +62,7 @@ class DeleteUserAndData extends Command
         }else{
             $user = User::findOrFail($user_id);
             $user->clearFakeData();
+            $user->oauthProviders->delete();
             $user->account->delete();
             $user->channel->delete();
             $user->delete();

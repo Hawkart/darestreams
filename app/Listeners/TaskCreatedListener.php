@@ -30,11 +30,6 @@ class TaskCreatedListener
             $vdata['vote'] = VoteStatus::Yes;
 
             $task->stream->socketInit();
-
-            /*$stream = $task->stream;
-            $stream->load(['user','channel','game','tasks', 'tasks.votes']);
-            StreamResource::withoutWrapping();
-            event(new SocketOnDonate(new StreamResource($stream)));*/
         }
 
         Vote::create($vdata);

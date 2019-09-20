@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ValidTaskCreateBeforeOrWhileStreamStart;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use App\Enums\StreamStatus;
@@ -38,12 +39,24 @@ class StreamRequest extends FormRequest {
                         'title'  => 'required',
                         'link'     => 'required|url',
                         'start_at' => 'required|date|after:now',
-                        'allow_task_before_stream' => 'required_without:allow_task_when_stream|boolean',
-                        'allow_task_when_stream' => 'required_without:allow_task_before_stream|boolean',
+                        'allow_task_before_stream' => [
+                            'required',
+                            new ValidTaskCreateBeforeOrWhileStreamStart(
+                                $this->get('allow_task_before_stream'),
+                                $this->get('allow_task_when_stream')
+                            )
+                        ],
+                        'allow_task_when_stream' => [
+                            'required',
+                            new ValidTaskCreateBeforeOrWhileStreamStart(
+                                $this->get('allow_task_before_stream'),
+                                $this->get('allow_task_when_stream')
+                            )
+                        ],
                         'min_amount_task_before_stream' => 'required_if:allow_task_before_stream,1|integer|min:0',
                         'min_amount_donate_task_before_stream' => 'required_if:allow_task_before_stream,1|integer|min:0',
                         'min_amount_task_when_stream' => 'required_if:allow_task_when_stream,1|integer|min:0',
-                        'min_amount_donate_task_when_stream' => 'required_if:allow_task_when_stream,1|integer|min:0',
+                        'min_amount_donate_task_when_stream' => 'required_if:allow_task_when_stream,1|integer|min:0'
 
                         //Todo: Add validation of superbowl
                     ];
