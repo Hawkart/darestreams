@@ -133,14 +133,13 @@ class StreamController extends Controller
         $user = auth()->user();
         $status = $request->has('status') ? $request->get('status') : -1;
 
+        if($stream->checkAlreadyFinished())
+            abort(response()->json(['message' => trans('api/stream.cannot_update_stream_already_finished')], 400));
+
         if(!$user->channel || ($user->channel->id != $stream->channel_id))
-            return setErrorAfterValidation(['id' => trans('api/stream.failed_channel')]);
+            abort(response()->json(['message' => trans('api/stream.failed_channel')], 400));
 
-        //try to change to another status
-        if($status>-1 && $status!=StreamStatus::FinishedWaitPay)
-            return setErrorAfterValidation(['status' => trans('api/stream.cannot_update_status_stream')]);
-
-        //Set finished: active -> finish
+        //Streamer can change status only from Active to FinishedWaitPay
         if($stream->status==StreamStatus::Active && $status==StreamStatus::FinishedWaitPay)
         {
             try {
@@ -175,8 +174,6 @@ class StreamController extends Controller
             }else if($stream->status==StreamStatus::Active){
                 $allowed = ['allow_task_before_stream', 'allow_task_when_stream', 'min_amount_task_before_stream',
                     'min_amount_task_when_stream', 'min_amount_donate_task_before_stream', 'min_amount_donate_task_when_stream'];
-            }else{
-                return setErrorAfterValidation(['status' => trans('api/stream.cannot_update_stream_already_finished')]);
             }
 
             $stream->update($request->only($allowed));

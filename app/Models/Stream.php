@@ -95,41 +95,6 @@ class Stream extends Model implements ViewableContract
     }
 
     /**
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function canTaskCreate()
-    {
-        $user = auth()->user();
-
-        if($this->status==StreamStatus::Active)
-        {
-            if($this->allow_task_when_stream)
-            {
-                if($user->account->amount<$this->min_amount_task_when_stream)
-                    abort(
-                        response()->json(['message' => trans('api/stream.not_enough_money')], 402)
-                    );
-            }else{
-                return setErrorAfterValidation(['created_amount' => trans('api/stream.not_allow_create_task_when_stream_active')]);
-            }
-        }
-        else if($this->status==StreamStatus::Created)
-        {
-            if($this->allow_task_before_stream)
-            {
-                if($user->account->amount<$this->min_amount_task_before_stream)
-                    abort(
-                        response()->json(['message' => trans('api/stream.not_enough_money')], 402)
-                    );
-            }else{
-                return setErrorAfterValidation(['created_amount' => trans('api/stream.not_allow_create_task_when_stream_active')]);
-            }
-        }else{
-            return setErrorAfterValidation(['status' => trans('api/stream.stream_finished')]);
-        }
-    }
-
-    /**
      * @return int|mixed
      */
     public function getTaskCreateAmount()
@@ -175,5 +140,13 @@ class Stream extends Model implements ViewableContract
         $this->load(['user','channel','game','tasks', 'tasks.votes']);
         StreamResource::withoutWrapping();
         event(new SocketOnDonate(new StreamResource($this)));
+    }
+
+    /**
+     * @return bool
+     */
+    public function checkAlreadyFinished()
+    {
+        return in_array($this->status, [StreamStatus::FinishedWaitPay, StreamStatus::FinishedIsPayed]);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ValidCanTaskCreate;
+use App\Rules\ValidTaskCreatedEnoughMoneyAndMinAmount;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use App\Enums\TaskStatus;
@@ -38,7 +40,13 @@ class TaskRequest extends FormRequest {
                 {
                     return [
                         'stream_id' => 'required|exists:streams,id',
-                        'created_amount' => 'required|numeric|min:0',
+                        'created_amount' => [
+                            'required',
+                            'numeric',
+                            'min:0',
+                            new ValidTaskCreatedEnoughMoneyAndMinAmount($this->get('stream_id')),
+                            new ValidCanTaskCreate($this->get('stream_id'))
+                        ],
                         'small_desc' => 'required|string|min:1',
                         'full_desc' => 'required|string|min:1',
                         'interval_time' => 'sometimes|required|numeric|min:0'
