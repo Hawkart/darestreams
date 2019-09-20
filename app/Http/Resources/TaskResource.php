@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use App\Enums\TaskStatus;
 use App\Enums\VoteStatus;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,9 @@ class TaskResource extends JsonResource
      */
     public function toArray($request)
     {
+        $finish_ar = (intval($this->interval_time)>0 && !empty($this->start_active)) ?
+                        getW3cDatetime(Carbon::parse($this->start_active)->addMinutes($this->interval_time)) : null;
+
         $data = [
             'id' => $this->id,
             'stream_id' => $this->stream_id,
@@ -31,6 +35,7 @@ class TaskResource extends JsonResource
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),
             'start_active' => getW3cDatetime($this->start_active),
+            'finish_at' => $finish_ar,
 
             'user' => new UserResource($this->whenLoaded('user')),
             'votes' => VoteResource::collection($this->whenLoaded('votes')),
