@@ -86,9 +86,10 @@ class StreamController extends Controller
      */
     public function store(StreamRequest $request)
     {
-        $input = $request->all();
+        $input = $request->except('start_at_view');
         $channel = Channel::findOrFail($request->get('channel_id'));
         $input['game_id'] = $channel->game_id;
+        unset($input['']);
 
         $stream = new Stream();
         $stream->fill($input);

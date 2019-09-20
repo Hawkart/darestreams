@@ -18,7 +18,7 @@ class TaskResource extends JsonResource
      */
     public function toArray($request)
     {
-        $finish_ar = (intval($this->interval_time)>0 && !empty($this->start_active)) ?
+        $finish_at = (intval($this->interval_time)>0 && !empty($this->start_active)) ?
                         getW3cDatetime(Carbon::parse($this->start_active)->addMinutes($this->interval_time)) : null;
 
         $data = [
@@ -35,7 +35,7 @@ class TaskResource extends JsonResource
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),
             'start_active' => getW3cDatetime($this->start_active),
-            'finish_at' => $finish_ar,
+            'finish_at' => $finish_at,
 
             'user' => new UserResource($this->whenLoaded('user')),
             'votes' => VoteResource::collection($this->whenLoaded('votes')),

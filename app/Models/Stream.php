@@ -23,12 +23,14 @@ class Stream extends Model implements ViewableContract
      */
     protected $table = 'streams';
 
-    /**
-     * The attributes that aren't mass assignable.
-     *
-     * @var array
-     */
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'game_id', 'link', 'start_at', 'ended_at', 'status', 'quantity_donators', 'quantity_donations', 'amount_donations',
+        'channel_id', 'allow_task_before_stream', 'allow_task_when_stream', 'min_amount_task_before_stream', 'min_amount_task_when_stream',
+        'min_amount_donate_task_before_stream', 'min_amount_donate_task_when_stream', 'allow_superbowl_before_stream',
+        'allow_superbowl_when_stream', 'min_amount_superbowl_before_stream', 'min_amount_superbowl_when_stream',
+        'min_amount_donate_superbowl_before_stream', 'min_amount_donate_superbowl_when_stream', '	goal_amount_donate_superbowl_activate',
+        'title', 'tags', 'views', 'preview'
+    ];
 
     /**
      * @var array
