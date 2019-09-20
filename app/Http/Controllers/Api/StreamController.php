@@ -86,15 +86,6 @@ class StreamController extends Controller
      */
     public function store(StreamRequest $request)
     {
-        $user = auth()->user();
-
-        if(!$user->channel || $user->channel->id!=$request->get('channel_id'))
-            return setErrorAfterValidation(['id' => trans('api/stream.failed_no_channel')]);
-
-        //Cannot create new before exists not finished
-        if($user->streams()->whereIn('status', [StreamStatus::Created, StreamStatus::Active])->count()>0)
-            return setErrorAfterValidation(['status' => trans('api/stream.you_still_have_active_streams')]);
-
         $input = $request->all();
         $channel = Channel::findOrFail($request->get('channel_id'));
         $input['game_id'] = $channel->game_id;
@@ -149,7 +140,7 @@ class StreamController extends Controller
         if($status>-1 && $status!=StreamStatus::FinishedWaitPay)
             return setErrorAfterValidation(['status' => trans('api/stream.cannot_update_status_stream')]);
 
-        //Set finished
+        //Set finished: active -> finish
         if($stream->status==StreamStatus::Active && $status==StreamStatus::FinishedWaitPay)
         {
             try {

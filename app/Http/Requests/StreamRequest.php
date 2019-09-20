@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ValidChannelDontHaveActiveStreams;
+use App\Rules\ValidChannelOfAuthUser;
 use App\Rules\ValidTaskCreateBeforeOrWhileStreamStart;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
@@ -34,21 +36,23 @@ class StreamRequest extends FormRequest {
                 }
             case 'POST':
                 {
-                    $allow_create_task_before = $this->has('allow_task_before_stream') ? $this->get('allow_task_before_stream') : null;
-                    $allow_create_task_while = $this->has('allow_task_when_stream') ? $this->get('allow_task_when_stream') : null;
-
                     return [
-                        'channel_id'  => 'required|exists:channels,id',
+                        'channel_id'  => [
+                            'required',
+                            'exists:channels,id',
+                            new ValidChannelOfAuthUser(),
+                            new ValidChannelDontHaveActiveStreams()
+                        ],
                         'title'  => 'required',
                         'link'     => 'required|url',
                         'start_at' => 'required|date|after:now',
                         'allow_task_before_stream' => [
                             'required_unless:allow_task_when_stream,1',
-                            new ValidTaskCreateBeforeOrWhileStreamStart($allow_create_task_before, $allow_create_task_while)
+                            new ValidTaskCreateBeforeOrWhileStreamStart($this->all())
                         ],
                         'allow_task_when_stream'  => [
                             'required_unless:allow_task_before_stream,1',
-                            new ValidTaskCreateBeforeOrWhileStreamStart($allow_create_task_before, $allow_create_task_while)
+                            new ValidTaskCreateBeforeOrWhileStreamStart($this->all())
                         ],
                         'min_amount_task_before_stream' => 'required_if:allow_task_before_stream,1|integer|min:0',
                         'min_amount_donate_task_before_stream' => 'required_if:allow_task_before_stream,1|integer|min:0',

@@ -6,14 +6,11 @@ use Illuminate\Contracts\Validation\Rule;
 
 class ValidTaskCreateBeforeOrWhileStreamStart implements Rule
 {
-    public $checkbox_before;
+    public $inputs;
 
-    public $checkbox_while;
-
-    public function __construct($checkbox_before, $checkbox_while)
+    public function __construct($inputs)
     {
-        $this->checkbox_before = $checkbox_before;
-        $this->checkbox_while = $checkbox_while;
+        $this->inputs = $inputs;
     }
 
     /**
@@ -25,7 +22,10 @@ class ValidTaskCreateBeforeOrWhileStreamStart implements Rule
      */
     public function passes($attribute, $value)
     {
-        if (!$this->checkbox_before && !$this->checkbox_while) {
+        $allow_create_task_before = isset($this->inputs['allow_task_before_stream']) ? $this->inputs['allow_task_before_stream'] : null;
+        $allow_create_task_while = isset($this->inputs['allow_task_when_stream']) ? $this->inputs['allow_task_when_stream'] : null;
+
+        if (!$allow_create_task_before && !$allow_create_task_while) {
             return false;
         }
         return true;
