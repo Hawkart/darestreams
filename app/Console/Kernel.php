@@ -24,7 +24,8 @@ class Kernel extends ConsoleKernel
         Commands\ClearDroppedTransactions::class,
         Commands\ParseStreamers::class,
         Commands\TransferChannelLogoToUser::class,
-        Commands\UpdateStreamTasksDesc::class
+        Commands\UpdateStreamTasksDesc::class,
+        Commands\DeleteUserAndData::class
     ];
 
     /**
