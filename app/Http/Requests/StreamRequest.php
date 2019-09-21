@@ -74,7 +74,7 @@ class StreamRequest extends FormRequest {
                             'sometimes',
                             'required',
                             new EnumValue(StreamStatus::class),
-                            new AllowsChangeStreamStatus($request->route('id'))
+                            new AllowsChangeStreamStatus($request->route('stream'))
                         ],
                         'allow_task_before_stream' => 'sometimes|required_without:allow_task_when_stream|boolean',
                         'allow_task_when_stream' => 'sometimes|required_without:allow_task_before_stream|boolean',
