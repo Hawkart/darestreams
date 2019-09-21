@@ -23,7 +23,7 @@ class StreamResource extends JsonResource
             'link' => $this->link,
             'start_at' => getW3cDatetime($this->start_at),
             'ended_at' => getW3cDatetime($this->ended_at),
-            'status' => empty($this->status) ? StreamStatus::Created : StreamStatus::getInstance($this->status),
+            'status' => empty($this->status) ? StreamStatus::getInstance(StreamStatus::Created) : StreamStatus::getInstance($this->status),
             'allow_task_before_stream' => $this->allow_task_before_stream,
             'allow_task_when_stream' => $this->allow_task_when_stream,
             'min_amount_task_before_stream' => $this->min_amount_task_before_stream,
