@@ -140,7 +140,10 @@ class StreamController extends Controller
             abort(response()->json(['message' => trans('api/stream.failed_channel')], 400));
 
         //Streamer can change status only from Active to FinishedWaitPay
-        if($stream->status==StreamStatus::Active && ($status==StreamStatus::FinishedWaitPay || $status==StreamStatus::Canceled))
+        if(
+            ($stream->status==StreamStatus::Active && $status==StreamStatus::FinishedWaitPay) ||
+            (in_array($stream->status, [StreamStatus::Active, StreamStatus::Created]) && $status==StreamStatus::Canceled)
+        )
         {
             if($status==StreamStatus::FinishedWaitPay)
             {
