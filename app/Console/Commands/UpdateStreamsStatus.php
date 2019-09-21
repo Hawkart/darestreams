@@ -41,7 +41,7 @@ class UpdateStreamsStatus extends Command
 
         try {
             DB::transaction(function () use ($now) {
-                Stream::where('status', StreamStatus::Created)->where('start_at', '>', $now)
+                Stream::where('status', StreamStatus::Created)->where('start_at', '<', $now)
                         ->update(['status' => StreamStatus::Active]);
             });
         } catch (\Exception $e) {
