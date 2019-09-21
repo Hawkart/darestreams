@@ -146,7 +146,7 @@ class StreamController extends Controller
             {
                 $task_status = TaskStatus::AllowVote;
             }else{
-                $task_status = TaskStatus::AllowVote;
+                $task_status = TaskStatus::Canceled;
             }
 
             try {
