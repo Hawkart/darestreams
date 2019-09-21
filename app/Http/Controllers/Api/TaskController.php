@@ -96,7 +96,10 @@ class TaskController extends Controller
 
         //If is streamer
         if( $stream->channel_id==$user->channel->id)
+        {
             $input['created_amount'] = 0;
+            $input['status'] = TaskStatus::Active;
+        }
 
         try {
             $task = DB::transaction(function () use ($input, $user, $stream) {

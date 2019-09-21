@@ -225,6 +225,10 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         DB::commit();
     }
 
+    /**
+     * @param $data
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|mixed
+     */
     public function updateThrowOauth($data)
     {
         try {
@@ -237,5 +241,14 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         }
 
         return $user;
+    }
+
+    /**
+     * @param $channel_id
+     * @return bool
+     */
+    public function ownerOfChannel($channel_id)
+    {
+        return $channel_id==$this->channel->id;
     }
 }
