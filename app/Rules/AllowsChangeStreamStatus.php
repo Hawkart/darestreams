@@ -8,15 +8,15 @@ use Illuminate\Contracts\Validation\Rule;
 
 class AllowsChangeStreamStatus implements Rule
 {
-    public $stream_id;
+    public $stream;
 
     /**
      * AllowsChangeStreamStatusFromActiveToFinishedWaitPay constructor.
      * @param $stream_id
      */
-    public function __construct($stream_id)
+    public function __construct($stream)
     {
-        $this->stream_id = $stream_id;
+        $this->stream = $stream;
     }
 
     /**
@@ -28,11 +28,7 @@ class AllowsChangeStreamStatus implements Rule
      */
     public function passes($attribute, $value)
     {
-        $stream = Stream::findOrFail($this->stream_id);
-
-        dd($stream);
-
-        if($value>-1 && $value!=$stream->status && $value!=StreamStatus::FinishedWaitPay && $value!=StreamStatus::Canceled)
+        if($value>-1 && $value!=$this->stream->status && $value!=StreamStatus::FinishedWaitPay && $value!=StreamStatus::Canceled)
             return false;
 
         return true;

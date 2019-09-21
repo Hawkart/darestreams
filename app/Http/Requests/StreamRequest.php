@@ -66,8 +66,6 @@ class StreamRequest extends FormRequest {
             case 'PUT':
             case 'PATCH':
                 {
-                    dd($request->route('stream'));
-
                     return [
                         'title'  => 'sometimes|required',
                         'link'     => 'sometimes|required|url',
