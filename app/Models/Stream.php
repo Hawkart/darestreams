@@ -48,6 +48,14 @@ class Stream extends Model implements ViewableContract
     protected $dates = ['created_at', 'updated_at', 'start_at', 'ended_at'];
 
     /**
+     * @param $value
+     */
+    public function setStatusAttribute($value)
+    {
+        $this->attributes['status'] = empty($value) ? StreamStatus::Created : $value;
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function channel()

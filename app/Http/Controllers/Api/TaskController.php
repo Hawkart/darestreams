@@ -93,7 +93,6 @@ class TaskController extends Controller
         $input = $request->all();
         $input['user_id'] = $user->id;
         $input['min_donation'] = $minDonate;
-        $input['status'] = TaskStatus::Created;
 
         //If is streamer
         if( $stream->channel_id==$user->channel->id)

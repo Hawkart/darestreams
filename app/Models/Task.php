@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TaskStatus;
 use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
@@ -34,6 +35,14 @@ class Task extends Model
      * @var array
      */
     protected $dates = ['created_at', 'updated_at', 'start_active'];
+
+    /**
+     * @param $value
+     */
+    public function setStatusAttribute($value)
+    {
+        $this->attributes['status'] = empty($value) ? TaskStatus::Created : $value;
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
