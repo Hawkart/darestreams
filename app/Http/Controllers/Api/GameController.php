@@ -59,7 +59,7 @@ class GameController extends Controller
     {
         $item = QueryBuilder::for(Game::class)
             ->allowedIncludes(['streams', 'tags', 'channels'])
-            ->findOrFail($game);
+            ->firstOrFail($game);
 
         return new GameResource($item);
     }

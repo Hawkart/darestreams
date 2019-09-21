@@ -29,7 +29,7 @@ class ValidTaskCreatedEnoughMoneyAndMinAmount implements Rule
     public function passes($attribute, $value)
     {
         $user = auth()->user();
-        $stream = Stream::findOrFail($this->stream_id);
+        $stream = Stream::firstOrFail($this->stream_id);
         $min_amount = $stream->getTaskCreateAmount();
         $filled_amount = $value;
 

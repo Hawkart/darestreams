@@ -72,7 +72,7 @@ class UserController extends Controller
     {
         $item = QueryBuilder::for(User::class)
             ->allowedIncludes(['tasks','streams', 'channel', 'account'])
-            ->findOrFail(auth()->user()->id);
+            ->firstOrFail(auth()->user()->id);
 
         return new UserResource($item);
     }
@@ -89,7 +89,7 @@ class UserController extends Controller
     {
         $item = QueryBuilder::for(User::class)
             ->allowedIncludes(['tasks','streams', 'channel'])
-            ->findOrFail($user);
+            ->firstOrFail($user);
 
         return new UserResource($item);
     }

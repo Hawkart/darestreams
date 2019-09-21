@@ -30,7 +30,7 @@ class ValidCanTaskCreate implements Rule
      */
     public function passes($attribute, $value)
     {
-        $stream = Stream::findOrFail($this->stream_id);
+        $stream = Stream::firstOrFail($this->stream_id);
 
         if($stream->checkAlreadyFinished())
         {
