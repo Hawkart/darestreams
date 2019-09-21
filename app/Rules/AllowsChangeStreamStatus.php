@@ -3,18 +3,20 @@
 namespace App\Rules;
 
 use App\Enums\StreamStatus;
+use App\Models\Stream;
 use Illuminate\Contracts\Validation\Rule;
 
-class AllowsChangeStreamStatusFromActiveToFinishedWaitPay implements Rule
+class AllowsChangeStreamStatus implements Rule
 {
+    public $stream_id;
+
     /**
-     * Create a new rule instance.
-     *
-     * @return void
+     * AllowsChangeStreamStatusFromActiveToFinishedWaitPay constructor.
+     * @param $stream_id
      */
-    public function __construct()
+    public function __construct($stream_id)
     {
-        //
+        $this->stream_id = $stream_id;
     }
 
     /**
@@ -26,8 +28,8 @@ class AllowsChangeStreamStatusFromActiveToFinishedWaitPay implements Rule
      */
     public function passes($attribute, $value)
     {
-        //try to change to another status
-        if($value>-1 && $value!=StreamStatus::FinishedWaitPay)
+        $stream = Stream::findOrFail($this->stream_id);
+        if($value>-1 && $value!=$stream->status && $value!=StreamStatus::FinishedWaitPay && $value!=StreamStatus::Canceled)
             return false;
 
         return true;

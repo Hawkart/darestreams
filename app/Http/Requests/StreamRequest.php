@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\AllowsChangeStreamStatusFromActiveToFinishedWaitPay;
+use App\Rules\AllowsChangeStreamStatus;
 use App\Rules\ValidChannelDontHaveActiveStreams;
 use App\Rules\ValidChannelOfAuthUser;
 use App\Rules\ValidTaskCreateBeforeOrWhileStreamStart;
@@ -74,7 +74,7 @@ class StreamRequest extends FormRequest {
                             'sometimes',
                             'required',
                             new EnumValue(StreamStatus::class),
-                            new AllowsChangeStreamStatusFromActiveToFinishedWaitPay()
+                            new AllowsChangeStreamStatus($request->route('id'))
                         ],
                         'allow_task_before_stream' => 'sometimes|required_without:allow_task_when_stream|boolean',
                         'allow_task_when_stream' => 'sometimes|required_without:allow_task_before_stream|boolean',
