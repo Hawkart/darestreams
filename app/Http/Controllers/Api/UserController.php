@@ -276,7 +276,7 @@ class UserController extends Controller
             return setErrorAfterValidation(['id' => trans('api/user.failed_user_cannot_unfollow_to_yourself')]);
 
         if(!$user->isFollowedBy(auth()->user()))
-           return setErrorAfterValidation(['id' => trans('api/user.failed_follow_user')]);
+            return setErrorAfterValidation(['id' => trans('api/user.failed_follow_user')]);
 
         $user->followers()->detach(auth()->user()->id);
 
@@ -544,13 +544,13 @@ class UserController extends Controller
         $account = $user->account;
 
         $items = QueryBuilder::for(Transaction::class)
-                ->whereIn('type', [TransactionType::Deposit, TransactionType::Withdraw])
-                ->whereIn('status', [TransactionStatus::Holding, TransactionStatus::Completed])
-                ->whereDate('created_at', Carbon::parse($date)->toDateString())
-                ->where(function($query) use ($account){
-                    $query->where('account_sender_id', $account->id)
-                        ->orWhere('account_receiver_id', $account->id);
-                })->jsonPaginate();
+            ->whereIn('type', [TransactionType::Deposit, TransactionType::Withdraw])
+            ->whereIn('status', [TransactionStatus::Holding, TransactionStatus::Completed])
+            ->whereDate('created_at', Carbon::parse($date)->toDateString())
+            ->where(function($query) use ($account){
+                $query->where('account_sender_id', $account->id)
+                    ->orWhere('account_receiver_id', $account->id);
+            })->jsonPaginate();
 
         return TransactionResource::collection($items);
     }

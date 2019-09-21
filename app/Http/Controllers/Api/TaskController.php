@@ -65,7 +65,7 @@ class TaskController extends Controller
     {
         $item = QueryBuilder::for(Task::class)
             ->allowedIncludes(['user', 'stream', 'transactions'])
-            ->firstOrFail($task);
+            ->findOrFail($task);
 
         return new TaskResource($item);
     }
@@ -87,7 +87,7 @@ class TaskController extends Controller
     {
         $user = auth()->user();
 
-        $stream = Stream::firstOrFail($request->get('stream_id'));
+        $stream = Stream::findOrFail($request->get('stream_id'));
         $minDonate = $stream->getDonateCreateAmount();
 
         $input = $request->all();

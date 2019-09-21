@@ -61,7 +61,7 @@ class StreamController extends Controller
     {
         $item = QueryBuilder::for(Stream::class)
             ->allowedIncludes(['game', 'tasks', 'tasks.votes', 'channel', 'tags', 'user'])
-            ->firstOrFail($stream);
+            ->findOrFail($stream);
 
         return new StreamResource($item);
     }

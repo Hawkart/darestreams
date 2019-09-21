@@ -28,7 +28,7 @@ class AllowsChangeStreamStatus implements Rule
      */
     public function passes($attribute, $value)
     {
-        $stream = Stream::firstOrFail($this->stream_id);
+        $stream = Stream::findOrFail($this->stream_id);
         if($value>-1 && $value!=$stream->status && $value!=StreamStatus::FinishedWaitPay && $value!=StreamStatus::Canceled)
             return false;
 

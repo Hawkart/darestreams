@@ -75,11 +75,11 @@ class PaymentController extends Controller
             return setErrorAfterValidation(['user' => trans('api/paypal.user_task_failed')]);
 
         if(intval($user_id)>0)
-            $user = User::firstOrFail($user_id);
+            $user = User::findOrFail($user_id);
 
         if(intval($task_id)>0)
         {
-            $task = Task::firstOrFail($task_id);
+            $task = Task::findOrFail($task_id);
 
             if($task->status!=TaskStatus::Active && !(auth()->user()->id==$task->user_id && $task->status==TaskStatus::Created))
                 return setErrorAfterValidation(['status' => trans('api/transaction.failed_task_not_active')]);
@@ -159,7 +159,7 @@ class PaymentController extends Controller
             if (isset($data['state']) && $data['state'] == 'approved')
             {
                 $transaction = $data['transactions'][0];
-                $t = Transaction::firstOrFail($transaction['invoice_number']);
+                $t = Transaction::findOrFail($transaction['invoice_number']);
 
                 $amount = $transaction['amount']['total'];
                 $currency = $transaction['amount']['currency'];
@@ -182,12 +182,12 @@ class PaymentController extends Controller
 
                             //Create donation for user or task
                             if(intval($task_id)>0 && strpos($description, "task:".$task_id)!== false)
-                                $task = Task::firstOrFail($task_id);
+                                $task = Task::findOrFail($task_id);
                             else
                                 $task = 0;
 
                             if(intval($user_id)>0 && strpos($description, "user:".$user_id)!== false)
-                                $user = User::firstOrFail($user_id);
+                                $user = User::findOrFail($user_id);
                             else
                                 $user = 0;
 
