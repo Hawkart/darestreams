@@ -37,7 +37,7 @@ class VoteController extends Controller
     {
         $item = QueryBuilder::for(Vote::class)
             ->allowedIncludes(['user', 'task'])
-            ->firstOrFail($vote);
+            ->findOrFail($vote);
 
         return new VoteResource($item);
     }

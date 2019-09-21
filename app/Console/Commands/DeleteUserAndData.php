@@ -60,7 +60,7 @@ class DeleteUserAndData extends Command
         {
             $this->error("No user_id..."); dd();
         }else{
-            $user = User::firstOrFail($user_id);
+            $user = User::findOrFail($user_id);
             $user->clearFakeData();
             $user->oauthProviders->delete();
             $user->account->delete();

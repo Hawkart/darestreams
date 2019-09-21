@@ -43,7 +43,7 @@ class ThreadController extends Controller
     {
         $item = QueryBuilder::for(Thread::class)
             ->allowedIncludes(['messages', 'participants'])
-            ->firstOrFail($thread);
+            ->findOrFail($thread);
 
         return new ThreadResource($item);
     }
