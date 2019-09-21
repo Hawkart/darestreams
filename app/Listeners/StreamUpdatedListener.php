@@ -17,6 +17,7 @@ class StreamUpdatedListener
     public function handle(StreamUpdatedEvent $event)
     {
         $stream = $event->stream;
+        $stream->socketInit();
 
         if($stream->isDirty('status'))
         {
