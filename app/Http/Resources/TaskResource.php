@@ -30,7 +30,7 @@ class TaskResource extends JsonResource
             'is_superbowl' => $this->is_superbowl,
             'interval_time' => $this->interval_time,
             'min_donation' => $this->min_donation,
-            'status' => TaskStatus::getInstance($this->status),
+            'status' => empty($this->status) ? TaskStatus::Created : TaskStatus::getInstance($this->status),
             'amount_donations' => $this->amount_donations,
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),

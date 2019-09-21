@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Enums\TaskStatus;
+use App\Enums\TransactionStatus;
 use App\Events\SocketOnDonate;
 use App\Events\TaskUpdatedEvent;
 use App\Http\Resources\StreamResource;
@@ -21,6 +22,9 @@ class TaskUpdatedListener
 
         if($task->isDirty('status'))
         {
+            if($task->status==TaskStatus::Canceled)
+                $task->transactions()->update(['status' => TransactionStatus::Canceled]);
+
             $task->stream->socketInit();
         }
     }

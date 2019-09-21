@@ -89,7 +89,6 @@ class StreamController extends Controller
         $input = $request->except('start_at_view');
         $channel = Channel::findOrFail($request->get('channel_id'));
         $input['game_id'] = $channel->game_id;
-        unset($input['']);
 
         $stream = new Stream();
         $stream->fill($input);
@@ -141,13 +140,20 @@ class StreamController extends Controller
             abort(response()->json(['message' => trans('api/stream.failed_channel')], 400));
 
         //Streamer can change status only from Active to FinishedWaitPay
-        if($stream->status==StreamStatus::Active && $status==StreamStatus::FinishedWaitPay)
+        if($stream->status==StreamStatus::Active && ($status==StreamStatus::FinishedWaitPay || $status==StreamStatus::Canceled))
         {
+            if($status==StreamStatus::FinishedWaitPay)
+            {
+                $task_status = TaskStatus::AllowVote;
+            }else{
+                $task_status = TaskStatus::AllowVote;
+            }
+
             try {
-                $stream = DB::transaction(function () use ($stream) {
+                $stream = DB::transaction(function () use ($stream, $task_status, $status) {
 
                     $stream->update([
-                        'status' => StreamStatus::FinishedWaitPay,
+                        'status' => $status,
                         'ended_at' => Carbon::now('UTC')
                     ]);
 
@@ -156,7 +162,7 @@ class StreamController extends Controller
                     if(count($tasks)>0)
                     {
                         foreach($tasks as $task)
-                            $task->update(['status' => TaskStatus::AllowVote]);
+                            $task->update(['status' => $task_status]);
                     }
 
                     return $stream;
