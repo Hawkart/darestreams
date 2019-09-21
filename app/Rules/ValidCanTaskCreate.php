@@ -32,7 +32,7 @@ class ValidCanTaskCreate implements Rule
     {
         $stream = Stream::findOrFail($this->stream_id);
 
-        if($stream->checkAlreadyFinished)
+        if($stream->checkAlreadyFinished())
         {
             $this->message = trans('api/stream.stream_finished');
             return false;

@@ -36,8 +36,8 @@ class StreamResource extends JsonResource
             'amount_donations' => $this->amount_donations,
             'views' => $this->views,
             'preview' => getImageLink($this->preview, null),
-            'created_at' => $this->created_at->toW3cString(),
-            'updated_at' => $this->updated_at->toW3cString(),
+            'created_at' => getW3cDatetime($this->created_at),
+            'updated_at' => getW3cDatetime($this->updated_at),
 
             'channel' => new ChannelResource($this->whenLoaded('channel')),
             'user' => new UserResource($this->whenLoaded('user')),
