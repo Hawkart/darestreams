@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\StreamStatus;
 use App\Enums\TaskStatus;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use \Spatie\Tags\HasTags;
 use \Znck\Eloquent\Traits\BelongsToThrough;
@@ -53,6 +54,14 @@ class Stream extends Model implements ViewableContract
     public function setStatusAttribute($value)
     {
         $this->attributes['status'] = empty($value) ? StreamStatus::Created : $value;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setStartAtAttribute($value)
+    {
+        $this->attributes['start_at'] = Carbon::parse($value)->toDateTimeString();
     }
 
     /**

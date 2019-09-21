@@ -136,7 +136,7 @@ class StreamController extends Controller
         if($stream->checkAlreadyFinished())
             abort(response()->json(['message' => trans('api/stream.cannot_update_stream_already_finished')], 400));
 
-        if(!$user->channel || ($user->channel->id != $stream->channel_id))
+        if(!$user->channel || !$user->ownerOfChannel($stream->channel_id))
             abort(response()->json(['message' => trans('api/stream.failed_channel')], 400));
 
         //Streamer can change status only from Active to FinishedWaitPay
