@@ -87,11 +87,17 @@ class MakePaymentsByStreams extends Command
                             }
                         }
                     }
-
-                    //check all tasks voted then stream to payed
-                    if(Task::where('stream_id', $stream->id)->whereNotIn('status', $statuses)->count()==0)
-                        $stream->update(['status' => StreamStatus::FinishedIsPayed]);
                 }
+
+                //check all tasks voted then stream to payed
+                if(Task::where('stream_id', $stream->id)->whereNotIn('status', $statuses)->count()==0)
+                {
+                    $stream->update(['status' => StreamStatus::FinishedIsPayed]);
+
+                    dd($stream);
+                }
+
+                dd(1);
             }
         }
 
