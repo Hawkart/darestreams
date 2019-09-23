@@ -15,7 +15,7 @@ class AccountModelTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function account_has_only_one_user()
+    public function it_belongs_to_one_user()
     {
         Event::fake();
 
@@ -37,7 +37,7 @@ class AccountModelTest extends TestCase
     }
 
     /** @test */
-    public function account_has_many_transactions()
+    public function it_has_many_transactions()
     {
         Event::fake();
 

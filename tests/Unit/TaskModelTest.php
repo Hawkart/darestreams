@@ -125,8 +125,15 @@ class TaskModelTest extends TestCase
         factory(Channel::class)->create();
         factory(Stream::class)->create();
 
+
+        $user->account->update(['amount' => 2000]);
+
         $task = factory(Task::class)->create();
-        $transactions = factory(Transaction::class, 2)->create(['task_id' => 0, 'account_sender_id' => $user->account->id]);
+        $transactions = factory(Transaction::class, 2)->create([
+            'task_id' => 0,
+            'account_sender_id' => $user->account->id,
+            'amount' => 10
+        ]);
 
         foreach($transactions as $transaction)
         {

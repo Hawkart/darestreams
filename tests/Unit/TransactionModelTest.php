@@ -60,9 +60,14 @@ class TransactionModelTest extends TestCase
         factory(Channel::class)->create();
         factory(Stream::class)->create();
 
+        $user->account->update(['amount' => 2000]);
+
         $task = factory(Task::class)->create();
 
-        $transaction = factory(Transaction::class)->create(['account_sender_id' => $user->account->id]);
+        $transaction = factory(Transaction::class)->create([
+            'account_sender_id' => $user->account->id,
+            'amount' => 10
+        ]);
         $transaction->task()->associate($task);
         $transaction->save();
 
