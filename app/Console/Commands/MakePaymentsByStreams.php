@@ -92,12 +92,15 @@ class MakePaymentsByStreams extends Command
                 //check all tasks voted then stream to payed
                 if(Task::where('stream_id', $stream->id)->whereNotIn('status', $statuses)->count()==0)
                 {
-                    $stream->update(['status' => StreamStatus::FinishedIsPayed]);
-
-                    dd($stream);
+                    try {
+                        DB::transaction(function () use ($stream)
+                        {
+                            $stream->update(['status' => StreamStatus::FinishedIsPayed]);
+                        });
+                    }catch (\Exception $e) {
+                        echo response($e->getMessage(), 422);
+                    }
                 }
-
-                dd(1);
             }
         }
 
