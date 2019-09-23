@@ -46,7 +46,11 @@ class CheckTaskInterval extends Command
             {
                 if(Carbon::parse($task->start_active)->addMinutes($task->interval_time)->lte($now))
                 {
-                    $task->update(['status' => TaskStatus::IntervalFinishedAllowVote]);
+                    $status = TaskStatus::IntervalFinishedAllowVote;
+                    if($task->amount_donations==0)
+                        $status = TaskStatus::PayFinished;
+
+                    $task->update(['status' => $status]);
                 }
             }
         }

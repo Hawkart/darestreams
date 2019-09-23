@@ -44,6 +44,7 @@ class StreamRequest extends FormRequest {
                             new ValidChannelOfAuthUser(),
                             new ValidChannelDontHaveActiveStreams()
                         ],
+                        'game_id'  => 'required|exists:games,id',
                         'title'  => 'required',
                         'link'     => 'required|url',
                         'start_at' => 'required|date|after:now',
@@ -67,6 +68,7 @@ class StreamRequest extends FormRequest {
             case 'PATCH':
                 {
                     return [
+                        'game_id'  => 'sometimes|exists:games,id',
                         'title'  => 'sometimes|required',
                         'link'     => 'sometimes|required|url',
                         'start_at' => 'sometimes|required|date|after:now',

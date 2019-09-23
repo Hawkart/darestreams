@@ -25,7 +25,8 @@ class Kernel extends ConsoleKernel
         Commands\ParseStreamers::class,
         Commands\TransferChannelLogoToUser::class,
         Commands\UpdateStreamTasksDesc::class,
-        Commands\DeleteUserAndData::class
+        Commands\DeleteUserAndData::class,
+        Commands\ClearNotUsedTasksInFinishedStreams::class
     ];
 
     /**
@@ -41,6 +42,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('streams:get_views')->everyFiveMinutes();
         $schedule->command('streams:pay_donations')->daily()->timezone('America/New_York')->at('02:00');
         $schedule->command('tasks:check_interval')->everyMinute();
+        $schedule->command('tasks:clear_not_used')->daily()->timezone('America/New_York')->at('03:00');
         $schedule->command('transactions:clear_dropped')->daily()->timezone('America/New_York')->at('02:00');
         $schedule->command('votes:finish')->everyMinute();
         $schedule->command('streamers:parse')->hourly();
