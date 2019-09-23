@@ -21,6 +21,8 @@ class TaskResource extends JsonResource
         $finish_at = (intval($this->interval_time)>0 && !empty($this->start_active)) ?
                         getW3cDatetime(Carbon::parse($this->start_active)->addMinutes($this->interval_time)) : null;
 
+        $completed_time = (!empty($this->start_active)) ? $this->updated_at->diffInMinutes($this->start_active) : null;
+
         $data = [
             'id' => $this->id,
             'stream_id' => $this->stream_id,
@@ -36,7 +38,7 @@ class TaskResource extends JsonResource
             'updated_at' => getW3cDatetime($this->updated_at),
             'start_active' => getW3cDatetime($this->start_active),  //Todo: !!
             'finish_at' => $finish_at,  //Todo: !!
-            'completed_time' => $this->updated_at->diffMinutes($this->start_active),        //Todo: !!
+            'completed_time' => $completed_time,
 
             'user' => new UserResource($this->whenLoaded('user')),
             'votes' => VoteResource::collection($this->whenLoaded('votes')),
