@@ -100,6 +100,7 @@ class TaskController extends Controller
         {
             $input['created_amount'] = 0;
             $input['status'] = TaskStatus::Active;
+            $input['start_active'] = Carbon::now('UTC');
         }
 
         try {
@@ -157,17 +158,31 @@ class TaskController extends Controller
         $status = $request->has('status') ? $request->get('status') : -1;
         $stream = $task->stream;
 
-        //only streamer can make task to work or allow to vote (task done) if stream active
-        if($stream->status==StreamStatus::Active && $user->ownerOfChannel($stream->channel_id) && $status>-1)
+        if($user->ownerOfChannel($stream->channel_id))
         {
-            if($task->status==TaskStatus::Created && $status==TaskStatus::Active)
+            if($stream->status==StreamStatus::Active )
             {
-                $task->update(['status' => $status]);
-            } else if($task->status==TaskStatus::Active && $status==TaskStatus::AllowVote) {
-                $task->update([
-                    'status' => $status,
-                    'start_active' => Carbon::now('UTC')
-                ]);
+                //active->allowVote || ->canceled
+                if($task->status==TaskStatus::Active && $status==TaskStatus::AllowVote || $status==TaskStatus::Canceled)
+                {
+                    $task->update(['status' => $status]);
+                }
+
+                //created -> active
+                if($task->status==TaskStatus::Created && $status==TaskStatus::Active)
+                {
+                    $task->update([
+                        'status' => $status,
+                        'start_active' => Carbon::now('UTC')
+                    ]);
+                }
+            }
+            else if($stream->status==StreamStatus::Created)
+            {
+                if($status==TaskStatus::Canceled)
+                {
+                    $task->update(['status' => $status]);
+                }
             }else{
                 return setErrorAfterValidation(['status' => trans('api/task.failed_change_to_another_status')]);
             }
@@ -249,11 +264,6 @@ class TaskController extends Controller
         } catch (\Exception $e) {
             return response($e->getMessage(), 422);
         }
-
-        /*$stream = $task->stream;
-        $stream->load(['user','channel','game','tasks', 'tasks.votes']);
-        StreamResource::withoutWrapping();
-        event(new SocketOnDonate(new StreamResource($stream)));*/
 
         return response()->json([
             'success' => true,

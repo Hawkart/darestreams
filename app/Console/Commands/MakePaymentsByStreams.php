@@ -48,6 +48,8 @@ class MakePaymentsByStreams extends Command
                     ->with(['tasks'])
                     ->get();
 
+        $statuses = [TaskStatus::PayFinished, TaskStatus::Canceled, TaskStatus::Created];
+
         if(count($streams)>0)
         {
             foreach($streams as $stream)
@@ -87,7 +89,7 @@ class MakePaymentsByStreams extends Command
                     }
 
                     //check all tasks voted then stream to payed
-                    if(Task::where('stream_id', $stream->id)->where('status', '<>', TaskStatus::VoteFinished)->count()==0)
+                    if(Task::where('stream_id', $stream->id)->whereNotIn('status', $statuses)->count()==0)
                         $stream->update(['status' => StreamStatus::FinishedIsPayed]);
                 }
             }

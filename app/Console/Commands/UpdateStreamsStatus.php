@@ -40,9 +40,15 @@ class UpdateStreamsStatus extends Command
         $now = Carbon::now('UTC');
 
         try {
-            DB::transaction(function () use ($now) {
-                Stream::where('status', StreamStatus::Created)->where('start_at', '<', $now)
-                        ->update(['status' => StreamStatus::Active]);
+            DB::transaction(function () use ($now)
+            {
+                $streams = Stream::where('status', StreamStatus::Created)->where('start_at', '<', $now);
+                $streams->update(['status' => StreamStatus::Active]);
+
+                foreach($streams->get() as $stream)
+                {
+                    $stream->socketInit();
+                }
             });
         } catch (\Exception $e) {
             echo response($e->getMessage(), 422);

@@ -34,8 +34,9 @@ class TaskResource extends JsonResource
             'amount_donations' => $this->amount_donations,
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),
-            'start_active' => getW3cDatetime($this->start_active),
-            'finish_at' => $finish_at,
+            'start_active' => getW3cDatetime($this->start_active),  //Todo: !!
+            'finish_at' => $finish_at,  //Todo: !!
+            'completed_time' => $this->updated_at->diffMinutes($this->start_active),        //Todo: !!
 
             'user' => new UserResource($this->whenLoaded('user')),
             'votes' => VoteResource::collection($this->whenLoaded('votes')),

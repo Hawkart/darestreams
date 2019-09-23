@@ -165,7 +165,14 @@ class StreamController extends Controller
                     if(count($tasks)>0)
                     {
                         foreach($tasks as $task)
-                            $task->update(['status' => $task_status]);
+                        {
+                            if($task->amount_donations==0)
+                            {
+                                $task->update(['status' => TaskStatus::PayFinished]);
+                            }else{
+                                $task->update(['status' => $task_status]);
+                            }
+                        }
                     }
 
                     return $stream;
