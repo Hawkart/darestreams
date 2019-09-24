@@ -46,10 +46,12 @@ class UserTest extends TestCase
         $this->getJson(url('/api/users/'.$user->id.'/account'), ['Authorization' => 'Bearer ' . $token])
             ->assertStatus(200)
             ->assertJson([
-                'id' => $account->id,
-                'user_id'  => $user->id,
-                'amount' => 0,
-                'currency' => 'USD'
+                'data' => [
+                    'id' => $account->id,
+                    'user_id'  => $user->id,
+                    'amount' => 0,
+                    'currency' => 'USD'
+                ]
             ]);
     }
 

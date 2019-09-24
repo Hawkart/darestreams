@@ -88,7 +88,7 @@ class TaskController extends Controller
         $user = auth()->user();
 
         $stream = Stream::findOrFail($request->get('stream_id'));
-        $channel_id = $stream->channel_id;
+        $isStreamer = $user->ownerOfChannel($stream->channel_id);
         $minDonate = $stream->getDonateCreateAmount();
 
         $input = $request->all();
@@ -96,7 +96,7 @@ class TaskController extends Controller
         $input['min_donation'] = $minDonate;
 
         //If is streamer
-        if($user->ownerOfChannel($channel_id))
+        if($isStreamer)
         {
             $input['created_amount'] = 0;
             $input['status'] = TaskStatus::Active;
@@ -104,13 +104,13 @@ class TaskController extends Controller
         }
 
         try {
-            $task = DB::transaction(function () use ($input, $user, $stream, $channel_id) {
+            $task = DB::transaction(function () use ($input, $user, $stream, $isStreamer) {
 
                 $task = new Task();
                 $task->fill($input);
                 $task->save();
 
-                if(!$user->ownerOfChannel($channel_id) && $input['created_amount']>0)
+                if(!$isStreamer && $input['created_amount']>0)
                 {
                     Transaction::create($data = [
                         'task_id' => $task->id,

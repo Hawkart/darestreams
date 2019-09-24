@@ -31,19 +31,14 @@ class ValidTaskCreatedEnoughMoneyAndMinAmount implements Rule
         $user = auth()->user();
         $stream = Stream::findOrFail($this->stream_id);
         $min_amount = $stream->getTaskCreateAmount();
-        $channel_id = $stream->channel_id;
-        $filled_amount = $value;
 
-        //If it's streamer
-        if($user->ownerOfChannel($channel_id))
-            $filled_amount = 0;
+        if(!$user->ownerOfChannel($stream->channel_id))
+        {
+            if($user->account->amount<$value)
+                abort(response()->json(['message' => trans('api/task.not_enough_money')], 402));
 
-        //If not owner of stream check how much money you have
-        if(!$user->ownerOfChannel($channel_id) && $user->account->amount<$min_amount)
-            abort(response()->json(['message' => trans('api/task.not_enough_money')], 402));
-
-        if($filled_amount<$min_amount && !$user->ownerOfChannel($channel_id))
-            return false;
+            if($value<$min_amount) return false;
+        }
 
         return true;
     }
