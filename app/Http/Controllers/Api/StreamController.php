@@ -181,7 +181,7 @@ class StreamController extends Controller
 
             if($stream->status==StreamStatus::Created)
             {
-                $allowed = ['link', 'start_at', 'title', 'tags',
+                $allowed = ['link', 'start_at', 'title', 'tags', 'game_id',
                     'allow_task_before_stream', 'allow_task_when_stream', 'min_amount_task_before_stream',
                     'min_amount_task_when_stream', 'min_amount_donate_task_before_stream', 'min_amount_donate_task_when_stream'
                 ];
