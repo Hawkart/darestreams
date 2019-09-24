@@ -26,10 +26,13 @@ class TransactionCreatedListener
         if($transaction->status==TransactionStatus::Completed)
         {
             //Update receiver's account amount
-            $account = $transaction->accountReceiver;
-            $account->update([
-                "amount" => $account->amount+$transaction->amount
-            ]);
+            if(intval($transaction->account_receiver_id)>0)
+            {
+                $account = $transaction->accountReceiver;
+                $account->update([
+                    "amount" => $account->amount + $transaction->amount
+                ]);
+            }
 
             //Update sender's account amount
             if(intval($transaction->account_sender_id)>0)

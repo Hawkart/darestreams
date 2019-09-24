@@ -33,6 +33,7 @@ class GameController extends Controller
      * @queryParam include string String of connections: streams,tags, channels. Example: tags,streams
      * @queryParam sort string Sort items by fields: title, popularity. For desc use '-' prefix. Example: -popularity
      * @queryParam page array Use as page[number]=1&page[size]=2.
+     * @queryParam filter array Can filter by title/
      *
      * @return \Illuminate\Http\Response
      */
@@ -40,6 +41,7 @@ class GameController extends Controller
     {
         $games = QueryBuilder::for(Game::class)
             ->defaultSort('-popularity')
+            ->allowedFilters(['title'])
             ->allowedSorts('title', 'popularity', 'id')
             ->allowedIncludes(['streams', 'tags', 'channels'])
             ->jsonPaginate();
