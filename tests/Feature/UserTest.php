@@ -5,20 +5,18 @@ namespace Tests\Feature;
 use App\Enums\TransactionStatus;
 use App\Enums\TransactionType;
 use App\Http\Resources\TransactionResource;
-use App\Models\Account;
 use App\Models\Channel;
 use App\Models\Game;
 use App\Models\Stream;
 use App\Models\Task;
 use App\Models\Transaction;
 use App\Models\User;
-use Carbon\Carbon;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Event;
 use App\Events\UserCreatedEvent;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class UserTest extends TestCase
 {
@@ -54,7 +52,7 @@ class UserTest extends TestCase
         $token = auth()->login($user);
         $this->assertDatabaseHas('accounts', ['user_id' => $user->id]);
 
-        $this->getJson(url('/api/users/'.$user->id.'/account'), ['Authorization' => 'Bearer ' . $token])
+        $this->getJson(url('/api/users/me/account'), ['Authorization' => 'Bearer ' . $token])
             ->assertStatus(200)
             ->assertJson([
                 'data' => [
@@ -272,6 +270,26 @@ class UserTest extends TestCase
         ]);
     }
 
+    /** @test */
+    public function test_avatar_upload()
+    {
+        $user = factory(User::class)->create(['email' => 'user@test.com']);
+        $token = auth()->login($user);
+
+        Storage::fake('avatars');
+
+        $file = UploadedFile::fake()->image('avatar.jpg');
+
+        $this->json('POST', '/api/users/me/avatar', ['avatar' => $file], ['Authorization' => "Bearer $token"])
+            ->assertStatus(200);
+
+        $user->refresh();
+
+        // Assert the file was stored...
+        //Todo: check storing image in folder
+        //Storage::disk('avatars')->assertExists(str_replace('avatars/', '', $user->avatar));
+    }
+
     /**
      * Login user and get header with token
      *
@@ -293,34 +311,33 @@ class UserTest extends TestCase
 
     /*
     Route::get('users/me', 'UserController@me'); - done
+    Route::get('users/me/account', 'UserController@account'); - done
+    Route::post('users/me/avatar', 'UserController@updateAvatar');
+    Route::post('users/me/overlay', 'UserController@updateOverlay');
+    //Route::patch('users/me/password', 'UserController@updatePassword');
     Route::get('users/me/get-donates-by-date', 'UserController@getDonateGroupDates'); - done
     Route::get('users/me/get-donates-by-date/{date}/{stream}', 'UserController@getDonateGroupDatesByDateStream'); - done
     Route::get('users/me/get-donates-by-date/{date}', 'UserController@getDonateGroupDatesByDate'); - done
-
-    Route::get('users/me/get-debit-withdraw-by-date', 'UserController@getDebitWithdrawGroupDates');
-    Route::get('users/me/get-debit-withdraw-by-date/{date}', 'UserController@getDebitWithdrawGroupDatesByDate');
-
+    Route::get('users/me/get-debit-withdraw-by-date', 'UserController@getDebitWithdrawGroupDates'); - done
+    Route::get('users/me/get-debit-withdraw-by-date/{date}', 'UserController@getDebitWithdrawGroupDatesByDate'); - done
     Route::get('users/top', 'UserController@top');
+    //Route::post('users/{user}/donate', 'UserController@donate');
 
     Route::apiResource('users', 'UserController')->only(['index', 'show', 'update']);
-    Route::get('users/{user}/account', 'UserController@account');
     Route::get('users/{user}/channel', 'UserController@channel');
-    Route::post('users/{user}/avatar', 'UserController@updateAvatar');
-    Route::post('users/{user}/overlay', 'UserController@updateOverlay');
-    Route::patch('users/{user}/password', 'UserController@updatePassword');
     Route::apiResource('users.oauthproviders', 'Users\OAuthProviderController')->only(['index', 'show']);
 
-        //Followers
+    //Followers
     Route::post('users/{user}/follow', 'UserController@follow');
     Route::patch('users/{user}/unfollow', 'UserController@unfollow');
     Route::get('users/{user}/followers', 'UserController@followers');
     Route::get('users/{user}/followings', 'UserController@followings');
 
-        //Notifications
-    Route::get('users/{user}/notifications/unread', 'Users\NotificationController@unread');
-    Route::patch('users/{user}/notifications/set-read-all', 'Users\NotificationController@setReadAll');
+    //Notifications
+    Route::get('users/me/notifications/unread', 'Users\NotificationController@unread');
+    Route::patch('users/me/notifications/set-read-all', 'Users\NotificationController@setReadAll');
+    Route::patch('users/me/notifications/{notification}/set-read', 'Users\NotificationController@setRead');
     Route::apiResource('users.notifications', 'Users\NotificationController');
-    Route::patch('users/{user}/notifications/{notification}/set-read', 'Users\NotificationController@setRead');
     */
 
 }

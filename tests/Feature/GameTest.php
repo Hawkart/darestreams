@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Http\Resources\GameResource;
 use App\Models\Game;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;

@@ -26,18 +26,12 @@ class NotificationController extends Controller
      * Get user's all notifications.
      * @authenticated
      *
-     * {user} - user id integer
-     *
      * @param Request $request
-     * @param User $user
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(Request $request, User $user)
+    public function index(Request $request)
     {
-        if(auth()->user()->id!=$user->id)
-            return response()->json(['error' => trans('api/users/notification.you_cannot_read_notification_of_this_user')], 403);
-
-        $query = $user->notifications()->getQuery();
+        $query = auth()->user()->notifications()->getQuery();
 
         $items = QueryBuilder::for($query)
             ->allowedIncludes([])
@@ -50,18 +44,12 @@ class NotificationController extends Controller
      * Get user's unread notifications.
      * @authenticated
      *
-     * {user} - user id integer
-     *
      * @param Request $request
-     * @param User $user
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function unread(Request $request, User $user)
+    public function unread(Request $request)
     {
-        if(auth()->user()->id!=$user->id)
-            return response()->json(['error' => trans('api/users/notification.you_cannot_read_notification_of_this_user')], 403);
-
-        $query = $user->unreadNotifications()->getQuery();
+        $query = auth()->user()->unreadNotifications()->getQuery();
 
         $items = QueryBuilder::for($query)
             ->allowedIncludes([])
@@ -74,18 +62,13 @@ class NotificationController extends Controller
      * Display user's notification.
      * @authenticated
      *
-     * {user} - user id integer
      * {notification} - notification id integer
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user, Notification $notification)
+    public function show(Notification $notification)
     {
-        if(auth()->user()->id!=$user->id)
-            return response()->json(['error' => trans('api/users/notification.you_cannot_read_notification_of_this_user')], 403);
-
-        if(!$user->notifications()->whereId($notification->id)->exist())
+        if(!auth()->user()->notifications()->whereId($notification->id)->exist())
             return response()->json(['error' => trans('api/users/notification.not_belong_to_user')], 403);
 
         $item = QueryBuilder::for(Notification::whereId($notification->id))
@@ -99,19 +82,14 @@ class NotificationController extends Controller
      * Set read one user's notification.
      * @authenticated
      *
-     * {user} - user id integer
      * {notification} - notification id integer
      *
-     * @param User $user
      * @param Notification $notification
      * @return \Illuminate\Http\JsonResponse
      */
-    public function setRead(User $user, Notification $notification)
+    public function setRead(Notification $notification)
     {
-        if(auth()->user()->id!=$user->id)
-            return response()->json(['error' => trans('api/users/notification.you_cannot_read_notification_of_this_user')], 403);
-
-        if(!$user->notifications()->where('id', $notification->id))
+        if(!auth()->user()->notifications()->where('id', $notification->id))
             return response()->json(['error' => trans('api/users/notification.not_belong_to_user')], 403);
 
         $notification->markAsRead();
@@ -123,18 +101,11 @@ class NotificationController extends Controller
      * Set read all user's notifications.
      * @authenticated
      *
-     * {user} - user id integer
-     * {notification} - notification id integer
-     *
-     * @param User $user
      * @return \Illuminate\Http\JsonResponse
      */
-    public function setReadAll(User $user)
+    public function setReadAll()
     {
-        if(auth()->user()->id!=$user->id)
-            return response()->json(['error' => trans('api/users/notification.you_cannot_read_notification_of_this_user')], 403);
-
-        $user->unreadNotifications->markAsRead();
+        auth()->user()->unreadNotifications->markAsRead();
         return response()->json([], 200);
     }
 }

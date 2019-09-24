@@ -25,7 +25,6 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::group(['namespace' => 'Api'], function () {
 
     Route::get('users/{user}/login', 'UserController@fakeLogin');
-
     Route::post('deploy', 'DeployController@deploy');
 
     Route::get('games/top', 'GameController@top');
@@ -34,22 +33,20 @@ Route::group(['namespace' => 'Api'], function () {
 
 
     Route::get('users/me', 'UserController@me');
+    Route::get('users/me/account', 'UserController@account');
+    Route::post('users/me/avatar', 'UserController@updateAvatar');
+    Route::post('users/me/overlay', 'UserController@updateOverlay');
+    //Route::patch('users/me/password', 'UserController@updatePassword');
     Route::get('users/me/get-donates-by-date', 'UserController@getDonateGroupDates');
     Route::get('users/me/get-donates-by-date/{date}/{stream}', 'UserController@getDonateGroupDatesByDateStream');
     Route::get('users/me/get-donates-by-date/{date}', 'UserController@getDonateGroupDatesByDate');
-
     Route::get('users/me/get-debit-withdraw-by-date', 'UserController@getDebitWithdrawGroupDates');
     Route::get('users/me/get-debit-withdraw-by-date/{date}', 'UserController@getDebitWithdrawGroupDatesByDate');
-
     Route::get('users/top', 'UserController@top');
     //Route::post('users/{user}/donate', 'UserController@donate');
 
     Route::apiResource('users', 'UserController')->only(['index', 'show', 'update']);
-    Route::get('users/{user}/account', 'UserController@account');
     Route::get('users/{user}/channel', 'UserController@channel');
-    Route::post('users/{user}/avatar', 'UserController@updateAvatar');
-    Route::post('users/{user}/overlay', 'UserController@updateOverlay');
-    Route::patch('users/{user}/password', 'UserController@updatePassword');
     Route::apiResource('users.oauthproviders', 'Users\OAuthProviderController')->only(['index', 'show']);
 
     //Followers
@@ -59,10 +56,10 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('users/{user}/followings', 'UserController@followings');
 
     //Notifications
-    Route::get('users/{user}/notifications/unread', 'Users\NotificationController@unread');
-    Route::patch('users/{user}/notifications/set-read-all', 'Users\NotificationController@setReadAll');
+    Route::get('users/me/notifications/unread', 'Users\NotificationController@unread');
+    Route::patch('users/me/notifications/set-read-all', 'Users\NotificationController@setReadAll');
+    Route::patch('users/me/notifications/{notification}/set-read', 'Users\NotificationController@setRead');
     Route::apiResource('users.notifications', 'Users\NotificationController');
-    Route::patch('users/{user}/notifications/{notification}/set-read', 'Users\NotificationController@setRead');
 
     Route::get('channels/top', 'ChannelController@top');
     Route::get('channels/{slug}/streams', 'ChannelController@streams');

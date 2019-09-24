@@ -10,6 +10,7 @@ use App\Http\Requests\UserRequest;
 use App\Http\Resources\AccountResource;
 use App\Http\Resources\ChannelResource;
 use App\Http\Resources\TransactionResource;
+use App\Models\Account;
 use App\Models\Transaction;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Http\Request;
@@ -104,14 +105,12 @@ class UserController extends Controller
      * @bodyParam middle_name string User's middle name.
      * @bodyParam email string required User's email. Example: example@example.ru
      *
-     * @param User $user
      * @param UserRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(UserRequest $request, User $user)
+    public function update(UserRequest $request)
     {
-        if ($user->id != auth()->user()->id)
-            return setErrorAfterValidation(['id' => trans('api/user.failed_user_not_current')]);
+        $user = auth()->user();
 
         $allowedFields = ['name', 'last_name', 'middle_name'];
         if ($user instanceof MustVerifyEmail && !$user->hasVerifiedEmail())
@@ -136,14 +135,13 @@ class UserController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function updateAvatar(User $user, Request $request)
+    public function updateAvatar(Request $request)
     {
         $request->validate([
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        if ($user->id != auth()->user()->id)
-            return setErrorAfterValidation(['id' => trans('api/user.failed_user_not_current')]);
+        $user = auth()->user();
 
         if($user->avatar)
         {
@@ -174,14 +172,13 @@ class UserController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function updateOverlay(User $user, Request $request)
+    public function updateOverlay(Request $request)
     {
-        if ($user->id != auth()->user()->id)
-            return response()->json(['error' => trans('api/user.failed_user_not_current')], 403);
-
         $request->validate([
             'overlay' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        $user = auth()->user();
 
         if($user->overlay)
         {
@@ -210,14 +207,12 @@ class UserController extends Controller
      *
      * @bodyParam password string required User's password. Example: jadfohasd092
      *
-     * @param User $user
      * @param UserPasswordUpdateRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function updatePassword(User $user, UserPasswordUpdateRequest $request)
+    public function updatePassword(UserPasswordUpdateRequest $request)
     {
-        if ($user->id != auth()->user()->id)
-            return setErrorAfterValidation(['id' => trans('api/user.failed_user_not_current')]);
+        $user = auth()->user();
 
         if($result = $user->update([
             'password' => bcrypt($request->get('password'))
@@ -321,21 +316,15 @@ class UserController extends Controller
 
     /**
      * User's account
-     * {user} - user id integer.
      *
      * @authenticated
      *
-     * @param User $user
      * @return AccountResource
      */
-    public function account(User $user)
+    public function account()
     {
-        if(auth()->user()->id!=$user->id)
-            return setErrorAfterValidation(['id' => trans('api/user.failed_user_not_current')]);
-
-        $query = $user->account()->getQuery();
-
-        $item = QueryBuilder::for($query)
+        $item = QueryBuilder::for(Account::class)
+            ->where('user_id', auth()->user()->id)
             ->allowedIncludes(['user', 'transactions'])
             ->firstOrFail();
 
