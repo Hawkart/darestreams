@@ -38,7 +38,7 @@ class UserController extends Controller
         $this->middleware('auth:api')
             ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account',
                 'donate', 'getDebitWithdrawGroupDates', 'getDebitWithdrawGroupDatesByDate',
-                'getDonateGroupDates', 'getDonateGroupDatesByDate', 'getDonateGroupDatesByDateStream']);
+                'getDonateGroupDates', 'getDonateGroupDatesByDate', 'getDonateGroupDatesByDateStream', 'isFollowing']);
     }
 
     /**
