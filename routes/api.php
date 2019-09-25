@@ -54,6 +54,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::patch('users/{user}/unfollow', 'UserController@unfollow');
     Route::get('users/{user}/followers', 'UserController@followers');
     Route::get('users/{user}/followings', 'UserController@followings');
+    Route::get('users/{user}/is-following', 'UserController@isFollowing');
 
     //Notifications
     Route::get('users/me/notifications/unread', 'Users\NotificationController@unread');

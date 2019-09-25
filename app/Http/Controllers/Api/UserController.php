@@ -257,6 +257,25 @@ class UserController extends Controller
     }
 
     /**
+     * Check user already follows
+     * {user} - user id you want follow for.
+     *
+     * @authenticated
+     *
+     * @param User $user
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function isFollowing(User $user)
+    {
+        if ($user->id == auth()->user()->id)
+            return setErrorAfterValidation(['id' => trans('api/user.failed_user_cannot_follow_to_yourself')]);
+
+        return response()->json([
+            'data' => auth()->user()->isFollowing($user)
+        ], 200);
+    }
+
+    /**
      * Unfollow the user.
      * {user} - user id you want unfollow.
      *
