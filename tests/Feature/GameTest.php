@@ -2,7 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Models\Channel;
 use App\Models\Game;
+use App\Models\Stream;
+use App\Models\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -49,14 +52,14 @@ class GameTest extends TestCase
     }
 
     /** @test */
-    /*public function view_top() {
+    public function view_top() {
 
-        $games = factory(Game::class, 5)->create();
+        $users = factory(User::class, 3)->create();
+        $games = factory(Game::class, 2)->create();
+        $channel = factory(Channel::class)->create();
+        $streams = factory(Stream::class, 2)->create(['channel_id' => $channel->id]);
 
         $this->getJson('/api/games/top')
-            ->assertStatus(200)
-            ->assertJsonFragment(
-                ['title' => $games[0]->title]
-            );
-    }*/
+            ->assertStatus(200);
+    }
 }
