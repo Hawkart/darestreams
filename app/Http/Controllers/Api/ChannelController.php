@@ -85,16 +85,16 @@ class ChannelController extends Controller
      */
     public function update(ChannelRequest $request, Channel $channel)
     {
-        $user = auth()->user();
-
-        if(!isset($user->channel) || $user->channel->id!=$channel->id)
+        if(!auth()->user()->ownerOfChannel($channel->id))
             return setErrorAfterValidation(['id' => trans('api/channel.failed_not_your_channel')]);
 
         $channel->fill($request->only(['description', 'logo', 'game_id']));
         $channel->save();
 
+        ChannelResource::withoutWrapping();
+
         return response()->json([
-            'success' => true,
+            'data' => new ChannelResource($channel),
             'message'=> trans('api/channel.success_updated')
         ], 200);
     }

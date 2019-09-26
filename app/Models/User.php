@@ -249,6 +249,6 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
      */
     public function ownerOfChannel($channel_id)
     {
-        return $channel_id==$this->channel->id;
+        return isset($this->channel) && $channel_id==$this->channel->id;
     }
 }

@@ -45,6 +45,10 @@ class ChannelRequest extends FormRequest {
             case 'PATCH':
                 {
                     return [
+                        'logo' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+                        'game_id'  => 'sometimes|required|exists:games,id',
+                        'link' => 'sometimes|required|url',
+                        'description' => 'sometimes|required|string|max:255',
                     ];
                 }
             default:break;
