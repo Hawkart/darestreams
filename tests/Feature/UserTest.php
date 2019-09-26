@@ -11,6 +11,7 @@ use App\Models\Stream;
 use App\Models\Task;
 use App\Models\Transaction;
 use App\Models\User;
+use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
@@ -290,6 +291,151 @@ class UserTest extends TestCase
         //Storage::disk('avatars')->assertExists(str_replace('avatars/', '', $user->avatar));
     }
 
+    /** @test */
+    public function get_top()
+    {
+        $users = factory(User::class, 5)->create();
+        $this->json('GET', '/api/users/top', [])
+            ->assertStatus(200);
+    }
+
+    /** @test */
+    public function a_update_sometimes_fields()
+    {
+        $user = factory(User::class)->create(['email_verified_at' => Carbon::now()]);
+        $token = auth()->login($user);
+
+        $fields = ['name', 'last_name', 'first_name'];
+
+        foreach($fields as $field)
+        {
+            $this->json('PUT', '/api/users/'.$user->id, [$field => ''], ['Authorization' => "Bearer $token"])
+                ->assertStatus(422)
+                ->assertJsonStructure([
+                    'errors' => [$field],
+                    'message'
+                ]);
+        }
+    }
+
+    /** @test */
+    public function a_update_when_email_not_verified()
+    {
+        $user = factory(User::class)->create(['email_verified_at' => null]);
+        $token = auth()->login($user);
+
+        $this->json('PUT', '/api/users/'.$user->id, ['email' => ''], ['Authorization' => "Bearer $token"])
+            ->assertStatus(422)
+            ->assertJsonStructure([
+                'errors' => ['email'],
+                'message'
+            ]);
+    }
+
+    /** @test */
+    public function test_update()
+    {
+        $user = factory(User::class)->create(['email_verified_at' => Carbon::now()]);
+        $token = auth()->login($user);
+
+        $this->json('PUT', '/api/users/'.$user->id, ['name' => 'Archibald'], ['Authorization' => "Bearer $token"])
+            ->assertStatus(200);
+
+        $this->assertDatabaseHas('users',['id'=> $user->id , 'name' => 'Archibald']);
+    }
+
+    /** @test */
+    public function test_show()
+    {
+        $user = factory(User::class)->create(['name' => 'James']);
+
+        $this->json('GET', '/api/users/'.$user->id)
+            ->assertStatus(200)
+            ->assertJsonFragment(
+                [
+                    'id' => $user->id,
+                    'name' => $user->name
+                ]
+            );
+    }
+
+    /** @test */
+    public function test_follow()
+    {
+        $userA = factory(User::class)->create(['name' => 'James']);
+        $token = auth()->login($userA);
+
+        $userB = factory(User::class)->create(['name' => 'John']);
+
+        $this->json('POST', '/api/users/'.$userB->id.'/follow', [], ['Authorization' => "Bearer $token"])
+            ->assertStatus(200)
+            ->assertJsonFragment(['success' => true]);
+
+        $this->json('GET', '/api/users/'.$userB->id.'/is-following', [], ['Authorization' => "Bearer $token"])
+            ->assertStatus(200)
+            ->assertJsonFragment(['data' => true]);
+
+        $this->assertTrue($userB->isFollowedBy($userA));
+    }
+
+    /** @test */
+    public function test_unfollow()
+    {
+        $userA = factory(User::class)->create(['name' => 'James']);
+        $token = auth()->login($userA);
+
+        $userB = factory(User::class)->create(['name' => 'John']);
+
+        $userB->followers()->attach($userA);
+
+        $this->json('PATCH', '/api/users/'.$userB->id.'/unfollow', [], ['Authorization' => "Bearer $token"])
+            ->assertStatus(200)
+            ->assertJsonFragment(['success' => true]);
+
+        $this->assertFalse($userB->isFollowedBy($userA));
+    }
+
+    /** @test */
+    public function test_unfollow_failed_not_follow()
+    {
+        $userA = factory(User::class)->create(['name' => 'James']);
+        $token = auth()->login($userA);
+
+        $userB = factory(User::class)->create(['name' => 'John']);
+
+        $this->json('PATCH', '/api/users/'.$userB->id.'/unfollow', [], ['Authorization' => "Bearer $token"])
+            ->assertStatus(422)
+            ->assertJsonStructure([
+                'errors' => ['id'],
+                'message'
+            ]);
+    }
+
+    /** @test */
+    public function test_followers()
+    {
+        $userA = factory(User::class)->create(['name' => 'James']);
+        $userB = factory(User::class)->create(['name' => 'John']);
+
+        $userB->followers()->attach($userA);
+        $token = auth()->login($userB);
+
+        $this->json('GET', '/api/users/'.$userA->id.'/followers', [], ['Authorization' => "Bearer $token"])
+            ->assertStatus(200);
+    }
+
+    /** @test */
+    public function test_followings()
+    {
+        $userA = factory(User::class)->create(['name' => 'James']);
+        $token = auth()->login($userA);
+        $userB = factory(User::class)->create(['name' => 'John']);
+        $userB->followers()->attach($userA);
+
+        $this->json('GET', '/api/users/'.$userB->id.'/followings', [], ['Authorization' => "Bearer $token"])
+            ->assertStatus(200);
+    }
+
     /**
      * Login user and get header with token
      *
@@ -310,34 +456,13 @@ class UserTest extends TestCase
     }
 
     /*
-    Route::get('users/me', 'UserController@me'); - done
-    Route::get('users/me/account', 'UserController@account'); - done
-    Route::post('users/me/avatar', 'UserController@updateAvatar');
+    Route::post('users/me/avatar', 'UserController@updateAvatar'); - not finished
     Route::post('users/me/overlay', 'UserController@updateOverlay');
+
     //Route::patch('users/me/password', 'UserController@updatePassword');
-    Route::get('users/me/get-donates-by-date', 'UserController@getDonateGroupDates'); - done
-    Route::get('users/me/get-donates-by-date/{date}/{stream}', 'UserController@getDonateGroupDatesByDateStream'); - done
-    Route::get('users/me/get-donates-by-date/{date}', 'UserController@getDonateGroupDatesByDate'); - done
-    Route::get('users/me/get-debit-withdraw-by-date', 'UserController@getDebitWithdrawGroupDates'); - done
-    Route::get('users/me/get-debit-withdraw-by-date/{date}', 'UserController@getDebitWithdrawGroupDatesByDate'); - done
-    Route::get('users/top', 'UserController@top');
-    //Route::post('users/{user}/donate', 'UserController@donate');
-
-    Route::apiResource('users', 'UserController')->only(['index', 'show', 'update']);
-    Route::get('users/{user}/channel', 'UserController@channel');
-    Route::apiResource('users.oauthproviders', 'Users\OAuthProviderController')->only(['index', 'show']);
-
-    //Followers
-    Route::post('users/{user}/follow', 'UserController@follow');
-    Route::patch('users/{user}/unfollow', 'UserController@unfollow');
-    Route::get('users/{user}/followers', 'UserController@followers');
-    Route::get('users/{user}/followings', 'UserController@followings');
-
-    //Notifications
-    Route::get('users/me/notifications/unread', 'Users\NotificationController@unread');
-    Route::patch('users/me/notifications/set-read-all', 'Users\NotificationController@setReadAll');
-    Route::patch('users/me/notifications/{notification}/set-read', 'Users\NotificationController@setRead');
-    Route::apiResource('users.notifications', 'Users\NotificationController');
+    //oauthproviders - not done
+    //Followers - done
+    //Notifications - not done
     */
 
 }

@@ -49,7 +49,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    /*public function index(Request $request)
     {
         $items = QueryBuilder::for(User::class)
             ->defaultSort('id')
@@ -58,7 +58,7 @@ class UserController extends Controller
             ->jsonPaginate();
 
         return UserResource::collection($items);
-    }
+    }*/
 
     /**
      * Get authorized user.
