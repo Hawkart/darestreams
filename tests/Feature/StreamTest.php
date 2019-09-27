@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Enums\StreamStatus;
+use App\Http\Resources\StreamResource;
 use App\Models\Channel;
 use App\Models\Game;
 use App\Models\Stream;
@@ -337,6 +338,45 @@ class StreamTest extends TestCase
             'id' => $stream->id,
             'status' => StreamStatus::FinishedWaitPay
         ]);
+    }
+
+    /** @test */
+    public function get_list_of_statuses()
+    {
+        $this->json('GET', '/api/streams/statuses')
+            ->assertStatus(200);
+    }
+
+    /** @test */
+    public function get_top()
+    {
+        $users = factory(User::class, 5)->create();
+        factory(Game::class, 5)->create();
+
+        foreach($users as $user)
+            factory(Channel::class)->create(['user_id' => $user->id]);
+
+        factory(Stream::class, 10)->create();
+
+        $this->json('GET', '/api/streams/top')
+            ->assertStatus(200);
+    }
+
+    /** @test */
+    public function show_it_by_id()
+    {
+        factory(User::class)->create();
+        factory(Game::class)->create();
+        $channel = factory(Channel::class)->create();
+        $stream = factory(Stream::class)->create(['status' => StreamStatus::Active, 'channel_id' => $channel->id]);
+
+        $stream->refresh();
+        $r = new StreamResource($stream);
+        $d = json_decode(json_encode($r->toResponse(app('request'))->getData()), true);
+
+        $this->json('get', '/api/streams/'.$stream->id)
+            ->assertStatus(200)
+            ->assertJsonFragment($d);
     }
 
     /**

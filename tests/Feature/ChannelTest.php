@@ -23,6 +23,7 @@ class ChannelTest extends TestCase
         factory(Game::class)->create();
         $channel = factory(Channel::class)->create(['slug' => "super"]);
 
+        $channel->refresh();
         $r = new ChannelResource($channel);
         $d = json_decode(json_encode($r->toResponse(app('request'))->getData()), true);
 
