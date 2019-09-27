@@ -188,6 +188,8 @@ class StreamController extends Controller
             }else if($stream->status==StreamStatus::Active){
                 $allowed = ['allow_task_before_stream', 'allow_task_when_stream', 'min_amount_task_before_stream',
                     'min_amount_task_when_stream', 'min_amount_donate_task_before_stream', 'min_amount_donate_task_when_stream'];
+            }else{
+                $allowed = [];
             }
 
             $stream->update($request->only($allowed));

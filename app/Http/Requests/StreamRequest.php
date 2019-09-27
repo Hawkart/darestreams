@@ -78,8 +78,16 @@ class StreamRequest extends FormRequest {
                             new EnumValue(StreamStatus::class),
                             new AllowsChangeStreamStatus($request->route('stream'))
                         ],
-                        'allow_task_before_stream' => 'sometimes|required_without:allow_task_when_stream|boolean',
-                        'allow_task_when_stream' => 'sometimes|required_without:allow_task_before_stream|boolean',
+                        'allow_task_before_stream' => [
+                            'sometimes',
+                            'required_unless:allow_task_when_stream,1',
+                            new ValidTaskCreateBeforeOrWhileStreamStart($this->all())
+                        ],
+                        'allow_task_when_stream'  => [
+                            'sometimes',
+                            'required_unless:allow_task_before_stream,1',
+                            new ValidTaskCreateBeforeOrWhileStreamStart($this->all())
+                        ],
                         'min_amount_task_before_stream' => 'sometimes|required_if:allow_task_before_stream,1|integer|min:0',
                         'min_amount_donate_task_before_stream' => 'sometimes|required_if:allow_task_before_stream,1|integer|min:0',
                         'min_amount_task_when_stream' => 'sometimes|required_if:allow_task_when_stream,1|integer|min:0',

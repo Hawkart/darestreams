@@ -229,6 +229,115 @@ class StreamTest extends TestCase
     }
 
 
+    /** @test */
+    public function update_when_sometimes_fields()
+    {
+        $user = factory(User::class)->create();
+        $token = auth()->login($user);
+
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $user->id]);
+
+        $stream = factory(Stream::class)->create(['status' => StreamStatus::Active, 'channel_id' => $channel->id]);
+        $fields = ['game_id', 'title', 'link', 'start_at'];
+
+        foreach($fields as $field)
+        {
+            $this->updateAssertFieldFailed('/api/streams/'.$stream->id, [$field => ''], $token, $field);
+        }
+    }
+
+    /** @test */
+    public function update_status_out_of_range_or_change_when_canceled_or_finished()
+    {
+        $user = factory(User::class)->create();
+        $token = auth()->login($user);
+
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $user->id]);
+
+        $stream = factory(Stream::class)->create(['status' => StreamStatus::Canceled, 'channel_id' => $channel->id]);
+
+        $statuses = [-1, 10, StreamStatus::Active];
+
+        foreach($statuses as $status)
+        {
+            $this->updateAssertFieldFailed('/api/streams/'.$stream->id, ['status' => $status], $token, 'status');
+        }
+    }
+
+    /** @test */
+    public function user_update_stream_when_created_successfully()
+    {
+        $user = factory(User::class)->create();
+        $token = auth()->login($user);
+
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $user->id]);
+
+        $stream = factory(Stream::class)->create(['status' => StreamStatus::Created, 'channel_id' => $channel->id]);
+
+        $data = [
+            'title' => "Updated stream",
+            'link' => "https://www.twitch.tv/darestreams_",
+            'start_at' => Carbon::now('UTC')->addMinutes(45),
+        ];
+
+        $this->json('PUT', '/api/streams/'.$stream->id, $data,  ['Authorization' => "Bearer $token"])
+            ->assertStatus(200);
+
+        $this->assertDatabaseHas('streams', [
+            'id' => $stream->id,
+            'title' => "Updated stream",
+        ]);
+    }
+
+    /** @test */
+    public function user_update_stream_when_active_successfully()
+    {
+        $user = factory(User::class)->create();
+        $token = auth()->login($user);
+
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $user->id]);
+
+        $stream = factory(Stream::class)->create(['status' => StreamStatus::Active, 'channel_id' => $channel->id]);
+
+        $data = [
+            'allow_task_before_stream' => 1,
+            'min_amount_task_before_stream' => 5,
+            'min_amount_donate_task_before_stream' => 5
+        ];
+
+        $this->json('PUT', '/api/streams/'.$stream->id, $data,  ['Authorization' => "Bearer $token"])
+            ->assertStatus(200);
+
+        $this->assertDatabaseHas('streams', [
+            'id' => $stream->id,
+            'min_amount_task_before_stream' => 5,
+            'min_amount_donate_task_before_stream' => 5
+        ]);
+    }
+
+    /** @test */
+    public function user_update_stream_status_successfully()
+    {
+        $user = factory(User::class)->create();
+        $token = auth()->login($user);
+
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $user->id]);
+
+        $stream = factory(Stream::class)->create(['status' => StreamStatus::Active, 'channel_id' => $channel->id]);
+
+        $this->json('PUT', '/api/streams/'.$stream->id, ['status' => StreamStatus::FinishedWaitPay],  ['Authorization' => "Bearer $token"])
+            ->assertStatus(200);
+
+        $this->assertDatabaseHas('streams', [
+            'id' => $stream->id,
+            'status' => StreamStatus::FinishedWaitPay
+        ]);
+    }
 
     /**
      * @param $data
@@ -239,6 +348,23 @@ class StreamTest extends TestCase
     public function storeAssertFieldFailed($data, $token, $fields, $status = 422)
     {
         $this->json('POST', '/api/streams', $data, ['Authorization' => "Bearer $token"])
+            ->assertStatus($status)
+            ->assertJsonStructure([
+                'errors' => [$fields],
+                'message'
+            ]);
+    }
+
+    /**
+     * @param $url
+     * @param $data
+     * @param $token
+     * @param $fields
+     * @param int $status
+     */
+    public function updateAssertFieldFailed($url, $data, $token, $fields, $status = 422)
+    {
+        $this->json('PUT', $url, $data, ['Authorization' => "Bearer $token"])
             ->assertStatus($status)
             ->assertJsonStructure([
                 'errors' => [$fields],
