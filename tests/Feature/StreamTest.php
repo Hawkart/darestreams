@@ -411,11 +411,4 @@ class StreamTest extends TestCase
                 'message'
             ]);
     }
-
-    /*
-     * Route::get('streams/top', 'StreamController@top');
-    Route::get('streams/statuses', 'StreamController@statuses');
-    Route::apiResource('streams', 'StreamController');
-    Route::get('streams/{stream}/thread', 'StreamController@thread');
-     */
 }

@@ -2,15 +2,287 @@
 
 namespace Tests\Feature;
 
+use App\Enums\StreamStatus;
+use App\Http\Resources\TaskResource;
+use App\Models\Channel;
+use App\Models\Game;
+use App\Models\Stream;
+use App\Models\Task;
+use App\Models\User;
+use Carbon\Carbon;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TaskTest extends TestCase
 {
+    use RefreshDatabase;
+
     /** @test */
-    public function example()
+    public function not_auth_user_cannot_create_it()
     {
-        $this->assertTrue(true);
+        factory(User::class)->create();
+        factory(Game::class)->create();
+        factory(Channel::class)->create();
+        $stream = factory(Stream::class)->create();
+        $task = factory(Task::class)->make();
+
+        $this->json('POST', '/api/tasks', $task->toArray())
+            ->assertStatus(401);
+    }
+
+    /** @test */
+    public function auth_user_create_it_but_stream_dont_exist()
+    {
+        $user = factory(User::class)->create();
+        $user->account->update(['amount' => 500]);
+        $token = auth()->login($user);
+
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create();
+
+        $stream = factory(Stream::class)->create([
+            'channel_id' => $channel->id,
+            'game_id' => $game->id,
+            'title' => "First stream",
+            'link' => "https://www.twitch.tv/darestreams_",
+            'start_at' => Carbon::now('UTC')->addMinutes(15),
+            'allow_task_before_stream' => 1,
+            'min_amount_task_before_stream' => 5,
+            'min_amount_donate_task_before_stream' => 5
+        ]);
+
+        $data = factory(Task::class)->make([
+            'stream_id' => 200
+        ])->toArray();
+
+        $this->storeAssertFieldFailed($data, $token, 'stream_id');
+
+        unset($data['stream_id']);
+        $this->storeAssertFieldFailed($data, $token, 'stream_id');
+    }
+
+    /** @test */
+    public function auth_user_create_it_but_stream_statuses_failed()
+    {
+        $user = factory(User::class)->create();
+        $user->account->update(['amount' => 500]);
+        $token = auth()->login($user);
+
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create();
+
+        //check stream already finished
+        $finishedStatuses = [StreamStatus::FinishedWaitPay, StreamStatus::FinishedIsPayed];
+        foreach($finishedStatuses as $status)
+        {
+            $stream = factory(Stream::class)->create(['status' => $status]);
+            $data = factory(Task::class)->make(['stream_id' => $stream->id])->toArray();
+            $this->storeAssertFieldFailed($data, $token, 'created_amount');
+        }
+
+        //check can create before or while stream
+        $stream = factory(Stream::class)->create(['status' => StreamStatus::Created, 'allow_task_before_stream' => 0]);
+        $data = factory(Task::class)->make(['stream_id' => $stream->id])->toArray();
+        $this->storeAssertFieldFailed($data, $token, 'created_amount');
+
+        $stream = factory(Stream::class)->create(['status' => StreamStatus::Active, 'allow_task_when_stream' => 0]);
+        $data = factory(Task::class)->make(['stream_id' => $stream->id])->toArray();
+        $this->storeAssertFieldFailed($data, $token, 'created_amount');
+    }
+
+    /** @test */
+    public function auth_user_not_owner_create_it_but_create_amount_wrong()
+    {
+        $owner = factory(User::class)->create();
+        $user = factory(User::class)->create();
+        $user->account->update(['amount' => 10]);
+        $token = auth()->login($user);
+
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $owner->id]);
+
+        $stream = factory(Stream::class)->create([
+            'channel_id' => $channel->id,
+            'status' => StreamStatus::Created,
+            'allow_task_before_stream' => 1,
+            'min_amount_task_before_stream' => 20
+        ]);
+
+        //check created_amount integer >=0 and required
+        $data = factory(Task::class)->make(['stream_id' => $stream->id, 'created_amount' => -1])->toArray();
+        $this->storeAssertFieldFailed($data, $token, 'created_amount');
+
+        unset($data['created_amount']);
+        $this->storeAssertFieldFailed($data, $token, 'created_amount');
+
+        //check created_amount for task more than min amount in stream
+        $data = factory(Task::class)->make(['stream_id' => $stream->id, 'created_amount' => 10])->toArray();
+        $this->storeAssertFieldFailed($data, $token, 'created_amount');
+
+        //check user don't have enough money
+        $data = factory(Task::class)->make(['stream_id' => $stream->id, 'created_amount' => 20])->toArray();
+        $this->storeAssertFieldFailed($data, $token, 'created_amount', 402, false);
+    }
+
+    /** @test */
+    public function auth_user_create_but_requires_fields_not_filled()
+    {
+        $owner = factory(User::class)->create();
+        $user = factory(User::class)->create();
+        $user->account->update(['amount' => 50]);
+        $token = auth()->login($user);
+
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $owner->id]);
+
+        $stream = factory(Stream::class)->create([
+            'channel_id' => $channel->id,
+            'status' => StreamStatus::Created,
+            'allow_task_before_stream' => 1,
+            'min_amount_task_before_stream' => 10
+        ]);
+
+        $fields = ['small_desc', 'full_desc'];
+
+        foreach($fields as $field)
+        {
+            $data = factory(Task::class)->make(['stream_id' => $stream->id, 'created_amount' => 10])->toArray();
+
+            $data[$field] = '';
+            $this->storeAssertFieldFailed($data, $token, $field);
+
+            unset($data[$field]);
+            $this->storeAssertFieldFailed($data, $token, $field);
+        }
+    }
+
+    /** @test */
+    public function auth_user_create_successfully()
+    {
+        $owner = factory(User::class)->create();
+        $user = factory(User::class)->create();
+        $user->account->update(['amount' => 50]);
+        $token = auth()->login($user);
+
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $owner->id]);
+
+        $stream = factory(Stream::class)->create([
+            'channel_id' => $channel->id,
+            'status' => StreamStatus::Created,
+            'allow_task_before_stream' => 1,
+            'min_amount_task_before_stream' => 10
+        ]);
+
+        $data = factory(Task::class)->make([
+            'stream_id' => $stream->id,
+            'created_amount' => 10,
+            'small_desc' => 'First task'
+        ])->toArray();
+
+        $this->json('POST', '/api/tasks', $data, ['Authorization' => "Bearer $token"])
+            ->assertStatus(200);
+
+        $this->assertDatabaseHas('tasks', [
+            'stream_id' => $stream->id,
+            'created_amount' => 10,
+            'small_desc' => 'First task'
+        ]);
+
+        $task = Task::where('stream_id', $stream->id)->first();
+
+        $this->assertDatabaseHas('transactions', [
+            'task_id' => $task->id,
+            'amount' => 10,
+            'account_sender_id' => $user->account->id,
+            'account_receiver_id' => $owner->account->id,
+        ]);
+    }
+
+    /** @test */
+    public function show_list_of_this()
+    {
+        $user = factory(User::class)->create();
+        $user->account->update(['amount' => 5000]);
+
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $user->id]);
+
+        $stream = factory(Stream::class)->create([
+            'channel_id' => $channel->id,
+            'status' => StreamStatus::Created,
+            'allow_task_before_stream' => 1,
+            'min_amount_task_before_stream' => 10
+        ]);
+
+        $tasks = factory(Task::class, 5)->create([
+            'stream_id' => $stream->id,
+            'created_amount' => 10
+        ]);
+
+        $this->assertDatabaseHas('tasks', [
+            'stream_id' => $stream->id,
+        ]);
+
+        $this->json('GET', '/api/tasks?stream_id='.$stream->id, [], [])
+            ->assertStatus(200);
+            //->assertJsonCount(5, 'data');
+    }
+
+    /** @test */
+    public function show_detail()
+    {
+        $user = factory(User::class)->create();
+        $user->account->update(['amount' => 5000]);
+
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $user->id]);
+
+        $stream = factory(Stream::class)->create([
+            'channel_id' => $channel->id,
+            'status' => StreamStatus::Created,
+            'allow_task_before_stream' => 1,
+            'min_amount_task_before_stream' => 10
+        ]);
+
+        $task = factory(Task::class)->create([
+            'stream_id' => $stream->id,
+            'created_amount' => 10
+        ]);
+
+        $task->refresh();
+        $r = new TaskResource($task);
+        $d = json_decode(json_encode($r->toResponse(app('request'))->getData()), true);
+        unset($d['stream']);
+
+        $this->json('get', '/api/tasks/'.$task->id)
+            ->assertStatus(200)
+            ->assertJsonFragment($d);
+    }
+
+    /*
+    Route::post('tasks/{task}/donate', 'TaskController@donate');
+    Route::patch('tasks/{task}/set-vote', 'TaskController@setVote');
+    Route::get('tasks/statuses', 'TaskController@statuses');
+    Route::apiResource('tasks', 'TaskController');
+     */
+
+    /**
+     * @param $data
+     * @param $token
+     * @param $fields
+     * @param int $status
+     * @param bool $json_structure
+     */
+    public function storeAssertFieldFailed($data, $token, $fields, $status = 422, $json_structure = true)
+    {
+        $response = $this->json('POST', '/api/tasks', $data, ['Authorization' => "Bearer $token"])
+            ->assertStatus($status);
+
+        if($json_structure)
+            $response->assertJsonStructure([
+                'errors' => [$fields],
+                'message'
+            ]);
     }
 }
