@@ -4,12 +4,17 @@ namespace Tests\Feature;
 
 use App\Enums\StreamStatus;
 use App\Enums\TaskStatus;
+use App\Enums\TransactionStatus;
+use App\Enums\TransactionType;
+use App\Enums\VoteStatus;
 use App\Http\Resources\TaskResource;
 use App\Models\Channel;
 use App\Models\Game;
 use App\Models\Stream;
 use App\Models\Task;
+use App\Models\Transaction;
 use App\Models\User;
+use App\Models\Vote;
 use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -371,6 +376,128 @@ class TaskTest extends TestCase
             'id' => $task->id,
             'status' => TaskStatus::Active
         ]);
+    }
+
+    /** @test */
+    public function not_auth_user_try_to_vote()
+    {
+        $user = factory(User::class)->create();
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create();
+        $stream = factory(Stream::class)->create();
+        $task = factory(Task::class)->create();
+
+        $this->json('PATCH', '/api/tasks/'.$task->id."/set-vote", [])
+            ->assertStatus(401);
+    }
+
+    /** @test */
+    public function auth_user_try_to_vote_but_didnt_donate_should_failed()
+    {
+        $userA = factory(User::class)->create();
+        $userB = factory(User::class)->create();
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $userA->id]);
+        $stream = factory(Stream::class)->create(['channel_id' => $channel->id]);
+        $task = factory(Task::class)->create(['user_id' => $userA->id]);
+
+        $token = auth()->login($userB);
+
+        $this->json('PATCH', '/api/tasks/'.$task->id."/set-vote", [], ['Authorization' => "Bearer $token"])
+            ->assertStatus(422)
+            ->assertJsonStructure([
+                'errors' => ['status'],
+                'message'
+            ]);
+    }
+
+    /** @test */
+    public function auth_user_try_to_vote_but_already_did()
+    {
+        $userA = factory(User::class)->create();
+        $userB = factory(User::class)->create();
+        $userB->account->update(['amount' => 1000]);
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $userA->id]);
+        $stream = factory(Stream::class)->create(['channel_id' => $channel->id]);
+        $task = factory(Task::class)->create(['user_id' => $userA->id]);
+
+        $transaction = Transaction::create([
+            'task_id' => $task->id,
+            'amount' => 10,
+            'account_sender_id' => $userB->account->id,
+            'account_receiver_id' => $userA->account->id,
+            'status' => TransactionStatus::Holding,
+            'type' => TransactionType::Donation
+        ]);
+
+        $token = auth()->login($userB);
+
+        $vote = Vote::where('task_id', $task->id)->where('user_id', $userB->id)->first();
+        $vote->update(['vote' => VoteStatus::Yes]);
+
+        $this->json('PATCH', '/api/tasks/'.$task->id."/set-vote", ['vote' => VoteStatus::No], ['Authorization' => "Bearer $token"])
+            ->assertStatus(422)
+            ->assertJsonStructure([
+                'errors' => ['status'],
+                'message'
+            ]);
+    }
+
+    /** @test */
+    public function auth_user_try_to_vote_but_wrong_task_status()
+    {
+        $userA = factory(User::class)->create();
+        $userB = factory(User::class)->create();
+        $userB->account->update(['amount' => 1000]);
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $userA->id]);
+        $stream = factory(Stream::class)->create(['channel_id' => $channel->id]);
+        $task = factory(Task::class)->create(['user_id' => $userA->id, 'status' => TaskStatus::Active]);
+
+        $transaction = Transaction::create([
+            'task_id' => $task->id,
+            'amount' => 10,
+            'account_sender_id' => $userB->account->id,
+            'account_receiver_id' => $userA->account->id,
+            'status' => TransactionStatus::Holding,
+            'type' => TransactionType::Donation
+        ]);
+
+        $token = auth()->login($userB);
+
+        $this->json('PATCH', '/api/tasks/'.$task->id."/set-vote", ['vote' => VoteStatus::No], ['Authorization' => "Bearer $token"])
+            ->assertStatus(422)
+            ->assertJsonStructure([
+                'errors' => ['status'],
+                'message'
+            ]);
+    }
+
+    /** @test */
+    public function auth_user_votes_successfully()
+    {
+        $userA = factory(User::class)->create();
+        $userB = factory(User::class)->create();
+        $userB->account->update(['amount' => 1000]);
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $userA->id]);
+        $stream = factory(Stream::class)->create(['channel_id' => $channel->id]);
+        $task = factory(Task::class)->create(['user_id' => $userA->id, 'status' => TaskStatus::AllowVote]);
+
+        Transaction::create([
+            'task_id' => $task->id,
+            'amount' => 10,
+            'account_sender_id' => $userB->account->id,
+            'account_receiver_id' => $userA->account->id,
+            'status' => TransactionStatus::Holding,
+            'type' => TransactionType::Donation
+        ]);
+
+        $token = auth()->login($userB);
+
+        $this->json('PATCH', '/api/tasks/'.$task->id."/set-vote", ['vote' => VoteStatus::No], ['Authorization' => "Bearer $token"])
+            ->assertStatus(200);
     }
 
     /*
