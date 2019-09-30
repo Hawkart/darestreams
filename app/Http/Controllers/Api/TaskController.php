@@ -168,6 +168,12 @@ class TaskController extends Controller
                     $task->update(['status' => $status]);
                 }
 
+                //Owner of task
+                if($task->status==TaskStatus::Created && $task->user_id==$user->id  && ($status==-1 || $task->status==$status))
+                {
+                    $task->update($request->only(['small_text', 'interval_time', 'full_text', 'is_superbowl']));
+                }
+
                 //created -> active
                 if($task->status==TaskStatus::Created && $status==TaskStatus::Active)
                 {
@@ -183,6 +189,13 @@ class TaskController extends Controller
                 {
                     $task->update(['status' => $status]);
                 }
+
+                //Owner of task
+                if($task->status==TaskStatus::Created && $task->user_id==$user->id && ($status==-1 || $task->status==$status))
+                {
+                    $task->update($request->only(['small_text', 'interval_time', 'full_text', 'is_superbowl']));
+                }
+
             }else{
                 return setErrorAfterValidation(['status' => trans('api/task.failed_change_to_another_status')]);
             }
