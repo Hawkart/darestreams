@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ValidAmountDonation;
+use App\Rules\ValidTaskStatusForDonation;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -34,7 +36,13 @@ class TaskTransactionRequest extends FormRequest {
             case 'POST':
                 {
                     return [
-                        'amount' => "required|integer|min:1"
+                        'amount' => [
+                            'required',
+                            'integer',
+                            'min:1',
+                            new ValidAmountDonation($request->route('task')),
+                            new ValidTaskStatusForDonation($request->route('task'))
+                        ]
                     ];
                 }
             case 'PUT':

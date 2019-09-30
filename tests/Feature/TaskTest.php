@@ -406,7 +406,7 @@ class TaskTest extends TestCase
         $this->json('PATCH', '/api/tasks/'.$task->id."/set-vote", [], ['Authorization' => "Bearer $token"])
             ->assertStatus(422)
             ->assertJsonStructure([
-                'errors' => ['status'],
+                'errors' => ['vote'],
                 'message'
             ]);
     }
@@ -439,7 +439,7 @@ class TaskTest extends TestCase
         $this->json('PATCH', '/api/tasks/'.$task->id."/set-vote", ['vote' => VoteStatus::No], ['Authorization' => "Bearer $token"])
             ->assertStatus(422)
             ->assertJsonStructure([
-                'errors' => ['status'],
+                'errors' => ['vote'],
                 'message'
             ]);
     }
@@ -469,7 +469,7 @@ class TaskTest extends TestCase
         $this->json('PATCH', '/api/tasks/'.$task->id."/set-vote", ['vote' => VoteStatus::No], ['Authorization' => "Bearer $token"])
             ->assertStatus(422)
             ->assertJsonStructure([
-                'errors' => ['status'],
+                'errors' => ['vote'],
                 'message'
             ]);
     }
@@ -499,13 +499,6 @@ class TaskTest extends TestCase
         $this->json('PATCH', '/api/tasks/'.$task->id."/set-vote", ['vote' => VoteStatus::No], ['Authorization' => "Bearer $token"])
             ->assertStatus(200);
     }
-
-    /*
-    Route::post('tasks/{task}/donate', 'TaskController@donate');
-    Route::patch('tasks/{task}/set-vote', 'TaskController@setVote');
-    Route::get('tasks/statuses', 'TaskController@statuses');
-    Route::apiResource('tasks', 'TaskController');
-     */
 
     /**
      * @param $data

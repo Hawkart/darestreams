@@ -8,6 +8,7 @@ use App\Enums\TransactionType;
 use App\Enums\VoteStatus;
 use App\Events\SocketOnDonate;
 use App\Http\Requests\TaskTransactionRequest;
+use App\Http\Requests\TaskVoteRequest;
 use App\Http\Resources\StreamResource;
 use App\Models\Stream;
 use App\Models\Transaction;
@@ -227,25 +228,13 @@ class TaskController extends Controller
      * @bodyParam vote int Vote parameter, 1-Yes, 2-No, 0 - Pending.
      *
      * @param Task $task
-     * @param Request $request
+     * @param TaskVoteRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function setVote(Task $task, Request $request)
+    public function setVote(Task $task, TaskVoteRequest $request)
     {
         $user = auth()->user();
-
-        if($task->status!=TaskStatus::AllowVote && $task->status!=TaskStatus::IntervalFinishedAllowVote)
-            return setErrorAfterValidation(['status' => trans('api/task.vote_finished')]);
-
-        $votes = $task->votes()->where('user_id', $user->id);
-
-        if($votes->count()==0)
-            return setErrorAfterValidation(['status' => trans('api/task.cannot_vote')]);
-
-        $vote = $votes->first();
-
-        if($vote->vote!=VoteStatus::Pending)
-            return setErrorAfterValidation(['status' => trans('api/task.already_vote')]);
+        $vote = $task->votes()->where('user_id', $user->id)->first();
 
         try {
             DB::transaction(function () use ($vote, $request, $task, $user) {
@@ -294,48 +283,30 @@ class TaskController extends Controller
      */
     public function donate(Task $task, TaskTransactionRequest $request)
     {
-        $user = auth()->user();
-        $amount = $request->get('amount');
+        $data = [
+            'task_id' => $task->id,
+            'amount' => $request->get('amount'),
+            'account_sender_id' => auth()->user()->account->id,
+            'account_receiver_id' => $task->stream->user->account->id,
+            'status' => TransactionStatus::Holding,
+            'type' => TransactionType::Donation
+        ];
 
-        if($task->status!=TaskStatus::Active && !($user->id==$task->user_id && $task->status==TaskStatus::Created))
-            return setErrorAfterValidation(['status' => trans('api/task.failed_not_active')]);
-
-        if($amount<$task->min_donation)
-            return setErrorAfterValidation(['min_donation' => trans('api/task.not_enough_money')]);
-
-        //enough money
-        if($amount <= $user->account->amount)
-        {
-            $data = [
-                'task_id' => $task->id,
-                'amount' => $request->get('amount'),
-                'account_sender_id' => $user->account->id,
-                'account_receiver_id' => $task->stream->user->account->id,
-                'status' => TransactionStatus::Holding,
-                'type' => TransactionType::Donation
-            ];
-
-            try {
-                $transaction = DB::transaction(function () use ($data) {
-                    return Transaction::create($data);
-                });
-            } catch (\Exception $e) {
-                return response($e->getMessage(), 422);
-            }
-
-            TaskResource::withoutWrapping();
-
-            return response()->json([
-                'data' => new TaskResource($transaction->task),
-                'success' => true,
-                'message'=> trans('api/task.donate_success_created')
-            ], 200);
-
-        }else{
-            abort(
-                response()->json(['message' => trans('api/transaction.not_enough_money')], 402)
-            );
+        try {
+            $transaction = DB::transaction(function () use ($data) {
+                return Transaction::create($data);
+            });
+        } catch (\Exception $e) {
+            return response($e->getMessage(), 422);
         }
+
+        TaskResource::withoutWrapping();
+
+        return response()->json([
+            'data' => new TaskResource($transaction->task),
+            'success' => true,
+            'message'=> trans('api/task.donate_success_created')
+        ], 200);
     }
 
     /**
