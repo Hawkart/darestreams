@@ -6,8 +6,6 @@ use App\Rules\ValidAmountDonation;
 use App\Rules\ValidTaskStatusForDonation;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Auth;
 
 class TaskTransactionRequest extends FormRequest {
     /**
@@ -26,34 +24,17 @@ class TaskTransactionRequest extends FormRequest {
      */
     public function rules(Request $request)
     {
-        switch($this->method())
-        {
-            case 'GET':
-            case 'DELETE':
-                {
-                    return [];
-                }
-            case 'POST':
-                {
-                    return [
-                        'amount' => [
-                            'required',
-                            'integer',
-                            'min:1',
-                            new ValidAmountDonation($request->route('task')),
-                            new ValidTaskStatusForDonation($request->route('task'))
-                        ]
-                    ];
-                }
-            case 'PUT':
-            case 'PATCH':
-                {
-                    return [
+        $task = $request->route('task');
 
-                    ];
-                }
-            default:break;
-        }
+        return [
+            'amount' => [
+                'required',
+                'integer',
+                'min:1',
+                new ValidAmountDonation($task),
+                new ValidTaskStatusForDonation($task)
+            ]
+        ];
     }
 
 

@@ -500,6 +500,85 @@ class TaskTest extends TestCase
             ->assertStatus(200);
     }
 
+    /** @test */
+    public function not_auth_user_try_donate()
+    {
+        $userA = factory(User::class)->create();
+        factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $userA->id]);
+        factory(Stream::class)->create(['channel_id' => $channel->id]);
+        $task = factory(Task::class)->create(['user_id' => $userA->id, 'status' => TaskStatus::AllowVote]);
+
+        $this->json('POST', '/api/tasks/'.$task->id."/donate", [])
+            ->assertStatus(401);
+    }
+
+    /** @test */
+    public function auth_user_try_donate_on_his_task_but_status_wrong()
+    {
+        $userA = factory(User::class)->create();
+        $userA->account->update(['amount' => 500]);
+        factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $userA->id]);
+        factory(Stream::class)->create(['channel_id' => $channel->id]);
+        $task = factory(Task::class)->create(['user_id' => $userA->id, 'status' => TaskStatus::AllowVote]);
+
+        $token = auth()->login($userA);
+
+        $this->json('POST', '/api/tasks/'.$task->id."/donate", ['amount' => 10], ['Authorization' => "Bearer $token"])
+            ->assertStatus(422)
+            ->assertJsonStructure([
+                'errors' => ['amount'],
+                'message'
+            ]);
+    }
+
+    /** @test */
+    public function auth_user_try_donate_on_his_task_but_not_enough_money()
+    {
+        $userA = factory(User::class)->create();
+        $userA->account->update(['amount' => 10]);
+        factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $userA->id]);
+        factory(Stream::class)->create(['channel_id' => $channel->id, 'status' => StreamStatus::Active]);
+        $task = factory(Task::class)->create(['user_id' => $userA->id, 'status' => TaskStatus::Created, 'min_donation' => 30]);
+
+        $token = auth()->login($userA);
+
+        $this->json('POST', '/api/tasks/'.$task->id."/donate", ['amount' => 50], ['Authorization' => "Bearer $token"])
+            ->assertStatus(402);
+    }
+
+    /** @test */
+    public function auth_user_try_donate_successfully()
+    {
+        $userA = factory(User::class)->create();
+        $userB = factory(User::class)->create();
+        $userB->account->update(['amount' => 1000]);
+        factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $userA->id]);
+        factory(Stream::class)->create(['channel_id' => $channel->id]);
+        $task = factory(Task::class)->create([
+            'user_id' => $userA->id,
+            'status' => TaskStatus::Active,
+            'min_donation' => 30
+        ]);
+
+        $token = auth()->login($userB);
+
+        $this->json('POST', '/api/tasks/'.$task->id."/donate", ['amount' => 50], ['Authorization' => "Bearer $token"])
+            ->assertStatus(200);
+
+        $this->assertDatabaseHas('transactions', [
+            'task_id' => $task->id,
+            'amount' => 50,
+            'account_sender_id' => $userB->account->id,
+            'account_receiver_id' => $userA->account->id,
+            'status' => TransactionStatus::Holding,
+            'type' => TransactionType::Donation
+        ]);
+    }
+
     /**
      * @param $data
      * @param $token

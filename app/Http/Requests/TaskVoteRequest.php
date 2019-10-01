@@ -27,12 +27,14 @@ class TaskVoteRequest extends FormRequest {
      */
     public function rules(Request $request)
     {
+        $task = $request->route('task');
+
         return [
             'vote' => [
                 'required',
                 new EnumValue(VoteStatus::class),
-                new ValidTaskStatusForVote($request->route('task')),
-                new ValidCanVote($request->route('task')),
+                new ValidTaskStatusForVote($task),
+                new ValidCanVote($task),
             ]
         ];
     }
