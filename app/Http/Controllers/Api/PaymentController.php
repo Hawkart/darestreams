@@ -124,6 +124,8 @@ class PaymentController extends Controller
 
         $response = $transaction->send();
 
+        print_r($response);
+
         if ($response->isRedirect())
         {
             $data = $response->getData();

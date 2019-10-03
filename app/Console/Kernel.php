@@ -26,7 +26,8 @@ class Kernel extends ConsoleKernel
         Commands\TransferChannelLogoToUser::class,
         Commands\UpdateStreamTasksDesc::class,
         Commands\DeleteUserAndData::class,
-        Commands\ClearNotUsedTasksInFinishedStreams::class
+        Commands\ClearNotUsedTasksInFinishedStreams::class,
+        Commands\GetChannelVideosOnTwitch::class
     ];
 
     /**

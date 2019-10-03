@@ -152,10 +152,8 @@ class ChannelController extends Controller
                         ->where('st.start_at', '<', DB::raw('NOW()'))
                         ->whereNull('st.ended_at');
                 })
-                //->where('t.game_id', $request->get('game_id'))
                 ->whereNotNull('t.id')
                 ->get();
-            //->toSql();
 
             $data = $list->pluck('donates', 'id')->toArray();
             $ids = $list->pluck('id')->toArray();

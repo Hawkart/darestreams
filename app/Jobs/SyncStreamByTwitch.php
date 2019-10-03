@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Acme\Helpers\TwitchHelper;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -28,29 +29,16 @@ class SyncStreamByTwitch implements ShouldQueue
      */
     public function handle()
     {
-        $twitchClient = new \TwitchApi\TwitchApi([
-            'client_id' => config('app.twitch_api_cid')
-        ]);
+        $twitch = new TwitchHelper();
+        $data = $twitch->getChannelVideos($this->stream->channel->exid, 1, 0, 'archive');
 
-        $twitchClient->setApiVersion(3);
+        if(!empty($data) && isset($data['videos']) && count($data['_total'])>0)
+        {
+            $video = $data['videos'][0];
 
-        try {
-            $data = $twitchClient->getChannelVideos($this->stream->channel->user->nickanem, 1, 0, 'archives');    //$this->stream->channel->exid
-
-            if(isset($data['videos']) && count($data['_total'])>0)
-            {
-                $video = $data['videos'][0];
-                $this->stream->update([
-                   'views' => $video['views'],
-                   'link' => $video['_links']['self']
-                ]);
-            }
-        } catch (\Exception $e) {
-
-            Log::info('SyncStreamByTwitch', [
-                'error' => $e->getMessage(),
-                'file' => __FILE__,
-                'line' => __LINE__
+            $this->stream->update([
+                'views' => $video['views'],
+                'link' => $video['_links']['self']
             ]);
         }
     }

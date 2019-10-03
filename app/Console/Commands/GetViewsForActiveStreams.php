@@ -70,12 +70,10 @@ class GetViewsForActiveStreams extends Command
                                 'preview' =>  $data['stream']['preview']['large']
                             ]);
 
-                            echo $stream->id. " = ".$data['stream']['viewers']."\r\n";
-
-                            dd($data['stream']);
+                            //echo $stream->id. " = ".$data['stream']['viewers']."\r\n";
+                            //dd($data['stream']);
                         }
                     }
-
 
                 } catch (\Exception $e) {
                     echo $e->getMessage()."\r\n";
