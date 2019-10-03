@@ -37,9 +37,6 @@ class GetViewsForActiveStreams extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
-        $twitchClient = new \TwitchApi\TwitchApi([
-            'client_id' => config('app.twitch_api_cid')
-        ]);
 
         $streams = Stream::where('status', StreamStatus::Active)
             ->whereHas('channel', function($q) {
@@ -53,34 +50,20 @@ class GetViewsForActiveStreams extends Command
         {
             foreach($streams as $stream)
             {
-                try {
-                    $channel = $stream->channel;
+                $channel = $stream->channel;
 
-                    if($data = $twitchClient->getStreamByUser($channel->exid)) //$stream->channel->user->nickname
-                    {
-                        if(!empty($data['stream']))
-                        {
-                            $channel->update([
-                                "description" => $data['stream']['channel']['description'] ? $data['stream']['channel']['description'] : "",
-                                'views' => $data['stream']['channel']['views'],
-                            ]);
+                $twitch = new TwitchHelper();
 
-                            $stream->update([
-                                'views' =>  $data['stream']['viewers'],
-                                'preview' =>  $data['stream']['preview']['large']
-                            ]);
+                if($data = $twitch->getStreamByUser($channel->exid) && isset($data['stream']))
+                {
+                    $channel->update([
+                        "description" => $data['stream']['channel']['description'] ? $data['stream']['channel']['description'] : "",
+                        'views' => $data['stream']['channel']['views'],
+                    ]);
 
-                            //echo $stream->id. " = ".$data['stream']['viewers']."\r\n";
-                            //dd($data['stream']);
-                        }
-                    }
-
-                } catch (\Exception $e) {
-                    echo $e->getMessage()."\r\n";
-                    Log::info('GetViewsForActiveStreams', [
-                        'error' => $e->getMessage(),
-                        'file' => __FILE__,
-                        'line' => __LINE__
+                    $stream->update([
+                        'views' =>  $data['stream']['viewers'],
+                        'preview' =>  $data['stream']['preview']['large']
                     ]);
                 }
 

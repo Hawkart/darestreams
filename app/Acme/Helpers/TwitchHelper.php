@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Acme\Helpers;
+use Illuminate\Support\Facades\Log;
 
 class TwitchHelper
 {
@@ -20,5 +21,37 @@ class TwitchHelper
         } catch (\Exception $e) {
             return [];
         }
+    }
+
+    public function getChannel($channel_id, $log = false)
+    {
+        try {
+            return $this->client->getChannel($channel_id);
+        } catch (\Exception $e) {
+
+            if($log)
+                Log::info('GetChannel', [
+                    'error' => $e->getMessage(),
+                    'file' => __FILE__,
+                    'line' => __LINE__
+                ]);
+
+            return [];
+        }
+    }
+
+    public function getStreamByUser($channel_id)
+    {
+        try {
+            return $this->client->getStreamByUser($channel_id);
+        } catch (\Exception $e) {
+
+            return [];
+        }
+    }
+
+    protected function log()
+    {
+
     }
 }

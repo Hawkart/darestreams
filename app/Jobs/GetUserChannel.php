@@ -2,14 +2,13 @@
 
 namespace App\Jobs;
 
+use App\Acme\Helpers\TwitchHelper;
 use App\Models\Channel;
 use App\Models\Game;
-use Illuminate\Http\Request;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Support\Facades\Log;
 
 class GetUserChannel implements ShouldQueue
 {
@@ -41,13 +40,9 @@ class GetUserChannel implements ShouldQueue
         {
             if($this->provider == 'twitch')
             {
-                $twitchClient = new \TwitchApi\TwitchApi([
-                    'client_id' => config('app.twitch_api_cid')
-                ]);
-
-                try {
-                    $data = $twitchClient->getChannel($this->id);
-
+                $twitch = new TwitchHelper();
+                if($data = $twitch->getChannel($this->id, true) && isset($data['_id']))
+                {
                     $ch = [
                         'exid' => $data['_id'],
                         'user_id' => $this->user->id,
@@ -63,6 +58,8 @@ class GetUserChannel implements ShouldQueue
 
                     Channel::create($ch);
 
+                    $this->addStatChannel($data);
+
                     //user lang update
                     $settings = $this->user->settings;
                     $settings['lang'] = $data['language'];
@@ -70,16 +67,25 @@ class GetUserChannel implements ShouldQueue
                     $this->user->update([
                         'settings' => $settings
                     ]);
-                } catch (\Exception $e) {
-
-                    Log::info('GetUserChannel', [
-                        'error' => $e->getMessage(),
-                        'file' => __FILE__,
-                        'line' => __LINE__
-                    ]);
                 }
             }
         }
+    }
+
+    /**
+     * @param $data
+     */
+    public function addStatChannel($data)
+    {
+        $sch = \App\Models\Rating\Channel::firstOrNew(['exid' => $data['_id']]);
+        $sch->name = $data['name'];
+        $sch->provider = 'twitch';
+        $sch->url = $data['url'];
+        $sch->json = $data;
+        $sch->exist = true;
+        $sch->followers = $data['followers'];
+        $sch->views = $data['views'];
+        $sch->save();
     }
 
     /**

@@ -39,45 +39,47 @@ class CalculateRatingTop extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
-        if(Channel::count()==0)
-            $this->importFromStreamers();
-
+        $this->updateTop();
+        $this->calculateRating();
 
         $bar->finish();
     }
 
-    private function importFromStreamers()
+    public function calculateRating()
     {
-        Streamer::chunk(200, function ($streamers)
-        {
-            foreach($streamers as $streamer)
-            {
-                $channel = Channel::create([
-                    'provider' => 'twitch',
-                    'name' => $streamer->name,
-                    'exid' => $streamer->json['_id'],
-                    'json' => $streamer->json
-                ]);
+        $channels = Channel::top()->get();
 
-                $data = []; //$this->countRatingByVideos($channel->exid);
+        foreach($channels as $channel)
+        {
+            $data = $this->countRatingByVideos($channel->exid);
+
+            if(!empty($data))
+            {
+                $channel->update([
+                    'followers' => $data['followers'],
+                    'views' => $data['views'],
+                    'rating' => $data['rating']
+                ]);
 
                 ChannelHistory::create([
                     'channel_id' => $channel->id,
-                    'followers' => !empty($data) ? $data['followers'] : $channel->json['channel']['followers'],
-                    'views' => !empty($data) ? $data['views'] : $channel->json['channel']['views'],
-                    'rating' => !empty($data) ? $data['rating'] : 0
+                    'followers' => $data['followers'],
+                    'views' => $data['views'],
+                    'rating' => $data['rating']
                 ]);
-
-                sleep(1);
             }
-        });
+
+            sleep(1);
+        }
+
+        //Todo: sort by rating and set place to history
     }
 
     /**
      * Get rating by videos, followers and views for channel
      * @param $channel_id
      */
-    private function countRatingByVideos($channel_id)
+    protected function countRatingByVideos($channel_id)
     {
         $twitch = new TwitchHelper();
         $data = $twitch->getChannelVideos($channel_id, 50, 0, 'archive');
@@ -106,26 +108,64 @@ class CalculateRatingTop extends Command
         return [];
     }
 
-    private function getTopByFollowers()
+    public function getTopByFollowers()
     {
-        return Channel::select("*",
-            \DB::raw('(SELECT followers FROM stat_channel_history as h WHERE h.channel_id = stat_channels.id  ORDER BY id DESC LIMIT 1) as followers'))
-            ->orderBy('followers', 'DESC')
-            ->limit(250)
-            ->get();
+        return Channel::orderBy('followers', 'DESC')->limit(250)->plick('id')->toArray();
     }
 
-    private function getTopByViews()
+    public function getTopByViews()
     {
-        return Channel::select("*",
-            \DB::raw('(SELECT views FROM stat_channel_history as h WHERE h.channel_id = stat_channels.id  ORDER BY id DESC LIMIT 1) as views'))
-            ->orderBy('views', 'DESC')
-            ->limit(250)
-            ->get();
+        return Channel::orderBy('views', 'DESC')->limit(250)->plick('id')->toArray();
     }
 
-    private function getOnly500()
+    /**
+     * @return array
+     */
+    public function getAllTop()
     {
-        $channel = \App\Models\Channel::all();
+        $topF = $this->getTopByFollowers();
+        $topV = $this->getTopByViews();
+        $current = Channel::where('exist', 1)->pluck('id')->toArray();
+
+        $top = array_merge($topF, $topV, $current);
+        $top = array_unique($top);
+
+        if(count($top)>500)
+        {
+            //delete all not unique items according to sorting in different arrays
+            $diff = count($top) - 500;
+
+            $topF = array_diff($topF, $current);
+            $topV = array_diff($topV, $current);
+
+            while($diff>0)
+            {
+                $end = end($topF);
+                $topF = array_pop($topF);
+                if(array_search($end, $topV)===false)
+                    $diff--;
+
+                if($diff>0)
+                {
+                    $end = end($topV);
+                    $topV = array_pop($topV);
+                    if(array_search($end, $topF)===false)
+                        $diff--;
+                }
+            }
+
+            $top = array_merge($topF, $topV, $current);
+            $top = array_unique($top);
+        }
+
+        return $top;
+    }
+
+    public function updateTop()
+    {
+        $ids = $this->getAllTop();
+
+        Channel::top()->update(['top' => 0]);
+        Channel::whereIn('id', $ids)->update(['top' => 1]);
     }
 }

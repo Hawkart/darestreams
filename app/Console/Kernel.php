@@ -27,7 +27,9 @@ class Kernel extends ConsoleKernel
         Commands\UpdateStreamTasksDesc::class,
         Commands\DeleteUserAndData::class,
         Commands\ClearNotUsedTasksInFinishedStreams::class,
-        Commands\GetChannelVideosOnTwitch::class
+        Commands\GetChannelVideosOnTwitch::class,
+        Commands\UpdateRatingChannels::class,
+        Commands\CalculateRatingTop::class,
     ];
 
     /**

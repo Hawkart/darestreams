@@ -55,4 +55,13 @@ class Channel extends Model
     {
         return $this->hasMany(ChannelHistory::class);
     }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeTop($query)
+    {
+        return $query->where('top', 1);
+    }
 }

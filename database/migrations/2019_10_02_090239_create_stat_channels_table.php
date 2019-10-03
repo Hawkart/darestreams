@@ -17,10 +17,13 @@ class CreateStatChannelsTable extends Migration
             $table->bigIncrements('id');
             $table->string('provider');
             $table->string('name');
+            $table->string('url');
             $table->string('exid');
+            $table->integer('followers')->default(0);
+            $table->integer('views')->default(0);
+            $table->bigInteger('rating')->default(0);
             $table->tinyInteger('exist')->default(0);
             $table->tinyInteger('top')->default(0);
-            $table->tinyInteger('sort')->default(0);
             $table->text('json');
             $table->timestamps();
         });
