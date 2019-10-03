@@ -8,6 +8,7 @@ use Illuminate\Contracts\Validation\Rule;
 class ValidTaskStatusForDonation implements Rule
 {
     public $task;
+    public $message;
 
     /**
      * ValidAmountDonation constructor.
@@ -16,6 +17,7 @@ class ValidTaskStatusForDonation implements Rule
     public function __construct($task)
     {
         $this->task = $task;
+        $this->message = '';
     }
 
     /**
@@ -30,7 +32,23 @@ class ValidTaskStatusForDonation implements Rule
         $user = auth()->user();
 
         if($this->task->status!=TaskStatus::Active && !($user->id==$this->task->user_id && $this->task->status==TaskStatus::Created))
+        {
+            $this->message = trans('api/task.failed_not_active');
             return false;
+        }
+
+
+        //check fake rules
+        if($this->task->stream->user->fake && !$user->fake)
+        {
+            $this->message = 'Real user cannot donate on task of fake stream';
+            return false;
+        }
+        if(!$this->task->stream->user->fake && $user->fake)
+        {
+            $this->message = 'Fake user cannot donate on task for real stream';
+            return false;
+        }
 
         return true;
     }
@@ -42,6 +60,6 @@ class ValidTaskStatusForDonation implements Rule
      */
     public function message()
     {
-        return trans('api/task.failed_not_active');
+        return $this->message;
     }
 }

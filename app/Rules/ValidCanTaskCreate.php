@@ -30,6 +30,8 @@ class ValidCanTaskCreate implements Rule
      */
     public function passes($attribute, $value)
     {
+        $user = auth()->user;
+
         $stream = Stream::findOrFail($this->stream_id);
 
         if($stream->checkAlreadyFinished())
@@ -46,6 +48,18 @@ class ValidCanTaskCreate implements Rule
         else if($stream->status==StreamStatus::Created && !$stream->allow_task_before_stream)
         {
             $this->message = trans('api/stream.not_allow_create_task_when_stream_before');
+            return false;
+        }
+
+        //check fake rules
+        if($stream->user->fake && !$user->fake)
+        {
+            $this->message = 'Real user cannot create task for fake stream';
+            return false;
+        }
+        if(!$stream->user->fake && $user->fake)
+        {
+            $this->message = 'Fake user cannot create task for real stream';
             return false;
         }
 
