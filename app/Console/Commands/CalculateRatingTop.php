@@ -88,7 +88,7 @@ class CalculateRatingTop extends Command
         $twitch = new TwitchHelper('r');
         $data = $twitch->getChannelVideos($channel_id, 50, 0, 'archive');
 
-        if(isset($data['videos']) && $data['_total']>0)
+        if(isset($data['videos']) && intval($data['_total'])>0)
         {
             $rating = 0;
 
@@ -103,8 +103,8 @@ class CalculateRatingTop extends Command
             }
 
             return [
-                'followers' => $data['channel']['followers'],
-                'views' => $data['channel']['views'],
+                'followers' => $data[0]['channel']['followers'],
+                'views' => $data[0]['channel']['views'],
                 'rating' => $rating
             ];
         }
