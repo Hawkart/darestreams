@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Rating;
 
 use App\Http\Controllers\Api\Controller;
-use App\Http\Resources\ChannelResource;
+use App\Http\Resources\Rating\ChannelResource;
 use App\Models\Rating\Channel;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
