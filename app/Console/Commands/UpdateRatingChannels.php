@@ -106,7 +106,7 @@ class UpdateRatingChannels extends Command
                 if(Channel::where('exid', $exid)->count()>0)
                     $data['exist'] = true;
 
-                if(RatingChannel::where('exid', $exid)->count()>0)
+                if(RatingChannel::where('exid', $exid)->count()==0)
                     RatingChannel::create($data);
             }
         });
