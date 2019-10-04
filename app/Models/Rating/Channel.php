@@ -42,18 +42,12 @@ class Channel extends Model
         return $this->belongsTo(\App\Models\Channel::class);
     }
 
-    // Category model
-    public function latestHistory()
-    {
-        return $this->hasOne(ChannelHistory::class)->latest();
-    }
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function history()
     {
-        return $this->hasMany(ChannelHistory::class);
+        return $this->hasMany(ChannelHistory::class)->orderBy('id', 'desc');
     }
 
     /**

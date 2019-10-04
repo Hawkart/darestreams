@@ -71,12 +71,21 @@ class CalculateRatingTop extends Command
                     'views' => $data['views'],
                     'rating' => $data['rating']
                 ]);
+            }else{
+                $channel->update(['rating' => 0]);
+
+                ChannelHistory::create([
+                    'channel_id' => $channel->id,
+                    'followers' => $channel['followers'],
+                    'views' => $channel['views'],
+                    'rating' => 0
+                ]);
             }
 
             sleep(1);
         }
 
-        //Todo: sort by rating and set place to history
+        $this->historySetPlace();
     }
 
     /**
@@ -173,5 +182,21 @@ class CalculateRatingTop extends Command
 
         Channel::top()->update(['top' => 0]);
         Channel::whereIn('id', $ids)->update(['top' => 1]);
+    }
+
+    public function historySetPlace()
+    {
+        $prevDay = Carbon::now('UTC')->subDay();
+
+        $history = ChannelHistory::where('updated_at', '>', $prevDay)
+            ->orderBy('rating', 'DESC')
+            ->get();
+
+        $place = 1;
+        foreach($history as $h)
+        {
+            $h->update(['place' => $place]);
+            $place++;
+        }
     }
 }
