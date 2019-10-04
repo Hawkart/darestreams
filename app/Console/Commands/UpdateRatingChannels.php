@@ -39,7 +39,7 @@ class UpdateRatingChannels extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
-        if(Channel::count()==0)
+        if(RatingChannel::count()==0)
         {
             $this->importFromStreamers();
             $this->importFromExistChannels();
@@ -56,7 +56,7 @@ class UpdateRatingChannels extends Command
         $searchDate = new Carbon('UTC');
         $lastFriday = Carbon::createFromTimeStamp(strtotime("last $searchDay", $searchDate->timestamp));
 
-        $channels = RatingChannel::where('updated', '<', $lastFriday)
+        $channels = RatingChannel::where('updated_at', '<', $lastFriday)
                         ->inRandomOrder()
                         ->limit(25)
                         ->get();
