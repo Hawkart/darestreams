@@ -90,6 +90,8 @@ class CalculateRatingTop extends Command
 
         if(isset($data['videos']) && intval($data['_total'])>0)
         {
+            dd($data);
+
             $rating = 0;
 
             foreach($data['videos'] as $video)
