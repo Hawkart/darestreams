@@ -65,7 +65,7 @@ class UpdateRatingChannels extends Command
         {
             foreach($channels as $channel)
             {
-                $twitch = new TwitchHelper();
+                $twitch = new TwitchHelper('r');
                 if($data = $twitch->getChannel($channel->exid) && isset($data['_id']))
                 {
                     $channel->update([
@@ -119,7 +119,7 @@ class UpdateRatingChannels extends Command
         {
             if(RatingChannel::where('exid', $channel->exid)->count()==0)
             {
-                $twitch = new TwitchHelper();
+                $twitch = new TwitchHelper('r');
                 if($data = $twitch->getChannel($channel->exid) && isset($data['_id']))
                 {
                     RatingChannel::create([

@@ -7,10 +7,16 @@ class TwitchHelper
 {
     protected $client;
 
-    public function __construct()
+    public function __construct($type = "d")
     {
+        switch($type)
+        {
+            case "d": $client_id = config('app.twitch_api_cid'); break;
+            case "r": $client_id = config('app.rating_twitch_api_key'); break;
+        }
+
         $this->client = new \TwitchApi\TwitchApi([
-            'client_id' => config('app.twitch_api_cid')
+            'client_id' => $client_id
         ]);
     }
 

@@ -83,7 +83,7 @@ class CalculateRatingTop extends Command
      */
     protected function countRatingByVideos($channel_id)
     {
-        $twitch = new TwitchHelper();
+        $twitch = new TwitchHelper('r');
         $data = $twitch->getChannelVideos($channel_id, 50, 0, 'archive');
 
         if(isset($data['videos']) && count($data['_total'])>0)
@@ -112,12 +112,12 @@ class CalculateRatingTop extends Command
 
     public function getTopByFollowers()
     {
-        return Channel::orderBy('followers', 'DESC')->limit(250)->pluck('id')->toArray();
+        return Channel::orderBy('followers', 'DESC')->limit(500)->pluck('id')->toArray();
     }
 
     public function getTopByViews()
     {
-        return Channel::orderBy('views', 'DESC')->limit(250)->pluck('id')->toArray();
+        return Channel::orderBy('views', 'DESC')->limit(500)->pluck('id')->toArray();
     }
 
     /**

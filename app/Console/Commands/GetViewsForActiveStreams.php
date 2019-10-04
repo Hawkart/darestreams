@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Acme\Helpers\TwitchHelper;
 use App\Enums\StreamStatus;
 use App\Models\Stream;
 use Illuminate\Console\Command;

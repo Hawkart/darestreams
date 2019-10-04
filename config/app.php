@@ -131,10 +131,12 @@ return [
     'cipher' => 'AES-256-CBC',
 
     'deploy_secret' => env('APP_DEPLOY_SECRET'),
-    'twitch_api_cid' => env('TWITCH_API_CLIENT_ID'),
+    'twitch_api_cid' => env('TWITCH_API_CLIENT_ID'),        //from another website
 
-    'twitch_api_key' => env('TWITCH_KEY'),
+    'twitch_api_key' => env('TWITCH_KEY'),                  //from darestreams.com
     'twitch_api_secret' => env('TWITCH_SECRET'),
+
+    'rating_twitch_api_key' => env('RATING_TWITCH_KEY'),    //from ratestreamers.com
 
     'time_vote_until_stream_finished' => env('TIME_VOTE_UNTIL_STREAM_FINISHED', 30),
 

@@ -19,6 +19,7 @@ class CreateStatChannelsTable extends Migration
             $table->string('name');
             $table->string('url');
             $table->string('exid');
+            $table->string('lang')->default('ru');
             $table->integer('followers')->default(0);
             $table->integer('views')->default(0);
             $table->bigInteger('rating')->default(0);

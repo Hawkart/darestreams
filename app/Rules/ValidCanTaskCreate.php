@@ -30,7 +30,7 @@ class ValidCanTaskCreate implements Rule
      */
     public function passes($attribute, $value)
     {
-        $user = auth()->user;
+        $user = auth()->user();
 
         $stream = Stream::findOrFail($this->stream_id);
 
