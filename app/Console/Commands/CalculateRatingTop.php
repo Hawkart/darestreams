@@ -55,6 +55,8 @@ class CalculateRatingTop extends Command
 
             if(!empty($data))
             {
+                echo $channel->id."  = ".$data['followers']."\r\n";
+
                 $channel->update([
                     'followers' => $data['followers'],
                     'views' => $data['views'],
@@ -110,12 +112,12 @@ class CalculateRatingTop extends Command
 
     public function getTopByFollowers()
     {
-        return Channel::orderBy('followers', 'DESC')->limit(250)->plick('id')->toArray();
+        return Channel::orderBy('followers', 'DESC')->limit(250)->pluck('id')->toArray();
     }
 
     public function getTopByViews()
     {
-        return Channel::orderBy('views', 'DESC')->limit(250)->plick('id')->toArray();
+        return Channel::orderBy('views', 'DESC')->limit(250)->pluck('id')->toArray();
     }
 
     /**
@@ -164,6 +166,8 @@ class CalculateRatingTop extends Command
     public function updateTop()
     {
         $ids = $this->getAllTop();
+
+        echo "count top = ".count($ids)."\r\n";
 
         Channel::top()->update(['top' => 0]);
         Channel::whereIn('id', $ids)->update(['top' => 1]);
