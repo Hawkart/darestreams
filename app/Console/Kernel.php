@@ -49,6 +49,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('transactions:clear_dropped')->daily()->timezone('America/New_York')->at('02:00');
         $schedule->command('votes:finish')->everyMinute();
         $schedule->command('streamers:parse')->hourly();
+
+        $schedule->command('stat:channels_update')->everyMinute();
+        $schedule->command('stat:calculate_top')->fridays()->timezone('America/New_York')->at('02:00');
     }
 
     /**

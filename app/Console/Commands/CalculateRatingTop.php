@@ -105,7 +105,7 @@ class CalculateRatingTop extends Command
                 $start_at = $video['published_at'];
                 $diff = Carbon::now('UTC')->startOfDay()->diffInDays($start_at, false);
 
-                if($diff>7) break;
+                if(abs($diff)>7) break;
 
                 $rating+= ceil($video['views']*$video['length']/3600);
             }
