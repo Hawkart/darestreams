@@ -113,7 +113,9 @@ class UpdateRatingChannels extends Command
 
     protected function importFromExistChannels()
     {
-        $channels = Channel::all();
+        $channels = Channel::whereHas('user', function($q) {
+                $q->where('fake', '<>', 1);
+            })->get();
 
         foreach($channels as $channel)
         {
