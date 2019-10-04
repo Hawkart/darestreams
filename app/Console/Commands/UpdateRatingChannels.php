@@ -91,14 +91,14 @@ class UpdateRatingChannels extends Command
         {
             foreach($streamers as $streamer)
             {
-                $exid = $streamer->json['_id'];
+                $exid = $streamer->json['channel']['_id'];
 
                 $data = [
                     'provider' => 'twitch',
                     'name' => $streamer->name,
                     'url' => $streamer->json['channel']['url'],
-                    'exid' => $streamer->json['_id'],
-                    'json' => $streamer->json,
+                    'exid' => $exid,
+                    'json' => $streamer->json['channel'],
                     'followers' => $streamer->json['channel']['followers'],
                     'views' => $streamer->json['channel']['views'],
                 ];

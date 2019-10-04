@@ -38,7 +38,7 @@ class GetChannelVideosOnTwitch extends Command
         $twitch = new TwitchHelper();
         $data = $twitch->getChannelVideos(125387632, 5, 0, 'archive');
 
-        if(!empty($data) && isset($data['videos']) && count($data['_total'])>0)
+        if(!empty($data) && isset($data['videos']) && $data['_total']>0)
         {
             dd($data);
         }
