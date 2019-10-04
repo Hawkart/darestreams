@@ -34,7 +34,7 @@ class ChannelController extends Controller
     {
         $items = QueryBuilder::for(Channel::class)
             ->top()
-            ->defaultSort('rating')
+            ->defaultSort('-rating')
             ->allowedIncludes(['history'])
             ->jsonPaginate();
 

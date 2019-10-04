@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Models\Rating\ChannelHistory;
-use App\Models\Streamer;
 use App\Models\Rating\Channel;
 use App\Acme\Helpers\TwitchHelper;
 use Carbon\Carbon;
@@ -123,12 +122,12 @@ class CalculateRatingTop extends Command
 
     public function getTopByFollowers()
     {
-        return Channel::orderBy('followers', 'DESC')->limit(500)->pluck('id')->toArray();
+        return Channel::orderBy('followers', 'DESC')->limit(500)->pluck('exid')->toArray();
     }
 
     public function getTopByViews()
     {
-        return Channel::orderBy('views', 'DESC')->limit(500)->pluck('id')->toArray();
+        return Channel::orderBy('views', 'DESC')->limit(500)->pluck('exid')->toArray();
     }
 
     /**
@@ -138,7 +137,7 @@ class CalculateRatingTop extends Command
     {
         $topF = $this->getTopByFollowers();
         $topV = $this->getTopByViews();
-        $current = Channel::where('exist', 1)->pluck('id')->toArray();
+        $current = Channel::where('exist', 1)->pluck('exid')->toArray();
 
         $top = array_merge($topF, $topV, $current);
         $top = array_unique($top);
@@ -181,7 +180,7 @@ class CalculateRatingTop extends Command
         echo "count top = ".count($ids)."\r\n";
 
         Channel::top()->update(['top' => 0]);
-        Channel::whereIn('id', $ids)->update(['top' => 1]);
+        Channel::whereIn('exid', $ids)->update(['top' => 1]);
     }
 
     public function historySetPlace()
