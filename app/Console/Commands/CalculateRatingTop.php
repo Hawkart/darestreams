@@ -53,9 +53,11 @@ class CalculateRatingTop extends Command
         {
             $data = $this->countRatingByVideos($channel->exid);
 
+            echo "channel_id = ".$channel->id."\r\n";
+
             if(!empty($data))
             {
-                echo $channel->id."  = ".$data['followers']."\r\n";
+                echo "followers = ".$data['followers']."\r\n";
 
                 $channel->update([
                     'followers' => $data['followers'],
@@ -86,9 +88,7 @@ class CalculateRatingTop extends Command
         $twitch = new TwitchHelper('r');
         $data = $twitch->getChannelVideos($channel_id, 50, 0, 'archive');
 
-        dd($data);
-
-        if(isset($data['videos']) && count($data['_total'])>0)
+        if(isset($data['videos']) && $data['_total']>0)
         {
             $rating = 0;
 

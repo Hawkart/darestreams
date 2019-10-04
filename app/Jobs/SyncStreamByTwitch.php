@@ -32,7 +32,7 @@ class SyncStreamByTwitch implements ShouldQueue
         $twitch = new TwitchHelper();
         $data = $twitch->getChannelVideos($this->stream->channel->exid, 1, 0, 'archive');
 
-        if(!empty($data) && isset($data['videos']) && count($data['_total'])>0)
+        if(!empty($data) && isset($data['videos']) && $data['_total']>0)
         {
             $video = $data['videos'][0];
 
