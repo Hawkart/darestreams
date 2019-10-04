@@ -86,6 +86,8 @@ class CalculateRatingTop extends Command
         $twitch = new TwitchHelper('r');
         $data = $twitch->getChannelVideos($channel_id, 50, 0, 'archive');
 
+        dd($data);
+
         if(isset($data['videos']) && count($data['_total'])>0)
         {
             $rating = 0;
