@@ -90,8 +90,6 @@ class CalculateRatingTop extends Command
 
         if(isset($data['videos']) && intval($data['_total'])>0)
         {
-            dd($data);
-
             $rating = 0;
 
             foreach($data['videos'] as $video)
@@ -105,8 +103,8 @@ class CalculateRatingTop extends Command
             }
 
             return [
-                'followers' => $data[0]['channel']['followers'],
-                'views' => $data[0]['channel']['views'],
+                'followers' => $data['videos'][0]['channel']['followers'],
+                'views' => $data['videos'][0]['channel']['views'],
                 'rating' => $rating
             ];
         }
