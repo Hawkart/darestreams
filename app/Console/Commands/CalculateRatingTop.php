@@ -143,14 +143,14 @@ class CalculateRatingTop extends Command
             while($diff>0)
             {
                 $end = end($topF);
-                $topF = array_pop($topF);
+                array_pop($topF);
                 if(array_search($end, $topV)===false)
                     $diff--;
 
                 if($diff>0)
                 {
                     $end = end($topV);
-                    $topV = array_pop($topV);
+                    array_pop($topV);
                     if(array_search($end, $topF)===false)
                         $diff--;
                 }
