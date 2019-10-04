@@ -87,7 +87,9 @@ class UpdateRatingChannels extends Command
 
     protected function importFromStreamers()
     {
-        Streamer::chunk(200, function ($streamers)
+        $ids = [];
+
+        Streamer::chunk(500, function ($streamers) use ($ids)
         {
             foreach($streamers as $streamer)
             {
@@ -106,8 +108,11 @@ class UpdateRatingChannels extends Command
                 if(Channel::where('exid', $exid)->count()>0)
                     $data['exist'] = true;
 
-                if(RatingChannel::where('exid', $exid)->count()==0)
+                //if(RatingChannel::where('exid', $exid)->count()==0)
+                if(!in_array($exid, $ids))
                     RatingChannel::create($data);
+
+                $ids[] = $exid;
             }
         });
     }
