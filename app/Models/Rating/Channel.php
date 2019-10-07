@@ -47,7 +47,7 @@ class Channel extends Model
      */
     public function history()
     {
-        return $this->hasMany(ChannelHistory::class)->orderBy('id', 'desc');
+        return $this->hasMany(ChannelHistory::class)->orderBy('id', 'desc')->limit(2);
     }
 
     /**

@@ -9,17 +9,14 @@ use App\Notifications\VerifyEmail;
 use App\Notifications\ResetPassword;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use TCG\Voyager\Traits\VoyagerUser;
 use Overtrue\LaravelFollow\Traits\CanFollow;
 use Overtrue\LaravelFollow\Traits\CanBeFollowed;
 use \Znck\Eloquent\Traits\BelongsToThrough;
-use Storage;
 use Illuminate\Support\Facades\DB;
 
-class User extends Authenticatable implements JWTSubject, MustVerifyEmail
+class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEmail
 {
-    use Notifiable, Messagable, Sluggable, VoyagerUser, CanFollow, CanBeFollowed, BelongsToThrough;
+    use Notifiable, Messagable, Sluggable, CanFollow, CanBeFollowed, BelongsToThrough;
 
     /**
      * The attributes that aren't mass assignable.

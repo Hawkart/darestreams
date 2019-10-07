@@ -70,8 +70,11 @@ class CalculateRatingTop extends Command
                     'views' => $data['views'],
                     'rating' => $data['rating']
                 ]);
+
+                if($data['rating']==0)
+                    $channel->update(['rating' => 0]);
             }else{
-                $channel->update(['rating' => 0]);
+                $channel->update(['rating' => 0, 'top' => 0]);
 
                 ChannelHistory::create([
                     'channel_id' => $channel->id,
