@@ -32,14 +32,23 @@ class ChannelController extends Controller
      */
     public function index(Request $request)
     {
-        $items = QueryBuilder::for(Channel::class)
+        /*$items = QueryBuilder::for(Channel::class)
             ->top()
             ->where('rating', '>', 0)
             ->defaultSort('-rating')
             ->allowedIncludes(['history'])
             ->with(['history' => function ($query) {
                 $query->orderBy('created_at', 'desc')->take(2);
-            }])->jsonPaginate();
+            }])->jsonPaginate();*/
+
+
+        $items = Channel::with(['history' => function ($query) {
+                $query->latest()->limit(2);
+            }])
+            ->top()
+            ->where('rating', '>', 0)
+            ->orderBy('rating', 'desc')
+            ->jsonPaginate();
 
         return ChannelResource::collection($items);
     }
