@@ -2,41 +2,53 @@
 
 namespace App\Traits;
 
-use DB;
+use Illuminate\Support\Facades\DB;
 
 trait NPerGroup {
 
     /**
-     * A query scope for Eloquent models that enables side-loading a relation with n records per parent.
-     *
-     * @param  Builder $query
-     * @param  string $group  Name of the field on the related table to group by (usually the column with the foreign key)
-     * @param  int $n         Number of results to pick per group
-     * @param  array  $scopes Scopes to apply on the related table ['nameOfScope' => ['argument1', 'argument2', …]]
+     * query scope nPerGroup
      *
      * @return void
      */
-    public function scopeNPerGroupWithScopes($query, $group, $n, $scopes = [])
+    public function scopeNPerGroup($query, $group, $n = 10)
     {
-        $table = $this->getTable();
-        $pk = $this->getKeyName();
+        // queried table
+        $table = ($this->getTable());
 
-        // Query the same model in a join using `over`, to assign row numbers starting at 1 for each group
-        $partitioned_query = $this->newQuery()
-            ->addSelect($pk)
-            ->addSelect(DB::raw("row_number() over (partition by {$group} order by {$this->primaryKey}) as rn"));
+        // initialize MySQL variables inline
+        $query->from( DB::raw("(SELECT @rank:=0, @group:=0) as vars, {$table}") );
 
-        foreach ($scopes as $scope => $args) {
-            $partitioned_query->$scope(...$args);
+        // if no columns already selected, let's select *
+        if ( ! $query->getQuery()->columns)
+        {
+            $query->select("{$table}.*");
         }
 
-        $partitioned_sql = $partitioned_query->toSql();
-        $partitioned_bindings = $partitioned_query->getBindings();
+        // make sure column aliases are unique
+        $groupAlias = 'group_'.md5(time());
+        $rankAlias  = 'rank_'.md5(time());
 
-        $query
-            ->join(DB::raw("( $partitioned_sql ) AS partitioned"), "$table.$pk", '=', "partitioned.$pk")
-            ->where("partitioned.rn", '<=', $n);
+        // apply mysql variables
+        $query->addSelect(DB::raw(
+            "@rank := IF(@group = {$group}, @rank+1, 1) as {$rankAlias}, @group := {$group} as {$groupAlias}"
+        ));
 
-        $query->setBindings(array_merge_recursive($partitioned_bindings, $query->getBindings()));
+        // make sure first order clause is the group order
+        $query->getQuery()->orders = (array) $query->getQuery()->orders;
+        array_unshift($query->getQuery()->orders, ['column' => $group, 'direction' => 'asc']);
+
+        // prepare subquery
+        $subQuery = $query->toSql();
+
+        // prepare new main base Query\Builder
+        $newBase = $this->newQuery()
+            ->from(DB::raw("({$subQuery}) as {$table}"))
+            ->mergeBindings($query->getQuery())
+            ->where($rankAlias, '<=', $n)
+            ->getQuery();
+
+        // replace underlying builder to get rid of previous clauses
+        $query->setQuery($newBase);
     }
 }

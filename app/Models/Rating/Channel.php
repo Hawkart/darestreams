@@ -50,8 +50,15 @@ class Channel extends Model
      */
     public function history()
     {
-        return $this->hasMany(ChannelHistory::class)
-            ->nPerGroupWithScopes('channel_id', 2, ['latest' => []]);
+        return $this->hasMany(ChannelHistory::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function latestHistory()
+    {
+        return $this->history()->latest()->nPerGroup('channel_id', 2);
     }
 
     /**
