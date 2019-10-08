@@ -22,12 +22,14 @@ class ChannelResource extends JsonResource
             'logo' => $this->json['logo'],
             'lang' => $this->lang,
             'exist' => $this->exist,
+            'channel_id' => $this->channel_id,
             'followers' => $this->followers,
             'views' => $this->views,
             'rating' => $this->rating,
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),
 
+            'channel' => new \App\Http\Resources\ChannelResource($this->whenLoaded('channel')),
             'history' => ChannelHistoryResource::collection($this->whenLoaded('history')),
             'lastHistory' => ChannelHistoryResource::collection($this->whenLoaded('lastHistory')),
         ];

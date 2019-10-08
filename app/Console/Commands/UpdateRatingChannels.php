@@ -75,8 +75,7 @@ class UpdateRatingChannels extends Command
                         'exid' => $data['_id'],
                         'json' => $data,
                         'followers' => $data['followers'],
-                        'views' => $data['views'],
-                        'exist' => true
+                        'views' => $data['views']
                     ]);
                 }
 
@@ -106,9 +105,12 @@ class UpdateRatingChannels extends Command
                 ];
 
                 if(Channel::where('exid', $exid)->count()>0)
+                {
+                    $data['channel_id'] = Channel::where('exid', $exid)->first()->id;
                     $data['exist'] = true;
+                }
 
-                //if(RatingChannel::where('exid', $exid)->count()==0)
+
                 if(!in_array($exid, $ids))
                     RatingChannel::create($data);
 
@@ -138,7 +140,8 @@ class UpdateRatingChannels extends Command
                         'json' => $data,
                         'followers' => $data['followers'],
                         'views' => $data['views'],
-                        'exist' => true
+                        'exist' => true,
+                        'channel_id' => $channel->id
                     ]);
                 }
             }

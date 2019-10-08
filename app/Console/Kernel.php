@@ -30,6 +30,7 @@ class Kernel extends ConsoleKernel
         Commands\GetChannelVideosOnTwitch::class,
         Commands\UpdateRatingChannels::class,
         Commands\CalculateRatingTop::class,
+        Commands\SyncStatChannels::class
     ];
 
     /**
