@@ -29,7 +29,7 @@ class ChannelResource extends JsonResource
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),
 
-            'game' => new \App\Http\Resources\Game($this->whenLoaded('game')),
+            'game' => new \App\Http\Resources\GameResource($this->whenLoaded('game')),
             'channel' => new \App\Http\Resources\ChannelResource($this->whenLoaded('channel')),
             'history' => ChannelHistoryResource::collection($this->whenLoaded('history')),
             'lastHistory' => ChannelHistoryResource::collection($this->whenLoaded('lastHistory')),
