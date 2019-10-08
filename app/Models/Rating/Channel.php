@@ -3,7 +3,7 @@
 namespace App\Models\Rating;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\NPerGroup;;
+use App\Traits\NPerGroup;
 
 class Channel extends Model
 {
@@ -56,7 +56,7 @@ class Channel extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function latestHistory()
+    public function h()
     {
         return $this->history()->latest()->nPerGroup('channel_id', 2);
     }

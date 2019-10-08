@@ -36,7 +36,7 @@ class ChannelController extends Controller
             ->top()
             ->where('rating', '>', 0)
             ->defaultSort('-rating')
-            ->allowedIncludes(['history', 'latestHistory'])
+            ->allowedIncludes(['history', 'h'])
             ->jsonPaginate();
 
         return ChannelResource::collection($items);
