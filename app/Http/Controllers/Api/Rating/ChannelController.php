@@ -24,7 +24,7 @@ class ChannelController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @queryParam include string String of connections: history, latestHistory. Example: latestHistory
+     * @queryParam include string String of connections: history. Example: history
      * @queryParam sort string Sort items by fields: title, id. For desc use '-' prefix. Example: -id
      * @queryParam page array Use as page[number]=1&page[size]=2.
      *
@@ -36,9 +36,27 @@ class ChannelController extends Controller
             ->top()
             ->where('rating', '>', 0)
             ->defaultSort('-rating')
-            ->allowedIncludes(['history', 'h'])
-            ->jsonPaginate();
+            ->allowedIncludes(['history'])
+            ->with(['history' => function ($query) {
+                $query->orderBy('created_at', 'desc')->take(2);
+            }])->jsonPaginate();
 
         return ChannelResource::collection($items);
+    }
+
+    /**
+     * Display a detail of the resource.
+     *
+     * @queryParam include string String of connections: history. Example: history
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($channel)
+    {
+        $item = QueryBuilder::for(Channel::class)
+            ->allowedIncludes(['history'])
+            ->findOrFail($channel);
+
+        return new ChannelResource($item);
     }
 }

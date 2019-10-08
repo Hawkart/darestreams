@@ -27,7 +27,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('users/{user}/login', 'UserController@fakeLogin');
     Route::post('deploy', 'DeployController@deploy');
 
-    Route::get('rating', 'Rating\ChannelController@index');
+    Route::apiResource('rating', 'Rating\ChannelController')->only(['index', 'show']);
 
     Route::get('games/top', 'GameController@top');
     Route::apiResource('games', 'GameController')->only(['index', 'show']);

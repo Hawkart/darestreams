@@ -3,12 +3,9 @@
 namespace App\Models\Rating;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\NPerGroup;
 
 class Channel extends Model
 {
-    use NPerGroup;
-
     /**
      * The table associated with the model.
      *
@@ -51,14 +48,6 @@ class Channel extends Model
     public function history()
     {
         return $this->hasMany(ChannelHistory::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function h()
-    {
-        return $this->history()->latest()->nPerGroup('channel_id', 2);
     }
 
     /**

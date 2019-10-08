@@ -28,8 +28,7 @@ class ChannelResource extends JsonResource
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),
 
-            'history' => ChannelHistoryResource::collection($this->whenLoaded('history')),
-            'h' => ChannelHistoryResource::collection($this->whenLoaded('h')),
+            'history' => ChannelHistoryResource::collection($this->whenLoaded('history'))
         ];
     }
 }
