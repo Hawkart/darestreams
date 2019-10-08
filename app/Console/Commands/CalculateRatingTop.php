@@ -140,7 +140,7 @@ class CalculateRatingTop extends Command
     {
         $topF = $this->getTopByFollowers();
         $topV = $this->getTopByViews();
-        $current = Channel::where('exist', 1)->pluck('exid')->toArray();
+        $current = Channel::where('channel_id', '>', 0)->pluck('exid')->toArray();
 
         $top = array_merge($topF, $topV, $current);
         $top = array_unique($top);

@@ -36,7 +36,7 @@ class ChannelController extends Controller
 
             $items = Channel::top()
                 ->where('rating', '>', 0)
-                ->with(['channel', 'channel.game'])
+                ->with(['game'])
                 ->orderBy('rating', 'desc')
                 ->get();
 
@@ -60,7 +60,7 @@ class ChannelController extends Controller
     public function show($channel)
     {
         $item = QueryBuilder::for(Channel::class)
-            ->with(['channel', 'channel.game'])
+            ->with(['game'])
             ->allowedIncludes(['history'])
             ->findOrFail($channel);
 

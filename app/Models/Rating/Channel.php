@@ -43,6 +43,14 @@ class Channel extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function game()
+    {
+        return $this->belongsTo(\App\Models\Game::class);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function history()

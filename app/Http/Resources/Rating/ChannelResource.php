@@ -21,7 +21,7 @@ class ChannelResource extends JsonResource
             'dare' => $this->exist ? 'https://darestreams.com/channel/'.$this->name : '',
             'logo' => $this->json['logo'],
             'lang' => $this->lang,
-            'exist' => $this->exist,
+            'game_id' => $this->game_id,
             'channel_id' => $this->channel_id,
             'followers' => $this->followers,
             'views' => $this->views,
@@ -29,6 +29,7 @@ class ChannelResource extends JsonResource
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),
 
+            'game' => new \App\Http\Resources\Game($this->whenLoaded('game')),
             'channel' => new \App\Http\Resources\ChannelResource($this->whenLoaded('channel')),
             'history' => ChannelHistoryResource::collection($this->whenLoaded('history')),
             'lastHistory' => ChannelHistoryResource::collection($this->whenLoaded('lastHistory')),

@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Acme\Helpers\TwitchHelper;
+use App\Models\Game;
 use App\Models\Streamer;
 use App\Models\Rating\Channel as RatingChannel;
 use App\Models\Channel;
@@ -106,8 +107,11 @@ class UpdateRatingChannels extends Command
 
                 if(Channel::where('exid', $exid)->count()>0)
                 {
-                    $data['channel_id'] = Channel::where('exid', $exid)->first()->id;
-                    $data['exist'] = true;
+                    $channel = Channel::where('exid', $exid)->first();
+                    $data['channel_id'] = $channel->id;
+                    $data['game_id'] = $channel->game_id;
+                }else{
+                    $data['game_id'] = $this->getGameIdByTitle($streamer->json['channel']['game']);
                 }
 
 
@@ -117,6 +121,19 @@ class UpdateRatingChannels extends Command
                 $ids[] = $exid;
             }
         });
+    }
+
+    /**
+     * @param $title
+     * @return int
+     */
+    protected function getGameIdByTitle($title)
+    {
+        $games = Game::where('title', '=', $title);
+        if($games->count()>0)
+            return $games->first()->id;
+
+        return 0;
     }
 
     protected function importFromExistChannels()
@@ -140,8 +157,8 @@ class UpdateRatingChannels extends Command
                         'json' => $data,
                         'followers' => $data['followers'],
                         'views' => $data['views'],
-                        'exist' => true,
-                        'channel_id' => $channel->id
+                        'channel_id' => $channel->id,
+                        'game_id' => $channel->game_id
                     ]);
                 }
             }

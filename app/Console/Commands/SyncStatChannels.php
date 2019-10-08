@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Game;
 use App\Models\Rating\Channel as StatChannel;
 use App\Models\Channel;
 use Illuminate\Console\Command;
@@ -36,17 +37,36 @@ class SyncStatChannels extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
-        $channels = StatChannel::where('exist', 1)->get();
+        $channels = StatChannel::top()->get();
         foreach($channels as $stat)
         {
             $channel = Channel::where('exid', $stat->exid)->first();
-
             if($channel)
-                $stat->update(['channel_id' => $channel->id]);
-            else
-                $stat->update(['exist' => 0]);
+            {
+                $stat->update([
+                    'channel_id' => $channel->id,
+                    'game_id' => $channel->game_id,
+                ]);
+            }else{
+                $stat->update([
+                    'game_id' => $this->getGameIdByTitle($stat->json['game'])
+                ]);
+            }
         }
 
         $bar->finish();
+    }
+
+    /**
+     * @param $title
+     * @return int
+     */
+    protected function getGameIdByTitle($title)
+    {
+        $games = Game::where('title', '=', $title);
+        if($games->count()>0)
+            return $games->first()->id;
+
+        return 0;
     }
 }
