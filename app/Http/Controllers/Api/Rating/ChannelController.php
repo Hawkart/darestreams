@@ -14,14 +14,6 @@ use Spatie\QueryBuilder\QueryBuilder;
 class ChannelController extends Controller
 {
     /**
-     * ChannelController constructor.
-     */
-    public function __construct()
-    {
-        //$this->middleware('auth:api')->only(['update']);
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @queryParam include string String of connections: history. Example: history
