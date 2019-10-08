@@ -3,12 +3,9 @@
 namespace App\Models\Rating;
 
 use Illuminate\Database\Eloquent\Model;
-use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
 class Channel extends Model
 {
-    use HasEagerLimit;
-
     /**
      * The table associated with the model.
      *
@@ -51,6 +48,14 @@ class Channel extends Model
     public function history()
     {
         return $this->hasMany(ChannelHistory::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function lastHistory()
+    {
+        return $this->history()->orderBy('id', 'desc')->limit(2);
     }
 
     /**

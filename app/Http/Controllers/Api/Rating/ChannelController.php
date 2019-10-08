@@ -7,6 +7,9 @@ use App\Http\Resources\Rating\ChannelResource;
 use App\Models\Rating\Channel;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
+use Illuminate\Support\Str;
+use DB;
+use Cache;
 
 /**
  * @group Rating Channels
@@ -24,23 +27,24 @@ class ChannelController extends Controller
      */
     public function index(Request $request)
     {
-        /*$items = QueryBuilder::for(Channel::class)
-            ->top()
-            ->where('rating', '>', 0)
-            ->defaultSort('-rating')
-            ->allowedIncludes(['history'])
-            ->with(['history' => function ($query) {
-                $query->orderBy('created_at', 'desc')->take(2);
-            }])->jsonPaginate();*/
+        $cache_key = Str::slug('getChannelStat');
+        $cacheTags = Cache::tags(['index', 'getChannelStat']);
 
+        if ($cacheTags->get($cache_key)){
+            $items = $cacheTags->get($cache_key);
+        } else {
 
-        $items = Channel::with(['history' => function ($query) {
-                $query->latest()->limit(2);
-            }])
-            ->top()
-            ->where('rating', '>', 0)
-            ->orderBy('rating', 'desc')
-            ->jsonPaginate();
+            $items = Channel::top()
+                ->where('rating', '>', 0)
+                ->orderBy('rating', 'desc')
+                ->get();
+
+            $items->each(function($item) {
+                $item->load('lastHistory');
+            });
+
+            $cacheTags->put($cache_key, $items, 60*60*2);   //2 hours
+        }
 
         return ChannelResource::collection($items);
     }

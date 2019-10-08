@@ -3,12 +3,9 @@
 namespace App\Models\Rating;
 
 use Illuminate\Database\Eloquent\Model;
-use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
 class ChannelHistory extends Model
 {
-    use HasEagerLimit;
-
     /**
      * The table associated with the model.
      *
