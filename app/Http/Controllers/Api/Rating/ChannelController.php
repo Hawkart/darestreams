@@ -24,7 +24,7 @@ class ChannelController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @queryParam include string String of connections: user, streams, tags, game. Example: user,streams
+     * @queryParam include string String of connections: history, latestHistory. Example: latestHistory
      * @queryParam sort string Sort items by fields: title, id. For desc use '-' prefix. Example: -id
      * @queryParam page array Use as page[number]=1&page[size]=2.
      *
@@ -34,8 +34,9 @@ class ChannelController extends Controller
     {
         $items = QueryBuilder::for(Channel::class)
             ->top()
+            ->where('rating', '>', 0)
             ->defaultSort('-rating')
-            ->allowedIncludes(['history'])
+            ->allowedIncludes(['history', 'latestHistory'])
             ->jsonPaginate();
 
         return ChannelResource::collection($items);

@@ -18,10 +18,10 @@ class ChannelResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'url' => $this->url,
+            'dare' => $this->exist ? 'https://darestreams.com/channel/'.$this->name : '',
             'logo' => $this->json['logo'],
             'lang' => $this->lang,
             'exist' => $this->exist,
-            'top' => $this->top,
             'followers' => $this->followers,
             'views' => $this->views,
             'rating' => $this->rating,
@@ -29,6 +29,7 @@ class ChannelResource extends JsonResource
             'updated_at' => getW3cDatetime($this->updated_at),
 
             'history' => ChannelHistoryResource::collection($this->whenLoaded('history')),
+            'latestHistory' => ChannelHistoryResource::collection($this->whenLoaded('latestHistory')),
         ];
     }
 }

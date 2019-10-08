@@ -34,13 +34,4 @@ class ChannelHistory extends Model
     {
         return $this->belongsTo(Channel::class);
     }
-
-    /**
-     * @param $query
-     * @return mixed
-     */
-    public function scopeLatest($query)
-    {
-        return $query->orderBy('id', 'desc');
-    }
 }
