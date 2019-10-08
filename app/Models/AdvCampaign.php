@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Models\Rating;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\NPerGroup;;
 
-class Channel extends Model
+class AdvCampaign extends Model
 {
-    use NPerGroup;
-
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'stat_channels';
+    protected $table = 'adv_campaigns';
 
     /**
      * The attributes that aren't mass assignable.
@@ -22,13 +19,6 @@ class Channel extends Model
      * @var array
      */
     protected $guarded = ['id'];
-
-    /**
-     * @var array
-     */
-    protected $casts = [
-        'json' => 'array'
-    ];
 
     /**
      * The attributes that should be mutated to dates.
@@ -40,26 +30,24 @@ class Channel extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function channel()
+    public function user()
     {
-        return $this->belongsTo(\App\Models\Channel::class);
+        return $this->belongsTo(User::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function history()
+    public function advTasks()
     {
-        return $this->hasMany(ChannelHistory::class)
-            ->nPerGroupWithScopes('channel_id', 2, ['latest' => []]);
+        return $this->hasMany(AdvTask::class);
     }
 
     /**
-     * @param $query
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function scopeTop($query)
+    public function tasks()
     {
-        return $query->where('top', 1);
+        return $this->hasManyThrough('App\Models\Task', 'App\Models\AdvTask', 'adv_task_id');
     }
 }

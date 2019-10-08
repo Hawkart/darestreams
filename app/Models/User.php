@@ -92,6 +92,16 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEma
     }
 
     /**
+     * Get the oauth providers.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function advCampaigns()
+    {
+        return $this->hasMany(AdvCampaign::class);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function account()

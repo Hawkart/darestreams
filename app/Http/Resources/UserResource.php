@@ -40,6 +40,7 @@ class UserResource extends JsonResource
             'channel' => new ChannelResource($this->whenLoaded('channel')),
             'streams' => StreamResource::collection($this->whenLoaded('streams')),
             'tasks' => TaskResource::collection($this->whenLoaded('tasks')),
+            'advCampaigns' => AdvCampaignResource::collection($this->whenLoaded('advCampaigns')),
         ];
     }
 }

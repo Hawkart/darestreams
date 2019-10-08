@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Models\Rating;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ChannelHistory extends Model
+class AdvTask extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'stat_channel_history';
+    protected $table = 'adv_tasks';
 
     /**
      * The attributes that aren't mass assignable.
@@ -30,17 +30,16 @@ class ChannelHistory extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function channel()
+    public function campaign()
     {
-        return $this->belongsTo(Channel::class);
+        return $this->belongsTo(AdvCampaign::class, 'campaign_id');
     }
 
     /**
-     * @param $query
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function scopeLatest($query)
+    public function tasks()
     {
-        return $query->orderBy('id', 'desc');
+        return $this->hasMany(Task::class, 'adv_task_id');
     }
 }

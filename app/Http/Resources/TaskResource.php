@@ -36,14 +36,16 @@ class TaskResource extends JsonResource
             'amount_donations' => $this->amount_donations,
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),
-            'start_active' => getW3cDatetime($this->start_active),  //Todo: !!
+            'start_active' => getW3cDatetime($this->start_active),
             'finish_at' => $finish_at,  //Todo: !!
             'completed_time' => $completed_time,
+            'comment' => $this->comment,
 
             'user' => new UserResource($this->whenLoaded('user')),
             'votes' => VoteResource::collection($this->whenLoaded('votes')),
             'stream' => new StreamResource($this->whenLoaded('stream')),
             'transactions' => TransactionResource::collection($this->whenLoaded('transactions')),
+            'advTask' => new AdvTaskResource($this->whenLoaded('advTask')),
         ];
 
         //Show results if already voted or voting finished

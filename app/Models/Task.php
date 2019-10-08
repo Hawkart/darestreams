@@ -55,6 +55,14 @@ class Task extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    public function advTask()
+    {
+        return $this->belongsTo(AdvTask::class, 'adv_task_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function stream()
     {
         return $this->belongsTo(Stream::class);
