@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 use Storage;
@@ -24,7 +25,7 @@ class UserResource extends JsonResource
             'full_name' => $this->name,
             'nickname' => $this->nickname,
             'email' => $this->when(Auth::user() && Auth::user()->id==$this->id, $this->email),
-            'role_id' => $this->role_id,
+            'role_id' => User::getRoleSlug($this->role_id),
             'avatar' => getImageLink($this->avatar, '/img/default_avatar.jpg'),
             'overlay' => getImageLink($this->overlay, '/img/default_overlay.jpg'),
             'donates' => $this->when(isset($this->donates), $this->donates),

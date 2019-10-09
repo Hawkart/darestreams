@@ -258,4 +258,39 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEma
     {
         return isset($this->channel) && $channel_id==$this->channel->id;
     }
+
+    public function isUser()
+    {
+        return $this->role_id===1;
+    }
+
+    public function isAdmin()
+    {
+        return $this->role_id===2;
+    }
+
+    public function isStreamer()
+    {
+        return $this->role_id===3;
+    }
+
+    public function isAdvertiser()
+    {
+        return $this->role_id===4;
+    }
+
+    public static function getRoleSlug($role_id)
+    {
+        $role = '';
+
+        switch($role_id)
+        {
+            case 1: $role = 'user'; break;
+            case 2: $role = 'admin'; break;
+            case 3: $role = 'streamer'; break;
+            case 4: $role = 'advertiser'; break;
+        }
+
+        return $role;
+    }
 }

@@ -18,7 +18,7 @@ class ChannelResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'url' => $this->url,
-            'dare' => $this->exist ? 'https://darestreams.com/channel/'.$this->name : '',
+            'dare' => $this->channel_id ? 'https://darestreams.com/channel/'.$this->name : '',
             'logo' => $this->json['logo'],
             'lang' => $this->lang,
             'game_id' => $this->game_id,
