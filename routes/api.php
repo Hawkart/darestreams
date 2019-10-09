@@ -33,7 +33,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('games', 'GameController')->only(['index', 'show']);
     Route::post('games/offer', 'GameController@offer');
 
-    Route::apiResource('adv/campaigns', 'AdvCampaignController')->only(['index', 'create', 'update']);
+    Route::apiResource('adv/campaigns', 'AdvCampaignController')->only(['index', 'store', 'update']);
 
 
     Route::get('users/me', 'UserController@me');
