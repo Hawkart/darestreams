@@ -40,7 +40,11 @@ class SyncStatChannels extends Command
         $channels = StatChannel::top()->get();
         foreach($channels as $stat)
         {
-            $channel = Channel::where('exid', $stat->exid)->first();
+            $channel = Channel::where('exid', $stat->exid)
+                            ->whereHas('user', function($q){
+                                $q->where('fake', '<>', 1);
+                            })->first();
+
             if($channel)
             {
                 $stat->update([
@@ -49,6 +53,7 @@ class SyncStatChannels extends Command
                 ]);
             }else{
                 $stat->update([
+                    'channel_id' => 0,
                     'game_id' => $this->getGameIdByTitle($stat->json['game'])
                 ]);
             }

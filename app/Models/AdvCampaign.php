@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class AdvCampaign extends Model
@@ -14,18 +15,18 @@ class AdvCampaign extends Model
     protected $table = 'adv_campaigns';
 
     /**
-     * The attributes that aren't mass assignable.
-     *
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'user_id', 'from', 'to', 'title', 'brand', 'logo', 'limit'
+    ];
 
     /**
      * The attributes that should be mutated to dates.
      *
      * @var array
      */
-    protected $dates = ['created_at', 'updated_at'];
+    protected $dates = ['created_at', 'updated_at', 'from', 'to'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -49,5 +50,32 @@ class AdvCampaign extends Model
     public function tasks()
     {
         return $this->hasManyThrough('App\Models\Task', 'App\Models\AdvTask', 'adv_task_id');
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeActive($query)
+    {
+        $now = Carbon::now('UTC');
+        return $query->where('from', '<', $now)->where('to', '>', $now);
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeFinished($query)
+    {
+        return $query->where('to', '<', Carbon::now('UTC'));
+    }
+
+    /**
+     * @return bool
+     */
+    public function isStarted()
+    {
+        return Carbon::parse($this->from)->lt(Carbon::now('UTC'));
     }
 }

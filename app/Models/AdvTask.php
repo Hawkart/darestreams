@@ -14,11 +14,11 @@ class AdvTask extends Model
     protected $table = 'adv_tasks';
 
     /**
-     * The attributes that aren't mass assignable.
-     *
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'campaign_id', 'small_desc', 'full_desc', 'limit', 'price', 'type', 'min_rating'
+    ];
 
     /**
      * The attributes that should be mutated to dates.

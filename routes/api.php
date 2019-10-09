@@ -33,11 +33,14 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('games', 'GameController')->only(['index', 'show']);
     Route::post('games/offer', 'GameController@offer');
 
+    Route::apiResource('adv/campaigns', 'AdvCampaignController')->only(['index', 'create', 'update']);
+
 
     Route::get('users/me', 'UserController@me');
     Route::get('users/me/account', 'UserController@account');
     Route::post('users/me/avatar', 'UserController@updateAvatar');
     Route::post('users/me/overlay', 'UserController@updateOverlay');
+    Route::get('users/me/campaigns', 'UserController@campaigns');
     //Route::patch('users/me/password', 'UserController@updatePassword');
     Route::get('users/me/get-donates-by-date', 'UserController@getDonateGroupDates');
     Route::get('users/me/get-donates-by-date/{date}/{stream}', 'UserController@getDonateGroupDatesByDateStream');

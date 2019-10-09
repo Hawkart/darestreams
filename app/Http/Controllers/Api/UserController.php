@@ -8,6 +8,7 @@ use App\Http\Requests\TaskTransactionRequest;
 use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\AccountResource;
+use App\Http\Resources\AdvCampaignResource;
 use App\Http\Resources\ChannelResource;
 use App\Http\Resources\TransactionResource;
 use App\Models\Account;
@@ -37,7 +38,7 @@ class UserController extends Controller
     {
         $this->middleware('auth:api')
             ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account',
-                'donate', 'getDebitWithdrawGroupDates', 'getDebitWithdrawGroupDatesByDate',
+                'donate', 'getDebitWithdrawGroupDates', 'getDebitWithdrawGroupDatesByDate', 'campaigns',
                 'getDonateGroupDates', 'getDonateGroupDatesByDate', 'getDonateGroupDatesByDateStream', 'isFollowing']);
     }
 
@@ -331,6 +332,22 @@ class UserController extends Controller
             ->jsonPaginate();
 
         return UserResource::collection($items);
+    }
+
+    /**
+     * Users campaigns
+     * {user} - user id integer.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function campaigns(User $user)
+    {
+        $items = QueryBuilder::for($user->advCampaigns()->getQuery())
+            ->allowedIncludes(['advTasks', 'tasks'])
+            ->jsonPaginate();
+
+        return AdvCampaignResource::collection($items);
     }
 
     /**
