@@ -496,8 +496,8 @@ class UserController extends Controller
      */
     public function fakeLogin(User $user)
     {
-        $token = auth()->login($user);
-        $expiration = auth()->payload()->get('exp');
+        $token = auth('api')->login($user);
+        $expiration = auth('api')->payload()->get('exp');
 
         return response()->json([
             'token' => $token,
