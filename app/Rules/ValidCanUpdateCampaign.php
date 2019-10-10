@@ -30,7 +30,6 @@ class ValidCanUpdateCampaign implements Rule
     public function passes($attribute, $value)
     {
         $user = auth()->user();
-        $now = Carbon::now('UTC');
 
         if(!$user->isAdvertiser())
         {

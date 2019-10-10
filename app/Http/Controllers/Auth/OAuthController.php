@@ -63,8 +63,8 @@ class OAuthController extends Controller
             throw new \Exception("Problem with social abstract user", 400);
         }
 
-        auth()->setToken($token = auth()->login($user))->user();
-        $payload = auth()->payload();
+        auth('api') ->setToken($token = auth('api')->login($user))->user();
+        $payload = auth('api')->payload();
 
         return response()->view('oauth.callback', [
             'token' => $token,
@@ -107,9 +107,9 @@ class OAuthController extends Controller
             return $user;
         }
 
-        if(!empty(auth()->user()))
+        if(!empty(auth('api')->user()))
         {
-            $user = auth()->user();
+            $user = auth('api')->user();
         } else if (User::where('email', $userProvider->getEmail())->exists()) {
             //throw new EmailTakenException;
             $user = User::where('email', $userProvider->getEmail())->first();

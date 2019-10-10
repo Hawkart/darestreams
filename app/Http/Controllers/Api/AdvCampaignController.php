@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\AdvCampaignRequest;
 use App\Models\AdvCampaign;
 use App\Http\Resources\AdvCampaignResource;
+use App\Rules\ValidCanUpdateCampaign;
+use Illuminate\Http\Request;
 use Cache;
+use File;
 
 /**
  * @group Adv
@@ -17,7 +20,7 @@ class AdvCampaignController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api')->only(['store', 'update', 'index']);
+        $this->middleware('auth:api')->only(['store', 'update', 'index', 'updateLogo']);
     }
 
     /**
@@ -88,6 +91,45 @@ class AdvCampaignController extends Controller
     public function update(AdvCampaignRequest $request, AdvCampaign $campaign)
     {
         $campaign->update($request->only(['from', 'to', 'title', 'brand', 'limit']));
+
+        AdvCampaignResource::withoutWrapping();
+
+        return response()->json([
+            'success' => true,
+            'data' => new AdvCampaignResource($campaign),
+            'message'=> trans('api/campaign.success_updated')
+        ], 200);
+    }
+
+    /**
+     * Update logo
+     *
+     * @authenticated
+     * @bodyParam logo file required
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateLogo(Request $request, AdvCampaign $campaign)
+    {
+        $request->validate([
+            'logo' => [
+                'required','image','mimes:jpeg,png,jpg,gif,svg','max:2048',
+                new ValidCanUpdateCampaign($campaign),
+            ]
+        ]);
+
+        if($campaign->logo)
+        {
+            $path = public_path() . '/storage/' . $campaign->logo;
+            if(file_exists($path))
+                unlink($path);
+        }
+
+        $logo = $campaign->id.'_logo'.time().'.'.request()->logo->getClientOriginalExtension();
+        $request->logo->storeAs('public/campaigns', $logo);
+
+        $campaign->logo = "campaigns/".$logo;
+        $campaign->save();
 
         AdvCampaignResource::withoutWrapping();
 
