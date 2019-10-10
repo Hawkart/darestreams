@@ -8,7 +8,6 @@ use App\Http\Resources\AdvCampaignResource;
 use App\Rules\ValidCanUpdateCampaign;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
-use Cache;
 use File;
 
 /**

@@ -31,7 +31,7 @@ class UserResource extends JsonResource
             'donates' => $this->when(isset($this->donates), $this->donates),
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),
-            'lang' => !isset($this->settings['lang']) ? $this->settings['lang'] : "ru",
+            'lang' => isset($this->settings['lang']) ? $this->settings['lang'] : "ru",
             'fake' => $this->fake,
 
             'account' => new AccountResource($this->whenLoaded('account')),
