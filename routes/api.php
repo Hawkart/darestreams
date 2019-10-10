@@ -35,7 +35,9 @@ Route::group(['namespace' => 'Api'], function () {
 
 
     Route::post('adv/campaigns/{campaign}/logo', 'AdvCampaignController@updateLogo');
-    Route::apiResource('adv/campaigns', 'AdvCampaignController')->only(['index', 'store', 'update']);
+    Route::apiResource('adv/campaigns', 'AdvCampaignController');
+
+    Route::apiResource('adv/tasks', 'AdvTaskController');
 
 
     Route::get('users/me', 'UserController@me');

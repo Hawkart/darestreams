@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\AdvCampaignRequest;
 use App\Http\Requests\AdvTaskRequest;
+use App\Http\Resources\AdvTaskResource;
 use App\Models\AdvTask;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 /**
  * @group Adv
@@ -33,35 +35,56 @@ class AdvTaskController extends Controller
     }
 
     /**
-     * Create new campaign.
+     * Create new campaign's task.
      * @authenticated
      *
-     * @bodyParam from datetime required Period date from.
-     * @bodyParam to datetime required Period date to.
-     * @bodyParam title string required Title of campaign.
-     * @bodyParam brand string required Brand of campaign.
-     * @bodyParam limit integer required Limit to spend on all tasks.
+     * @bodyParam campaign_id integer required Int of campaign.
+     * @bodyParam small_desc string required Small description.
+     * @bodyParam full_desc string required Full description.
+     * @bodyParam limit integer required
+     * @bodyParam price integer required Brand of campaign.
+     * @bodyParam type integer required Type of limit. 0 - by stream, 1- by views.
+     * @bodyParam min_rating integer required Min rating of streamer.
      *
      * @param AdvCampaignRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(AdvTaskRequest $request)
     {
+        $task = new AdvTask();
+        $task->fill($request->all());
+        $task->save();
 
+        AdvTaskResource::withoutWrapping();
+
+        return response()->json([
+            'success' => true,
+            'data' => new AdvTaskResource($task),
+            'message'=> trans('api/adv_task.success_created')
+        ], 200);
     }
 
     /**
-     * Update campaign.
+     * Update campaign's task.
      * @authenticated
      *
-     * @bodyParam from datetime Period date from.
-     * @bodyParam to datetime Period date to.
-     * @bodyParam title string required Title of campaign.
-     * @bodyParam brand string Brand of campaign.
-     * @bodyParam limit integer Limit to spend on all tasks.
+     * @bodyParam small_desc string Small description.
+     * @bodyParam full_desc string Full description.
+     * @bodyParam limit integer
+     * @bodyParam price integer required Brand of campaign.
+     * @bodyParam type integer Type of limit. 0 - by stream, 1- by views.
+     * @bodyParam min_rating integer Min rating of streamer.
      */
     public function update(AdvTaskRequest $request, AdvTask $task)
     {
+        $task->update($request->only(['small_desc', 'full_desc', 'limit', 'price', 'type', 'min_rating']));
 
+        AdvTaskResource::withoutWrapping();
+
+        return response()->json([
+            'success' => true,
+            'data' => new AdvTaskResource($task),
+            'message'=> trans('api/adv_task.success_updated')
+        ], 200);
     }
 }

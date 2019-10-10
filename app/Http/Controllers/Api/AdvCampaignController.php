@@ -7,6 +7,7 @@ use App\Models\AdvCampaign;
 use App\Http\Resources\AdvCampaignResource;
 use App\Rules\ValidCanUpdateCampaign;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 use Cache;
 use File;
 
@@ -20,11 +21,11 @@ class AdvCampaignController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api')->only(['store', 'update', 'index', 'updateLogo']);
+        $this->middleware('auth:api')->only(['store', 'update', 'index', 'show', 'updateLogo']);
     }
 
     /**
-     * Display a listing of the resource.
+     * List of campaigns
      * @authenticated
      *
      * @queryParam include string String of connections: advTasks, tasks. Example: advTasks
@@ -43,6 +44,26 @@ class AdvCampaignController extends Controller
             ->jsonPaginate();
 
         return AdvCampaignResource::collection($items);
+    }
+
+    /**
+     * Detail campaign.
+     * @authenticated
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(AdvCampaign $campaign)
+    {
+        $user = auth()->user();
+
+        if(!$user->isStreamer() && $campaign->user_id!=$user->id)
+            return response()->json([], 401);
+
+        $item = QueryBuilder::for($campaign->getQuery())
+            ->allowedIncludes(['advTasks', 'tasks'])
+            ->firstOrFail();
+
+        return new AdvCampaignResource($item);
     }
 
     /**
