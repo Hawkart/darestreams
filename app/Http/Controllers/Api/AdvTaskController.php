@@ -25,7 +25,7 @@ class AdvTaskController extends Controller
      * List of adv tasks for current user.
      * @authenticated
      *
-     * @queryParam include string String of connections: advTasks, tasks. Example: advTasks
+     * @queryParam include string String of connections: campaign. Example: campaign
      * @queryParam page array Use as page[number]=1&page[size]=2.
      *
      * @return \Illuminate\Http\Response
