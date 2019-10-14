@@ -64,7 +64,7 @@ class OAuthController extends Controller
             try {
                 dispatch(new GetUserChannel($user, $userProvider->getId(), $provider));
             } catch (\Exception $e) {
-                throw new \Exception("Problem with social abstract user", 400);
+                abort(403, 'Problem with social abstract user');
             }
         }
 
@@ -91,11 +91,11 @@ class OAuthController extends Controller
                 ->where('provider_user_id', $userProvider->getId())
                 ->first();
         } catch (\Exception $e) {
-            abort(404, 'Problem with social abstract user');
+            abort(403, 'Problem with social abstract user');
         }
 
         if(empty($userProvider->getEmail()))
-            abort(404, 'Sorry, You cannot authorize without email');
+            abort(403, 'Sorry, You cannot authorize without email');
 
         if ($oauthProvider) {
 
@@ -126,7 +126,7 @@ class OAuthController extends Controller
             try {
                 $user = $this->createUser($userProvider);
             } catch (\Exception $e) {
-                abort(404, 'An Error Occured, please retry later');
+                abort(403, 'An Error Occured, please retry later');
             }
         }
 
@@ -134,7 +134,7 @@ class OAuthController extends Controller
         try {
             $this->connect($user, $provider, $userProvider);
         } catch (\Exception $e) {
-            abort(404, 'Some problem with creating social account. Please try again later.');
+            abort(403, 'Some problem with creating social account. Please try again later.');
         }
 
         return $user;
