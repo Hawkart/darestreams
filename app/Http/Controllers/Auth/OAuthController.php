@@ -67,7 +67,8 @@ class OAuthController extends Controller
         }
 
 
-        auth('api') ->setToken($token = auth('api')->login($user))->user();
+        $token = auth('api')->login($user);
+        auth('api')->setToken($token)->user();
         $payload = auth('api')->payload();
 
         return response()->view('oauth.callback', [

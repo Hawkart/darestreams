@@ -6,6 +6,9 @@ use App\Http\Requests\AdvCampaignRequest;
 use App\Http\Requests\AdvTaskRequest;
 use App\Http\Resources\AdvTaskResource;
 use App\Models\AdvTask;
+use App\Models\Rating\Channel as RatingChannel;
+use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 /**
  * @group Adv
@@ -15,7 +18,37 @@ class AdvTaskController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api')->only(['store', 'update']);
+        $this->middleware('auth:api')->only(['store', 'update', 'index']);
+    }
+
+    /**
+     * List of adv tasks for current user.
+     * @authenticated
+     *
+     * @queryParam include string String of connections: advTasks, tasks. Example: advTasks
+     * @queryParam page array Use as page[number]=1&page[size]=2.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        $user = auth()->user();
+
+        if(!$user->isStreamer() && !$user->isAdmin())
+            return response()->json([], 401);
+
+        $rh = RatingChannel::where('channel_id', $user->channel->id)->first();
+        $rating = $rh ? ceil($rh->rating/1000) : 0;
+
+        $items = QueryBuilder::for(AdvTask::class)
+            ->whereHas('campaign', function($q){
+                $q->active();
+            })
+            ->where('min_rating', '<', $rating)
+            ->allowedIncludes(['campaign'])
+            ->jsonPaginate();
+
+        return AdvTaskResource::collection($items);
     }
 
     /**

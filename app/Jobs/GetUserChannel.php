@@ -42,7 +42,9 @@ class GetUserChannel implements ShouldQueue
             if($this->provider == 'twitch')
             {
                 $twitch = new TwitchHelper();
-                if($data = $twitch->getChannel($this->id, true) && isset($data['_id']))
+                $data = $twitch->getChannel($this->id, true);
+                
+                if(isset($data['_id']))
                 {
                     $ch = [
                         'exid' => $data['_id'],

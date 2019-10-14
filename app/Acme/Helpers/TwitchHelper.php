@@ -36,11 +36,7 @@ class TwitchHelper
         } catch (\Exception $e) {
 
             if($log)
-                Log::info('GetChannel', [
-                    'error' => $e->getMessage(),
-                    'file' => __FILE__,
-                    'line' => __LINE__
-                ]);
+                Log::info('GetChannel', ['error' => $e->getMessage(), 'file' => __FILE__, 'line' => __LINE__]);
 
             return [];
         }
