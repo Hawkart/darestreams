@@ -9,6 +9,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\Log;
 
 class GetUserChannel implements ShouldQueue
 {
@@ -62,12 +63,14 @@ class GetUserChannel implements ShouldQueue
 
                     //user lang update
                     $settings = $this->user->settings;
-                    $settings['lang'] = $data['language'];
+                    $settings['lang'] = isset($data['language']) ? $data['language'] : 'ru';
 
                     $this->user->update([
                         'settings' => $settings
                     ]);
                 }
+
+                Log::info('GetUserChannel', ['data' => $data, 'id' => $this->id, 'user' => $this->user, 'file' => __FILE__, 'line' => __LINE__]);
             }
         }
     }
@@ -77,15 +80,19 @@ class GetUserChannel implements ShouldQueue
      */
     public function addStatChannel($data)
     {
-        $sch = \App\Models\Rating\Channel::firstOrNew(['exid' => $data['_id']]);
-        $sch->name = $data['name'];
-        $sch->provider = 'twitch';
-        $sch->url = $data['url'];
-        $sch->json = $data;
-        $sch->exist = true;
-        $sch->followers = $data['followers'];
-        $sch->views = $data['views'];
-        $sch->save();
+        try {
+            $sch = \App\Models\Rating\Channel::firstOrNew(['exid' => $data['_id']]);
+            $sch->name = $data['name'];
+            $sch->provider = 'twitch';
+            $sch->url = $data['url'];
+            $sch->json = $data;
+            $sch->exist = true;
+            $sch->followers = $data['followers'];
+            $sch->views = $data['views'];
+            $sch->save();
+        } catch (\Exception $e) {
+            Log::info('GetUserChannel', ['data' => $e->getMessage(), 'file' => __FILE__, 'line' => __LINE__]);
+        }
     }
 
     /**
