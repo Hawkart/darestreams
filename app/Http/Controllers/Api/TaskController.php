@@ -10,6 +10,7 @@ use App\Events\SocketOnDonate;
 use App\Http\Requests\TaskTransactionRequest;
 use App\Http\Requests\TaskVoteRequest;
 use App\Http\Resources\StreamResource;
+use App\Models\AdvTask;
 use App\Models\Stream;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -87,46 +88,66 @@ class TaskController extends Controller
     public function store(TaskRequest $request)
     {
         $user = auth()->user();
-
         $stream = Stream::findOrFail($request->get('stream_id'));
-        $isStreamer = $user->ownerOfChannel($stream->channel_id);
-        $minDonate = $stream->getDonateCreateAmount();
+        $adv_task_id = $request->has('adv_task_id') ? $request->get('adv_task_id') : 0;
 
-        $input = $request->all();
-        $input['user_id'] = $user->id;
-        $input['min_donation'] = $minDonate;
-
-        //If is streamer
-        if($isStreamer)
+        if($adv_task_id>0)
         {
-            $input['created_amount'] = 0;
-            $input['status'] = TaskStatus::Active;
-            $input['start_active'] = Carbon::now('UTC');
-        }
+            $advTask = AdvTask::findOrFail($adv_task_id);
 
-        try {
-            $task = DB::transaction(function () use ($input, $user, $stream, $isStreamer) {
+            try {
+                $task = DB::transaction(function () use ($user, $stream, $advTask) {
+                    return Task::create([
+                        'stream_id' =>  $stream->id,
+                        'user_id' => $user->id,
+                        'adv_task_id' => $advTask->id,
+                        'small_desc' => $advTask->small_desc,
+                        'small_desc' => $advTask->small_desc,
 
-                $task = new Task();
-                $task->fill($input);
-                $task->save();
-
-                if(!$isStreamer && $input['created_amount']>0)
-                {
-                    Transaction::create($data = [
-                        'task_id' => $task->id,
-                        'amount' => $input['created_amount'],
-                        'account_sender_id' => $user->account->id,
-                        'account_receiver_id' => $task->stream->user->account->id,
-                        'status' => TransactionStatus::Holding,
-                        'type' => TransactionType::Donation
                     ]);
-                }
+                });
+            } catch (\Exception $e) {
+                return response($e->getMessage(), 422);
+            }
+        } else {
+            $isStreamer = $user->ownerOfChannel($stream->channel_id);
+            $minDonate = $stream->getDonateCreateAmount();
+            $input = $request->except('adv_task_id');
+            $input['user_id'] = $user->id;
+            $input['min_donation'] = $minDonate;
 
-                return $task;
-            });
-        } catch (\Exception $e) {
-            return response($e->getMessage(), 422);
+            //If is streamer
+            if($isStreamer)
+            {
+                $input['created_amount'] = 0;
+                $input['status'] = TaskStatus::Active;
+                $input['start_active'] = Carbon::now('UTC');
+            }
+
+            try {
+                $task = DB::transaction(function () use ($input, $user, $stream, $isStreamer) {
+
+                    $task = new Task();
+                    $task->fill($input);
+                    $task->save();
+
+                    if(!$isStreamer && $input['created_amount']>0)
+                    {
+                        Transaction::create($data = [
+                            'task_id' => $task->id,
+                            'amount' => $input['created_amount'],
+                            'account_sender_id' => $user->account->id,
+                            'account_receiver_id' => $task->stream->user->account->id,
+                            'status' => TransactionStatus::Holding,
+                            'type' => TransactionType::Donation
+                        ]);
+                    }
+
+                    return $task;
+                });
+            } catch (\Exception $e) {
+                return response($e->getMessage(), 422);
+            }
         }
 
         TaskResource::withoutWrapping();
@@ -159,54 +180,68 @@ class TaskController extends Controller
         $status = $request->has('status') ? $request->get('status') : -1;
         $stream = $task->stream;
 
-        if($user->ownerOfChannel($stream->channel_id))
+        if($task->adv_task_id>0 && $user->ownerOfChannel($stream->channel_id))
         {
-            if($stream->status==StreamStatus::Active )
+            if($stream->status==StreamStatus::Active || $stream->status==StreamStatus::Created)
             {
-                //active->allowVote || ->canceled
-                if($task->status==TaskStatus::Active && $status==TaskStatus::AllowVote || $status==TaskStatus::Canceled)
+                if(
+                    ($task->status==TaskStatus::Active && $status==TaskStatus::AllowVote) ||
+                    (($task->status==TaskStatus::Active || $task->status==TaskStatus::Created) &&  $status==TaskStatus::Canceled)
+                )
                 {
                     $task->update(['status' => $status]);
                 }
-
-                //Owner of task
-                if($task->status==TaskStatus::Created && $task->user_id==$user->id  && ($status==-1 || $task->status==$status))
-                {
-                    $task->update($request->only(['small_text', 'interval_time', 'full_text', 'is_superbowl']));
-                }
-
-                //created -> active
-                if($task->status==TaskStatus::Created && $status==TaskStatus::Active)
-                {
-                    $task->update([
-                        'status' => $status,
-                        'start_active' => Carbon::now('UTC')
-                    ]);
-                }
             }
-            else if($stream->status==StreamStatus::Created)
-            {
-                if($status==TaskStatus::Canceled)
-                {
-                    $task->update(['status' => $status]);
-                }
-
-                //Owner of task
-                if($task->status==TaskStatus::Created && $task->user_id==$user->id && ($status==-1 || $task->status==$status))
-                {
-                    $task->update($request->only(['small_text', 'interval_time', 'full_text', 'is_superbowl']));
-                }
-
-            }else{
-                return setErrorAfterValidation(['status' => trans('api/task.failed_change_to_another_status')]);
-            }
-        }
-        //Owner of task can change if stream active or just created
-        else if($task->status==TaskStatus::Created && $task->user_id==$user->id && in_array($stream->status, [StreamStatus::Active, StreamStatus::Created]))
-        {
-            $task->update($request->only(['small_text', 'interval_time', 'full_text', 'is_superbowl']));
         }else{
-            return setErrorAfterValidation(['status' => trans('api/task.failed_cannot_change_info')]);
+            if($user->ownerOfChannel($stream->channel_id))
+            {
+                if($stream->status==StreamStatus::Active )
+                {
+                    //active->allowVote || ->canceled
+                    if($task->status==TaskStatus::Active && $status==TaskStatus::AllowVote || $status==TaskStatus::Canceled)
+                    {
+                        $task->update(['status' => $status]);
+                    }
+
+                    //Owner of task
+                    if($task->status==TaskStatus::Created && $task->user_id==$user->id  && ($status==-1 || $task->status==$status))
+                    {
+                        $task->update($request->only(['small_text', 'interval_time', 'full_text', 'is_superbowl']));
+                    }
+
+                    //created -> active
+                    if($task->status==TaskStatus::Created && $status==TaskStatus::Active)
+                    {
+                        $task->update([
+                            'status' => $status,
+                            'start_active' => Carbon::now('UTC')
+                        ]);
+                    }
+                }
+                else if($stream->status==StreamStatus::Created)
+                {
+                    if($status==TaskStatus::Canceled)
+                    {
+                        $task->update(['status' => $status]);
+                    }
+
+                    //Owner of task
+                    if($task->status==TaskStatus::Created && $task->user_id==$user->id && ($status==-1 || $task->status==$status))
+                    {
+                        $task->update($request->only(['small_text', 'interval_time', 'full_text', 'is_superbowl']));
+                    }
+
+                }else{
+                    return setErrorAfterValidation(['status' => trans('api/task.failed_change_to_another_status')]);
+                }
+            }
+            //Owner of task can change if stream active or just created
+            else if($task->status==TaskStatus::Created && $task->user_id==$user->id && in_array($stream->status, [StreamStatus::Active, StreamStatus::Created]))
+            {
+                $task->update($request->only(['small_text', 'interval_time', 'full_text', 'is_superbowl']));
+            }else{
+                return setErrorAfterValidation(['status' => trans('api/task.failed_cannot_change_info')]);
+            }
         }
 
         TaskResource::withoutWrapping();

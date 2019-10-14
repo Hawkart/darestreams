@@ -78,4 +78,12 @@ class AdvCampaign extends Model
     {
         return Carbon::parse($this->from)->lt(Carbon::now('UTC'));
     }
+
+    /**
+     * @return bool
+     */
+    public function isFinished()
+    {
+        return Carbon::parse($this->to)->gt(Carbon::now('UTC'));
+    }
 }

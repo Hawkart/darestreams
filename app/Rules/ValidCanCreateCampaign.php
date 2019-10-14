@@ -17,7 +17,7 @@ class ValidCanCreateCampaign implements Rule
     {
         $user = auth()->user();
 
-        if(!$user->isAdvertiser())
+        if(!$user->isAdvertiser() && !$user->isAdmin())
             return false;
 
         return true;

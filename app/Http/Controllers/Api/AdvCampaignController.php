@@ -34,7 +34,7 @@ class AdvCampaignController extends Controller
      */
     public function index(Request $request)
     {
-        if(!auth()->user()->isStreamer())
+        if(!auth()->user()->isStreamer() && !auth()->user()->isAdmin())
             return response()->json([], 401);
 
         $items = QueryBuilder::for(AdvCampaign::class)
@@ -55,7 +55,7 @@ class AdvCampaignController extends Controller
     {
         $user = auth()->user();
 
-        if(!$user->isStreamer() && $campaign->user_id!=$user->id)
+        if(!$user->isStreamer() && $campaign->user_id!=$user->id && !auth()->user()->isAdmin())
             return response()->json([], 401);
 
         $item = QueryBuilder::for($campaign->getQuery())

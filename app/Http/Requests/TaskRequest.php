@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Rules\ValidCanTaskCreate;
+use App\Rules\ValidTaskCanAdvCreate;
 use App\Rules\ValidTaskCreatedEnoughMoneyAndMinAmount;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
@@ -41,15 +42,20 @@ class TaskRequest extends FormRequest {
                     return [
                         'stream_id' => 'required|exists:streams,id',
                         'created_amount' => [
-                            'required',
+                            'required_without:adv_task_id',
                             'numeric',
                             'min:0',
                             new ValidTaskCreatedEnoughMoneyAndMinAmount($this->get('stream_id')),
                             new ValidCanTaskCreate($this->get('stream_id'))
                         ],
-                        'small_desc' => 'required|string|min:1',
-                        'full_desc' => 'required|string|min:1',
-                        'interval_time' => 'sometimes|required|numeric|min:0'
+                        'small_desc' => 'required_without:adv_task_id|string|min:1',
+                        'full_desc' => 'required_without:adv_task_id|string|min:1',
+                        'interval_time' => 'sometimes|required_without:adv_task_id|numeric|min:0',
+                        'adv_task_id' => [
+                            'sometimes',
+                            'exists:adv_tasks,id',
+                            new ValidTaskCanAdvCreate($this->get('stream_id'), $this->get('adv_task_id'))
+                        ]
                     ];
                 }
             case 'PUT':

@@ -29,7 +29,7 @@ class ValidCanCreateAdvTask implements Rule
 
         $campaign = AdvCampaign::findOrFail($this->campaign_id);
 
-        if(!$user->isAdvertiser())
+        if(!$user->isAdvertiser() && !$user->isAdmin())
         {
             $this->message = trans('api/campaign.not_advertiser');
             return false;

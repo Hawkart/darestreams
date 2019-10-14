@@ -88,6 +88,9 @@ class OAuthController extends Controller
             return response('Problem with social abstract user', 422);
         }
 
+        if(empty($userProvider->getEmail()))
+            return response('You cannot authorize without email', 422);
+
         if ($oauthProvider) {
 
             $user = $oauthProvider->user;
@@ -156,7 +159,8 @@ class OAuthController extends Controller
             'email' => $sUser->getEmail() ? $sUser->getEmail() : $this::generateEmail($sUser),
             'nickname' => $sUser->getNickname() ? $sUser->getNickname() : $sUser->getName(),
             'email_verified_at' => $sUser->getEmail() ? now() : null,
-            'password' => bcrypt(Str::random(10))
+            'password' => bcrypt(Str::random(10)),
+            'role_id' => 3
         ];
 
         if(!empty($sUser->getAvatar()))
