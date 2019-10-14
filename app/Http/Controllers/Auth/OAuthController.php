@@ -57,6 +57,8 @@ class OAuthController extends Controller
         $userProvider = Socialite::driver($provider)->stateless()->user();
         $user = $this->findOrCreateUser($provider, $userProvider);
 
+        if(!$user instanceof  User) return $user;
+
         if($provider=='twitch')
         {
             try {
@@ -89,11 +91,11 @@ class OAuthController extends Controller
                 ->where('provider_user_id', $userProvider->getId())
                 ->first();
         } catch (\Exception $e) {
-            abort(response()->json(['message' => 'Problem with social abstract user'], 404));
+            abort(404, 'Problem with social abstract user');
         }
 
         if(empty($userProvider->getEmail()))
-            abort(response()->json(['message' => 'You cannot authorize without email'], 404));
+            abort(404, 'Sorry, You cannot authorize without email');
 
         if ($oauthProvider) {
 
@@ -124,7 +126,7 @@ class OAuthController extends Controller
             try {
                 $user = $this->createUser($userProvider);
             } catch (\Exception $e) {
-                return response('An Error Occured, please retry later', 422);
+                abort(404, 'An Error Occured, please retry later');
             }
         }
 
@@ -132,7 +134,7 @@ class OAuthController extends Controller
         try {
             $this->connect($user, $provider, $userProvider);
         } catch (\Exception $e) {
-            return response('Some problem with creating social account. Please try again later.', 422);
+            abort(404, 'Some problem with creating social account. Please try again later.');
         }
 
         return $user;
