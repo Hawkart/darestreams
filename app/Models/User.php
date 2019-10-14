@@ -286,8 +286,8 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEma
 
         switch($role_id)
         {
-            case 1: $role = 'user'; break;
-            case 2: $role = 'admin'; break;
+            case 1: $role = 'admin'; break;
+            case 2: $role = 'user'; break;
             case 3: $role = 'streamer'; break;
             case 4: $role = 'advertiser'; break;
         }
