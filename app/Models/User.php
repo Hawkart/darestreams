@@ -68,6 +68,7 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEma
      */
     protected $dispatchesEvents = [
         'created' => \App\Events\UserCreatedEvent::class,
+        'deleting' => \App\Events\UserDeletingEvent::class,
     ];
 
     /**

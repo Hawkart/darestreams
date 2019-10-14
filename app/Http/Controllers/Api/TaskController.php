@@ -102,8 +102,8 @@ class TaskController extends Controller
                         'user_id' => $user->id,
                         'adv_task_id' => $advTask->id,
                         'small_desc' => $advTask->small_desc,
-                        'small_desc' => $advTask->small_desc,
-
+                        'full_desc' => $advTask->full_desc,
+                        'status' => TaskStatus::Active
                     ]);
                 });
             } catch (\Exception $e) {

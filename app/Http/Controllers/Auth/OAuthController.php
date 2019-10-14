@@ -57,11 +57,15 @@ class OAuthController extends Controller
         $userProvider = Socialite::driver($provider)->stateless()->user();
         $user = $this->findOrCreateUser($provider, $userProvider);
 
-        try {
-            dispatch(new GetUserChannel($user, $userProvider->getId(), $provider));
-        } catch (\Exception $e) {
-            throw new \Exception("Problem with social abstract user", 400);
+        if($provider=='twitch')
+        {
+            try {
+                dispatch(new GetUserChannel($user, $userProvider->getId(), $provider));
+            } catch (\Exception $e) {
+                throw new \Exception("Problem with social abstract user", 400);
+            }
         }
+
 
         auth('api') ->setToken($token = auth('api')->login($user))->user();
         $payload = auth('api')->payload();

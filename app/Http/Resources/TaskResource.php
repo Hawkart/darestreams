@@ -27,6 +27,7 @@ class TaskResource extends JsonResource
             'id' => $this->id,
             'stream_id' => $this->stream_id,
             'user_id' => $this->user_id,
+            'adv_task_id' => $this->adv_task_id,
             'small_desc' => $this->small_desc,
             'full_desc' => $this->full_desc,
             'is_superbowl' => $this->is_superbowl,

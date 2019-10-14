@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\UserCreatedEvent::class => [
             \App\Listeners\UserCreatedListener::class,
         ],
+        \App\Events\UserDeletingEvent::class => [
+            \App\Listeners\UserDeletingListener::class
+        ],
         \App\Events\StreamCreatedEvent::class => [
             \App\Listeners\StreamCreatedListener::class,
         ],
