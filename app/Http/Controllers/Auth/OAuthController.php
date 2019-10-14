@@ -66,7 +66,6 @@ class OAuthController extends Controller
             }
         }
 
-
         $token = auth('api')->login($user);
         auth('api')->setToken($token)->user();
         $payload = auth('api')->payload();
@@ -90,11 +89,11 @@ class OAuthController extends Controller
                 ->where('provider_user_id', $userProvider->getId())
                 ->first();
         } catch (\Exception $e) {
-            return response('Problem with social abstract user', 422);
+            abort(response()->json(['message' => 'Problem with social abstract user'], 404));
         }
 
         if(empty($userProvider->getEmail()))
-            return response('You cannot authorize without email', 422);
+            abort(response()->json(['message' => 'You cannot authorize without email'], 404));
 
         if ($oauthProvider) {
 
