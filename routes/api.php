@@ -44,6 +44,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('users/me/account', 'UserController@account');
     Route::post('users/me/avatar', 'UserController@updateAvatar');
     Route::post('users/me/overlay', 'UserController@updateOverlay');
+    Route::patch('users/{user}/set-role', 'UserController@setRole');
     Route::get('users/me/campaigns', 'UserController@campaigns');
     //Route::patch('users/me/password', 'UserController@updatePassword');
     Route::get('users/me/get-donates-by-date', 'UserController@getDonateGroupDates');

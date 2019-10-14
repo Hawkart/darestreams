@@ -128,6 +128,32 @@ class UserController extends Controller
     }
 
     /**
+     * Set role for current user.
+     *
+     * @authenticated
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function setRole($request)
+    {
+        $user = auth()->user();
+        $role = $request->get('role');
+
+        $role_id = 2;
+        if($role!='admin')
+            $role_id = User::getRoleIdBySlug($role);
+
+        $user->update(['role_id' => $role_id]);
+
+        UserResource::withoutWrapping();
+
+        return response()->json([
+            'data' => new UserResource($user),
+            'message' => trans('api/user.successfully_updated')
+        ]);
+    }
+
+    /**
      * Update user's avatar
      *
      * @authenticated

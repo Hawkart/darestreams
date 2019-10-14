@@ -47,6 +47,8 @@ class EventServiceProvider extends ServiceProvider
             'SocialiteProviders\\YouTube\\YouTubeExtendSocialite@handle',
             'SocialiteProviders\\Steam\\SteamExtendSocialite@handle',
             'SocialiteProviders\\Discord\\DiscordExtendSocialite@handle',
+            'SocialiteProviders\\VKontakte\\VKontakteExtendSocialite@handle',
+            'SocialiteProviders\\Facebook\\FacebookExtendSocialite@handle',
         ],
     ];
 

@@ -164,8 +164,7 @@ class OAuthController extends Controller
             'email' => $sUser->getEmail() ? $sUser->getEmail() : $this::generateEmail($sUser),
             'nickname' => $sUser->getNickname() ? $sUser->getNickname() : $sUser->getName(),
             'email_verified_at' => $sUser->getEmail() ? now() : null,
-            'password' => bcrypt(Str::random(10)),
-            'role_id' => 3
+            'password' => bcrypt(Str::random(10))
         ];
 
         if(!empty($sUser->getAvatar()))

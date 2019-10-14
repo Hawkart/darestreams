@@ -43,7 +43,7 @@ class GetUserChannel implements ShouldQueue
             {
                 $twitch = new TwitchHelper();
                 $data = $twitch->getChannel($this->id, true);
-                
+
                 if(isset($data['_id']))
                 {
                     $ch = [

@@ -71,6 +71,13 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEma
         'deleting' => \App\Events\UserDeletingEvent::class,
     ];
 
+    public static $roleList = [
+        1 => 'admin',
+        2 => 'user',
+        3 => 'streamer',
+        4 => 'advertiser'
+    ];
+
     /**
      * Get the user's full name.
      *
@@ -282,16 +289,11 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEma
 
     public static function getRoleSlug($role_id)
     {
-        $role = '';
+        return self::$roleList[$role_id];
+    }
 
-        switch($role_id)
-        {
-            case 1: $role = 'admin'; break;
-            case 2: $role = 'user'; break;
-            case 3: $role = 'streamer'; break;
-            case 4: $role = 'advertiser'; break;
-        }
-
-        return $role;
+    public static function getRoleIdBySlug($role)
+    {
+        return array_search($role, self::$roleList);
     }
 }
