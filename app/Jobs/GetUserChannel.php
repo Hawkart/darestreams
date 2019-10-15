@@ -59,9 +59,9 @@ class GetUserChannel implements ShouldQueue
                         'overlay' => isset($data['video_banner']) ? $data['video_banner'] : ''
                     ];
 
-                    Channel::create($ch);
+                    $channel = Channel::create($ch);
 
-                    $this->addStatChannel($data);
+                    $this->addStatChannel($data, $channel);
 
                     //user lang update
                     $settings = $this->user->settings;
@@ -80,7 +80,7 @@ class GetUserChannel implements ShouldQueue
     /**
      * @param $data
      */
-    public function addStatChannel($data)
+    public function addStatChannel($data, $channel)
     {
         try {
             $sch = \App\Models\Rating\Channel::firstOrNew(['exid' => $data['_id']]);
@@ -88,7 +88,7 @@ class GetUserChannel implements ShouldQueue
             $sch->provider = 'twitch';
             $sch->url = $data['url'];
             $sch->json = $data;
-            $sch->exist = true;
+            $sch->channel_id = $channel->id;
             $sch->followers = $data['followers'];
             $sch->views = $data['views'];
             $sch->save();
