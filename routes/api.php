@@ -38,6 +38,8 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('adv/campaigns', 'AdvCampaignController');
     Route::apiResource('adv/tasks', 'AdvTaskController');
 
+    Route::apiResource('inquires', 'InquireController');
+
 
     Route::get('users/me', 'UserController@me');
     Route::get('users/me/account', 'UserController@account');
