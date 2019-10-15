@@ -136,6 +136,6 @@ return [
     /**
      * Admin email for sending new game offers.
      */
-    'game_offer_email' => env('GAME_OFFER_EMAIL')
-
+    'game_offer_email' => env('GAME_OFFER_EMAIL'),
+    'admin_email' => env('ADMIN_EMAIL'),
 ];
