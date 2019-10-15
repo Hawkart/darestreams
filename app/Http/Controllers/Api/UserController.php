@@ -134,12 +134,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function setRole($request)
+    public function setRole(Request $request)
     {
         $user = auth()->user();
         $role = $request->get('role');
 
-        $role_id = 2;
+        $role_id = $user->role_id;
         if($role!='admin')
             $role_id = User::getRoleIdBySlug($role);
 
