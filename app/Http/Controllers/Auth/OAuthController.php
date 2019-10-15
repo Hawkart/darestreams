@@ -23,7 +23,7 @@ class OAuthController extends Controller
     /**
      * Redirect the user to the provider authentication page.
      *
-     * {driver} - social provider: facebook, twitch, youtube, steam, discord. Example: twitch
+     * {driver} - social provider: vkontakte,facebook, twitch. Example: twitch
      *
      * @responseFile responses/response.json
      * @responseFile 404 responses/not_found.json
@@ -165,7 +165,8 @@ class OAuthController extends Controller
             'email' => $sUser->getEmail() ? $sUser->getEmail() : $this::generateEmail($sUser),
             'nickname' => $sUser->getNickname() ? $sUser->getNickname() : $sUser->getName(),
             'email_verified_at' => $sUser->getEmail() ? now() : null,
-            'password' => bcrypt(Str::random(10))
+            'password' => bcrypt(Str::random(10)),
+            'role_id' => null
         ];
 
         if(!empty($sUser->getAvatar()))

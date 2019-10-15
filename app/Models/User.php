@@ -289,11 +289,11 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEma
 
     public static function getRoleSlug($role_id)
     {
-        return isset(self::$roleList[$role_id]) ? self::$roleList[$role_id] : 2;
+        return isset(self::$roleList[$role_id]) ? self::$roleList[$role_id] : null;
     }
 
     public static function getRoleIdBySlug($role)
     {
-        return array_search($role, self::$roleList);
+        return array_search($role, self::$roleList)!==false ? array_search($role, self::$roleList) : null;
     }
 }

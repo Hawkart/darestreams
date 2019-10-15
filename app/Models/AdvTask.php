@@ -42,4 +42,12 @@ class AdvTask extends Model
     {
         return $this->hasMany(Task::class, 'adv_task_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function streams()
+    {
+        return $this->hasManyThrough('App\Models\Stream', 'App\Models\Task');
+    }
 }

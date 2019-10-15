@@ -30,7 +30,7 @@ $response = $client->post("https://darestreams.com/api/adv/campaigns/1/logo", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "logo" => "ea",
+            "logo" => "maiores",
         ],
 ]);
 $body = $response->getBody();
@@ -63,7 +63,7 @@ $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/adv/campaigns", [
     'query' => [
             "include" => "advTasks",
-            "page" => "2",
+            "page" => "6",
         ],
 ]);
 $body = $response->getBody();
@@ -104,11 +104,11 @@ $response = $client->post("https://darestreams.com/api/adv/campaigns", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "from" => "tempora",
-            "to" => "dolores",
-            "title" => "corrupti",
-            "brand" => "ea",
-            "limit" => "3",
+            "from" => "minus",
+            "to" => "soluta",
+            "title" => "quaerat",
+            "brand" => "nemo",
+            "limit" => "17",
         ],
 ]);
 $body = $response->getBody();
@@ -178,11 +178,11 @@ $response = $client->put("https://darestreams.com/api/adv/campaigns/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "from" => "voluptate",
-            "to" => "earum",
-            "title" => "non",
-            "brand" => "accusantium",
-            "limit" => "3",
+            "from" => "sit",
+            "to" => "ea",
+            "title" => "quaerat",
+            "brand" => "ut",
+            "limit" => "1",
         ],
 ]);
 $body = $response->getBody();
@@ -221,7 +221,7 @@ $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/adv/tasks", [
     'query' => [
             "include" => "campaign",
-            "page" => "13",
+            "page" => "19",
         ],
 ]);
 $body = $response->getBody();
@@ -262,13 +262,13 @@ $response = $client->post("https://darestreams.com/api/adv/tasks", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "campaign_id" => "6",
-            "small_desc" => "aut",
-            "full_desc" => "facere",
-            "limit" => "6",
-            "price" => "15",
-            "type" => "9",
-            "min_rating" => "8",
+            "campaign_id" => "11",
+            "small_desc" => "consequatur",
+            "full_desc" => "voluptatem",
+            "limit" => "8",
+            "price" => "6",
+            "type" => "3",
+            "min_rating" => "4",
         ],
 ]);
 $body = $response->getBody();
@@ -309,12 +309,12 @@ $response = $client->put("https://darestreams.com/api/adv/tasks/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "small_desc" => "velit",
-            "full_desc" => "magni",
-            "limit" => "15",
-            "price" => "6",
-            "type" => "20",
-            "min_rating" => "14",
+            "small_desc" => "voluptatibus",
+            "full_desc" => "fuga",
+            "limit" => "17",
+            "price" => "10",
+            "type" => "8",
+            "min_rating" => "15",
         ],
 ]);
 $body = $response->getBody();
@@ -498,7 +498,7 @@ Parameter | Type | Status | Description
 <!-- START_4462ebc3daf169e23a09dc2b53459f02 -->
 ## Redirect the user to the provider authentication page.
 
-{driver} - social provider: facebook, twitch, youtube, steam, discord. Example: twitch
+{driver} - social provider: vkontakte,facebook, twitch. Example: twitch
 
 > Example request:
 
@@ -668,10 +668,10 @@ print_r(json_decode((string) $body));
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/channels/top", [
     'query' => [
-            "hours" => "ad",
-            "limit" => "quod",
-            "skip" => "sunt",
-            "game_id" => "necessitatibus",
+            "hours" => "officia",
+            "limit" => "perferendis",
+            "skip" => "enim",
+            "game_id" => "fuga",
             "include" => "user,streams",
         ],
 ]);
@@ -723,8 +723,8 @@ $response = $client->get("https://darestreams.com/api/channels/1/streams", [
     'query' => [
             "include" => "game,tasks",
             "sort" => "-quantity_donators",
-            "page" => "12",
-            "filter" => "sit",
+            "page" => "4",
+            "filter" => "sint",
         ],
 ]);
 $body = $response->getBody();
@@ -770,7 +770,7 @@ $response = $client->get("https://darestreams.com/api/channels", [
     'query' => [
             "include" => "user,streams",
             "sort" => "-id",
-            "page" => "8",
+            "page" => "20",
         ],
 ]);
 $body = $response->getBody();
@@ -855,8 +855,8 @@ $response = $client->put("https://darestreams.com/api/channels/1", [
         ],
     'json' => [
             "description" => "Long description.",
-            "logo" => "minus",
-            "game_id" => "13",
+            "logo" => "repellendus",
+            "game_id" => "17",
         ],
 ]);
 $body = $response->getBody();
@@ -893,8 +893,8 @@ $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/games/top", [
     'query' => [
             "hours" => "240",
-            "limit" => "laudantium",
-            "skip" => "sed",
+            "limit" => "qui",
+            "skip" => "eos",
             "include" => "tags,streams",
         ],
 ]);
@@ -938,8 +938,8 @@ $response = $client->get("https://darestreams.com/api/games", [
     'query' => [
             "include" => "tags,streams",
             "sort" => "-popularity",
-            "page" => "3",
-            "filter" => "laudantium",
+            "page" => "12",
+            "filter" => "quae",
         ],
 ]);
 $body = $response->getBody();
@@ -1065,7 +1065,7 @@ $response = $client->get("https://darestreams.com/api/payments/1/1/1/checkout", 
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "amount" => "18",
+            "amount" => "2",
         ],
 ]);
 $body = $response->getBody();
@@ -1175,7 +1175,7 @@ $response = $client->get("https://darestreams.com/api/rating", [
     'query' => [
             "include" => "history",
             "sort" => "-id",
-            "page" => "10",
+            "page" => "8",
         ],
 ]);
 $body = $response->getBody();
@@ -1254,9 +1254,9 @@ Parameter | Status | Description
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/streams/top", [
     'query' => [
-            "limit" => "quas",
-            "skip" => "expedita",
-            "game_id" => "quia",
+            "limit" => "aut",
+            "skip" => "dolorem",
+            "game_id" => "libero",
             "include" => "user,tasks",
             "sort" => "-views",
         ],
@@ -1359,7 +1359,7 @@ $response = $client->get("https://darestreams.com/api/streams", [
     'query' => [
             "include" => "game,tasks",
             "sort" => "-quantity_donators",
-            "page" => "17",
+            "page" => "1",
         ],
 ]);
 $body = $response->getBody();
@@ -1403,17 +1403,17 @@ $response = $client->post("https://darestreams.com/api/streams", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "channel_id" => "16",
-            "title" => "et",
-            "link" => "repudiandae",
-            "start_at" => "nesciunt",
+            "channel_id" => "1",
+            "title" => "illo",
+            "link" => "accusamus",
+            "start_at" => "sunt",
             "allow_task_before_stream" => "1",
             "allow_task_when_stream" => "1",
-            "min_amount_task_before_stream" => "placeat",
-            "min_amount_task_when_stream" => "voluptas",
-            "min_amount_donate_task_before_stream" => "quia",
-            "min_amount_donate_task_when_stream" => "officia",
-            "tags" => "corrupti",
+            "min_amount_task_before_stream" => "velit",
+            "min_amount_task_when_stream" => "repudiandae",
+            "min_amount_donate_task_before_stream" => "quo",
+            "min_amount_donate_task_when_stream" => "animi",
+            "tags" => "eaque",
         ],
 ]);
 $body = $response->getBody();
@@ -1498,17 +1498,17 @@ $response = $client->put("https://darestreams.com/api/streams/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "title" => "tempora",
-            "link" => "ut",
-            "start_at" => "commodi",
-            "status" => "6",
-            "allow_task_before_stream" => "",
-            "allow_task_when_stream" => "1",
-            "min_amount_task_before_stream" => "doloremque",
-            "min_amount_task_when_stream" => "quod",
-            "min_amount_donate_task_before_stream" => "aperiam",
-            "min_amount_donate_task_when_stream" => "incidunt",
-            "tags" => "ab",
+            "title" => "optio",
+            "link" => "minus",
+            "start_at" => "explicabo",
+            "status" => "18",
+            "allow_task_before_stream" => "1",
+            "allow_task_when_stream" => "",
+            "min_amount_task_before_stream" => "et",
+            "min_amount_task_when_stream" => "veniam",
+            "min_amount_donate_task_before_stream" => "vitae",
+            "min_amount_donate_task_when_stream" => "praesentium",
+            "tags" => "qui",
         ],
 ]);
 $body = $response->getBody();
@@ -1619,7 +1619,7 @@ $response = $client->patch("https://darestreams.com/api/tasks/1/set-vote", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "vote" => "14",
+            "vote" => "12",
         ],
 ]);
 $body = $response->getBody();
@@ -1719,10 +1719,10 @@ print_r(json_decode((string) $body));
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/tasks", [
     'query' => [
-            "stream_id" => "sed",
+            "stream_id" => "maxime",
             "include" => "user,stream",
             "sort" => "-amount_donations",
-            "page" => "16",
+            "page" => "7",
         ],
 ]);
 $body = $response->getBody();
@@ -1767,12 +1767,12 @@ $response = $client->post("https://darestreams.com/api/tasks", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "stream_id" => "15",
-            "small_text" => "voluptatum",
-            "full_text" => "tempora",
-            "interval_time" => "17",
+            "stream_id" => "4",
+            "small_text" => "sunt",
+            "full_text" => "aspernatur",
+            "interval_time" => "19",
             "is_superbowl" => "",
-            "tags" => "voluptas",
+            "tags" => "modi",
         ],
 ]);
 $body = $response->getBody();
@@ -1845,12 +1845,12 @@ $response = $client->put("https://darestreams.com/api/tasks/1", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "status" => "16",
-            "small_text" => "ratione",
-            "full_text" => "explicabo",
-            "interval_time" => "6",
-            "is_superbowl" => "",
-            "tags" => "quia",
+            "status" => "6",
+            "small_text" => "aut",
+            "full_text" => "omnis",
+            "interval_time" => "4",
+            "is_superbowl" => "1",
+            "tags" => "enim",
         ],
 ]);
 $body = $response->getBody();
@@ -2009,7 +2009,7 @@ $response = $client->post("https://darestreams.com/api/threads/1/messages", [
             "Content-Type" => "application/json",
         ],
     'json' => [
-            "body" => "veniam",
+            "body" => "explicabo",
         ],
 ]);
 $body = $response->getBody();
@@ -2215,9 +2215,9 @@ print_r(json_decode((string) $body));
 
 ```json
 {
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2FwaVwvdXNlcnNcLzFcL2xvZ2luIiwiaWF0IjoxNTcxMDUyMDg0LCJleHAiOjE1NzExMzg0ODQsIm5iZiI6MTU3MTA1MjA4NCwianRpIjoicEdIdFVJa0N3b212emFJRSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.lf5rf6REh1-o-8lk6F4CaYcJxaH-fbBttTDJisd00wE",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2FwaVwvdXNlcnNcLzFcL2xvZ2luIiwiaWF0IjoxNTcxMTE2NTkyLCJleHAiOjE1NzEyMDI5OTIsIm5iZiI6MTU3MTExNjU5MiwianRpIjoiaThvWFQwdlE1Q1NaMXhyTiIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.OmcSxWacXiLuUyXB_965OJ1EfIcTxLUY1bqL7Sl940k",
     "token_type": "bearer",
-    "expires_in": 1571138484
+    "expires_in": 1571202992
 }
 ```
 
@@ -2368,7 +2368,7 @@ print_r(json_decode((string) $body));
 
 <!-- END_d5ba76ee809819fea4021623ca26df5e -->
 
-<!-- START_4109048a279f9b9ea1f2007a19c916c4 -->
+<!-- START_879fc2043120540bc9171245fa0c6bbf -->
 ## Set role for current user.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -2377,7 +2377,7 @@ print_r(json_decode((string) $body));
 ```php
 
 $client = new \GuzzleHttp\Client();
-$response = $client->patch("https://darestreams.com/api/users/1/set-role", [
+$response = $client->patch("https://darestreams.com/api/users/me/set-role", [
 ]);
 $body = $response->getBody();
 print_r(json_decode((string) $body));
@@ -2387,10 +2387,10 @@ print_r(json_decode((string) $body));
 
 
 ### HTTP Request
-`PATCH api/users/{user}/set-role`
+`PATCH api/users/me/set-role`
 
 
-<!-- END_4109048a279f9b9ea1f2007a19c916c4 -->
+<!-- END_879fc2043120540bc9171245fa0c6bbf -->
 
 <!-- START_e5860df03de18218be686e128faef719 -->
 ## Users campaigns
@@ -2583,8 +2583,8 @@ print_r(json_decode((string) $body));
 $client = new \GuzzleHttp\Client();
 $response = $client->get("https://darestreams.com/api/users/top", [
     'query' => [
-            "limit" => "nulla",
-            "skip" => "et",
+            "limit" => "dolorum",
+            "skip" => "in",
             "include" => "tasks,channel",
         ],
 ]);
@@ -2690,7 +2690,7 @@ $response = $client->put("https://darestreams.com/api/users/1", [
     'json' => [
             "name" => "Archibald",
             "last_name" => "est",
-            "middle_name" => "fugit",
+            "middle_name" => "neque",
             "email" => "example@example.ru",
         ],
 ]);
