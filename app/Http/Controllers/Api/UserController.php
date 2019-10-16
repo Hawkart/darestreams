@@ -145,6 +145,8 @@ class UserController extends Controller
             $user->update(['role_id' => $role_id]);
         }
 
+        $user->load(['account','channel']);
+
         UserResource::withoutWrapping();
 
         return response()->json([
