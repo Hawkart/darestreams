@@ -71,12 +71,23 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEma
         'deleting' => \App\Events\UserDeletingEvent::class,
     ];
 
+    /**
+     * @var array
+     */
     public static $roleList = [
         1 => 'admin',
         2 => 'user',
         3 => 'streamer',
         4 => 'advertiser'
     ];
+
+    /**
+     * @param $value
+     */
+    public function setSettingsAttribute($value)
+    {
+        $this->attributes['settings'] = $value && is_array($value) ? json_encode($value) : $value;  //$value->toJson();
+    }
 
     /**
      * Get the user's full name.

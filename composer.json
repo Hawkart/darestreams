@@ -41,7 +41,7 @@
         "staudenmeir/belongs-to-through": "^2.5",
         "staudenmeir/eloquent-eager-limit": "^1.0",
         "symfony/process": "^4.3",
-        "tcg/voyager": "^1.2",
+        "tcg/voyager": "^1.3",
         "tightenco/ziggy": "^0.7.1",
         "tymon/jwt-auth": "dev-develop"
     },
