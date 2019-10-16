@@ -261,6 +261,7 @@ class StreamController extends Controller
                 });
 
             $items = $items->distinct()
+                ->whereNotNull('streams.id')
                 ->Join('channels', 'streams.channel_id', '=', 'channels.id')
                 ->leftJoin('users', 'users.id', '=', 'channels.id')
                 ->orderBy('users.fake', 'asc')
@@ -306,9 +307,17 @@ class StreamController extends Controller
             });
 
         $items = $items->distinct()
+            ->whereNotNull('streams.id')
+            ->Join('channels', 'streams.channel_id', '=', 'channels.id')
+            ->leftJoin('users', 'users.id', '=', 'channels.id')
+            ->orderBy('users.fake', 'asc')
+
             ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
             ->defaultSort('-start_at')
-            ->allowedSorts('views', 'start_at')
+            ->allowedSorts([
+                AllowedSort::field('views', 'streams.views'),
+                AllowedSort::field('start_at', 'streams.start_at'),
+            ])
             ->offset($skip)
             ->limit($limit)
             ->get();

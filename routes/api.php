@@ -82,6 +82,7 @@ Route::group(['namespace' => 'Api'], function () {
     //  Route::apiResource('transactions', 'TransactionController')->only(['store']);
 
     Route::get('streams/top', 'StreamController@top');
+    Route::get('streams/closest', 'StreamController@closest');
     Route::get('streams/statuses', 'StreamController@statuses');
     Route::apiResource('streams', 'StreamController');
     Route::get('streams/{stream}/thread', 'StreamController@thread');
