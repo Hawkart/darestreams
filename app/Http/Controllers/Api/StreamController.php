@@ -248,10 +248,10 @@ class StreamController extends Controller
         if($request->has('game_id'))
             $tags[] = 'byGame';
 
-        /*$cacheTags = Cache::tags($tags);
+        $cacheTags = Cache::tags($tags);
         if ($cacheTags->get($cache_key)){
             $items = $cacheTags->get($cache_key);
-        } else {*/
+        } else {
             $items = QueryBuilder::for(Stream::class)
                 ->where('status', StreamStatus::Active);
 
@@ -260,10 +260,10 @@ class StreamController extends Controller
                     $q->where('game_id', $request->get('game_id'));
                 });
 
-            $items = $items->distinct()
-                ->whereNotNull('streams.id')
-                ->Join('channels', 'streams.channel_id', '=', 'channels.id')
-                ->leftJoin('users', 'users.id', '=', 'channels.id')
+            $items = $items
+                ->select('streams.id AS id', 'streams.*')
+                ->leftJoin('channels', 'streams.channel_id', '=', 'channels.id')
+                ->leftJoin('users', 'users.id', '=', 'channels.user_id')
                 ->orderBy('users.fake', 'asc')
                 ->defaultSort('-streams.views')
                 ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
@@ -275,8 +275,8 @@ class StreamController extends Controller
                 ->limit($limit)
                 ->get();
 
-            //$cacheTags->put($cache_key, $items, 300);
-        //}
+            $cacheTags->put($cache_key, $items, 300);
+        }
 
         return StreamResource::collection($items);
     }
@@ -298,29 +298,44 @@ class StreamController extends Controller
         $limit = $request->has('limit') ? $request->get('limit') : 3;
         $skip = $request->has('skip') ? $request->get('skip') : 0;
 
-        $items = QueryBuilder::for(Stream::class)
-            ->where('status', StreamStatus::Created);
+        $queryParams = request()->query();
+        ksort($queryParams);
+        $queryString = http_build_query($queryParams);
+        $cache_key = Str::slug('closestStreams'.$queryString);
 
+        $tags = ['index', 'closestStreams'];
         if($request->has('game_id'))
-            $items = $items->whereHas('channel', function($q) use ($request){
-                $q->where('game_id', $request->get('game_id'));
-            });
+            $tags[] = 'byGame';
 
-        $items = $items->distinct()
-            ->whereNotNull('streams.id')
-            ->Join('channels', 'streams.channel_id', '=', 'channels.id')
-            ->leftJoin('users', 'users.id', '=', 'channels.id')
-            ->orderBy('users.fake', 'asc')
+        $cacheTags = Cache::tags($tags);
+        if ($cacheTags->get($cache_key)){
+            $items = $cacheTags->get($cache_key);
+        } else {
+            $items = QueryBuilder::for(Stream::class)
+                ->where('status', StreamStatus::Created);
 
-            ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-            ->defaultSort('-start_at')
-            ->allowedSorts([
-                AllowedSort::field('views', 'streams.views'),
-                AllowedSort::field('start_at', 'streams.start_at'),
-            ])
-            ->offset($skip)
-            ->limit($limit)
-            ->get();
+            if($request->has('game_id'))
+                $items = $items->whereHas('channel', function($q) use ($request){
+                    $q->where('game_id', $request->get('game_id'));
+                });
+
+            $items = $items
+                ->select('streams.id AS id', 'streams.*')
+                ->leftJoin('channels', 'streams.channel_id', '=', 'channels.id')
+                ->leftJoin('users', 'users.id', '=', 'channels.user_id')
+                ->orderBy('users.fake', 'asc')
+                ->defaultSort('-streams.start_at')
+                ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
+                ->allowedSorts([
+                    AllowedSort::field('views', 'streams.views'),
+                    AllowedSort::field('start_at', 'streams.start_at'),
+                ])
+                ->offset($skip)
+                ->limit($limit)
+                ->get();
+
+            $cacheTags->put($cache_key, $items, 300);
+        }
 
         return StreamResource::collection($items);
     }
