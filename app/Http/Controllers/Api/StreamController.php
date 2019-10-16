@@ -7,6 +7,7 @@ use App\Enums\TaskStatus;
 use App\Http\Resources\ThreadResource;
 use App\Models\Channel;
 use Carbon\Carbon;
+use Spatie\QueryBuilder\AllowedSort;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Http\Request;
 use App\Models\Stream;
@@ -247,10 +248,10 @@ class StreamController extends Controller
         if($request->has('game_id'))
             $tags[] = 'byGame';
 
-        $cacheTags = Cache::tags($tags);
+        /*$cacheTags = Cache::tags($tags);
         if ($cacheTags->get($cache_key)){
             $items = $cacheTags->get($cache_key);
-        } else {
+        } else {*/
             $items = QueryBuilder::for(Stream::class)
                 ->where('status', StreamStatus::Active);
 
@@ -260,15 +261,57 @@ class StreamController extends Controller
                 });
 
             $items = $items->distinct()
+                ->Join('channels', 'streams.channel_id', '=', 'channels.id')
+                ->leftJoin('users', 'users.id', '=', 'channels.id')
+                ->orderBy('users.fake', 'asc')
+                ->defaultSort('-streams.views')
                 ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-                ->defaultSort('-views')
-                ->allowedSorts('views', 'amount_donations')
+                ->allowedSorts([
+                    AllowedSort::field('views', 'streams.views'),
+                    AllowedSort::field('amount_donations', 'streams.amount_donations'),
+                ])
                 ->offset($skip)
                 ->limit($limit)
                 ->get();
 
-            $cacheTags->put($cache_key, $items, 300);
-        }
+            //$cacheTags->put($cache_key, $items, 300);
+        //}
+
+        return StreamResource::collection($items);
+    }
+
+    /**
+     * Get closest streams
+     * @queryParam limit Integer. Limit of top channels. Default: 3.
+     * @queryParam skip Integer. Offset of top channels. Default: 0.
+     * @queryParam game_id Integer. Filter channels by category.
+     *
+     * @queryParam include string String of connections: user, tasks, tags, game. Example: user,tasks
+     * @queryParam sort string Sort items by fields: start_at, views. For desc use '-' prefix. Example: -views
+     *
+     * @responseFile responses/response.json
+     * @responseFile 404 responses/not_found.json
+     */
+    public function closest(Request $request)
+    {
+        $limit = $request->has('limit') ? $request->get('limit') : 3;
+        $skip = $request->has('skip') ? $request->get('skip') : 0;
+
+        $items = QueryBuilder::for(Stream::class)
+            ->where('status', StreamStatus::Created);
+
+        if($request->has('game_id'))
+            $items = $items->whereHas('channel', function($q) use ($request){
+                $q->where('game_id', $request->get('game_id'));
+            });
+
+        $items = $items->distinct()
+            ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
+            ->defaultSort('-start_at')
+            ->allowedSorts('views', 'start_at')
+            ->offset($skip)
+            ->limit($limit)
+            ->get();
 
         return StreamResource::collection($items);
     }

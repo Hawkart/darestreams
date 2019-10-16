@@ -139,7 +139,7 @@ class UserController extends Controller
         $user = auth()->user();
         $role = $request->get('role');
 
-        if($role!='admin')
+        if($role!='admin' && !$user->isAdmin())
         {
             $role_id = User::getRoleIdBySlug($role);
             $user->update(['role_id' => $role_id]);
