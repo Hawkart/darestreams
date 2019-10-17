@@ -34,11 +34,18 @@ class AdvCampaignController extends Controller
      */
     public function index(Request $request)
     {
-        if(!auth()->user()->isStreamer() && !auth()->user()->isAdmin() && !auth()->user()->isAdvertiser())
+        $user = auth()->user();
+        if(!$user->isStreamer() && !$user->isAdmin() && !$user->isAdvertiser())
             return response()->json([], 401);
 
-        $items = QueryBuilder::for(AdvCampaign::class)
-            ->active()
+        if($user->isAdvertiser())
+        {
+            $items = QueryBuilder::for($user->advCampaigns()->getQuery());
+        }else{
+            $items = QueryBuilder::for(AdvCampaign::class)->active();
+        }
+
+        $items = $items
             ->allowedIncludes(['advTasks', 'tasks'])
             ->jsonPaginate();
 

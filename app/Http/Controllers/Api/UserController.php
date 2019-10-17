@@ -364,13 +364,13 @@ class UserController extends Controller
 
     /**
      * Users campaigns
-     * {user} - user id integer.
      *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function campaigns(User $user)
+    public function campaigns(Request $request)
     {
+        $user = auth()->user();
         $items = QueryBuilder::for($user->advCampaigns()->getQuery())
             ->allowedIncludes(['advTasks', 'tasks'])
             ->jsonPaginate();
