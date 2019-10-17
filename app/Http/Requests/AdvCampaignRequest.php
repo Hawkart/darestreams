@@ -46,9 +46,11 @@ class AdvCampaignRequest extends FormRequest {
                         ],
                         'title'  => [
                             'required',
+                            'string',
+                            'min:1',
                             new ValidCanCreateCampaign(),
                         ],
-                        'brand'  => 'required',
+                        'brand'  => 'required|string|min:1',
                         'limit' => 'required|integer|min:0'
                     ];
                 }
