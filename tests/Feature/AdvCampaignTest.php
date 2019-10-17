@@ -11,6 +11,13 @@ class AdvCampaignTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->generateRoles();
+    }
+
     /** @test */
     public function not_auth_user_cannot_create_it()
     {
@@ -21,11 +28,9 @@ class AdvCampaignTest extends TestCase
             ->assertStatus(401);
     }
 
-
     /** @test */
     public function auth_user_not_advertiser_cannot_create_campaign()
     {
-        $this->generateRoles();
         $roles = [2, 3];    //user, streamer
 
         foreach($roles as $role_id)
@@ -44,11 +49,10 @@ class AdvCampaignTest extends TestCase
     /** @test */
     public function auth_user_create_but_requires_fields_not_filled()
     {
-        $this->generateRoles();
         $user = factory(User::class)->create(['role_id' => 4]);
         $token = auth()->login($user);
 
-        $fields = ['from', 'to', 'title', 'brand', 'logo', 'limit'];
+        $fields = ['from', 'to', 'title', 'brand', 'limit'];
 
         foreach($fields as $field)
         {

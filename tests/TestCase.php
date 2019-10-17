@@ -23,12 +23,17 @@ abstract class TestCase extends BaseTestCase
     protected function generateRoles()
     {
         $roles = User::$roleList;
-        foreach($roles as $role)
+
+        if(Role::count()==0)
         {
-            factory(Role::class)->create([
-                'name' => $role,
-                'display_name' => $role
-            ]);
+            foreach($roles as $key=>$role)
+            {
+                factory(Role::class)->create([
+                    'id' => $key,
+                    'name' => $role,
+                    'display_name' => $role
+                ]);
+            }
         }
     }
 }
