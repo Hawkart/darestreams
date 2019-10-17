@@ -42,7 +42,8 @@ class AdvCampaignRequest extends FormRequest {
                         'to' => [
                             'required',
                             'date',
-                            'after:to'
+                            'after:now',
+                            'after:from'
                         ],
                         'title'  => [
                             'required',
