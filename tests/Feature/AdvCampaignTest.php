@@ -112,6 +112,16 @@ class AdvCampaignTest extends TestCase
         ]);
     }
 
+    /** @test */
+    public function auth_user_role_user_cannot_watch_it()
+    {
+        $user = factory(User::class)->create(['role_id' => 2]);
+        $token = auth()->login($user);
+
+        $this->json('GET', '/api/campaigns', [],  ['Authorization' => "Bearer $token"])
+            ->assertStatus(401);
+    }
+
     /**
      * @param $data
      * @param $token
@@ -122,6 +132,25 @@ class AdvCampaignTest extends TestCase
     public function storeAssertFieldFailed($data, $token, $fields, $status = 422, $json_structure = true)
     {
         $response = $this->json('POST', '/api/campaigns', $data, ['Authorization' => "Bearer $token"])
+            ->assertStatus($status);
+
+        if($json_structure)
+            $response->assertJsonStructure([
+                'errors' => [$fields],
+                'message'
+            ]);
+    }
+
+    /**
+     * @param $url
+     * @param $data
+     * @param $token
+     * @param $fields
+     * @param int $status
+     */
+    public function updateAssertFieldFailed($url, $data, $token, $fields, $status = 422, $json_structure = true)
+    {
+        $response = $this->json('PUT', $url, $data, ['Authorization' => "Bearer $token"])
             ->assertStatus($status);
 
         if($json_structure)

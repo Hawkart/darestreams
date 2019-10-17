@@ -37,7 +37,7 @@ class ValidCanUpdateCampaign implements Rule
             return false;
         }
 
-        if($this->campaign->user_id!=$user->id)
+        if($this->campaign->user_id!=$user->id && !$user->isAdmin())
         {
             $this->message = trans('api/campaign.not_the_owner');
             return false;

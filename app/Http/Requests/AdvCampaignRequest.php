@@ -70,14 +70,16 @@ class AdvCampaignRequest extends FormRequest {
                             'sometimes',
                             'required',
                             'date',
-                            'after:to'
+                            'after:now',
+                            'after:from'
                         ],
                         'title'  => [
-                            'sometimes',
                             'required',
+                            'string',
+                            'min:1',
                             new ValidCanUpdateCampaign($request->route('campaign')),
                         ],
-                        'brand'  => 'sometimes|required',
+                        'brand'  => 'sometimes|required|string|min:1',
                         'limit' => 'sometimes|required|integer|min:0'
                     ];
                 }
