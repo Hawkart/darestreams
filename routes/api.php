@@ -34,9 +34,9 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('games/offer', 'GameController@offer');
 
 
-    Route::post('adv/campaigns/{campaign}/logo', 'AdvCampaignController@updateLogo');
-    Route::apiResource('adv/campaigns', 'AdvCampaignController');
-    Route::apiResource('adv/tasks', 'AdvTaskController');
+    Route::post('campaigns/{campaign}/logo', 'AdvCampaignController@updateLogo');
+    Route::apiResource('campaigns', 'AdvCampaignController');
+    Route::apiResource('campaignTasks', 'AdvTaskController');
 
     Route::apiResource('inquires', 'InquireController');
 
