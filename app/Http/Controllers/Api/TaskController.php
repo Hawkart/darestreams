@@ -69,6 +69,8 @@ class TaskController extends Controller
             ->allowedIncludes(['user', 'stream', 'transactions'])
             ->findOrFail($task);
 
+        TaskResource::withoutWrapping();
+
         return new TaskResource($item);
     }
 

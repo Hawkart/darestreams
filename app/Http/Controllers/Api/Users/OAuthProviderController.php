@@ -67,6 +67,8 @@ class OAuthProviderController extends Controller
             ->allowedIncludes(['user'])
             ->first();
 
+        OAuthProviderResource::withoutWrapping();
+
         return new OAuthProviderResource($item);
     }
 }

@@ -41,7 +41,7 @@ class AdvCampaignTest extends TestCase
 
             $campaign = factory(AdvCampaign::class)->make();
 
-            $this->storeAssertFieldFailed($campaign->toArray(), $token, 'title');
+            $this->storeAssertFieldFailed($campaign->toArray(), $token, 'title', 401, false);
 
             auth()->logout();
         }

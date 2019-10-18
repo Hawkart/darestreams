@@ -38,7 +38,7 @@ class UserController extends Controller
     {
         $this->middleware('auth:api')
             ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account',
-                'donate', 'getDebitWithdrawGroupDates', 'getDebitWithdrawGroupDatesByDate', 'campaigns', 'setRole',
+                'donate', 'getDebitWithdrawGroupDates', 'getDebitWithdrawGroupDatesByDate', 'setRole',
                 'getDonateGroupDates', 'getDonateGroupDatesByDate', 'getDonateGroupDatesByDateStream', 'isFollowing']);
     }
 
@@ -92,6 +92,8 @@ class UserController extends Controller
         $item = QueryBuilder::for(User::class)
             ->allowedIncludes(['tasks','streams', 'channel'])
             ->findOrFail($user);
+
+        UserResource::withoutWrapping();
 
         return new UserResource($item);
     }
@@ -360,22 +362,6 @@ class UserController extends Controller
             ->jsonPaginate();
 
         return UserResource::collection($items);
-    }
-
-    /**
-     * Users campaigns
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function campaigns(Request $request)
-    {
-        $user = auth()->user();
-        $items = QueryBuilder::for($user->advCampaigns()->getQuery())
-            ->allowedIncludes(['advTasks', 'tasks'])
-            ->jsonPaginate();
-
-        return AdvCampaignResource::collection($items);
     }
 
     /**

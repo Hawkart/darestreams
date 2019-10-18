@@ -4,6 +4,8 @@ namespace Tests\Feature;
 
 use App\Models\AdvCampaign;
 use App\Models\AdvTask;
+use App\Models\Channel;
+use App\Models\Game;
 use App\Models\User;
 use Carbon\Carbon;
 use Tests\TestCase;
@@ -23,128 +25,166 @@ class AdvTaskTest extends TestCase
     /** @test */
     public function not_auth_user_cannot_create_it()
     {
-        factory(User::class)->create([]);
-        $campaign = factory(AdvCampaign::class)->make();
+        factory(User::class)->create();
+        $campaign = factory(AdvCampaign::class)->create();
+        $task = factory(AdvTask::class)->make(['campaign_id' => $campaign->id]);
 
-        $this->json('POST', '/api/campaigns', $campaign->toArray())
+        $this->json('POST', '/api/campaigns/'.$campaign->id."/tasks", $task->toArray())
             ->assertStatus(401);
     }
 
     /** @test */
-    public function auth_user_not_advertiser_cannot_create_campaign()
+    public function auth_user_not_advertiser_cannot_create_it()
     {
+        $user = factory(User::class)->create(['role_id' => 4]);     //user
+        $campaign = factory(AdvCampaign::class)->create(['user_id'=>$user->id]);
+
         $roles = [2, 3];    //user, streamer
 
         foreach($roles as $role_id)
         {
-            $user = factory(User::class)->create(['role_id' => $role_id]);
+            $user->update(['role_id' => $role_id]);
             $token = auth()->login($user);
 
-            $campaign = factory(AdvCampaign::class)->make();
+            $task = factory(AdvTask::class)->make(['campaign_id' => $campaign->id]);
 
-            $this->storeAssertFieldFailed($campaign->toArray(), $token, 'title');
+            $this->json('POST', '/api/campaigns/'.$campaign->id."/tasks", $task->toArray(), ['Authorization' => "Bearer $token"])
+                ->assertStatus(401);
 
             auth()->logout();
         }
     }
 
     /** @test */
-    public function auth_user_create_but_requires_fields_not_filled()
+    public function auth_user_not_owner_cannot_create_it()
     {
+        $owner = factory(User::class)->create(['role_id' => 4]);
+        $campaign = factory(AdvCampaign::class)->create(['user_id'=>$owner->id]);
+
         $user = factory(User::class)->create(['role_id' => 4]);
         $token = auth()->login($user);
 
-        $fields = ['from', 'to', 'title', 'brand', 'limit'];
+        $task = factory(AdvTask::class)->make(['campaign_id' => $campaign->id]);
+        $url = '/api/campaigns/'.$campaign->id."/tasks";
+
+        $this->storeAssertFieldFailed($url, $task->toArray(), $token, 'price');
+    }
+
+    /** @test */
+    public function auth_user_create_but_requires_fields_not_filled()
+    {
+        $user = factory(User::class)->create(['role_id' => 4]);
+        $campaign = factory(AdvCampaign::class)->create(['user_id'=>$user->id]);
+        $token = auth()->login($user);
+
+        $url = '/api/campaigns/'.$campaign->id."/tasks";
+        $fields = ['small_desc','full_desc', 'limit', 'price', 'type', 'min_rating'];
 
         foreach($fields as $field)
         {
-            $data = factory(AdvCampaign::class)->make()->toArray();
+            $data = factory(AdvTask::class)->make(['campaign_id' => $campaign->id])->toArray();
 
             $data[$field] = '';
-            $this->storeAssertFieldFailed($data, $token, $field);
+            $this->storeAssertFieldFailed($url, $data, $token, $field);
 
             unset($data[$field]);
-            $this->storeAssertFieldFailed($data, $token, $field);
+            $this->storeAssertFieldFailed($url, $data, $token, $field);
         }
     }
 
     /** @test */
-    public function auth_user_create_but_wrong_dates()
+    public function auth_user_create_but_campaign_already_started()
     {
         $user = factory(User::class)->create(['role_id' => 4]);
+        $campaign = factory(AdvCampaign::class)->create([
+            'user_id' => $user->id,
+            'from' => Carbon::now('UTC')->subMinutes(245)->toDateTimeString(),
+            'to' => Carbon::now('UTC')->addMinutes(45)->toDateTimeString()
+        ]);
         $token = auth()->login($user);
 
-        $fields = ['from', 'to', 'title', 'brand', 'limit'];
+        $url = '/api/campaigns/'.$campaign->id."/tasks";
 
-        $data = factory(AdvCampaign::class)->make()->toArray();
-        $data['from'] = Carbon::now('UTC')->subMinutes(45)->toDateTimeString();
-        $this->storeAssertFieldFailed($data, $token, 'from');
+        $data = [
+            'campaign_id' => $campaign->id,
+            'small_desc' => 'task',
+            'full_desc' => 'full task',
+            'limit' => 50,
+            'type' => 1,
+            'price' => 5,
+            'min_rating' => 0
+        ];
 
-        $data = factory(AdvCampaign::class)->make()->toArray();
-        $data['to'] = Carbon::now('UTC')->subMinutes(45)->toDateTimeString();
-        $this->storeAssertFieldFailed($data, $token, 'to');
-
-        $data = factory(AdvCampaign::class)->make()->toArray();
-        $data['from'] = Carbon::now('UTC')->addMinutes(45)->toDateTimeString();
-        $data['to'] = Carbon::now('UTC')->addMinutes(25)->toDateTimeString();
-        $this->storeAssertFieldFailed($data, $token, 'from');
+        $this->storeAssertFieldFailed($url, $data, $token, 'price');
     }
+
 
     /** @test */
     public function auth_user_create_successfully()
     {
         $user = factory(User::class)->create(['role_id' => 4]);
+        $campaign = factory(AdvCampaign::class)->create([
+            'user_id'=>$user->id,
+            'from' => Carbon::now('UTC')->addMinutes(45)->toDateTimeString(),
+            'to' => Carbon::now('UTC')->addMinutes(245)->toDateTimeString()
+        ]);
         $token = auth()->login($user);
 
+        $url = '/api/campaigns/'.$campaign->id."/tasks";
+
         $data = [
-            'title' => "Updated stream",
-            'brand' => 'Brand',
-            'limit' => 100,
-            'from' => Carbon::now('UTC')->addMinutes(45)->toDateTimeString(),
-            'to' => Carbon::now('UTC')->addMinutes(245)->toDateTimeString(),
+            'campaign_id' => $campaign->id,
+            'small_desc' => 'task',
+            'full_desc' => 'full task',
+            'limit' => 50,
+            'type' => 1,
+            'price' => 5,
+            'min_rating' => 0
         ];
 
-        $this->json('POST', '/api/campaigns', $data,  ['Authorization' => "Bearer $token"])
+        $this->json('POST', $url, $data,  ['Authorization' => "Bearer $token"])
             ->assertStatus(200);
 
-        $this->assertDatabaseHas('adv_campaigns', [
-            'user_id' => $user->id,
-            'title' => $data['title'],
+        $this->assertDatabaseHas('adv_tasks', [
+            'campaign_id' => $campaign->id,
+            'small_desc' => $data['small_desc'],
         ]);
     }
 
     /** @test */
-    public function auth_user_role_user_cannot_watch_list_it()
+    public function auth_user_role_user_cannot_view_all()
     {
         $user = factory(User::class)->create(['role_id' => 2]);
         $token = auth()->login($user);
 
-        $this->json('GET', '/api/campaigns', [],  ['Authorization' => "Bearer $token"])
+        $this->json('GET', '/api/campaigns/all/tasks', [],  ['Authorization' => "Bearer $token"])
             ->assertStatus(401);
     }
 
     /** @test */
-    public function auth_user_can_show_it()
+    public function auth_user_role_streamer_view_all()
     {
-        $user = factory(User::class)->create(['role_id' => 1]);
+        $user = factory(User::class)->create(['role_id' => 3]);
+        factory(Game::class)->create();
+        factory(Channel::class)->create(['user_id' => $user->id]);
         $token = auth()->login($user);
 
-        $c = factory(AdvCampaign::class)->create(['user_id' => $user->id]);
-
-        $this->json('GET', '/api/campaigns/'.$c->id, [],  ['Authorization' => "Bearer $token"])
+        $this->json('GET', '/api/campaigns/all/tasks', [],  ['Authorization' => "Bearer $token"])
             ->assertStatus(200);
     }
 
+
     /**
+     * @param $url
      * @param $data
      * @param $token
      * @param $fields
      * @param int $status
      * @param bool $json_structure
      */
-    public function storeAssertFieldFailed($data, $token, $fields, $status = 422, $json_structure = true)
+    public function storeAssertFieldFailed($url, $data, $token, $fields, $status = 422, $json_structure = true)
     {
-        $response = $this->json('POST', '/api/campaigns', $data, ['Authorization' => "Bearer $token"])
+        $response = $this->json('POST', $url, $data, ['Authorization' => "Bearer $token"])
             ->assertStatus($status);
 
         if($json_structure)

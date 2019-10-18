@@ -64,6 +64,8 @@ class StreamController extends Controller
             ->allowedIncludes(['game', 'tasks', 'tasks.votes', 'channel', 'tags', 'user'])
             ->findOrFail($stream);
 
+        StreamResource::withoutWrapping();
+
         return new StreamResource($item);
     }
 

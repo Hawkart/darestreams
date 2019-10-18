@@ -64,6 +64,8 @@ class ChannelController extends Controller
             ->allowedIncludes(['history'])
             ->findOrFail($channel);
 
+        ChannelResource::withoutWrapping();
+
         return new ChannelResource($item);
     }
 }

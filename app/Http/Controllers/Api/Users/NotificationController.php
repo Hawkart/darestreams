@@ -75,6 +75,8 @@ class NotificationController extends Controller
             ->allowedIncludes([])
             ->first();
 
+        NotificationResource::withoutWrapping();
+
         return new NotificationResource($item);
     }
 

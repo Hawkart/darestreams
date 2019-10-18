@@ -63,6 +63,8 @@ class GameController extends Controller
             ->allowedIncludes(['streams', 'tags', 'channels'])
             ->findOrFail($game);
 
+        GameResource::withoutWrapping();
+
         return new GameResource($item);
     }
 

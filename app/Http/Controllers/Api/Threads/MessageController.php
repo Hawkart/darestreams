@@ -65,6 +65,8 @@ class MessageController extends Controller
             ->allowedIncludes(['user', 'thread'])
             ->first();
 
+        MessageResource::withoutWrapping();
+
         return new MessageResource($item);
     }
 

@@ -45,6 +45,8 @@ class ThreadController extends Controller
             ->allowedIncludes(['messages', 'participants'])
             ->findOrFail($thread);
 
+        ThreadResource::withoutWrapping();
+
         return new ThreadResource($item);
     }
 }
