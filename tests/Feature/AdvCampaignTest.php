@@ -113,13 +113,25 @@ class AdvCampaignTest extends TestCase
     }
 
     /** @test */
-    public function auth_user_role_user_cannot_watch_it()
+    public function auth_user_role_user_cannot_watch_list_it()
     {
         $user = factory(User::class)->create(['role_id' => 2]);
         $token = auth()->login($user);
 
         $this->json('GET', '/api/campaigns', [],  ['Authorization' => "Bearer $token"])
             ->assertStatus(401);
+    }
+
+    /** @test */
+    public function auth_user_can_show_it()
+    {
+        $user = factory(User::class)->create(['role_id' => 1]);
+        $token = auth()->login($user);
+
+        $c = factory(AdvCampaign::class)->create(['user_id' => $user->id]);
+
+        $this->json('GET', '/api/campaigns/'.$c->id, [],  ['Authorization' => "Bearer $token"])
+            ->assertStatus(200);
     }
 
     /**
