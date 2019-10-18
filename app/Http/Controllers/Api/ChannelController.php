@@ -69,6 +69,8 @@ class ChannelController extends Controller
             $item = $item->where('slug', $slug)->firstOrFail();
         }
 
+        ChannelResource::withoutWrapping();
+
         return new ChannelResource($item);
     }
 

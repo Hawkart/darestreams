@@ -20,7 +20,7 @@ class AdvCampaignController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api')->only(['store', 'update', 'index', 'show', 'updateLogo']);
+        $this->middleware(['auth:api', 'advertiser'])->only(['store', 'update', 'index', 'show', 'updateLogo']);
     }
 
     /**
@@ -35,8 +35,6 @@ class AdvCampaignController extends Controller
     public function index(Request $request)
     {
         $user = auth()->user();
-        if(!$user->isAdmin() && !$user->isAdvertiser())
-            return response()->json([], 401);
 
         $items = QueryBuilder::for($user->advCampaigns()->getQuery())
             ->allowedIncludes(['advTasks', 'tasks'])
@@ -61,6 +59,8 @@ class AdvCampaignController extends Controller
         $item = QueryBuilder::for(AdvCampaign::class)
             ->allowedIncludes(['advTasks', 'tasks'])
             ->findOrFail($campaign->id);
+
+        AdvCampaignResource::withoutWrapping();
 
         return new AdvCampaignResource($item);
     }

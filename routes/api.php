@@ -34,12 +34,12 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('games/offer', 'GameController@offer');
 
 
+    Route::get('campaigns/all/tasks', 'AdvCampaigns\AdvTaskController@all');
     Route::post('campaigns/{campaign}/logo', 'AdvCampaignController@updateLogo');
     Route::apiResource('campaigns', 'AdvCampaignController');
-    Route::apiResource('campaignTasks', 'AdvTaskController');
+    Route::apiResource('campaigns.tasks', 'AdvCampaigns\AdvTaskController');
 
     Route::apiResource('inquires', 'InquireController');
-
 
     Route::get('users/me', 'UserController@me');
     Route::get('users/me/account', 'UserController@account');

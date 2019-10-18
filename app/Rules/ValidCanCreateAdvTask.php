@@ -7,12 +7,12 @@ use Illuminate\Contracts\Validation\Rule;
 
 class ValidCanCreateAdvTask implements Rule
 {
-    public $campaign_id;
+    public $campaign;
     public $message;
 
-    public function __construct($campaign_id)
+    public function __construct($campaign)
     {
-        $this->campaign_id = $campaign_id;
+        $this->campaign = $campaign;
         $this->message = '';
     }
 
@@ -27,21 +27,19 @@ class ValidCanCreateAdvTask implements Rule
     {
         $user = auth()->user();
 
-        $campaign = AdvCampaign::findOrFail($this->campaign_id);
-
         if(!$user->isAdvertiser() && !$user->isAdmin())
         {
             $this->message = trans('api/campaign.not_advertiser');
             return false;
         }
 
-        if($campaign->user_id!=$user->id)
+        if($this->campaign ->user_id!=$user->id && !$user->isAdmin())
         {
             $this->message = trans('api/campaign.not_the_owner');
             return false;
         }
 
-        if($campaign->isStarted())
+        if($this->campaign ->isStarted())
         {
             $this->message = trans('api/campaign.already_started');
             return false;

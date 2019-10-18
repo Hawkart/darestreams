@@ -63,7 +63,7 @@ class Channel extends Model
      */
     public function lastHistory()
     {
-        return $this->history()->orderBy('id', 'desc')->limit(2);
+        return $this->history()->latest()->limit(2);
     }
 
     /**

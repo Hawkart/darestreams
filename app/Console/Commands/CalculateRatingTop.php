@@ -40,13 +40,17 @@ class CalculateRatingTop extends Command
 
         $this->updateTop();
         $this->calculateRating();
+        $this->historySetPlace();
 
         $bar->finish();
     }
 
     public function calculateRating()
     {
-        $channels = Channel::top()->get();
+        $prevDay = Carbon::now('UTC')->subDays(2);
+        $channels = Channel::top()->whereHas('history', function($q) use ($prevDay){
+            $q->where('updated_at', '>', $prevDay);
+        }, '=', 0)->limit(50)->get();
 
         foreach($channels as $channel)
         {
@@ -84,10 +88,8 @@ class CalculateRatingTop extends Command
                 ]);
             }
 
-            sleep(1);
+            sleep(2);
         }
-
-        $this->historySetPlace();
     }
 
     /**
@@ -178,27 +180,49 @@ class CalculateRatingTop extends Command
 
     public function updateTop()
     {
-        $ids = $this->getAllTop();
+        $prevDay = Carbon::now('UTC')->subDays(2);
 
-        echo "count top = ".count($ids)."\r\n";
+        $channels = Channel::top()
+            ->whereHas('history', function($q) use ($prevDay){
+                $q->where('updated_at', '>', $prevDay);
+            }, '>', 0)->count();
 
-        Channel::top()->update(['top' => 0]);
-        Channel::whereIn('exid', $ids)->update(['top' => 1]);
+        if($channels==0)
+        {
+            $ids = $this->getAllTop();
+
+            echo "count top = ".count($ids)."\r\n";
+
+            Channel::top()->update(['top' => 0]);
+            Channel::whereIn('exid', $ids)->update(['top' => 1]);
+        }
     }
 
     public function historySetPlace()
     {
-        $prevDay = Carbon::now('UTC')->subDay();
+        $prevDay = Carbon::now('UTC')->subDays(2);
 
-        $history = ChannelHistory::where('updated_at', '>', $prevDay)
-            ->orderBy('rating', 'DESC')
-            ->get();
+        $channels = Channel::top()
+                        ->whereHas('history', function($q) use ($prevDay){
+                            $q->where('updated_at', '>', $prevDay);
+                        }, '=', 0)->count();
 
-        $place = 1;
-        foreach($history as $h)
+        if($channels==0)
         {
-            $h->update(['place' => $place]);
-            $place++;
+            $history = ChannelHistory::where('updated_at', '>', $prevDay)
+                ->orderBy('rating', 'DESC')
+                ->get();
+
+            $place = 1;
+            foreach($history as $h)
+            {
+                $h->update(['place' => $place]);
+                $place++;
+            }
+
+            echo "places updated";
+        }else{
+            echo "channels not updated = ".$channels;
         }
     }
 }
