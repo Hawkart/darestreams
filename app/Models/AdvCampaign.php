@@ -65,7 +65,7 @@ class AdvCampaign extends Model
      */
     public function tasks()
     {
-        return $this->hasManyThrough('App\Models\Task', 'App\Models\AdvTask', 'adv_task_id');
+        return $this->hasManyThrough('App\Models\Task', 'App\Models\AdvTask');
     }
 
     /**
