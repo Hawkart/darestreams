@@ -92,7 +92,7 @@ class AdvCampaign extends Model
      */
     public function isStarted()
     {
-        return Carbon::parse($this->from)->gt(Carbon::now('UTC'));
+        return Carbon::parse($this->from)->lt(Carbon::now('UTC'));
     }
 
     /**
