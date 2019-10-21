@@ -65,7 +65,7 @@ class AdvTaskController extends Controller
         $user = auth()->user();
 
         if($campaign->user_id!=$user->id && @$user->isAdmin())
-            return response()->json([], 401);
+            return response()->json([], 403);
 
         $items = QueryBuilder::for(AdvTask::class)
             ->where('campaign_id', $campaign->id)
@@ -89,7 +89,7 @@ class AdvTaskController extends Controller
         $user = auth()->user();
 
         if($campaign->user_id!=$user->id && @$user->isAdmin())
-            return response()->json([], 401);
+            return response()->json([], 403);
 
         $item = QueryBuilder::for(AdvTask::class)
             ->allowedIncludes(['campaign', 'tasks', 'tasks.stream'])
@@ -123,6 +123,8 @@ class AdvTaskController extends Controller
         $task->fill($input);
         $task->save();
 
+        $task->refresh();
+
         AdvTaskResource::withoutWrapping();
 
         return response()->json([
@@ -146,6 +148,7 @@ class AdvTaskController extends Controller
     public function update(AdvTaskRequest $request, AdvCampaign $campaign, AdvTask $task)
     {
         $task->update($request->only(['small_desc', 'full_desc', 'limit', 'price', 'type', 'min_rating']));
+        $task->refresh();
 
         AdvTaskResource::withoutWrapping();
 

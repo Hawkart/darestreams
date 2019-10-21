@@ -22,7 +22,7 @@ class AdvTaskResource extends JsonResource
             'full_desc' => $this->full_desc,
             'limit' => $this->limit,
             'price' => $this->price,
-            'type' => AdvTaskType::getInstance($this->type),
+            'type' => empty($this->type) ? '' : AdvTaskType::getInstance($this->type),
             'min_rating' => $this->min_rating,
             'used_amount' => $this->used_amount,
             'created_at' => getW3cDatetime($this->created_at),

@@ -54,7 +54,7 @@ class AdvCampaignController extends Controller
         $user = auth()->user();
 
         if(!$user->isAdvertiser() && $campaign->user_id!=$user->id && !$user->isAdmin())
-            return response()->json([], 401);
+            return response()->json([], 403);
 
         $item = QueryBuilder::for(AdvCampaign::class)
             ->allowedIncludes(['advTasks', 'tasks'])

@@ -5,8 +5,12 @@ namespace App\Console\Commands;
 use App\Enums\StreamStatus;
 use App\Enums\TaskStatus;
 use App\Enums\TransactionStatus;
+use App\Enums\TransactionType;
+use App\Enums\VoteStatus;
+use App\Models\AdvTask;
 use App\Models\Stream;
 use App\Models\Task;
+use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -62,28 +66,58 @@ class MakePaymentsByStreams extends Command
                     {
                         if($task->status==TaskStatus::VoteFinished)
                         {
-                            $result = $task->vote_yes-$task->vote_no;
+                            if($task->adv_task_id>0)
+                            {
+                                $user = $task->stream->user;
+                                $advTask = $task->advTask;
+                                $advertiser = $advTask->campaign->user;
+                                $result = $task->vote_yes-$task->vote_no;
 
-                            //Transfer money according to votes
-                            try {
-                                DB::transaction(function () use ($task, $result)
-                                {
-                                    if($result>=0)
-                                        $tstatus = TransactionStatus::Completed;
-                                    else
-                                        $tstatus = TransactionStatus::Canceled;
-
-                                    $transactions = $task->transactions;
-                                    foreach($transactions as $transaction)
+                                try {
+                                    DB::transaction(function () use ($task, $advTask, $result, $advertiser, $user)
                                     {
-                                        if($transaction->status!=TransactionStatus::Completed && $transaction->status!=TransactionStatus::Canceled)
-                                            $transaction->update(['status' => $tstatus]);
-                                    }
+                                        if($result>=0)
+                                        {
+                                            Transaction::create([
+                                                'task_id' => $task->id,
+                                                'amount' => $advTask->price,
+                                                'account_sender_id' => $advertiser->account->id,
+                                                'account_receiver_id' => $user->account->id,
+                                                'status' => TransactionStatus::Completed,
+                                                'type' => TransactionType::Donation
+                                            ]);
+                                        }
 
-                                    $task->update(['status' => TaskStatus::PayFinished]);
-                                });
-                            } catch (\Exception $e) {
-                                echo response($e->getMessage(), 422);
+                                        $task->update(['status' => TaskStatus::PayFinished]);
+                                    });
+                                } catch (\Exception $e) {
+                                    echo response($e->getMessage(), 422);
+                                }
+
+                            }else{
+                                $result = $task->vote_yes-$task->vote_no;
+
+                                //Transfer money according to votes
+                                try {
+                                    DB::transaction(function () use ($task, $result)
+                                    {
+                                        if($result>=0)
+                                            $tstatus = TransactionStatus::Completed;
+                                        else
+                                            $tstatus = TransactionStatus::Canceled;
+
+                                        $transactions = $task->transactions;
+                                        foreach($transactions as $transaction)
+                                        {
+                                            if($transaction->status!=TransactionStatus::Completed && $transaction->status!=TransactionStatus::Canceled)
+                                                $transaction->update(['status' => $tstatus]);
+                                        }
+
+                                        $task->update(['status' => TaskStatus::PayFinished]);
+                                    });
+                                } catch (\Exception $e) {
+                                    echo response($e->getMessage(), 422);
+                                }
                             }
                         }
                     }

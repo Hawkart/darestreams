@@ -57,7 +57,7 @@ class AdvCampaign extends Model
      */
     public function advTasks()
     {
-        return $this->hasMany(AdvTask::class);
+        return $this->hasMany(AdvTask::class, 'campaign_id');
     }
 
     /**

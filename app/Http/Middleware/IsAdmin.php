@@ -19,6 +19,6 @@ class IsAdmin
             return $next($request);
         }
 
-        return response()->json(['error'=>'Unauthorized'], 401);
+        return response()->json(['error'=>'Unauthorized'], 403);
     }
 }

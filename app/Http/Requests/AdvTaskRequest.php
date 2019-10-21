@@ -48,7 +48,7 @@ class AdvTaskRequest extends FormRequest {
                         'type' => [
                             'required',
                             'integer',
-                            new EnumValue(AdvTaskType::class)
+                            new EnumValue(AdvTaskType::class, false)
                         ],
                         'min_rating' => 'required|integer|min:0',
                     ];
@@ -73,7 +73,7 @@ class AdvTaskRequest extends FormRequest {
                             'sometimes',
                             'required',
                             'integer',
-                            new EnumValue(AdvTaskType::class)
+                            new EnumValue(AdvTaskType::class, false)
                         ],
                         'min_rating' => 'sometimes|required|integer|min:0',
                     ];

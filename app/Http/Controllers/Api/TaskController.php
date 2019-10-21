@@ -278,10 +278,15 @@ class TaskController extends Controller
             DB::transaction(function () use ($vote, $request, $task, $user) {
                 $vote->update($request->only('vote'));
 
-                $amount = Transaction::where('task_id', $task->id)
-                    ->where('account_sender_id', $user->account->id)
-                    ->whereIn('status', [TransactionStatus::Completed, TransactionStatus::Holding])
-                    ->sum('amount');
+                if($task->adv_task_id>0)
+                {
+                    $amount = $task->advTask->price;
+                }else{
+                    $amount = Transaction::where('task_id', $task->id)
+                        ->where('account_sender_id', $user->account->id)
+                        ->whereIn('status', [TransactionStatus::Completed, TransactionStatus::Holding])
+                        ->sum('amount');
+                }
 
                 $data = [];
                 if($request->get('vote')==VoteStatus::Yes){
