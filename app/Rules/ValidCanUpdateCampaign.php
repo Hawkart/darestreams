@@ -55,9 +55,6 @@ class ValidCanUpdateCampaign implements Rule
             return false;
         }
 
-        //from
-        //task in works
-
         return true;
     }
 
