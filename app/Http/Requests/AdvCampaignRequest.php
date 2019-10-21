@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ValidCampaignLimit;
+use App\Rules\ValidCampaignUpdateStartDate;
 use App\Rules\ValidCanCreateCampaign;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
@@ -53,18 +55,26 @@ class AdvCampaignRequest extends FormRequest {
                             new ValidCanCreateCampaign(),
                         ],
                         'brand'  => 'required|string|min:1',
-                        'limit' => 'required|integer|min:0'
+                        'limit' => [
+                            'required',
+                            'integer',
+                            'min:1',
+                            new ValidCampaignLimit(),
+                        ]
                     ];
                 }
             case 'PUT':
             case 'PATCH':
                 {
+                    $campaign = $request->route('campaign');
+
                     return [
                         'from' => [
                             'sometimes',
                             'required',
                             'date',
-                            'after:now',
+                            //'after:now',
+                            new ValidCampaignUpdateStartDate($campaign),
                             'before:to',
                         ],
                         'to' => [
@@ -78,10 +88,16 @@ class AdvCampaignRequest extends FormRequest {
                             'required',
                             'string',
                             'min:1',
-                            new ValidCanUpdateCampaign($request->route('campaign')),
+                            new ValidCanUpdateCampaign($campaign),
                         ],
                         'brand'  => 'sometimes|required|string|min:1',
-                        'limit' => 'sometimes|required|integer|min:0'
+                        'limit' => [
+                            'sometimes',
+                            'required',
+                            'integer',
+                            'min:1',
+                            new ValidCampaignLimit(),
+                        ]
                     ];
                 }
             default:break;

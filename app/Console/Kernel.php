@@ -13,24 +13,28 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\ClearSeederData::class,
-        Commands\DropTables::class,
+
         Commands\ImportGames::class,
         Commands\GetViewsForActiveStreams::class,
         Commands\MakePaymentsByStreams::class,
         Commands\UpdateStreamsStatus::class,
         Commands\CheckTaskInterval::class,
         Commands\FinishVotes::class,
-        Commands\ClearDroppedTransactions::class,
-        Commands\ParseStreamers::class,
-        Commands\TransferChannelLogoToUser::class,
-        Commands\UpdateStreamTasksDesc::class,
-        Commands\DeleteUserAndData::class,
-        Commands\ClearNotUsedTasksInFinishedStreams::class,
-        Commands\GetChannelVideosOnTwitch::class,
-        Commands\UpdateRatingChannels::class,
-        Commands\CalculateRatingTop::class,
-        Commands\SyncStatChannels::class
+
+        Commands\ClearAndDelete\ClearSeederData::class,
+        Commands\ClearAndDelete\DropTables::class,
+        Commands\ClearAndDelete\DeleteUserAndData::class,
+        Commands\ClearAndDelete\ClearDroppedTransactions::class,
+        Commands\ClearAndDelete\ClearNotUsedTasksInFinishedStreams::class,
+
+        Commands\Ones\TransferChannelLogoToUser::class,
+        Commands\Ones\UpdateStreamTasksDesc::class,
+        Commands\Ones\GetChannelVideosOnTwitch::class,
+
+        Commands\Rating\ParseStreamers::class,
+        Commands\Rating\UpdateRatingChannels::class,
+        Commands\Rating\CalculateRatingTop::class,
+        Commands\Rating\SyncStatChannels::class
     ];
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\ClearAndDelete;
 
 use App\Models\Account;
 use App\Models\Game;
@@ -16,21 +16,21 @@ use App\Models\Vote;
 use Illuminate\Console\Command;
 use DB;
 
-class ClearSeederData extends Command
+class DeleteUserAndData extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'seeder:clear';
+    protected $signature = 'user:delete {--user_id=}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Clear seeder data.';
+    protected $description = 'Delete user and fake data.';
 
     /**
      * Create a new command instance.
@@ -51,16 +51,21 @@ class ClearSeederData extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
-        if (!$this->confirm('CONFIRM CLEAR ALL DATA IN DB? [y|N]')) {
-            exit('Clear data command aborted');
-        }
+        $user_id = $this->option('user_id');
 
         DB::beginTransaction();
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
-        foreach(\DB::select('SHOW TABLES') as $table) {
-            $table_array = get_object_vars($table);
-            \Schema::truncate($table_array[key($table_array)]);
+        if(empty($user_id))
+        {
+            $this->error("No user_id..."); dd();
+        }else{
+            $user = User::firstOrFail($user_id);
+            $user->clearFakeData();
+            $user->oauthProviders->delete();
+            $user->account->delete();
+            $user->channel->delete();
+            $user->delete();
         }
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');

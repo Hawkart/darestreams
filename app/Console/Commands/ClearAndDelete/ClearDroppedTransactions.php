@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\ClearAndDelete;
 
 use App\Enums\TaskStatus;
 use App\Enums\TransactionStatus;

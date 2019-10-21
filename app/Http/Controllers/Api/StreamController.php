@@ -166,7 +166,7 @@ class StreamController extends Controller
                     {
                         foreach($tasks as $task)
                         {
-                            if($task->amount_donations==0)
+                            if($task->amount_donations==0 && $task->adv_task_id==0)
                             {
                                 $task->update(['status' => TaskStatus::PayFinished]);
                             }else{

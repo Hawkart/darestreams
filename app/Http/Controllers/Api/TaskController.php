@@ -291,6 +291,7 @@ class TaskController extends Controller
                 }
 
                 //change task status if all voted
+                $task->refresh();
                 if($task->votes()->where('vote', VoteStatus::Pending)->count()==0)
                 {
                     $data['status'] = TaskStatus::VoteFinished;

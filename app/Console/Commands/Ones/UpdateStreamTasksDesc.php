@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Ones;
 
 use App\Models\Stream;
 use Illuminate\Console\Command;

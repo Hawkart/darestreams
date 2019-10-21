@@ -5,7 +5,7 @@ namespace App\Rules;
 use Carbon\Carbon;
 use Illuminate\Contracts\Validation\Rule;
 
-class ValidCanUpdateCampaign implements Rule
+class ValidCampaignUpdateStartDate implements Rule
 {
     public $campaign;
     public $message;
@@ -29,34 +29,17 @@ class ValidCanUpdateCampaign implements Rule
      */
     public function passes($attribute, $value)
     {
-        $user = auth()->user();
-
-        if(!$user->isAdvertiser() && !$user->isAdmin())
+        if(!$this->campaign->isStarted() && Carbon::parse($value)->lt(Carbon::now('UTC')))
         {
-            $this->message = trans('api/campaign.not_advertiser');
+            $this->message = trans('api/campaign.from_cannot_be_less_than_now');
             return false;
         }
 
-        if($this->campaign->user_id!=$user->id && !$user->isAdmin())
+        if($this->campaign->isStarted() && Carbon::parse($value)->timestamp!=Carbon::parse($this->campaign->from)->timestamp)
         {
-            $this->message = trans('api/campaign.not_the_owner');
+            $this->message = trans('api/campaign.not_allowed_change_from_when_it_started');
             return false;
         }
-
-        if($this->campaign->isFinished())
-        {
-            $this->message = trans('api/campaign.already_finished');
-            return false;
-        }
-
-        if(count($this->campaign->tasks)>0)
-        {
-            $this->message = trans('api/campaign.already_has_tasks_in_work');
-            return false;
-        }
-
-        //from
-        //task in works
 
         return true;
     }

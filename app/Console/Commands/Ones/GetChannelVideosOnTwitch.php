@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Ones;
 
-use App\Models\User;
+use App\Acme\Helpers\TwitchHelper;
 use Illuminate\Console\Command;
 
-class TransferChannelLogoToUser extends Command
+class GetChannelVideosOnTwitch extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'user:update_logo_from_channel';
+    protected $signature = 'channel:twitch_videos';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Update users logo from channel';
+    protected $description = "Get channel's videos from twitch.";
 
     /**
      * Create a new command instance.
@@ -35,14 +35,12 @@ class TransferChannelLogoToUser extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
-        $users = User::with(['channel'])->get();
-        if(count($users)>0)
+        $twitch = new TwitchHelper();
+        $data = $twitch->getChannelVideos(125387632, 5, 0, 'archive');
+
+        if(!empty($data) && isset($data['videos']) && $data['_total']>0)
         {
-            foreach($users as $user)
-            {
-                if($user->channel)
-                    $user->update(['avatar' => $user->channel->logo]);
-            }
+            dd($data);
         }
 
         $bar->finish();

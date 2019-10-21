@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Rating;
 
 use App\Acme\Helpers\TwitchHelper;
 use App\Models\Game;

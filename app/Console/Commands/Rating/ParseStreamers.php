@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Rating;
 
 use App\Models\Streamer;
 use Illuminate\Console\Command;
