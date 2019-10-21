@@ -2,8 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\AdvTaskType;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Auth;
 
 class AdvTaskResource extends JsonResource
 {
@@ -22,7 +22,7 @@ class AdvTaskResource extends JsonResource
             'full_desc' => $this->full_desc,
             'limit' => $this->limit,
             'price' => $this->price,
-            'type' => $this->type,
+            'type' => AdvTaskType::getInstance($this->type),
             'min_rating' => $this->min_rating,
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),

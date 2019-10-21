@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\AdvTaskType;
 use App\Rules\ValidCanCreateAdvTask;
+use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 
@@ -42,7 +44,11 @@ class AdvTaskRequest extends FormRequest {
                             'min:0',
                             new ValidCanCreateAdvTask($request->route('campaign'))
                         ],
-                        'type' => 'required|integer|min:0|max:1',
+                        'type' => [
+                            'required',
+                            'integer',
+                            new EnumValue(AdvTaskType::class)
+                        ],
                         'min_rating' => 'required|integer|min:0',
                     ];
                 }
@@ -59,7 +65,12 @@ class AdvTaskRequest extends FormRequest {
                             'min:0',
                             new ValidCanCreateAdvTask($request->route('campaign'))
                         ],
-                        'type' => 'sometimes|required|integer|min:0|max:1',
+                        'type' => [
+                            'sometimes',
+                            'required',
+                            'integer',
+                            new EnumValue(AdvTaskType::class)
+                        ],
                         'min_rating' => 'sometimes|required|integer|min:0',
                     ];
                 }

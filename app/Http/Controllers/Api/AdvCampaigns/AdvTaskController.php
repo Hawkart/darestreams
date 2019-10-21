@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\AdvCampaigns;
 
+use App\Enums\AdvTaskType;
 use App\Http\Requests\AdvCampaignRequest;
 use App\Http\Requests\AdvTaskRequest;
 use App\Http\Resources\AdvTaskResource;
@@ -153,5 +154,16 @@ class AdvTaskController extends Controller
             'data' => new AdvTaskResource($task),
             'message'=> trans('api/adv_task.success_updated')
         ], 200);
+    }
+
+
+    /**
+     * Get list of types
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function types()
+    {
+        return response()->json(AdvTaskType::getInstances(), 200);
     }
 }
