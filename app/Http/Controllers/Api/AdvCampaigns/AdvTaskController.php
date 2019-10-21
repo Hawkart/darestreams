@@ -76,7 +76,7 @@ class AdvTaskController extends Controller
     }
 
     /**
-     * List of adv tasks for campaign
+     * Detail task of campaign
      * @authenticated
      *
      * @queryParam include string String of connections: campaign, tasks, tasks.stream. Example: campaign

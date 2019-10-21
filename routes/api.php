@@ -35,6 +35,7 @@ Route::group(['namespace' => 'Api'], function () {
 
 
     Route::get('campaigns/all/tasks', 'AdvCampaigns\AdvTaskController@all');
+    Route::get('campaigns/all/tasks/types', 'AdvCampaigns\AdvTaskController@types');
     Route::post('campaigns/{campaign}/logo', 'AdvCampaignController@updateLogo');
     Route::apiResource('campaigns', 'AdvCampaignController');
     Route::apiResource('campaigns.tasks', 'AdvCampaigns\AdvTaskController');
