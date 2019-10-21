@@ -55,6 +55,6 @@ class ValidCanCreateAdvTask implements Rule
      */
     public function message()
     {
-        return trans('api/campaign.not_advertiser');
+        return $this->message;
     }
 }

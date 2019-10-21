@@ -5,6 +5,7 @@ use App\Enums\TaskStatus;
 use App\Enums\TransactionStatus;
 use App\Enums\TransactionType;
 use App\Enums\VoteStatus;
+use App\Enums\AdvTaskType;
 
 return [
     StreamStatus::class => [
@@ -39,5 +40,9 @@ return [
         VoteStatus::Pending => 'Pending',
         VoteStatus::Yes => 'Yes',
         VoteStatus::No => 'No'
+    ],
+    AdvTaskType::class => [
+        AdvTaskType::ByStream => 'By stream',
+        AdvTaskType::ByViews => 'By views'
     ]
 ];

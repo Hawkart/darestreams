@@ -18,7 +18,7 @@ class AdvCampaign extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'from', 'to', 'title', 'brand', 'logo', 'limit'
+        'user_id', 'from', 'to', 'title', 'brand', 'logo', 'limit', 'used_amount'
     ];
 
     /**

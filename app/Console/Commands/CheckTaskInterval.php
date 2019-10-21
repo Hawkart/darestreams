@@ -39,7 +39,10 @@ class CheckTaskInterval extends Command
         $bar = $this->output->createProgressBar(100);
 
         $now = Carbon::now('UTC');
-        $tasks = Task::where('interval_time', '>', 0)->where('status', TaskStatus::Active)->get();
+        $tasks = Task::where('interval_time', '>', 0)
+                    ->where('status', TaskStatus::Active)
+                    ->get();
+
         if(count($tasks)>0)
         {
             foreach($tasks as $task)

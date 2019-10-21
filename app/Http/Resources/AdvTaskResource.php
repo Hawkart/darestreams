@@ -24,6 +24,7 @@ class AdvTaskResource extends JsonResource
             'price' => $this->price,
             'type' => AdvTaskType::getInstance($this->type),
             'min_rating' => $this->min_rating,
+            'used_amount' => $this->used_amount,
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),
 

@@ -108,6 +108,7 @@ class TaskController extends Controller
                         'status' => TaskStatus::Active
                     ]);
                 });
+
             } catch (\Exception $e) {
                 return response($e->getMessage(), 422);
             }

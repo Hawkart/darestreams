@@ -17,7 +17,7 @@ class AdvTask extends Model
      * @var array
      */
     protected $fillable = [
-        'campaign_id', 'small_desc', 'full_desc', 'limit', 'price', 'type', 'min_rating'
+        'campaign_id', 'small_desc', 'full_desc', 'limit', 'price', 'type', 'min_rating', 'used_amount'
     ];
 
     /**

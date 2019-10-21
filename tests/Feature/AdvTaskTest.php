@@ -173,7 +173,6 @@ class AdvTaskTest extends TestCase
             ->assertStatus(200);
     }
 
-
     /**
      * @param $url
      * @param $data

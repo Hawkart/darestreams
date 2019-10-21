@@ -76,6 +76,18 @@ class ValidTaskCanAdvCreate implements Rule
             return false;
         }
 
+        if($advTask->limit<$advTask->used_amount + $advTask->price)
+        {
+            $this->message = 'Task limit exceeded';
+            return false;
+        }
+
+        if($advCampaign->limit<$advCampaign->used_amount + $advTask->price)
+        {
+            $this->message = 'Campaign limit exceeded';
+            return false;
+        }
+
         return true;
     }
 

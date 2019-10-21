@@ -24,6 +24,7 @@ class AdvCampaignResource extends JsonResource
             'brand' => $this->brand,
             'logo' => $this->logo,
             'limit' => $this->limit,
+            'used_amount' => $this->used_amount,
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),
 
