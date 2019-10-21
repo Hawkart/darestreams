@@ -5,14 +5,16 @@ namespace App\Rules;
 use App\Models\AdvCampaign;
 use Illuminate\Contracts\Validation\Rule;
 
-class ValidCanCreateAdvTask implements Rule
+class ValidCanUpdateAdvTask implements Rule
 {
     public $campaign;
     public $message;
+    public $task;
 
-    public function __construct($campaign)
+    public function __construct($campaign, $task)
     {
         $this->campaign = $campaign;
+        $this->task = $task;
         $this->message = '';
     }
 
@@ -42,6 +44,12 @@ class ValidCanCreateAdvTask implements Rule
         if($this->campaign->isFinished())
         {
             $this->message = trans('api/campaign.already_finished');
+            return false;
+        }
+
+        if(count($this->task->tasks)>0)
+        {
+            $this->message = trans('api/task.already_has_tasks_in_work');
             return false;
         }
 

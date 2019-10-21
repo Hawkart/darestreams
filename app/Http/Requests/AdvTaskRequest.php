@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Enums\AdvTaskType;
 use App\Rules\ValidCanCreateAdvTask;
+use App\Rules\ValidCanUpdateAdvTask;
 use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
@@ -55,6 +56,9 @@ class AdvTaskRequest extends FormRequest {
             case 'PUT':
             case 'PATCH':
                 {
+                    $campaign = $request->route('campaign');
+                    $task = $request->route('task');
+
                     return [
                         'small_desc' => 'sometimes|required|string|min:1',
                         'full_desc' => 'sometimes|required|string|min:1',
@@ -63,7 +67,7 @@ class AdvTaskRequest extends FormRequest {
                             'required',
                             'numeric',
                             'min:0',
-                            new ValidCanCreateAdvTask($request->route('campaign'))
+                            new ValidCanUpdateAdvTask($campaign, $task)
                         ],
                         'type' => [
                             'sometimes',
