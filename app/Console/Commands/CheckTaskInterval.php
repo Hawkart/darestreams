@@ -40,6 +40,7 @@ class CheckTaskInterval extends Command
 
         $now = Carbon::now('UTC');
         $tasks = Task::where('interval_time', '>', 0)
+                    ->where('adv_task_id', '=', 0)
                     ->where('status', TaskStatus::Active)
                     ->get();
 

@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Rules\ValidCanCreateCampaign;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
+use App\Rules\ValidCanUpdateCampaign;
 
 class AdvCampaignRequest extends FormRequest {
     /**

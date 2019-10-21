@@ -43,6 +43,7 @@ class FinishVotes extends Command
         //Get all tasks in statuses to vote where stream ended 30 minutes ago and not payed
         $after = Carbon::now('UTC')->subMinutes(config('app.time_vote_until_stream_finished'));
         $tasks = Task::whereIn('status', [TaskStatus::IntervalFinishedAllowVote, TaskStatus::AllowVote])
+            ->where('adv_task_id', '=', 0)
             ->whereHas('stream', function($q) use ($after) {
                 $q->where('ended_at', '<', $after)
                     ->whereNotNull('ended_at')
