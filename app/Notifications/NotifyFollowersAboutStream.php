@@ -11,7 +11,7 @@ class NotifyFollowersAboutStream extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    private $details;
+    public $details;
 
     /**
      * Create a new notification instance.

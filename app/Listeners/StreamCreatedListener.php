@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\StreamCreatedEvent;
 use App\Models\Thread;
 use App\Notifications\NotifyFollowersAboutStream;
+use Illuminate\Support\Facades\Log;
 
 class StreamCreatedListener
 {
@@ -30,18 +31,24 @@ class StreamCreatedListener
 
         //Notify all followers
         $user = $stream->user;
-        foreach($user->followers()->get() as $follower)
+        if(count($user->followers)>0)
         {
-            $details = [
-                'greeting' => 'Hi '.$follower->name,
-                'body' => 'The stream will start at '.$stream->start_at->addHours(3)->format('d.m.Y h:i'),
-                'actionText' => 'View new stream',
-                'actionURL' => url('/stream/'.$stream->id),
-                'subject' => 'New stream of '.$user->nickname
-            ];
+            foreach($user->followers as $follower)
+            {
+                $details = [
+                    'greeting' => 'Hi '.$follower->name,
+                    'body' => 'The stream will start at '.$stream->start_at->addHours(3)->format('d.m.Y h:i'),
+                    'actionText' => 'View new stream',
+                    'actionURL' => url('/stream/'.$stream->id),
+                    'subject' => 'New stream of '.$user->nickname
+                ];
 
-            $when = now()->addSeconds(30);
-            $follower->notify((new NotifyFollowersAboutStream($details))->delay($when));
+                Log::info('StreamCreatedListener', ['details' => $details, 'file' => __FILE__, 'line' => __LINE__]);
+
+                //$when = now()->addSeconds(30);
+                $follower->notify((new NotifyFollowersAboutStream($details)));//->delay($when));
+            }
         }
+
     }
 }
