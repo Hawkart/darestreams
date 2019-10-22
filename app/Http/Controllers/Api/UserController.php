@@ -358,7 +358,7 @@ class UserController extends Controller
     public function followings(User $user)
     {
         $items = QueryBuilder::for($user->followings()->getQuery())
-            ->allowedIncludes(['tasks', 'streams'])
+            ->allowedIncludes(['tasks', 'streams', 'channel'])
             ->jsonPaginate();
 
         return UserResource::collection($items);

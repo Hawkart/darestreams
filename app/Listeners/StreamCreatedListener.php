@@ -4,8 +4,7 @@ namespace App\Listeners;
 
 use App\Events\StreamCreatedEvent;
 use App\Models\Thread;
-use Carbon\Carbon;
-use App\Models\Participant;
+use App\Notifications\NotifyFollowersAboutStream;
 
 class StreamCreatedListener
 {
@@ -27,6 +26,22 @@ class StreamCreatedListener
         {
             $stream->threads()->attach($thread->id);
             $thread->setParticipant();
+        }
+
+        //Notify all followers
+        $user = $stream->user;
+        foreach($user->followers()->get() as $follower)
+        {
+            $details = [
+                'greeting' => 'Hi '.$follower->name,
+                'body' => 'The stream will start at '.$stream->start_at->addHours(3)->format('d.m.Y h:i'),
+                'actionText' => 'View new stream',
+                'actionURL' => url('/stream/'.$stream->id),
+                'subject' => 'New stream of '.$user->nickname
+            ];
+
+            $when = now()->addSeconds(30);
+            $follower->notify((new NotifyFollowersAboutStream($details))->delay($when));
         }
     }
 }
