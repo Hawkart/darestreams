@@ -39,8 +39,6 @@
                                         {{ Illuminate\Mail\Markdown::parse($slot) }}
 
                                         {{ $subcopy ?? '' }}
-
-                                        <!--<br/><a href="%tag_unsubscribe_url%" style="text-align: center;">Unsubscribe</a>-->
                                     </td>
                                 </tr>
                             </table>
