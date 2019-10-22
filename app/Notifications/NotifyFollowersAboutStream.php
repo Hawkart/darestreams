@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Log;
 
-class NotifyFollowersAboutStream extends Notification
+class NotifyFollowersAboutStream extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -49,8 +49,7 @@ class NotifyFollowersAboutStream extends Notification
             ->subject($this->details['subject'])
             ->greeting($this->details['greeting'])
             ->line($this->details['body'])
-            ->action($this->details['actionText'], $this->details['actionURL'])
-            ->line("Thank you for visiting our website");
+            ->action($this->details['actionText'], $this->details['actionURL']);
     }
 
     /**
