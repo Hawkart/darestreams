@@ -307,4 +307,9 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEma
     {
         return array_search($role, self::$roleList)!==false ? array_search($role, self::$roleList) : null;
     }
+
+    public function scopeAdmins($query)
+    {
+        return $query->where('role_id', array_search('admin', self::$roleList));
+    }
 }

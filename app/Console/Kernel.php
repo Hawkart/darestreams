@@ -20,6 +20,7 @@ class Kernel extends ConsoleKernel
         Commands\UpdateStreamsStatus::class,
         Commands\CheckTaskInterval::class,
         Commands\FinishVotes::class,
+        Commands\AdminNotifyNewStreams::class,
 
         Commands\ClearAndDelete\ClearSeederData::class,
         Commands\ClearAndDelete\DropTables::class,
@@ -48,6 +49,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('games:import')->weeklyOn(1);
         $schedule->command('streams:update_status')->everyMinute();
         $schedule->command('streams:get_views')->everyFiveMinutes();
+        $schedule->command('streams:notify_admins')->everyFiveMinutes();
         $schedule->command('streams:pay_donations')->daily()->timezone('America/New_York')->at('02:00');
         $schedule->command('tasks:check_interval')->everyMinute();
         $schedule->command('tasks:clear_not_used')->daily()->timezone('America/New_York')->at('03:00');
