@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\Log;
 
 class NotifyFollowersAboutStream extends Notification implements ShouldQueue
 {
@@ -42,6 +43,8 @@ class NotifyFollowersAboutStream extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
+        Log::info('NotifyFollowersAboutStream', ['details' => $this->details, 'file' => __FILE__, 'line' => __LINE__]);
+
         return (new MailMessage)
             ->subject($this->details['subject'])
             ->greeting($this->details['greeting'])
