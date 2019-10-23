@@ -7,7 +7,6 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Log;
 
 class NotifyFollowersAboutStream extends Notification implements ShouldQueue
 {
@@ -44,17 +43,11 @@ class NotifyFollowersAboutStream extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        Log::info('NotifyFollowersAboutStream', ['details' => $this->details,'user' => $notifiable->email, 'file' => __FILE__, 'line' => __LINE__]);
-
-        $message =  (new MailMessage)
+        return  (new MailMessage)
             ->subject($this->details['subject'])
             ->greeting($this->details['greeting'])
             ->line($this->details['body'])
             ->action($this->details['actionText'], $this->details['actionURL']);
-
-        Log::info('NotifyFollowersAboutStream', ['message' => $message, 'file' => __FILE__, 'line' => __LINE__]);
-
-        return $message;
     }
 
     /**

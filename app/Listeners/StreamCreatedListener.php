@@ -5,7 +5,6 @@ namespace App\Listeners;
 use App\Events\StreamCreatedEvent;
 use App\Models\Thread;
 use App\Notifications\NotifyFollowersAboutStream;
-use Illuminate\Support\Facades\Log;
 
 class StreamCreatedListener
 {
@@ -42,8 +41,6 @@ class StreamCreatedListener
                     'actionURL' => url('/stream/'.$stream->id),
                     'subject' => 'New stream of '.$user->nickname
                 ];
-
-                Log::info('StreamCreatedListener', ['details' => $details, 'file' => __FILE__, 'line' => __LINE__]);
 
                 //$when = now()->addSeconds(30);
                 $follower->notify((new NotifyFollowersAboutStream($details)));//->delay($when));
