@@ -44,7 +44,7 @@ class NotifyFollowersAboutStream extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        Log::info('NotifyFollowersAboutStream', ['user' => $notifiable, 'file' => __FILE__, 'line' => __LINE__]);
+        Log::info('NotifyFollowersAboutStream', ['user' => $notifiable->toArray(), 'file' => __FILE__, 'line' => __LINE__]);
         Log::info('NotifyFollowersAboutStream', ['details' => $this->details, 'file' => __FILE__, 'line' => __LINE__]);
 
         $message =  (new MailMessage)
