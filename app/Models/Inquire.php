@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Rating\Channel;
 
 class Inquire extends Model
 {
@@ -14,6 +15,14 @@ class Inquire extends Model
     protected $table = 'inquires';
 
     protected $fillable = [
-        'title', 'name', 'phone', 'email'
+        'title', 'name', 'phone', 'email', 'channel_id'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function channel()
+    {
+        return $this->belongsTo(Channel::class);
+    }
 }
