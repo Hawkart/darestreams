@@ -14,9 +14,9 @@ class InquireRequest extends FormRequest {
     public function rules()
     {
         return [
-            'title' => 'required|string|min:1',
+            'title' => 'required_without:channel_id|string|min:1',
             'name' => 'required|string|min:1',
-            'phone' => 'required|numeric|digits_between:9,12',
+            'phone' => 'required_without:channel_id|numeric|digits_between:9,12',
             'email' => 'required|email',
         ];
     }
