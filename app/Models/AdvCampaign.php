@@ -29,22 +29,6 @@ class AdvCampaign extends Model
     protected $dates = ['created_at', 'updated_at', 'from', 'to'];
 
     /**
-     * @param $value
-     */
-    public function setFromAttribute($value)
-    {
-        $this->attributes['from'] = Carbon::parse($value)->toDateTimeString();
-    }
-
-    /**
-     * @param $value
-     */
-    public function setToAttribute($value)
-    {
-        $this->attributes['to'] = Carbon::parse($value)->toDateTimeString();
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()

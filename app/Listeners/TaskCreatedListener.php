@@ -31,12 +31,9 @@ class TaskCreatedListener
                 'used_amount' => $advTask->used_amount + $advTask->price
             ]);
 
-            $campaign->used_amount = $campaign->used_amount + $advTask->price;
-            $campaign->save();
-
-            /*$campaign->update([
+            $campaign->update([
                 'used_amount' => $campaign->used_amount + $advTask->price
-            ]);*/
+            ]);
 
             Vote::create([
                 'user_id' => $campaign->user_id,
@@ -61,8 +58,6 @@ class TaskCreatedListener
 
             Vote::create($vdata);
         }
-
-
 
         $thread = $task->stream->threads[0];
         $thread->setParticipant();
