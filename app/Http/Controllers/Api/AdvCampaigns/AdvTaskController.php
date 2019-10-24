@@ -44,7 +44,7 @@ class AdvTaskController extends Controller
             ->whereHas('campaign', function($q){
                 $q->active();
             })
-            ->where('min_rating', '<', $rating)
+            ->where('min_rating', '<=', $rating)
             ->allowedIncludes(['campaign'])
             ->jsonPaginate();
 
