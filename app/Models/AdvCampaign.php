@@ -31,10 +31,10 @@ class AdvCampaign extends Model
     /**
      * @param $value
      */
-    /*public function setFromAttribute($value)
+    public function setFromAttribute($value)
     {
         $this->attributes['from'] = Carbon::parse($value)->toDateTimeString();
-    }*/
+    }
 
     /**
      * @param $value
