@@ -15,10 +15,15 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user() &&  auth()->user()->hasRole('admin')) {
+        $user = auth()->user();
+
+        if(!$user)
+            return response()->json(['error'=>'Unauthorized'], 401);
+
+        if ($user->hasRole('admin')) {
             return $next($request);
         }
 
-        return response()->json(['error'=>'Unauthorized'], 403);
+        return response()->json(['error'=>'Not admin'], 403);
     }
 }

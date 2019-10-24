@@ -18,6 +18,7 @@ abstract class TestCase extends BaseTestCase
 
         Auth::shouldUse('api');
         JsonResource::wrap('data');
+        $this->generateRoles();
     }
 
     protected function generateRoles()

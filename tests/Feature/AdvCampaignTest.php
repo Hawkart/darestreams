@@ -12,13 +12,6 @@ class AdvCampaignTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->generateRoles();
-    }
-
     /** @test */
     public function not_auth_user_cannot_create_it()
     {
@@ -41,7 +34,7 @@ class AdvCampaignTest extends TestCase
 
             $campaign = factory(AdvCampaign::class)->make();
 
-            $this->storeAssertFieldFailed($campaign->toArray(), $token, 'title', 401, false);
+            $this->storeAssertFieldFailed($campaign->toArray(), $token, 'title', 403, false);
 
             auth()->logout();
         }
@@ -90,9 +83,28 @@ class AdvCampaignTest extends TestCase
     }
 
     /** @test */
+    public function auth_user_create_not_enough_money()
+    {
+        $user = factory(User::class)->create(['role_id' => 4]);
+        $user->account->update(['amount' => 50]);
+        $token = auth()->login($user);
+
+        $data = [
+            'title' => "Updated stream",
+            'brand' => 'Brand',
+            'limit' => 100,
+            'from' => Carbon::now('UTC')->addMinutes(45)->toDateTimeString(),
+            'to' => Carbon::now('UTC')->addMinutes(245)->toDateTimeString(),
+        ];
+
+        $this->storeAssertFieldFailed($data, $token, 'limit');
+    }
+
+    /** @test */
     public function auth_user_create_successfully()
     {
         $user = factory(User::class)->create(['role_id' => 4]);
+        $user->account->update(['amount' => 200]);
         $token = auth()->login($user);
 
         $data = [
@@ -119,7 +131,7 @@ class AdvCampaignTest extends TestCase
         $token = auth()->login($user);
 
         $this->json('GET', '/api/campaigns', [],  ['Authorization' => "Bearer $token"])
-            ->assertStatus(401);
+            ->assertStatus(403);
     }
 
     /** @test */

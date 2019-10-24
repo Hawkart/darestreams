@@ -17,10 +17,13 @@ class IsAdvertiser
     {
         $user = auth()->user();
 
-        if ($user &&  ($user->hasRole('advertiser') || $user->isAdmin()) ) {
+        if(!$user)
+            return response()->json(['error'=>'Unauthorized'], 401);
+
+        if ($user->hasRole('advertiser') || $user->isAdmin()) {
             return $next($request);
         }
 
-        return response()->json(['error'=>'Unauthorized'], 403);
+        return response()->json(['error'=>'Not advertiser'], 403);
     }
 }

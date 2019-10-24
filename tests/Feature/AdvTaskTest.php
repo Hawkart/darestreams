@@ -15,13 +15,6 @@ class AdvTaskTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->generateRoles();
-    }
-
     /** @test */
     public function not_auth_user_cannot_create_it()
     {
@@ -49,7 +42,7 @@ class AdvTaskTest extends TestCase
             $task = factory(AdvTask::class)->make(['campaign_id' => $campaign->id]);
 
             $this->json('POST', '/api/campaigns/'.$campaign->id."/tasks", $task->toArray(), ['Authorization' => "Bearer $token"])
-                ->assertStatus(401);
+                ->assertStatus(403);
 
             auth()->logout();
         }
@@ -93,33 +86,6 @@ class AdvTaskTest extends TestCase
     }
 
     /** @test */
-    public function auth_user_create_but_campaign_already_started()
-    {
-        $user = factory(User::class)->create(['role_id' => 4]);
-        $campaign = factory(AdvCampaign::class)->create([
-            'user_id' => $user->id,
-            'from' => Carbon::now('UTC')->subMinutes(245)->toDateTimeString(),
-            'to' => Carbon::now('UTC')->addMinutes(45)->toDateTimeString()
-        ]);
-        $token = auth()->login($user);
-
-        $url = '/api/campaigns/'.$campaign->id."/tasks";
-
-        $data = [
-            'campaign_id' => $campaign->id,
-            'small_desc' => 'task',
-            'full_desc' => 'full task',
-            'limit' => 50,
-            'type' => 1,
-            'price' => 5,
-            'min_rating' => 0
-        ];
-
-        $this->storeAssertFieldFailed($url, $data, $token, 'price');
-    }
-
-
-    /** @test */
     public function auth_user_create_successfully()
     {
         $user = factory(User::class)->create(['role_id' => 4]);
@@ -158,7 +124,7 @@ class AdvTaskTest extends TestCase
         $token = auth()->login($user);
 
         $this->json('GET', '/api/campaigns/all/tasks', [],  ['Authorization' => "Bearer $token"])
-            ->assertStatus(401);
+            ->assertStatus(403);
     }
 
     /** @test */

@@ -373,6 +373,7 @@ class StreamTest extends TestCase
         $stream->refresh();
         $r = new StreamResource($stream);
         $d = json_decode(json_encode($r->toResponse(app('request'))->getData()), true);
+        $d = $d['data'];
 
         $this->json('get', '/api/streams/'.$stream->id)
             ->assertStatus(200)

@@ -17,10 +17,13 @@ class IsStreamer
     {
         $user = auth()->user();
 
-        if ($user &&  ($user->hasRole('streamer') || $user->isAdmin()) ) {
+        if(!$user)
+            return response()->json(['error'=>'Unauthorized'], 401);
+
+        if ($user->hasRole('streamer') || $user->isAdmin()) {
             return $next($request);
         }
 
-        return response()->json(['error'=>'Unauthorized'], 403);
+        return response()->json(['error'=>'Not streamer'], 403);
     }
 }

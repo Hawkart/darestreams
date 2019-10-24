@@ -26,6 +26,7 @@ class ChannelTest extends TestCase
         $channel->refresh();
         $r = new ChannelResource($channel);
         $d = json_decode(json_encode($r->toResponse(app('request'))->getData()), true);
+        $d = $d['data'];
 
         $this->json('get', '/api/channels/'.$channel->id)
             ->assertStatus(200)
