@@ -9,8 +9,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class TransactionTest extends TestCase
 {
     /** @test */
-    public function example()
+    public function test_console_finish_votes()
     {
-        $this->assertTrue(true);
+        $this->artisan('votes:finish')
+            ->assertExitCode(0);
     }
 }

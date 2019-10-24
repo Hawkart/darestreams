@@ -278,6 +278,63 @@ class TaskTest extends TestCase
     }
 
     /** @test */
+    public function auth_user_update_with_avt_task_id_successfully()
+    {
+        $owner = factory(User::class)->create(['role_id' => 3]);
+        $owner->account->update(['amount' => 500]);
+        $token = auth()->login($owner);
+        factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $owner->id]);
+        $stream = factory(Stream::class)->create([
+            'channel_id' => $channel->id,
+            'status' => StreamStatus::Created,
+            'allow_task_before_stream' => 1,
+            'min_amount_task_before_stream' => 10
+        ]);
+
+        $advertiser = factory(User::class)->create(['role_id' => 4]);
+
+        $campaign = factory(AdvCampaign::class)->create([
+            'user_id' => $advertiser->id,
+            'from' => Carbon::now('UTC')->subMinutes(15)->toDateTimeString(),
+            'to' => Carbon::now('UTC')->addMinutes(245)->toDateTimeString()
+        ]);
+
+        $advTask = factory(AdvTask::class)->create([
+            'campaign_id' => $campaign->id,
+            'small_desc' => 'task',
+            'full_desc' => 'full task',
+            'limit' => 50,
+            'type' => 1,
+            'price' => 5,
+            'min_rating' => 0
+        ]);
+
+        $data = [
+            'stream_id' => $stream->id,
+            'adv_task_id' => $advTask->id
+        ];
+
+        $this->json('POST', '/api/tasks', $data, ['Authorization' => "Bearer $token"])
+            ->assertStatus(200);
+
+        $task = Task::where('stream_id', $stream->id)->where('adv_task_id', $advTask->id)->first();
+
+        $this->json('PUT', '/api/tasks/'.$task->id, ['status' => TaskStatus::AllowVote],  ['Authorization' => "Bearer $token"])
+            ->assertStatus(200)
+            ->assertJsonStructure([
+                'success',
+                'data',
+                'message'
+            ]);
+
+        $this->assertDatabaseHas('tasks', [
+            'id' => $task->id,
+            'status' => TaskStatus::AllowVote
+        ]);
+    }
+
+    /** @test */
     public function show_list_of_this()
     {
         $user = factory(User::class)->create();
