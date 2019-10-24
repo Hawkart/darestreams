@@ -15,7 +15,7 @@ class Inquire extends Model
     protected $table = 'inquires';
 
     protected $fillable = [
-        'title', 'name', 'phone', 'email', 'channel_id'
+        'title', 'name', 'phone', 'email', 'channel_id', 'message'
     ];
 
     /**

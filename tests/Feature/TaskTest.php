@@ -8,6 +8,8 @@ use App\Enums\TransactionStatus;
 use App\Enums\TransactionType;
 use App\Enums\VoteStatus;
 use App\Http\Resources\TaskResource;
+use App\Models\AdvCampaign;
+use App\Models\AdvTask;
 use App\Models\Channel;
 use App\Models\Game;
 use App\Models\Stream;
@@ -203,6 +205,76 @@ class TaskTest extends TestCase
             'account_sender_id' => $user->account->id,
             'account_receiver_id' => $owner->account->id,
         ]);
+    }
+
+    /** @test */
+    public function auth_user_create_with_adv_task_id_not_exist()
+    {
+        $owner = factory(User::class)->create();
+        $user = factory(User::class)->create();
+        $user->account->update(['amount' => 50]);
+        $token = auth()->login($user);
+
+        $game = factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $owner->id]);
+
+        $stream = factory(Stream::class)->create([
+            'channel_id' => $channel->id,
+            'status' => StreamStatus::Created,
+            'allow_task_before_stream' => 1,
+            'min_amount_task_before_stream' => 10
+        ]);
+
+        $data = [
+            'stream_id' => $stream->id,
+            'adv_task_id' => 5
+        ];
+
+        $this->storeAssertFieldFailed($data, $token, 'adv_task_id', 404, false);
+    }
+
+    /** @test */
+    public function auth_user_create_with_avt_task_id_successfully()
+    {
+        $owner = factory(User::class)->create(['role_id' => 3]);
+        $owner->account->update(['amount' => 500]);
+        $token = auth()->login($owner);
+        factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $owner->id]);
+        $stream = factory(Stream::class)->create([
+            'channel_id' => $channel->id,
+            'status' => StreamStatus::Created,
+            'allow_task_before_stream' => 1,
+            'min_amount_task_before_stream' => 10
+        ]);
+
+        $advertiser = factory(User::class)->create(['role_id' => 4]);
+
+        $campaign = factory(AdvCampaign::class)->create([
+            'user_id' => $advertiser->id,
+            'from' => Carbon::now('UTC')->subMinutes(15)->toDateTimeString(),
+            'to' => Carbon::now('UTC')->addMinutes(245)->toDateTimeString()
+        ]);
+
+        $advTask = factory(AdvTask::class)->create([
+            'campaign_id' => $campaign->id,
+            'small_desc' => 'task',
+            'full_desc' => 'full task',
+            'limit' => 50,
+            'type' => 1,
+            'price' => 5,
+            'min_rating' => 0
+        ]);
+
+        $data = [
+            'stream_id' => $stream->id,
+            'adv_task_id' => $advTask->id
+        ];
+
+        $this->json('POST', '/api/tasks', $data, ['Authorization' => "Bearer $token"])
+            ->assertStatus(200);
+
+        $this->assertDatabaseHas('tasks', $data);
     }
 
     /** @test */

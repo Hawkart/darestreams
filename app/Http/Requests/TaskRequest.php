@@ -41,6 +41,11 @@ class TaskRequest extends FormRequest {
                 {
                     return [
                         'stream_id' => 'required|exists:streams,id',
+                        'adv_task_id' => [
+                            'sometimes',
+                            'exists:adv_tasks,id',
+                            new ValidTaskCanAdvCreate($this->get('stream_id'), $this->get('adv_task_id'))
+                        ],
                         'created_amount' => [
                             'required_without:adv_task_id',
                             'numeric',
@@ -50,12 +55,7 @@ class TaskRequest extends FormRequest {
                         ],
                         'small_desc' => 'required_without:adv_task_id|string|min:1',
                         'full_desc' => 'required_without:adv_task_id|string|min:1',
-                        'interval_time' => 'sometimes|required_without:adv_task_id|numeric|min:0',
-                        'adv_task_id' => [
-                            'sometimes',
-                            'exists:adv_tasks,id',
-                            new ValidTaskCanAdvCreate($this->get('stream_id'), $this->get('adv_task_id'))
-                        ]
+                        'interval_time' => 'sometimes|required_without:adv_task_id|numeric|min:0'
                     ];
                 }
             case 'PUT':

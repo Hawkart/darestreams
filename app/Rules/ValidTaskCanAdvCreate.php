@@ -70,7 +70,7 @@ class ValidTaskCanAdvCreate implements Rule
         }
 
         $rating = RatingChannel::where('channel_id', $stream->channel_id)->first();
-        if(!$rating || ceil($rating->rating/1000)<$advCampaign->min_rating)
+        if((!$rating && $advCampaign->min_rating!=0) || ($rating &&ceil($rating->rating/1000)<$advCampaign->min_rating))
         {
             $this->message = 'Your rating less than minimum.';
             return false;
