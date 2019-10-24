@@ -88,6 +88,19 @@ class ValidTaskCanAdvCreate implements Rule
             return false;
         }
 
+        $advTasksDone = $stream->advTasks;
+        if(count($advTasksDone)>0 && $advTasksDone[0]->campagin_id!=$advCampaign->id)
+        {
+            $this->message = 'You cannot take task from different campaigns. You have already taken task from another campaign.';
+            return false;
+        }
+
+        if(count($advTasksDone)>0 && in_array($advTask->id, $advTasksDone->pluck('id')))
+        {
+            $this->message = 'This task cannot be taken second time on this stream.';
+            return false;
+        }
+
         return true;
     }
 
