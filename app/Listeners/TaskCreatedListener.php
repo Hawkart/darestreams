@@ -31,6 +31,9 @@ class TaskCreatedListener
                 'used_amount' => $advTask->used_amount + $advTask->price
             ]);
 
+            $campaign->used_amount = $campaign->used_amount + $advTask->price;
+            $campaign->save();
+
             /*$campaign->update([
                 'used_amount' => $campaign->used_amount + $advTask->price
             ]);*/
