@@ -9,9 +9,11 @@ use App\Http\Resources\AdvTaskResource;
 use App\Models\AdvCampaign;
 use App\Models\AdvTask;
 use App\Models\Rating\Channel as RatingChannel;
+use App\Models\Stream;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use App\Http\Controllers\Api\Controller;
+use DB;
 
 /**
  * @group Adv
@@ -37,17 +39,43 @@ class AdvTaskController extends Controller
     {
         $user = auth()->user();
 
+        if(!$request->has('stream_id')){
+            abort(403, 'This request should be with stream_id');
+        }
+
+        $stream = Stream::findOrFail($request->get('stream_id'));
+
+        if(!$user->ownerOfChannel($stream->channel_id)){
+            abort(403, 'You are not the owner of this stream.');
+        }
+
+        //get all allowed campaigns
+        $usedTasks = AdvTask::whereHas('tasks', function($q) use ($stream){
+            $q->where('stream_id', $stream->id);
+        });
+
+        if($usedTasks->count()>0)
+        {
+            $usedTasks = $usedTasks->plick('id')->toArray();
+            $usedCampaigns = $usedTasks->plick('campaign_id')->toArray();
+        }else{
+            $usedTasks = $usedCampaigns = [];
+        }
+
         $rh = RatingChannel::where('channel_id', $user->channel->id)->first();
         $rating = $rh ? ceil($rh->rating/1000) : 0;
 
         $items = QueryBuilder::for(AdvTask::class)
-            ->whereHas('campaign', function($q){
-                $q->active();
-            })
+            ->whereNotIn('id', $usedTasks)
             ->where('min_rating', '<=', $rating)
+            ->whereHas('campaign', function($q) use ($usedCampaigns){
+                $q->active();
+                if(count($usedCampaigns)>0) $q->where('id', $usedCampaigns[0]);
+            })
+            ->whereRaw("'used_amount' + 'price' <= 'limit'")
             ->allowedIncludes(['campaign'])
             ->jsonPaginate();
-
+        
         return AdvTaskResource::collection($items);
     }
 

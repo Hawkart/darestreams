@@ -2,10 +2,12 @@
 
 namespace Tests\Feature;
 
+use App\Enums\StreamStatus;
 use App\Models\AdvCampaign;
 use App\Models\AdvTask;
 use App\Models\Channel;
 use App\Models\Game;
+use App\Models\Stream;
 use App\Models\User;
 use Carbon\Carbon;
 use Tests\TestCase;
@@ -132,10 +134,17 @@ class AdvTaskTest extends TestCase
     {
         $user = factory(User::class)->create(['role_id' => 3]);
         factory(Game::class)->create();
-        factory(Channel::class)->create(['user_id' => $user->id]);
+        $channel = factory(Channel::class)->create(['user_id' => $user->id]);
         $token = auth()->login($user);
 
-        $this->json('GET', '/api/campaigns/all/tasks', [],  ['Authorization' => "Bearer $token"])
+        $stream = factory(Stream::class)->create([
+            'channel_id' => $channel->id,
+            'status' => StreamStatus::Created,
+            'allow_task_before_stream' => 1,
+            'min_amount_task_before_stream' => 10
+        ]);
+
+        $this->json('GET', '/api/campaigns/all/tasks', ['stream_id' => $stream->id],  ['Authorization' => "Bearer $token"])
             ->assertStatus(200);
     }
 

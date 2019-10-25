@@ -92,7 +92,7 @@ class ValidTaskCanAdvCreate implements Rule
             $q->where('stream_id', $stream->id);
         })->get();
 
-        if(count($advTasksDone)>0 && $advTasksDone[0]->campagin_id!=$advCampaign->id)
+        if(count($advTasksDone)>0 && $advTasksDone[0]->campaign_id!=$advCampaign->id)
         {
             $this->message = 'You cannot take task from different campaigns. You have already taken task from another campaign.';
             return false;
