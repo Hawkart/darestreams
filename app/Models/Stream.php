@@ -97,14 +97,6 @@ class Stream extends Model implements ViewableContract
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
-     */
-    public function advTasks()
-    {
-        return $this->hasManyThrough('App\Models\AdvTask', 'App\Models\Task', 'stream_id', 'id', 'adv_task_id');
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function tasksCompleted()
