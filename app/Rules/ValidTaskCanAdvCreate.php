@@ -88,7 +88,7 @@ class ValidTaskCanAdvCreate implements Rule
             return false;
         }
 
-        $advTasksDone = AdvTask::whereHas('task', function($q) use ($stream){
+        $advTasksDone = AdvTask::whereHas('tasks', function($q) use ($stream){
             $q->where('stream_id', $stream->id);
         })->get();
 
