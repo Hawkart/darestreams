@@ -41,9 +41,9 @@ class ClearDroppedTransactions extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
-        $after = Carbon::now('UTC')->subDays(3);
+        $after = Carbon::now('UTC')->subDays(2);
 
-        Transaction::whereDate('created_at', '>', $after)
+        Transaction::whereDate('created_at', '<', $after)
             ->where('status', TransactionStatus::Created)
             ->where('type', TransactionType::Deposit)
             ->delete();

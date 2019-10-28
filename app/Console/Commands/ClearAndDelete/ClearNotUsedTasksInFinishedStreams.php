@@ -42,7 +42,7 @@ class ClearNotUsedTasksInFinishedStreams extends Command
 
         Task::where('status', TaskStatus::Created)
             ->whereHas('stream', function($q) use ($after) {
-                $q->whereDate('created_at', '>', $after)
+                $q->whereDate('created_at', '<', $after)
                     ->whereNotNull('ended_at')
                     ->where('status', StreamStatus::FinishedIsPayed);
             })->delete();
