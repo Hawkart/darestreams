@@ -267,9 +267,10 @@ class StreamController extends Controller
                 ->leftJoin('channels', 'streams.channel_id', '=', 'channels.id')
                 ->leftJoin('users', 'users.id', '=', 'channels.user_id')
                 ->orderBy('users.fake', 'asc')
-                ->defaultSort('-streams.views')
+                ->defaultSort('-streams.start_at')
                 ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
                 ->allowedSorts([
+                    AllowedSort::field('start_at', 'streams.start_at'),
                     AllowedSort::field('views', 'streams.views'),
                     AllowedSort::field('amount_donations', 'streams.amount_donations'),
                 ])

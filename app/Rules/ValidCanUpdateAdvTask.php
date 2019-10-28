@@ -49,7 +49,7 @@ class ValidCanUpdateAdvTask implements Rule
 
         if(count($this->task->tasks)>0)
         {
-            $this->message = trans('api/task.already_has_tasks_in_work');
+            $this->message = trans('api/adv_task.already_has_tasks_in_work');
             return false;
         }
 

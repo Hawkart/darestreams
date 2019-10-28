@@ -40,13 +40,13 @@ class AdvTaskController extends Controller
         $user = auth()->user();
 
         if(!$request->has('stream_id')){
-            abort(403, 'This request should be with stream_id');
+            abort(403, trans('api/adv_task.need_stream_id'));
         }
 
         $stream = Stream::findOrFail($request->get('stream_id'));
 
         if(!$user->ownerOfChannel($stream->channel_id)){
-            abort(403, 'You are not the owner of this stream.');
+            abort(403, trans('api/adv_task.not_owner_of_stream'));
         }
 
         //get all allowed campaigns

@@ -38,6 +38,6 @@ class ValidTaskCreateBeforeOrWhileStreamStart implements Rule
      */
     public function message()
     {
-        return 'Some of the checkboxes have to be checked!';
+        return  trans('api/task.checkbox_create_task_before_while_not_chosen');
     }
 }

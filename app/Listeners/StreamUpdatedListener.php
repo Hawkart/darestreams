@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Enums\StreamStatus;
 use App\Events\StreamUpdatedEvent;
 use App\Jobs\SyncStreamByTwitch;
+use Carbon\Carbon;
 
 class StreamUpdatedListener
 {
@@ -24,7 +25,7 @@ class StreamUpdatedListener
             if($stream->status==StreamStatus::FinishedWaitPay)
             {
                 $stream->load(['channel']);
-                dispatch(new SyncStreamByTwitch($stream))->delay(now()->addMinutes(5));
+                dispatch(new SyncStreamByTwitch($stream))->delay(Carbon::now('UTC')->addMinutes(5));
             }
         }
     }

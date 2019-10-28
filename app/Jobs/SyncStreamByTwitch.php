@@ -38,7 +38,7 @@ class SyncStreamByTwitch implements ShouldQueue
 
             $this->stream->update([
                 'views' => $video['views'],
-                'link' => $video['_links']['self']
+                'link' => $video['_id']
             ]);
         }
     }

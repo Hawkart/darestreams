@@ -10,4 +10,6 @@ return [
     'not_allow_create_task_when_stream_active' => 'Not allowed to create task when stream active',
     'not_allow_create_task_before_stream' => 'Not allowed to create task before stream will become active',
     'stream_finished' => 'Stream finished',
+    'failed_no_owner_of_channel' => 'You are not owner of this channel.',
+    'cannot_update_status_stream' => 'Stream status cannot be updated.'
 ];

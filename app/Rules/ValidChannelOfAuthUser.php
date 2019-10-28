@@ -27,7 +27,7 @@ class ValidChannelOfAuthUser implements Rule
     {
         $user = auth()->user();
 
-        if(!$user->channel || $user->channel->id!=$value)
+        if(!$user->ownerOfChannel($value))
             return false;
 
         return true;
@@ -40,6 +40,6 @@ class ValidChannelOfAuthUser implements Rule
      */
     public function message()
     {
-        return trans('api/stream.failed_no_channel');
+        return trans('api/stream.failed_no_owner_of_channel');
     }
 }

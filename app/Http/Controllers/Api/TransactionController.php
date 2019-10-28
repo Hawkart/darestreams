@@ -29,18 +29,6 @@ class TransactionController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        $items = QueryBuilder::for(Transaction::class)->jsonPaginate();
-
-        return TransactionResource::collection($items);
-    }
-
-    /**
      * Get list of statuses
      *
      * @return \Illuminate\Http\JsonResponse

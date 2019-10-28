@@ -54,12 +54,12 @@ class ValidCanTaskCreate implements Rule
         //check fake rules
         if($stream->user->fake && !$user->fake)
         {
-            $this->message = 'Real user cannot create task for fake stream';
+            $this->message = trans('api/task.failed_real_user_create_task_on_fake_stream');
             return false;
         }
         if(!$stream->user->fake && $user->fake)
         {
-            $this->message = 'Fake user cannot create task for real stream';
+            $this->message = trans('api/task.failed_fake_user_create_task_on_real_stream');
             return false;
         }
 

@@ -41,12 +41,12 @@ class ValidTaskStatusForDonation implements Rule
         //check fake rules
         if($this->task->stream->user->fake && !$user->fake)
         {
-            $this->message = 'Real user cannot donate on task of fake stream';
+            $this->message = trans('api/task.failed_real_user_on_fake_stream');
             return false;
         }
         if(!$this->task->stream->user->fake && $user->fake)
         {
-            $this->message = 'Fake user cannot donate on task for real stream';
+            $this->message = trans('api/task.failed_fake_user_on_real_stream');
             return false;
         }
 
