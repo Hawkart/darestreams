@@ -56,16 +56,24 @@ class DeleteUserAndData extends Command
         DB::beginTransaction();
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
-        if(empty($user_id))
+        $users = [];
+        if(!empty($user_id))
         {
-            $this->error("No user_id..."); dd();
+            $users[] = User::findOrFail($user_id);
         }else{
-            $user = User::firstOrFail($user_id);
-            $user->clearFakeData();
-            $user->oauthProviders->delete();
-            $user->account->delete();
-            $user->channel->delete();
-            $user->delete();
+            $users = User::where('fake', 1)->get();
+        }
+
+        if(count($users)>0)
+        {
+            foreach($users as $user)
+            {
+                $user->clearFakeData();
+                $user->oauthProviders->delete();
+                $user->account->delete();
+                $user->channel->delete();
+                $user->delete();
+            }
         }
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
