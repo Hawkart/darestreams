@@ -4,10 +4,12 @@ namespace App\Events;
 
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Support\Facades\Log;
 
-class SocketOnDonate implements ShouldBroadcastNow
+class SocketOnTask implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -25,6 +27,14 @@ class SocketOnDonate implements ShouldBroadcastNow
 
     public function broadcastOn()
     {
-        return ['streams.' . (string)$this->data->id];
+        Log::info('Socket on task', [
+            'data' => $this->data,
+            'file' => __FILE__,
+            'line' => __LINE__
+        ]);
+
+        $user_id = $this->data->stream->channel->user_id;
+
+        return new PrivateChannel('users.'.$user_id);
     }
 }

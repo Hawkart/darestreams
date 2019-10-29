@@ -3,9 +3,7 @@
 namespace App\Listeners;
 
 use App\Enums\VoteStatus;
-use App\Events\SocketOnDonate;
 use App\Events\TaskCreatedEvent;
-use App\Http\Resources\StreamResource;
 use App\Models\AdvTask;
 use App\Models\Vote;
 
@@ -54,6 +52,8 @@ class TaskCreatedListener
                 $vdata['vote'] = VoteStatus::Yes;
 
                 $task->stream->socketInit();
+            }else{
+                $task->socketPrivateInit();
             }
 
             Vote::create($vdata);

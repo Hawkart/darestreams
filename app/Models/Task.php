@@ -3,10 +3,15 @@
 namespace App\Models;
 
 use App\Enums\TaskStatus;
+use App\Events\SocketOnTask;
+use App\Http\Resources\TaskResource;
 use Illuminate\Database\Eloquent\Model;
+use \Znck\Eloquent\Traits\BelongsToThrough;
 
 class Task extends Model
 {
+    use BelongsToThrough;
+
     /**
      * The table associated with the model.
      *
@@ -69,6 +74,15 @@ class Task extends Model
     }
 
     /**
+     * @return mixed
+     */
+    public function channel()
+    {
+        return $this->belongsToThrough(Channel::class, Stream::class);
+    }
+
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function votes()
@@ -82,5 +96,15 @@ class Task extends Model
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    /**
+     * @param $stream
+     */
+    public function socketPrivateInit()
+    {
+        $this->load(['stream', 'stream.channel']);
+        TaskResource::withoutWrapping();
+        event(new SocketOnTask(new TaskResource($this)));
     }
 }

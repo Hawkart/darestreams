@@ -26,6 +26,9 @@ class TaskUpdatedListener
                 $task->transactions()->update(['status' => TransactionStatus::Canceled]);
 
             $task->stream->socketInit();
+
+            if($task->status==TaskStatus::IntervalFinishedAllowVote)
+                $task->socketPrivateInit();
         }
     }
 }
