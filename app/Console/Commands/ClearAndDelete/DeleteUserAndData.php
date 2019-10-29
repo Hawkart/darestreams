@@ -68,10 +68,6 @@ class DeleteUserAndData extends Command
         {
             foreach($users as $user)
             {
-                $user->clearFakeData();
-                $user->oauthProviders()->delete();
-                $user->account->delete();
-                $user->channel->delete();
                 $user->delete();
             }
         }

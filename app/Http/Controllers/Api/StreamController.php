@@ -263,17 +263,9 @@ class StreamController extends Controller
                 });
 
             $items = $items
-                ->select('streams.id AS id', 'streams.*')
-                ->leftJoin('channels', 'streams.channel_id', '=', 'channels.id')
-                ->leftJoin('users', 'users.id', '=', 'channels.user_id')
-                ->orderBy('users.fake', 'asc')
-                ->defaultSort('-streams.start_at')
+                ->defaultSort('-start_at')
                 ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-                ->allowedSorts([
-                    AllowedSort::field('start_at', 'streams.start_at'),
-                    AllowedSort::field('views', 'streams.views'),
-                    AllowedSort::field('amount_donations', 'streams.amount_donations'),
-                ])
+                ->allowedSorts([ 'start_at', 'views', 'amount_donations'])
                 ->offset($skip)
                 ->limit($limit)
                 ->get();
@@ -323,16 +315,9 @@ class StreamController extends Controller
                 });
 
             $items = $items
-                ->select('streams.id AS id', 'streams.*')
-                ->leftJoin('channels', 'streams.channel_id', '=', 'channels.id')
-                ->leftJoin('users', 'users.id', '=', 'channels.user_id')
-                ->orderBy('users.fake', 'asc')
-                ->defaultSort('-streams.start_at')
+                ->defaultSort('-start_at')
                 ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-                ->allowedSorts([
-                    AllowedSort::field('views', 'streams.views'),
-                    AllowedSort::field('start_at', 'streams.start_at'),
-                ])
+                ->allowedSorts([ 'views', 'start_at'])
                 ->offset($skip)
                 ->limit($limit)
                 ->get();

@@ -21,7 +21,7 @@ class UserDeletingListener
     public function handle(UserDeletingEvent $event)
     {
         $user = $event->user;
-        
+
         DB::beginTransaction();
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
@@ -45,9 +45,9 @@ class UserDeletingListener
         $user->getTransactions()->delete();
         $user->notifications()->delete();
 
-        $user->oauthProviders->delete();
         $user->account->delete();
         $user->channel->delete();
+        $user->oauthProviders()->delete();
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         DB::commit();

@@ -159,21 +159,27 @@ class ChannelController extends Controller
 
             $data = $list->pluck('donates', 'id')->toArray();
             $ids = $list->pluck('id')->toArray();
-            $oids = implode(',', $ids);
 
-            $items = QueryBuilder::for(Channel::class)
-                ->whereIn('id', $ids);
+            if(count($ids)>0)
+            {
+                $oids = implode(',', $ids);
 
-            if($request->has('game_id'))
-                $items = $items->where('game_id', $request->get('game_id'));
+                $items = QueryBuilder::for(Channel::class)
+                    ->whereIn('id', $ids);
 
-            $items = $items->orderByRaw(DB::raw("FIELD(id, $oids)"))
-                ->allowedSorts('title', 'id')
-                ->allowedIncludes(['user', 'streams', 'tags', 'game'])
-                ->jsonPaginate();
+                if($request->has('game_id'))
+                    $items = $items->where('game_id', $request->get('game_id'));
 
-            foreach ($items as &$item)
-                $item->donates = $data[$item->id];
+                $items = $items->orderByRaw(DB::raw("FIELD(id, $oids)"))
+                    ->allowedSorts('title', 'id')
+                    ->allowedIncludes(['user', 'streams', 'tags', 'game'])
+                    ->jsonPaginate();
+
+                foreach ($items as &$item)
+                    $item->donates = $data[$item->id];
+            }else{
+                $items = ['data' => []];
+            }
 
             $cacheTags->put($cache_key, $items, 1800);
         }
