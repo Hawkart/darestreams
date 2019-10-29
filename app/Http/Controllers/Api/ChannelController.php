@@ -177,14 +177,15 @@ class ChannelController extends Controller
 
                 foreach ($items as &$item)
                     $item->donates = $data[$item->id];
+
             }else{
-                $items = ['data' => []];
+                $items = [];
             }
 
             $cacheTags->put($cache_key, $items, 1800);
         }
 
-        return ChannelResource::collection($items);
+        return count($items)>0 ? ChannelResource::collection($items) : ['data' => []];
     }
 
     /**
