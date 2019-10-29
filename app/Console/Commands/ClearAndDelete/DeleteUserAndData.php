@@ -23,7 +23,7 @@ class DeleteUserAndData extends Command
      *
      * @var string
      */
-    protected $signature = 'user:delete {--user_id=}';
+    protected $signature = 'user:delete_fake {--user_id=}';
 
     /**
      * The console command description.
@@ -69,7 +69,7 @@ class DeleteUserAndData extends Command
             foreach($users as $user)
             {
                 $user->clearFakeData();
-                $user->oauthProviders->delete();
+                $user->oauthProviders()->delete();
                 $user->account->delete();
                 $user->channel->delete();
                 $user->delete();
