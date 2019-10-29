@@ -25,8 +25,8 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::group(['namespace' => 'Api'], function () {
 
     Route::get('users/{user}/login', 'UserController@fakeLogin');
-    Route::post('deploy', 'DebugControllerController@deploy');
-    Route::post('logs/js', 'DebugControllerController@deploy');
+    Route::post('deploy', 'DebugController@deploy');
+    Route::post('logs/js', 'DebugController@deploy');
 
     Route::apiResource('rating', 'Rating\ChannelController')->only(['index', 'show']);
 

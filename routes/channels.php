@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Stream;
-use App\Models\Task;
 
 
 Broadcast::channel('users.{id}', function ($user, $id) {
