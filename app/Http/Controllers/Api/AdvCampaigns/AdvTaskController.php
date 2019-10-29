@@ -56,8 +56,8 @@ class AdvTaskController extends Controller
 
         if($usedTasks->count()>0)
         {
-            $usedTasks = $usedTasks->plick('id')->toArray();
-            $usedCampaigns = $usedTasks->plick('campaign_id')->toArray();
+            $usedTasks = $usedTasks->pluck('id')->toArray();
+            $usedCampaigns = $usedTasks->pluck('campaign_id')->toArray();
         }else{
             $usedTasks = $usedCampaigns = [];
         }

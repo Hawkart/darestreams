@@ -265,7 +265,7 @@ class StreamController extends Controller
             $items = $items
                 ->defaultSort('-start_at')
                 ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-                ->allowedSorts([ 'start_at', 'views', 'amount_donations'])
+                ->allowedSorts('start_at', 'views', 'amount_donations')
                 ->offset($skip)
                 ->limit($limit)
                 ->get();
@@ -317,7 +317,7 @@ class StreamController extends Controller
             $items = $items
                 ->defaultSort('-start_at')
                 ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
-                ->allowedSorts([ 'views', 'start_at'])
+                ->allowedSorts('views', 'start_at')
                 ->offset($skip)
                 ->limit($limit)
                 ->get();
