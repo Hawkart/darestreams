@@ -40,7 +40,6 @@ class CheckTaskInterval extends Command
 
         $now = Carbon::now('UTC');
         $tasks = Task::where('interval_time', '>', 0)
-                    ->where('adv_task_id', '=', 0)
                     ->where('status', TaskStatus::Active)
                     ->get();
 
@@ -48,6 +47,8 @@ class CheckTaskInterval extends Command
         {
             foreach($tasks as $task)
             {
+                echo $task->id."\r\n";
+
                 if(Carbon::parse($task->start_active)->addMinutes($task->interval_time)->lte($now))
                 {
                     $status = TaskStatus::IntervalFinishedAllowVote;
@@ -56,6 +57,8 @@ class CheckTaskInterval extends Command
                         $status = TaskStatus::PayFinished;
 
                     $task->update(['status' => $status]);
+
+                    echo $task->id." - updated"."\r\n";
                 }
             }
         }
