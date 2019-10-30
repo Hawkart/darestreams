@@ -3,7 +3,7 @@
 use App\Models\Stream;
 
 
-Broadcast::channel('users.{id}', function ($user, $id) {
+Broadcast::channel('private-users.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
