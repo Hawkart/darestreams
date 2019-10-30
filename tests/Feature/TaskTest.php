@@ -630,6 +630,35 @@ class TaskTest extends TestCase
     }
 
     /** @test */
+    public function auth_user_set_vote_last_for_task()
+    {
+        $userA = factory(User::class)->create();
+        $userB = factory(User::class)->create();
+        $userB->account->update(['amount' => 1000]);
+        factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $userA->id]);
+        $stream = factory(Stream::class)->create(['channel_id' => $channel->id]);
+        $task = factory(Task::class)->create(['user_id' => $userA->id, 'status' => TaskStatus::AllowVote, 'stream_id' => $stream->id]);
+
+        Transaction::create([
+            'task_id' => $task->id,
+            'amount' => 10,
+            'account_sender_id' => $userB->account->id,
+            'account_receiver_id' => $userA->account->id,
+            'status' => TransactionStatus::Holding,
+            'type' => TransactionType::Donation
+        ]);
+
+        $token = auth()->login($userB);
+
+        $this->json('PATCH', '/api/tasks/'.$task->id."/set-vote", ['vote' => VoteStatus::Yes], ['Authorization' => "Bearer $token"])
+            ->assertStatus(200);
+
+        $task->refresh();
+        $this->assertEquals($task->status, TaskStatus::VoteFinished);
+    }
+
+    /** @test */
     public function not_auth_user_try_donate()
     {
         $userA = factory(User::class)->create();
@@ -706,6 +735,42 @@ class TaskTest extends TestCase
             'status' => TransactionStatus::Holding,
             'type' => TransactionType::Donation
         ]);
+    }
+
+    /** @test */
+    public function auth_user_check_interval_time_status_change()
+    {
+        $userA = factory(User::class)->create();
+        $userA->account->update(['amount' => 1000]);
+        factory(Game::class)->create();
+        $channel = factory(Channel::class)->create(['user_id' => $userA->id]);
+        factory(Stream::class)->create(['channel_id' => $channel->id]);
+
+        $task = factory(Task::class)->create([
+            'user_id' => $userA->id,
+            'status' => TaskStatus::Active,
+            'start_active' => Carbon::now('UTC')->subMinutes(20),
+            'interval_time' => 10,
+            'min_donation' => 30,
+            'amount_donations' =>10
+        ]);
+
+        $task2 = factory(Task::class)->create([
+            'user_id' => $userA->id,
+            'status' => TaskStatus::Active,
+            'start_active' => Carbon::now('UTC')->subMinutes(20),
+            'interval_time' => 10,
+            'min_donation' => 30,
+            'amount_donations' =>0
+        ]);
+
+        \Artisan::call('tasks:check_interval', []);
+
+        $task->refresh();
+        $this->assertEquals($task->status, TaskStatus::IntervalFinishedAllowVote);
+
+        $task2->refresh();
+        $this->assertEquals($task2->status, TaskStatus::PayFinished);
     }
 
     /**

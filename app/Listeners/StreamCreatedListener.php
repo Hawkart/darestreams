@@ -36,7 +36,7 @@ class StreamCreatedListener
             {
                 $details = [
                     'greeting' => 'Hi '.$follower->name,
-                    'body' => 'The stream will start at '.$stream->start_at->addHours(3)->format('d.m.Y h:i'),
+                    'body' => 'The stream will start at '.$stream->start_at->addHours(3)->format('d.m.Y H:i'),
                     'actionText' => 'View new stream',
                     'actionURL' => url('/stream/'.$stream->id),
                     'subject' => 'New stream of '.$user->nickname
