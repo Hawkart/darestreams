@@ -36,6 +36,6 @@ class SocketOnTask implements ShouldBroadcastNow
             'line' => __LINE__
         ]);
 
-        return new PrivateChannel('private-users.'.$user_id);
+        return new PrivateChannel('users.'.$user_id);
     }
 }
