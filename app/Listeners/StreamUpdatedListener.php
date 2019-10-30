@@ -3,8 +3,10 @@
 namespace App\Listeners;
 
 use App\Enums\StreamStatus;
+use App\Enums\TaskStatus;
 use App\Events\StreamUpdatedEvent;
 use App\Jobs\SyncStreamByTwitch;
+use App\Models\Task;
 use Carbon\Carbon;
 
 class StreamUpdatedListener
@@ -26,6 +28,14 @@ class StreamUpdatedListener
             {
                 $stream->load(['channel']);
                 dispatch(new SyncStreamByTwitch($stream))->delay(Carbon::now('UTC')->addMinutes(5));
+            }
+
+            if($stream->status==StreamStatus::Active)
+            {
+                $stream->tasks()->where('user_id', $stream->channel->user_id)->update([
+                    'status' => TaskStatus::Active,
+                    'start_active' => Carbon::now('UTC')
+                ]);
             }
         }
     }

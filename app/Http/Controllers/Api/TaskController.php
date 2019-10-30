@@ -123,8 +123,6 @@ class TaskController extends Controller
             if($isStreamer)
             {
                 $input['created_amount'] = 0;
-                $input['status'] = TaskStatus::Active;
-                $input['start_active'] = Carbon::now('UTC');
             }
 
             try {

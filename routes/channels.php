@@ -1,16 +1,8 @@
 <?php
 
 use App\Models\Stream;
-use Illuminate\Support\Facades\Log;
-
 
 Broadcast::channel('users.{id}', function ($user, $id) {
-
-    Log::info('Broadcast users', [
-        'user' => $user,
-        'channel' => 'users.'.$id
-    ]);
-
     return (int) $user->id === (int) $id;
 });
 

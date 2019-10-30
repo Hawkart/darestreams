@@ -7,7 +7,6 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Support\Facades\Log;
 
 class SocketOnTask implements ShouldBroadcastNow
 {
@@ -28,13 +27,6 @@ class SocketOnTask implements ShouldBroadcastNow
     public function broadcastOn()
     {
         $user_id = $this->data->stream->channel->user_id;
-
-        Log::info('Socket on task', [
-            'data' => $this->data,
-            'user_id' => $user_id,
-            'file' => __FILE__,
-            'line' => __LINE__
-        ]);
 
         return new PrivateChannel('users.'.$user_id);
     }
