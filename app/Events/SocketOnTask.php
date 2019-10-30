@@ -27,14 +27,15 @@ class SocketOnTask implements ShouldBroadcastNow
 
     public function broadcastOn()
     {
+        $user_id = $this->data->stream->channel->user_id;
+
         Log::info('Socket on task', [
             'data' => $this->data,
+            'user_id' => $user_id,
             'file' => __FILE__,
             'line' => __LINE__
         ]);
-
-        $user_id = $this->data->stream->channel->user_id;
-
+        
         return new PrivateChannel('users.'.$user_id);
     }
 }
