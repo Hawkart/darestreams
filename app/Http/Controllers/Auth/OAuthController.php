@@ -55,6 +55,12 @@ class OAuthController extends Controller
     public function handleProviderCallback($provider)
     {
         $userProvider = Socialite::driver($provider)->stateless()->user();
+
+        if($provider=='streamlabs')
+        {
+            dd($userProvider);
+        }
+
         $user = $this->findOrCreateUser($provider, $userProvider);
 
         if(!$user instanceof  User) return $user;

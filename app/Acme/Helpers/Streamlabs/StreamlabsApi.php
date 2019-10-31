@@ -139,18 +139,4 @@ class StreamlabsApi extends StreamlabsRequest
     {
         return $this->scope;
     }
-
-    public function donate($params)
-    {
-        /*$params = [
-            "name"  => "Fishstickslol",
-            "message" => "I love Fishsticks!",
-            "identifier"  => "fishingthesticks@gmail.com",
-            "amount"  => 10,
-            "currency"    => "USD",
-            "access_token" => $params['access_token']
-        ];
-
-        return $this->post('donations', $params, null);*/
-    }
 }
