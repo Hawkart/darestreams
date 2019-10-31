@@ -100,7 +100,7 @@ class OAuthController extends Controller
         if($provider=='streamlabs' && !$oauthProvider)
         {
             $json = json_decode($userProvider->json, true);
-            if(!isset($json['twtich']))
+            if(!isset($json['twitch']))
             {
                 abort(403, 'Sorry, You dont have twitch account in streamlabs.');
             }else{
