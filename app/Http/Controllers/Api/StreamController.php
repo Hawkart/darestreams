@@ -34,16 +34,23 @@ class StreamController extends Controller
      * Display a listing of the resource.
      *
      * @queryParam include string String of connections: game, tasks, tasks.votes, tags, channel, user. Example: game,tasks
-     * @queryParam sort string Sort items by fields: amount_donations, quantity_donators, quantity_donations, id. For desc use '-' prefix. Example: -quantity_donators
+     * @queryParam sort string Sort items by fields: amount_donations, quantity_donators, quantity_donations, id, start_at. For desc use '-' prefix. Example: -quantity_donators
      * @queryParam page array Use as page[number]=1&page[size]=2.
+     * @queryParam game_id Integer. Filter streams by category.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        $items = QueryBuilder::for(Stream::class)
-            ->defaultSort('-quantity_donators')
-            ->allowedSorts('quantity_donators', 'quantity_donations', 'amount_donations' ,'id')
+        $statuses = [StreamStatus::Created, StreamStatus::Canceled];
+
+        $items = QueryBuilder::for(Stream::class)->whereNotIn('status', $statuses);
+
+        if($request->has('game_id'))
+            $items = $items->where('game_id', $request->get('game_id'));
+
+        $items = $items->defaultSort('-quantity_donators')
+            ->allowedSorts('quantity_donators', 'quantity_donations', 'amount_donations' ,'id', 'start_at')
             ->allowedIncludes(['game', 'tasks', 'tags', 'channel', 'user'])
             ->jsonPaginate();
 
