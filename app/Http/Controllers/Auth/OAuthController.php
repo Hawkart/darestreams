@@ -99,8 +99,6 @@ class OAuthController extends Controller
 
         if($provider=='streamlabs' && !$oauthProvider)
         {
-            dd($userProvider->json);
-
             $json = json_decode($userProvider->json, true);
             if(!isset($json['twtich']))
             {
