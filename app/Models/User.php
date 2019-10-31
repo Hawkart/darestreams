@@ -115,6 +115,16 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEma
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function bans()
+    {
+        return $this->hasMany(Ban::class);
+    }
+
+    /**
+     * Get the oauth providers.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function advCampaigns()
     {
         return $this->hasMany(AdvCampaign::class);
@@ -311,5 +321,10 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEma
     public function scopeAdmins($query)
     {
         return $query->where('role_id', array_search('admin', self::$roleList));
+    }
+
+    public function isBanned()
+    {
+        return $this->bans()->active()->count()>0;
     }
 }

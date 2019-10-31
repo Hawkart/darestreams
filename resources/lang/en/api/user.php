@@ -11,5 +11,6 @@ return [
     'success_new_following' => "You have been added new following.",
     'success_unfollow' => "You have been successfully unfollowed.",
     'already_following' => "You are already following this user.",
-    'failed_follow_user' => "You are not following this user."
+    'failed_follow_user' => "You are not following this user.",
+    'is_banned' => 'Sorry, you banned!'
 ];

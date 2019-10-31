@@ -6,6 +6,7 @@ use App\Rules\AllowsChangeStreamStatus;
 use App\Rules\ValidChannelDontHaveActiveStreams;
 use App\Rules\ValidChannelOfAuthUser;
 use App\Rules\ValidTaskCreateBeforeOrWhileStreamStart;
+use App\Rules\ValidUserNotBanned;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use App\Enums\StreamStatus;
@@ -42,7 +43,8 @@ class StreamRequest extends FormRequest {
                             'required',
                             'exists:channels,id',
                             new ValidChannelOfAuthUser(),
-                            new ValidChannelDontHaveActiveStreams()
+                            new ValidChannelDontHaveActiveStreams(),
+                            new ValidUserNotBanned()
                         ],
                         'game_id'  => 'required|exists:games,id',
                         'title'  => 'required',
