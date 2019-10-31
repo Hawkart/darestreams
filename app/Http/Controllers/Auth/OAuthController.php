@@ -106,7 +106,7 @@ class OAuthController extends Controller
             }else{
 
                 $user = User::whereHas('oauthProviders', function($q) use ($json) {
-                    $q->where('provider', 'streamlabs')
+                    $q->where('provider', 'twitch')
                         ->where('provider_user_id', $json['twitch']['id']);
                 })->first();
             }
