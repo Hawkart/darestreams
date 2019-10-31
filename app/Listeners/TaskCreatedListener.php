@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Acme\Helpers\Streamlabs\StreamlabsApi;
 use App\Enums\VoteStatus;
 use App\Events\TaskCreatedEvent;
 use App\Models\AdvTask;
@@ -53,7 +54,25 @@ class TaskCreatedListener
 
                 $task->stream->socketInit();
             }else{
+
                 $task->socketPrivateInit();
+
+                try{
+                    $streamer = $task->stream->channel->user;
+
+                    $streamlabs = $streamer->oauthProviders()->where('provider', 'streamlabs')->first();
+                    if($streamlabs)
+                    {
+                        $sapi = new StreamlabsApi([]);
+                        $sapi->alert([
+                            "message" => "You have 1 new task!",
+                            "user_message" => "View on DearStreams!",
+                            "access_token" => $streamlabs->access_token
+                        ]);
+                    }
+                } catch(\Exception $e){
+                    //
+                }
             }
 
             Vote::create($vdata);

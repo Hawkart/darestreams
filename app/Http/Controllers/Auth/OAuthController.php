@@ -38,6 +38,9 @@ class OAuthController extends Controller
         if($provider=='twitch')
             $scopes[] = 'channel_read';
 
+        if($provider=='streamlabs')
+            $scopes[] = 'alerts.create';
+
         return Socialite::driver($provider)->scopes($scopes)->stateless()->redirect();
     }
 
@@ -55,12 +58,6 @@ class OAuthController extends Controller
     public function handleProviderCallback($provider)
     {
         $userProvider = Socialite::driver($provider)->stateless()->user();
-
-        if($provider=='streamlabs')
-        {
-            dd($userProvider);
-        }
-
         $user = $this->findOrCreateUser($provider, $userProvider);
 
         if(!$user instanceof  User) return $user;
@@ -100,8 +97,35 @@ class OAuthController extends Controller
             abort(403, 'Problem with social abstract user');
         }
 
-        if(empty($userProvider->getEmail()))
-            abort(403, 'Sorry, You cannot authorize without email');
+        if($provider=='streamlabs' && !$oauthProvider)
+        {
+            dd($userProvider->json);
+
+            $json = json_decode($userProvider->json, true);
+            if(!isset($json['twtich']))
+            {
+                abort(403, 'Sorry, You dont have twitch account in streamlabs.');
+            }else{
+
+                $user = User::whereHas('oauthProviders', function($q) use ($json) {
+                    $q->where('provider', 'streamlabs')
+                        ->where('provider_user_id', $json['twitch']['id']);
+                })->first();
+            }
+
+            if(!$user)
+                abort(403, 'Sorry, You dont have twitch account in streamlabs.');
+
+            //connect social account
+            try {
+                $this->connect($user, $provider, $userProvider);
+            } catch (\Exception $e) {
+                abort(403, 'Some problem with creating social account. Please try again later.');
+            }
+
+            return $user;
+        }
+
 
         if ($oauthProvider) {
 
@@ -120,6 +144,9 @@ class OAuthController extends Controller
             ]);
 
             return $user;
+        }else{
+            if(empty($userProvider->getEmail()))
+                abort(403, 'Sorry, You cannot authorize without email');
         }
 
         if(!empty(auth('api')->user()))

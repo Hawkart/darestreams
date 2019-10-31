@@ -139,4 +139,21 @@ class StreamlabsApi extends StreamlabsRequest
     {
         return $this->scope;
     }
+
+    public function alert($params)
+    {
+        $data = [
+            "type" => "host",
+            "image_href" => "https://darestreams.com/static/images/logo_small.png",
+            "sound_href" => "",
+            "message" => "",
+            "user_message" => "",
+            "duration" => 5000, //5secs
+            "access_token" => ""
+        ];
+
+        $data = array_merge($data, $params);
+
+        return $this->post('alerts', $data, null);
+    }
 }
