@@ -14,7 +14,7 @@ class Ban extends Model
      *
      * @var string
      */
-    protected $table = 'accounts';
+    protected $table = 'bans';
 
     /**
      * The attributes that aren't mass assignable.
@@ -26,7 +26,7 @@ class Ban extends Model
     /**
      * @var array
      */
-    protected $dates = ['created_at', 'updated_at', 'start_at', 'finished_at'];
+    protected $dates = ['created_at', 'updated_at', 'start_at', 'end_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
