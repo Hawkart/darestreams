@@ -42,7 +42,7 @@ class CheckAlert extends Command
         if($streamlabs)
         {
             $sapi = new StreamlabsApi([]);
-            $sapi->alert([
+            $data  = $sapi->alert([
                 "message" => "You have 1 new task!",
                 "user_message" => "View on DearStreams!",
                 "access_token" => $streamlabs->access_token
