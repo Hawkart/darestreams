@@ -154,6 +154,6 @@ class StreamlabsApi extends StreamlabsRequest
 
         $data = array_merge($data, $params);
 
-        return $this->post('alerts', $data, null);
+        return $this->post('alerts', $data, $params["access_token"]);
     }
 }
