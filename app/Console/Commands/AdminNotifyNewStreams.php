@@ -42,11 +42,11 @@ class AdminNotifyNewStreams extends Command
         $bar = $this->output->createProgressBar(100);
 
         $users = User::where('fake', '<>', 1)
-                    ->has('channel', '>', 0)
-                    ->with('channel')
-                    ->get();
+            ->has('channel', '>', 0)
+            ->with('channel')
+            ->get();
 
-        $admin = User::admins()->first();
+        $admin = User::admins()->where('email', config('mail.admin_email'))->first();
 
         if(count($users)>0 && $admin)
         {
@@ -56,7 +56,9 @@ class AdminNotifyNewStreams extends Command
 
                 $twitch = new TwitchHelper();
 
-                if($channel && $data = $twitch->getStreamByUser($channel->exid) && isset($data['stream']))
+                $data = $twitch->getStreamByUser($channel->exid);
+
+                if(isset($data['stream']))
                 {
                     $now = Carbon::now('UTC');
                     $start_at = Carbon::parse($data['stream']['created_at']);
@@ -73,8 +75,7 @@ class AdminNotifyNewStreams extends Command
                             'subject' => 'New stream of '.$user->nickname
                         ];
 
-                        $when = now()->addSeconds(30);
-                        $admin->notify((new NotifyFollowersAboutStream($details))->delay($when));
+                        $admin->notify(new NotifyFollowersAboutStream($details));
                     }
                 }
 
