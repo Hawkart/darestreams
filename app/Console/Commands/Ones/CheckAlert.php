@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\One;
 
 use App\Acme\Helpers\Streamlabs\StreamlabsApi;
 use App\Models\User;
@@ -42,6 +42,7 @@ class CheckAlert extends Command
         if($streamlabs)
         {
             $sapi = new StreamlabsApi([]);
+
             $data  = $sapi->alert([
                 "message" => "You have 1 new task!",
                 "user_message" => "View on DearStreams!",
