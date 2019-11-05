@@ -74,6 +74,8 @@ Route::group(['namespace' => 'Api'], function () {
     Route::patch('users/me/notifications/{notification}/set-read', 'Users\NotificationController@setRead');
     Route::apiResource('users.notifications', 'Users\NotificationController');
 
+
+    Route::get('channels/top-donated', 'ChannelController@topDonated');
     Route::get('channels/top', 'ChannelController@top');
     Route::get('channels/{slug}/streams', 'ChannelController@streams');
     Route::apiResource('channels', 'ChannelController');

@@ -55,16 +55,16 @@ $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/campaigns/all/tasks", [
     'query' =&gt; [
             "include" =&gt; "campaign",
-            "page" =&gt; "8",
+            "page" =&gt; "20",
         ],
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/campaigns/all/tasks</code></p>
@@ -103,19 +103,10 @@ $response = $client-&gt;get("https://darestreams.com/api/campaigns/all/tasks/typ
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "ByStream": {
-        "key": "ByStream",
-        "value": 1,
-        "description": "By stream"
-    },
-    "ByViews": {
-        "key": "ByViews",
-        "value": 2,
-        "description": "By views"
-    }
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/campaigns/all/tasks/types</code></p>
@@ -133,7 +124,7 @@ $response = $client-&gt;post("https://darestreams.com/api/campaigns/1/logo", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "logo" =&gt; "fugiat",
+            "logo" =&gt; "minima",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -170,16 +161,16 @@ $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/campaigns", [
     'query' =&gt; [
             "include" =&gt; "advTasks",
-            "page" =&gt; "7",
+            "page" =&gt; "6",
         ],
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/campaigns</code></p>
@@ -219,11 +210,11 @@ $response = $client-&gt;post("https://darestreams.com/api/campaigns", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "from" =&gt; "sit",
-            "to" =&gt; "facere",
-            "title" =&gt; "repudiandae",
-            "brand" =&gt; "qui",
-            "limit" =&gt; "14",
+            "from" =&gt; "voluptatem",
+            "to" =&gt; "rerum",
+            "title" =&gt; "illo",
+            "brand" =&gt; "velit",
+            "limit" =&gt; "1",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -287,10 +278,10 @@ $response = $client-&gt;get("https://darestreams.com/api/campaigns/1", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/campaigns/{campaign}</code></p>
@@ -308,11 +299,11 @@ $response = $client-&gt;put("https://darestreams.com/api/campaigns/1", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "from" =&gt; "harum",
-            "to" =&gt; "provident",
-            "title" =&gt; "incidunt",
+            "from" =&gt; "atque",
+            "to" =&gt; "occaecati",
+            "title" =&gt; "ex",
             "brand" =&gt; "et",
-            "limit" =&gt; "16",
+            "limit" =&gt; "1",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -375,16 +366,16 @@ $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/campaigns/1/tasks", [
     'query' =&gt; [
             "include" =&gt; "campaign",
-            "page" =&gt; "3",
+            "page" =&gt; "20",
         ],
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/campaigns/{campaign}/tasks</code></p>
@@ -424,12 +415,12 @@ $response = $client-&gt;post("https://darestreams.com/api/campaigns/1/tasks", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "small_desc" =&gt; "aliquid",
-            "full_desc" =&gt; "commodi",
-            "limit" =&gt; "12",
-            "price" =&gt; "5",
-            "type" =&gt; "19",
-            "min_rating" =&gt; "7",
+            "small_desc" =&gt; "non",
+            "full_desc" =&gt; "quia",
+            "limit" =&gt; "1",
+            "price" =&gt; "10",
+            "type" =&gt; "6",
+            "min_rating" =&gt; "20",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -496,16 +487,16 @@ $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/campaigns/1/tasks/1", [
     'query' =&gt; [
             "include" =&gt; "campaign",
-            "page" =&gt; "10",
+            "page" =&gt; "6",
         ],
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/campaigns/{campaign}/tasks/{task}</code></p>
@@ -545,12 +536,12 @@ $response = $client-&gt;put("https://darestreams.com/api/campaigns/1/tasks/1", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "small_desc" =&gt; "est",
-            "full_desc" =&gt; "quo",
-            "limit" =&gt; "13",
-            "price" =&gt; "18",
-            "type" =&gt; "13",
-            "min_rating" =&gt; "2",
+            "small_desc" =&gt; "quo",
+            "full_desc" =&gt; "rerum",
+            "limit" =&gt; "20",
+            "price" =&gt; "12",
+            "type" =&gt; "5",
+            "min_rating" =&gt; "1",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -841,9 +832,11 @@ print_r(json_decode((string) $body));</code></pre>
 </blockquote>
 <pre><code class="language-json">[]</code></pre>
 <blockquote>
-<p>Example response (302):</p>
+<p>Example response (500):</p>
 </blockquote>
-<pre><code class="language-json">null</code></pre>
+<pre><code class="language-json">{
+    "message": "Server Error"
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/oauth/{driver}</code></p>
 <!-- END_4462ebc3daf169e23a09dc2b53459f02 -->
@@ -971,6 +964,78 @@ print_r(json_decode((string) $body));</code></pre>
 <p><code>POST api/logout</code></p>
 <!-- END_61739f3220a224b34228600649230ad1 -->
 <h1>Channels</h1>
+<!-- START_01375e2f3e8595df8b238c7eacb351c8 -->
+<h2>Get top donated channels</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get("https://darestreams.com/api/channels/top-donated", [
+    'query' =&gt; [
+            "hours" =&gt; "et",
+            "limit" =&gt; "labore",
+            "skip" =&gt; "alias",
+            "game_id" =&gt; "qui",
+            "include" =&gt; "user,streams",
+        ],
+]);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">[]</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">[]</code></pre>
+<blockquote>
+<p>Example response (500):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Server Error"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/channels/top-donated</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hours</td>
+<td>optional</td>
+<td>Integer Check amount donations sum for last N hours. Default: 240.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>optional</td>
+<td>Integer. Limit of top channels. Default: 10.</td>
+</tr>
+<tr>
+<td>skip</td>
+<td>optional</td>
+<td>Integer. Offset of top channels. Default: 0.</td>
+</tr>
+<tr>
+<td>game_id</td>
+<td>optional</td>
+<td>Integer. Filter channels by category.</td>
+</tr>
+<tr>
+<td>include</td>
+<td>optional</td>
+<td>string String of connections: user, streams, tags, game.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_01375e2f3e8595df8b238c7eacb351c8 -->
 <!-- START_22b9daea8f2cab0035f861dfe7469fdc -->
 <h2>Get top channels</h2>
 <blockquote>
@@ -980,10 +1045,10 @@ print_r(json_decode((string) $body));</code></pre>
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/channels/top", [
     'query' =&gt; [
-            "hours" =&gt; "voluptates",
-            "limit" =&gt; "itaque",
-            "skip" =&gt; "qui",
-            "game_id" =&gt; "unde",
+            "hours" =&gt; "consectetur",
+            "limit" =&gt; "repudiandae",
+            "skip" =&gt; "quaerat",
+            "game_id" =&gt; "molestias",
             "include" =&gt; "user,streams",
         ],
 ]);
@@ -1056,8 +1121,8 @@ $response = $client-&gt;get("https://darestreams.com/api/channels/1/streams", [
     'query' =&gt; [
             "include" =&gt; "game,tasks",
             "sort" =&gt; "-quantity_donators",
-            "page" =&gt; "9",
-            "filter" =&gt; "beatae",
+            "page" =&gt; "3",
+            "filter" =&gt; "et",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -1069,8 +1134,12 @@ print_r(json_decode((string) $body));</code></pre>
 <blockquote>
 <p>Example response (404):</p>
 </blockquote>
+<pre><code class="language-json">[]</code></pre>
+<blockquote>
+<p>Example response (500):</p>
+</blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\Channel]."
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/channels/{slug}/streams</code></p>
@@ -1118,16 +1187,16 @@ $response = $client-&gt;get("https://darestreams.com/api/channels", [
     'query' =&gt; [
             "include" =&gt; "user,streams",
             "sort" =&gt; "-id",
-            "page" =&gt; "9",
+            "page" =&gt; "18",
         ],
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "data": []
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/channels</code></p>
@@ -1175,10 +1244,10 @@ $response = $client-&gt;get("https://darestreams.com/api/channels/1", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\Channel]."
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/channels/{channel}</code></p>
@@ -1214,8 +1283,8 @@ $response = $client-&gt;put("https://darestreams.com/api/channels/1", [
         ],
     'json' =&gt; [
             "description" =&gt; "Long description.",
-            "logo" =&gt; "cumque",
-            "game_id" =&gt; "18",
+            "logo" =&gt; "temporibus",
+            "game_id" =&gt; "3",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -1266,8 +1335,8 @@ $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/games/top", [
     'query' =&gt; [
             "hours" =&gt; "240",
-            "limit" =&gt; "occaecati",
-            "skip" =&gt; "et",
+            "limit" =&gt; "architecto",
+            "skip" =&gt; "vero",
             "include" =&gt; "tags,streams",
         ],
 ]);
@@ -1325,17 +1394,17 @@ $response = $client-&gt;get("https://darestreams.com/api/games", [
     'query' =&gt; [
             "include" =&gt; "tags,streams",
             "sort" =&gt; "-popularity",
-            "page" =&gt; "11",
-            "filter" =&gt; "commodi",
+            "page" =&gt; "9",
+            "filter" =&gt; "est",
         ],
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "data": []
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/games</code></p>
@@ -1387,10 +1456,10 @@ $response = $client-&gt;get("https://darestreams.com/api/games/1", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\Game] 1"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/games/{game}</code></p>
@@ -1465,10 +1534,10 @@ $response = $client-&gt;post("https://darestreams.com/api/inquires", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "name" =&gt; "eligendi",
-            "title" =&gt; "impedit",
-            "phone" =&gt; "tempora",
-            "email" =&gt; "sint",
+            "name" =&gt; "occaecati",
+            "title" =&gt; "alias",
+            "phone" =&gt; "voluptas",
+            "email" =&gt; "aut",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -1528,7 +1597,7 @@ $response = $client-&gt;get("https://darestreams.com/api/payments/1/1/1/checkout
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "amount" =&gt; "16",
+            "amount" =&gt; "15",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -1637,16 +1706,16 @@ $response = $client-&gt;get("https://darestreams.com/api/rating", [
     'query' =&gt; [
             "include" =&gt; "history",
             "sort" =&gt; "-id",
-            "page" =&gt; "16",
+            "page" =&gt; "8",
         ],
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "data": []
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/rating</code></p>
@@ -1693,10 +1762,10 @@ $response = $client-&gt;get("https://darestreams.com/api/rating/1", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\Rating\\Channel] 1"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/rating/{rating}</code></p>
@@ -1728,9 +1797,9 @@ print_r(json_decode((string) $body));</code></pre>
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/streams/top", [
     'query' =&gt; [
-            "limit" =&gt; "voluptatem",
-            "skip" =&gt; "distinctio",
-            "game_id" =&gt; "voluptatibus",
+            "limit" =&gt; "dolorum",
+            "skip" =&gt; "sed",
+            "game_id" =&gt; "nostrum",
             "include" =&gt; "user,tasks",
             "sort" =&gt; "-views",
         ],
@@ -1740,13 +1809,17 @@ print_r(json_decode((string) $body));</code></pre>
 <blockquote>
 <p>Example response (200):</p>
 </blockquote>
-<pre><code class="language-json">{
-    "data": []
-}</code></pre>
+<pre><code class="language-json">[]</code></pre>
 <blockquote>
 <p>Example response (404):</p>
 </blockquote>
 <pre><code class="language-json">[]</code></pre>
+<blockquote>
+<p>Example response (500):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Server Error"
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/streams/top</code></p>
 <h4>Query Parameters</h4>
@@ -1796,9 +1869,9 @@ print_r(json_decode((string) $body));</code></pre>
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/streams/closest", [
     'query' =&gt; [
-            "limit" =&gt; "nisi",
-            "skip" =&gt; "qui",
-            "game_id" =&gt; "autem",
+            "limit" =&gt; "ut",
+            "skip" =&gt; "nisi",
+            "game_id" =&gt; "pariatur",
             "include" =&gt; "user,tasks",
             "sort" =&gt; "-views",
         ],
@@ -1808,13 +1881,17 @@ print_r(json_decode((string) $body));</code></pre>
 <blockquote>
 <p>Example response (200):</p>
 </blockquote>
-<pre><code class="language-json">{
-    "data": []
-}</code></pre>
+<pre><code class="language-json">[]</code></pre>
 <blockquote>
 <p>Example response (404):</p>
 </blockquote>
 <pre><code class="language-json">[]</code></pre>
+<blockquote>
+<p>Example response (500):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Server Error"
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/streams/closest</code></p>
 <h4>Query Parameters</h4>
@@ -1867,34 +1944,10 @@ $response = $client-&gt;get("https://darestreams.com/api/streams/statuses", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "Created": {
-        "key": "Created",
-        "value": 0,
-        "description": "Created"
-    },
-    "Active": {
-        "key": "Active",
-        "value": 1,
-        "description": "Active"
-    },
-    "Canceled": {
-        "key": "Canceled",
-        "value": 2,
-        "description": "Canceled"
-    },
-    "FinishedWaitPay": {
-        "key": "FinishedWaitPay",
-        "value": 3,
-        "description": "Finished, wait for pay"
-    },
-    "FinishedIsPayed": {
-        "key": "FinishedIsPayed",
-        "value": 4,
-        "description": "Finished and payed"
-    }
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/streams/statuses</code></p>
@@ -1910,17 +1963,17 @@ $response = $client-&gt;get("https://darestreams.com/api/streams", [
     'query' =&gt; [
             "include" =&gt; "game,tasks",
             "sort" =&gt; "-quantity_donators",
-            "page" =&gt; "6",
-            "game_id" =&gt; "velit",
+            "page" =&gt; "5",
+            "game_id" =&gt; "dolores",
         ],
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "data": []
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/streams</code></p>
@@ -1970,17 +2023,17 @@ $response = $client-&gt;post("https://darestreams.com/api/streams", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "channel_id" =&gt; "8",
-            "title" =&gt; "est",
-            "link" =&gt; "ut",
-            "start_at" =&gt; "ipsum",
-            "allow_task_before_stream" =&gt; "1",
-            "allow_task_when_stream" =&gt; "",
-            "min_amount_task_before_stream" =&gt; "officia",
-            "min_amount_task_when_stream" =&gt; "omnis",
-            "min_amount_donate_task_before_stream" =&gt; "aut",
-            "min_amount_donate_task_when_stream" =&gt; "consequatur",
-            "tags" =&gt; "possimus",
+            "channel_id" =&gt; "13",
+            "title" =&gt; "illum",
+            "link" =&gt; "perferendis",
+            "start_at" =&gt; "perferendis",
+            "allow_task_before_stream" =&gt; "",
+            "allow_task_when_stream" =&gt; "1",
+            "min_amount_task_before_stream" =&gt; "accusantium",
+            "min_amount_task_when_stream" =&gt; "ut",
+            "min_amount_donate_task_before_stream" =&gt; "debitis",
+            "min_amount_donate_task_when_stream" =&gt; "voluptatem",
+            "tags" =&gt; "qui",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -2082,10 +2135,10 @@ $response = $client-&gt;get("https://darestreams.com/api/streams/1", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\Stream] 1"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/streams/{stream}</code></p>
@@ -2121,17 +2174,17 @@ $response = $client-&gt;put("https://darestreams.com/api/streams/1", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "title" =&gt; "magni",
-            "link" =&gt; "est",
-            "start_at" =&gt; "dolorem",
-            "status" =&gt; "15",
-            "allow_task_before_stream" =&gt; "1",
-            "allow_task_when_stream" =&gt; "",
-            "min_amount_task_before_stream" =&gt; "quo",
-            "min_amount_task_when_stream" =&gt; "sed",
-            "min_amount_donate_task_before_stream" =&gt; "molestias",
-            "min_amount_donate_task_when_stream" =&gt; "odio",
-            "tags" =&gt; "suscipit",
+            "title" =&gt; "quis",
+            "link" =&gt; "rerum",
+            "start_at" =&gt; "at",
+            "status" =&gt; "14",
+            "allow_task_before_stream" =&gt; "",
+            "allow_task_when_stream" =&gt; "1",
+            "min_amount_task_before_stream" =&gt; "id",
+            "min_amount_task_when_stream" =&gt; "explicabo",
+            "min_amount_donate_task_before_stream" =&gt; "sit",
+            "min_amount_donate_task_when_stream" =&gt; "quibusdam",
+            "tags" =&gt; "nesciunt",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -2234,10 +2287,10 @@ $response = $client-&gt;get("https://darestreams.com/api/streams/1/thread", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\Stream] 1"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/streams/{stream}/thread</code></p>
@@ -2288,7 +2341,7 @@ $response = $client-&gt;patch("https://darestreams.com/api/tasks/1/set-vote", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "vote" =&gt; "13",
+            "vote" =&gt; "14",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -2327,49 +2380,10 @@ $response = $client-&gt;get("https://darestreams.com/api/tasks/statuses", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "Created": {
-        "key": "Created",
-        "value": 0,
-        "description": "Created"
-    },
-    "CheckedMediator": {
-        "key": "CheckedMediator",
-        "value": 1,
-        "description": "Checked mediator"
-    },
-    "Active": {
-        "key": "Active",
-        "value": 2,
-        "description": "Active"
-    },
-    "IntervalFinishedAllowVote": {
-        "key": "IntervalFinishedAllowVote",
-        "value": 3,
-        "description": "Interval finished allow vote"
-    },
-    "AllowVote": {
-        "key": "AllowVote",
-        "value": 4,
-        "description": "Allow vote"
-    },
-    "VoteFinished": {
-        "key": "VoteFinished",
-        "value": 5,
-        "description": "Vote finished"
-    },
-    "PayFinished": {
-        "key": "PayFinished",
-        "value": 6,
-        "description": "Pay finished"
-    },
-    "Canceled": {
-        "key": "Canceled",
-        "value": 7,
-        "description": "Canceled"
-    }
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/tasks/statuses</code></p>
@@ -2383,19 +2397,19 @@ print_r(json_decode((string) $body));</code></pre>
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/tasks", [
     'query' =&gt; [
-            "stream_id" =&gt; "iure",
+            "stream_id" =&gt; "non",
             "include" =&gt; "user,stream",
             "sort" =&gt; "-amount_donations",
-            "page" =&gt; "11",
+            "page" =&gt; "20",
         ],
 ]);
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "data": []
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/tasks</code></p>
@@ -2445,12 +2459,12 @@ $response = $client-&gt;post("https://darestreams.com/api/tasks", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "stream_id" =&gt; "16",
-            "small_text" =&gt; "ratione",
-            "full_text" =&gt; "distinctio",
-            "interval_time" =&gt; "8",
+            "stream_id" =&gt; "3",
+            "small_text" =&gt; "doloribus",
+            "full_text" =&gt; "qui",
+            "interval_time" =&gt; "18",
             "is_superbowl" =&gt; "1",
-            "tags" =&gt; "distinctio",
+            "tags" =&gt; "laboriosam",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -2519,10 +2533,10 @@ $response = $client-&gt;get("https://darestreams.com/api/tasks/1", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\Task] 1"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/tasks/{task}</code></p>
@@ -2542,12 +2556,12 @@ $response = $client-&gt;put("https://darestreams.com/api/tasks/1", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "status" =&gt; "7",
-            "small_text" =&gt; "et",
-            "full_text" =&gt; "et",
+            "status" =&gt; "9",
+            "small_text" =&gt; "perferendis",
+            "full_text" =&gt; "repellendus",
             "interval_time" =&gt; "10",
             "is_superbowl" =&gt; "1",
-            "tags" =&gt; "facere",
+            "tags" =&gt; "aliquam",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -2622,10 +2636,10 @@ $response = $client-&gt;get("https://darestreams.com/api/threads", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "data": []
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/threads</code></p>
@@ -2667,10 +2681,10 @@ $response = $client-&gt;get("https://darestreams.com/api/threads/1", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\Thread] 1"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/threads/{thread}</code></p>
@@ -2708,10 +2722,10 @@ $response = $client-&gt;get("https://darestreams.com/api/threads/1/messages", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\Thread] 1"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/threads/{thread}/messages</code></p>
@@ -2745,7 +2759,7 @@ $response = $client-&gt;post("https://darestreams.com/api/threads/1/messages", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "body" =&gt; "neque",
+            "body" =&gt; "qui",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -2788,10 +2802,10 @@ $response = $client-&gt;get("https://darestreams.com/api/threads/1/messages/1", 
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\Thread] 1"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/threads/{thread}/messages/{message}</code></p>
@@ -2826,10 +2840,10 @@ $response = $client-&gt;get("https://darestreams.com/api/threads/1/participants"
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\Thread] 1"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/threads/{thread}/participants</code></p>
@@ -2847,29 +2861,10 @@ $response = $client-&gt;get("https://darestreams.com/api/transactions/statuses",
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "Created": {
-        "key": "Created",
-        "value": 0,
-        "description": "Created"
-    },
-    "Holding": {
-        "key": "Holding",
-        "value": 1,
-        "description": "Holding"
-    },
-    "Completed": {
-        "key": "Completed",
-        "value": 2,
-        "description": "Completed"
-    },
-    "Canceled": {
-        "key": "Canceled",
-        "value": 3,
-        "description": "Canceled"
-    }
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/transactions/statuses</code></p>
@@ -2886,24 +2881,10 @@ $response = $client-&gt;get("https://darestreams.com/api/transactions/types", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "Deposit": {
-        "key": "Deposit",
-        "value": 0,
-        "description": "Deposit"
-    },
-    "Donation": {
-        "key": "Donation",
-        "value": 1,
-        "description": "Donation"
-    },
-    "Withdraw": {
-        "key": "Withdraw",
-        "value": 2,
-        "description": "Withdraw"
-    }
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/transactions/types</code></p>
@@ -2921,10 +2902,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/1/login", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\User] 1"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/{user}/login</code></p>
@@ -2945,10 +2926,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/me", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/me</code></p>
@@ -2983,10 +2964,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/me/account", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/me/account</code></p>
@@ -3049,10 +3030,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/me/get-donates-by
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/me/get-donates-by-date</code></p>
@@ -3070,10 +3051,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/me/get-donates-by
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/me/get-donates-by-date/{date}/{stream}</code></p>
@@ -3091,10 +3072,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/me/get-donates-by
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/me/get-donates-by-date/{date}</code></p>
@@ -3112,10 +3093,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/me/get-debit-with
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/me/get-debit-withdraw-by-date</code></p>
@@ -3132,10 +3113,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/me/get-debit-with
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/me/get-debit-withdraw-by-date/{date}</code></p>
@@ -3149,8 +3130,8 @@ print_r(json_decode((string) $body));</code></pre>
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/users/top", [
     'query' =&gt; [
-            "limit" =&gt; "autem",
-            "skip" =&gt; "voluptatem",
+            "limit" =&gt; "quidem",
+            "skip" =&gt; "quo",
             "include" =&gt; "tasks,channel",
         ],
 ]);
@@ -3215,10 +3196,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/1", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\User] 1"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/{user}</code></p>
@@ -3254,8 +3235,8 @@ $response = $client-&gt;put("https://darestreams.com/api/users/1", [
         ],
     'json' =&gt; [
             "name" =&gt; "Archibald",
-            "last_name" =&gt; "excepturi",
-            "middle_name" =&gt; "non",
+            "last_name" =&gt; "dolorem",
+            "middle_name" =&gt; "adipisci",
             "email" =&gt; "example@example.ru",
         ],
 ]);
@@ -3315,10 +3296,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/1/channel", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\User] 1"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/{user}/channel</code></p>
@@ -3368,10 +3349,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/1/followers", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\User] 1"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/{user}/followers</code></p>
@@ -3389,10 +3370,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/1/followings", [
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "No query results for model [App\\Models\\User] 1"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/{user}/followings</code></p>
@@ -3411,10 +3392,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/1/is-following", 
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/{user}/is-following</code></p>
@@ -3433,10 +3414,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/me/notifications/
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/me/notifications/unread</code></p>
@@ -3484,10 +3465,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/1/notifications",
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/{user}/notifications</code></p>
@@ -3505,10 +3486,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/1/notifications/1
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/{user}/notifications/{notification}</code></p>
@@ -3527,10 +3508,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/1/oauthproviders"
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/{user}/oauthproviders</code></p>
@@ -3548,10 +3529,10 @@ $response = $client-&gt;get("https://darestreams.com/api/users/1/oauthproviders/
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <blockquote>
-<p>Example response (401):</p>
+<p>Example response (500):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthorized"
+    "message": "Server Error"
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/{user}/oauthproviders/{oauthprovider}</code></p>

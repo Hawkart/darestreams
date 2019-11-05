@@ -140,11 +140,8 @@ class ChannelController extends Controller
             $sub = DB::table('streams')->select('ch.id', 'ch.title', 'ch.game_id', 'ch.views', 'ch.slug', 'ch.link', 'ch.user_id', 'ch.description', 'ch.created_at', 'ch.logo', 'ch.updated_at', DB::raw("sum(amount_donations) as donates"))
                 ->leftJoin('channels as ch', 'ch.id', '=', 'streams.channel_id')
                 ->whereDate('start_at', '>=', DB::raw($lastDays->toDateString()))
-                //->where('status', DB::raw(Stream::STATUS_FINISHED))
                 ->groupBy('ch.id', 'ch.title', 'ch.game_id', 'ch.views', 'ch.slug', 'ch.link', 'ch.user_id', 'ch.description', 'ch.created_at', 'ch.logo', 'ch.updated_at')
                 ->orderByDesc('donates');
-                //->offset($skip)
-                //->limit($limit);
 
             $list = DB::table(DB::raw("({$sub->toSql()}) as t"))
                 ->mergeBindings($sub)
@@ -153,6 +150,91 @@ class ChannelController extends Controller
                     $join->on('st.channel_id', '=', 't.id')
                         ->where('st.start_at', '<', DB::raw('NOW()'))
                         ->whereNull('st.ended_at');
+                })
+                ->whereNotNull('t.id')
+                ->offset($skip)
+                ->limit($limit)
+                ->get();
+
+            $data = $list->pluck('donates', 'id')->toArray();
+            $ids = $list->pluck('id')->toArray();
+
+            if(count($ids)>0)
+            {
+                $oids = implode(',', $ids);
+
+                $items = QueryBuilder::for(Channel::class)
+                    ->whereIn('id', $ids);
+
+                if($request->has('game_id'))
+                    $items = $items->where('game_id', $request->get('game_id'));
+
+                $items = $items->orderByRaw(DB::raw("FIELD(id, $oids)"))
+                    ->allowedSorts('title', 'id')
+                    ->allowedIncludes(['user', 'streams', 'tags', 'game'])
+                    ->jsonPaginate();
+
+                foreach ($items as &$item)
+                    $item->donates = $data[$item->id];
+
+            }else{
+                $items = [];
+            }
+
+            $cacheTags->put($cache_key, $items, 1800);
+        }
+
+        return count($items)>0 ? ChannelResource::collection($items) : ['data' => []];
+    }
+
+    /**
+     * Get top donated channels
+     * @queryParam hours Integer Check amount donations sum for last N hours. Default: 240.
+     * @queryParam limit Integer. Limit of top channels. Default: 10.
+     * @queryParam skip Integer. Offset of top channels. Default: 0.
+     * @queryParam game_id Integer. Filter channels by category.
+     *
+     * @queryParam include string String of connections: user, streams, tags, game. Example: user,streams
+     *
+     * @responseFile responses/response.json
+     * @responseFile 404 responses/not_found.json
+     */
+    public function topDonated(Request $request)
+    {
+        $hours = $request->has('hours') ? $request->get('hours') : 240;
+        $limit = $request->has('limit') ? $request->get('limit') : 10;
+        $skip = $request->has('skip') ? $request->get('skip') : 0;
+        $lastDays = Carbon::now()->subHours($hours);
+
+        //Calculate cache key
+        $queryParams = request()->query();
+        ksort($queryParams);
+        $queryString = http_build_query($queryParams);
+        $cache_key = Str::slug('topDonatedChannels'.$queryString);
+
+        $tags = ['index', 'topDonatedChannels'];
+        if($request->has('game_id'))
+            $tags[] = 'byGame';
+
+        $cacheTags = Cache::tags($tags);
+
+        if ($cacheTags->get($cache_key)){
+            $items = $cacheTags->get($cache_key);
+        } else {
+
+            //get streams finished amount donations for last 10 days
+            $sub = DB::table('streams')->select('ch.id', 'ch.title', 'ch.game_id', 'ch.views', 'ch.slug', 'ch.link', 'ch.user_id', 'ch.description', 'ch.created_at', 'ch.logo', 'ch.updated_at', DB::raw("sum(amount_donations) as donates"))
+                ->leftJoin('channels as ch', 'ch.id', '=', 'streams.channel_id')
+                ->where('status', '<>',StreamStatus::Canceled)
+                ->groupBy('ch.id', 'ch.title', 'ch.game_id', 'ch.views', 'ch.slug', 'ch.link', 'ch.user_id', 'ch.description', 'ch.created_at', 'ch.logo', 'ch.updated_at')
+                ->orderByDesc('donates');
+
+            $list = DB::table(DB::raw("({$sub->toSql()}) as t"))
+                ->mergeBindings($sub)
+                ->select('t.*')
+                ->rightJoin('streams as st', function ($join) {
+                    $join->on('st.channel_id', '=', 't.id')
+                        ->where('st.status', '<>',StreamStatus::Canceled);
                 })
                 ->whereNotNull('t.id')
                 ->offset($skip)
