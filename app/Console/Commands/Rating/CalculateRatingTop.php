@@ -181,7 +181,7 @@ class CalculateRatingTop extends Command
         }
 
         $top = array_diff($top, $adminChannels);
-        
+
         return $top;
     }
 
