@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\One;
+namespace App\Console\Commands\Ones;
 
 use App\Acme\Helpers\Streamlabs\StreamlabsApi;
 use App\Models\User;

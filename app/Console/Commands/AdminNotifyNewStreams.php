@@ -72,7 +72,7 @@ class AdminNotifyNewStreams extends Command
                             'body' => 'The stream of '.$user->nickname." started",
                             'actionText' => 'View stream',
                             'actionURL' => 'https://twitch.tv/'.$user->nickname,
-                            'subject' => 'New stream of '.$user->nickname
+                            'subject' => 'New stream on Twitch of '.$user->nickname
                         ];
 
                         $admin->notify(new NotifyFollowersAboutStream($details));

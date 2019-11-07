@@ -31,12 +31,13 @@ class Kernel extends ConsoleKernel
         Commands\Ones\TransferChannelLogoToUser::class,
         Commands\Ones\UpdateStreamTasksDesc::class,
         Commands\Ones\GetChannelVideosOnTwitch::class,
+        Commands\Ones\CheckAlert::class,
+        Commands\Ones\GetLinksVideosFromTwitch::class,
 
         Commands\Rating\ParseStreamers::class,
         Commands\Rating\UpdateRatingChannels::class,
         Commands\Rating\CalculateRatingTop::class,
-        Commands\Rating\SyncStatChannels::class,
-        Commands\One\CheckAlert::class
+        Commands\Rating\SyncStatChannels::class
     ];
 
     /**
