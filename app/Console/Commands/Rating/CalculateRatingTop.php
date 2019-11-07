@@ -4,6 +4,7 @@ namespace App\Console\Commands\Rating;
 
 use App\Models\Rating\ChannelHistory;
 use App\Models\Rating\Channel;
+use App\Models\Channel as Ch;
 use App\Acme\Helpers\TwitchHelper;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -142,6 +143,10 @@ class CalculateRatingTop extends Command
     {
         $topF = $this->getTopByFollowers();
         $topV = $this->getTopByViews();
+        $adminChannels = Ch::whereHas('user', function($q){
+            $q->where("role_id", '<>', 1);
+        })->pluck('exid')->toArray();
+
         $current = Channel::where('channel_id', '>', 0)->pluck('exid')->toArray();
 
         $top = array_merge($topF, $topV, $current);
@@ -175,6 +180,8 @@ class CalculateRatingTop extends Command
             $top = array_unique($top);
         }
 
+        $top = array_diff($top, $adminChannels);
+        
         return $top;
     }
 

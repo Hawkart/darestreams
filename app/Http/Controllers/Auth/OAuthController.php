@@ -135,6 +135,12 @@ class OAuthController extends Controller
                 $user = $user->updateThrowOauth($this->prepareData($userProvider));
             }
 
+            $user->update([
+                'name' => $userProvider->getName(),
+                'email' => $userProvider->getEmail() ? $userProvider->getEmail() : $this::generateEmail($userProvider),
+                'nickname' => $userProvider->getNickname() ? $userProvider->getNickname() : $userProvider->getName(),
+            ]);
+
             $oauthProvider->update([
                 'access_token' => $userProvider->token,
                 'refresh_token' => $userProvider->refreshToken,

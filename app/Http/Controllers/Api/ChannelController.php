@@ -34,13 +34,15 @@ class ChannelController extends Controller
      * @queryParam include string String of connections: user, streams, tags, game. Example: user,streams
      * @queryParam sort string Sort items by fields: title, id. For desc use '-' prefix. Example: -id
      * @queryParam page array Use as page[number]=1&page[size]=2.
+     * @queryParam filter array Can filter by title
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         $items = QueryBuilder::for(Channel::class)
-            ->defaultSort('id')
+            ->defaultSort('title')
+            ->allowedFilters(['title'])
             ->allowedSorts('title', 'id')
             ->allowedIncludes(['user', 'streams', 'tags', 'game'])
             ->jsonPaginate();
