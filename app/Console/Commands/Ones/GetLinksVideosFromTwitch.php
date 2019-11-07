@@ -5,6 +5,7 @@ namespace App\Console\Commands\Ones;
 use App\Acme\Helpers\TwitchHelper;
 use App\Enums\StreamStatus;
 use App\Models\Channel;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class GetLinksVideosFromTwitch extends Command
@@ -50,20 +51,50 @@ class GetLinksVideosFromTwitch extends Command
         {
             foreach($channels as $channel)
             {
-                $twitch = new TwitchHelper();
-                $data = $twitch->getChannelVideos($channel->exid, 25, 0, 'archive');
+                $streams = $channel->streams;
 
-                if(!empty($data) && isset($data['videos']) && $data['_total']>0)
+                if(count($streams)>0)
                 {
-                    foreach($data['videos'] as $video)
+                    $videos = [];
+                    $twitch = new TwitchHelper();
+                    $data = $twitch->getChannelVideos($channel->exid, 25, 0, 'archive');
+
+                    if(!empty($data) && isset($data['videos']) && $data['_total']>0)
                     {
-                        dd($video);
+                        foreach($data['videos'] as $video)
+                        {
+                            $videos[] = [
+                                'id' => $video['_id'],
+                                'created_at' => $video['created_at']
+                            ];
+                        }
+                    }
+
+                    foreach($streams as $stream)
+                    {
+                        if(!in_array($stream->status, [StreamStatus::FinishedWaitPay, StreamStatus::FinishedIsPayed]))
+                            continue;
+
+                        foreach($videos as $video)
+                        {
+                            $start_at = Carbon::parse($video['created_at']);
+                            $minutes = ceil($stream->start_at->diffInMinutes($start_at));
+
+                            if($minutes<90)
+                            {
+                                $stream->update([
+                                   'link' =>  $video['id']
+                                ]);
+
+                                echo $video['id']."\r\n";
+
+                                break;
+                            }
+                        }
                     }
                 }
             }
         }
-
-
 
         $bar->finish();
     }
