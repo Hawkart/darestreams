@@ -203,10 +203,8 @@ class ChannelController extends Controller
      */
     public function topDonated(Request $request)
     {
-        $hours = $request->has('hours') ? $request->get('hours') : 240;
         $limit = $request->has('limit') ? $request->get('limit') : 10;
         $skip = $request->has('skip') ? $request->get('skip') : 0;
-        $lastDays = Carbon::now()->subHours($hours);
 
         //Calculate cache key
         $queryParams = request()->query();
@@ -239,8 +237,6 @@ class ChannelController extends Controller
                         ->where('st.status', '<>',StreamStatus::Canceled);
                 })
                 ->whereNotNull('t.id')
-                ->offset($skip)
-                ->limit($limit)
                 ->get();
 
             $data = $list->pluck('donates', 'id')->toArray();
@@ -259,6 +255,8 @@ class ChannelController extends Controller
                 $items = $items->orderByRaw(DB::raw("FIELD(id, $oids)"))
                     ->allowedSorts('title', 'id')
                     ->allowedIncludes(['user', 'streams', 'tags', 'game'])
+                    ->offset($skip)
+                    ->limit($limit)
                     ->jsonPaginate();
 
                 foreach ($items as &$item)
