@@ -65,7 +65,7 @@ class UserController extends Controller
      * Get authorized user.
      * @authenticated
      *
-     * @queryParam include string String of connections: tasks, streams, channel, account. Example: tasks,channel
+     * @queryParam include string String of connections: tasks, streams, channel, account, oauth_providers. Example: tasks,channel
      *
      * @param Request $request
      * @return UserResource
@@ -73,7 +73,7 @@ class UserController extends Controller
     public function me(Request $request)
     {
         $item = QueryBuilder::for(User::class)
-            ->allowedIncludes(['tasks','streams', 'channel', 'account'])
+            ->allowedIncludes(['tasks','streams', 'channel', 'account', 'oauthProviders'])
             ->findOrFail(auth()->user()->id);
 
         return new UserResource($item);

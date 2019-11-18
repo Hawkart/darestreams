@@ -18,7 +18,8 @@ class UserCreatedListener
 
         if(!$user->account)
             $user->account()->create([
-                'currency' => 'USD'
+                'currency' => 'USD',
+                'amount' => 150
             ]);
 
         $user->refresh();
