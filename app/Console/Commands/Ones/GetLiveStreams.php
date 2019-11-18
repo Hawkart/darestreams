@@ -2,11 +2,16 @@
 
 namespace App\Console\Commands\Ones;
 
+use App\Enums\StreamStatus;
+use App\Models\Stream;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use NewTwitchApi\HelixGuzzleClient;
 use NewTwitchApi\NewTwitchApi;
 use App\Models\Rating\Channel as StatChannel;
 use App\Models\Channel;
+use App\Notifications\NotifyFollowersAboutStream;
 
 class GetLiveStreams extends Command
 {
@@ -38,6 +43,114 @@ class GetLiveStreams extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
+        $this->CheckChannelsStreams();
+
+        echo "CheckChannelsStreams"."\r\n";
+
+        $this->UpdateStatChannels();
+
+        echo "UpdateStatChannels"."\r\n";
+
+        $bar->finish();
+    }
+
+    public function CheckChannelsStreams()
+    {
+        $clientId = config('app.rating_twitch_api_key');
+        $clientSecret = config('app.rating_twitch_api_secret');
+        $helixGuzzleClient = new HelixGuzzleClient($clientId);
+        $newTwitchApi = new NewTwitchApi($helixGuzzleClient, $clientId, $clientSecret);
+
+        $date = Carbon::now('UTC')->subMinutes(10);
+        $statuses = [StreamStatus::FinishedIsPayed, StreamStatus::FinishedWaitPay];
+
+        Channel::chunk(100, function($channels) use ($newTwitchApi, $date, $statuses)
+        {
+            $ids = [];
+            $chs = [];
+            foreach ($channels as $stat)
+            {
+                $ids[] = $stat->exid;
+                $chs[$stat->exid] = $stat;
+            }
+
+            //1. Active in Dare but not active in Twitch (started_at)
+            //2. Finish in Dare but not in Twitch (ended at)
+            //3. Stream in Twitch but not created/active in Dare.
+
+            try {
+                $response = $newTwitchApi->getStreamsApi()->getStreams($ids);
+                $content = json_decode($response->getBody()->getContents());
+
+                if(count($content->data)>0)
+                {
+                    foreach($content->data as $stream)
+                    {
+                        if($stream->type=='live')
+                        {
+                            $channel = $chs[$stream->user_id];
+                            unset($chs[$stream->user_id]);
+
+                            //2. Finish in Dare but not in Twitch (ended at)
+                            if(Stream::where('channel_id', $channel->id)->whereIn('status', $statuses)
+                                    ->where('ended_at', '>', $date)->count()>0)
+                            {
+                                //
+                            }else{
+
+                                $activeStream = Stream::where('channel_id', $channel->id)
+                                    ->where('status', StreamStatus::Active)
+                                    ->first();
+
+                                if($activeStream)
+                                {
+                                    $this->UpdateViewsAndInfoOfStream($activeStream, $stream);
+
+                                    //3. Stream in Twitch started but not in Dare.
+                                    $now = Carbon::now('UTC');
+                                    $start_at = Carbon::parse($stream->started_at);
+                                    $minutes = ceil($now->diffInSeconds($start_at)/60);
+                                    if($minutes<10)
+                                    {
+                                        //
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            }
+
+            if(count($chs)>0)
+            {
+                foreach($chs as $channel)
+                {
+                    //1. Active in Dare but not active in Twitch (started_at)
+                    if(Stream::where('channel_id', $channel->id)->where('status', StreamStatus::Active)
+                        ->where('start_at', '>', $date)->count()>0)
+                    {
+                        //
+                    }
+                }
+            }
+
+            sleep(1);
+        });
+    }
+
+    public function UpdateViewsAndInfoOfStream($activeStream, $stream)
+    {
+        $activeStream->update([
+            'views' =>  $stream->viewer_count,
+            'preview' =>  str_replace(['{width}', '{height}'], [1200, 800], $stream->thumbnail_url)
+        ]);
+    }
+
+    public function UpdateStatChannels()
+    {
         $clientId = config('app.rating_twitch_api_key');
         $clientSecret = config('app.rating_twitch_api_secret');
         $helixGuzzleClient = new HelixGuzzleClient($clientId);
@@ -65,6 +178,7 @@ class GetLiveStreams extends Command
                         {
                             $channel = $chs[$stream->user_id];
                             $this->UpdateChannelStreams($channel, $stream);
+                            $this->AdminNotifyAboutNewStream($channel, $stream);
                         }
                     }
                 }
@@ -75,8 +189,6 @@ class GetLiveStreams extends Command
 
             sleep(1);
         });
-
-        $bar->finish();
     }
 
     public function UpdateChannelStreams($channel, $stream)
@@ -104,5 +216,29 @@ class GetLiveStreams extends Command
         }
 
         $channel->update(['streams' => $streams]);
+    }
+
+    public function AdminNotifyAboutNewStream($channel, $stream)
+    {
+        $admin = User::admins()->where('email', config('mail.admin_email'))->first();
+
+        $now = Carbon::now('UTC');
+        $start_at = Carbon::parse($stream->started_at);
+        $minutes = ceil($now->diffInSeconds($start_at)/60);
+
+        if($minutes<10)
+        {
+            $user = $channel->user;
+
+            $details = [
+                'greeting' => 'Hi '.$admin->name,
+                'body' => 'The stream of '.$user->nickname." started",
+                'actionText' => 'View stream',
+                'actionURL' => 'https://twitch.tv/'.$user->nickname,
+                'subject' => 'New stream on Twitch of '.$user->nickname
+            ];
+
+            $admin->notify(new NotifyFollowersAboutStream($details));
+        }
     }
 }
