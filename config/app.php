@@ -137,6 +137,7 @@ return [
     'twitch_api_secret' => env('TWITCH_SECRET'),
 
     'rating_twitch_api_key' => env('RATING_TWITCH_KEY'),    //from ratestreamers.com
+    'rating_twitch_api_secret' => env('RATING_TWITCH_SECRET'),
 
     'time_vote_until_stream_finished' => env('TIME_VOTE_UNTIL_STREAM_FINISHED', 30),
 

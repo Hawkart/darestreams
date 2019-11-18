@@ -33,6 +33,7 @@ class Kernel extends ConsoleKernel
         Commands\Ones\GetChannelVideosOnTwitch::class,
         Commands\Ones\CheckAlert::class,
         Commands\Ones\GetLinksVideosFromTwitch::class,
+        Commands\Ones\GetLiveStreams::class,
 
         Commands\Rating\ParseStreamers::class,
         Commands\Rating\UpdateRatingChannels::class,
@@ -57,10 +58,12 @@ class Kernel extends ConsoleKernel
         $schedule->command('tasks:clear_not_used')->daily()->timezone('America/New_York')->at('03:00');
         $schedule->command('transactions:clear_dropped')->daily()->timezone('America/New_York')->at('02:00');
         $schedule->command('votes:finish')->everyMinute();
-        $schedule->command('streamers:parse')->hourly();
 
-        $schedule->command('stat:channels_update')->cron('* * * * 1,2,3,4');
-        $schedule->command('stat:calculate_top')->fridays()->everyFiveMinutes();
+
+        $schedule->command('twitch:get_live_streams')->everyTenMinutes();
+        //$schedule->command('streamers:parse')->hourly();
+        //$schedule->command('stat:channels_update')->cron('* * * * 1,2,3,4');
+        //$schedule->command('stat:calculate_top')->fridays()->everyFiveMinutes();
     }
 
     /**

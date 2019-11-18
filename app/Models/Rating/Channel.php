@@ -24,7 +24,8 @@ class Channel extends Model
      * @var array
      */
     protected $casts = [
-        'json' => 'array'
+        'json' => 'array',
+        'streams' => 'array'
     ];
 
     /**

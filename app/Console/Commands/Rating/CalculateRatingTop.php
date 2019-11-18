@@ -196,12 +196,14 @@ class CalculateRatingTop extends Command
 
         if($channels==0)
         {
-            $ids = $this->getAllTop();
+            /*$ids = $this->getAllTop();
 
             echo "count top = ".count($ids)."\r\n";
 
             Channel::top()->update(['top' => 0]);
-            Channel::whereIn('exid', $ids)->update(['top' => 1]);
+            Channel::whereIn('exid', $ids)->update(['top' => 1]);*/
+
+            Channel::top()->update(['top' => 1]);
         }
     }
 
