@@ -95,7 +95,7 @@ class GetLiveStreams extends Command
                             if(Stream::where('channel_id', $channel->id)->whereIn('status', $statuses)
                                     ->where('ended_at', '>', $date)->count()>0)
                             {
-                                //
+                                $this->NotifyToFinishInTwitch($channel, $stream);
                             }else{
 
                                 $activeStream = Stream::where('channel_id', $channel->id)
@@ -112,7 +112,7 @@ class GetLiveStreams extends Command
                                     $minutes = ceil($now->diffInSeconds($start_at)/60);
                                     if($minutes<10)
                                     {
-                                        //
+                                        $this->NotifyCreateStreamInDareStreams($channel);
                                     }
                                 }
                             }
@@ -132,7 +132,7 @@ class GetLiveStreams extends Command
                     if(Stream::where('channel_id', $channel->id)->where('status', StreamStatus::Active)
                         ->where('start_at', '>', $date)->count()>0)
                     {
-                        //
+                        $this->NotifyCreateStreamInTwitch($channel);
                     }
                 }
             }
@@ -240,5 +240,50 @@ class GetLiveStreams extends Command
 
             $admin->notify(new NotifyFollowersAboutStream($details));
         }
+    }
+
+    public function NotifyToFinishInTwitch($channel)
+    {
+        $user = $channel->user;
+
+        $details = [
+            'greeting' => 'Здравствуйте. '.$user->name,
+            'body' => "Не забудьте завершить стрим на Твиче",
+            'actionText' => 'Перейти',
+            'actionURL' => 'https://twitch.tv/'.$user->nickname,
+            'subject' => "Завершите стрим на Твиче"
+        ];
+
+        $user->notify(new NotifyFollowersAboutStream($details));
+    }
+
+    public function NotifyCreateStreamInDareStreams($channel)
+    {
+        $user = $channel->user;
+
+        $details = [
+            'greeting' => 'Здравствуйте. '.$user->name,
+            'body' => "Создайте трансляцию на DareStreams, чтобы получить еще больше донатов.",
+            'actionText' => 'Перейти',
+            'actionURL' => 'https://darestreams.com',
+            'subject' => "Создайте трансляцию - получите донаты"
+        ];
+
+        $user->notify(new NotifyFollowersAboutStream($details));
+    }
+
+    public function NotifyCreateStreamInTwitch($channel)
+    {
+        $user = $channel->user;
+
+        $details = [
+            'greeting' => 'Здравствуйте. '.$user->name,
+            'body' => "Трансляция на DareStreams уже началась. Создайте, пожалуйста, стрим на Twitch!",
+            'actionText' => 'Перейти',
+            'actionURL' => 'https://twitch.tv/'.$user->nickname,
+            'subject' => "Создайте стрим на Twitch"
+        ];
+
+        $user->notify(new NotifyFollowersAboutStream($details));
     }
 }

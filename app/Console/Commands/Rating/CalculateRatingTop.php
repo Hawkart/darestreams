@@ -55,7 +55,7 @@ class CalculateRatingTop extends Command
 
         foreach($channels as $channel)
         {
-            $data = $this->countRatingByVideos($channel->exid);
+            $data = $this->countRatingByVideos($channel);
 
             echo "channel_id = ".$channel->id."\r\n";
 
@@ -97,10 +97,12 @@ class CalculateRatingTop extends Command
      * Get rating by videos, followers and views for channel
      * @param $channel_id
      */
-    protected function countRatingByVideos($channel_id)
+    protected function countRatingByVideos($channel)
     {
         $twitch = new TwitchHelper('r');
-        $data = $twitch->getChannelVideos($channel_id, 50, 0, 'archive');
+        $data = $twitch->getChannelVideos($channel->exid, 50, 0, 'archive');
+
+        $streams = $channel->streams;
 
         if(isset($data['videos']) && intval($data['_total'])>0)
         {
@@ -113,7 +115,21 @@ class CalculateRatingTop extends Command
 
                 if(abs($diff)>7) break;
 
-                $rating+= ceil($video['views']*$video['length']/3600);
+                try{
+                    if(count($streams)>0)
+                    {
+                        foreach($streams as $stream)
+                        {
+                            if($stream['started_at']==$video['created_at'] || $stream['id']==$video['broadcast_id'])
+                            {
+                                $rating+= ceil($stream['views']*$video['length']/3600);
+                                break;
+                            }
+                        }
+                    }
+                } catch(\Exception $e){
+                    $rating+= ceil($video['views']*$video['length']/3600);
+                }
             }
 
             return [
