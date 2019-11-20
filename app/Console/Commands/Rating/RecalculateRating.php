@@ -67,6 +67,13 @@ class RecalculateRating extends Command
 
                     $prevHistory[$data->channel_id] = $data->views;
                 }
+
+                $place = 1;
+                foreach($history->orderBy('rating', 'DESC')->get() as $h)
+                {
+                    $h->update(['place' => $place]);
+                    $place++;
+                }
             }
 
             $friday = Carbon::parse($friday)->addWeek();
