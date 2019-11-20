@@ -39,13 +39,16 @@ class RecalculateRating extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
-        $friday = Carbon::parse('previous friday')->subMonths(2);
+        echo Carbon::parse('previous friday')."\r\n";
+
+        $friday = Carbon::parse('previous friday')->subWeeks(8);
         $prevHistory = [];
 
-        do{
+        echo $friday."\r\n";
 
-            $prevDay = $friday->subDays(2);
-            $nextDay = $friday->addDay();
+        do{
+            $prevDay = Carbon::parse($friday)->subDays(2);
+            $nextDay = Carbon::parse($friday)->addDay();
 
             $history = ChannelHistory::where('created_at', '>', $prevDay)
                             ->where('created_at', '<', $nextDay);
@@ -72,9 +75,11 @@ class RecalculateRating extends Command
                 }
             }
 
-            $friday = $friday->addWeek();
+            $friday = Carbon::parse($friday)->addWeek();
 
-        } while($count>0);
+            echo $friday."\r\n";
+
+        } while(Carbon::parse($friday)->lte(Carbon::now('UTC')));
 
         $bar->finish();
     }
