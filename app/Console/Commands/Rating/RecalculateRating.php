@@ -47,8 +47,8 @@ class RecalculateRating extends Command
             $prevDay = $friday->subDays(2);
             $nextDay = $friday->addDay();
 
-            $history = ChannelHistory::where('updated_at', '>', $prevDay)
-                            ->where('updated_at', '<', $nextDay);
+            $history = ChannelHistory::where('created_at', '>', $prevDay)
+                            ->where('created_at', '<', $nextDay);
 
             $count = $history->count();
 
@@ -59,7 +59,13 @@ class RecalculateRating extends Command
                     if(isset($prevHistory[$data->channel_id]))
                     {
                         $rating = $data->views - $prevHistory[$data->channel_id];
+
+                        if($rating<0)
+                            $rating = 0;
+
                         $data->channel->update(['rating' => $rating]);
+
+                        echo "change rating = ".$rating."\r\n";
                     }
 
                     $prevHistory[$data->channel_id] = $data->views;
