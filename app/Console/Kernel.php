@@ -37,7 +37,8 @@ class Kernel extends ConsoleKernel
         Commands\Rating\ParseStreamers::class,
         Commands\Rating\UpdateRatingChannels::class,
         Commands\Rating\CalculateRatingTop::class,
-        Commands\Rating\SyncStatChannels::class
+        Commands\Rating\SyncStatChannels::class,
+        Commands\Rating\RecalculateRating::class
     ];
 
     /**
