@@ -39,23 +39,17 @@ class RecalculateRating extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
-        echo Carbon::parse('previous friday')."\r\n";
-
         $friday = Carbon::parse('previous friday')->subWeeks(8);
         $prevHistory = [];
-
-        echo $friday."\r\n";
 
         do{
             $prevDay = Carbon::parse($friday)->subDays(2);
             $nextDay = Carbon::parse($friday)->addDay();
 
-            $history = ChannelHistory::where('created_at', '>', $prevDay)
-                            ->where('created_at', '<', $nextDay);
+            $history = ChannelHistory::whereDate('created_at', '>', $prevDay)
+                ->whereDate('created_at', '<', $nextDay);
 
-            $count = $history->count();
-
-            if($count>0 && count($prevHistory)>0)
+            if($history->count()>0)
             {
                 foreach($history->get() as $data)
                 {
