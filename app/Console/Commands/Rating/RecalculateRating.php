@@ -55,11 +55,12 @@ class RecalculateRating extends Command
                 {
                     if(isset($prevHistory[$data->channel_id]))
                     {
-                        $rating = $data->views - $prevHistory[$data->channel_id];
+                        $rating = ceil(($data->views - $prevHistory[$data->channel_id])/1000);
 
                         if($rating<0)
                             $rating = 0;
 
+                        $data->update(['rating' => $rating]);
                         $data->channel->update(['rating' => $rating]);
 
                         echo "change rating = ".$rating."\r\n";
