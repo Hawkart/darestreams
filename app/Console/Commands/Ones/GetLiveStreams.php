@@ -12,6 +12,7 @@ use NewTwitchApi\NewTwitchApi;
 use App\Models\Rating\Channel as StatChannel;
 use App\Models\Channel;
 use App\Notifications\NotifyFollowersAboutStream;
+use Illuminate\Support\Facades\Log;
 
 class GetLiveStreams extends Command
 {
@@ -102,9 +103,9 @@ class GetLiveStreams extends Command
                                     ->where('status', StreamStatus::Active)
                                     ->first();
 
-                                if($activeStream)
-                                {
+                                if($activeStream) {
                                     $this->UpdateViewsAndInfoOfStream($activeStream, $stream);
+                                } else {
 
                                     //3. Stream in Twitch started but not in Dare.
                                     $now = Carbon::now('UTC');
@@ -177,14 +178,21 @@ class GetLiveStreams extends Command
                         if($stream->type=='live')
                         {
                             $channel = $chs[$stream->user_id];
-                            $this->UpdateChannelStreams($channel, $stream);
+
                             $this->AdminNotifyAboutNewStream($channel, $stream);
+                            $this->UpdateChannelStreams($channel, $stream);
                         }
                     }
                 }
 
             } catch (\Exception $e) {
-                echo $e->getMessage();
+
+                Log::info('UpdateChannelStreams in GetLiveStreams', [
+                    'error' => $e->getMessage(),
+                    'file' => __FILE__,
+                    'line' => __LINE__
+                ]);
+                
             }
 
             sleep(1);
@@ -195,14 +203,19 @@ class GetLiveStreams extends Command
     {
         $exist = false;
         $streams = $channel->streams;
-        foreach($streams as &$s)
+
+        if(count($streams)>0)
         {
-            if($s['id'] == $stream->id)
+            foreach($streams as &$s)
             {
-                $s['views']+= ceil($stream->viewer_count/6);
-                $exist = true;
+                if($s['id'] == $stream->id)
+                {
+                    $s['views']+= ceil($stream->viewer_count/6);
+                    $exist = true;
+                }
             }
         }
+
 
         if(!$exist)
         {
