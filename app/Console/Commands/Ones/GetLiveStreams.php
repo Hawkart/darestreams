@@ -192,7 +192,7 @@ class GetLiveStreams extends Command
                     'file' => __FILE__,
                     'line' => __LINE__
                 ]);
-                
+
             }
 
             sleep(1);
@@ -204,7 +204,7 @@ class GetLiveStreams extends Command
         $exist = false;
         $streams = $channel->streams;
 
-        if(count($streams)>0)
+        if(is_array($streams) && count($streams)>0)
         {
             foreach($streams as &$s)
             {
@@ -241,14 +241,12 @@ class GetLiveStreams extends Command
 
         if($minutes<10)
         {
-            $user = $channel->user;
-
             $details = [
                 'greeting' => 'Hi '.$admin->name,
-                'body' => 'The stream of '.$user->nickname." started",
+                'body' => 'The stream of '.$channel->name." started",
                 'actionText' => 'View stream',
-                'actionURL' => 'https://twitch.tv/'.$user->nickname,
-                'subject' => 'New stream on Twitch of '.$user->nickname
+                'actionURL' => 'https://twitch.tv/'.$channel->name,
+                'subject' => 'New stream on Twitch of '.$channel->name
             ];
 
             $admin->notify(new NotifyFollowersAboutStream($details));
