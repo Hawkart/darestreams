@@ -241,12 +241,17 @@ class GetLiveStreams extends Command
 
         if($minutes<10)
         {
+            $subject = 'New stream on Twitch of '.$channel->name;
+
+            if(intval($channel->channel_id)>0)
+                $subject= "Real ".$subject;
+
             $details = [
                 'greeting' => 'Hi '.$admin->name,
                 'body' => 'The stream of '.$channel->name." started",
                 'actionText' => 'View stream',
                 'actionURL' => 'https://twitch.tv/'.$channel->name,
-                'subject' => 'New stream on Twitch of '.$channel->name
+                'subject' => $subject
             ];
 
             $admin->notify(new NotifyFollowersAboutStream($details));
