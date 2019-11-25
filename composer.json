@@ -17,6 +17,7 @@
         "cyber-duck/laravel-excel": "^1.2",
         "cyrildewit/eloquent-viewable": "^4.0",
         "fideloper/proxy": "^4.0",
+        "google/cloud-speech": "^0.28.0",
         "laravel/browser-kit-testing": "^5.1",
         "laravel/framework": "5.8.*",
         "laravel/horizon": "^3.2",
