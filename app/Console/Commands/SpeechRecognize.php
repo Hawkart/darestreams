@@ -57,8 +57,6 @@ class SpeechRecognize extends Command
 
         $response = $client->recognize($config, $audio);
 
-        dd($response);
-
         foreach ($response->getResults() as $result) {
             $alternatives = $result->getAlternatives();
             $mostLikely = $alternatives[0];
