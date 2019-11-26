@@ -41,16 +41,16 @@ class SpeechRecognize extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
-        $audioFile = __DIR__ . '/test/data/audio32KHz.raw';
+        $audioFile = __DIR__ . '/test/data/example.flac';
         $content = file_get_contents($audioFile);
 
         $audio = (new RecognitionAudio())
             ->setContent($content);
 
         $config = new RecognitionConfig([
-            'encoding' => AudioEncoding::LINEAR16,
-            'sample_rate_hertz' => 32000,
-            'language_code' => 'en-US'
+            'encoding' => AudioEncoding::FLAC,
+            'sample_rate_hertz' => 160000,
+            'language_code' => 'ru-RU'
         ]);
 
         $client = new SpeechClient();
