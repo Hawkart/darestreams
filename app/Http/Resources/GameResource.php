@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\Rating\GameHistoryResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Storage;
 
@@ -26,7 +27,9 @@ class GameResource extends JsonResource
 
             'streams' => StreamResource::collection($this->whenLoaded('streams')),
             'channels' => ChannelResource::collection($this->whenLoaded('channels')),
-            'tags' => TagResource::collection($this->whenLoaded('tags'))
+            'tags' => TagResource::collection($this->whenLoaded('tags')),
+            'history' => GameHistoryResource::collection($this->whenLoaded('history')),
+            'lastHistory' => GameHistoryResource::collection($this->whenLoaded('lastHistory')),
         ];
     }
 }

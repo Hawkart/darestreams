@@ -41,7 +41,10 @@ class SpeechRecognize extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
-        $audioFile = __DIR__ . '/test/data/example.flac';
+        //ffmpeg -i stereo.flac -ac 1 mono.flac
+        //export GOOGLE_APPLICATION_CREDENTIALS=...
+
+        $audioFile = __DIR__ . '/test/data/mono_2.flac';
         $content = file_get_contents($audioFile);
 
         $audio = (new RecognitionAudio())
@@ -49,7 +52,7 @@ class SpeechRecognize extends Command
 
         $config = new RecognitionConfig([
             'encoding' => AudioEncoding::FLAC,
-            'sample_rate_hertz' => 160000,
+            'sample_rate_hertz' => 16000,
             'language_code' => 'ru-RU'
         ]);
 

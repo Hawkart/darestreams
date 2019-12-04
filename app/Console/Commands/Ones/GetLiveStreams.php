@@ -211,11 +211,11 @@ class GetLiveStreams extends Command
                 if($s['id'] == $stream->id)
                 {
                     $s['views']+= ceil($stream->viewer_count/6);
+                    $s['length']+=600;
                     $exist = true;
                 }
             }
         }
-
 
         if(!$exist)
         {
@@ -223,7 +223,9 @@ class GetLiveStreams extends Command
                 [
                     'id' => $stream->id,
                     'views' => ceil($stream->viewer_count/6),
-                    'started_at' => $stream->started_at
+                    'started_at' => $stream->started_at,
+                    'game_id' => $stream->game_id,
+                    'length' => 10
                 ]
             ];
         }

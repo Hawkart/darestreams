@@ -42,7 +42,7 @@ class GameController extends Controller
         $games = QueryBuilder::for(Game::class)
             ->defaultSort('-popularity')
             ->allowedFilters(['title'])
-            ->allowedSorts('title', 'popularity', 'id')
+            ->allowedSorts('title', 'popularity', 'id', 'rating')
             ->allowedIncludes(['streams', 'tags', 'channels'])
             ->jsonPaginate();
 

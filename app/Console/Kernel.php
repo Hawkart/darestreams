@@ -63,7 +63,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('twitch:get_live_streams')->everyTenMinutes();
         //$schedule->command('streamers:parse')->hourly();
         //$schedule->command('stat:channels_update')->cron('* * * * 1,2,3,4');
-        //$schedule->command('stat:calculate_top')->fridays()->everyFiveMinutes();
+        $schedule->command('stat:calculate_top')->fridays()->everyFiveMinutes();
     }
 
     /**

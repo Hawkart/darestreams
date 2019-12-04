@@ -28,6 +28,8 @@ Route::group(['namespace' => 'Api'], function () {
     Route::post('deploy', 'DebugController@deploy');
     Route::post('logs/js', 'DebugController@deploy');
 
+    Route::apiResource('rating/games', 'Rating\GameController')->only(['index', 'show']);
+    Route::get('rating/game-history/{history}', 'Rating\GameHistoryController@show');
     Route::apiResource('rating', 'Rating\ChannelController')->only(['index', 'show']);
 
     Route::get('games/top', 'GameController@top');
