@@ -34,8 +34,7 @@ class GameController extends Controller
             $items = $cacheTags->get($cache_key);
         } else {
 
-            $items = Game::top()
-                ->where('rating', '>', 0)
+            $items = Game::where('rating', '>', 0)
                 ->orderBy('rating', 'desc')
                 ->get();
 

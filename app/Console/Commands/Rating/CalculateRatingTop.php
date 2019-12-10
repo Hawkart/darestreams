@@ -59,7 +59,7 @@ class CalculateRatingTop extends Command
         $ratings = [];
         foreach($channels as $channel)
         {
-            $streams = $channel->streams;
+            $streams = is_array($channel->streams) ? $channel->streams : [];
 
             if(count($streams)>0)
             {

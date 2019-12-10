@@ -211,7 +211,12 @@ class GetLiveStreams extends Command
                 if($s['id'] == $stream->id)
                 {
                     $s['views']+= ceil($stream->viewer_count/6);
-                    $s['length']+=600;
+                    
+                    if(isset($s['length']))
+                        $s['length']+=600;
+                    else
+                        $s['length'] = 600;
+
                     $exist = true;
                 }
             }
