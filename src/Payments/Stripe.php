@@ -65,18 +65,18 @@ class Stripe implements PaymentInterface
 
             if($intent && isset($intent['status']))
             {
-                dd([
+                return [
                     'status' => $intent['status']=='succeeded' ? "completed" : "",
                     'data' => [
-                        'intent' => $intent,
-                        'session' => $data
+                        'intent' => (array) $intent,
+                        'session' => (array) $data
                     ],
                     'order_id' => $intent['metadata']['order_id'],
                     'transaction_id' => $data['id'],
                     'amount' => $intent['amount']/100,
                     'currency' => $intent['currency'],
                     'description' => $data['display_items'][0]['custom']['description']
-                ]);
+                ];
             } else {
                 return [];
             }
