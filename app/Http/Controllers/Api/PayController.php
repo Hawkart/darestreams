@@ -128,6 +128,7 @@ class PayController extends Controller
     public function completed($gate, $user_id, $task_id, Request $request)
     {
         $result = $this->paySystem->completed($request);
+        $error = 0;
 
         if(empty($result))
         {
@@ -141,14 +142,14 @@ class PayController extends Controller
                 $description = $result['description'];
 
                 $t = Transaction::findOrFail($result['order_id']);
-                //$t = Transaction::where('exid', $result['transaction_id'])->first();
 
                 if ($t)
                 {
-                    if ($t->currency != $currency)
+                    if (strtolower($t->currency) != strtolower($currency))
                         return setErrorAfterValidation(['currency' => trans('api/paypal.currency_not_match')]);
 
                     if ($t->status != TransactionStatus::Completed) {
+
                         try {
                             $t = DB::transaction(function () use ($data, $t, $amount, $user_id, $task_id, $description) {
 
@@ -170,15 +171,16 @@ class PayController extends Controller
                                 else
                                     $user = 0;
 
-                                if (($user || $task) && ($t->accountReceiver->amount >= $t->amount)) {
+                                if (($user || $task) && ($t->accountReceiver->amount >= $t->amount))
+                                {
                                     $receiver_id = $task ? $task->stream->user->account->id : $user->account->id;
                                     $sender_id = $t->account_receiver_id;
 
-                                    if ($receiver_id != $sender_id) {
+                                    if ($receiver_id != $sender_id && $task) {
                                         Transaction::create([
                                             'task_id' => $task ? $task->id : 0,
                                             'amount' => intval($t->amount),
-                                            'account_sender_id' => $sender_id,
+                                            'account_sender_id' => $sender_id==$receiver_id ? 0 : $sender_id,
                                             'account_receiver_id' => $receiver_id,
                                             'status' => $task ? TransactionStatus::Holding : TransactionStatus::Completed,
                                             'type' => TransactionType::Donation

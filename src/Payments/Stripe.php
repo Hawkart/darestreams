@@ -68,8 +68,8 @@ class Stripe implements PaymentInterface
                 return [
                     'status' => $intent['status']=='succeeded' ? "completed" : "",
                     'data' => [
-                        'intent' => (array) $intent,
-                        'session' => (array) $data
+                        /*'intent' => (array) $intent,
+                        'session' => (array) $data*/
                     ],
                     'order_id' => $intent['metadata']['order_id'],
                     'transaction_id' => $data['id'],
