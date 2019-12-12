@@ -8,7 +8,7 @@ use Omnipay\Omnipay;
 
 class Paypal implements PaymentInterface
 {
-    public $gateway;
+    public $gate;
 
     public function init()
     {
@@ -20,7 +20,7 @@ class Paypal implements PaymentInterface
             'testMode' => config('services.paypal.sandbox')
         ));
 
-        $this->$gateway = $gateway;
+        $this->gate = $gateway;
     }
 
     public function checkout(array $params)
@@ -37,7 +37,7 @@ class Paypal implements PaymentInterface
             'description'   => $params['description'],
         ];
 
-        $transaction = $this->gateway->authorize($data);
+        $transaction = $this->gate->authorize($data);
         $response = $transaction->send();
 
         if ($response->isRedirect())
@@ -53,7 +53,7 @@ class Paypal implements PaymentInterface
 
     public function completed(Request $request)
     {
-        $transaction = $this->gateway->completePurchase(array(
+        $transaction = $this->gate->completePurchase(array(
             'payerId'             => $request->get('PayerID'),
             'transactionReference' => $request->get('paymentId'),
         ));
