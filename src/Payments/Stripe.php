@@ -35,7 +35,7 @@ class Stripe implements PaymentInterface
                         'task_id' => $task_id
                     ]
                 ],
-                'success_url' => route('payment.checkout.completed', ['gateway' => 'stripe', 'user' => $user_id, 'task' => $task_id]),
+                'success_url' => route('payment.checkout.completed', ['gateway' => 'stripe', 'user' => $user_id, 'task' => $task_id])."?session_id={CHECKOUT_SESSION_ID}",
                 'cancel_url' => route('payment.checkout.cancelled', ['gateway' => 'paypal', 'user' => $user_id, 'task' => $task_id]),
             ]);
 
