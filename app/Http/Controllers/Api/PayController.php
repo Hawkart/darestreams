@@ -171,16 +171,16 @@ class PayController extends Controller
                                 else
                                     $user = 0;
 
-                                if (($user || $task) && ($t->accountReceiver->amount >= $t->amount))
+                                if (($user || $task) && ($t->accountReceiver->amount >= $t->amount))    // amount sender > amount to donate
                                 {
                                     $receiver_id = $task ? $task->stream->user->account->id : $user->account->id;
                                     $sender_id = $t->account_receiver_id;
 
-                                    if ($receiver_id != $sender_id && $task) {
+                                    if ($receiver_id != $sender_id) {
                                         Transaction::create([
                                             'task_id' => $task ? $task->id : 0,
                                             'amount' => intval($t->amount),
-                                            'account_sender_id' => $sender_id==$receiver_id ? 0 : $sender_id,
+                                            'account_sender_id' => $sender_id,
                                             'account_receiver_id' => $receiver_id,
                                             'status' => $task ? TransactionStatus::Holding : TransactionStatus::Completed,
                                             'type' => TransactionType::Donation
