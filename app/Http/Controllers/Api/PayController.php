@@ -17,7 +17,7 @@ use Dare\Services\PaymentService;
 /**
  * @group Payments
  */
-class PaymentController extends Controller
+class PayController extends Controller
 {
     public $paySystem;
     protected $gateway;
