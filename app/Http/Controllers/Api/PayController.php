@@ -110,7 +110,9 @@ class PayController extends Controller
             'currency' => $currency,
             'transactionId' => $result->id,
             'description' => $description,
-            'result' => $result
+            'result' => $result,
+            'user_id' => $user_id,
+            'task_id' => $task_id
         ]);
     }
 
