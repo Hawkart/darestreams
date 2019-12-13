@@ -18,7 +18,7 @@ class GameHistoryResource extends JsonResource
         return [
             'id' => $this->id,
             'game_id' => $this->game_id,
-            'rating' => $this->rating,
+            'rating' => $this->time,
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),
 

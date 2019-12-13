@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Rating;
 
 use App\Http\Controllers\Api\Controller;
 use App\Http\Resources\Rating\GameHistoryResource;
-use App\Models\Game;
+use App\Models\Rating\GameHistory;
 use Spatie\QueryBuilder\QueryBuilder;
 
 /**
@@ -21,7 +21,7 @@ class GameHistoryController extends Controller
      */
     public function show($history)
     {
-        $item = QueryBuilder::for(Game::class)
+        $item = QueryBuilder::for(GameHistory::class)
             ->allowedIncludes(['gameChannels'])
             ->findOrFail($history);
 

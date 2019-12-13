@@ -202,7 +202,7 @@ class GetLiveStreams extends Command
     public function UpdateChannelStreams($channel, $stream)
     {
         $exist = false;
-        $streams = $channel->streams;
+        $streams = is_array($channel->streams) ? $channel->streams : [];
 
         if(is_array($streams) && count($streams)>0)
         {
@@ -224,14 +224,12 @@ class GetLiveStreams extends Command
 
         if(!$exist)
         {
-            $streams = [
-                [
-                    'id' => $stream->id,
-                    'views' => ceil($stream->viewer_count/6),
-                    'started_at' => $stream->started_at,
-                    'game_id' => $stream->game_id,
-                    'length' => 10
-                ]
+            $streams[] = [
+                'id' => $stream->id,
+                'views' => ceil($stream->viewer_count/6),
+                'started_at' => $stream->started_at,
+                'game_id' => $stream->game_id,
+                'length' => 10
             ];
         }
 

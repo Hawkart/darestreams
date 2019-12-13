@@ -43,6 +43,7 @@ class CalculateRatingTop extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
+        $this->getGamesList();
         $this->updateTop();
         $this->calculateChannelRating();
         $this->calculateGameRating();
@@ -70,6 +71,8 @@ class CalculateRatingTop extends Command
                     if(isset($stream['length']) && isset($stream['game_id']) && intval($stream['length'])>0 && isset($this->games[$stream['game_id']]))
                     {
                         $game_id = $this->games[$stream['game_id']];
+                        echo $game_id."\r\n";
+
                         $rating = ceil($stream['views']*$stream['length']/3600);
                         $gamesHistory = GameHistory::where('created_at', '>', $prevDay)->where('game_id', $game_id);
 
@@ -85,8 +88,8 @@ class CalculateRatingTop extends Command
                         }
 
                         $gamesChannelsHistory = GameChannelHistory::where('created_at', '>', $prevDay)
-                                                ->where('game_history_id', $gh->id)
-                                                ->where('channel_id', $channel->id);
+                            ->where('game_history_id', $gh->id)
+                            ->where('channel_id', $channel->id);
 
                         if($gamesChannelsHistory->count()>0)
                         {
@@ -312,9 +315,9 @@ class CalculateRatingTop extends Command
         $prevDay = Carbon::now('UTC')->subDays(2);
 
         $channels = Channel::top()
-                        ->whereHas('history', function($q) use ($prevDay){
-                            $q->where('updated_at', '>', $prevDay);
-                        }, '=', 0)->count();
+            ->whereHas('history', function($q) use ($prevDay){
+                $q->where('updated_at', '>', $prevDay);
+            }, '=', 0)->count();
 
         if($channels==0)
         {
