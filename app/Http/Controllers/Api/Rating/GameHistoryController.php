@@ -15,14 +15,14 @@ class GameHistoryController extends Controller
     /**
      * Display a detail of the resource.
      *
-     * @queryParam include string String of connections: gameChannels. Example: gameChannels
+     * @queryParam include string String of connections: gameChannels, gameChannels.channel, game. Example: gameChannels
      *
      * @return \Illuminate\Http\Response
      */
     public function show($history)
     {
         $item = QueryBuilder::for(GameHistory::class)
-            ->allowedIncludes(['gameChannels'])
+            ->allowedIncludes(['gameChannels', 'gameChannels.channel', 'game'])
             ->findOrFail($history);
 
         GameHistoryResource::withoutWrapping();
