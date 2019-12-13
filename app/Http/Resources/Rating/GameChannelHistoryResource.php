@@ -16,13 +16,13 @@ class GameChannelHistoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'game_history_id' => $this->game_id,
-            'channel_id' => $this->game_id,
-            'rating' => $this->rating,
+            'game_history_id' => $this->game_history_id,
+            'channel_id' => $this->channel_id,
+            'rating' => $this->time,
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),
 
-            'game_history' => new GameHistoryResource($this->whenLoaded('game_history')),
+            'gameHistory' => new GameHistoryResource($this->whenLoaded('gameHistory')),
             'channel' => new ChannelResource($this->whenLoaded('channel'))
         ];
     }
