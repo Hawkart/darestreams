@@ -47,7 +47,8 @@ class CalculateRatingTop extends Command
         $this->updateTop();
         $this->calculateChannelRating();
         $this->calculateGameRating();
-        $this->historySetPlace();
+        $this->historySetChannelPlace();
+        $this->historySetGamePlace();
 
         $bar->finish();
     }
@@ -310,7 +311,7 @@ class CalculateRatingTop extends Command
         }
     }
 
-    public function historySetPlace()
+    public function historySetChannelPlace()
     {
         $prevDay = Carbon::now('UTC')->subDays(2);
 
@@ -335,6 +336,47 @@ class CalculateRatingTop extends Command
             echo "places updated";
         }else{
             echo "channels not updated = ".$channels;
+        }
+    }
+
+    public function historySetGamePlace()
+    {
+        $prevDay = Carbon::now('UTC')->subDays(2);
+
+        //check all history updated
+        $games = Game::whereHas('history', function($q) use ($prevDay){
+                $q->where('updated_at', '>', $prevDay);
+            }, '=', 0)->count();
+
+        if($games==0)
+        {
+            //GameHistory
+            $history = GameHistory::where('updated_at', '>', $prevDay)
+                ->orderBy('time', 'DESC')
+                ->get();
+
+            $place = 1;
+            foreach($history as $h)
+            {
+                $h->update(['place' => $place]);
+                $place++;
+            }
+
+            //GameChannelHistory
+            $history = GameChannelHistory::where('updated_at', '>', $prevDay)
+                ->orderBy('time', 'DESC')
+                ->get();
+
+            $place = 1;
+            foreach($history as $h)
+            {
+                $h->update(['place' => $place]);
+                $place++;
+            }
+
+            echo "places updated";
+        }else{
+            echo "game history not updated";
         }
     }
 

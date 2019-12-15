@@ -33,6 +33,7 @@ class Kernel extends ConsoleKernel
         Commands\Ones\CheckAlert::class,
         Commands\Ones\GetLinksVideosFromTwitch::class,
         Commands\Ones\GetLiveStreams::class,
+        Commands\Ones\BugfixRatingGameChannel::class,
 
         Commands\Rating\ParseStreamers::class,
         Commands\Rating\UpdateRatingChannels::class,
