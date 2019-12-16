@@ -132,12 +132,12 @@ class OAuthController extends Controller
             if($user->fake)
             {
                 $user->clearFakeData();
-                $user = $user->updateThrowOauth($this->prepareData($userProvider));
+                $user = $user->updateThrowOauth($this->prepareData($userProvider, $provider));
             }
 
             $user->update([
                 'name' => $userProvider->getName(),
-                'email' => $userProvider->getEmail() ? $userProvider->getEmail() : $this::generateEmail($userProvider),
+                'email' => $this->getUserEmail($userProvider, $provider) ? $this->getUserEmail($userProvider, $provider) : $this::generateEmail($userProvider),
                 'nickname' => $userProvider->getNickname() ? $userProvider->getNickname() : $userProvider->getName(),
             ]);
 
@@ -149,19 +149,19 @@ class OAuthController extends Controller
 
             return $user;
         }else{
-            if(empty($userProvider->getEmail()))
+            if(empty($this->getUserEmail($userProvider, $provider)))
                 abort(403, 'Sorry, You cannot authorize without email');
         }
 
         if(!empty(auth('api')->user()))
         {
             $user = auth('api')->user();
-        } else if (User::where('email', $userProvider->getEmail())->exists()) {
+        } else if (User::where('email', $this->getUserEmail($userProvider, $provider))->exists()) {
             //throw new EmailTakenException;
-            $user = User::where('email', $userProvider->getEmail())->first();
+            $user = User::where('email', $this->getUserEmail($userProvider, $provider))->first();
         }else{
             try {
-                $user = $this->createUser($userProvider);
+                $user = $this->createUser($userProvider, $provider);
             } catch (\Exception $e) {
                 abort(403, 'An Error Occured, please retry later');
             }
@@ -178,12 +178,13 @@ class OAuthController extends Controller
     }
 
     /**
-     * @param  \Laravel\Socialite\Contracts\User $sUser
-     * @return \App\Models\User
+     * @param $sUser
+     * @param $provider
+     * @return mixed
      */
-    public function createUser($sUser)
+    public function createUser($sUser, $provider)
     {
-        $data = $this->prepareData($sUser);
+        $data = $this->prepareData($sUser, $provider);
         $user = DB::transaction(function () use ($data) {
             return User::create($data);
         });
@@ -195,11 +196,11 @@ class OAuthController extends Controller
      * @param $sUser
      * @return array
      */
-    protected function prepareData($sUser)
+    protected function prepareData($sUser, $provider)
     {
         $data = [
             'name' => $sUser->getName(),
-            'email' => $sUser->getEmail() ? $sUser->getEmail() : $this::generateEmail($sUser),
+            'email' => $this->getUserEmail($sUser, $provider) ? $this->getUserEmail($sUser, $provider) : $this::generateEmail($sUser),
             'nickname' => $sUser->getNickname() ? $sUser->getNickname() : $sUser->getName(),
             'email_verified_at' => $sUser->getEmail() ? now() : null,
             'password' => bcrypt(Str::random(10)),
@@ -241,5 +242,13 @@ class OAuthController extends Controller
         $name = $providerUser->getNickname() ? $providerUser->getNickname() : $providerUser->getName();
         $email = Str::slug($name)."@".$site;
         return $email;
+    }
+
+    public static function getUserEmail($user, $provider)
+    {
+        if($provider == 'vkontakte') {
+            return $user->accessTokenResponseBody['email'] ?? null;
+        }
+        return $user->email;
     }
 }
