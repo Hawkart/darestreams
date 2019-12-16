@@ -104,16 +104,22 @@ class CalculateRatingTop extends Command
                             ]);
                         }
 
-                        if(isset($ratings[$game_id]))
+                        /*if(isset($ratings[$game_id]))
                             $ratings[$game_id]+= $rating;
                         else
-                            $ratings[$game_id] = $rating;
+                            $ratings[$game_id] = $rating;*/
                     }
                 }
             }
         }
 
-        if(count($ratings)>0)
+        $gamesHistory = GameHistory::where('created_at', '>', $prevDay)->with(['game'])->get();
+        foreach($gamesHistory as $gh)
+        {
+            $gh->game->update(['rating' => $gh->time]);
+        }
+
+        /*if(count($ratings)>0)
         {
             foreach(Game::all() as $game)
             {
@@ -129,7 +135,7 @@ class CalculateRatingTop extends Command
                     ]);
                 }
             }
-        }
+        }*/
     }
 
     public function calculateChannelRating()
