@@ -9,6 +9,7 @@ use App\Models\Rating\GameChannelHistory;
 use App\Models\Rating\GameHistory;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use DB;
 
 class BugfixRatingGameChannel extends Command
 {
@@ -56,8 +57,14 @@ class BugfixRatingGameChannel extends Command
             ]);
         }*/
 
+        DB::beginTransaction();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+
         GameChannelHistory::truncate();
         GameHistory::truncate();
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        DB::commit();
 
         $this->getGamesList();
         $this->calculateGameRating();
