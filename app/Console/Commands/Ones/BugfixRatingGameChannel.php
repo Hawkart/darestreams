@@ -139,14 +139,15 @@ class BugfixRatingGameChannel extends Command
         $prevDay = Carbon::now('UTC')->subDays(2);
 
         //check all history updated
-        $games = Game::whereHas('history', function($q) use ($prevDay){
+        /*$games = Game::whereHas('history', function($q) use ($prevDay){
             $q->where('updated_at', '>', $prevDay);
         }, '=', 0)->count();
 
         if($games==0)
-        {
+        {*/
             //GameHistory
             $history = GameHistory::where('updated_at', '>', $prevDay)
+                ->where('place', 0)
                 ->orderBy('time', 'DESC')
                 ->get();
 
@@ -159,6 +160,7 @@ class BugfixRatingGameChannel extends Command
 
             //GameChannelHistory
             $history = GameChannelHistory::where('updated_at', '>', $prevDay)
+                ->where('place', 0)
                 ->orderBy('time', 'DESC')
                 ->get();
 
@@ -170,9 +172,9 @@ class BugfixRatingGameChannel extends Command
             }
 
             echo "places updated";
-        }else{
+        /*}else{
             echo "game history not updated";
-        }
+        }*/
     }
 
     public function getGamesList()
