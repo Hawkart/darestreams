@@ -3,6 +3,8 @@
 namespace App\Console\Commands\Ones;
 
 use App\Enums\StreamStatus;
+use App\Enums\TaskStatus;
+use App\Models\Game;
 use App\Models\Stream;
 use App\Models\User;
 use Carbon\Carbon;
@@ -29,6 +31,7 @@ class GetLiveStreams extends Command
      * @var string
      */
     protected $description = '';
+    public $games = [];
 
     /**
      * Create a new command instance.
@@ -44,6 +47,7 @@ class GetLiveStreams extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
+        $this->GetGamesList();
         $this->CheckChannelsStreams();
 
         echo "CheckChannelsStreams"."\r\n";
@@ -113,7 +117,18 @@ class GetLiveStreams extends Command
                                     $minutes = ceil($now->diffInSeconds($start_at)/60);
                                     if($minutes<10)
                                     {
-                                        $this->NotifyCreateStreamInDareStreams($channel);
+                                        //Check exist created stream
+                                        $createdStream = Stream::where('channel_id', $channel->id)
+                                            ->where('status', StreamStatus::Created)
+                                            ->first();
+
+                                        //create new stream by system
+                                        if(!$createdStream)
+                                        {
+                                            $this->CreateForTestNewStream($channel, $stream);
+                                        }
+
+                                        //$this->NotifyCreateStreamInDareStreams($channel);
                                     }
                                 }
                             }
@@ -129,11 +144,21 @@ class GetLiveStreams extends Command
             {
                 foreach($chs as $channel)
                 {
+                    $streams = Stream::where('channel_id', $channel->id)->where('status', StreamStatus::Active)
+                        ->where('start_at', '>', $date);
+
                     //1. Active in Dare but not active in Twitch (started_at)
-                    if(Stream::where('channel_id', $channel->id)->where('status', StreamStatus::Active)
-                        ->where('start_at', '>', $date)->count()>0)
+                    if($streams->count()>0)
                     {
-                        $this->NotifyCreateStreamInTwitch($channel);
+                        $stream = $streams->first();
+
+                        //if created by system that means stream in Twitch just finished
+                        if($stream->created_by_system)
+                        {
+                            $this->FinishTestStream($stream);
+                        }else{
+                            $this->NotifyCreateStreamInTwitch($channel);
+                        }
                     }
                 }
             }
@@ -236,6 +261,61 @@ class GetLiveStreams extends Command
         $channel->update(['streams' => $streams]);
     }
 
+    /**
+     * @param $channel
+     * @param $stream
+     */
+    public function CreateForTestNewStream($channel, $stream)
+    {
+        $now = Carbon::now('UTC');
+        Stream::create([
+            "title" => isset($stream->title) ? $stream->title : $channel->name,
+            'views' =>  $stream->viewer_count,
+            'preview' =>  str_replace(['{width}', '{height}'], [1200, 800], $stream->thumbnail_url),
+            "game_id" => isset($this->games[$stream['game_id']]) ? $this->games[$stream['game_id']] : $channel->game_id,
+            "link" => 'https://twitch.tv/'.$channel->name,
+            "channel_id" => $channel->id,
+            "started_at" => $now,
+            "status" => StreamStatus::Active,
+            "allow_task_before_stream" => 1,
+            "allow_task_when_stream" => 1,
+            "min_amount_task_before_stream" => 50,
+            "min_amount_task_when_stream" => 50,
+            "min_amount_donate_task_before_stream" => 50,
+            "min_amount_donate_task_when_stream" => 50,
+            "created_by_system" => true
+        ]);
+    }
+
+    /**
+     * @param $stream
+     */
+    public function FinishTestStream($stream)
+    {
+        $stream->update([
+            "status" => StreamStatus::FinishedWaitPay,
+            "ended_at" => Carbon::now('UTC')
+        ]);
+
+        $tasks = $stream->tasks;
+        if(count($tasks)>0)
+        {
+            foreach($tasks as $task)
+            {
+                if($task->amount_donations==0 && $task->adv_task_id==0)
+                {
+                    $task->update(['status' => TaskStatus::PayFinished]);
+                }else{
+                    $task->update(['status' => TaskStatus::AllowVote]);
+                }
+            }
+        }
+    }
+
+    /**
+     * @param $channel
+     * @param $stream
+     */
     public function AdminNotifyAboutNewStream($channel, $stream)
     {
         $admin = User::admins()->where('email', config('mail.admin_email'))->first();
@@ -263,6 +343,9 @@ class GetLiveStreams extends Command
         }
     }
 
+    /**
+     * @param $channel
+     */
     public function NotifyToFinishInTwitch($channel)
     {
         $user = $channel->user;
@@ -278,6 +361,9 @@ class GetLiveStreams extends Command
         $user->notify(new NotifyFollowersAboutStream($details));
     }
 
+    /**
+     * @param $channel
+     */
     public function NotifyCreateStreamInDareStreams($channel)
     {
         $user = $channel->user;
@@ -293,6 +379,9 @@ class GetLiveStreams extends Command
         $user->notify(new NotifyFollowersAboutStream($details));
     }
 
+    /**
+     * @param $channel
+     */
     public function NotifyCreateStreamInTwitch($channel)
     {
         $user = $channel->user;
@@ -306,5 +395,13 @@ class GetLiveStreams extends Command
         ];
 
         $user->notify(new NotifyFollowersAboutStream($details));
+    }
+
+    /**
+     * Game list
+     */
+    public function GetGamesList()
+    {
+        $this->games = Game::pluck('id', 'twitch_id')->toArray();
     }
 }
