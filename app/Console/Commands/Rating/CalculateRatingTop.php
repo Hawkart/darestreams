@@ -368,7 +368,9 @@ class CalculateRatingTop extends Command
             //GameChannelHistory
             $history = GameChannelHistory::where('updated_at', '>', $prevDay)
                 ->where('place', 0)
-                ->where('game_id', $game_id)
+                ->whereHas('gameHistory', function($q) use ($game_id){
+                    $q->where('game_id', $game_id);
+                })
                 ->orderBy('time', 'DESC')
                 ->get();
 
