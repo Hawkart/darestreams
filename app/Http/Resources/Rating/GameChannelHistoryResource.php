@@ -19,6 +19,7 @@ class GameChannelHistoryResource extends JsonResource
             'game_history_id' => $this->game_history_id,
             'channel_id' => $this->channel_id,
             'rating' => $this->time,
+            'place' => $this->place,
             'created_at' => getW3cDatetime($this->created_at),
             'updated_at' => getW3cDatetime($this->updated_at),
 

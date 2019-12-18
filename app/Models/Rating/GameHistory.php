@@ -41,6 +41,6 @@ class GameHistory extends Model
      */
     public function gameChannels()
     {
-        return $this->hasMany(GameChannelHistory::class)->orderBy('time', 'desc');
+        return $this->hasMany(GameChannelHistory::class)->orderBy('place', 'desc');
     }
 }
