@@ -4,12 +4,15 @@ namespace App\Console\Commands\Ones;
 
 use App\Models\Game;
 use App\Models\Rating\Channel;
-use App\Models\Rating\ChannelHistory;
+use App\Models\Rating\Channel as StatChannel;
 use App\Models\Rating\GameChannelHistory;
 use App\Models\Rating\GameHistory;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use DB;
+use Illuminate\Support\Facades\Log;
+use NewTwitchApi\HelixGuzzleClient;
+use NewTwitchApi\NewTwitchApi;
 
 class BugfixRatingGameChannel extends Command
 {
@@ -66,12 +69,59 @@ class BugfixRatingGameChannel extends Command
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         DB::commit();*/
 
-        $this->getGamesList();
+        /*$this->getGamesList();
         $this->clearRating();
         $this->calculateGameRating();
-        $this->historySetGamePlace();
+        $this->historySetGamePlace();*/
+
+        $this->CheckTwitchRequests();
 
         $bar->finish();
+    }
+
+    public function CheckTwitchRequests()
+    {
+        $clientId = config('app.rating_twitch_api_key');
+        $clientSecret = config('app.rating_twitch_api_secret');
+        $helixGuzzleClient = new HelixGuzzleClient($clientId);
+        $newTwitchApi = new NewTwitchApi($helixGuzzleClient, $clientId, $clientSecret);
+
+        $start = date("H:i:s");
+        $k = 1;
+
+        StatChannel::chunk(100, function($channels) use ($newTwitchApi, $k)
+        {
+            $ids = [];
+            foreach ($channels as $stat)
+                $ids[] = $stat->exid;
+
+            try {
+                $response = $newTwitchApi->getStreamsApi()->getStreams($ids);
+                $content = json_decode($response->getBody()->getContents());
+
+                if(count($content->data)>0)
+                {
+                    echo $k."\r\n";
+                }
+
+            } catch (\Exception $e) {
+
+                Log::info('UpdateChannelStreams in GetLiveStreams', [
+                    'error' => $e->getMessage(),
+                    'file' => __FILE__,
+                    'line' => __LINE__
+                ]);
+            }
+
+            $k++;
+
+            if($k>800)
+                return false;
+        });
+
+        $end = date("H:i:s");
+
+        echo $start."   ".$end."\r\n";
     }
 
     public function clearRating()
