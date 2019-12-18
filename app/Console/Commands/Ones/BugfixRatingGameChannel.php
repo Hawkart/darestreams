@@ -80,13 +80,13 @@ class BugfixRatingGameChannel extends Command
         $ghs = GameHistory::where('created_at', '>', $prevDay)->get();
         foreach($ghs as $gh)
         {
-            $gh->update(['time' => 0]);
+            $gh->update(['time' => 0, 'place' => 0]);
         }
 
         $ghs = GameChannelHistory::where('created_at', '>', $prevDay)->get();
         foreach($ghs as $gh)
         {
-            $gh->update(['time' => 0]);
+            $gh->update(['time' => 0, 'place' => 0]);
         }
     }
 
@@ -172,7 +172,9 @@ class BugfixRatingGameChannel extends Command
             //GameChannelHistory
             $history = GameChannelHistory::where('updated_at', '>', $prevDay)
                 ->where('place', 0)
-                ->where('game_id', $game_id)
+                ->whereHas('gameHistory', function($q) use ($game_id){
+                    $q->where('game_id', $game_id);
+                })
                 ->orderBy('time', 'DESC')
                 ->get();
 
