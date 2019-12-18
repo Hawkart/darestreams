@@ -48,7 +48,7 @@ class CalculateRatingTop extends Command
         $this->calculateChannelRating();
         $this->calculateGameRating();
         $this->historySetChannelPlace();
-        $this->historySetGamePlace();
+        //$this->historySetGamePlace();
 
         $bar->finish();
     }
@@ -95,12 +95,12 @@ class CalculateRatingTop extends Command
                         if($gamesChannelsHistory->count()>0)
                         {
                             $gch = $gamesChannelsHistory->first();
-                            $gch->update(['time' => $gh->time + $rating ]);
+                            $gch->update(['time' => $gch->time + $rating ]);
                         }else{
                             GameChannelHistory::create([
                                 'game_history_id' =>  $gh->id,
                                 'channel_id' => $channel->id,
-                                'time' => ceil($stream['views']*$stream['length']/3600)
+                                'time' => $rating
                             ]);
                         }
 
@@ -339,6 +339,8 @@ class CalculateRatingTop extends Command
                 $place++;
             }
 
+            $this->historySetGamePlace();
+
             echo "places updated";
         }else{
             echo "channels not updated = ".$channels;
@@ -349,27 +351,24 @@ class CalculateRatingTop extends Command
     {
         $prevDay = Carbon::now('UTC')->subDays(2);
 
-        //check all history updated
-        $games = Game::whereHas('history', function($q) use ($prevDay){
-                $q->where('updated_at', '>', $prevDay);
-            }, '=', 0)->count();
+        $history = GameHistory::where('updated_at', '>', $prevDay)
+            ->where('place', 0)
+            ->orderBy('time', 'DESC')
+            ->get();
 
-        if($games==0)
+        $place = 1;
+        foreach($history as $h)
         {
-            //GameHistory
-            $history = GameHistory::where('updated_at', '>', $prevDay)
-                ->orderBy('time', 'DESC')
-                ->get();
+            $h->update(['place' => $place]);
+            $place++;
+        }
 
-            $place = 1;
-            foreach($history as $h)
-            {
-                $h->update(['place' => $place]);
-                $place++;
-            }
-
+        foreach($this->games as $game_id)
+        {
             //GameChannelHistory
             $history = GameChannelHistory::where('updated_at', '>', $prevDay)
+                ->where('place', 0)
+                ->where('game_id', $game_id)
                 ->orderBy('time', 'DESC')
                 ->get();
 
@@ -379,11 +378,9 @@ class CalculateRatingTop extends Command
                 $h->update(['place' => $place]);
                 $place++;
             }
-
-            echo "places updated";
-        }else{
-            echo "game history not updated";
         }
+
+        echo "places updated";
     }
 
     public function getGamesList()

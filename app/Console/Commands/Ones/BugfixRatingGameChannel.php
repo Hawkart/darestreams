@@ -57,25 +57,42 @@ class BugfixRatingGameChannel extends Command
             ]);
         }*/
 
-        DB::beginTransaction();
+        /*DB::beginTransaction();
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
         GameChannelHistory::truncate();
         GameHistory::truncate();
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-        DB::commit();
+        DB::commit();*/
 
         $this->getGamesList();
+        $this->clearRating();
         $this->calculateGameRating();
         $this->historySetGamePlace();
 
         $bar->finish();
     }
 
+    public function clearRating()
+    {
+        $prevDay = Carbon::now('UTC')->subDays(12);
+        $ghs = GameHistory::where('created_at', '>', $prevDay)->get();
+        foreach($ghs as $gh)
+        {
+            $gh->update(['time' => 0]);
+        }
+
+        $ghs = GameChannelHistory::where('created_at', '>', $prevDay)->get();
+        foreach($ghs as $gh)
+        {
+            $gh->update(['time' => 0]);
+        }
+    }
+
     public function calculateGameRating()
     {
-        $prevDay = Carbon::now('UTC')->subDays(10);
+        $prevDay = Carbon::now('UTC')->subDays(12);
         $channels = Channel::top()->get();
 
         foreach($channels as $channel)
@@ -86,7 +103,7 @@ class BugfixRatingGameChannel extends Command
             {
                 foreach($streams as $stream)
                 {
-                    if(abs(Carbon::now('UTC')->startOfDay()->diffInDays($stream['started_at'], false))>7) continue;
+                    if(abs(Carbon::now('UTC')->startOfDay()->diffInDays($stream['started_at'], false))>12) continue;
 
                     if(isset($stream['length']) && isset($stream['game_id']) && intval($stream['length'])>0 && isset($this->games[$stream['game_id']]))
                     {
@@ -114,12 +131,12 @@ class BugfixRatingGameChannel extends Command
                         if($gamesChannelsHistory->count()>0)
                         {
                             $gch = $gamesChannelsHistory->first();
-                            $gch->update(['time' => $gh->time + $rating ]);
+                            $gch->update(['time' => $gch->time + $rating ]);
                         }else{
                             GameChannelHistory::create([
                                 'game_history_id' =>  $gh->id,
                                 'channel_id' => $channel->id,
-                                'time' => ceil($stream['views']*$stream['length']/3600)
+                                'time' => $rating
                             ]);
                         }
                     }
@@ -138,29 +155,24 @@ class BugfixRatingGameChannel extends Command
     {
         $prevDay = Carbon::now('UTC')->subDays(2);
 
-        //check all history updated
-        /*$games = Game::whereHas('history', function($q) use ($prevDay){
-            $q->where('updated_at', '>', $prevDay);
-        }, '=', 0)->count();
+        $history = GameHistory::where('updated_at', '>', $prevDay)
+            ->where('place', 0)
+            ->orderBy('time', 'DESC')
+            ->get();
 
-        if($games==0)
-        {*/
-            //GameHistory
-            $history = GameHistory::where('updated_at', '>', $prevDay)
-                ->where('place', 0)
-                ->orderBy('time', 'DESC')
-                ->get();
+        $place = 1;
+        foreach($history as $h)
+        {
+            $h->update(['place' => $place]);
+            $place++;
+        }
 
-            $place = 1;
-            foreach($history as $h)
-            {
-                $h->update(['place' => $place]);
-                $place++;
-            }
-
+        foreach($this->games as $game_id)
+        {
             //GameChannelHistory
             $history = GameChannelHistory::where('updated_at', '>', $prevDay)
                 ->where('place', 0)
+                ->where('game_id', $game_id)
                 ->orderBy('time', 'DESC')
                 ->get();
 
@@ -170,11 +182,9 @@ class BugfixRatingGameChannel extends Command
                 $h->update(['place' => $place]);
                 $place++;
             }
+        }
 
-            echo "places updated";
-        /*}else{
-            echo "game history not updated";
-        }*/
+        echo "places updated";
     }
 
     public function getGamesList()
