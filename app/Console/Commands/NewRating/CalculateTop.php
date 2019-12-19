@@ -1,34 +1,32 @@
 <?php
 
-namespace App\Console\Commands\Ones;
+namespace App\Console\Commands\NewRating;
 
 use App\Models\Game;
+use App\Models\Rating\ChannelHistory;
 use App\Models\Rating\Channel;
-use App\Models\Rating\Channel as StatChannel;
+use App\Models\Channel as Ch;
+use App\Acme\Helpers\TwitchHelper;
 use App\Models\Rating\GameChannelHistory;
 use App\Models\Rating\GameHistory;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use DB;
-use Illuminate\Support\Facades\Log;
-use NewTwitchApi\HelixGuzzleClient;
-use NewTwitchApi\NewTwitchApi;
 
-class BugfixRatingGameChannel extends Command
+class CalculateTop extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'bugfix:rating-game-channel';
+    protected $signature = 'stat:calculate_top';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '';
+    protected $description = 'Calculate rating & new top.';
     protected $games = [];
 
     /**
@@ -44,94 +42,72 @@ class BugfixRatingGameChannel extends Command
     public function handle()
     {
         $bar = $this->output->createProgressBar(100);
-        /*$prevDay = Carbon::now('UTC')->subDays(5);
-        $prevWeek = Carbon::now('UTC')->subDays(10);
 
-        GameChannelHistory::where('created_at', '>', $prevDay)->delete();
-        ChannelHistory::where('created_at', '>', $prevDay)->delete();
+        $this->GetGamesList();
+        $this->CalculateChannelsRating();
+        $this->UpdateChannelsTop();
+        $this->UpdateChannelsInfo();
 
-        $histories = ChannelHistory::where('created_at', '>', $prevWeek)->with(['channel'])->get();
-        foreach($histories as $history)
-        {
-            $history->channel->update([
-                'followers' => $history->followers,
-                'views' => $history->views,
-                'rating' => $history->rating
-            ]);
-        }*/
-
-        /*DB::beginTransaction();
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-
-        GameChannelHistory::truncate();
-        GameHistory::truncate();
-
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-        DB::commit();*/
-
-        /*$this->getGamesList();
-        $this->clearRating();
-        $this->calculateGameRating();
-        $this->historySetGamePlace();*/
-
-        $this->CheckTwitchRequests();
+        $this->CalculateGameRating();
+        $this->HistorySetChannelPlace();
+        $this->HistorySetGamePlace();
 
         $bar->finish();
     }
 
-    public function CheckTwitchRequests()
+    public function CalculateChannelsRating()
     {
-        $clientId = config('app.rating_twitch_api_key');
-        $clientSecret = config('app.rating_twitch_api_secret');
-        $helixGuzzleClient = new HelixGuzzleClient($clientId);
-        $newTwitchApi = new NewTwitchApi($helixGuzzleClient, $clientId, $clientSecret);
-
-        $start = date("H:i:s");
-
-        StatChannel::limit(1600)->chunk(2, function($channels) use ($newTwitchApi)
+        foreach(Channel::all() as $channel)
         {
-            $ids = [];
-            foreach ($channels as $stat)
-                $ids[] = $stat->exid;
+            echo "channel_id = ".$channel->id."\r\n";
 
-            try {
-                $response = $newTwitchApi->getStreamsApi()->getStreams($ids);
-                $content = json_decode($response->getBody()->getContents());
+            $streams = $channel->streams;
+            $rating = 0;
 
-                if(count($content->data)>0)
+            if(count($streams)>0)
+            {
+                foreach($streams as $stream)
                 {
-                    echo count($content->data)."\r\n";
+                    if(abs(Carbon::now('UTC')->startOfDay()->diffInDays($stream['started_at'], false))>7) continue;
+
+                    if(isset($stream['length']) && intval($stream['length'])>0)
+                    {
+                        $rating += ceil($stream['views'] * $stream['length'] / 3600);
+                    }
                 }
-
-            } catch (\Exception $e) {
-                echo $e->getMessage()."\r\n";
             }
-        });
 
-        $end = date("H:i:s");
+            $channel->update([
+                'rating' => $rating
+            ]);
 
-        echo $start."   ".$end."\r\n";
+            ChannelHistory::create([
+                'channel_id' => $channel->id,
+                'followers' => 0,
+                'views' => 0,
+                'rating' => $rating
+            ]);
+        }
     }
 
-    public function clearRating()
+    public function UpdateChannelsTop()
     {
-        $prevDay = Carbon::now('UTC')->subDays(12);
-        $ghs = GameHistory::where('created_at', '>', $prevDay)->get();
-        foreach($ghs as $gh)
-        {
-            $gh->update(['time' => 0, 'place' => 0]);
-        }
+        Channel::top()->update(['top' => 0]);
+        Channel::where('rating', ">", 0)
+            ->orderBy('rating', 'desc')
+            ->limit(500)
+            ->update(['top' => 1]);
+    }
 
-        $ghs = GameChannelHistory::where('created_at', '>', $prevDay)->get();
-        foreach($ghs as $gh)
-        {
-            $gh->update(['time' => 0, 'place' => 0]);
-        }
+    public function UpdateChannelsInfo()
+    {
+        //info by channel
+        //get followers count
     }
 
     public function calculateGameRating()
     {
-        $prevDay = Carbon::now('UTC')->subDays(12);
+        $prevDay = Carbon::now('UTC')->subDays(2);
         $channels = Channel::top()->get();
 
         foreach($channels as $channel)
@@ -142,7 +118,7 @@ class BugfixRatingGameChannel extends Command
             {
                 foreach($streams as $stream)
                 {
-                    if(abs(Carbon::now('UTC')->startOfDay()->diffInDays($stream['started_at'], false))>12) continue;
+                    if(abs(Carbon::now('UTC')->startOfDay()->diffInDays($stream['started_at'], false))>7) continue;
 
                     if(isset($stream['length']) && isset($stream['game_id']) && intval($stream['length'])>0 && isset($this->games[$stream['game_id']]))
                     {
@@ -190,11 +166,30 @@ class BugfixRatingGameChannel extends Command
         }
     }
 
-    public function historySetGamePlace()
+
+    public function HistorySetChannelPlace()
     {
         $prevDay = Carbon::now('UTC')->subDays(2);
 
-        $history = GameHistory::where('updated_at', '>', $prevDay)
+        $history = ChannelHistory::where('created_at', '>', $prevDay)
+            ->orderBy('rating', 'DESC')
+            ->get();
+
+        $place = 1;
+        foreach($history as $h)
+        {
+            $h->update(['place' => $place]);
+            $place++;
+        }
+
+        echo "places updated"."\r\n";
+    }
+
+    public function HistorySetGamePlace()
+    {
+        $prevDay = Carbon::now('UTC')->subDays(2);
+
+        $history = GameHistory::where('created_at', '>', $prevDay)
             ->where('place', 0)
             ->orderBy('time', 'DESC')
             ->get();
@@ -225,10 +220,10 @@ class BugfixRatingGameChannel extends Command
             }
         }
 
-        echo "places updated";
+        echo "places updated"."\r\n";
     }
 
-    public function getGamesList()
+    public function GetGamesList()
     {
         $this->games = Game::pluck('id', 'twitch_id')->toArray();
     }

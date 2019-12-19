@@ -30,7 +30,7 @@ class Stream extends Model implements ViewableContract
         'min_amount_donate_task_before_stream', 'min_amount_donate_task_when_stream', 'allow_superbowl_before_stream',
         'allow_superbowl_when_stream', 'min_amount_superbowl_before_stream', 'min_amount_superbowl_when_stream',
         'min_amount_donate_superbowl_before_stream', 'min_amount_donate_superbowl_when_stream', '	goal_amount_donate_superbowl_activate',
-        'title', 'tags', 'views', 'preview'
+        'title', 'tags', 'views', 'preview', 'created_by_system'
     ];
 
     /**
