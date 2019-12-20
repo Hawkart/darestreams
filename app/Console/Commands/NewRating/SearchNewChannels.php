@@ -146,7 +146,9 @@ class SearchNewChannels extends Command
 
     protected function importFromStreamers()
     {
-        Streamer::chunk(500, function ($streamers)
+        $names = RatingChannel::all()->pluck('name')->toArray();
+
+        Streamer::whereNotIn('name', $names)->chunk(500, function ($streamers)
         {
             foreach($streamers as $streamer)
             {
@@ -181,12 +183,12 @@ class SearchNewChannels extends Command
         }
 
         //check exist as statistic's channel
-        if(RatingChannel::where('exid', $exid)->count()==0)
-        {
+        //if(RatingChannel::where('exid', $exid)->count()==0)
+        //{
             $result = RatingChannel::create($data);
 
             echo $result->id."\r\n";
-        }
+        //}
 
     }
 
