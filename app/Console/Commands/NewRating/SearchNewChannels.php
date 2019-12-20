@@ -149,18 +149,20 @@ class SearchNewChannels extends Command
 
     protected function ChannelsDeleteDuplicate()
     {
-        $duplicateRecords = DB::select('name')
-            ->selectRaw("count(name) as occurences")
-            ->from('stat_channels')
-            ->groupBy('name')
-            ->having('occurences', '>', 1)
-            ->get();
-
-        foreach($duplicateRecords as $record)
+        $ids = [];
+        $deletes = [];
+        foreach(RatingChannel::all() as $channel)
         {
-            echo $record->name."\r\n";
-            //$record->delete();
+            if(!in_array($channel->exid, $ids))
+            {
+                $ids[] = $channel->exid;
+            }else{
+                $deletes[] = $channel->id;
+            }
         }
+
+        dd($deletes);
+        dd(RatingChannel::whereIn('id', $deletes)->count());
     }
 
     protected function importFromStreamers()
