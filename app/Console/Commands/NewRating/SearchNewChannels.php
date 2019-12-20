@@ -9,6 +9,7 @@ use App\Models\Streamer;
 use Illuminate\Console\Command;
 use Exporter;
 use File;
+use DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 
@@ -54,6 +55,8 @@ class SearchNewChannels extends Command
         if(!empty($this->option('import')))
         {
             $this->info("Importing from streamers table to stat_channels...");
+            $this->ChannelsDeleteDuplicate();
+            dd(1);
             $this->importFromStreamers();
             dd("done!!!");
         }
@@ -142,6 +145,22 @@ class SearchNewChannels extends Command
         $exporter->save($path);
 
         $this->info("path=".$path);
+    }
+
+    protected function ChannelsDeleteDuplicate()
+    {
+        $duplicateRecords = DB::select('name')
+            ->selectRaw('count(`name`) as `occurences`')
+            ->from('channels')
+            ->groupBy('name')
+            ->having('occurences', '>', 1)
+            ->get();
+
+        foreach($duplicateRecords as $record)
+        {
+            echo $record->name."\r\n";
+            //$record->delete();
+        }
     }
 
     protected function importFromStreamers()
