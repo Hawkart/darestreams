@@ -42,14 +42,13 @@ class GetLiveStreams extends Command
     public function __construct()
     {
         parent::__construct();
-
-        $this->token = $this->GetTwitchToken();
     }
 
     public function handle()
     {
         $bar = $this->output->createProgressBar(100);
 
+        $this->GetTwitchToken();
         $this->GetGamesList();
         $this->CheckChannelsStreams();
         $this->UpdateStatChannels();
@@ -72,7 +71,7 @@ class GetLiveStreams extends Command
         $response = $newTwitchApi->getOauthApi()->getAppAccessToken();
         $content = json_decode($response->getBody()->getContents());
 
-        return $content->access_token;
+        $this->token = $content->access_token;
     }
 
     /**
