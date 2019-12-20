@@ -182,7 +182,12 @@ class SearchNewChannels extends Command
 
         //check exist as statistic's channel
         if(RatingChannel::where('exid', $exid)->count()==0)
-            RatingChannel::create($data);
+        {
+            $result = RatingChannel::create($data);
+
+            echo $result->id."\r\n";
+        }
+
     }
 
 
