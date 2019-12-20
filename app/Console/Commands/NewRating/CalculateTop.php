@@ -161,15 +161,15 @@ class CalculateTop extends Command
                 $chs[$stat->exid] = $stat;
 
                 try {
-                    $followers = $this->GetChannelFollowers($stat->exid);
+                    $content = $this->GetChannelFollowers($stat->exid);
 
                     $stat->update([
-                        'followers' => $followers
+                        'followers' => $content->total
                     ]);
 
                     if (isset($stat->lastHistory[0])) {
                         $stat->lastHistory[0]->update([
-                            'followers' => $followers
+                            'followers' => $content->total
                         ]);
                     }
                 } catch (\Exception $e) {
