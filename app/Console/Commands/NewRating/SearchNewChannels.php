@@ -55,8 +55,7 @@ class SearchNewChannels extends Command
         if(!empty($this->option('import')))
         {
             $this->info("Importing from streamers table to stat_channels...");
-            $this->ChannelsDeleteDuplicate();
-            dd(1);
+            //$this->ChannelsDeleteDuplicate();
             $this->importFromStreamers();
             dd("done!!!");
         }
@@ -151,6 +150,7 @@ class SearchNewChannels extends Command
     {
         $ids = [];
         $deletes = [];
+        $k = 1;
         foreach(RatingChannel::all() as $channel)
         {
             if(!in_array($channel->exid, $ids))
@@ -159,18 +159,21 @@ class SearchNewChannels extends Command
             }else{
                 $deletes[] = $channel->id;
             }
+
+            echo $k."\r\n";
+            $k++;
         }
 
-        dd($deletes);
-        dd(RatingChannel::whereIn('id', $deletes)->count());
+        RatingChannel::whereIn('id', $deletes)->delete();
     }
 
     protected function importFromStreamers()
     {
-        $names = RatingChannel::all()->pluck('name')->toArray();
-
-        Streamer::whereNotIn('name', $names)->chunk(500, function ($streamers)
+        $k = 1;
+        Streamer::chunk(500, function ($streamers, &$k)
         {
+            echo ($k*500)."\r\n"; $k++;
+
             foreach($streamers as $streamer)
             {
                 $this->CreateChannel($streamer->json);
@@ -204,13 +207,12 @@ class SearchNewChannels extends Command
         }
 
         //check exist as statistic's channel
-        //if(RatingChannel::where('exid', $exid)->count()==0)
-        //{
+        if(RatingChannel::where('exid', $exid)->count()==0)
+        {
             $result = RatingChannel::create($data);
 
             echo $result->id."\r\n";
-        //}
-
+        }
     }
 
 

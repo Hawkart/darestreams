@@ -35,16 +35,18 @@ class Kernel extends ConsoleKernel
         Commands\Ones\GetLiveStreams::class,
         Commands\Ones\BugfixRatingGameChannel::class,
 
-        Commands\Rating\ParseStreamers::class,
+        /*Commands\Rating\ParseStreamers::class,
         Commands\Rating\UpdateRatingChannels::class,
         Commands\Rating\CalculateRatingTop::class,
         Commands\Rating\SyncStatChannels::class,
-        Commands\Rating\RecalculateRating::class,
+        Commands\Rating\RecalculateRating::class,*/
         Commands\SpeechRecognize::class,
 
 
         //New Rating
-        Commands\NewRating\SearchNewChannels::class
+        Commands\NewRating\SearchNewChannels::class,
+        Commands\NewRating\GetLiveStreams::class,
+        Commands\NewRating\CalculateTop::class,
     ];
 
     /**
@@ -65,10 +67,10 @@ class Kernel extends ConsoleKernel
         $schedule->command('votes:finish')->everyMinute();
 
 
-        $schedule->command('twitch:get_live_streams')->everyTenMinutes();
+        $schedule->command('twitch:get_live_streams')->everyFiveMinutes();
         //$schedule->command('streamers:parse')->hourly();
         //$schedule->command('stat:channels_update')->cron('* * * * 1,2,3,4');
-        $schedule->command('stat:calculate_top')->fridays()->everyFiveMinutes();
+        //$schedule->command('stat:calculate_top')->fridays()->everyFiveMinutes();
     }
 
     /**
