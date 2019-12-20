@@ -150,7 +150,7 @@ class SearchNewChannels extends Command
     protected function ChannelsDeleteDuplicate()
     {
         $duplicateRecords = DB::select('name')
-            ->selectRaw("count('name') as 'occurences'")
+            ->selectRaw("count(name) as occurences")
             ->from('stat_channels')
             ->groupBy('name')
             ->having('occurences', '>', 1)
