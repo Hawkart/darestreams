@@ -128,7 +128,7 @@ class GetLiveStreams extends Command
                             if(Stream::where('channel_id', $channel->id)->whereIn('status', $statuses)
                                     ->where('ended_at', '>', $date)->count()>0)
                             {
-                                $this->NotifyToFinishInTwitch($channel, $stream);
+                                //$this->NotifyToFinishInTwitch($channel, $stream);
                             }else{
 
                                 $activeStream = Stream::where('channel_id', $channel->id)
@@ -185,7 +185,7 @@ class GetLiveStreams extends Command
                         {
                             $this->FinishTestStream($stream);
                         }else{
-                            $this->NotifyCreateStreamInTwitch($channel);
+                            //$this->NotifyCreateStreamInTwitch($channel);
                         }
                     }
                 }
@@ -221,8 +221,8 @@ class GetLiveStreams extends Command
 
                             $this->UpdateChannelStreams($channel, $stream);
 
-                            if($channel->top)
-                                $this->AdminNotifyAboutNewStream($channel, $stream);
+                            //if($channel->top)
+                                //$this->AdminNotifyAboutNewStream($channel, $stream);
                         }
                     }
                 }
