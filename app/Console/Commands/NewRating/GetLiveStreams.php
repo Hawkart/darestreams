@@ -293,7 +293,7 @@ class GetLiveStreams extends Command
             "title" => isset($stream->title) ? $stream->title : $channel->name,
             'views' =>  $stream->viewer_count,
             'preview' =>  str_replace(['{width}', '{height}'], [1200, 800], $stream->thumbnail_url),
-            "game_id" => isset($this->games[$stream['game_id']]) ? $this->games[$stream['game_id']] : $channel->game_id,
+            "game_id" => isset($this->games[$stream->game_id]) ? $this->games[$stream->game_id] : $channel->game_id,
             "link" => 'https://twitch.tv/'.$channel->name,
             "channel_id" => $channel->id,
             "started_at" => $now,
