@@ -32,6 +32,7 @@ class GetLiveStreams extends Command
      */
     protected $description = '';
     public $games = [];
+    public $token = '';
 
     /**
      * Create a new command instance.
@@ -41,6 +42,8 @@ class GetLiveStreams extends Command
     public function __construct()
     {
         parent::__construct();
+
+        $this->token = $this->GetTwitchToken();
     }
 
     public function handle()
@@ -54,17 +57,48 @@ class GetLiveStreams extends Command
         $bar->finish();
     }
 
-    public function CheckChannelsStreams()
+    /**
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function GetTwitchToken()
     {
         $clientId = config('app.rating_twitch_api_key');
         $clientSecret = config('app.rating_twitch_api_secret');
         $helixGuzzleClient = new HelixGuzzleClient($clientId);
         $newTwitchApi = new NewTwitchApi($helixGuzzleClient, $clientId, $clientSecret);
 
+        //Get Token
+        $response = $newTwitchApi->getOauthApi()->getAppAccessToken();
+        $content = json_decode($response->getBody()->getContents());
+
+        return $content->access_token;
+    }
+
+    /**
+     * @param $ids
+     * @return array|mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function GetStreamsByIds($ids)
+    {
+        $clientId = config('app.rating_twitch_api_key');
+        $clientSecret = config('app.rating_twitch_api_secret');
+        $helixGuzzleClient = new HelixGuzzleClient($clientId);
+        $newTwitchApi = new NewTwitchApi($helixGuzzleClient, $clientId, $clientSecret);
+
+        $response = $newTwitchApi->getStreamsApi()->getStreams($ids, [], [], [], [], null, null, null, $this->token);
+        $streams = json_decode($response->getBody()->getContents());
+
+        return $streams;
+    }
+
+    public function CheckChannelsStreams()
+    {
         $date = Carbon::now('UTC')->subMinutes(10);
         $statuses = [StreamStatus::FinishedIsPayed, StreamStatus::FinishedWaitPay];
 
-        Channel::chunk(100, function($channels) use ($newTwitchApi, $date, $statuses)
+        Channel::chunk(100, function($channels) use ($date, $statuses)
         {
             $ids = [];
             $chs = [];
@@ -79,8 +113,7 @@ class GetLiveStreams extends Command
             //3. Stream in Twitch but not created/active in Dare.
 
             try {
-                $response = $newTwitchApi->getStreamsApi()->getStreams($ids);
-                $content = json_decode($response->getBody()->getContents());
+                $content = $this->GetStreamsByIds($ids);
 
                 if(count($content->data)>0)
                 {
@@ -157,8 +190,6 @@ class GetLiveStreams extends Command
                     }
                 }
             }
-
-            sleep(1);
         });
     }
 
@@ -172,31 +203,20 @@ class GetLiveStreams extends Command
 
     public function UpdateStatChannels()
     {
-        $clientId = config('app.rating_twitch_api_key');
-        $clientSecret = config('app.rating_twitch_api_secret');
-        $helixGuzzleClient = new HelixGuzzleClient($clientId);
-        $newTwitchApi = new NewTwitchApi($helixGuzzleClient, $clientId, $clientSecret);
-
-        StatChannel::chunk(100, function($channels) use ($newTwitchApi)
-        {
+        StatChannel::chunk(100, function ($channels){
             $ids = [];
             $chs = [];
-            foreach ($channels as $stat)
-            {
+            foreach ($channels as $stat) {
                 $ids[] = $stat->exid;
                 $chs[$stat->exid] = $stat;
             }
 
             try {
-                $response = $newTwitchApi->getStreamsApi()->getStreams($ids);
-                $content = json_decode($response->getBody()->getContents());
+                $content = $this->GetStreamsByIds($ids);
 
-                if(count($content->data)>0)
-                {
-                    foreach($content->data as $stream)
-                    {
-                        if($stream->type=='live')
-                        {
+                if (count($content->data) > 0) {
+                    foreach ($content->data as $stream) {
+                        if ($stream->type == 'live') {
                             $channel = $chs[$stream->user_id];
 
                             $this->AdminNotifyAboutNewStream($channel, $stream);
@@ -207,18 +227,19 @@ class GetLiveStreams extends Command
 
             } catch (\Exception $e) {
 
-                Log::info('UpdateChannelStreams in GetLiveStreams', [
+                Log::info('UpdateStatChannels in GetLiveStreams', [
                     'error' => $e->getMessage(),
                     'file' => __FILE__,
                     'line' => __LINE__
                 ]);
-
             }
-
-            sleep(1);
         });
     }
 
+    /**
+     * @param $channel
+     * @param $stream
+     */
     public function UpdateChannelStreams($channel, $stream)
     {
         $frequencyUpdate = 5;   //every 5 minutes

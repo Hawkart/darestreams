@@ -40,7 +40,11 @@ class Kernel extends ConsoleKernel
         Commands\Rating\CalculateRatingTop::class,
         Commands\Rating\SyncStatChannels::class,
         Commands\Rating\RecalculateRating::class,
-        Commands\SpeechRecognize::class
+        Commands\SpeechRecognize::class,
+
+
+        //New Rating
+        Commands\NewRating\SearchNewChannels::class
     ];
 
     /**

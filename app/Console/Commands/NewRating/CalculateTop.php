@@ -5,12 +5,13 @@ namespace App\Console\Commands\NewRating;
 use App\Models\Game;
 use App\Models\Rating\ChannelHistory;
 use App\Models\Rating\Channel;
-use App\Models\Channel as Ch;
-use App\Acme\Helpers\TwitchHelper;
 use App\Models\Rating\GameChannelHistory;
 use App\Models\Rating\GameHistory;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
+use NewTwitchApi\HelixGuzzleClient;
+use NewTwitchApi\NewTwitchApi;
 
 class CalculateTop extends Command
 {
@@ -28,6 +29,7 @@ class CalculateTop extends Command
      */
     protected $description = 'Calculate rating & new top.';
     protected $games = [];
+    public $token = "";
 
     /**
      * Create a new command instance.
@@ -37,6 +39,7 @@ class CalculateTop extends Command
     public function __construct()
     {
         parent::__construct();
+        $this->token = $this->GetTwitchToken();
     }
 
     public function handle()
@@ -47,12 +50,29 @@ class CalculateTop extends Command
         $this->CalculateChannelsRating();
         $this->UpdateChannelsTop();
         $this->UpdateChannelsInfo();
-
         $this->CalculateGameRating();
         $this->HistorySetChannelPlace();
         $this->HistorySetGamePlace();
 
         $bar->finish();
+    }
+
+    /**
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function GetTwitchToken()
+    {
+        $clientId = config('app.rating_twitch_api_key');
+        $clientSecret = config('app.rating_twitch_api_secret');
+        $helixGuzzleClient = new HelixGuzzleClient($clientId);
+        $newTwitchApi = new NewTwitchApi($helixGuzzleClient, $clientId, $clientSecret);
+
+        //Get Token
+        $response = $newTwitchApi->getOauthApi()->getAppAccessToken();
+        $content = json_decode($response->getBody()->getContents());
+
+        return $content->access_token;
     }
 
     public function CalculateChannelsRating()
@@ -99,10 +119,97 @@ class CalculateTop extends Command
             ->update(['top' => 1]);
     }
 
+    /**
+     * @param $ids
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function GetChannelsInfoByIds($ids)
+    {
+        $clientId = config('app.rating_twitch_api_key');
+        $clientSecret = config('app.rating_twitch_api_secret');
+        $helixGuzzleClient = new HelixGuzzleClient($clientId);
+        $newTwitchApi = new NewTwitchApi($helixGuzzleClient, $clientId, $clientSecret);
+
+        $response = $newTwitchApi->getUsersApi()->getUsers($ids, [], false, $this->token);
+        return json_decode($response->getBody()->getContents());
+    }
+
+    /**
+     * @param $exid
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function GetChannelFollowers($exid)
+    {
+        $clientId = config('app.rating_twitch_api_key');
+        $clientSecret = config('app.rating_twitch_api_secret');
+        $helixGuzzleClient = new HelixGuzzleClient($clientId);
+        $newTwitchApi = new NewTwitchApi($helixGuzzleClient, $clientId, $clientSecret);
+
+        $response = $newTwitchApi->getUsersApi()->getUsersFollows(null, $exid, null, null, $this->token);
+        return json_decode($response->getBody()->getContents());
+    }
+
     public function UpdateChannelsInfo()
     {
-        //info by channel
-        //get followers count
+        Channel::top()->with(['lastHistory'])::chunk(100, function($channels) {
+            $ids = [];
+            $chs = [];
+            foreach ($channels as $stat) {
+                $ids[] = $stat->exid;
+                $chs[$stat->exid] = $stat;
+
+                try {
+                    $followers = $this->GetChannelFollowers($stat->exid);
+
+                    $stat->update([
+                        'followers' => $followers
+                    ]);
+
+                    if (isset($stat->lastHistory[0])) {
+                        $stat->lastHistory[0]->update([
+                            'followers' => $followers
+                        ]);
+                    }
+                } catch (\Exception $e) {
+                    Log::info('UpdateChannelsInfo (Followers) in CalculateTop', [
+                        'error' => $e->getMessage(),
+                        'file' => __FILE__,
+                        'line' => __LINE__
+                    ]);
+                }
+            }
+
+            try {
+                $content = $this->GetChannelsInfoByIds($ids);
+
+                if (count($content->data) > 0)
+                {
+                    foreach ($content->data as $data)
+                    {
+                        $channel = $chs[$data->id];
+
+                        $channel->update([
+                            'views' => $data->view_count
+                        ]);
+
+                        if (isset($channel->lastHistory[0]))
+                        {
+                            $channel->lastHistory[0]->update([
+                                'views' => $data->view_count
+                            ]);
+                        }
+                    }
+                }
+            } catch (\Exception $e) {
+                Log::info('UpdateChannelsInfo (Views) in CalculateTop', [
+                    'error' => $e->getMessage(),
+                    'file' => __FILE__,
+                    'line' => __LINE__
+                ]);
+            }
+        });
     }
 
     public function calculateGameRating()
@@ -165,7 +272,6 @@ class CalculateTop extends Command
             $gh->game->update(['rating' => $gh->time]);
         }
     }
-
 
     public function HistorySetChannelPlace()
     {
