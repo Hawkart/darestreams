@@ -219,8 +219,10 @@ class GetLiveStreams extends Command
                         if ($stream->type == 'live') {
                             $channel = $chs[$stream->user_id];
 
-                            $this->AdminNotifyAboutNewStream($channel, $stream);
                             $this->UpdateChannelStreams($channel, $stream);
+
+                            if($channel->top)
+                                $this->AdminNotifyAboutNewStream($channel, $stream);
                         }
                     }
                 }
