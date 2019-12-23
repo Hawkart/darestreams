@@ -81,7 +81,7 @@ class CalculateTop extends Command
         {
             echo "channel_id = ".$channel->id."\r\n";
 
-            $streams = $channel->streams;
+            $streams = is_array($channel->streams) ? $channel->streams : [];
             $rating = 0;
 
             if(count($streams)>0)
@@ -153,7 +153,7 @@ class CalculateTop extends Command
 
     public function UpdateChannelsInfo()
     {
-        Channel::top()->with(['lastHistory'])::chunk(100, function($channels) {
+        Channel::top()->with(['lastHistory'])->chunk(100, function($channels) {
             $ids = [];
             $chs = [];
             foreach ($channels as $stat) {
