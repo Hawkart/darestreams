@@ -28,7 +28,7 @@ class WithdrawController extends Controller
     /**
      * Create withdraw.
      *
-     * Sends email for verification the withdraw
+     * @authenticated
      *
      * @param TaskTransactionRequest $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
@@ -96,6 +96,10 @@ class WithdrawController extends Controller
     }
 
     /**
+     * Verify withdraw.
+     *
+     * @authenticated
+     *
      * @param $code
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */

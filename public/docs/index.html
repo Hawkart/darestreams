@@ -55,7 +55,7 @@ $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/campaigns/all/tasks", [
     'query' =&gt; [
             "include" =&gt; "campaign",
-            "page" =&gt; "11",
+            "page" =&gt; "4",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -133,7 +133,7 @@ $response = $client-&gt;post("https://darestreams.com/api/campaigns/1/logo", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "logo" =&gt; "quaerat",
+            "logo" =&gt; "ut",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -170,7 +170,7 @@ $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/campaigns", [
     'query' =&gt; [
             "include" =&gt; "advTasks",
-            "page" =&gt; "11",
+            "page" =&gt; "5",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -219,11 +219,11 @@ $response = $client-&gt;post("https://darestreams.com/api/campaigns", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "from" =&gt; "et",
-            "to" =&gt; "neque",
-            "title" =&gt; "quia",
-            "brand" =&gt; "voluptatem",
-            "limit" =&gt; "10",
+            "from" =&gt; "similique",
+            "to" =&gt; "corrupti",
+            "title" =&gt; "officiis",
+            "brand" =&gt; "unde",
+            "limit" =&gt; "12",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -308,11 +308,11 @@ $response = $client-&gt;put("https://darestreams.com/api/campaigns/1", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "from" =&gt; "omnis",
-            "to" =&gt; "sed",
-            "title" =&gt; "nobis",
-            "brand" =&gt; "et",
-            "limit" =&gt; "12",
+            "from" =&gt; "necessitatibus",
+            "to" =&gt; "deleniti",
+            "title" =&gt; "voluptas",
+            "brand" =&gt; "ipsam",
+            "limit" =&gt; "9",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -375,7 +375,7 @@ $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/campaigns/1/tasks", [
     'query' =&gt; [
             "include" =&gt; "campaign",
-            "page" =&gt; "20",
+            "page" =&gt; "3",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -424,12 +424,12 @@ $response = $client-&gt;post("https://darestreams.com/api/campaigns/1/tasks", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "small_desc" =&gt; "enim",
-            "full_desc" =&gt; "ad",
-            "limit" =&gt; "15",
-            "price" =&gt; "18",
-            "type" =&gt; "4",
-            "min_rating" =&gt; "1",
+            "small_desc" =&gt; "nemo",
+            "full_desc" =&gt; "aut",
+            "limit" =&gt; "9",
+            "price" =&gt; "5",
+            "type" =&gt; "15",
+            "min_rating" =&gt; "7",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -496,7 +496,7 @@ $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/campaigns/1/tasks/1", [
     'query' =&gt; [
             "include" =&gt; "campaign",
-            "page" =&gt; "18",
+            "page" =&gt; "19",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -545,12 +545,12 @@ $response = $client-&gt;put("https://darestreams.com/api/campaigns/1/tasks/1", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "small_desc" =&gt; "enim",
-            "full_desc" =&gt; "molestiae",
-            "limit" =&gt; "11",
-            "price" =&gt; "9",
-            "type" =&gt; "15",
-            "min_rating" =&gt; "2",
+            "small_desc" =&gt; "pariatur",
+            "full_desc" =&gt; "dolorum",
+            "limit" =&gt; "15",
+            "price" =&gt; "7",
+            "type" =&gt; "8",
+            "min_rating" =&gt; "4",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -981,9 +981,9 @@ $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/channels/top-donated", [
     'query' =&gt; [
             "hours" =&gt; "et",
-            "limit" =&gt; "nesciunt",
-            "skip" =&gt; "vero",
-            "game_id" =&gt; "magni",
+            "limit" =&gt; "blanditiis",
+            "skip" =&gt; "iste",
+            "game_id" =&gt; "pariatur",
             "include" =&gt; "user,streams",
         ],
 ]);
@@ -1048,10 +1048,10 @@ print_r(json_decode((string) $body));</code></pre>
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/channels/top", [
     'query' =&gt; [
-            "hours" =&gt; "consequatur",
-            "limit" =&gt; "non",
-            "skip" =&gt; "repellat",
-            "game_id" =&gt; "quos",
+            "hours" =&gt; "repudiandae",
+            "limit" =&gt; "ex",
+            "skip" =&gt; "harum",
+            "game_id" =&gt; "velit",
             "include" =&gt; "user,streams",
         ],
 ]);
@@ -1124,8 +1124,8 @@ $response = $client-&gt;get("https://darestreams.com/api/channels/1/streams", [
     'query' =&gt; [
             "include" =&gt; "game,tasks",
             "sort" =&gt; "-quantity_donators",
-            "page" =&gt; "15",
-            "filter" =&gt; "atque",
+            "page" =&gt; "9",
+            "filter" =&gt; "harum",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -1186,8 +1186,8 @@ $response = $client-&gt;get("https://darestreams.com/api/channels", [
     'query' =&gt; [
             "include" =&gt; "user,streams",
             "sort" =&gt; "-id",
-            "page" =&gt; "9",
-            "filter" =&gt; "magnam",
+            "page" =&gt; "10",
+            "filter" =&gt; "deserunt",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -1288,8 +1288,8 @@ $response = $client-&gt;put("https://darestreams.com/api/channels/1", [
         ],
     'json' =&gt; [
             "description" =&gt; "Long description.",
-            "logo" =&gt; "voluptas",
-            "game_id" =&gt; "12",
+            "logo" =&gt; "vel",
+            "game_id" =&gt; "10",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -1340,8 +1340,8 @@ $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/games/top", [
     'query' =&gt; [
             "hours" =&gt; "240",
-            "limit" =&gt; "labore",
-            "skip" =&gt; "magnam",
+            "limit" =&gt; "tempore",
+            "skip" =&gt; "est",
             "include" =&gt; "tags,streams",
         ],
 ]);
@@ -1399,8 +1399,8 @@ $response = $client-&gt;get("https://darestreams.com/api/games", [
     'query' =&gt; [
             "include" =&gt; "tags,streams",
             "sort" =&gt; "-popularity",
-            "page" =&gt; "12",
-            "filter" =&gt; "odio",
+            "page" =&gt; "19",
+            "filter" =&gt; "libero",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -1539,10 +1539,10 @@ $response = $client-&gt;post("https://darestreams.com/api/inquires", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "name" =&gt; "est",
-            "title" =&gt; "dolores",
-            "phone" =&gt; "aspernatur",
-            "email" =&gt; "molestiae",
+            "name" =&gt; "porro",
+            "title" =&gt; "et",
+            "phone" =&gt; "omnis",
+            "email" =&gt; "ut",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -1583,6 +1583,52 @@ print_r(json_decode((string) $body));</code></pre>
 </tbody>
 </table>
 <!-- END_a67ed5b42445940e3f57052a78b743cc -->
+<h1>Kycs</h1>
+<!-- START_b8d84f375ccf366944dbed07bfc2b9cc -->
+<h2>Verify KYC</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post("https://darestreams.com/api/kycs/verify/1", [
+]);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/kycs/verify/{code}</code></p>
+<!-- END_b8d84f375ccf366944dbed07bfc2b9cc -->
+<!-- START_5a137f3de7560a97161515d646cab141 -->
+<h2>Send sms for verification</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post("https://darestreams.com/api/kycs/send-sms-code", [
+]);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/kycs/send-sms-code</code></p>
+<!-- END_5a137f3de7560a97161515d646cab141 -->
+<!-- START_6f3ddfd5bf6dd23c7b02cfd10ecc7296 -->
+<h2>Create new kyc.</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post("https://darestreams.com/api/kycs", [
+]);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/kycs</code></p>
+<!-- END_6f3ddfd5bf6dd23c7b02cfd10ecc7296 -->
 <h1>Payments</h1>
 <!-- START_40cac800c40f95f2695eeb00a15e43f4 -->
 <h2>Create a payment.</h2>
@@ -1602,7 +1648,7 @@ $response = $client-&gt;get("https://darestreams.com/api/payments/1/1/1/checkout
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "amount" =&gt; "2",
+            "amount" =&gt; "10",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -1711,7 +1757,7 @@ $response = $client-&gt;get("https://darestreams.com/api/rating", [
     'query' =&gt; [
             "include" =&gt; "history",
             "sort" =&gt; "-id",
-            "page" =&gt; "16",
+            "page" =&gt; "9",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -1845,7 +1891,7 @@ $response = $client-&gt;get("https://darestreams.com/api/rating/games", [
     'query' =&gt; [
             "include" =&gt; "lastHistory",
             "sort" =&gt; "-id",
-            "page" =&gt; "7",
+            "page" =&gt; "14",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -1936,9 +1982,9 @@ print_r(json_decode((string) $body));</code></pre>
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/streams/top", [
     'query' =&gt; [
-            "limit" =&gt; "magnam",
-            "skip" =&gt; "dolorum",
-            "game_id" =&gt; "quia",
+            "limit" =&gt; "amet",
+            "skip" =&gt; "ea",
+            "game_id" =&gt; "ut",
             "include" =&gt; "user,tasks",
             "sort" =&gt; "-views",
         ],
@@ -2004,9 +2050,9 @@ print_r(json_decode((string) $body));</code></pre>
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/streams/closest", [
     'query' =&gt; [
-            "limit" =&gt; "quod",
-            "skip" =&gt; "et",
-            "game_id" =&gt; "velit",
+            "limit" =&gt; "ut",
+            "skip" =&gt; "repellendus",
+            "game_id" =&gt; "voluptatibus",
             "include" =&gt; "user,tasks",
             "sort" =&gt; "-views",
         ],
@@ -2118,8 +2164,8 @@ $response = $client-&gt;get("https://darestreams.com/api/streams", [
     'query' =&gt; [
             "include" =&gt; "game,tasks",
             "sort" =&gt; "-quantity_donators",
-            "page" =&gt; "18",
-            "game_id" =&gt; "quaerat",
+            "page" =&gt; "8",
+            "game_id" =&gt; "nihil",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -2178,17 +2224,17 @@ $response = $client-&gt;post("https://darestreams.com/api/streams", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "channel_id" =&gt; "3",
-            "title" =&gt; "error",
-            "link" =&gt; "repellat",
-            "start_at" =&gt; "ut",
+            "channel_id" =&gt; "1",
+            "title" =&gt; "sed",
+            "link" =&gt; "quo",
+            "start_at" =&gt; "dolor",
             "allow_task_before_stream" =&gt; "",
-            "allow_task_when_stream" =&gt; "",
-            "min_amount_task_before_stream" =&gt; "dolorem",
-            "min_amount_task_when_stream" =&gt; "et",
-            "min_amount_donate_task_before_stream" =&gt; "asperiores",
-            "min_amount_donate_task_when_stream" =&gt; "vel",
-            "tags" =&gt; "id",
+            "allow_task_when_stream" =&gt; "1",
+            "min_amount_task_before_stream" =&gt; "corrupti",
+            "min_amount_task_when_stream" =&gt; "quod",
+            "min_amount_donate_task_before_stream" =&gt; "magni",
+            "min_amount_donate_task_when_stream" =&gt; "et",
+            "tags" =&gt; "odit",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -2329,17 +2375,17 @@ $response = $client-&gt;put("https://darestreams.com/api/streams/1", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "title" =&gt; "tempore",
-            "link" =&gt; "eos",
-            "start_at" =&gt; "quisquam",
-            "status" =&gt; "19",
-            "allow_task_before_stream" =&gt; "1",
+            "title" =&gt; "qui",
+            "link" =&gt; "et",
+            "start_at" =&gt; "soluta",
+            "status" =&gt; "8",
+            "allow_task_before_stream" =&gt; "",
             "allow_task_when_stream" =&gt; "",
-            "min_amount_task_before_stream" =&gt; "rerum",
-            "min_amount_task_when_stream" =&gt; "perferendis",
-            "min_amount_donate_task_before_stream" =&gt; "vero",
-            "min_amount_donate_task_when_stream" =&gt; "sit",
-            "tags" =&gt; "aut",
+            "min_amount_task_before_stream" =&gt; "hic",
+            "min_amount_task_when_stream" =&gt; "eos",
+            "min_amount_donate_task_before_stream" =&gt; "necessitatibus",
+            "min_amount_donate_task_when_stream" =&gt; "facere",
+            "tags" =&gt; "nobis",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -2496,7 +2542,7 @@ $response = $client-&gt;patch("https://darestreams.com/api/tasks/1/set-vote", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "vote" =&gt; "14",
+            "vote" =&gt; "11",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -2591,10 +2637,10 @@ print_r(json_decode((string) $body));</code></pre>
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/tasks", [
     'query' =&gt; [
-            "stream_id" =&gt; "voluptatem",
+            "stream_id" =&gt; "ad",
             "include" =&gt; "user,stream",
             "sort" =&gt; "-amount_donations",
-            "page" =&gt; "18",
+            "page" =&gt; "4",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -2653,12 +2699,12 @@ $response = $client-&gt;post("https://darestreams.com/api/tasks", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "stream_id" =&gt; "7",
-            "small_text" =&gt; "in",
-            "full_text" =&gt; "ut",
-            "interval_time" =&gt; "20",
+            "stream_id" =&gt; "11",
+            "small_text" =&gt; "incidunt",
+            "full_text" =&gt; "impedit",
+            "interval_time" =&gt; "3",
             "is_superbowl" =&gt; "1",
-            "tags" =&gt; "corrupti",
+            "tags" =&gt; "distinctio",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -2750,12 +2796,12 @@ $response = $client-&gt;put("https://darestreams.com/api/tasks/1", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "status" =&gt; "17",
-            "small_text" =&gt; "magnam",
-            "full_text" =&gt; "voluptatem",
-            "interval_time" =&gt; "2",
+            "status" =&gt; "15",
+            "small_text" =&gt; "ut",
+            "full_text" =&gt; "quia",
+            "interval_time" =&gt; "20",
             "is_superbowl" =&gt; "",
-            "tags" =&gt; "perferendis",
+            "tags" =&gt; "at",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -2953,7 +2999,7 @@ $response = $client-&gt;post("https://darestreams.com/api/threads/1/messages", [
             "Content-Type" =&gt; "application/json",
         ],
     'json' =&gt; [
-            "body" =&gt; "qui",
+            "body" =&gt; "iure",
         ],
 ]);
 $body = $response-&gt;getBody();
@@ -3199,6 +3245,27 @@ print_r(json_decode((string) $body));</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/me/account</code></p>
 <!-- END_43f78da269621c9fd3d18db0230c33cf -->
+<!-- START_12cd68e3298d53920853263cd753d875 -->
+<h2>User&#039;s kyc</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get("https://darestreams.com/api/users/me/kyc", [
+]);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "error": "Unauthorized"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/users/me/kyc</code></p>
+<!-- END_12cd68e3298d53920853263cd753d875 -->
 <!-- START_22cac4e428316b498ee7155193eda3b4 -->
 <h2>Update user&#039;s avatar</h2>
 <p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
@@ -3357,8 +3424,8 @@ print_r(json_decode((string) $body));</code></pre>
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get("https://darestreams.com/api/users/top", [
     'query' =&gt; [
-            "limit" =&gt; "et",
-            "skip" =&gt; "et",
+            "limit" =&gt; "corrupti",
+            "skip" =&gt; "aspernatur",
             "include" =&gt; "tasks,channel",
         ],
 ]);
@@ -3462,8 +3529,8 @@ $response = $client-&gt;put("https://darestreams.com/api/users/1", [
         ],
     'json' =&gt; [
             "name" =&gt; "Archibald",
-            "last_name" =&gt; "iste",
-            "middle_name" =&gt; "fugit",
+            "last_name" =&gt; "est",
+            "middle_name" =&gt; "rerum",
             "email" =&gt; "example@example.ru",
         ],
 ]);
@@ -3764,6 +3831,37 @@ print_r(json_decode((string) $body));</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/{user}/oauthproviders/{oauthprovider}</code></p>
 <!-- END_b54231aa40ef8f2bd13f2e93a346a406 -->
+<h1>Withdraw</h1>
+<!-- START_f603a9bf60b0e6db97da0b533bfa2d4a -->
+<h2>Verify withdraw.</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post("https://darestreams.com/api/withdraws/verify/1", [
+]);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/withdraws/verify/{code}</code></p>
+<!-- END_f603a9bf60b0e6db97da0b533bfa2d4a -->
+<!-- START_87fdf21b2ecaf9b232591b26f2424b66 -->
+<h2>Create withdraw.</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post("https://darestreams.com/api/withdraws", [
+]);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/withdraws</code></p>
+<!-- END_87fdf21b2ecaf9b232591b26f2424b66 -->
 <h1>general</h1>
 <!-- START_73ea41ef46e483ce633efd663f12e999 -->
 <h2>api/logs/js</h2>

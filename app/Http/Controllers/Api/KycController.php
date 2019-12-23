@@ -22,6 +22,10 @@ class KycController extends Controller
     }
 
     /**
+     * Create new kyc.
+     *
+     * @authenticated
+     *
      * @param KycRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
@@ -48,6 +52,10 @@ class KycController extends Controller
     }
 
     /**
+     * Send sms for verification
+     *
+     * @authenticated
+     *
      * @param PhoneRequest $request
      * @return \Illuminate\Http\JsonResponse
      * @throws \Twilio\Exceptions\ConfigurationException
@@ -80,6 +88,9 @@ class KycController extends Controller
     }
 
     /**
+     * Verify KYC
+     *
+     * @authenticated
      * @param $code
      * @return \Illuminate\Http\JsonResponse
      */
