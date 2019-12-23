@@ -101,11 +101,6 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('threads.participants', 'Threads\ParticipantController')->only(['index']);
     Route::apiResource('threads.messages', 'Threads\MessageController');
 
-    //'PayPal_Rest'
-    /*Route::get('/payments/{gateway}/{user}/{task}/checkout', array('as' => 'payment.checkout.create', 'uses' => 'PaymentController@checkout'));
-    Route::get('/payments/{gateway}/{user}/{task}/completed', array('as' => 'payment.checkout.completed','uses' => 'PaymentController@completed'));
-    Route::get('/payments/{gateway}/{user}/{task}/cancelled', array('as' => 'payment.checkout.cancelled','uses' => 'PaymentController@cancelled'));*/
-
     Route::get('/payments/{gateway}/{user}/{task}/checkout', array('as' => 'payment.checkout.create', 'uses' => 'PayController@checkout'));
     Route::get('/payments/{gateway}/{user}/{task}/completed', array('as' => 'payment.checkout.completed','uses' => 'PayController@completed'));
     Route::get('/payments/{gateway}/{user}/{task}/cancelled', array('as' => 'payment.checkout.cancelled','uses' => 'PayController@cancelled'));

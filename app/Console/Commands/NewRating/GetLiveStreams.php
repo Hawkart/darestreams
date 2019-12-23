@@ -184,7 +184,7 @@ class GetLiveStreams extends Command
                         {
                             $this->FinishTestStream($stream);
                         }else{
-                            //$this->NotifyCreateStreamInTwitch($channel);
+                            $this->NotifyCreateStreamInTwitch($channel);
                         }
                     }
                 }
@@ -220,8 +220,8 @@ class GetLiveStreams extends Command
 
                             $this->UpdateChannelStreams($channel, $stream);
 
-                            //if($channel->top)
-                                //$this->AdminNotifyAboutNewStream($channel, $stream);
+                            if($channel->top)
+                                $this->AdminNotifyAboutNewStream($channel, $stream);
                         }
                     }
                 }
@@ -295,7 +295,7 @@ class GetLiveStreams extends Command
             "game_id" => isset($this->games[$stream->game_id]) ? $this->games[$stream->game_id] : $channel->game_id,
             "link" => 'https://twitch.tv/'.$channel->name,
             "channel_id" => $channel->id,
-            "started_at" => $now,
+            "start_at" => $now,
             "status" => StreamStatus::Active,
             "allow_task_before_stream" => 1,
             "allow_task_when_stream" => 1,
@@ -408,10 +408,10 @@ class GetLiveStreams extends Command
 
         $details = [
             'greeting' => 'Здравствуйте. '.$user->name,
-            'body' => "Трансляция на DareStreams уже началась. Создайте, пожалуйста, стрим на Twitch!",
+            'body' => "Трансляция на DareStreams уже началась. Создайте, пожалуйста, стрим на Twitch! Либо завершите стрим на DareStreams.",
             'actionText' => 'Перейти',
             'actionURL' => 'https://twitch.tv/'.$user->nickname,
-            'subject' => "Создайте стрим на Twitch"
+            'subject' => "Создайте стрим на Twitch либо завершите стрим на DareStreams."
         ];
 
         $user->notify(new NotifyFollowersAboutStream($details));

@@ -67,7 +67,10 @@ class Kernel extends ConsoleKernel
         $schedule->command('votes:finish')->everyMinute();
 
 
-        $schedule->command('twitch:get_live_streams')->everyFiveMinutes();
+        $schedule->command('twitch:get_live_streams')->everyFiveMinutes()->skip(function () {
+            return date('N') == 5 && date("H:i")=="09:00";  //skip on friday 9:00
+        });
+        $schedule->command('stat:calculate_top')->fridays()->dailyAt('09:00');
         //$schedule->command('streamers:parse')->hourly();
         //$schedule->command('stat:channels_update')->cron('* * * * 1,2,3,4');
         //$schedule->command('stat:calculate_top')->fridays()->everyFiveMinutes();
@@ -75,7 +78,7 @@ class Kernel extends ConsoleKernel
 
     /**
      * Register the commands for the application.
-     *
+     *r
      * @return void
      */
     protected function commands()

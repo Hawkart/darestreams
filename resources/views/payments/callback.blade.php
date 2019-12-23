@@ -4,7 +4,8 @@
   <title>{{ config('app.name') }}</title>
   <script>
     window.opener.postMessage({ result: "{{ $result }}", error: "{{$error}}" }, "{{  url('*',[],true)  }}");
-    window.close();
+    window.location.href="/success";
+    //window.close();
   </script>
 </head>
 <body>
