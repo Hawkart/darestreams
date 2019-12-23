@@ -10,8 +10,10 @@ use App\Http\Requests\UserRequest;
 use App\Http\Resources\AccountResource;
 use App\Http\Resources\AdvCampaignResource;
 use App\Http\Resources\ChannelResource;
+use App\Http\Resources\KycResource;
 use App\Http\Resources\TransactionResource;
 use App\Models\Account;
+use App\Models\Kyc;
 use App\Models\Transaction;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Http\Request;
@@ -38,7 +40,7 @@ class UserController extends Controller
     {
         $this->middleware('auth:api')
             ->only(['me', 'update', 'updateAvatar', 'updateOverlay', 'updatePassword', 'follow', 'unfollow', 'account',
-                'donate', 'getDebitWithdrawGroupDates', 'getDebitWithdrawGroupDatesByDate', 'setRole',
+                'donate', 'getDebitWithdrawGroupDates', 'getDebitWithdrawGroupDatesByDate', 'setRole', 'kyc',
                 'getDonateGroupDates', 'getDonateGroupDatesByDate', 'getDonateGroupDatesByDateStream', 'isFollowing']);
     }
 
@@ -379,6 +381,22 @@ class UserController extends Controller
             ->firstOrFail();
 
         return new AccountResource($item);
+    }
+
+    /**
+     * User's kyc
+     *
+     * @authenticated
+     *
+     * @return AccountResource
+     */
+    public function kyc()
+    {
+        $item = QueryBuilder::for(Kyc::class)
+            ->where('user_id', auth()->user()->id)
+            ->firstOrFail();
+
+        return new KycResource($item);
     }
 
     /**

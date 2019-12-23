@@ -233,6 +233,8 @@ class GetLiveStreams extends Command
                     'file' => __FILE__,
                     'line' => __LINE__
                 ]);
+
+                sleep(1);
             }
         });
     }

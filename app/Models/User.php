@@ -141,6 +141,14 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject, MustVerifyEma
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
+    public function kyc()
+    {
+        return $this->hasOne(Kyc::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function channel()
     {
         return $this->hasOne(Channel::class);

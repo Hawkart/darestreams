@@ -47,6 +47,7 @@ Route::group(['namespace' => 'Api'], function () {
 
     Route::get('users/me', 'UserController@me');
     Route::get('users/me/account', 'UserController@account');
+    Route::get('users/me/kyc', 'UserController@kyc');
     Route::post('users/me/avatar', 'UserController@updateAvatar');
     Route::post('users/me/overlay', 'UserController@updateOverlay');
     Route::patch('users/me/set-role', 'UserController@setRole');
@@ -104,6 +105,13 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('/payments/{gateway}/{user}/{task}/checkout', array('as' => 'payment.checkout.create', 'uses' => 'PayController@checkout'));
     Route::get('/payments/{gateway}/{user}/{task}/completed', array('as' => 'payment.checkout.completed','uses' => 'PayController@completed'));
     Route::get('/payments/{gateway}/{user}/{task}/cancelled', array('as' => 'payment.checkout.cancelled','uses' => 'PayController@cancelled'));
+
+    Route::post('/kycs/verify/{code}', 'KycController@verify');
+    Route::post('/kycs/send-sms-code', 'KycController@sendSmsCode');
+    Route::post('/kycs', 'KycController@store');
+
+    Route::post('/withdraws/verify/{code}', 'WithdrawController@verify');
+    Route::post('/withdraws', 'WithdrawController@store');
 
     /*Route::get('/stripe/purchase', 'StripeController@purchase');
     Route::get('/stripe/success', 'StripeController@success');
