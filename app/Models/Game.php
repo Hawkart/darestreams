@@ -48,7 +48,7 @@ class Game extends Model
      */
     public function history()
     {
-        return $this->hasMany(GameHistory::class);
+        return $this->hasMany(GameHistory::class)->latest();
     }
 
     /**
@@ -56,6 +56,6 @@ class Game extends Model
      */
     public function lastHistory()
     {
-        return $this->history()->latest()->limit(2);
+        return $this->history()->limit(2);
     }
 }

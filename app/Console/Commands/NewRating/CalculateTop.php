@@ -153,7 +153,7 @@ class CalculateTop extends Command
 
     public function UpdateChannelsInfo()
     {
-        Channel::top()->with(['lastHistory'])->chunk(100, function($channels) {
+        Channel::top()->chunk(100, function($channels) {
             $ids = [];
             $chs = [];
             foreach ($channels as $stat) {
@@ -266,7 +266,7 @@ class CalculateTop extends Command
             }
         }
 
-        $gamesHistory = GameHistory::where('created_at', '>', $prevDay)->with(['game'])->get();
+        $gamesHistory = GameHistory::where('created_at', '>', $prevDay)->get();
         foreach($gamesHistory as $gh)
         {
             $gh->game->update(['rating' => $gh->time]);
@@ -310,8 +310,8 @@ class CalculateTop extends Command
         foreach($this->games as $game_id)
         {
             //GameChannelHistory
-            $history = GameChannelHistory::where('updated_at', '>', $prevDay)
-                ->where('place', 0)
+            $history = GameChannelHistory::where('created_at', '>', $prevDay)
+                //->where('place', 0)
                 ->whereHas('gameHistory', function($q) use ($game_id){
                     $q->where('game_id', $game_id);
                 })
