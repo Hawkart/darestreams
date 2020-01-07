@@ -90,10 +90,7 @@ class CalculateTop extends Command
                 {
                     if(abs(Carbon::now('UTC')->startOfDay()->diffInDays($stream['started_at'], false))>7) continue;
 
-                    if(isset($stream['length']) && intval($stream['length'])>0)
-                    {
-                        $rating += ceil($stream['views'] * $stream['length'] / 3600);
-                    }
+                    $rating += $stream['views'];
                 }
             }
 
@@ -227,12 +224,12 @@ class CalculateTop extends Command
                 {
                     if(abs(Carbon::now('UTC')->startOfDay()->diffInDays($stream['started_at'], false))>7) continue;
 
-                    if(isset($stream['length']) && isset($stream['game_id']) && intval($stream['length'])>0 && isset($this->games[$stream['game_id']]))
+                    if(isset($stream['game_id']) && isset($this->games[$stream['game_id']]))
                     {
                         $game_id = $this->games[$stream['game_id']];
                         echo $game_id."\r\n";
 
-                        $rating = ceil($stream['views']*$stream['length']/3600);
+                        $rating = $stream['views'];
                         $gamesHistory = GameHistory::where('created_at', '>', $prevDay)->where('game_id', $game_id);
 
                         if($gamesHistory->count()>0)
@@ -311,7 +308,7 @@ class CalculateTop extends Command
         {
             //GameChannelHistory
             $history = GameChannelHistory::where('created_at', '>', $prevDay)
-                //->where('place', 0)
+                ->where('place', 0)
                 ->whereHas('gameHistory', function($q) use ($game_id){
                     $q->where('game_id', $game_id);
                 })

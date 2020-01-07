@@ -15,7 +15,6 @@ class Kernel extends ConsoleKernel
     protected $commands = [
 
         Commands\ImportGames::class,
-        Commands\GetViewsForActiveStreams::class,
         Commands\MakePaymentsByStreams::class,
         Commands\UpdateStreamsStatus::class,
         Commands\CheckTaskInterval::class,
@@ -32,16 +31,9 @@ class Kernel extends ConsoleKernel
         Commands\Ones\GetChannelVideosOnTwitch::class,
         Commands\Ones\CheckAlert::class,
         Commands\Ones\GetLinksVideosFromTwitch::class,
-        Commands\Ones\GetLiveStreams::class,
         Commands\Ones\BugfixRatingGameChannel::class,
 
-        /*Commands\Rating\ParseStreamers::class,
-        Commands\Rating\UpdateRatingChannels::class,
-        Commands\Rating\CalculateRatingTop::class,
-        Commands\Rating\SyncStatChannels::class,
-        Commands\Rating\RecalculateRating::class,*/
         Commands\SpeechRecognize::class,
-
 
         //New Rating
         Commands\NewRating\SearchNewChannels::class,
@@ -59,21 +51,16 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('games:import')->weeklyOn(1);
         $schedule->command('streams:update_status')->everyMinute();
-        //$schedule->command('streams:get_views')->everyFiveMinutes();
         $schedule->command('streams:pay_donations')->daily()->timezone('America/New_York')->at('02:00');
         $schedule->command('tasks:check_interval')->everyMinute();
         $schedule->command('tasks:clear_not_used')->daily()->timezone('America/New_York')->at('03:00');
         $schedule->command('transactions:clear_dropped')->daily()->timezone('America/New_York')->at('02:00');
         $schedule->command('votes:finish')->everyMinute();
 
-
         $schedule->command('twitch:get_live_streams')->everyFiveMinutes()->skip(function () {
             return date('N') == 5 && date("H:i")=="09:00";  //skip on friday 9:00
         });
         $schedule->command('stat:calculate_top')->fridays()->dailyAt('09:00');
-        //$schedule->command('streamers:parse')->hourly();
-        //$schedule->command('stat:channels_update')->cron('* * * * 1,2,3,4');
-        //$schedule->command('stat:calculate_top')->fridays()->everyFiveMinutes();
     }
 
     /**
