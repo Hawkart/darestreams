@@ -74,7 +74,7 @@ class BugfixRatingGameChannel extends Command
         $this->calculateGameRating();
         $this->historySetGamePlace();*/
 
-        $this->CheckTwitchRequests();
+        //$this->CheckTwitchRequests();
 
         $bar->finish();
     }

@@ -32,6 +32,7 @@ class Kernel extends ConsoleKernel
         Commands\Ones\CheckAlert::class,
         Commands\Ones\GetLinksVideosFromTwitch::class,
         Commands\Ones\BugfixRatingGameChannel::class,
+        Commands\Ones\RecalculateWeekRating::class,
 
         Commands\SpeechRecognize::class,
 
