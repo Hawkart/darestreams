@@ -63,7 +63,7 @@ class Kernel extends ConsoleKernel
         });
         $schedule->command('stat:calculate_top')->fridays()->dailyAt('09:00');
 
-        $schedule->command('stat:recalculate_top')->dailyAt('09:00');
+        $schedule->command('stat:recalculate_top')->daily()->timezone('Europe/Moscow')->at('18:15');
     }
 
     /**

@@ -12,8 +12,6 @@ use App\Notifications\NotifyFollowersAboutStream;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-use NewTwitchApi\HelixGuzzleClient;
-use NewTwitchApi\NewTwitchApi;
 
 class RecalculateWeekRating extends Command
 {
@@ -255,12 +253,20 @@ class RecalculateWeekRating extends Command
      */
     public function NotifyAdmin($data)
     {
+        Log::info('Recalculate '.$data['title']." ".$data['friday']->toDateString(), [
+            'file' => __FILE__,
+            'line' => __LINE__
+        ]);
+
+
         $user = User::where('email', 'hawkart@rambler.ru')->first();
 
         $details = [
             'greeting' => 'Здравствуйте. '.$user->name,
             'body' => $data['title'],
-            'subject' => $data['title']." ".$data['friday']
+            'actionText' => 'Перейти',
+            'actionURL' => "https://darestreams.com",
+            'subject' => $data['title']." ".$data['friday']->toDateString()
         ];
 
         $user->notify(new NotifyFollowersAboutStream($details));
