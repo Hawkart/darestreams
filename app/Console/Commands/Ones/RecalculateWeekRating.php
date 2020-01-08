@@ -7,6 +7,8 @@ use App\Models\Rating\ChannelHistory;
 use App\Models\Rating\Channel;
 use App\Models\Rating\GameChannelHistory;
 use App\Models\Rating\GameHistory;
+use App\Models\User;
+use App\Notifications\NotifyFollowersAboutStream;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
@@ -52,7 +54,7 @@ class RecalculateWeekRating extends Command
         $prevFriday = date('d.m.Y', strtotime('previous Friday', strtotime(Carbon::now('UTC'))));
         $prevFriday = Carbon::parse($prevFriday);
 
-        for($weeks = 3; $weeks>=1; $weeks--)    //recalculate for last 3 weeks
+        for($weeks = 1; $weeks>=1; $weeks--)    //recalculate for last 3 weeks
         {
             if($weeks==1)
                 $this->friday = $prevFriday;
@@ -64,11 +66,21 @@ class RecalculateWeekRating extends Command
 
             echo $this->friday."\r\n";
 
+            $this->NotifyAdmin([
+                'friday' => $this->friday,
+                'title' => 'Recalculate of rating started'
+            ]);
+
             $this->CalculateChannelsRating();
             $this->UpdateChannelsTop();
             $this->CalculateGameRating();
             $this->HistorySetChannelPlace();
             $this->HistorySetGamePlace();
+
+            $this->NotifyAdmin([
+                'friday' => $this->friday,
+                'title' => 'Recalculate of rating finished'
+            ]);
         }
 
         $bar->finish();
@@ -78,8 +90,7 @@ class RecalculateWeekRating extends Command
     {
         foreach(Channel::all() as $channel)
         {
-            echo "channel_id = ".$channel->id."\r\n";
-
+            //echo "channel_id = ".$channel->id."\r\n"
             $streams = is_array($channel->streams) ? $channel->streams : [];
             $rating = 0;
 
@@ -238,4 +249,21 @@ class RecalculateWeekRating extends Command
     {
         $this->games = Game::pluck('id', 'twitch_id')->toArray();
     }
+
+    /**
+     * @param $channel
+     */
+    public function NotifyAdmin($data)
+    {
+        $user = User::where('email', 'hawkart@rambler.ru')->first();
+
+        $details = [
+            'greeting' => 'Здравствуйте. '.$user->name,
+            'body' => $data['title'],
+            'subject' => $data['title']." ".$data['friday']
+        ];
+
+        $user->notify(new NotifyFollowersAboutStream($details));
+    }
+
 }
