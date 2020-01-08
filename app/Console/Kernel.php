@@ -62,6 +62,8 @@ class Kernel extends ConsoleKernel
             return date('N') == 5 && date("H:i")=="09:00";  //skip on friday 9:00
         });
         $schedule->command('stat:calculate_top')->fridays()->dailyAt('09:00');
+
+        $schedule->command('stat:recalculate_top')->dailyAt('09:00');
     }
 
     /**
