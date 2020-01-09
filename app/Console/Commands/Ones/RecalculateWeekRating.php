@@ -188,7 +188,6 @@ class RecalculateWeekRating extends Command
                 $gh->game->update(['rating' => $gh->time]);
             }
         }
-
     }
 
     public function HistorySetChannelPlace()
@@ -257,7 +256,6 @@ class RecalculateWeekRating extends Command
             'file' => __FILE__,
             'line' => __LINE__
         ]);
-
 
         $user = User::where('email', 'hawkart@rambler.ru')->first();
 

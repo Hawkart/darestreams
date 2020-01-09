@@ -59,11 +59,10 @@ class Kernel extends ConsoleKernel
         $schedule->command('votes:finish')->everyMinute();
 
         $schedule->command('twitch:get_live_streams')->everyFiveMinutes()->skip(function () {
-            return date('N') == 5 && date("H:i")=="09:00";  //skip on friday 9:00
+            return date('N') == 5 && date("H:i")=="03:00";  //skip on friday 9:00
         });
-        $schedule->command('stat:calculate_top')->fridays()->dailyAt('09:00');
-
-        $schedule->command('stat:recalculate_top')->daily()->timezone('Europe/Moscow')->at('18:15');
+        $schedule->command('stat:calculate_top')->fridays()->daily()->timezone('Europe/Moscow')->at('03:00');
+        //$schedule->command('stat:recalculate_top')->daily()->timezone('Europe/Moscow')->at('18:15');
     }
 
     /**

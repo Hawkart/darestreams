@@ -7,6 +7,8 @@ use App\Models\Rating\ChannelHistory;
 use App\Models\Rating\Channel;
 use App\Models\Rating\GameChannelHistory;
 use App\Models\Rating\GameHistory;
+use App\Models\User;
+use App\Notifications\NotifyFollowersAboutStream;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
@@ -45,6 +47,10 @@ class CalculateTop extends Command
     {
         $bar = $this->output->createProgressBar(100);
 
+        $this->NotifyAdmin([
+            'title' => 'Calculate tip of rating started'
+        ]);
+
         $this->GetTwitchToken();
         $this->GetGamesList();
         $this->CalculateChannelsRating();
@@ -53,6 +59,10 @@ class CalculateTop extends Command
         $this->CalculateGameRating();
         $this->HistorySetChannelPlace();
         $this->HistorySetGamePlace();
+
+        $this->NotifyAdmin([
+            'title' => 'Calculate tip of rating finished'
+        ]);
 
         $bar->finish();
     }
@@ -324,6 +334,29 @@ class CalculateTop extends Command
         }
 
         echo "places updated"."\r\n";
+    }
+
+    /**
+     * @param $channel
+     */
+    public function NotifyAdmin($data)
+    {
+        Log::info('CalculateTop: '.$data['title']." ".date("H:i:s"), [
+            'file' => __FILE__,
+            'line' => __LINE__
+        ]);
+
+        $user = User::where('email', 'hawkart@rambler.ru')->first();
+
+        $details = [
+            'greeting' => 'Здравствуйте. '.$user->name,
+            'body' => $data['title'],
+            'actionText' => 'Перейти',
+            'actionURL' => "https://darestreams.com",
+            'subject' => $data['title']." ".date("H:i:s")
+        ];
+
+        $user->notify(new NotifyFollowersAboutStream($details));
     }
 
     public function GetGamesList()
