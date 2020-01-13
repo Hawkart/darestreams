@@ -171,8 +171,9 @@ class GetLiveStreams extends Command
             {
                 foreach($chs as $channel)
                 {
-                    $streams = Stream::where('channel_id', $channel->id)->where('status', StreamStatus::Active)
-                        ->where('start_at', '>', $date);
+                    $streams = Stream::where('channel_id', $channel->id)
+                                ->where('status', StreamStatus::Active);
+                                //->where('start_at', '>', $date);
 
                     //1. Active in Dare but not active in Twitch (started_at)
                     if($streams->count()>0)
@@ -184,7 +185,11 @@ class GetLiveStreams extends Command
                         {
                             $this->FinishTestStream($stream);
                         }else{
-                            $this->NotifyCreateStreamInTwitch($channel);
+
+                            $minutes = ceil(Carbon::now('UTC')->diffInSeconds($stream->start_at)/60);
+
+                            if($minutes>10)
+                                $this->NotifyCreateStreamInTwitch($channel);
                         }
                     }
                 }

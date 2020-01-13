@@ -204,7 +204,8 @@ class CalculateTop extends Command
                         if (isset($channel->lastHistory[0]))
                         {
                             $channel->lastHistory[0]->update([
-                                'views' => $data->view_count
+                                'views' => $data->view_count,
+                                'title' => strtolower($data->login)
                             ]);
                         }
                     }
