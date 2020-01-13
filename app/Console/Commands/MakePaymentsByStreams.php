@@ -113,7 +113,10 @@ class MakePaymentsByStreams extends Command
                                                 $transaction->update(['status' => $tstatus]);
                                         }
 
-                                        $task->update(['status' => TaskStatus::PayFinished]);
+                                        $task->update([
+                                            'status' => TaskStatus::PayFinished,
+                                            //'amount_donations' => $result
+                                        ]);
                                     });
                                 } catch (\Exception $e) {
                                     echo response($e->getMessage(), 422);

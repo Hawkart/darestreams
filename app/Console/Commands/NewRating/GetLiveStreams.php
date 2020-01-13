@@ -188,7 +188,7 @@ class GetLiveStreams extends Command
 
                             $minutes = ceil(Carbon::now('UTC')->diffInSeconds($stream->start_at)/60);
 
-                            if($minutes>10)
+                            if($minutes<10)
                                 $this->NotifyCreateStreamInTwitch($channel);
                         }
                     }
