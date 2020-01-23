@@ -150,9 +150,9 @@ class RecalculateWeekRating extends Command
                 $chs[$stat->exid] = $stat;
 
                 try {
-                    $content = $this->GetChannelFollowers($stat->exid);
-
                     if (isset($stat->lastHistory[0]) && $stat->lastHistory[0]->followers==0) {
+
+                        $content = $this->GetChannelFollowers($stat->exid);
                         $stat->lastHistory[0]->update([
                             'followers' => ceil($content->total*0.97)
                         ]);
@@ -190,6 +190,7 @@ class RecalculateWeekRating extends Command
                     'line' => __LINE__
                 ]);
             }
+            sleep(1);
         });
     }
 
